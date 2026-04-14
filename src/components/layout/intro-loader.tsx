@@ -4,13 +4,16 @@ import { useEffect, useEffectEvent, useRef, useState } from "react";
 
 const INTRO_STORAGE_KEY = "ribuzz-intro-seen";
 const INTRO_FADE_OUT_MS = 420;
-const INTRO_MAX_DURATION_MS = 3200;
-const INTRO_END_HOLD_MS = 1500;
+const INTRO_PRE_START_MS = 500;
+const INTRO_MAX_DURATION_MS = 3700;
+const INTRO_END_HOLD_MS = 2000;
 
 export function IntroLoader() {
   const timeoutRef = useRef<number | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [canPlayVideo, setCanPlayVideo] = useState(false);
 
   const closeIntro = useEffectEvent(() => {
     if (isClosing) {
@@ -53,8 +56,13 @@ export function IntroLoader() {
 
     window.sessionStorage.setItem(INTRO_STORAGE_KEY, "true");
     setIsVisible(true);
+    setCanPlayVideo(false);
 
     scheduleClose(INTRO_MAX_DURATION_MS);
+
+    window.setTimeout(() => {
+      setCanPlayVideo(true);
+    }, INTRO_PRE_START_MS);
 
     return () => {
       if (timeoutRef.current !== null) {
@@ -76,6 +84,16 @@ export function IntroLoader() {
     };
   }, [isVisible]);
 
+  useEffect(() => {
+    if (!canPlayVideo || !videoRef.current) {
+      return;
+    }
+
+    void videoRef.current.play().catch(() => {
+      scheduleClose(INTRO_END_HOLD_MS);
+    });
+  }, [canPlayVideo]);
+
   if (!isVisible) {
     return null;
   }
@@ -87,8 +105,8 @@ export function IntroLoader() {
     >
       <div className="intro-loader__glow" />
       <video
+        ref={videoRef}
         className="intro-loader__video"
-        autoPlay
         muted
         playsInline
         preload="auto"
