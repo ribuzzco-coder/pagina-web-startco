@@ -5,9 +5,5 @@ export default function Template({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  return (
-    <div className="page-transition-shell">
-      <div className="page-transition-content">{children}</div>
-    </div>
-  );
+  return <div className="page-transition-shell">{children}</div>;
 }
