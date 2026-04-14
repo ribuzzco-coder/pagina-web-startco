@@ -5,7 +5,7 @@ import { useEffect, useEffectEvent, useRef, useState } from "react";
 const INTRO_STORAGE_KEY = "ribuzz-intro-seen";
 const INTRO_FADE_OUT_MS = 420;
 const INTRO_MAX_DURATION_MS = 3200;
-const INTRO_END_HOLD_MS = 500;
+const INTRO_END_HOLD_MS = 1500;
 
 export function IntroLoader() {
   const timeoutRef = useRef<number | null>(null);
