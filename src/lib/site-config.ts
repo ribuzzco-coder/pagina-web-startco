@@ -6,10 +6,11 @@ export const SITE_CONFIG = {
     "https://docs.google.com/forms/d/e/1FAIpQLSedUNuJeyesXwKhUzx80Mnh9RzblT5h_AGAyJ6TB2CW0SbJwA/viewform?usp=header",
   description:
     "RiBuzz disena e implementa sistemas comerciales para empresas que ya venden, pero todavia no crecen con estructura, seguimiento y consistencia.",
-  logoPlaceholder: "/logo-ribuzz-placeholder.svg",
+  logoPlaceholder: "/ribuzz-wordmark.png",
+  logoMark: "/ribuzz-mark.png",
   ogImagePlaceholder: "/og-ribuzz-placeholder.svg",
   contactEmail: "hola@ribuzz.co",
-  whatsappUrl: "https://wa.me/573150722723",
+  whatsappUrl: "https://wa.me/573132541346",
   diagnosisCtaLabel: "Solicita tu diagnostico gratuito",
   diagnosisCtaShortLabel: "Diagnostico gratuito",
   diagnosisSupportCopy:

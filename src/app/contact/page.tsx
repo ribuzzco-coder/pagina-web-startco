@@ -81,8 +81,8 @@ export default function ContactPage() {
               captacion, conversion, seguimiento o estructura comercial.
             </p>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              <div className="rounded-[22px] border border-white/8 bg-white/[0.02] p-4">
+            <div className="mt-6 grid gap-4 border-t border-white/8 pt-6 sm:grid-cols-3">
+              <div className="border-l border-white/8 pl-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
                   Gratis
                 </p>
@@ -90,7 +90,7 @@ export default function ContactPage() {
                   No tiene costo y sirve para hacer una primera lectura con criterio.
                 </p>
               </div>
-              <div className="rounded-[22px] border border-white/8 bg-white/[0.02] p-4">
+              <div className="border-l border-white/8 pl-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
                   Menos de 10 min
                 </p>
@@ -98,7 +98,7 @@ export default function ContactPage() {
                   Lo puedes completar rapido sin entrar en un proceso largo de venta.
                 </p>
               </div>
-              <div className="rounded-[22px] border border-white/8 bg-white/[0.02] p-4">
+              <div className="border-l border-white/8 pl-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
                   Revision de fit
                 </p>

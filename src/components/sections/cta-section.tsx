@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 
 type CTASectionProps = {
@@ -26,7 +25,7 @@ export function CTASection({
   return (
     <section className="py-20 sm:py-24">
       <Container>
-        <Card className="cv-auto relative overflow-hidden rounded-[28px] bg-[linear-gradient(180deg,rgba(29,33,48,0.96),rgba(24,26,36,0.94))] p-8 sm:p-10">
+        <div className="cv-auto relative overflow-hidden rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(29,33,48,0.9),rgba(24,26,36,0.84))] p-8 shadow-[0_10px_28px_rgba(0,0,0,0.18)] sm:p-10">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(230,37,255,0.32),transparent)]" />
 
           <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
@@ -58,7 +57,7 @@ export function CTASection({
               ) : null}
             </div>
           </div>
-        </Card>
+        </div>
       </Container>
     </section>
   );

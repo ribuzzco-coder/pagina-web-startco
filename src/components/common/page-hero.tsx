@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 
 type PageHeroProps = {
@@ -63,7 +62,7 @@ export function PageHero({
         </div>
 
         {asideTitle && asideText ? (
-          <Card className="relative overflow-hidden rounded-[28px] p-7 sm:p-8">
+          <div className="relative overflow-hidden rounded-[28px] border border-white/8 bg-white/[0.035] p-7 shadow-[0_10px_24px_rgba(0,0,0,0.16)] sm:p-8">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(230,37,255,0.34),transparent)]" />
             <p className="text-[11px] font-semibold tracking-[0.16em] text-[#98A0B3] uppercase">
               Referencia ejecutiva
@@ -74,7 +73,7 @@ export function PageHero({
             <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
               {asideText}
             </p>
-          </Card>
+          </div>
         ) : null}
       </Container>
     </section>

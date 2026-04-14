@@ -26,10 +26,11 @@ export function Navbar() {
           <Image
             src={SITE_CONFIG.logoPlaceholder}
             alt="Logo RiBuzz"
-            width={132}
-            height={44}
-            sizes="132px"
-            className="h-10 w-auto rounded-xl border border-white/8 bg-[#12131A] p-1.5 transition-colors group-hover:border-[#E625FF]/28"
+            width={759}
+            height={180}
+            sizes="(max-width: 1024px) 140px, 168px"
+            priority
+            className="h-9 w-auto object-contain opacity-96 transition duration-300 group-hover:scale-[1.02] group-hover:opacity-100 sm:h-10"
           />
         </Link>
 

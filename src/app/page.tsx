@@ -68,12 +68,9 @@ export default function HomePage() {
               {SITE_CONFIG.diagnosisSupportCopy}
             </p>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            <div className="mt-8 grid gap-4 border-t border-white/8 pt-6 sm:grid-cols-3">
               {heroHighlights.map((item, index) => (
-                <div
-                  key={item}
-                  className="rounded-[20px] border border-white/8 bg-white/[0.02] p-3.5"
-                >
+                <div key={item} className="border-l border-white/8 pl-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
                     0{index + 1}
                   </p>
@@ -106,11 +103,11 @@ export default function HomePage() {
               ))}
             </div>
 
-            <div className="mt-6 rounded-[22px] border border-[#0FEFFD]/12 bg-[#0FEFFD]/6 p-5">
+            <div className="mt-6 border-t border-white/8 pt-6">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#B8EAF0]">
                 Diagnostico gratuito
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-[#D8F9FC]">
+              <p className="mt-3 max-w-lg text-sm leading-relaxed text-[#D8F9FC]">
                 Completa el diagnostico inicial, te toma menos de 10 minutos y
                 recibes una lectura base sobre los principales puntos de friccion
                 de tu sistema comercial.

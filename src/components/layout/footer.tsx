@@ -13,10 +13,10 @@ export function Footer() {
           <Image
             src={SITE_CONFIG.logoPlaceholder}
             alt="Logo RiBuzz"
-            width={164}
-            height={54}
-            sizes="164px"
-            className="h-12 w-auto rounded-xl border border-white/8 bg-[#12131A] p-1.5"
+            width={759}
+            height={180}
+            sizes="200px"
+            className="h-11 w-auto object-contain opacity-95 sm:h-12"
           />
           <p className="mt-4 max-w-md text-sm leading-relaxed text-[#98A0B3] sm:text-base">
             Disenamos e implementamos sistemas comerciales para empresas que ya
