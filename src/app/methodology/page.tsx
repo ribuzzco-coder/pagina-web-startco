@@ -18,7 +18,7 @@ export const metadata = createPageMetadata({
 
 export default function MethodologyPage() {
   return (
-    <>
+    <div className="bg-white">
         <PageHero
         eyebrow="Metodologia RiBuzz"
         title="Diagnóstico, diseño, implementación y acompañamiento para no ejecutar a ciegas"
@@ -97,6 +97,6 @@ export default function MethodologyPage() {
         secondaryLabel="Ir a contacto"
         secondaryHref="/contact"
       />
-    </>
+    </div>
   );
 }
