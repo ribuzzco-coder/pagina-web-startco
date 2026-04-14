@@ -120,7 +120,7 @@ body {
 }
 
 .page-transition-shell {
-  animation: page-blur-in 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: page-blur-in 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .nav-blob-morphing {
@@ -129,9 +129,9 @@ body {
 
 @keyframes page-blur-in {
   from {
-    opacity: 0.18;
-    transform: translateY(2px);
-    filter: blur(6px);
+    opacity: 0.08;
+    transform: translateY(3px) scale(0.998);
+    filter: blur(8px);
   }
 
   to {
