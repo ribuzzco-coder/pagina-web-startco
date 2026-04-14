@@ -153,8 +153,8 @@ export default function HomePage() {
             description="Entender, diagnosticar, estructurar, implementar y acompañar."
           />
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-            {solutionSequence.map((item) => (
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {solutionSequence.slice(1).map((item) => (
               <Card key={item.title} className="rounded-[24px] p-5">
                 <h3 className="text-lg font-semibold tracking-tight text-[#F5F7FA]">
                   {item.title}

@@ -1,10 +1,16 @@
 import { z } from "zod";
 
+const optionalUrl = z.preprocess((value) => (value === "" ? undefined : value), z.string().url().optional());
+const optionalNonEmptyString = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  z.string().min(1).optional(),
+);
+
 const publicEnvSchema = z.object({
-  NEXT_PUBLIC_APP_URL: z.string().url().optional(),
+  NEXT_PUBLIC_APP_URL: optionalUrl,
   NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(20),
-  NEXT_PUBLIC_TURNSTILE_SITE_KEY: z.string().min(1).optional(),
+  NEXT_PUBLIC_TURNSTILE_SITE_KEY: optionalNonEmptyString,
 });
 
 export const publicEnv = publicEnvSchema.parse({
