@@ -21,6 +21,7 @@ export const SITE_CONFIG = {
     { label: "Servicios", href: "/services" },
     { label: "Metodologia", href: "/methodology" },
     { label: "Sobre RiBuzz", href: "/about" },
+    { label: "Startco", href: "/startco" },
     { label: "Solicitar diagnostico", href: "/contact" },
   ],
 } as const;
