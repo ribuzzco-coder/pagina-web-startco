@@ -40,7 +40,7 @@ const sizeStyles: Record<ButtonSize, string> = {
 };
 
 const baseStyle =
-  "inline-flex items-center justify-center rounded-full font-semibold tracking-[0.01em] transition-[color,border-color,background-color,box-shadow] duration-200 disabled:pointer-events-none disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E625FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B10]";
+  "inline-flex items-center justify-center rounded-full font-semibold tracking-[0.01em] transition-[color,border-color,background-color,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] disabled:pointer-events-none disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E625FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B10]";
 
 function getButtonClasses(
   variant: ButtonVariant,
