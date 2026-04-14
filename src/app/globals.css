@@ -28,6 +28,54 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(230, 37, 255, 0.18), transparent 26%),
+    radial-gradient(circle at 50% 58%, rgba(15, 239, 253, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(11, 11, 16, 0.98), rgba(9, 10, 15, 0.99));
+  opacity: 1;
+  transition:
+    opacity 420ms ease,
+    visibility 420ms ease;
+}
+
+.intro-loader--closing {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.intro-loader__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08), transparent 20%),
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  filter: blur(18px);
+}
+
+.intro-loader__video {
+  position: relative;
+  z-index: 1;
+  width: min(46vw, 380px);
+  min-width: 220px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 48px rgba(0, 0, 0, 0.42));
+}
+
+@media (max-width: 640px) {
+  .intro-loader__video {
+    width: min(72vw, 320px);
+    min-width: 180px;
+  }
+}
+
 ::selection {
   background: rgba(230, 37, 255, 0.24);
   color: #f5f7fa;

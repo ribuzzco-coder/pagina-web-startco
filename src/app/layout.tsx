@@ -3,6 +3,7 @@ import { Saira, Space_Grotesk } from "next/font/google";
 
 import { FloatingWhatsAppButton } from "@/components/layout/floating-whatsapp-button";
 import { Footer } from "@/components/layout/footer";
+import { IntroLoader } from "@/components/layout/intro-loader";
 import { Navbar } from "@/components/layout/navbar";
 import { SITE_CONFIG } from "@/lib/site-config";
 
@@ -59,6 +60,7 @@ export default function RootLayout({
         </div>
 
         <div className="relative flex min-h-screen flex-col">
+          <IntroLoader />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
