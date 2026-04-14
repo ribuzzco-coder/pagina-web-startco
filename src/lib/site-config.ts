@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
   logoPlaceholder: "/ribuzz-wordmark.png",
   logoMark: "/ribuzz-mark.png",
   ogImagePlaceholder: "/og-ribuzz-placeholder.svg",
-  contactEmail: "hola@ribuzz.co",
+  contactEmail: "ribuzzco@gmail.com",
   whatsappUrl: "https://wa.me/573332541346",
   instagramUrl: "https://www.instagram.com/ribuzzco/",
   diagnosisCtaLabel: "Solicita tu diagnostico gratuito",
