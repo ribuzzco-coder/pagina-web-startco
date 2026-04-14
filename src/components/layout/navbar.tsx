@@ -88,7 +88,7 @@ export function Navbar() {
     }
     morphTimeoutRef.current = window.setTimeout(() => {
       setIsBubbleMorphing(false);
-    }, 420);
+    }, 760);
 
     window.addEventListener("resize", syncActiveBubble);
 
@@ -132,7 +132,7 @@ export function Navbar() {
           <span
             aria-hidden="true"
             className={cn(
-              "pointer-events-none absolute inset-y-1 left-0 border border-white/60 bg-[radial-gradient(circle_at_28%_26%,rgba(255,255,255,0.98),rgba(255,255,255,0.92)_42%,rgba(249,238,252,0.86)_72%,rgba(255,255,255,0.8)_100%)] shadow-[0_0_0_1px_rgba(255,255,255,0.16),0_0_16px_rgba(230,37,255,0.16),0_0_28px_rgba(230,37,255,0.12)] blur-[0.12px] transition-[transform,width,opacity,border-radius,box-shadow,filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
+              "pointer-events-none absolute inset-y-1 left-0 border border-white/58 bg-[radial-gradient(circle_at_28%_26%,rgba(255,255,255,0.98),rgba(255,255,255,0.93)_42%,rgba(249,238,252,0.88)_72%,rgba(255,255,255,0.82)_100%)] shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_0_14px_rgba(230,37,255,0.14),0_0_24px_rgba(230,37,255,0.1)] blur-[0.08px] transition-[transform,width,opacity,border-radius,box-shadow,filter] duration-[920ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
               isBubbleMorphing && "nav-blob-morphing",
             )}
             style={{
