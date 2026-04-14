@@ -88,3 +88,34 @@ Para validar build con variables de entorno reales o placeholder bien formadas:
 ```bash
 npm run build
 ```
+
+## Preview con Docker antes de desplegar
+
+1. Crea tu archivo local de entorno:
+
+```bash
+cp .env.example .env.local
+```
+
+2. Completa `.env.local` con valores validos para Supabase y tus secretos.
+
+3. Construye y levanta la version de produccion local:
+
+```bash
+docker compose --env-file .env.local up --build
+```
+
+4. Abre `http://localhost:3000` y valida los cambios igual que lo haria el contenedor de despliegue.
+
+5. Cuando termines:
+
+```bash
+docker compose down
+```
+
+Si quieres rehacer la imagen desde cero porque cambiaste dependencias o variables de build:
+
+```bash
+docker compose --env-file .env.local build --no-cache
+docker compose --env-file .env.local up
+```

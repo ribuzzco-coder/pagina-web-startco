@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "docker:preview": "docker compose --env-file .env.local up --build",
+    "docker:preview:rebuild": "docker compose --env-file .env.local build --no-cache",
+    "docker:down": "docker compose down"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.0",
