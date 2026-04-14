@@ -28,6 +28,11 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   openGraph: {
     title: `${SITE_CONFIG.name} | Sistemas comerciales para crecer con estructura`,
     description: SITE_CONFIG.description,

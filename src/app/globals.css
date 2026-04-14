@@ -51,10 +51,11 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(4, 5, 8, 0.38), rgba(4, 5, 8, 0.56)),
-    radial-gradient(circle at 50% 50%, rgba(230, 37, 255, 0.14), transparent 32%),
-    radial-gradient(circle at 50% 50%, rgba(15, 239, 253, 0.08), transparent 38%);
+    linear-gradient(180deg, rgba(4, 5, 8, 0.12), rgba(4, 5, 8, 0.22)),
+    radial-gradient(circle at 50% 50%, rgba(230, 37, 255, 0.08), transparent 34%),
+    radial-gradient(circle at 50% 50%, rgba(15, 239, 253, 0.05), transparent 42%);
   z-index: 1;
+  pointer-events: none;
 }
 
 .intro-loader__video {

@@ -5,6 +5,7 @@ import { useEffect, useEffectEvent, useRef, useState } from "react";
 const INTRO_STORAGE_KEY = "ribuzz-intro-seen";
 const INTRO_FADE_OUT_MS = 420;
 const INTRO_MAX_DURATION_MS = 3200;
+const INTRO_END_HOLD_MS = 500;
 
 export function IntroLoader() {
   const timeoutRef = useRef<number | null>(null);
@@ -28,6 +29,16 @@ export function IntroLoader() {
     }, INTRO_FADE_OUT_MS);
   });
 
+  const scheduleClose = useEffectEvent((delayMs: number) => {
+    if (timeoutRef.current !== null) {
+      window.clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = window.setTimeout(() => {
+      closeIntro();
+    }, delayMs);
+  });
+
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
@@ -43,9 +54,7 @@ export function IntroLoader() {
     window.sessionStorage.setItem(INTRO_STORAGE_KEY, "true");
     setIsVisible(true);
 
-    timeoutRef.current = window.setTimeout(() => {
-      closeIntro();
-    }, INTRO_MAX_DURATION_MS);
+    scheduleClose(INTRO_MAX_DURATION_MS);
 
     return () => {
       if (timeoutRef.current !== null) {
@@ -83,7 +92,7 @@ export function IntroLoader() {
         muted
         playsInline
         preload="auto"
-        onEnded={closeIntro}
+        onEnded={() => scheduleClose(INTRO_END_HOLD_MS)}
       >
         <source src="/intro-logo.mp4" type="video/mp4" />
       </video>
