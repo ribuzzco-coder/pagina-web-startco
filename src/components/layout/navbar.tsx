@@ -103,7 +103,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b border-white/8 bg-[#0B0B10]/92 backdrop-blur-sm transition-transform duration-300",
+        "sticky top-0 z-50 border-b border-white/8 bg-[#0B0B10]/92 backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
         isHidden ? "-translate-y-full" : "translate-y-0",
       )}
     >
@@ -132,7 +132,7 @@ export function Navbar() {
           <span
             aria-hidden="true"
             className={cn(
-              "pointer-events-none absolute inset-y-1 left-0 border border-white/65 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.98),rgba(255,255,255,0.9)_40%,rgba(248,232,252,0.84)_68%,rgba(255,255,255,0.78)_100%)] shadow-[0_0_0_1px_rgba(255,255,255,0.18),0_0_20px_rgba(230,37,255,0.22),0_0_36px_rgba(230,37,255,0.16)] blur-[0.2px] transition-[transform,width,opacity,border-radius,box-shadow,filter] duration-500",
+              "pointer-events-none absolute inset-y-1 left-0 border border-white/60 bg-[radial-gradient(circle_at_28%_26%,rgba(255,255,255,0.98),rgba(255,255,255,0.92)_42%,rgba(249,238,252,0.86)_72%,rgba(255,255,255,0.8)_100%)] shadow-[0_0_0_1px_rgba(255,255,255,0.16),0_0_16px_rgba(230,37,255,0.16),0_0_28px_rgba(230,37,255,0.12)] blur-[0.12px] transition-[transform,width,opacity,border-radius,box-shadow,filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
               isBubbleMorphing && "nav-blob-morphing",
             )}
             style={{
@@ -141,8 +141,8 @@ export function Navbar() {
               transform: `translateX(${activeBubbleStyle.x}px)`,
               opacity: activeBubbleStyle.opacity,
               borderRadius: isBubbleMorphing
-                ? "960px 1040px 920px 1080px / 1020px 920px 1080px 940px"
-                : "999px 999px 980px 1020px / 980px 1040px 960px 1020px",
+                ? "980px 1020px 970px 1030px / 1005px 980px 1020px 990px"
+                : "999px 999px 990px 1010px / 990px 1010px 985px 1005px",
             } as CSSProperties}
           />
           {SITE_CONFIG.navLinks.map((link) => {
@@ -155,7 +155,7 @@ export function Navbar() {
                 href={link.href}
                 data-nav-active={isActive ? "true" : "false"}
                 className={cn(
-                  "relative z-10 rounded-full border px-4 py-2 text-sm font-medium tracking-[0.01em] transition-[color,border-color,box-shadow,background-color] duration-200",
+                  "relative z-10 rounded-full border px-4 py-2 text-sm font-medium tracking-[0.01em] transition-[color,border-color,box-shadow,background-color,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
                   isActive
                     ? "border-transparent bg-transparent text-[#7A1A8A]"
                     : "border-transparent text-[#98A0B3] hover:border-[#E625FF]/55 hover:bg-[#1A1320] hover:text-[#F5F7FA] hover:shadow-[0_0_0_1px_rgba(230,37,255,0.24),0_0_24px_rgba(230,37,255,0.28)]",
