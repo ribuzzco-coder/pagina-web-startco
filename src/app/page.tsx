@@ -1,6 +1,7 @@
 import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { StepCard } from "@/components/sections/step-card";
+import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -344,6 +345,8 @@ export default function HomePage() {
         secondaryHref={SITE_CONFIG.whatsappUrl}
         secondaryExternal
       />
+
+      <TestimonialShuffle />
     </>
   );
 }
