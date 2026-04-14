@@ -79,7 +79,7 @@ export const solutionSequence = [
       "Identificamos si el problema esta en captacion, conversion, seguimiento o en la estructura comercial completa.",
   },
   {
-    title: "Disenamos la estructura",
+    title: "Diseñamos la estructura",
     description:
       "Ordenamos prioridades, mensajes, etapas comerciales, soportes de conversion y hoja de ruta.",
   },
@@ -122,7 +122,7 @@ export const servicePreview = [
       "Direccion, prioridades y una estructura comercial con criterio.",
   },
   {
-    title: "Implementacion de soluciones y activos comerciales",
+    title: "Implementación de soluciones y activos comerciales",
     description:
       "Convertimos la estructura en operacion real mediante activos, herramientas y soportes de conversion.",
     idealClient:
@@ -160,7 +160,7 @@ export const fullServices: Service[] = [
   },
   {
     layer: "Capa 02",
-    title: "Implementacion de soluciones y activos comerciales",
+    title: "Implementación de soluciones y activos comerciales",
     summary:
       "Es la capa donde la estructura deja de ser teoria y se traduce en landing pages, automatizaciones, activos digitales, soportes de conversion, seguimiento y herramientas.",
     idealClient:
@@ -198,7 +198,7 @@ export const serviceEffects = [
     description: "Genera claridad y estructura antes de invertir mas esfuerzo en ejecucion.",
   },
   {
-    title: "Implementacion",
+    title: "Implementación",
     description: "Genera capacidad operativa real para activar el sistema comercial.",
   },
   {
@@ -231,11 +231,11 @@ export const methodologySteps: Step[] = [
     outcome: "Entrega direccion, estructura y criterios claros de accion.",
   },
   {
-    title: "Implementacion",
+    title: "Implementación",
     description:
       "Activa herramientas, activos y soluciones para poner en marcha lo que ya fue diseñado.",
     points: [
-      "Implementacion de activos comerciales y piezas de soporte",
+      "Implementación de activos comerciales y piezas de soporte",
       "Conexion de herramientas y automatizaciones donde hacen sentido",
       "Puesta en marcha del sistema comercial en la operacion real",
     ],
@@ -373,7 +373,7 @@ export const diagnosisExpectations = [
   {
     title: "Se define la capa correcta",
     description:
-      "El siguiente paso puede ser diseño, implementacion, acompañamiento o incluso no continuar si no tiene sentido.",
+      "El siguiente paso puede ser diseño, implementación, acompañamiento o incluso no continuar si no tiene sentido.",
   },
   {
     title: "Buscamos impacto, no volumen",
@@ -456,6 +456,6 @@ export const contactFaqs: FAQ[] = [
   {
     question: "RiBuzz vende por mi empresa o ejecuta las ventas?",
     answer:
-      "No. RiBuzz no reemplaza tu equipo comercial ni vende por ti. Disena el sistema, implementa soportes y ayuda a estructurar mejor como debe vender el negocio.",
+      "No. RiBuzz no reemplaza tu equipo comercial ni vende por ti. Diseña el sistema, implementa soportes y ayuda a estructurar mejor como debe vender el negocio.",
   },
 ];

@@ -19,7 +19,7 @@ export function Footer() {
             className="h-11 w-auto object-contain opacity-95 sm:h-12"
           />
           <p className="mt-4 max-w-md text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-            Disenamos e implementamos sistemas comerciales para empresas que ya
+            Diseñamos e implementamos sistemas comerciales para empresas que ya
             venden, pero todavia no crecen con estructura, seguimiento y
             consistencia.
           </p>

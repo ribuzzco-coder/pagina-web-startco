@@ -46,7 +46,7 @@ export default function ContactPage() {
           <SectionTitle
             eyebrow="Antes de aplicar"
             title="Que puedes esperar de este diagnostico"
-            description="Es un diagnostico gratuito, breve y pensado para detectar los principales puntos de friccion del sistema comercial antes de hablar de implementacion."
+            description="Es un diagnostico gratuito, breve y pensado para detectar los principales puntos de friccion del sistema comercial antes de hablar de implementación."
           />
 
           <div className="mt-8 grid gap-5 md:grid-cols-3">

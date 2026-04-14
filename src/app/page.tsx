@@ -285,7 +285,7 @@ export default function HomePage() {
           <SectionTitle
             align="center"
             eyebrow="Como trabajamos"
-            title="Diagnostico primero. Implementacion despues."
+            title="Diagnostico primero. Implementación después."
             description="Primero claridad. Luego ejecucion."
           />
 

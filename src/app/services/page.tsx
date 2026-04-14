@@ -32,7 +32,7 @@ export default function ServicesPage() {
         secondaryCtaLabel="Ver metodologia"
         secondaryCtaHref="/methodology"
         asideTitle="El orden importa"
-        asideText="Primero claridad y diagnostico. Despues estructura. Luego implementacion y acompañamiento donde sí hace falta."
+        asideText="Primero claridad y diagnostico. Despues estructura. Luego implementación y acompañamiento donde sí hace falta."
       />
 
       <section className="cv-auto pb-16 sm:pb-22">

@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
   diagnosisPath:
     "https://docs.google.com/forms/d/e/1FAIpQLSedUNuJeyesXwKhUzx80Mnh9RzblT5h_AGAyJ6TB2CW0SbJwA/viewform?usp=header",
   description:
-    "RiBuzz disena e implementa sistemas comerciales para empresas que ya venden, pero todavia no crecen con estructura, seguimiento y consistencia.",
+    "RiBuzz diseña e implementa sistemas comerciales para empresas que ya venden, pero todavía no crecen con estructura, seguimiento y consistencia.",
   logoPlaceholder: "/ribuzz-wordmark.png",
   logoMark: "/ribuzz-mark.png",
   ogImagePlaceholder: "/og-ribuzz-placeholder.svg",
