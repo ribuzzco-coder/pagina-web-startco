@@ -1,6 +1,8 @@
 import { apiError, apiOk, handleRouteError } from "@/lib/api/response";
 import { getHealthStatus } from "@/services/health-service";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const health = await getHealthStatus();
