@@ -117,11 +117,12 @@ export function Navbar() {
         >
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-1 left-0 rounded-full border border-white/60 bg-white shadow-[0_0_0_1px_rgba(255,255,255,0.18),0_0_18px_rgba(230,37,255,0.2),0_0_32px_rgba(230,37,255,0.12)] transition-[transform,width,opacity] duration-300"
+            className="pointer-events-none absolute inset-y-1 left-0 rounded-full border border-white/65 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.96),rgba(255,255,255,0.88)_42%,rgba(248,232,252,0.84)_68%,rgba(255,255,255,0.78)_100%)] shadow-[0_0_0_1px_rgba(255,255,255,0.18),0_0_20px_rgba(230,37,255,0.22),0_0_36px_rgba(230,37,255,0.16)] blur-[0.2px] transition-[transform,width,opacity,border-radius,box-shadow] duration-500"
             style={{
               width: `${activeBubbleStyle.width}px`,
               transform: `translateX(${activeBubbleStyle.x}px)`,
               opacity: activeBubbleStyle.opacity,
+              borderRadius: "999px 999px 980px 1020px / 980px 1040px 960px 1020px",
             }}
           />
           {SITE_CONFIG.navLinks.map((link) => {
