@@ -15,7 +15,17 @@ export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const [activeBubbleStyle, setActiveBubbleStyle] = useState<{
+    width: number;
+    x: number;
+    opacity: number;
+  }>({
+    width: 0,
+    x: 0,
+    opacity: 0,
+  });
   const lastScrollYRef = useRef(0);
+  const navRef = useRef<HTMLElement | null>(null);
 
   const handleScroll = useEffectEvent(() => {
     if (isOpen) {
@@ -45,6 +55,37 @@ export function Navbar() {
     };
   }, []);
 
+  const syncActiveBubble = useEffectEvent(() => {
+    if (!navRef.current) {
+      return;
+    }
+
+    const activeLink = navRef.current.querySelector<HTMLAnchorElement>("[data-nav-active='true']");
+
+    if (!activeLink) {
+      setActiveBubbleStyle((current) =>
+        current.opacity === 0 ? current : { ...current, opacity: 0 },
+      );
+      return;
+    }
+
+    setActiveBubbleStyle({
+      width: activeLink.offsetWidth,
+      x: activeLink.offsetLeft,
+      opacity: 1,
+    });
+  });
+
+  useEffect(() => {
+    syncActiveBubble();
+
+    window.addEventListener("resize", syncActiveBubble);
+
+    return () => {
+      window.removeEventListener("resize", syncActiveBubble);
+    };
+  }, [pathname]);
+
   return (
     <header
       className={cn(
@@ -69,7 +110,20 @@ export function Navbar() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Principal">
+        <nav
+          ref={navRef}
+          className="relative hidden items-center gap-1 rounded-full p-1 lg:flex"
+          aria-label="Principal"
+        >
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-1 left-0 rounded-full border border-white/60 bg-white shadow-[0_0_0_1px_rgba(255,255,255,0.18),0_0_18px_rgba(230,37,255,0.2),0_0_32px_rgba(230,37,255,0.12)] transition-[transform,width,opacity] duration-300"
+            style={{
+              width: `${activeBubbleStyle.width}px`,
+              transform: `translateX(${activeBubbleStyle.x}px)`,
+              opacity: activeBubbleStyle.opacity,
+            }}
+          />
           {SITE_CONFIG.navLinks.map((link) => {
             const isActive =
               link.href === "/" ? pathname === link.href : pathname.startsWith(link.href);
@@ -78,10 +132,11 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                data-nav-active={isActive ? "true" : "false"}
                 className={cn(
-                  "rounded-full border px-4 py-2 text-sm font-medium tracking-[0.01em] transition-[color,border-color,box-shadow,background-color] duration-200",
+                  "relative z-10 rounded-full border px-4 py-2 text-sm font-medium tracking-[0.01em] transition-[color,border-color,box-shadow,background-color] duration-200",
                   isActive
-                    ? "border-white/75 bg-white text-[#7A1A8A] shadow-[0_0_0_1px_rgba(255,255,255,0.3),0_0_18px_rgba(230,37,255,0.2)]"
+                    ? "border-transparent bg-transparent text-[#7A1A8A]"
                     : "border-transparent text-[#98A0B3] hover:border-[#E625FF]/55 hover:bg-[#1A1320] hover:text-[#F5F7FA] hover:shadow-[0_0_0_1px_rgba(230,37,255,0.24),0_0_24px_rgba(230,37,255,0.28)]",
                 )}
               >
