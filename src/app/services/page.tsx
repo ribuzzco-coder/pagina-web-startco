@@ -16,7 +16,7 @@ import { SITE_CONFIG } from "@/lib/site-config";
 export const metadata = createPageMetadata({
   title: "Servicios",
   description:
-    "RiBuzz organiza su trabajo en tres capas: diseno del sistema comercial, implementacion de soluciones y acompanamiento como Growth Partner.",
+    "RiBuzz organiza su trabajo en tres capas: diseño del sistema comercial, implementación de soluciones y acompañamiento como Growth Partner.",
   path: "/services",
 });
 
@@ -32,7 +32,7 @@ export default function ServicesPage() {
         secondaryCtaLabel="Ver metodologia"
         secondaryCtaHref="/methodology"
         asideTitle="El orden importa"
-        asideText="Primero claridad y diagnostico. Despues estructura. Luego implementacion y acompanamiento donde si hace falta."
+        asideText="Primero claridad y diagnostico. Despues estructura. Luego implementacion y acompañamiento donde sí hace falta."
       />
 
       <section className="cv-auto pb-16 sm:pb-22">
@@ -40,7 +40,7 @@ export default function ServicesPage() {
           <SectionTitle
             eyebrow="Capas de trabajo"
             title="Cada capa responde a un momento distinto del negocio"
-            description="La secuencia cambia segun el contexto, pero la logica es la misma: no ejecutar sin lectura del problema y no disenar algo que luego no pueda operar."
+            description="La secuencia cambia segun el contexto, pero la logica es la misma: no ejecutar sin lectura del problema y no diseñar algo que luego no pueda operar."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">

@@ -44,10 +44,10 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "rounded-full border px-4 py-2 text-sm font-medium tracking-[0.01em] transition-[color,border-color,box-shadow,background-color] duration-200",
+                  "rounded-full border px-4 py-2 text-sm font-medium tracking-[0.01em] transition-[color,border-color,box-shadow,background-color,transform] duration-200 hover:scale-[1.035]",
                   isActive
-                    ? "border-white/10 bg-[#161826] text-[#F5F7FA] shadow-[0_0_0_1px_rgba(230,37,255,0.08),0_0_18px_rgba(230,37,255,0.08)]"
-                    : "border-transparent text-[#98A0B3] hover:border-[#E625FF]/35 hover:text-[#F5F7FA] hover:shadow-[0_0_0_1px_rgba(230,37,255,0.14),0_0_20px_rgba(230,37,255,0.16)]",
+                    ? "border-white/75 bg-white text-[#7A1A8A] shadow-[0_0_0_1px_rgba(255,255,255,0.3),0_0_18px_rgba(230,37,255,0.2)]"
+                    : "border-transparent text-[#98A0B3] hover:border-[#E625FF]/55 hover:bg-[#1A1320] hover:text-[#F5F7FA] hover:shadow-[0_0_0_1px_rgba(230,37,255,0.24),0_0_24px_rgba(230,37,255,0.28)]",
                 )}
               >
                 {link.label}

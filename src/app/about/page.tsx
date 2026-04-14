@@ -88,7 +88,7 @@ export default function AboutPage() {
           <SectionTitle
             eyebrow="Principios"
             title="Principios no negociables"
-            description="Estos principios sostienen la forma en que RiBuzz diagnostica, prioriza, implementa y acompana."
+            description="Estos principios sostienen la forma en que RiBuzz diagnostica, prioriza, implementa y acompaña."
           />
 
           <InfoGrid className="mt-8 lg:grid-cols-3">

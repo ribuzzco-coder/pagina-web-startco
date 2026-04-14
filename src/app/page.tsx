@@ -23,7 +23,7 @@ import { SITE_CONFIG } from "@/lib/site-config";
 export const metadata = createPageMetadata({
   title: "Inicio",
   description:
-    "RiBuzz disena e implementa sistemas comerciales para empresas que ya venden, pero todavia no crecen con estructura, seguimiento y consistencia.",
+    "RiBuzz diseña e implementa sistemas comerciales para empresas que ya venden, pero todavía no crecen con estructura, seguimiento y consistencia.",
   path: "/",
 });
 
@@ -41,10 +41,9 @@ export default function HomePage() {
       <section className="pb-18 pt-16 sm:pb-22 sm:pt-24">
         <Container className="grid gap-10 xl:grid-cols-[1fr_0.96fr] xl:items-start">
           <div className="max-w-[46rem]">
-            <PillBadge>Diseno e implementacion de sistemas comerciales</PillBadge>
-            <h1 className="mt-6 max-w-3xl font-heading text-3xl leading-[1.08] text-[#F5F7FA] sm:text-[3.2rem] xl:text-[3.05rem]">
-              Si ya vendes, pero no creces con consistencia, te falta sistema
-              comercial.
+            <PillBadge>Diseño e implementación de sistemas comerciales</PillBadge>
+            <h1 className="mt-6 max-w-3xl font-sans text-3xl font-bold leading-[1.08] text-[#F5F7FA] sm:text-[3.2rem] xl:text-[3.05rem]">
+              Si ya vendes, pero no creces con consistencia, te falta sistema comercial.
             </h1>
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
               RiBuzz ordena captacion, conversion y seguimiento para negocios que
@@ -147,10 +146,10 @@ export default function HomePage() {
 
       <section className="cv-auto py-18 sm:py-22" id="solucion">
         <Container>
-          <SectionTitle
+            <SectionTitle
             eyebrow="La solucion RiBuzz"
             title="No entramos a ejecutar piezas sueltas. Intervenimos el sistema comercial."
-            description="Entender, diagnosticar, estructurar, implementar y acompanar."
+            description="Entender, diagnosticar, estructurar, implementar y acompañar."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-5">

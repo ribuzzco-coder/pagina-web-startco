@@ -89,7 +89,7 @@ export const solutionSequence = [
       "Activamos herramientas, activos y automatizaciones cuando hacen operable lo que ya fue definido.",
   },
   {
-    title: "Acompanamos la ejecucion",
+    title: "Acompañamos la ejecución",
     description:
       "Revisamos avances, ajustamos decisiones y ayudamos a sostener el aprendizaje comercial.",
   },
@@ -113,7 +113,7 @@ export const nonFitChecklist = [
 
 export const servicePreview = [
   {
-    title: "Diseno del flujo y sistema comercial",
+    title: "Diseño del flujo y sistema comercial",
     description:
       "Leemos el negocio, ubicamos el cuello de botella y estructuramos captacion, conversion y seguimiento.",
     idealClient:
@@ -133,7 +133,7 @@ export const servicePreview = [
   {
     title: "Growth Partner",
     description:
-      "Acompanamos tareas, decisiones y ajustes para sostener la ejecucion y aprender sobre la marcha.",
+      "Acompañamos tareas, decisiones y ajustes para sostener la ejecución y aprender sobre la marcha.",
     idealClient:
       "Para empresas que no quieren que el sistema se quede en un documento.",
     expectedResult:
@@ -144,7 +144,7 @@ export const servicePreview = [
 export const fullServices: Service[] = [
   {
     layer: "Capa 01",
-    title: "Diseno del flujo y sistema comercial",
+    title: "Diseño del flujo y sistema comercial",
     summary:
       "Es la capa donde entendemos el negocio, detectamos el cuello de botella comercial y estructuramos como debe funcionar captacion, conversion y seguimiento.",
     idealClient:
@@ -171,14 +171,14 @@ export const fullServices: Service[] = [
       "Landing pages y activos de conversion alineados al proceso",
       "Automatizaciones y herramientas conectadas a la operacion",
       "Soportes de seguimiento y puntos de control comercial",
-      "Implementacion guiada de lo que fue disenado",
+      "Implementación guiada de lo que fue diseñado",
     ],
   },
   {
     layer: "Capa 03",
-    title: "Acompanamiento estrategico y operativo como Growth Partner",
+    title: "Acompañamiento estrategico y operativo como Growth Partner",
     summary:
-      "Es la capa donde RiBuzz acompana la ejecucion para revisar avances, ajustar decisiones y sostener el aprendizaje del sistema comercial.",
+      "Es la capa donde RiBuzz acompaña la ejecución para revisar avances, ajustar decisiones y sostener el aprendizaje del sistema comercial.",
     idealClient:
       "Empresas que entienden que crecer no depende solo de tener una estructura, sino de usarla bien, sostenerla y mejorarla con criterio.",
     expectedResult:
@@ -194,7 +194,7 @@ export const fullServices: Service[] = [
 
 export const serviceEffects = [
   {
-    title: "Diseno",
+    title: "Diseño",
     description: "Genera claridad y estructura antes de invertir mas esfuerzo en ejecucion.",
   },
   {
@@ -220,7 +220,7 @@ export const methodologySteps: Step[] = [
     outcome: "Entrega claridad inicial sobre donde intervenir primero y si realmente hay fit.",
   },
   {
-    title: "Diseno",
+    title: "Diseño",
     description:
       "Traduce el entendimiento en una estructura concreta para que el negocio deje de moverse sin sistema.",
     points: [
@@ -233,7 +233,7 @@ export const methodologySteps: Step[] = [
   {
     title: "Implementacion",
     description:
-      "Activa herramientas, activos y soluciones para poner en marcha lo que ya fue disenado.",
+      "Activa herramientas, activos y soluciones para poner en marcha lo que ya fue diseñado.",
     points: [
       "Implementacion de activos comerciales y piezas de soporte",
       "Conexion de herramientas y automatizaciones donde hacen sentido",
@@ -242,9 +242,9 @@ export const methodologySteps: Step[] = [
     outcome: "Entrega capacidad operativa real para ejecutar con menos friccion.",
   },
   {
-    title: "Acompanamiento",
+    title: "Acompañamiento",
     description:
-      "Revisa, ajusta y acompana la ejecucion para que el sistema no quede en papel y gane consistencia.",
+      "Revisa, ajusta y acompaña la ejecución para que el sistema no quede en papel y gane consistencia.",
     points: [
       "Seguimiento a tareas y avances relevantes",
       "Ajustes tacticos y estrategicos segun aprendizaje real",
@@ -298,7 +298,7 @@ export const trustSignals = [
   {
     title: "Experiencia aplicada, no solo conceptual",
     description:
-      "Hay trabajo previo en optimizacion comercial digital, adquisicion de clientes, diseno de procesos y activos comerciales.",
+      "Hay trabajo previo en optimizacion comercial digital, adquisicion de clientes, diseño de procesos y activos comerciales.",
   },
 ] as const;
 
@@ -373,7 +373,7 @@ export const diagnosisExpectations = [
   {
     title: "Se define la capa correcta",
     description:
-      "El siguiente paso puede ser diseno, implementacion, acompanamiento o incluso no continuar si no tiene sentido.",
+      "El siguiente paso puede ser diseño, implementacion, acompañamiento o incluso no continuar si no tiene sentido.",
   },
   {
     title: "Buscamos impacto, no volumen",
@@ -391,7 +391,7 @@ export const contactFaqs: FAQ[] = [
   {
     question: "Esto es consultoria o si hay ejecucion?",
     answer:
-      "Hay criterio y hay ejecucion. Primero se entiende el problema, despues se disena la estructura y luego se implementa y acompana cuando hace sentido.",
+      "Hay criterio y hay ejecucion. Primero se entiende el problema, despues se diseña la estructura y luego se implementa y acompaña cuando hace sentido.",
   },
   {
     question: "Esto funciona si apenas estoy empezando?",
@@ -421,7 +421,7 @@ export const contactFaqs: FAQ[] = [
   {
     question: "Que hace que RiBuzz sea diferente?",
     answer:
-      "RiBuzz no empieza ejecutando, no vende servicios sueltos y no deja la solucion en teoria. Entiende, prioriza, estructura, implementa y acompana.",
+      "RiBuzz no empieza ejecutando, no vende servicios sueltos y no deja la solucion en teoria. Entiende, prioriza, estructura, implementa y acompaña.",
   },
   {
     question: "Que tipo de empresas no deberian trabajar con RiBuzz?",

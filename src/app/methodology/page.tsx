@@ -12,16 +12,16 @@ import { SITE_CONFIG } from "@/lib/site-config";
 export const metadata = createPageMetadata({
   title: "Metodologia",
   description:
-    "La metodologia de RiBuzz trabaja en cuatro fases: diagnostico, diseno, implementacion y acompanamiento.",
+    "La metodología de RiBuzz trabaja en cuatro fases: diagnóstico, diseño, implementación y acompañamiento.",
   path: "/methodology",
 });
 
 export default function MethodologyPage() {
   return (
     <>
-      <PageHero
+        <PageHero
         eyebrow="Metodologia RiBuzz"
-        title="Diagnostico, diseno, implementacion y acompanamiento para no ejecutar a ciegas"
+        title="Diagnóstico, diseño, implementación y acompañamiento para no ejecutar a ciegas"
         description="La metodologia de RiBuzz le da mas peso al diagnostico porque ahi se decide si existe un problema real de estructura comercial, donde esta y como conviene intervenirlo."
         primaryCtaLabel="Solicita tu diagnostico gratuito"
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
@@ -68,7 +68,7 @@ export default function MethodologyPage() {
               Esta metodologia importa porque evita mover el negocio sin lectura del problema.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-              Cuando el orden es diagnosticar, disenar, implementar y acompanar,
+              Cuando el orden es diagnosticar, diseñar, implementar y acompañar,
               la empresa reduce improvisacion y conecta mejor sus decisiones con la
               operacion real.
             </p>
