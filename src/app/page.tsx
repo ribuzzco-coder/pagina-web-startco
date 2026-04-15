@@ -43,10 +43,10 @@ export default function HomePage() {
         <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.02),transparent_16%),radial-gradient(circle_at_18%_28%,rgba(15,239,253,0.06),transparent_24%),radial-gradient(circle_at_80%_52%,rgba(230,37,255,0.09),transparent_30%),radial-gradient(circle_at_62%_78%,rgba(63,18,92,0.14),transparent_34%),linear-gradient(180deg,rgba(11,11,16,0.04)_0%,rgba(11,11,16,0.02)_36%,rgba(11,11,16,0.08)_72%,rgba(11,11,16,0.18)_100%)]" />
 
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-            <Container className="hero-no-select text-center pt-[76px]">
+            <Container className="hero-no-select text-center">
             <div className="mx-auto max-w-[58rem]">
               <div className="mt-1 inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm sm:mt-3">
-                <PillBadge>Te damos la bienvenida.</PillBadge>
+                <PillBadge>Te damos la bienvenida</PillBadge>
               </div>
 
               <div className="mt-7 flex items-center justify-center gap-4 sm:mt-8 sm:gap-5">
