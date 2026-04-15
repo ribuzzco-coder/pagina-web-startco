@@ -1,4 +1,4 @@
-﻿import { CTASection } from "@/components/sections/cta-section";
+import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -92,11 +92,11 @@ export default function ContactPage() {
                 </Button>
               </div>
 
-              <div className="overflow-hidden rounded-b-[32px] bg-white">
+              <div className="overflow-hidden rounded-b-[32px]">
                 <iframe
                   src={embeddedDiagnosisFormUrl}
                   title="Formulario de diagnóstico RiBuzz"
-                  className="h-[760px] w-full bg-white sm:h-[1020px] lg:h-[1120px]"
+                  className="h-[760px] w-full bg-white invert-[0.92] hue-rotate-180 brightness-105 contrast-105 sm:h-[1020px] lg:h-[1120px]"
                   loading="lazy"
                 />
               </div>
