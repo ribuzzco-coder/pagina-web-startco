@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 
 import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
@@ -45,92 +45,43 @@ export default function HomePage() {
         <div className="absolute inset-0 z-10 flex items-center justify-center">
             <Container className="hero-no-select text-center pt-[76px]">
             <div className="mx-auto max-w-[58rem]">
-<<<<<<< HEAD
-              <div className="inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm">
-                <PillBadge>Diseño e implementación de sistemas comerciales</PillBadge>
+              <div className="mt-1 inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm sm:mt-3">
+                <PillBadge>Te damos la bienvenida.</PillBadge>
               </div>
 
-              <div className="mt-6 flex items-center justify-center gap-5 sm:gap-7">
+              <div className="mt-7 flex items-center justify-center gap-4 sm:mt-8 sm:gap-5">
                 <Image
                   src="/images/branding/ribuzz-texto.png"
                   alt="RiBuzz"
                   width={606}
                   height={128}
                   priority
-                  className="h-12 w-auto sm:h-16 xl:h-24"
+                  className="hero-wordmark h-12 w-auto sm:h-16 xl:h-24"
                 />
-                <div className="relative flex h-16 w-16 items-center justify-center rounded-full sm:h-20 sm:w-20 xl:h-28 xl:w-28">
-                  <div className="absolute inset-0 rounded-full bg-[#E625FF]/18 blur-2xl" />
-                  <Image
-                    src={SITE_CONFIG.logoMark}
-                    alt="Símbolo RiBuzz"
-                    width={280}
-                    height={280}
-                    priority
-                    className="relative h-full w-full object-contain drop-shadow-[0_0_26px_rgba(230,37,255,0.55)]"
-                  />
-                </div>
+                <HeroMarkButton src={SITE_CONFIG.logoMark} alt="Símbolo RiBuzz" />
               </div>
 
-              <h1 className="mx-auto mt-6 max-w-4xl font-sans text-3xl font-bold leading-[1.06] text-[#F5F7FA] sm:text-[3.2rem] xl:text-[4rem]">
-                Sistemas comerciales para crecer tu empresa
+              <h1 className="mx-auto mt-6 max-w-3xl font-sans text-[1.9rem] font-bold leading-[1.08] text-[#F5F7FA] sm:text-[2.45rem] xl:text-[3rem]">
+                El sistema de crecimiento para tu empresa.
               </h1>
-              <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-[#D9DDE7] sm:text-lg">
+              <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] sm:text-[1rem]">
                 Diseñamos la estructura comercial que te ayuda a captar mejor, vender con
                 más orden y sostener el crecimiento con seguimiento real.
               </p>
 
-              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Button href={SITE_CONFIG.diagnosisPath} size="lg">
-                  {SITE_CONFIG.diagnosisCtaLabel}
+                  Realiza tu diagnóstico gratuito
                 </Button>
-                <Button href="/services" variant="secondary" size="lg">
+                <Button
+                  href="/services"
+                  variant="secondary"
+                  size="lg"
+                  className="shadow-[0_0_0_1px_rgba(230,37,255,0.1),0_0_18px_rgba(230,37,255,0.16)]"
+                >
                   Ver servicios
                 </Button>
               </div>
-
-              <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-[#AEB5C4] sm:text-sm">
-                Diagnóstico inicial para identificar dónde se está frenando tu crecimiento comercial.
-              </p>
-=======
-            <div className="mt-1 inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm sm:mt-3">
-              <PillBadge>Te damos la bienvenida.</PillBadge>
-            </div>
-
-            <div className="mt-7 flex items-center justify-center gap-4 sm:mt-8 sm:gap-5">
-              <Image
-                src="/images/branding/ribuzz-texto.png"
-                alt="RiBuzz"
-                width={606}
-                height={128}
-                priority
-                className="hero-wordmark h-12 w-auto sm:h-16 xl:h-24"
-              />
-              <HeroMarkButton src={SITE_CONFIG.logoMark} alt="Símbolo RiBuzz" />
-            </div>
-
-            <h1 className="mx-auto mt-6 max-w-3xl font-sans text-[1.9rem] font-bold leading-[1.08] text-[#F5F7FA] sm:text-[2.45rem] xl:text-[3rem]">
-              El sistema de crecimiento para tu empresa.
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] sm:text-[1rem]">
-              Diseñamos la estructura comercial que te ayuda a captar mejor, vender con
-              más orden y sostener el crecimiento con seguimiento real.
-            </p>
-
-            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button href={SITE_CONFIG.diagnosisPath} size="lg">
-                Realiza tu diagnóstico gratuito
-              </Button>
-              <Button
-                href="/services"
-                variant="secondary"
-                size="lg"
-                className="shadow-[0_0_0_1px_rgba(230,37,255,0.1),0_0_18px_rgba(230,37,255,0.16)]"
-              >
-                Ver servicios
-              </Button>
-            </div>
->>>>>>> origin/main
             </div>
             </Container>
         </div>
