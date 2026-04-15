@@ -24,7 +24,7 @@ const embeddedDiagnosisFormUrl = SITE_CONFIG.diagnosisPath.includes("?")
 export default function ContactPage() {
   return (
     <>
-      <section className="pb-10 pt-16 sm:pb-12 sm:pt-24">
+      <section className="pb-8 pt-14 sm:pb-12 sm:pt-20">
         <Container className="grid max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
@@ -50,15 +50,14 @@ export default function ContactPage() {
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-[2rem]">
                 Aquí mismo, sin costo.
               </h2>
-              <div className="mt-6 flex justify-center">
+              <div className="mt-4 flex justify-center">
                 <a
                   href="#diagnostico-form"
                   aria-label="Ir al diagnóstico"
                   className="inline-flex items-center justify-center py-1 text-white transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:translate-y-0.5"
                 >
                   <svg aria-hidden="true" viewBox="0 0 24 24" className="h-9 w-9" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 4v11" />
-                    <path d="M7 14.5 12 20l5-5.5" />
+                    <path d="M7 10.5 12 16l5-5.5" />
                   </svg>
                 </a>
               </div>
@@ -69,8 +68,8 @@ export default function ContactPage() {
 
       <section className="cv-auto pb-16 sm:pb-20">
         <ContainerScroll className="mx-auto max-w-[980px] px-5 sm:px-8" contentClassName="mx-auto mt-4 w-full max-w-[860px] sm:mt-6">
-          <div className="mx-auto w-full max-w-[860px]">
-            <Card id="diagnostico-form" className="relative overflow-hidden rounded-[32px] border-[#ff7cf4]/24 bg-[linear-gradient(180deg,rgba(20,22,31,0.98),rgba(11,11,16,0.99))] p-0 shadow-[0_0_0_1px_rgba(230,37,255,0.12),0_28px_90px_rgba(230,37,255,0.22),0_36px_120px_rgba(0,0,0,0.42)]">
+          <div className="mx-auto w-full max-w-[860px] overflow-hidden rounded-[32px]">
+            <Card interactiveGlow={false} id="diagnostico-form" className="relative overflow-hidden rounded-[32px] border-[#ff7cf4]/24 bg-[linear-gradient(180deg,rgba(20,22,31,0.98),rgba(11,11,16,0.99))] p-0 shadow-[0_0_0_1px_rgba(230,37,255,0.12),0_28px_90px_rgba(230,37,255,0.22),0_36px_120px_rgba(0,0,0,0.42)]">
               <div className="pointer-events-none absolute inset-x-10 -top-6 h-18 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.3),transparent_72%)] blur-2xl" />
               <div className="flex items-center justify-between border-b border-white/8 px-4 py-4 sm:px-5">
                 <div>

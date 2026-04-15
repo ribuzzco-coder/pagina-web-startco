@@ -110,6 +110,76 @@ body {
   background: linear-gradient(180deg, rgba(29, 33, 48, 0.88), rgba(24, 26, 36, 0.92));
 }
 
+.glow-card {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-active: 0;
+  --glow-hue-start: 284;
+  --glow-hue-end: 196;
+  overflow: hidden;
+  transition:
+    border-color 240ms ease,
+    box-shadow 320ms ease,
+    background-color 320ms ease;
+}
+
+.glow-card::before,
+.glow-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+
+.glow-card::before {
+  inset: -1px;
+  padding: 1px;
+  background:
+    radial-gradient(
+      180px circle at var(--glow-x) var(--glow-y),
+      hsla(var(--glow-hue-start) 100% 78% / calc(0.68 * var(--glow-active))),
+      transparent 58%
+    ),
+    radial-gradient(
+      260px circle at var(--glow-x) var(--glow-y),
+      hsla(var(--glow-hue-end) 100% 72% / calc(0.34 * var(--glow-active))),
+      transparent 62%
+    );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: calc(0.2 + (0.8 * var(--glow-active)));
+}
+
+.glow-card::after {
+  background:
+    radial-gradient(
+      200px circle at var(--glow-x) var(--glow-y),
+      hsla(var(--glow-hue-start) 100% 70% / calc(0.1 * var(--glow-active))),
+      transparent 60%
+    );
+  opacity: calc(0.2 + (0.8 * var(--glow-active)));
+}
+
+.glow-card:hover {
+  border-color: rgba(230, 37, 255, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(230, 37, 255, 0.08),
+    0 16px 34px rgba(0, 0, 0, 0.24);
+}
+
+.glow-card--static::before,
+.glow-card--static::after {
+  display: none;
+}
+
 .section-soft {
   background: linear-gradient(180deg, rgba(22, 24, 38, 0.7), rgba(11, 11, 16, 0));
 }
