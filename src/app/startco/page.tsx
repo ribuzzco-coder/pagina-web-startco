@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 
 import { Card } from "@/components/ui/card";
@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export const metadata = createPageMetadata({
   title: "Startco",
   description:
-    "Startco es un hub rápido de enlaces de RiBuzz para conectar redes, diagnóstico, sitio principal y proximos recursos de valor.",
+    "Startco es un hub rÃ¡pido de enlaces de RiBuzz para conectar redes, diagnÃ³stico, sitio principal y proximos recursos de valor.",
   path: "/startco",
 });
 
@@ -37,7 +37,7 @@ const primaryLinks = [
     featured: false,
   },
   {
-    title: "Hacer diagnóstico",
+    title: "Hacer diagnÃ³stico",
     description: "Completar lectura inicial del sistema comercial",
     href: SITE_CONFIG.diagnosisPath,
     accent: "from-[#0FEFFD]/20 via-[#0FEFFD]/10 to-transparent",
@@ -61,17 +61,17 @@ const primaryLinks = [
 const supportCards = {
   nfc: {
     title: "Tarjetas NFC",
-    description: "Accesos para networking y presentación física",
+    description: "Accesos para networking y presentaciÃ³n fÃ­sica",
     href: "/contact",
   },
   neoMech: {
     title: "Conoce a Neo-Mech",
-    description: "Neo-Mech es el aliado ideal para impresión 3D a la medida de tus necesidades.",
+    description: "Neo-Mech es el aliado ideal para impresiÃ³n 3D a la medida de tus necesidades.",
     href: "https://www.instagram.com/neomech3d/",
   },
   gifts: {
     title: "Regalos / documentos de valor",
-    description: "Espacio reservado para recursos descargables, documentos y piezas útiles que luego se agregarán.",
+    description: "¿Quieres aprender a crear una oferta y cómo entregarla? Aprende aquí cómo hacerlo.",
   },
 } as const;
 
@@ -132,12 +132,12 @@ export default function StartcoPage() {
               />
             </div>
 
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-[#F5F7FA] sm:text-5xl [font-family:var(--font-zen-dots)]">
+            <h1 className="mt-6 text-4xl font-normal tracking-tight text-[#F5F7FA] sm:text-5xl [font-family:var(--font-zen-dots)]">
               RiBuzz
             </h1>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
-              Diseñamos soluciones comerciales, visuales y digitales para marcas que
-              quieren crecer con más claridad, mejor presencia y herramientas útiles.
+              DiseÃ±amos soluciones comerciales, visuales y digitales para marcas que
+              quieren crecer con mÃ¡s claridad, mejor presencia y herramientas Ãºtiles.
             </p>
           </div>
 
@@ -258,15 +258,15 @@ export default function StartcoPage() {
             </a>
           </div>
 
-          <div className="relative mx-auto mt-4 max-w-xl">
+          <Link href={SITE_CONFIG.giftsPath} className="relative mx-auto mt-4 block max-w-xl">
             <Card
               glowTone="cyan"
               className="rounded-[26px] border-dashed border-white/10 bg-[#10131C]/72 px-6 py-6 text-center md:min-h-[132px]"
             >
               <div className="flex flex-col items-center justify-center gap-3">
                 <p className="text-base font-semibold text-[#F5F7FA]">{supportCards.gifts.title}</p>
-                <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#E7B0EE]">
-                  Próximamente
+                <span className="rounded-full border border-[#ff4d6d]/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#FF9EB0]">
+                  Ver regalos
                 </span>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-[#98A0B3]">
@@ -279,3 +279,5 @@ export default function StartcoPage() {
     </section>
   );
 }
+
+
