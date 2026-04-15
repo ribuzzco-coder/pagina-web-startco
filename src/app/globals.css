@@ -252,7 +252,7 @@ body {
     left: 50%;
     right: auto;
     bottom: auto;
-    width: min(76vw, 320px);
+    width: min(92vw, 420px);
     height: auto;
     transform: translate(-50%, -50%);
     object-fit: contain;

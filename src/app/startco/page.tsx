@@ -145,7 +145,7 @@ export default function StartcoPage() {
               const cardClassName = cn(
                 "group relative overflow-hidden rounded-[24px] px-5 py-5 text-center transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:bg-[#171B2A] hover:shadow-[0_18px_36px_rgba(0,0,0,0.22)]",
                 "featured" in link && link.featured
-                  ? "border-[#E625FF]/34 bg-[#141724] hover:border-[#ff8bf7]/52"
+                  ? "border-[#E625FF]/34 bg-[linear-gradient(180deg,rgba(32,22,40,0.96),rgba(20,18,30,0.98))] hover:border-[#ff8bf7]/52"
                   : "border-white/10 bg-[#141724] hover:border-white/18",
               );
 
@@ -157,16 +157,18 @@ export default function StartcoPage() {
                       link.accent,
                     )}
                   />
-                  <div className="relative flex items-center justify-center gap-4">
+                  <div className="relative flex min-h-[58px] items-center justify-center text-center">
                     <span
                       className={cn(
-                        "flex h-11 w-11 shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-[1.06]",
+                        "pointer-events-none absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center opacity-12 transition-transform duration-300 group-hover:scale-[1.06]",
                         link.iconClassName,
                       )}
                     >
-                      <LinkIcon type={link.icon} />
+                      <span className="scale-[1.65]">
+                        <LinkIcon type={link.icon} />
+                      </span>
                     </span>
-                    <div className="min-w-0">
+                    <div className="relative z-10 min-w-0">
                       <p className="text-base font-semibold text-[#F5F7FA]">{link.title}</p>
                       <p className="mt-1 text-sm text-[#98A0B3]">{link.description}</p>
                     </div>
@@ -215,9 +217,9 @@ export default function StartcoPage() {
                     {supportCards.nfc.description}
                   </p>
                 </div>
-                <div className="pointer-events-none absolute bottom-0 left-1/2 w-[44%] -translate-x-1/2 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                <div className="pointer-events-none absolute -bottom-[16%] left-1/2 w-[58%] -translate-x-1/2 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
                   <Image
-                    src="/startco-cards.png"
+                    src="/startco-cards2.png"
                     alt="Mockup de tarjetas NFC RiBuzz"
                     width={700}
                     height={1000}
@@ -238,7 +240,7 @@ export default function StartcoPage() {
               className="rounded-[28px] border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 text-center"
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]" />
-              <div className="relative flex min-h-[360px] h-full flex-col items-center justify-between gap-5">
+              <div className="relative flex min-h-[344px] h-full flex-col items-center justify-between gap-4">
                 <div>
                   <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
                     {supportCards.neoMech.title}
@@ -247,7 +249,7 @@ export default function StartcoPage() {
                     {supportCards.neoMech.description}
                   </p>
                 </div>
-                <div className="flex flex-col items-center gap-4">
+                <div className="flex flex-col items-center gap-2.5">
                   <Image
                     src="/neo-mech-logo.png"
                     alt="Logo Neo-Mech"
