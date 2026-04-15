@@ -1,10 +1,13 @@
-﻿import { CTASection } from "@/components/sections/cta-section";
+import Image from "next/image";
+
+import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { StepCard } from "@/components/sections/step-card";
 import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { HeroGalaxy } from "@/components/ui/hero-galaxy";
 import { PillBadge } from "@/components/ui/pill-badge";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -28,96 +31,70 @@ export const metadata = createPageMetadata({
   path: "/",
 });
 
-const heroHighlights = [
-  "Detectamos el cuello de botella.",
-  "Priorizamos antes de ejecutar.",
-  "Definimos si hay fit real.",
-] as const;
-
 const homeQuickFaqs = contactFaqs.slice(0, 4);
 
 export default function HomePage() {
   return (
     <>
-      <section className="pb-18 pt-16 sm:pb-22 sm:pt-24">
-        <Container className="grid gap-10 xl:grid-cols-[1fr_0.96fr] xl:items-start">
-          <div className="max-w-[46rem]">
-            <PillBadge>Diseño e implementación de sistemas comerciales</PillBadge>
-            <h1 className="mt-6 max-w-3xl font-sans text-3xl font-bold leading-[1.08] text-[#F5F7FA] sm:text-[3.2rem] xl:text-[3.05rem]">
-              Si ya vendes, pero no creces con consistencia, te falta sistema comercial.
+      <section
+        id="home-hero"
+        className="relative -mt-[76px] min-h-screen overflow-hidden"
+      >
+        <HeroGalaxy />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.02),transparent_16%),radial-gradient(circle_at_18%_28%,rgba(15,239,253,0.06),transparent_24%),radial-gradient(circle_at_80%_52%,rgba(230,37,255,0.09),transparent_30%),radial-gradient(circle_at_62%_78%,rgba(63,18,92,0.14),transparent_34%),linear-gradient(180deg,rgba(11,11,16,0.04)_0%,rgba(11,11,16,0.02)_36%,rgba(11,11,16,0.08)_72%,rgba(11,11,16,0.18)_100%)]" />
+
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <Container className="hero-no-select pt-[76px] text-center">
+            <div className="mx-auto max-w-[58rem]">
+            <div className="inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm">
+              <PillBadge>Diseño e implementación de sistemas comerciales</PillBadge>
+            </div>
+
+            <div className="mt-8 flex items-center justify-center gap-5 sm:gap-7">
+              <Image
+                src="/images/branding/ribuzz-texto.png"
+                alt="RiBuzz"
+                width={606}
+                height={128}
+                priority
+                className="h-12 w-auto sm:h-16 xl:h-24"
+              />
+              <div className="relative flex h-16 w-16 items-center justify-center rounded-full sm:h-20 sm:w-20 xl:h-28 xl:w-28">
+                <div className="absolute inset-0 rounded-full bg-[#E625FF]/18 blur-2xl" />
+                <Image
+                  src={SITE_CONFIG.logoMark}
+                  alt="Símbolo RiBuzz"
+                  width={280}
+                  height={280}
+                  priority
+                  className="relative h-full w-full object-contain drop-shadow-[0_0_26px_rgba(230,37,255,0.55)]"
+                />
+              </div>
+            </div>
+
+            <h1 className="mx-auto mt-8 max-w-4xl font-sans text-3xl font-bold leading-[1.06] text-[#F5F7FA] sm:text-[3.2rem] xl:text-[4rem]">
+              Sistemas comerciales para crecer tu empresa
             </h1>
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-              RiBuzz ordena captación, conversión y seguimiento para negocios que
-              ya están en marcha, pero todavía dependen demasiado de la intuición.
+            <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-[#D9DDE7] sm:text-lg">
+              Diseñamos la estructura comercial que te ayuda a captar mejor, vender con
+              más orden y sostener el crecimiento con seguimiento real.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button href={SITE_CONFIG.diagnosisPath} size="lg">
                 {SITE_CONFIG.diagnosisCtaLabel}
               </Button>
-              <Button
-                href={SITE_CONFIG.whatsappUrl}
-                variant="secondary"
-                size="lg"
-                external
-              >
-                Escribir por WhatsApp
+              <Button href="/services" variant="secondary" size="lg">
+                Ver servicios
               </Button>
             </div>
-            <p className="mt-4 max-w-xl text-xs leading-relaxed text-[#98A0B3] sm:text-sm">
-              {SITE_CONFIG.diagnosisSupportCopy}
+
+            <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-[#AEB5C4] sm:text-sm">
+              Diagnóstico inicial para identificar dónde se está frenando tu crecimiento comercial.
             </p>
-
-            <div className="mt-8 grid gap-4 border-t border-white/8 pt-6 sm:grid-cols-3">
-              {heroHighlights.map((item, index) => (
-                <div key={item} className="border-l border-white/8 pl-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                    0{index + 1}
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-[#C7CBD6] sm:text-sm">{item}</p>
-                </div>
-              ))}
             </div>
-          </div>
-
-          <Card className="xl:ml-auto xl:max-w-[560px] xl:p-8">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">
-              Entrada recomendada
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA]">
-              Diagnóstico del sistema comercial
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-              Antes de ejecutar, hacemos visible dónde se está rompiendo el proceso
-              comercial y qué conviene mover primero.
-            </p>
-
-            <div className="mt-6 space-y-4 border-t border-white/8 pt-6">
-              {solutionSequence.slice(0, 3).map((item) => (
-                <div key={item.title} className="border-l border-white/8 pl-4">
-                  <h3 className="text-base font-semibold text-[#F5F7FA]">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 border-t border-white/8 pt-6">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#B8EAF0]">
-                Diagnóstico gratuito
-              </p>
-              <p className="mt-3 max-w-lg text-sm leading-relaxed text-[#D8F9FC]">
-                Completa el diagnóstico inicial, te toma menos de 10 minutos y
-                recibes una lectura base sobre los principales puntos de fricción
-                de tu sistema comercial.
-              </p>
-              <Button href={SITE_CONFIG.diagnosisPath} className="mt-5" size="md">
-                Abrir diagnóstico gratuito
-              </Button>
-            </div>
-          </Card>
-        </Container>
+          </Container>
+        </div>
       </section>
 
       <section className="section-soft cv-auto py-18 sm:py-22" id="problemas">
@@ -147,7 +124,7 @@ export default function HomePage() {
 
       <section className="cv-auto py-18 sm:py-22" id="solución">
         <Container>
-            <SectionTitle
+          <SectionTitle
             eyebrow="La solución RiBuzz"
             title="No entramos a ejecutar piezas sueltas. Intervenimos el sistema comercial."
             description="Entender, diagnosticar, estructurar, implementar y acompañar."
@@ -172,7 +149,7 @@ export default function HomePage() {
         <Container className="grid gap-6 lg:grid-cols-2">
           <Card className="rounded-[28px] p-7 sm:p-8">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-              Para quien si es
+              Para quien sí es
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA]">
               Empresas que ya venden y necesitan ordenar cómo crecen.
@@ -223,7 +200,7 @@ export default function HomePage() {
           <SectionTitle
             align="center"
             eyebrow="Capas de intervención"
-            title="Tres formás de intervenir un mismo sistema comercial"
+            title="Tres formas de intervenir un mismo sistema comercial"
             description="Tres capas para pasar de claridad a ejecución."
           />
 
@@ -337,8 +314,8 @@ export default function HomePage() {
       </section>
 
       <CTASection
-        title="Antes de ejecutar mas, conviene entender dónde se está rompiendo tu sistema comercial."
-        description="Completa el diagnóstico en menos de 10 minutos y revisamos sí hay una oportunidad real de intervención."
+        title="Antes de ejecutar más, conviene entender dónde se está rompiendo tu sistema comercial."
+        description="Completa el diagnóstico en menos de 10 minutos y revisamos si hay una oportunidad real de intervención."
         primaryLabel="Solicita tu diagnóstico gratuito"
         primaryHref={SITE_CONFIG.diagnosisPath}
         secondaryLabel="Escribir por WhatsApp"
@@ -350,6 +327,3 @@ export default function HomePage() {
     </>
   );
 }
-
-
-
