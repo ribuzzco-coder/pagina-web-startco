@@ -1,6 +1,7 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
 
+import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
@@ -20,6 +21,8 @@ const primaryLinks = [
     href: SITE_CONFIG.instagramUrl,
     accent: "from-[#FF4FD9]/24 via-[#E625FF]/14 to-transparent",
     icon: "instagram",
+    iconClassName: "text-[#FF7AE6]",
+    glowTone: "pink",
   },
   {
     title: "WhatsApp",
@@ -27,6 +30,8 @@ const primaryLinks = [
     href: SITE_CONFIG.whatsappUrl,
     accent: "from-[#25D366]/20 via-[#25D366]/10 to-transparent",
     icon: "whatsapp",
+    iconClassName: "text-[#6AFFB6]",
+    glowTone: "green",
   },
   {
     title: "Hacer diagnóstico",
@@ -34,6 +39,9 @@ const primaryLinks = [
     href: SITE_CONFIG.diagnosisPath,
     accent: "from-[#0FEFFD]/20 via-[#0FEFFD]/10 to-transparent",
     icon: "spark",
+    iconClassName: "text-[#F38BFF]",
+    glowTone: "purple",
+    featured: true,
   },
   {
     title: "Sitio web",
@@ -41,22 +49,26 @@ const primaryLinks = [
     href: "/",
     accent: "from-[#B16EFF]/18 via-[#E625FF]/8 to-transparent",
     icon: "globe",
+    iconClassName: "text-[#C89BFF]",
+    glowTone: "cyan",
   },
 ] as const;
 
-const supportLinks = [
-  {
+const supportCards = {
+  nfc: {
     title: "Tarjetas NFC",
-    description: "Accesos para networking y presentacion fisica",
+    description: "Accesos para networking y presentación física",
     href: "/contact",
-    live: true,
   },
-  {
+  neoMech: {
+    title: "Conoce a Neo-Mech",
+    description: "Explora este nuevo frente con una estética más técnica, más visual y más experimental.",
+  },
+  gifts: {
     title: "Regalos / documentos de valor",
-    description: "Espacio reservado para recursos descargables que luego se agregaran",
-    live: false,
+    description: "Espacio reservado para recursos descargables, documentos y piezas útiles que luego se agregarán.",
   },
-] as const;
+} as const;
 
 function LinkIcon({ type }: { type: (typeof primaryLinks)[number]["icon"] }) {
   if (type === "instagram") {
@@ -119,15 +131,18 @@ export default function StartcoPage() {
             </h1>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
               Un punto de entrada rápido para conectar, explorar recursos y llevar
-              la marca de RiBuzz a conversaciones, networking y proximos activos.
+              la marca de RiBuzz a conversaciones, networking y próximos activos.
             </p>
           </div>
 
           <div className="relative mx-auto mt-10 grid max-w-xl gap-4">
             {primaryLinks.map((link) => {
               const isExternal = link.href.startsWith("http");
-              const className = cn(
-                "group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#141724] px-5 py-5 text-center transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-white/18 hover:bg-[#171B2A] hover:shadow-[0_18px_36px_rgba(0,0,0,0.22)]",
+              const cardClassName = cn(
+                "group relative overflow-hidden rounded-[24px] px-5 py-5 text-center transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:bg-[#171B2A] hover:shadow-[0_18px_36px_rgba(0,0,0,0.22)]",
+                link.featured
+                  ? "border-[#E625FF]/34 bg-[#141724] hover:border-[#ff8bf7]/52"
+                  : "border-white/10 bg-[#141724] hover:border-white/18",
               );
 
               const content = (
@@ -139,16 +154,18 @@ export default function StartcoPage() {
                     )}
                   />
                   <div className="relative flex items-center justify-center gap-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-[#F5F7FA] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-colors duration-300 group-hover:border-white/18 group-hover:text-white">
+                    <span
+                      className={cn(
+                        "flex h-11 w-11 shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-[1.06]",
+                        link.iconClassName,
+                      )}
+                    >
                       <LinkIcon type={link.icon} />
                     </span>
                     <div className="min-w-0">
                       <p className="text-base font-semibold text-[#F5F7FA]">{link.title}</p>
                       <p className="mt-1 text-sm text-[#98A0B3]">{link.description}</p>
                     </div>
-                    <span className="text-lg text-[#E7B0EE] transition-transform duration-300 group-hover:translate-x-1">
-                      +
-                    </span>
                   </div>
                 </>
               );
@@ -160,69 +177,91 @@ export default function StartcoPage() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={className}
+                    className="block"
                   >
-                    {content}
+                    <Card glowTone={link.glowTone} className={cardClassName}>
+                      {content}
+                    </Card>
                   </a>
                 );
               }
 
               return (
-                <Link key={link.title} href={link.href} className={className}>
-                  {content}
+                <Link key={link.title} href={link.href} className="block">
+                  <Card glowTone={link.glowTone} className={cardClassName}>
+                    {content}
+                  </Card>
                 </Link>
               );
             })}
           </div>
 
-          <div className="relative mx-auto mt-8 grid max-w-xl gap-4 md:grid-cols-2">
-            {supportLinks.map((item) => {
-              const baseClassName =
-                "rounded-[24px] border px-5 py-5 text-center transition-[border-color,background-color,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]";
-
-              if (item.live) {
-                return (
-                  <Link
-                    key={item.title}
-                    href={item.href}
-                    className={cn(
-                      baseClassName,
-                      "border-white/10 bg-[#121520] hover:border-[#E625FF]/24 hover:bg-[#171B28] hover:shadow-[0_16px_30px_rgba(0,0,0,0.18)]",
-                    )}
-                  >
-                    <p className="text-base font-semibold text-[#F5F7FA]">{item.title}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
-                      {item.description}
-                    </p>
-                  </Link>
-                );
-              }
-
-              return (
-                <div
-                  key={item.title}
-                  className={cn(
-                    baseClassName,
-                    "border-dashed border-white/10 bg-[#10131C]/70",
-                  )}
-                >
-                  <div className="flex flex-col items-center justify-center gap-3">
-                    <p className="text-base font-semibold text-[#F5F7FA]">{item.title}</p>
-                    <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#E7B0EE]">
-                      Proximamente
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
-                    {item.description}
+          <div className="relative mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-[1.2fr_0.8fr]">
+            <Link href={supportCards.nfc.href} className="block">
+              <Card
+                glowTone="purple"
+                className="group relative min-h-[300px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-6 py-6 text-left transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
+              >
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.08),transparent_34%)]" />
+                <div className="relative z-10 max-w-[48%]">
+                  <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
+                    {supportCards.nfc.title}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+                    {supportCards.nfc.description}
                   </p>
                 </div>
-              );
-            })}
+                <div className="pointer-events-none absolute -bottom-3 right-0 w-[56%] translate-x-[7%] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[5%] group-hover:-translate-y-1">
+                  <Image
+                    src="/startco-cards.png"
+                    alt="Mockup de tarjetas NFC RiBuzz"
+                    width={700}
+                    height={1000}
+                    className="h-auto w-full object-contain"
+                  />
+                </div>
+              </Card>
+            </Link>
+
+            <Card
+              glowTone="cyan"
+              className="rounded-[28px] border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 text-left"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]" />
+              <div className="relative flex h-full flex-col justify-between gap-6">
+                <div>
+                  <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
+                    {supportCards.neoMech.title}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+                    {supportCards.neoMech.description}
+                  </p>
+                </div>
+                <span className="inline-flex w-fit rounded-full border border-[#0FEFFD]/16 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9BF8FF]">
+                  Próximamente
+                </span>
+              </div>
+            </Card>
+          </div>
+
+          <div className="relative mx-auto mt-4 max-w-5xl">
+            <Card
+              glowTone="cyan"
+              className="rounded-[26px] border-dashed border-white/10 bg-[#10131C]/72 px-6 py-6 text-center"
+            >
+              <div className="flex flex-col items-center justify-center gap-3">
+                <p className="text-base font-semibold text-[#F5F7FA]">{supportCards.gifts.title}</p>
+                <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#E7B0EE]">
+                  Próximamente
+                </span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-[#98A0B3]">
+                {supportCards.gifts.description}
+              </p>
+            </Card>
           </div>
         </div>
       </Container>
     </section>
   );
 }
-
-
