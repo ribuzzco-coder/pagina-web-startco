@@ -26,7 +26,7 @@ import { SITE_CONFIG } from "@/lib/site-config";
 export const metadata = createPageMetadata({
   title: "Inicio",
   description:
-    "Sistema de crecimiento para hacer crecer tu empresa.",
+    "Sistema complementario para el crecimiento empresarial.",
   path: "/",
 });
 
@@ -62,7 +62,7 @@ export default function HomePage() {
               </div>
 
               <h1 className="mx-auto mt-6 max-w-3xl font-sans text-[1.9rem] font-bold leading-[1.08] text-[#F5F7FA] sm:text-[2.45rem] xl:text-[3rem]">
-                Sistema de crecimiento para hacer crecer tu empresa.
+                Sistema complementario para el crecimiento empresarial.
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] sm:text-[1rem]">
                 Diseñamos la estructura comercial que te ayuda a captar mejor, vender con
