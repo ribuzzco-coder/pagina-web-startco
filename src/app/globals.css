@@ -323,7 +323,7 @@ body * {
   z-index: -1;
   background: radial-gradient(circle, rgba(230, 37, 255, 0.26), rgba(15, 239, 253, 0.12) 42%, rgba(255,255,255,0.05) 58%, transparent 72%);
   filter: blur(12px);
-  animation: hero-mark-wave 880ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: hero-mark-wave 980ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-mark-button[data-rippling="true"]::after {
@@ -333,7 +333,7 @@ body * {
     0 0 0 1px rgba(230, 37, 255, 0.12),
     0 0 26px rgba(230, 37, 255, 0.18),
     0 0 60px rgba(15, 239, 253, 0.08);
-  animation: hero-mark-ring 980ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: hero-mark-ring 1120ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nfc-approach-card {
