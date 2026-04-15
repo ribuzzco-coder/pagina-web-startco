@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { type CSSProperties, useMemo, useRef, useState } from "react";
 
@@ -43,6 +43,34 @@ function GiftIcon({ className }: { className?: string }) {
       <path d="M12 8.5h-4.2c-1.1 0-2-.9-2-2 0-1 .8-1.8 1.8-1.8 2.2 0 3.4 1.4 4.4 3.8Z" />
       <path d="M12 8.5h4.2c1.1 0 2-.9 2-2 0-1-.8-1.8-1.8-1.8-2.2 0-3.4 1.4-4.4 3.8Z" />
     </svg>
+  );
+}
+
+function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
+  return (
+    <div className="relative mx-auto h-40 w-40 sm:h-44 sm:w-44">
+      <div className="absolute inset-x-5 bottom-0 h-24 rounded-[26px] border border-[#ff8ac0]/16 bg-[linear-gradient(180deg,rgba(39,21,47,0.98),rgba(19,13,27,0.98))] shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_18px_48px_rgba(0,0,0,0.24),0_0_26px_rgba(230,37,255,0.12)]" />
+      <div className="absolute inset-x-[30%] bottom-[22px] h-14 w-[40%] rounded-[18px] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))]" />
+      <div className="absolute left-1/2 top-[54px] z-20 h-[88px] w-[10px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,#ff5fa9,#ffb1d1)] shadow-[0_0_16px_rgba(255,95,169,0.24)]" />
+      <div className="absolute left-[28px] right-[28px] top-[70px] z-20 h-[10px] rounded-full bg-[linear-gradient(90deg,#ff73b1,#ffb5d5)] shadow-[0_0_16px_rgba(255,95,169,0.22)]" />
+
+      <div
+        className={cn(
+          "absolute inset-x-3 top-7 z-10 h-16 origin-bottom rounded-[22px] border border-[#ff9bd5]/22 bg-[linear-gradient(180deg,rgba(69,33,74,0.98),rgba(42,20,46,0.98))] shadow-[0_12px_28px_rgba(0,0,0,0.2),0_0_24px_rgba(230,37,255,0.16)] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          isUnlocked ? "-translate-y-7 rotate-[-12deg]" : "translate-y-0 rotate-0",
+        )}
+      />
+
+      <div
+        className={cn(
+          "pointer-events-none absolute left-1/2 top-[58px] z-[5] flex -translate-x-1/2 items-end gap-3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          isUnlocked ? "opacity-100" : "opacity-0",
+        )}
+      >
+        <span className="block h-14 w-10 rotate-[-12deg] rounded-[12px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(20,25,38,0.98),rgba(10,13,22,0.98))] shadow-[0_0_20px_rgba(15,239,253,0.14)]" />
+        <span className="block h-16 w-11 rotate-[10deg] rounded-[12px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(29,19,36,0.98),rgba(14,11,20,0.98))] shadow-[0_0_22px_rgba(230,37,255,0.16)]" />
+      </div>
+    </div>
   );
 }
 
@@ -93,10 +121,10 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
   const handleOffset = `calc(${progress * 100}% - ${progress * 56}px)`;
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 flex justify-center">
       <div
         ref={trackRef}
-        className="relative h-16 rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(18,22,34,0.94),rgba(12,14,20,0.98))] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_0_28px_rgba(230,37,255,0.08)]"
+        className="relative h-16 w-full max-w-[360px] rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(18,22,34,0.94),rgba(12,14,20,0.98))] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_0_28px_rgba(230,37,255,0.08)]"
         onPointerMove={(event) => updateFromClientX(event.clientX)}
         onPointerUp={stopDrag}
         onPointerCancel={stopDrag}
@@ -107,9 +135,9 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
           style={{ width: fillWidth }}
         />
         <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_24%_50%,rgba(230,37,255,0.14),transparent_26%),radial-gradient(circle_at_75%_50%,rgba(15,239,253,0.1),transparent_26%)]" />
-        <div className="relative flex h-full items-center justify-center px-16 text-center">
+        <div className="relative flex h-full items-center justify-center px-14 text-center">
           <span className="text-sm font-semibold tracking-[0.18em] text-[#D5DBE7] uppercase">
-            Desliza para abrir tu regalo
+            Desliza para abrir
           </span>
         </div>
         <button
@@ -223,12 +251,8 @@ export function RewardVault() {
           Regalos RiBuzz
         </p>
         <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[#F5F7FA] sm:text-5xl">
-          Desbloquea una caja con recursos listos para usar.
+          Te traemos valor que nos habría gustado saber antes.
         </h1>
-        <p className="mt-5 text-base leading-relaxed text-[#98A0B3] sm:text-lg">
-          Una experiencia simple: abre la caja, mira los documentos y elige si quieres
-          leerlos o descargarlos.
-        </p>
       </div>
 
       <div className="relative mx-auto mt-10 max-w-2xl">
@@ -237,19 +261,7 @@ export function RewardVault() {
           {isUnlocked ? <GalacticBurst /> : null}
 
           <div className="relative z-10">
-            <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] text-[#FF9BEA] shadow-[0_0_24px_rgba(230,37,255,0.18)]">
-              <GiftIcon className="h-14 w-14" />
-            </div>
-
-            <div className="mx-auto mt-6 max-w-xl text-center">
-              <h2 className="text-2xl font-semibold tracking-tight text-[#F5F7FA] sm:text-3xl">
-                Una caja breve, útil y desbloqueable.
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
-                Desliza para abrir la caja. Al hacerlo, aparecerán dos documentos para
-                leer o descargar sin salir del estilo RiBuzz.
-              </p>
-            </div>
+            <BoxVisual isUnlocked={isUnlocked} />
 
             {isUnlocked ? (
               <div className="mt-8 grid gap-4 sm:grid-cols-2 animate-[reward-reveal_520ms_cubic-bezier(0.22,1,0.36,1)_forwards]">
