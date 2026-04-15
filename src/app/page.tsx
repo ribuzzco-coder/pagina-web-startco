@@ -47,7 +47,7 @@ export default function HomePage() {
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <Container className="hero-no-select pt-[76px] text-center">
             <div className="mx-auto max-w-[58rem]">
-            <div className="mt-3 inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm sm:mt-5">
+            <div className="mt-2 inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm sm:mt-4">
               <PillBadge>Te damos la bienvenida.</PillBadge>
             </div>
 
