@@ -1,6 +1,7 @@
-import { AboutRibuzzHero } from "@/components/sections/about-ribuzz-hero";
+﻿import { AboutRibuzzHero } from "@/components/sections/about-ribuzz-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { PrincipleCard } from "@/components/sections/principle-card";
+import { StepCard } from "@/components/sections/step-card";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { InfoGrid } from "@/components/ui/info-grid";
@@ -11,6 +12,7 @@ import {
   aboutPosture,
   aboutVisión,
   corePrinciples,
+  methodologySteps,
 } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
@@ -32,9 +34,36 @@ export default function AboutPage() {
         supportText="RiBuzz funciona como un sistema operativo comercial: aporta claridad, criterio y control para que el crecimiento deje de depender de intuición, urgencia o esfuerzo disperso."
         primaryCtaLabel="Solicita tu diagnóstico gratuito"
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
-        secondaryCtaLabel="Ver metodología"
-        secondaryCtaHref="/methodology"
       />
+
+      <section className="cv-auto pb-16 sm:pb-20">
+        <Container>
+          <SectionTitle
+            eyebrow="Nuestra manera de operar"
+            title="Trabajamos en cuatro fases para intervenir con criterio, no por intuición."
+            description="Así opera RiBuzz: primero leemos el sistema, luego definimos la estructura, activamos lo necesario y acompañamos la ejecución."
+          />
+
+          <div className="relative mt-10 space-y-6 sm:space-y-8">
+            <div className="pointer-events-none absolute bottom-5 left-5 top-5 hidden w-px bg-[linear-gradient(to_bottom,rgba(15,239,253,0.18),rgba(230,37,255,0.28))] md:block" />
+
+            {methodologySteps.map((step, index) => (
+              <div key={step.title} className="relative md:pl-14">
+                <span className="absolute left-[17px] top-6 hidden h-2.5 w-2.5 rounded-full bg-[#0FEFFD] md:block" />
+                <StepCard
+                  index={index + 1}
+                  title={step.title}
+                  description={step.description}
+                  points={step.points}
+                  outcome={step.outcome}
+                />
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <SectionDivider />
 
       <section className="cv-auto pb-16 sm:pb-20">
         <Container>
