@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { AnimatedShaderBackground } from "@/components/ui/animated-shader-background";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
@@ -112,11 +113,12 @@ function LinkIcon({ type }: { type: (typeof primaryLinks)[number]["icon"] }) {
 
 export default function StartcoPage() {
   return (
-    <section className="cv-auto py-16 sm:py-20">
-      <Container className="max-w-3xl">
+    <section className="relative cv-auto overflow-hidden py-16 sm:py-20 -mt-[76px] min-h-screen flex items-center">
+      <Container className="relative z-10 max-w-3xl">
         <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(180deg,rgba(20,22,34,0.96),rgba(11,11,16,0.98))] px-6 py-8 shadow-[0_24px_64px_rgba(0,0,0,0.34)] sm:px-10 sm:py-10">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(230,37,255,0.4),transparent)]" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(230,37,255,0.1),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.08),transparent_26%)]" />
+          <AnimatedShaderBackground />
 
           <div className="relative flex flex-col items-center text-center">
             <div className="flex h-32 w-32 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_16px_32px_rgba(0,0,0,0.22)] sm:h-36 sm:w-36">

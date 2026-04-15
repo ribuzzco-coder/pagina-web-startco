@@ -1,4 +1,4 @@
-﻿import { PageHero } from "@/components/common/page-hero";
+import { AboutRibuzzHero } from "@/components/sections/about-ribuzz-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { PrincipleCard } from "@/components/sections/principle-card";
 import { Card } from "@/components/ui/card";
@@ -25,22 +25,23 @@ export const metadata = createPageMetadata({
 export default function AboutPage() {
   return (
     <>
-      <PageHero
+      <AboutRibuzzHero
         eyebrow="Sobre RiBuzz"
-        title="RiBuzz nace al ver un patrón: empresas qué si venden, pero siguen operando sin sistema comercial."
-        description="No nacimos para ser una agencia más. Nacimos para intervenir un vacío recurrente en negocios que ya están en movimiento, pero todavía no convierten su esfuerzo comercial en crecimiento sostenible."
+        title="RiBuzz convierte la estructura comercial en un activo que genera valor."
+        description="Nacimos al ver el mismo patrón una y otra vez: empresas que sí venden, pero siguen operando sin un sistema claro para captar, convertir y hacer seguimiento con consistencia."
+        supportText="RiBuzz funciona como un sistema operativo comercial: aporta claridad, criterio y control para que el crecimiento deje de depender de intuición, urgencia o esfuerzo disperso."
         primaryCtaLabel="Solicita tu diagnóstico gratuito"
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
-        asideTitle="La idea central"
-        asideText="Muchas empresas no están frenadas por falta de mercado, sino por falta de estructura comercial para vender, seguir oportunidades y sostener crecimiento."
+        secondaryCtaLabel="Ver metodología"
+        secondaryCtaHref="/methodology"
       />
 
       <section className="cv-auto pb-16 sm:pb-20">
         <Container>
           <SectionTitle
             eyebrow="Origen"
-            title="De una observacíon repetida a una postura clara"
-            description="El origen de RiBuzz no está en vender más servicios. Esta en corregir una forma de operar qué deja desgaste, ceguera comercial y dependencia excesiva del fundador."
+            title="De una observación repetida a una postura clara"
+            description="El origen de RiBuzz no está en vender más servicios. Está en corregir una forma de operar que deja desgaste, ceguera comercial y dependencia excesiva del fundador."
           />
 
           <InfoGrid className="mt-8 md:grid-cols-3">
@@ -65,7 +66,7 @@ export default function AboutPage() {
           <SectionTitle
             eyebrow="Visión"
             title="Qué quiere empujar RiBuzz en el mercado"
-            description="La vision no es repetir el origen. Es mover a más empresas hacia una forma de crecer menos improvisada y más estructurada."
+            description="La visión no es repetir el origen. Es mover a más empresas hacia una forma de crecer menos improvisada y más estructurada."
           />
 
           <InfoGrid className="mt-8 md:grid-cols-2">
@@ -88,7 +89,7 @@ export default function AboutPage() {
           <SectionTitle
             eyebrow="Principios"
             title="Principios no negociables"
-            description="Estos principios sostienen la forma en qué RiBuzz diagnostica, prioriza, implementa y acompaña."
+            description="Estos principios sostienen la forma en que RiBuzz diagnostica, prioriza, implementa y acompaña."
           />
 
           <InfoGrid className="mt-8 lg:grid-cols-3">
@@ -104,7 +105,7 @@ export default function AboutPage() {
           <SectionTitle
             eyebrow="Postura"
             title="Una marca profesional, directa y orientada a ejecución"
-            description="RiBuzz no busca agradar con frases vacías. Busca aportar criterio, estructura y dirección dónde hoy hay ruido comercial."
+            description="RiBuzz no busca agradar con frases vacías. Busca aportar criterio, estructura y dirección donde hoy hay ruido comercial."
           />
 
           <InfoGrid className="mt-8 md:grid-cols-2 xl:grid-cols-4">
@@ -131,5 +132,3 @@ export default function AboutPage() {
     </>
   );
 }
-
-

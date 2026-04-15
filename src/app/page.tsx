@@ -4,6 +4,7 @@ import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { StepCard } from "@/components/sections/step-card";
 import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
+import { BeforeAfterWipeCard } from "@/components/ui/before-after-wipe-card";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -16,7 +17,7 @@ import {
   contactFaqs,
   differentiators,
   fitChecklist,
-  homePainPoints,
+  homePainTransitions,
   methodologySteps,
   nonFitChecklist,
 } from "@/lib/content";
@@ -26,7 +27,7 @@ import { SITE_CONFIG } from "@/lib/site-config";
 export const metadata = createPageMetadata({
   title: "Inicio",
   description:
-    "Sistema complementario para el crecimiento empresarial.",
+    "El sistema para hacer crecer tu empresa.",
   path: "/",
 });
 
@@ -62,7 +63,7 @@ export default function HomePage() {
               </div>
 
               <h1 className="mx-auto mt-6 max-w-3xl font-sans text-[1.9rem] font-bold leading-[1.08] text-[#F5F7FA] sm:text-[2.45rem] xl:text-[3rem]">
-                Sistema complementario para el crecimiento empresarial.
+                El sistema para hacer crecer tu empresa.
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] sm:text-[1rem]">
                 Diseñamos la estructura comercial que te ayuda a captar mejor, vender con
@@ -92,19 +93,18 @@ export default function HomePage() {
           <SectionTitle
             eyebrow="¿Por qué se estancan las empresas?"
             title="El problema no siempre es vender más. Es vender con un sistema débil."
-            description="Estos son los síntomas más comunes cuando no hay estructura comercial clara."
+            description="Mira cómo cambian estos frentes cuando la operación comercial deja de improvisarse y empieza a trabajar con estructura."
           />
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
-            {homePainPoints.map((pain) => (
-              <Card key={pain.title} className="rounded-[24px] p-6 lg:p-8">
-                <h3 className="text-lg font-semibold tracking-tight text-[#F5F7FA]">
-                  {pain.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#98A0B3]">
-                  {pain.description}
-                </p>
-              </Card>
+            {homePainTransitions.map((item) => (
+              <BeforeAfterWipeCard
+                key={item.beforeTitle}
+                beforeTitle={item.beforeTitle}
+                beforeDescription={item.beforeDescription}
+                afterTitle={item.afterTitle}
+                afterDescription={item.afterDescription}
+              />
             ))}
           </div>
         </Container>
