@@ -204,10 +204,10 @@ export default function StartcoPage() {
             <Link href={supportCards.nfc.href} className="block">
               <Card
                 glowTone="purple"
-                className="group relative min-h-[290px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-6 py-6 text-left transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
+                className="group relative min-h-[320px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-6 py-6 text-center transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
               >
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.08),transparent_34%)]" />
-                <div className="relative z-10 max-w-[54%]">
+                <div className="relative z-10 mx-auto max-w-[78%]">
                   <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
                     {supportCards.nfc.title}
                   </p>
@@ -215,7 +215,7 @@ export default function StartcoPage() {
                     {supportCards.nfc.description}
                   </p>
                 </div>
-                <div className="pointer-events-none absolute bottom-0 right-0 w-[44%] translate-x-[4%] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[3%] group-hover:-translate-y-1">
+                <div className="pointer-events-none absolute bottom-0 left-1/2 w-[44%] -translate-x-1/2 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
                   <Image
                     src="/startco-cards.png"
                     alt="Mockup de tarjetas NFC RiBuzz"
@@ -233,36 +233,34 @@ export default function StartcoPage() {
               rel="noopener noreferrer"
               className="block"
             >
-              <Card
-                glowTone="cyan"
-                className="rounded-[28px] border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 text-left"
-              >
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]" />
-                <div className="relative flex min-h-[290px] h-full flex-col justify-between gap-6">
-                  <div>
-                    <div className="mb-4 flex justify-start">
-                      <div className="rounded-[22px] border border-[#0FEFFD]/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-                        <Image
-                          src="/neo-mech-logo.png"
-                          alt="Logo Neo-Mech"
-                          width={88}
-                          height={88}
-                          className="h-22 w-22 object-contain drop-shadow-[0_0_18px_rgba(14,210,255,0.16)]"
-                        />
-                      </div>
-                    </div>
-                    <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
-                      {supportCards.neoMech.title}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                      {supportCards.neoMech.description}
-                    </p>
-                  </div>
+            <Card
+              glowTone="cyan"
+              className="rounded-[28px] border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 text-center"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]" />
+              <div className="relative flex min-h-[320px] h-full flex-col items-center justify-between gap-5">
+                <div>
+                  <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
+                    {supportCards.neoMech.title}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+                    {supportCards.neoMech.description}
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-4">
+                  <Image
+                    src="/neo-mech-logo.png"
+                    alt="Logo Neo-Mech"
+                    width={100}
+                    height={100}
+                    className="h-24 w-24 object-contain drop-shadow-[0_0_18px_rgba(14,210,255,0.16)]"
+                  />
                   <span className="inline-flex w-fit rounded-full border border-[#0FEFFD]/16 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9BF8FF]">
                     Ver perfil
                   </span>
                 </div>
-              </Card>
+              </div>
+            </Card>
             </a>
           </div>
 
