@@ -1,7 +1,6 @@
 import { CTASection } from "@/components/sections/cta-section";
 import { NfcBenefits } from "@/components/sections/nfc-benefits";
 import { NfcClientGallery } from "@/components/sections/nfc-client-gallery";
-import { NfcDemoPreview } from "@/components/sections/nfc-demo-preview";
 import { NfcFaq } from "@/components/sections/nfc-faq";
 import { NfcHero } from "@/components/sections/nfc-hero";
 import { NfcPricing } from "@/components/sections/nfc-pricing";
@@ -13,7 +12,6 @@ import {
   nfcClientCardSamples,
   nfcFaqItems,
   nfcFunctionalBenefits,
-  nfcPreviewItems,
   nfcPricingPlans,
   nfcSteps,
   nfcUseCases,
@@ -42,7 +40,6 @@ export default function TarjetasNfcPage() {
       />
       <NfcUseCases items={nfcUseCases} />
       <NfcClientGallery items={nfcClientCardSamples} />
-      <NfcDemoPreview items={nfcPreviewItems} inquiryHref={nfcWhatsappUrl} />
       <NfcPricing plans={nfcPricingPlans} inquiryHref={nfcWhatsappUrl} />
       <NfcFaq items={nfcFaqItems} />
       <CTASection
@@ -51,9 +48,6 @@ export default function TarjetasNfcPage() {
         primaryLabel="Solicitar tarjeta"
         primaryHref={nfcWhatsappUrl}
         primaryExternal
-        secondaryLabel="Hablar por WhatsApp"
-        secondaryHref={nfcWhatsappUrl}
-        secondaryExternal
       />
     </>
   );

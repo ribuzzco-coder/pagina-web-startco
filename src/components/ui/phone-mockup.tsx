@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface PhoneMockupProps {
@@ -23,18 +24,25 @@ export const PhoneMockup = React.forwardRef<HTMLDivElement, PhoneMockupProps>(
           </div>
 
           {/* GSAP Target: Phone Pulse Scan Wave */}
-          <div className="nfc-scan-wave pointer-events-none absolute left-1/2 top-1/2 z-10 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#0FEFFD]/40 bg-[#0FEFFD]/10 opacity-0" />
+          <div className="nfc-scan-wave pointer-events-none absolute left-1/2 top-[18%] z-10 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#0FEFFD]/40 bg-[#0FEFFD]/10 opacity-0" />
 
           {/* Inner UI (Profile Card) */}
           <div className="nfc-profile-ui pointer-events-none absolute inset-0 z-10 flex flex-col items-center px-5 pt-20 opacity-0">
-            <div className="nfc-ui-avatar relative h-20 w-20 rounded-full bg-gradient-to-tr from-[#E625FF] to-[#0FEFFD] p-[2px] shadow-[0_0_24px_rgba(230,37,255,0.4)]">
-              <div className="flex h-full w-full items-center justify-center rounded-full bg-[#121622] p-2">
-                <div className="h-full w-full rounded-full bg-white/10" />
+            <div className="nfc-ui-avatar relative overflow-hidden h-20 w-20 rounded-full bg-gradient-to-tr from-[#E625FF] to-[#0FEFFD] p-[2px] shadow-[0_0_24px_rgba(230,37,255,0.4)]">
+              <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-[#121622] p-0.5">
+                <div className="relative h-full w-full overflow-hidden rounded-full bg-[#1A2030]">
+                  <Image 
+                    src="/ribuzz-mark.png" 
+                    alt="RiBuzz Logo" 
+                    fill 
+                    className="object-cover" 
+                  />
+                </div>
               </div>
             </div>
 
-            <h3 className="nfc-ui-name mt-4 text-xl font-bold tracking-tight text-[#F5F7FA]">Your Brand</h3>
-            <p className="nfc-ui-role mb-8 mt-1 text-center text-xs text-[#98A0B3]">Marketing Digital & tech solutions.</p>
+            <h3 className="nfc-ui-name mt-4 text-xl font-bold tracking-tight text-[#F5F7FA]">RiBuzz</h3>
+            <p className="nfc-ui-role mb-8 mt-1 text-center text-xs text-[#98A0B3]">Sistema de Crecimiento Comercial.</p>
 
             <div className="w-full space-y-3">
               <div className="nfc-ui-btn flex h-12 w-full items-center justify-center rounded-xl border border-white/5 bg-white/10 text-sm font-semibold text-white shadow-lg backdrop-blur-md">

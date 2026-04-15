@@ -17,14 +17,14 @@ export function Nfc3dShowcase() {
       // Create master timeline that repeats
       const tl = gsap.timeline({ repeat: -1, repeatDelay: 2 });
 
-      // Initial state
+      // Initial state – card comes from upper-left (far out)
       gsap.set(".nfc-floating-card", {
-        x: -380,
-        y: 60,
+        x: -420,
+        y: -120,
         z: 200,
-        rotationX: 25,
-        rotationY: 45,
-        rotationZ: -10,
+        rotationX: 20,
+        rotationY: 50,
+        rotationZ: -8,
         scale: 1.1,
       });
 
@@ -32,32 +32,32 @@ export function Nfc3dShowcase() {
       gsap.set(".nfc-scan-wave", { opacity: 0, scale: 0.5 });
       gsap.set(".nfc-phone-container", { rotationX: 8, rotationY: -12, z: 0 });
 
-      // 1. Card floats towards the phone
+      // 1. Card floats toward the TOP of the phone (NFC zone)
       tl.to(".nfc-floating-card", {
-        x: -160,
-        y: 10,
-        z: 60,
-        rotationX: 10,
-        rotationY: 15,
-        rotationZ: -2,
+        x: -155,
+        y: -95,
+        z: 55,
+        rotationX: 8,
+        rotationY: 12,
+        rotationZ: -1,
         scale: 1,
         duration: 1.8,
         ease: "power3.inOut",
       });
 
-      // 2. Card makes a small dipping "tap" motion
+      // 2. Card makes the "tap" motion — nudges into the phone top
       tl.to(".nfc-floating-card", {
-        x: -140,
-        y: 15,
-        z: 30,
-        rotationX: 5,
-        duration: 0.4,
+        x: -138,
+        y: -90,
+        z: 22,
+        rotationX: 3,
+        duration: 0.35,
         ease: "power2.in",
       }).to(".nfc-floating-card", {
-        x: -150,
-        y: 5,
-        z: 45,
-        duration: 0.6,
+        x: -148,
+        y: -98,
+        z: 38,
+        duration: 0.55,
         ease: "power2.out",
       });
 
@@ -85,10 +85,14 @@ export function Nfc3dShowcase() {
       // 4. Reveal the digital profile UI
       tl.to(".nfc-profile-ui", { opacity: 1, duration: 0.1 }, "-=0.3");
 
+      // Label to mark the exact moment profile starts appearing
+      tl.addLabel("profileReveal");
+
       tl.fromTo(
         ".nfc-ui-avatar",
         { scale: 0.5, opacity: 0, y: 15 },
-        { scale: 1, opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.5)" }
+        { scale: 1, opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.5)" },
+        "profileReveal"
       )
         .fromTo(
           [".nfc-ui-name", ".nfc-ui-role"],
@@ -110,17 +114,21 @@ export function Nfc3dShowcase() {
           "-=0.3"
         );
 
-      // 5. Card floats slightly as a resting state while user reads
-      tl.to(
-        ".nfc-floating-card",
-        {
-          y: -10,
-          rotationY: 20,
-          duration: 2.5,
-          ease: "sine.inOut",
-        },
-        "-=1.5"
-      );
+      // 5. Card retreats simultaneously with the profile reveal
+      tl.to(".nfc-floating-card", {
+        x: -420,
+        y: -120,
+        z: 200,
+        rotationX: 20,
+        rotationY: 50,
+        rotationZ: -8,
+        scale: 1.1,
+        duration: 1.2,
+        ease: "power3.inOut",
+      }, "profileReveal");
+
+      // 6. Profile stays visible — wait 4s before fading
+      tl.to(".nfc-profile-ui", { opacity: 0, duration: 0.5, ease: "power2.in" }, "profileReveal+=4");
 
       // Hover / Perspective Parallax
       const handleMouseMove = (e: MouseEvent) => {
@@ -178,8 +186,8 @@ export function Nfc3dShowcase() {
         {/* The Phone */}
         <PhoneMockup />
 
-        {/* The Card - Positioned relative to the Phone's center so they rotate together in 3D */}
-        <div className="absolute left-1/2 top-1/2 z-20 -translate-y-1/2">
+        {/* The Card - anchored at the TOP of the phone (NFC antenna area) */}
+        <div className="absolute left-1/2 top-[8%] z-20">
           <NfcCard3d
             frontImage="/images/nfc-front.png"
             backImage="/images/nfc-back.png"
@@ -187,9 +195,7 @@ export function Nfc3dShowcase() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute bottom-6 inset-x-6 mx-auto max-w-lg rounded-[20px] border border-white/8 bg-white/[0.03] px-5 py-4 text-center text-sm leading-relaxed text-[#98A0B3] backdrop-blur-md">
-        Acercas la tarjeta, el celular la detecta y en segundos abre la información clave del perfil.
-      </div>
+    
     </div>
   );
 }
