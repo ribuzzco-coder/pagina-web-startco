@@ -23,6 +23,7 @@ const primaryLinks = [
     icon: "instagram",
     iconClassName: "text-[#FF7AE6]",
     glowTone: "pink",
+    featured: false,
   },
   {
     title: "WhatsApp",
@@ -32,6 +33,7 @@ const primaryLinks = [
     icon: "whatsapp",
     iconClassName: "text-[#6AFFB6]",
     glowTone: "green",
+    featured: false,
   },
   {
     title: "Hacer diagnóstico",
@@ -51,6 +53,7 @@ const primaryLinks = [
     icon: "globe",
     iconClassName: "text-[#C89BFF]",
     glowTone: "cyan",
+    featured: false,
   },
 ] as const;
 
