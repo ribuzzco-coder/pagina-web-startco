@@ -281,6 +281,57 @@ body * {
   animation: page-blur-in 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.hero-wordmark {
+  filter:
+    drop-shadow(0 0 10px rgba(230, 37, 255, 0.14))
+    drop-shadow(0 0 18px rgba(15, 239, 253, 0.08));
+}
+
+.hero-mark-button {
+  isolation: isolate;
+  transition:
+    transform 240ms ease,
+    filter 260ms ease;
+}
+
+.hero-mark-button::before,
+.hero-mark-button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.hero-mark-button:hover {
+  transform: translateY(-1px) scale(1.015);
+}
+
+.hero-mark-button[data-rippling="true"] {
+  transform: scale(0.985);
+  filter:
+    drop-shadow(0 0 16px rgba(230, 37, 255, 0.42))
+    drop-shadow(0 0 30px rgba(15, 239, 253, 0.22));
+}
+
+.hero-mark-button[data-rippling="true"]::before {
+  display: none;
+}
+
+.hero-mark-button[data-rippling="true"]::after {
+  z-index: -2;
+  border: 1px solid rgba(255, 148, 248, 0.32);
+  box-shadow:
+    0 0 0 1px rgba(230, 37, 255, 0.14),
+    0 0 20px rgba(230, 37, 255, 0.14);
+  animation: hero-mark-ring 920ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .nfc-approach-card {
   animation: nfc-card-approach 4.6s ease-in-out infinite;
 }
@@ -339,7 +390,7 @@ body * {
     left: 50%;
     right: auto;
     bottom: auto;
-    width: min(76vw, 320px);
+    width: min(92vw, 420px);
     height: auto;
     transform: translate(-50%, -50%);
     object-fit: contain;
@@ -463,6 +514,22 @@ body * {
   75%, 100% {
     opacity: 0;
     transform: translateY(10px);
+  }
+}
+
+@keyframes hero-mark-ring {
+  0% {
+    opacity: 0.42;
+    width: 26px;
+    height: 26px;
+    transform: translate(-50%, -50%) scale(0.94);
+  }
+
+  100% {
+    opacity: 0;
+    width: 118vw;
+    height: 118vw;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 

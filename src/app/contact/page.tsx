@@ -71,6 +71,8 @@ export default function ContactPage() {
           <div className="mx-auto w-full max-w-[860px] overflow-hidden rounded-[32px]">
             <Card interactiveGlow={false} id="diagnostico-form" className="relative overflow-hidden rounded-[32px] border-[#ff7cf4]/24 bg-[linear-gradient(180deg,rgba(20,22,31,0.98),rgba(11,11,16,0.99))] p-0 shadow-[0_0_0_1px_rgba(230,37,255,0.12),0_28px_90px_rgba(230,37,255,0.22),0_36px_120px_rgba(0,0,0,0.42)]">
               <div className="pointer-events-none absolute inset-x-10 -top-6 h-18 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.3),transparent_72%)] blur-2xl" />
+              <div className="pointer-events-none absolute -left-12 top-24 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.16),transparent_68%)] blur-3xl" />
+              <div className="pointer-events-none absolute -right-14 bottom-20 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgba(15,239,253,0.14),transparent_70%)] blur-3xl" />
               <div className="flex items-center justify-between border-b border-white/8 px-4 py-4 sm:px-5">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
@@ -92,11 +94,12 @@ export default function ContactPage() {
                 </Button>
               </div>
 
-              <div className="overflow-hidden rounded-b-[32px] bg-white">
+              <div className="relative overflow-hidden rounded-b-[32px]">
+                <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.06),transparent_22%),radial-gradient(circle_at_bottom_right,rgba(230,37,255,0.08),transparent_28%),radial-gradient(circle_at_78%_26%,rgba(15,239,253,0.06),transparent_24%)]" />
                 <iframe
                   src={embeddedDiagnosisFormUrl}
                   title="Formulario de diagnóstico RiBuzz"
-                  className="h-[760px] w-full bg-white sm:h-[1020px] lg:h-[1120px]"
+                  className="h-[760px] w-full rounded-b-[32px] bg-white invert-[0.92] hue-rotate-180 brightness-105 contrast-105 sm:h-[1020px] lg:h-[1120px]"
                   loading="lazy"
                 />
               </div>
@@ -173,4 +176,7 @@ export default function ContactPage() {
     </>
   );
 }
+
+
+
 
