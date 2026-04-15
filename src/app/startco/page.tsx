@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
 import { AnimatedShaderBackground } from "@/components/ui/animated-shader-background";
@@ -58,23 +58,26 @@ const supportCards = {
   },
   neoMech: {
     title: "Conoce a Neo-Mech",
-    description: "Neo-Mech es el aliado ideal para impresión 3D a la medida de tus necesidades.",
+    description:
+      "Neo-Mech es el aliado ideal para impresión 3D a la medida de tus necesidades.",
     href: "https://www.instagram.com/neomech3d/",
   },
   gifts: {
     title: "Regalos / documentos de valor",
-    description: "¿Quieres aprender a crear una oferta y cómo entregarla? Aprende aquí cómo hacerlo.",
+    description:
+      "¿Quieres aprender a crear una oferta y cómo entregarla? Aprende aquí cómo hacerlo.",
   },
 } as const;
 
 export default function StartcoPage() {
   return (
-    <section className="relative -mt-[76px] flex min-h-screen items-center overflow-hidden py-16 cv-auto sm:py-20">
-      <Container className="relative z-10 max-w-3xl">
-        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(180deg,rgba(20,22,34,0.96),rgba(11,11,16,0.98))] px-6 py-8 shadow-[0_24px_64px_rgba(0,0,0,0.34)] sm:px-10 sm:py-10">
+    <section className="relative cv-auto -mt-[76px] min-h-screen overflow-hidden py-16 sm:py-20">
+      <AnimatedShaderBackground />
+
+      <Container className="relative z-10 flex min-h-screen max-w-3xl items-center justify-center">
+        <div className="relative w-full overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(20,22,34,0.72),rgba(11,11,16,0.64))] px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:rounded-[36px] sm:px-10 sm:py-10">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(230,37,255,0.4),transparent)]" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(230,37,255,0.1),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.08),transparent_26%)]" />
-          <AnimatedShaderBackground />
 
           <div className="relative flex flex-col items-center text-center">
             <div className="flex h-32 w-32 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_16px_32px_rgba(0,0,0,0.22)] sm:h-36 sm:w-36">
@@ -91,20 +94,23 @@ export default function StartcoPage() {
             <h1 className="mt-6 text-4xl font-normal tracking-tight text-[#F5F7FA] sm:text-5xl [font-family:var(--font-zen-dots)]">
               RiBuzz
             </h1>
+
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
-              Diseñamos soluciones comerciales, visuales y digitales para marcas que
-              quieren crecer con más claridad, mejor presencia y herramientas útiles.
+              Diseñamos soluciones comerciales, visuales y digitales para marcas
+              que quieren crecer con más claridad, mejor presencia y herramientas
+              útiles.
             </p>
           </div>
 
           <div className="relative mx-auto mt-10 grid max-w-xl gap-4">
             {primaryLinks.map((link) => {
               const isExternal = link.href.startsWith("http");
+
               const cardClassName = cn(
                 "group relative overflow-hidden rounded-[24px] px-5 py-5 text-center transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:bg-[#171B2A] hover:shadow-[0_18px_36px_rgba(0,0,0,0.22)]",
                 link.featured
                   ? "border-[#E625FF]/40 bg-[linear-gradient(180deg,rgba(32,22,40,0.96),rgba(20,18,30,0.98))] shadow-[0_0_0_1px_rgba(230,37,255,0.12),0_0_26px_rgba(230,37,255,0.18)] hover:border-[#ff8bf7]/52 hover:shadow-[0_0_0_1px_rgba(230,37,255,0.18),0_0_32px_rgba(230,37,255,0.24)]"
-                  : "border-white/10 bg-[#141724] hover:border-white/18",
+                  : "border-white/10 bg-[#141724] hover:border-white/18"
               );
 
               const content = (
@@ -112,13 +118,17 @@ export default function StartcoPage() {
                   <div
                     className={cn(
                       "pointer-events-none absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 group-hover:opacity-100",
-                      link.accent,
+                      link.accent
                     )}
                   />
                   <div className="relative flex min-h-[58px] items-center justify-center text-center">
                     <div className="relative z-10 min-w-0">
-                      <p className="text-base font-semibold text-[#F5F7FA]">{link.title}</p>
-                      <p className="mt-1 text-sm text-[#98A0B3]">{link.description}</p>
+                      <p className="text-base font-semibold text-[#F5F7FA]">
+                        {link.title}
+                      </p>
+                      <p className="mt-1 text-sm text-[#98A0B3]">
+                        {link.description}
+                      </p>
                     </div>
                   </div>
                 </>
@@ -154,7 +164,7 @@ export default function StartcoPage() {
             <Link href={supportCards.nfc.href} className="block h-full">
               <Card
                 glowTone="purple"
-                className="group relative h-full min-h-[260px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-6 py-6 text-center transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
+                className="group relative h-full min-h-[280px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-5 py-6 text-center transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)] sm:px-6"
               >
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.08),transparent_34%)]" />
                 <div className="relative z-10 mx-auto max-w-[78%]">
@@ -165,7 +175,8 @@ export default function StartcoPage() {
                     {supportCards.nfc.description}
                   </p>
                 </div>
-                <div className="pointer-events-none absolute -bottom-[24%] left-1/2 w-[58%] -translate-x-1/2 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1 md:-bottom-[14%]">
+
+                <div className="pointer-events-none absolute bottom-0 left-1/2 w-[54%] -translate-x-1/2 translate-y-[18%] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-[14%] md:w-[58%] md:translate-y-[8%]">
                   <Image
                     src="/startco-cards2.png"
                     alt="Mockup de tarjetas NFC RiBuzz"
@@ -197,6 +208,7 @@ export default function StartcoPage() {
                       {supportCards.neoMech.description}
                     </p>
                   </div>
+
                   <div className="flex flex-col items-center gap-2.5">
                     <Image
                       src="/neo-mech-logo.png"
@@ -214,13 +226,18 @@ export default function StartcoPage() {
             </a>
           </div>
 
-          <Link href={SITE_CONFIG.giftsPath} className="relative mx-auto mt-4 block max-w-xl">
+          <Link
+            href={SITE_CONFIG.giftsPath}
+            className="relative mx-auto mt-4 block max-w-xl"
+          >
             <Card
               glowTone="cyan"
               className="rounded-[26px] border-dashed border-white/10 bg-[#10131C]/72 px-6 py-6 text-center md:min-h-[132px]"
             >
               <div className="flex flex-col items-center justify-center gap-3">
-                <p className="text-base font-semibold text-[#F5F7FA]">{supportCards.gifts.title}</p>
+                <p className="text-base font-semibold text-[#F5F7FA]">
+                  {supportCards.gifts.title}
+                </p>
                 <span className="rounded-full border border-[#ff4d6d]/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#FF9EB0]">
                   Ver regalos
                 </span>
