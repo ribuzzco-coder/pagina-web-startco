@@ -160,11 +160,11 @@ export default function StartcoPage() {
                   <div className="relative flex min-h-[58px] items-center justify-center text-center">
                     <span
                       className={cn(
-                        "pointer-events-none absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center opacity-[0.2] transition-transform duration-300 group-hover:scale-[1.06]",
+                        "pointer-events-none absolute left-1/2 top-1/2 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center opacity-[0.15] transition-transform duration-300 group-hover:scale-[1.05]",
                         link.iconClassName,
                       )}
                     >
-                      <span className="scale-[1.95]">
+                      <span className="scale-[4.5]">
                         <LinkIcon type={link.icon} />
                       </span>
                     </span>
@@ -206,7 +206,7 @@ export default function StartcoPage() {
             <Link href={supportCards.nfc.href} className="block">
               <Card
                 glowTone="purple"
-                className="group relative min-h-[360px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-6 py-6 text-center transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
+                className="group relative min-h-[260px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-6 py-6 text-center transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
               >
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.08),transparent_34%)]" />
                 <div className="relative z-10 mx-auto max-w-[78%]">
@@ -240,7 +240,7 @@ export default function StartcoPage() {
               className="rounded-[28px] border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 text-center"
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]" />
-              <div className="relative flex min-h-[360px] h-full flex-col items-center justify-between gap-4">
+              <div className="relative flex min-h-[260px] h-full flex-col items-center justify-between gap-4">
                 <div>
                   <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
                     {supportCards.neoMech.title}
