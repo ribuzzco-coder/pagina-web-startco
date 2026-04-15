@@ -31,12 +31,12 @@ export default function ContactPage() {
               Solicitar diagnóstico
             </p>
             <h1 className="mt-6 max-w-4xl font-sans text-4xl font-semibold leading-tight text-[#F5F7FA] sm:text-5xl">
-              Cuéntanos cómo está operando tu sistema comercial y evaluemos si hay fit.
+              Cuéntanos cómo buscas crecer y encontremos el mejor camino para tu negocio juntos.
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#98A0B3] sm:text-lg">
-              El diagnóstico es la forma correcta de entender si tu negocio tiene un
-              problema de estructura comercial, en qué nivel está y qué capa de trabajo
-              realmente conviene.
+              El diagnóstico te ayuda a encontrar valor, rumbo e ideas accionables
+              para entender mejor tu negocio y decidir qué camino tiene más sentido
+              seguir.
             </p>
           </div>
 
