@@ -15,6 +15,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const [isHeroTop, setIsHeroTop] = useState(false);
   const [activeBubbleStyle, setActiveBubbleStyle] = useState<{
     width: number;
     x: number;
@@ -38,6 +39,9 @@ export function Navbar() {
     const currentScrollY = window.scrollY;
     const isScrollingDown = currentScrollY > lastScrollYRef.current;
     const hasScrolledEnough = currentScrollY > 88;
+    const hero = document.getElementById("home-hero");
+    const heroBottom = hero ? hero.offsetTop + hero.offsetHeight - 76 : 0;
+    const shouldShowTransparent = pathname === "/" && currentScrollY < Math.max(heroBottom, 0);
 
     if (isScrollingDown && hasScrolledEnough) {
       setIsHidden(true);
@@ -45,17 +49,19 @@ export function Navbar() {
       setIsHidden(false);
     }
 
+    setIsHeroTop(shouldShowTransparent);
     lastScrollYRef.current = currentScrollY;
   });
 
   useEffect(() => {
     lastScrollYRef.current = window.scrollY;
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [pathname, isOpen]);
 
   const syncActiveBubble = useEffectEvent(() => {
     if (!navRef.current) {
@@ -102,7 +108,10 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b border-white/8 bg-[#0B0B10]/92 backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+        "fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color,backdrop-filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+        isHeroTop
+          ? "border-b border-transparent bg-transparent backdrop-blur-0"
+          : "border-b border-white/8 bg-[#0B0B10]/92 backdrop-blur-sm",
         isHidden ? "-translate-y-full" : "translate-y-0",
       )}
     >

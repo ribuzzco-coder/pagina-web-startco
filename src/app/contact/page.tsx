@@ -17,9 +17,9 @@ export const metadata = createPageMetadata({
   path: "/contact",
 });
 
-const embeddedDiagnosisFormUrl = SITE_CONFIG.diagnosisPath.includes("?")
-  ? `${SITE_CONFIG.diagnosisPath}&embedded=true`
-  : `${SITE_CONFIG.diagnosisPath}?embedded=true`;
+const embeddedDiagnosisFormUrl = SITE_CONFIG.diagnosisFormUrl.includes("?")
+  ? `${SITE_CONFIG.diagnosisFormUrl}&embedded=true`
+  : `${SITE_CONFIG.diagnosisFormUrl}?embedded=true`;
 
 export default function ContactPage() {
   return (
@@ -82,7 +82,7 @@ export default function ContactPage() {
                 </div>
 
                 <Button
-                  href={SITE_CONFIG.diagnosisPath}
+                  href={SITE_CONFIG.diagnosisFormUrl}
                   size="md"
                   variant="secondary"
                   external

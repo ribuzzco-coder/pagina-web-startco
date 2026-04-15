@@ -2,7 +2,8 @@ export const SITE_CONFIG = {
   name: "RiBuzz",
   shortName: "RiBuzz",
   url: "https://ribuzz.vercel.app",
-  diagnosisPath:
+  diagnosisPath: "/contact",
+  diagnosisFormUrl:
     "https://docs.google.com/forms/d/e/1FAIpQLSedUNuJeyesXwKhUzx80Mnh9RzblT5h_AGAyJ6TB2CW0SbJwA/viewform?usp=header",
   description:
     "RiBuzz diseña e implementa sistemas comerciales para empresas que ya venden, pero todavía no crecen con estructura, seguimiento y consistencia.",
