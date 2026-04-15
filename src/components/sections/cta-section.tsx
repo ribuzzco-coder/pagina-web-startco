@@ -1,14 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
+import type { ReactNode } from "react";
 
 type CTASectionProps = {
   title: string;
   description: string;
-  primaryLabel: string;
+  primaryLabel: ReactNode;
   primaryHref: string;
   primaryExternal?: boolean;
-  secondaryLabel?: string;
+  secondaryLabel?: ReactNode;
   secondaryHref?: string;
   secondaryExternal?: boolean;
   eyebrow?: string;

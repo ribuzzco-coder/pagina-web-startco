@@ -366,19 +366,19 @@ export const corePrinciples = [
 
 export const diagnosisExpectations = [
   {
-    title: "No hay venta automatica",
+    title: "Una lectura hecha para tu caso",
     description:
-      "Después del diagnóstico no se empuja una venta por defecto. Primero se evalua sí existe fit real.",
+      "No recibes una respuesta genérica. Lo que te devolvemos se aterriza a tu momento, tu estructura y tu forma de operar.",
   },
   {
-    title: "Se define la capa correcta",
+    title: "Acciones claras y posibles de abarcar",
     description:
-      "El siguiente paso puede ser diseño, implementación, acompañamiento o incluso no continuar si no tiene sentido.",
+      "La idea es darte foco sobre los siguientes movimientos sin llenarte de frentes innecesarios o imposibles de sostener.",
   },
   {
-    title: "Buscamos impacto, no volumen",
+    title: "Una experiencia simple, no un laberinto",
     description:
-      "La prioridad no es cerrar por cerrar, sino intervenir dónde si se puede generar una mejora clara.",
+      "Buscamos que todo sea entendible, amigable y accionable, sin perderte entre montones de páginas, pasos o documentos.",
   },
 ] as const;
 
