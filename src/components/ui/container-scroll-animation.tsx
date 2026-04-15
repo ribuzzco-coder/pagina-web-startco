@@ -55,14 +55,19 @@ export function ContainerScroll({
   }, []);
 
   const contentStyle = useMemo(() => {
-    const scale = 0.84 + progress * 0.16;
-    const translateY = 88 - progress * 88;
-    const rotateX = 14 - progress * 14;
-    const glowStrength = 0.16 + progress * 0.14;
+    const translateY = 16 - progress * 16;
+    const magentaGlow = 0.12 + progress * 0.16;
+    const cyanGlow = 0.04 + progress * 0.06;
+    const outlineGlow = 0.06 + progress * 0.08;
 
     return {
-      transform: `translate3d(0, ${translateY}px, 0) scale(${scale}) rotateX(${rotateX}deg)`,
-      boxShadow: `0 22px 80px rgba(230, 37, 255, ${glowStrength}), 0 14px 42px rgba(0, 0, 0, 0.34)`,
+      transform: `translate3d(0, ${translateY}px, 0)`,
+      boxShadow: `
+        0 0 0 1px rgba(230, 37, 255, ${outlineGlow}),
+        0 0 28px rgba(230, 37, 255, ${magentaGlow}),
+        0 0 54px rgba(15, 239, 253, ${cyanGlow}),
+        0 18px 42px rgba(0, 0, 0, 0.34)
+      `,
     } satisfies CSSProperties;
   }, [progress]);
 
