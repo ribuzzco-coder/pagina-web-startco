@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { HeroGalaxy } from "@/components/ui/hero-galaxy";
+import { HeroMarkButton } from "@/components/ui/hero-mark-button";
 import { PillBadge } from "@/components/ui/pill-badge";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -46,7 +47,7 @@ export default function HomePage() {
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <Container className="hero-no-select pt-[76px] text-center">
             <div className="mx-auto max-w-[58rem]">
-            <div className="mt-6 inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm sm:mt-10">
+            <div className="mt-4 inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm sm:mt-7">
               <PillBadge>Te damos la bienvenida.</PillBadge>
             </div>
 
@@ -59,21 +60,7 @@ export default function HomePage() {
                 priority
                 className="hero-wordmark h-12 w-auto sm:h-16 xl:h-24"
               />
-              <button
-                type="button"
-                aria-label="Logo de RiBuzz"
-                className="hero-mark-button relative flex h-24 w-24 items-center justify-center rounded-full sm:h-28 sm:w-28 xl:h-32 xl:w-32"
-              >
-                <div className="absolute inset-0 rounded-full bg-[#E625FF]/18 blur-2xl" />
-                <Image
-                  src={SITE_CONFIG.logoMark}
-                  alt="Símbolo RiBuzz"
-                  width={280}
-                  height={280}
-                  priority
-                  className="relative h-full w-full object-contain drop-shadow-[0_0_32px_rgba(230,37,255,0.58)]"
-                />
-              </button>
+              <HeroMarkButton src={SITE_CONFIG.logoMark} alt="Símbolo RiBuzz" />
             </div>
 
             <h1 className="mx-auto mt-6 max-w-3xl font-sans text-[1.9rem] font-bold leading-[1.08] text-[#F5F7FA] sm:text-[2.45rem] xl:text-[3rem]">
