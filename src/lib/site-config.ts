@@ -21,8 +21,8 @@
     { label: "Servicios", href: "/services" },
     { label: "Metodología", href: "/methodology" },
     { label: "Sobre RiBuzz", href: "/about" },
-    { label: "Startco", href: "/startco" },
-    { label: "Solicitar diagnóstico", href: "/contact" },
+    { label: "Solicitar diagnostico", href: "/contact" },
+    { label: "Tarjetas NFC", href: "/tarjetas-nfc" },
   ],
 } as const;
 

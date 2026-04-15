@@ -194,11 +194,45 @@ body {
   animation: page-blur-in 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.nav-blob-morphing {
-  animation: nav-blob-gel 920ms cubic-bezier(0.16, 1, 0.3, 1);
+.nfc-approach-card {
+  animation: nfc-card-approach 4.6s ease-in-out infinite;
 }
 
-@keyframes page-blur-in {
+.nfc-phone-pulse::before,
+.nfc-phone-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 1px solid rgba(15, 239, 253, 0.22);
+  border-radius: 999px;
+  animation: nfc-phone-wave 2.2s ease-out infinite;
+}
+
+.nfc-phone-pulse::after {
+  animation-delay: 0.8s;
+}
+
+.nfc-info-chip {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.nfc-info-chip--1 {
+  animation: nfc-info-reveal 4.6s ease-in-out infinite;
+  animation-delay: 1.7s;
+}
+
+.nfc-info-chip--2 {
+  animation: nfc-info-reveal 4.6s ease-in-out infinite;
+  animation-delay: 1.95s;
+}
+
+.nfc-info-chip--3 {
+  animation: nfc-info-reveal 4.6s ease-in-out infinite;
+  animation-delay: 2.2s;
+}
+
+@keyframes page-fade-in {
   from {
     opacity: 0.12;
     transform: translateY(2px) scale(0.999);
@@ -254,6 +288,53 @@ body {
   }
 }
 
+@keyframes nfc-card-approach {
+  0%, 16% {
+    transform: translate(0, 0) rotate(-12deg) scale(0.95);
+  }
+
+  34%, 52% {
+    transform: translate(82px, 54px) rotate(-2deg) scale(1);
+  }
+
+  70%, 100% {
+    transform: translate(0, 0) rotate(-12deg) scale(0.95);
+  }
+}
+
+@keyframes nfc-phone-wave {
+  0% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+
+  30%, 65% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes nfc-info-reveal {
+  0%, 32% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  40%, 62% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  75%, 100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -266,7 +347,17 @@ body {
     animation: none;
   }
 
-  .nav-blob-morphing {
+  .nfc-approach-card,
+  .nfc-phone-pulse::before,
+  .nfc-phone-pulse::after,
+  .nfc-info-chip--1,
+  .nfc-info-chip--2,
+  .nfc-info-chip--3 {
     animation: none;
+  }
+
+  .nfc-info-chip {
+    opacity: 1;
+    transform: none;
   }
 }

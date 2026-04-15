@@ -12,8 +12,10 @@
     "docker:down": "docker compose down"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.1",
     "@supabase/ssr": "^0.10.0",
     "@supabase/supabase-js": "^2.102.1",
+    "gsap": "^3.12.5",
     "next": "16.2.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
