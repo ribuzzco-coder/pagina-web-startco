@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 
 import { Container } from "@/components/ui/container";
@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 export const metadata = createPageMetadata({
   title: "Startco",
   description:
-    "Startco es un hub rapido de enlaces de RiBuzz para conectar redes, diagnostico, sitio principal y proximos recursos de valor.",
+    "Startco es un hub rápido de enlaces de RiBuzz para conectar redes, diagnóstico, sitio principal y proximos recursos de valor.",
   path: "/startco",
 });
 
@@ -27,7 +27,7 @@ const primaryLinks = [
     accent: "from-[#25D366]/20 via-[#25D366]/10 to-transparent",
   },
   {
-    title: "Hacer diagnostico",
+    title: "Hacer diagnóstico",
     description: "Completar lectura inicial del sistema comercial",
     href: SITE_CONFIG.diagnosisPath,
     accent: "from-[#0FEFFD]/20 via-[#0FEFFD]/10 to-transparent",
@@ -81,7 +81,7 @@ export default function StartcoPage() {
               STARTCO
             </h1>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
-              Un punto de entrada rapido para conectar, explorar recursos y llevar
+              Un punto de entrada rápido para conectar, explorar recursos y llevar
               la marca de RiBuzz a conversaciones, networking y proximos activos.
             </p>
           </div>
@@ -184,3 +184,4 @@ export default function StartcoPage() {
     </section>
   );
 }
+

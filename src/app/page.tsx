@@ -1,4 +1,4 @@
-import { CTASection } from "@/components/sections/cta-section";
+﻿import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { StepCard } from "@/components/sections/step-card";
 import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
@@ -47,8 +47,8 @@ export default function HomePage() {
               Si ya vendes, pero no creces con consistencia, te falta sistema comercial.
             </h1>
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-              RiBuzz ordena captacion, conversion y seguimiento para negocios que
-              ya estan en marcha, pero todavia dependen demasiado de la intuicion.
+              RiBuzz ordena captación, conversión y seguimiento para negocios que
+              ya están en marcha, pero todavía dependen demasiado de la intuición.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -85,11 +85,11 @@ export default function HomePage() {
               Entrada recomendada
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA]">
-              Diagnostico del sistema comercial
+              Diagnóstico del sistema comercial
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-              Antes de ejecutar, hacemos visible donde se esta rompiendo el proceso
-              comercial y que conviene mover primero.
+              Antes de ejecutar, hacemos visible dónde se está rompiendo el proceso
+              comercial y qué conviene mover primero.
             </p>
 
             <div className="mt-6 space-y-4 border-t border-white/8 pt-6">
@@ -105,15 +105,15 @@ export default function HomePage() {
 
             <div className="mt-6 border-t border-white/8 pt-6">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#B8EAF0]">
-                Diagnostico gratuito
+                Diagnóstico gratuito
               </p>
               <p className="mt-3 max-w-lg text-sm leading-relaxed text-[#D8F9FC]">
-                Completa el diagnostico inicial, te toma menos de 10 minutos y
-                recibes una lectura base sobre los principales puntos de friccion
+                Completa el diagnóstico inicial, te toma menos de 10 minutos y
+                recibes una lectura base sobre los principales puntos de fricción
                 de tu sistema comercial.
               </p>
               <Button href={SITE_CONFIG.diagnosisPath} className="mt-5" size="md">
-                Abrir diagnostico gratuito
+                Abrir diagnóstico gratuito
               </Button>
             </div>
           </Card>
@@ -124,8 +124,8 @@ export default function HomePage() {
         <Container>
           <SectionTitle
             eyebrow="Lo que suele estar pasando"
-            title="El problema no siempre es vender mas. Es vender con un sistema debil."
-            description="Estos son los sintomas mas comunes cuando no hay estructura comercial clara."
+            title="El problema no siempre es vender más. Es vender con un sistema débil."
+            description="Estos son los síntomas más comunes cuando no hay estructura comercial clara."
           />
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -145,10 +145,10 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <section className="cv-auto py-18 sm:py-22" id="solucion">
+      <section className="cv-auto py-18 sm:py-22" id="solución">
         <Container>
             <SectionTitle
-            eyebrow="La solucion RiBuzz"
+            eyebrow="La solución RiBuzz"
             title="No entramos a ejecutar piezas sueltas. Intervenimos el sistema comercial."
             description="Entender, diagnosticar, estructurar, implementar y acompañar."
           />
@@ -175,7 +175,7 @@ export default function HomePage() {
               Para quien si es
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA]">
-              Empresas que ya venden y necesitan ordenar como crecen.
+              Empresas que ya venden y necesitan ordenar cómo crecen.
             </h2>
             <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#98A0B3] sm:text-base">
               {fitChecklist.map((item) => (
@@ -192,7 +192,7 @@ export default function HomePage() {
               Para quien no es
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA]">
-              No es para negocios que solo quieren mas marketing sin revisar el fondo.
+              No es para negocios que solo quieren más marketing sin revisar el fondo.
             </h2>
             <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#98A0B3] sm:text-base">
               {nonFitChecklist.map((item) => (
@@ -207,9 +207,9 @@ export default function HomePage() {
       </section>
 
       <CTASection
-        title="Descubre donde se esta rompiendo tu crecimiento comercial."
+        title="Descubre dónde se está rompiendo tu crecimiento comercial."
         description="Te toma menos de 10 minutos. Recibes una lectura inicial y primero revisamos si hay fit."
-        primaryLabel="Solicita tu diagnostico gratuito"
+        primaryLabel="Solicita tu diagnóstico gratuito"
         primaryHref={SITE_CONFIG.diagnosisPath}
         secondaryLabel="Escribir por WhatsApp"
         secondaryHref={SITE_CONFIG.whatsappUrl}
@@ -222,9 +222,9 @@ export default function HomePage() {
         <Container>
           <SectionTitle
             align="center"
-            eyebrow="Capas de intervencion"
-            title="Tres formas de intervenir un mismo sistema comercial"
-            description="Tres capas para pasar de claridad a ejecucion."
+            eyebrow="Capas de intervención"
+            title="Tres formás de intervenir un mismo sistema comercial"
+            description="Tres capas para pasar de claridad a ejecución."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -285,9 +285,9 @@ export default function HomePage() {
         <Container>
           <SectionTitle
             align="center"
-            eyebrow="Como trabajamos"
-            title="Diagnostico primero. Implementación después."
-            description="Primero claridad. Luego ejecucion."
+            eyebrow="Cómo trabajamos"
+            title="Diagnóstico primero. Implementación después."
+            description="Primero claridad. Luego ejecución."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-4">
@@ -305,7 +305,7 @@ export default function HomePage() {
 
           <div className="mt-9 flex justify-center">
             <Button href="/methodology" variant="secondary" size="lg">
-              Ver metodologia completa
+              Ver metodología completa
             </Button>
           </div>
         </Container>
@@ -314,8 +314,8 @@ export default function HomePage() {
       <section className="cv-auto py-18 sm:py-22">
         <Container>
           <SectionTitle
-            eyebrow="FAQ rapido"
-            title="Preguntas frecuentes antes de solicitar diagnostico"
+            eyebrow="FAQ rápido"
+            title="Preguntas frecuentes antes de solicitar diagnóstico"
             description="Respuestas breves antes de aplicar."
           />
 
@@ -330,16 +330,16 @@ export default function HomePage() {
           </div>
           <div className="mt-3 flex">
             <Button href={SITE_CONFIG.diagnosisPath} size="lg">
-              Solicita tu diagnostico gratuito
+              Solicita tu diagnóstico gratuito
             </Button>
           </div>
         </Container>
       </section>
 
       <CTASection
-        title="Antes de ejecutar mas, conviene entender donde se esta rompiendo tu sistema comercial."
-        description="Completa el diagnostico en menos de 10 minutos y revisamos si hay una oportunidad real de intervencion."
-        primaryLabel="Solicita tu diagnostico gratuito"
+        title="Antes de ejecutar mas, conviene entender dónde se está rompiendo tu sistema comercial."
+        description="Completa el diagnóstico en menos de 10 minutos y revisamos sí hay una oportunidad real de intervención."
+        primaryLabel="Solicita tu diagnóstico gratuito"
         primaryHref={SITE_CONFIG.diagnosisPath}
         secondaryLabel="Escribir por WhatsApp"
         secondaryHref={SITE_CONFIG.whatsappUrl}
@@ -350,3 +350,6 @@ export default function HomePage() {
     </>
   );
 }
+
+
+

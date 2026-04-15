@@ -1,4 +1,4 @@
-import { PageHero } from "@/components/common/page-hero";
+﻿import { PageHero } from "@/components/common/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { ServiceCard } from "@/components/sections/service-card";
 import { Card } from "@/components/ui/card";
@@ -25,14 +25,14 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Servicios RiBuzz"
-        title="Tres capas de intervencion para corregir y sostener tu sistema comercial"
-        description="RiBuzz no presenta servicios sueltos. Presenta capas logicas para pasar de lectura y estructura a capacidad operativa real y mejora continua."
-        primaryCtaLabel="Solicita tu diagnostico gratuito"
+        title="Tres capas de intervención para corregir y sostener tu sistema comercial"
+        description="RiBuzz no presenta servicios sueltos. Presenta capas lógicas para pasar de lectura y estructura a capacidad operativa real y mejora continua."
+        primaryCtaLabel="Solicita tu diagnóstico gratuito"
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
-        secondaryCtaLabel="Ver metodologia"
+        secondaryCtaLabel="Ver metodología"
         secondaryCtaHref="/methodology"
         asideTitle="El orden importa"
-        asideText="Primero claridad y diagnostico. Despues estructura. Luego implementación y acompañamiento donde sí hace falta."
+        asideText="Primero claridad y diagnóstico. Después estructura. Luego implementación y acompañamiento dónde sí hace falta."
       />
 
       <section className="cv-auto pb-16 sm:pb-22">
@@ -40,7 +40,7 @@ export default function ServicesPage() {
           <SectionTitle
             eyebrow="Capas de trabajo"
             title="Cada capa responde a un momento distinto del negocio"
-            description="La secuencia cambia segun el contexto, pero la logica es la misma: no ejecutar sin lectura del problema y no diseñar algo que luego no pueda operar."
+            description="La secuencia cambia según el contexto, pero la lógica es la misma: no ejecutar sin lectura del problema y no diseñar algo qué luego no pueda operar."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -65,9 +65,9 @@ export default function ServicesPage() {
         <Container>
           <SectionTitle
             align="center"
-            eyebrow="Que genera cada capa"
+            eyebrow="Qué genera cada capa"
             title="Claridad, capacidad operativa y sostenibilidad"
-            description="El valor no esta solo en hacer cosas. Esta en instalar una logica comercial que el negocio pueda usar y mejorar."
+            description="El valor no está solo en hacer cosas. Esta en instalar una lógica comercial qué el negocio pueda usar y mejorar."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -90,8 +90,8 @@ export default function ServicesPage() {
           <SectionTitle
             align="center"
             eyebrow="Diferencial"
-            title="Lo que RiBuzz hace distinto frente a agencias, consultores o ejecucion aislada"
-            description="La diferencia no es solo tecnica. Es la postura de intervenir el sistema comercial con criterio y no una parte desconectada."
+            title="Lo que RiBuzz hace distinto frente a agencias, consultores o ejecución aislada"
+            description="La diferencia no es solo técnica. Es la postura de intervenir el sistema comercial con criterio y no una parte desconectada."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -105,9 +105,9 @@ export default function ServicesPage() {
       </section>
 
       <CTASection
-        title="El diagnostico define que capa tiene sentido para tu momento actual."
-        description="Solicita tu diagnostico gratuito. Te toma menos de 10 minutos, recibes una lectura inicial del sistema comercial y revisamos si realmente hay fit antes de proponer una capa de trabajo."
-        primaryLabel="Solicita tu diagnostico gratuito"
+        title="El diagnóstico define qué capa tiene sentido para tu momento actual."
+        description="Solicita tu diagnóstico gratuito. Te toma menos de 10 minutos, recibes una lectura inicial del sistema comercial y revisamos si realmente hay fit antes de proponer una capa de trabajo."
+        primaryLabel="Solicita tu diagnóstico gratuito"
         primaryHref={SITE_CONFIG.diagnosisPath}
         secondaryLabel="Escribir por WhatsApp"
         secondaryHref={SITE_CONFIG.whatsappUrl}
@@ -116,3 +116,6 @@ export default function ServicesPage() {
     </>
   );
 }
+
+
+
