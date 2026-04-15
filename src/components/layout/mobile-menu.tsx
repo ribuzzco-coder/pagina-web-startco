@@ -22,6 +22,7 @@ export function MobileMenu({ isOpen, pathname, onClose }: MobileMenuProps) {
           {SITE_CONFIG.navLinks.map((link) => {
             const isActive =
               link.href === "/" ? pathname === link.href : pathname.startsWith(link.href);
+            const isDiagnosisLink = link.href === "/contact";
 
             return (
               <Link
@@ -32,7 +33,9 @@ export function MobileMenu({ isOpen, pathname, onClose }: MobileMenuProps) {
                   "rounded-xl border px-3 py-2.5 text-sm font-medium transition-colors",
                   isActive
                     ? "border-white/10 bg-[#161826] text-[#F5F7FA]"
-                    : "border-white/8 text-[#98A0B3] hover:border-white/14 hover:text-[#F5F7FA]",
+                    : isDiagnosisLink
+                      ? "border-[#E625FF]/18 text-[#E875F7] hover:border-[#E625FF]/28 hover:text-[#F5F7FA]"
+                      : "border-white/8 text-[#98A0B3] hover:border-white/14 hover:text-[#F5F7FA]",
                 )}
               >
                 {link.label}

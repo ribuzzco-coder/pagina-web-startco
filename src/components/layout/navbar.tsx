@@ -147,6 +147,7 @@ export function Navbar() {
           {SITE_CONFIG.navLinks.map((link) => {
             const isActive =
               link.href === "/" ? pathname === link.href : pathname.startsWith(link.href);
+            const isDiagnosisLink = link.href === "/contact";
 
             return (
               <Link
@@ -157,7 +158,9 @@ export function Navbar() {
                   "relative z-10 rounded-full border px-4 py-2 text-sm font-medium tracking-[0.01em] transition-[color,border-color,box-shadow,background-color,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
                   isActive
                     ? "border-transparent bg-transparent text-[#7A1A8A]"
-                    : "border-transparent text-[#98A0B3] hover:border-[#E625FF]/55 hover:bg-[#1A1320] hover:text-[#F5F7FA] hover:shadow-[0_0_0_1px_rgba(230,37,255,0.24),0_0_24px_rgba(230,37,255,0.28)]",
+                    : isDiagnosisLink
+                      ? "border-[#E625FF]/20 text-[#E875F7] hover:border-[#E625FF]/55 hover:bg-[#1A1320] hover:text-[#F5F7FA] hover:shadow-[0_0_0_1px_rgba(230,37,255,0.24),0_0_24px_rgba(230,37,255,0.28)]"
+                      : "border-transparent text-[#98A0B3] hover:border-[#E625FF]/55 hover:bg-[#1A1320] hover:text-[#F5F7FA] hover:shadow-[0_0_0_1px_rgba(230,37,255,0.24),0_0_24px_rgba(230,37,255,0.28)]",
                 )}
               >
                 {link.label}
