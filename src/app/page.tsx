@@ -47,14 +47,14 @@ export default function HomePage() {
           <Container className="hero-no-select pt-[76px] text-center">
             <div className="mx-auto max-w-[58rem]">
             <div className="inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm">
-              <PillBadge>Diseño e implementación de sistemas comerciales</PillBadge>
+              <PillBadge>Te damos la bienvenida.</PillBadge>
             </div>
 
-            <div className="mt-8 flex flex-col items-center justify-center gap-5 sm:gap-6">
+            <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:mt-7 sm:gap-5">
               <button
                 type="button"
                 aria-label="Logo de RiBuzz"
-                className="hero-mark-button relative flex h-18 w-18 items-center justify-center rounded-full sm:h-22 sm:w-22 xl:h-30 xl:w-30"
+                className="hero-mark-button relative flex h-24 w-24 items-center justify-center rounded-full sm:h-30 sm:w-30 xl:h-36 xl:w-36"
               >
                 <div className="absolute inset-0 rounded-full bg-[#E625FF]/18 blur-2xl" />
                 <Image
@@ -63,7 +63,7 @@ export default function HomePage() {
                   width={280}
                   height={280}
                   priority
-                  className="relative h-full w-full object-contain drop-shadow-[0_0_26px_rgba(230,37,255,0.55)]"
+                  className="relative h-full w-full object-contain drop-shadow-[0_0_32px_rgba(230,37,255,0.58)]"
                 />
               </button>
               <Image
@@ -76,8 +76,8 @@ export default function HomePage() {
               />
             </div>
 
-            <h1 className="mx-auto mt-8 max-w-4xl font-sans text-3xl font-bold leading-[1.06] text-[#F5F7FA] sm:text-[3.2rem] xl:text-[4rem]">
-              Sistemas comerciales para crecer tu empresa
+            <h1 className="mx-auto mt-7 max-w-4xl font-sans text-3xl font-bold leading-[1.06] text-[#F5F7FA] sm:text-[3.2rem] xl:text-[4rem]">
+              El sistema de crecimiento para tu empresa.
             </h1>
             <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-[#D9DDE7] sm:text-lg">
               Diseñamos la estructura comercial que te ayuda a captar mejor, vender con
@@ -86,16 +86,17 @@ export default function HomePage() {
 
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button href={SITE_CONFIG.diagnosisPath} size="lg">
-                {SITE_CONFIG.diagnosisCtaLabel}
+                Realiza tu diagnóstico gratuito
               </Button>
-              <Button href="/services" variant="secondary" size="lg">
+              <Button
+                href="/services"
+                variant="secondary"
+                size="lg"
+                className="shadow-[0_0_0_1px_rgba(230,37,255,0.1),0_0_18px_rgba(230,37,255,0.16)]"
+              >
                 Ver servicios
               </Button>
             </div>
-
-            <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-[#AEB5C4] sm:text-sm">
-              Diagnóstico inicial para identificar dónde se está frenando tu crecimiento comercial.
-            </p>
             </div>
           </Container>
         </div>

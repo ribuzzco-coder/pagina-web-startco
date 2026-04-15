@@ -282,9 +282,20 @@ body * {
 }
 
 .hero-mark-button {
+  isolation: isolate;
   transition:
     transform 240ms ease,
     filter 260ms ease;
+}
+
+.hero-mark-button::before,
+.hero-mark-button::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
 }
 
 .hero-mark-button:hover {
@@ -298,14 +309,20 @@ body * {
     drop-shadow(0 0 30px rgba(15, 239, 253, 0.22));
 }
 
-.hero-mark-button:active::after {
-  content: "";
-  position: absolute;
-  inset: -10px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(230, 37, 255, 0.28), rgba(15, 239, 253, 0.12) 48%, transparent 72%);
-  filter: blur(12px);
+.hero-mark-button:active::before {
   z-index: -1;
+  background: radial-gradient(circle, rgba(230, 37, 255, 0.34), rgba(15, 239, 253, 0.14) 48%, transparent 74%);
+  filter: blur(12px);
+  animation: hero-mark-wave 640ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-mark-button:active::after {
+  z-index: -2;
+  border: 1px solid rgba(255, 148, 248, 0.32);
+  box-shadow:
+    0 0 0 1px rgba(230, 37, 255, 0.14),
+    0 0 22px rgba(230, 37, 255, 0.2);
+  animation: hero-mark-ring 720ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nfc-approach-card {
@@ -490,6 +507,35 @@ body * {
   75%, 100% {
     opacity: 0;
     transform: translateY(10px);
+  }
+}
+
+@keyframes hero-mark-wave {
+  0% {
+    opacity: 0.62;
+    transform: scale(0.86);
+  }
+
+  70% {
+    opacity: 0.22;
+    transform: scale(1.42);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+@keyframes hero-mark-ring {
+  0% {
+    opacity: 0.48;
+    transform: scale(0.92);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.85);
   }
 }
 
