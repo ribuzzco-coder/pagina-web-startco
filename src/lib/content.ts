@@ -1,4 +1,4 @@
-﻿export type Service = {
+export type Service = {
   layer: string;
   title: string;
   summary: string;
@@ -26,44 +26,24 @@ export type ContentBlock = {
 
 export const homePainPoints = [
   {
-    title: "Adquisición inestable",
+    title: "Esfuerzos comerciales dispersos",
     description:
-      "El negocio genera interés por momentos, pero no sostiene un flujo comercial predecible.",
+      "Marketing, herramientas y seguimiento avanzan de forma aislada, sin una lógica unificada que mantenga predecible el ciclo.",
   },
   {
-    title: "Baja conversión",
+    title: "Fricción al convertir y seguir",
     description:
-      "Hay conversaciones, tráfico o leads, pero pocos avances reales hacia cierres.",
+      "Se logran conversaciones o interés inicial, pero se enfrían rápido por falta de orden, respuesta rápida y estructura de seguimiento.",
   },
   {
-    title: "Seguimiento deficiente",
+    title: "Dependencia estricta del fundador",
     description:
-      "Las oportunidades no se trabajan con consistencia y muchas se enfríen antes de avanzar.",
+      "El criterio, el impulso comercial y casi todos los cierres pesados de venta siguen recayendo absolutamente en una sola persona.",
   },
   {
-    title: "Dependencia del fundador",
+    title: "Estancamiento invisible a ciegas",
     description:
-      "La venta, el criterio y el impulso comercial siguen concentrados en una sola persona.",
-  },
-  {
-    title: "Decisiones a ciegas",
-    description:
-      "No hay claridad sobre qué etapa está fallando ni sobre qué priorizar primero.",
-  },
-  {
-    title: "Flujo de caja fragil",
-    description:
-      "La irregularidad comercial termina afectando caja, previsibilidad y capacidad de invertir mejor.",
-  },
-  {
-    title: "Esfuerzos dispersos",
-    description:
-      "Marketing, seguimiento, oferta y herramientas avanzan sin una misma lógica comercial.",
-  },
-  {
-    title: "Cuello de botella invisible",
-    description:
-      "Se prueba de todo, pero no se entiende con precisión dónde se rompe el sistema.",
+      "Existe un cuello de botella evidente que afecta la caja y el crecimiento, pero no hay claridad precisa sobre dónde o urgente qué priorizar.",
   },
 ] as const;
 
