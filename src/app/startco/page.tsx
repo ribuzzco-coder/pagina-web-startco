@@ -63,21 +63,18 @@ export default function StartcoPage() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(230,37,255,0.1),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.08),transparent_26%)]" />
 
           <div className="relative flex flex-col items-center text-center">
-            <div className="flex h-28 w-28 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_16px_32px_rgba(0,0,0,0.22)]">
+            <div className="flex h-32 w-32 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_16px_32px_rgba(0,0,0,0.22)] sm:h-36 sm:w-36">
               <Image
                 src={SITE_CONFIG.logoMark}
                 alt="Logo Startco RiBuzz"
-                width={92}
-                height={92}
-                className="h-20 w-20 object-contain"
+                width={112}
+                height={112}
+                className="h-24 w-24 object-contain sm:h-28 sm:w-28"
                 priority
               />
             </div>
 
-            <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E7B0EE]">
-              Startco by RiBuzz
-            </p>
-            <h1 className="mt-3 font-heading text-4xl tracking-tight text-[#F5F7FA] sm:text-5xl">
+            <h1 className="mt-6 font-sans text-4xl font-bold tracking-tight text-[#F5F7FA] sm:text-5xl">
               STARTCO
             </h1>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
@@ -86,11 +83,11 @@ export default function StartcoPage() {
             </p>
           </div>
 
-          <div className="relative mt-10 grid gap-4">
+          <div className="relative mx-auto mt-10 grid max-w-xl gap-4">
             {primaryLinks.map((link) => {
               const isExternal = link.href.startsWith("http");
               const className = cn(
-                "group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#141724] px-5 py-5 text-left transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-white/18 hover:bg-[#171B2A] hover:shadow-[0_18px_36px_rgba(0,0,0,0.22)]",
+                "group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#141724] px-5 py-5 text-center transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-white/18 hover:bg-[#171B2A] hover:shadow-[0_18px_36px_rgba(0,0,0,0.22)]",
               );
 
               const content = (
@@ -101,8 +98,8 @@ export default function StartcoPage() {
                       link.accent,
                     )}
                   />
-                  <div className="relative flex items-center justify-between gap-4">
-                    <div>
+                  <div className="relative flex items-center justify-center gap-4">
+                    <div className="min-w-0">
                       <p className="text-base font-semibold text-[#F5F7FA]">{link.title}</p>
                       <p className="mt-1 text-sm text-[#98A0B3]">{link.description}</p>
                     </div>
@@ -135,10 +132,10 @@ export default function StartcoPage() {
             })}
           </div>
 
-          <div className="relative mt-8 grid gap-4 md:grid-cols-2">
+          <div className="relative mx-auto mt-8 grid max-w-xl gap-4 md:grid-cols-2">
             {supportLinks.map((item) => {
               const baseClassName =
-                "rounded-[24px] border px-5 py-5 text-left transition-[border-color,background-color,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]";
+                "rounded-[24px] border px-5 py-5 text-center transition-[border-color,background-color,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]";
 
               if (item.live) {
                 return (
@@ -166,7 +163,7 @@ export default function StartcoPage() {
                     "border-dashed border-white/10 bg-[#10131C]/70",
                   )}
                 >
-                  <div className="flex items-center justify-between gap-3">
+                  <div className="flex flex-col items-center justify-center gap-3">
                     <p className="text-base font-semibold text-[#F5F7FA]">{item.title}</p>
                     <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#E7B0EE]">
                       Proximamente
