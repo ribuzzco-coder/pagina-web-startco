@@ -207,13 +207,13 @@ export default function StartcoPage() {
                     {supportCards.nfc.description}
                   </p>
                 </div>
-                <div className="pointer-events-none absolute -bottom-[32%] left-1/2 w-[58%] -translate-x-1/2 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                <div className="pointer-events-none absolute -bottom-[24%] left-1/2 w-[58%] -translate-x-1/2 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
                   <Image
                     src="/startco-cards2.png"
                     alt="Mockup de tarjetas NFC RiBuzz"
                     width={700}
                     height={1000}
-                    className="h-auto w-full object-contain"
+                    className="h-auto w-full object-contain drop-shadow-[0_0_28px_rgba(230,37,255,0.20)]"
                   />
                 </div>
               </Card>
