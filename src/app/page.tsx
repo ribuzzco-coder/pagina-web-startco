@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 
 import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
@@ -27,7 +27,7 @@ import { SITE_CONFIG } from "@/lib/site-config";
 export const metadata = createPageMetadata({
   title: "Inicio",
   description:
-    "RiBuzz diseña e implementa sistemas comerciales para empresas que ya venden, pero todavía no crecen con estructura, seguimiento y consistencia.",
+    "RiBuzz diseÃ±a e implementa sistemas comerciales para empresas que ya venden, pero todavÃ­a no crecen con estructura, seguimiento y consistencia.",
   path: "/",
 });
 
@@ -47,19 +47,15 @@ export default function HomePage() {
           <Container className="hero-no-select pt-[76px] text-center">
             <div className="mx-auto max-w-[58rem]">
             <div className="inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm">
-              <PillBadge>Diseño e implementación de sistemas comerciales</PillBadge>
+              <PillBadge>DiseÃ±o e implementaciÃ³n de sistemas comerciales</PillBadge>
             </div>
 
-            <div className="mt-8 flex items-center justify-center gap-5 sm:gap-7">
-              <Image
-                src="/images/branding/ribuzz-texto.png"
-                alt="RiBuzz"
-                width={606}
-                height={128}
-                priority
-                className="h-12 w-auto sm:h-16 xl:h-24"
-              />
-              <div className="relative flex h-16 w-16 items-center justify-center rounded-full sm:h-20 sm:w-20 xl:h-28 xl:w-28">
+            <div className="mt-8 flex flex-col items-center justify-center gap-5 sm:gap-6">
+              <button
+                type="button"
+                aria-label="Logo de RiBuzz"
+                className="hero-mark-button relative flex h-18 w-18 items-center justify-center rounded-full sm:h-22 sm:w-22 xl:h-30 xl:w-30"
+              >
                 <div className="absolute inset-0 rounded-full bg-[#E625FF]/18 blur-2xl" />
                 <Image
                   src={SITE_CONFIG.logoMark}
@@ -69,15 +65,23 @@ export default function HomePage() {
                   priority
                   className="relative h-full w-full object-contain drop-shadow-[0_0_26px_rgba(230,37,255,0.55)]"
                 />
-              </div>
+              </button>
+              <Image
+                src="/images/branding/ribuzz-texto.png"
+                alt="RiBuzz"
+                width={606}
+                height={128}
+                priority
+                className="h-12 w-auto sm:h-16 xl:h-24"
+              />
             </div>
 
             <h1 className="mx-auto mt-8 max-w-4xl font-sans text-3xl font-bold leading-[1.06] text-[#F5F7FA] sm:text-[3.2rem] xl:text-[4rem]">
               Sistemas comerciales para crecer tu empresa
             </h1>
             <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-[#D9DDE7] sm:text-lg">
-              Diseñamos la estructura comercial que te ayuda a captar mejor, vender con
-              más orden y sostener el crecimiento con seguimiento real.
+              DiseÃ±amos la estructura comercial que te ayuda a captar mejor, vender con
+              mÃ¡s orden y sostener el crecimiento con seguimiento real.
             </p>
 
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -90,7 +94,7 @@ export default function HomePage() {
             </div>
 
             <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-[#AEB5C4] sm:text-sm">
-              Diagnóstico inicial para identificar dónde se está frenando tu crecimiento comercial.
+              DiagnÃ³stico inicial para identificar dÃ³nde se estÃ¡ frenando tu crecimiento comercial.
             </p>
             </div>
           </Container>
@@ -101,8 +105,8 @@ export default function HomePage() {
         <Container>
           <SectionTitle
             eyebrow="Lo que suele estar pasando"
-            title="El problema no siempre es vender más. Es vender con un sistema débil."
-            description="Estos son los síntomas más comunes cuando no hay estructura comercial clara."
+            title="El problema no siempre es vender mÃ¡s. Es vender con un sistema dÃ©bil."
+            description="Estos son los sÃ­ntomas mÃ¡s comunes cuando no hay estructura comercial clara."
           />
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -122,12 +126,12 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <section className="cv-auto py-18 sm:py-22" id="solución">
+      <section className="cv-auto py-18 sm:py-22" id="soluciÃ³n">
         <Container>
           <SectionTitle
-            eyebrow="La solución RiBuzz"
+            eyebrow="La soluciÃ³n RiBuzz"
             title="No entramos a ejecutar piezas sueltas. Intervenimos el sistema comercial."
-            description="Entender, diagnosticar, estructurar, implementar y acompañar."
+            description="Entender, diagnosticar, estructurar, implementar y acompaÃ±ar."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -149,10 +153,10 @@ export default function HomePage() {
         <Container className="grid gap-6 lg:grid-cols-2">
           <Card className="rounded-[28px] p-7 sm:p-8">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-              Para quien sí es
+              Para quien sÃ­ es
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA]">
-              Empresas que ya venden y necesitan ordenar cómo crecen.
+              Empresas que ya venden y necesitan ordenar cÃ³mo crecen.
             </h2>
             <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#98A0B3] sm:text-base">
               {fitChecklist.map((item) => (
@@ -169,7 +173,7 @@ export default function HomePage() {
               Para quien no es
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA]">
-              No es para negocios que solo quieren más marketing sin revisar el fondo.
+              No es para negocios que solo quieren mÃ¡s marketing sin revisar el fondo.
             </h2>
             <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#98A0B3] sm:text-base">
               {nonFitChecklist.map((item) => (
@@ -184,9 +188,9 @@ export default function HomePage() {
       </section>
 
       <CTASection
-        title="Descubre dónde se está rompiendo tu crecimiento comercial."
+        title="Descubre dÃ³nde se estÃ¡ rompiendo tu crecimiento comercial."
         description="Te toma menos de 10 minutos. Recibes una lectura inicial y primero revisamos si hay fit."
-        primaryLabel="Solicita tu diagnóstico gratuito"
+        primaryLabel="Solicita tu diagnÃ³stico gratuito"
         primaryHref={SITE_CONFIG.diagnosisPath}
         secondaryLabel="Escribir por WhatsApp"
         secondaryHref={SITE_CONFIG.whatsappUrl}
@@ -199,9 +203,9 @@ export default function HomePage() {
         <Container>
           <SectionTitle
             align="center"
-            eyebrow="Capas de intervención"
+            eyebrow="Capas de intervenciÃ³n"
             title="Tres formas de intervenir un mismo sistema comercial"
-            description="Tres capas para pasar de claridad a ejecución."
+            description="Tres capas para pasar de claridad a ejecuciÃ³n."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -262,9 +266,9 @@ export default function HomePage() {
         <Container>
           <SectionTitle
             align="center"
-            eyebrow="Cómo trabajamos"
-            title="Diagnóstico primero. Implementación después."
-            description="Primero claridad. Luego ejecución."
+            eyebrow="CÃ³mo trabajamos"
+            title="DiagnÃ³stico primero. ImplementaciÃ³n despuÃ©s."
+            description="Primero claridad. Luego ejecuciÃ³n."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-4">
@@ -282,7 +286,7 @@ export default function HomePage() {
 
           <div className="mt-9 flex justify-center">
             <Button href="/methodology" variant="secondary" size="lg">
-              Ver metodología completa
+              Ver metodologÃ­a completa
             </Button>
           </div>
         </Container>
@@ -291,8 +295,8 @@ export default function HomePage() {
       <section className="cv-auto py-18 sm:py-22">
         <Container>
           <SectionTitle
-            eyebrow="FAQ rápido"
-            title="Preguntas frecuentes antes de solicitar diagnóstico"
+            eyebrow="FAQ rÃ¡pido"
+            title="Preguntas frecuentes antes de solicitar diagnÃ³stico"
             description="Respuestas breves antes de aplicar."
           />
 
@@ -307,16 +311,16 @@ export default function HomePage() {
           </div>
           <div className="mt-3 flex">
             <Button href={SITE_CONFIG.diagnosisPath} size="lg">
-              Solicita tu diagnóstico gratuito
+              Solicita tu diagnÃ³stico gratuito
             </Button>
           </div>
         </Container>
       </section>
 
       <CTASection
-        title="Antes de ejecutar más, conviene entender dónde se está rompiendo tu sistema comercial."
-        description="Completa el diagnóstico en menos de 10 minutos y revisamos si hay una oportunidad real de intervención."
-        primaryLabel="Solicita tu diagnóstico gratuito"
+        title="Antes de ejecutar mÃ¡s, conviene entender dÃ³nde se estÃ¡ rompiendo tu sistema comercial."
+        description="Completa el diagnÃ³stico en menos de 10 minutos y revisamos si hay una oportunidad real de intervenciÃ³n."
+        primaryLabel="Solicita tu diagnÃ³stico gratuito"
         primaryHref={SITE_CONFIG.diagnosisPath}
         secondaryLabel="Escribir por WhatsApp"
         secondaryHref={SITE_CONFIG.whatsappUrl}
@@ -327,3 +331,4 @@ export default function HomePage() {
     </>
   );
 }
+

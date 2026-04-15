@@ -1,4 +1,4 @@
-import { CTASection } from "@/components/sections/cta-section";
+﻿import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -11,9 +11,9 @@ import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Solicitar diagnóstico",
+  title: "Solicitar diagnÃ³stico",
   description:
-    "Solicita un diagnóstico con RiBuzz para evaluar fit, leer tu sistema comercial y definir el siguiente paso correcto.",
+    "Solicita un diagnÃ³stico con RiBuzz para evaluar fit, leer tu sistema comercial y definir el siguiente paso correcto.",
   path: "/contact",
 });
 
@@ -28,14 +28,14 @@ export default function ContactPage() {
         <Container className="grid max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-              Solicitar diagnóstico
+              Solicitar diagnÃ³stico
             </p>
             <h1 className="mt-6 max-w-4xl font-sans text-4xl font-semibold leading-tight text-[#F5F7FA] sm:text-5xl">
-              Cuéntanos cómo buscas crecer y encontremos el mejor camino para tu negocio juntos.
+              CuÃ©ntanos cÃ³mo buscas crecer y encontremos el mejor camino para tu negocio juntos.
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#98A0B3] sm:text-lg">
-              El diagnóstico te ayuda a encontrar valor, rumbo e ideas accionables
-              para entender mejor tu negocio y decidir qué camino tiene más sentido
+              El diagnÃ³stico te ayuda a encontrar valor, rumbo e ideas accionables
+              para entender mejor tu negocio y decidir quÃ© camino tiene mÃ¡s sentido
               seguir.
             </p>
           </div>
@@ -45,15 +45,15 @@ export default function ContactPage() {
             <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.62),transparent)]" />
             <div className="relative text-center">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
-                Encuentra cómo crecer
+                Encuentra cÃ³mo crecer
               </p>
               <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-[2rem]">
-                Aquí mismo, sin costo.
+                AquÃ­ mismo, sin costo.
               </h2>
               <div className="mt-2.5 flex justify-center">
                 <a
                   href="#diagnostico-form"
-                  aria-label="Ir al diagnóstico"
+                  aria-label="Ir al diagnÃ³stico"
                   className="inline-flex items-center justify-center py-1 text-white transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:translate-y-0.5"
                 >
                   <svg aria-hidden="true" viewBox="0 0 24 24" className="h-9 w-9" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
@@ -71,13 +71,15 @@ export default function ContactPage() {
           <div className="mx-auto w-full max-w-[860px] overflow-hidden rounded-[32px]">
             <Card interactiveGlow={false} id="diagnostico-form" className="relative overflow-hidden rounded-[32px] border-[#ff7cf4]/24 bg-[linear-gradient(180deg,rgba(20,22,31,0.98),rgba(11,11,16,0.99))] p-0 shadow-[0_0_0_1px_rgba(230,37,255,0.12),0_28px_90px_rgba(230,37,255,0.22),0_36px_120px_rgba(0,0,0,0.42)]">
               <div className="pointer-events-none absolute inset-x-10 -top-6 h-18 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.3),transparent_72%)] blur-2xl" />
+              <div className="pointer-events-none absolute -left-12 top-24 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.16),transparent_68%)] blur-3xl" />
+              <div className="pointer-events-none absolute -right-14 bottom-20 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgba(15,239,253,0.14),transparent_70%)] blur-3xl" />
               <div className="flex items-center justify-between border-b border-white/8 px-4 py-4 sm:px-5">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                    Diagnóstico RiBuzz
+                    DiagnÃ³stico RiBuzz
                   </p>
                   <p className="mt-1 text-xs text-[#98A0B3] sm:text-sm">
-                    Completa el formulario aquí mismo o ábrelo aparte si prefieres.
+                    Completa el formulario aquÃ­ mismo o Ã¡brelo aparte si prefieres.
                   </p>
                 </div>
 
@@ -92,11 +94,12 @@ export default function ContactPage() {
                 </Button>
               </div>
 
-              <div className="overflow-hidden rounded-b-[32px]">
+              <div className="relative overflow-hidden rounded-b-[32px]">
+                <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.06),transparent_22%),radial-gradient(circle_at_bottom_right,rgba(230,37,255,0.08),transparent_28%),radial-gradient(circle_at_78%_26%,rgba(15,239,253,0.06),transparent_24%)]" />
                 <iframe
                   src={embeddedDiagnosisFormUrl}
-                  title="Formulario de diagnóstico RiBuzz"
-                  className="h-[760px] w-full bg-white invert-[0.92] hue-rotate-180 brightness-105 contrast-105 sm:h-[1020px] lg:h-[1120px]"
+                  title="Formulario de diagnÃ³stico RiBuzz"
+                  className="h-[760px] w-full rounded-b-[32px] bg-white invert-[0.92] hue-rotate-180 brightness-105 contrast-105 sm:h-[1020px] lg:h-[1120px]"
                   loading="lazy"
                 />
               </div>
@@ -111,8 +114,8 @@ export default function ContactPage() {
         <Container>
           <SectionTitle
             eyebrow="Antes de aplicar"
-            title="Qué puedes esperar de este diagnóstico"
-            description="La idea no es llenarte de teoría, sino devolverte una lectura clara, aterrizada y fácil de convertir en siguientes pasos."
+            title="QuÃ© puedes esperar de este diagnÃ³stico"
+            description="La idea no es llenarte de teorÃ­a, sino devolverte una lectura clara, aterrizada y fÃ¡cil de convertir en siguientes pasos."
           />
 
           <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -137,7 +140,7 @@ export default function ContactPage() {
           <SectionTitle
             eyebrow="FAQ"
             title="Preguntas frecuentes antes de trabajar con RiBuzz"
-            description="Las respuestas están pensadas para dejar claro para quién es, para quién no es y cómo funciona el proceso."
+            description="Las respuestas estÃ¡n pensadas para dejar claro para quiÃ©n es, para quiÃ©n no es y cÃ³mo funciona el proceso."
           />
 
           <div className="mt-8 max-w-4xl">
@@ -148,7 +151,7 @@ export default function ContactPage() {
 
       <CTASection
         eyebrow="Siguiente paso"
-        title="Si te quedó una duda o quieres hablarlo antes de avanzar, escríbenos por WhatsApp."
+        title="Si te quedÃ³ una duda o quieres hablarlo antes de avanzar, escrÃ­benos por WhatsApp."
         description="Si prefieres conversar primero, resolver una inquietud puntual o contarnos tu contexto antes de seguir, te respondemos por WhatsApp."
         primaryLabel={
           <span className="inline-flex items-center gap-3">
@@ -162,7 +165,7 @@ export default function ContactPage() {
                 <path d="M19.05 4.91A9.82 9.82 0 0 0 12.03 2C6.59 2 2.16 6.43 2.16 11.88c0 1.74.45 3.43 1.3 4.92L2 22l5.35-1.4a9.8 9.8 0 0 0 4.68 1.19h.01c5.44 0 9.87-4.43 9.87-9.88 0-2.64-1.03-5.12-2.86-7Zm-7.02 15.2h-.01a8.13 8.13 0 0 1-4.14-1.13l-.3-.18-3.18.83.85-3.1-.2-.31a8.11 8.11 0 0 1-1.25-4.34c0-4.49 3.65-8.14 8.15-8.14 2.17 0 4.2.84 5.73 2.38a8.06 8.06 0 0 1 2.38 5.76c0 4.49-3.65 8.14-8.03 8.14Zm4.47-6.09c-.25-.12-1.47-.73-1.7-.81-.23-.09-.39-.12-.56.12-.16.24-.64.81-.78.97-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.21-.73-.65-1.23-1.45-1.38-1.69-.14-.24-.02-.36.11-.48.11-.11.25-.29.37-.43.12-.15.16-.24.25-.4.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.77-1.84-.2-.48-.4-.41-.56-.42h-.48c-.16 0-.43.06-.65.31-.23.24-.86.84-.86 2.04s.88 2.37 1 2.53c.12.16 1.73 2.64 4.18 3.7.58.25 1.04.4 1.39.52.58.18 1.1.15 1.52.09.46-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.14-1.18-.06-.1-.22-.16-.47-.28Z" />
               </svg>
             </span>
-            <span>Escríbenos aquí</span>
+            <span>EscrÃ­benos aquÃ­</span>
           </span>
         }
         primaryHref={SITE_CONFIG.whatsappUrl}
@@ -173,4 +176,6 @@ export default function ContactPage() {
     </>
   );
 }
+
+
 

@@ -281,6 +281,33 @@ body * {
   animation: page-blur-in 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.hero-mark-button {
+  transition:
+    transform 240ms ease,
+    filter 260ms ease;
+}
+
+.hero-mark-button:hover {
+  transform: translateY(-1px) scale(1.015);
+}
+
+.hero-mark-button:active {
+  transform: scale(0.985);
+  filter:
+    drop-shadow(0 0 16px rgba(230, 37, 255, 0.42))
+    drop-shadow(0 0 30px rgba(15, 239, 253, 0.22));
+}
+
+.hero-mark-button:active::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(230, 37, 255, 0.28), rgba(15, 239, 253, 0.12) 48%, transparent 72%);
+  filter: blur(12px);
+  z-index: -1;
+}
+
 .nfc-approach-card {
   animation: nfc-card-approach 4.6s ease-in-out infinite;
 }
