@@ -25,6 +25,10 @@ const evaluationPoints = [
   "Dependencia del fundador y capacidad del equipo",
 ] as const;
 
+const embeddedDiagnosisFormUrl = SITE_CONFIG.diagnosisPath.includes("?")
+  ? `${SITE_CONFIG.diagnosisPath}&embedded=true`
+  : `${SITE_CONFIG.diagnosisPath}?embedded=true`;
+
 export default function ContactPage() {
   return (
     <>
@@ -162,6 +166,41 @@ export default function ContactPage() {
       </section>
 
       <SectionDivider />
+
+      <section className="cv-auto py-16 sm:py-20">
+        <Container>
+          <Card className="rounded-[28px] p-5 sm:p-6">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+                  Vista rápida
+                </p>
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[#F5F7FA] sm:text-3xl">
+                  Así se vería el diagnóstico sin salir del sitio.
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+                  Lo dejamos incrustado de forma simple para validar la
+                  experiencia. Si funciona bien, luego podemos vestir esta
+                  pantalla con más intención visual.
+                </p>
+              </div>
+
+              <Button href={SITE_CONFIG.diagnosisPath} size="lg" variant="secondary" external>
+                Ver en pantalla completa
+              </Button>
+            </div>
+
+            <div className="mt-6 overflow-hidden rounded-[24px] border border-white/10 bg-black/20">
+              <iframe
+                src={embeddedDiagnosisFormUrl}
+                title="Formulario de diagnóstico RiBuzz"
+                className="h-[900px] w-full bg-white sm:h-[1100px]"
+                loading="lazy"
+              />
+            </div>
+          </Card>
+        </Container>
+      </section>
 
       <section className="cv-auto py-16 sm:py-20">
         <Container>
