@@ -206,7 +206,7 @@ export default function StartcoPage() {
             <Link href={supportCards.nfc.href} className="block">
               <Card
                 glowTone="purple"
-                className="group relative min-h-[260px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-6 py-6 text-center transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
+                className="group flex flex-col justify-center relative min-h-[300px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-6 py-6 text-center transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
               >
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.08),transparent_34%)]" />
                 <div className="relative z-10 mx-auto max-w-[78%]">
@@ -216,15 +216,6 @@ export default function StartcoPage() {
                   <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
                     {supportCards.nfc.description}
                   </p>
-                </div>
-                <div className="pointer-events-none absolute -bottom-[16%] left-1/2 w-[58%] -translate-x-1/2 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
-                  <Image
-                    src="/startco-cards2.png"
-                    alt="Mockup de tarjetas NFC RiBuzz"
-                    width={700}
-                    height={1000}
-                    className="h-auto w-full object-contain"
-                  />
                 </div>
               </Card>
             </Link>
@@ -250,13 +241,6 @@ export default function StartcoPage() {
                   </p>
                 </div>
                 <div className="flex flex-col items-center gap-2.5">
-                  <Image
-                    src="/neo-mech-logo.png"
-                    alt="Logo Neo-Mech"
-                    width={100}
-                    height={100}
-                    className="h-24 w-24 object-contain drop-shadow-[0_0_18px_rgba(14,210,255,0.16)]"
-                  />
                   <span className="inline-flex w-fit rounded-full border border-[#0FEFFD]/16 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9BF8FF]">
                     Ver perfil
                   </span>
