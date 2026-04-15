@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 
 import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { HeroGalaxy } from "@/components/ui/hero-galaxy";
+import { HeroMarkButton } from "@/components/ui/hero-mark-button";
 import { PillBadge } from "@/components/ui/pill-badge";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -44,6 +45,7 @@ export default function HomePage() {
         <div className="absolute inset-0 z-10 flex items-center justify-center">
             <Container className="hero-no-select text-center pt-[76px]">
             <div className="mx-auto max-w-[58rem]">
+<<<<<<< HEAD
               <div className="inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm">
                 <PillBadge>Diseño e implementación de sistemas comerciales</PillBadge>
               </div>
@@ -90,6 +92,45 @@ export default function HomePage() {
               <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-[#AEB5C4] sm:text-sm">
                 Diagnóstico inicial para identificar dónde se está frenando tu crecimiento comercial.
               </p>
+=======
+            <div className="mt-1 inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm sm:mt-3">
+              <PillBadge>Te damos la bienvenida.</PillBadge>
+            </div>
+
+            <div className="mt-7 flex items-center justify-center gap-4 sm:mt-8 sm:gap-5">
+              <Image
+                src="/images/branding/ribuzz-texto.png"
+                alt="RiBuzz"
+                width={606}
+                height={128}
+                priority
+                className="hero-wordmark h-12 w-auto sm:h-16 xl:h-24"
+              />
+              <HeroMarkButton src={SITE_CONFIG.logoMark} alt="Símbolo RiBuzz" />
+            </div>
+
+            <h1 className="mx-auto mt-6 max-w-3xl font-sans text-[1.9rem] font-bold leading-[1.08] text-[#F5F7FA] sm:text-[2.45rem] xl:text-[3rem]">
+              El sistema de crecimiento para tu empresa.
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] sm:text-[1rem]">
+              Diseñamos la estructura comercial que te ayuda a captar mejor, vender con
+              más orden y sostener el crecimiento con seguimiento real.
+            </p>
+
+            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button href={SITE_CONFIG.diagnosisPath} size="lg">
+                Realiza tu diagnóstico gratuito
+              </Button>
+              <Button
+                href="/services"
+                variant="secondary"
+                size="lg"
+                className="shadow-[0_0_0_1px_rgba(230,37,255,0.1),0_0_18px_rgba(230,37,255,0.16)]"
+              >
+                Ver servicios
+              </Button>
+            </div>
+>>>>>>> origin/main
             </div>
             </Container>
         </div>
@@ -98,7 +139,7 @@ export default function HomePage() {
       <section className="section-soft cv-auto py-16 sm:py-20" id="problemas">
         <Container>
           <SectionTitle
-            eyebrow="Lo que suele estar pasando"
+            eyebrow="¿Por qué se estancan las empresas?"
             title="El problema no siempre es vender más. Es vender con un sistema débil."
             description="Estos son los síntomas más comunes cuando no hay estructura comercial clara."
           />
@@ -279,3 +320,5 @@ export default function HomePage() {
     </>
   );
 }
+
+
