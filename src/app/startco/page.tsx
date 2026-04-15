@@ -65,7 +65,7 @@ const supportCards = {
   },
   neoMech: {
     title: "Conoce a Neo-Mech",
-    description: "Explora este nuevo frente con una estética más técnica, más visual y más experimental.",
+    description: "Neo-Mech es el aliado ideal para impresión 3D a la medida de tus necesidades.",
     href: "https://www.instagram.com/neomech3d/",
   },
   gifts: {
@@ -134,8 +134,8 @@ export default function StartcoPage() {
               RiBuzz
             </h1>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
-              Un punto de entrada rápido para conectar, explorar recursos y llevar
-              la marca de RiBuzz a conversaciones, networking y próximos activos.
+              Diseñamos soluciones comerciales, visuales y digitales para marcas que
+              quieren crecer con más claridad, mejor presencia y herramientas útiles.
             </p>
           </div>
 
@@ -200,14 +200,14 @@ export default function StartcoPage() {
             })}
           </div>
 
-          <div className="relative mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-2">
+          <div className="relative mx-auto mt-8 grid max-w-xl gap-4 md:grid-cols-2">
             <Link href={supportCards.nfc.href} className="block">
               <Card
                 glowTone="purple"
                 className="group relative min-h-[290px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-6 py-6 text-left transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
               >
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.08),transparent_34%)]" />
-                <div className="relative z-10 max-w-[52%]">
+                <div className="relative z-10 max-w-[54%]">
                   <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
                     {supportCards.nfc.title}
                   </p>
@@ -215,7 +215,7 @@ export default function StartcoPage() {
                     {supportCards.nfc.description}
                   </p>
                 </div>
-                <div className="pointer-events-none absolute bottom-0 right-0 w-[52%] translate-x-[8%] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[6%] group-hover:-translate-y-1">
+                <div className="pointer-events-none absolute bottom-0 right-0 w-[44%] translate-x-[4%] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[3%] group-hover:-translate-y-1">
                   <Image
                     src="/startco-cards.png"
                     alt="Mockup de tarjetas NFC RiBuzz"
@@ -266,7 +266,7 @@ export default function StartcoPage() {
             </a>
           </div>
 
-          <div className="relative mx-auto mt-4 max-w-5xl">
+          <div className="relative mx-auto mt-4 max-w-xl">
             <Card
               glowTone="cyan"
               className="rounded-[26px] border-dashed border-white/10 bg-[#10131C]/72 px-6 py-6 text-center md:min-h-[132px]"
