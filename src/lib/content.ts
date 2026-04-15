@@ -24,6 +24,13 @@ export type ContentBlock = {
   description: string;
 };
 
+export type BeforeAfterItem = {
+  beforeTitle: string;
+  beforeDescription: string;
+  afterTitle: string;
+  afterDescription: string;
+};
+
 export const homePainPoints = [
   {
     title: "Esfuerzos comerciales dispersos",
@@ -44,6 +51,41 @@ export const homePainPoints = [
     title: "Estancamiento invisible a ciegas",
     description:
       "Existe un cuello de botella evidente que afecta la caja y el crecimiento, pero no hay claridad precisa sobre dónde o urgente qué priorizar.",
+  },
+] as const;
+
+export const homePainTransitions: BeforeAfterItem[] = [
+  {
+    beforeTitle: "Esfuerzos comerciales dispersos",
+    beforeDescription:
+      "Marketing, herramientas y seguimiento avanzan por separado, sin una lógica compartida que haga predecible el proceso.",
+    afterTitle: "Frentes conectados bajo una sola lógica",
+    afterDescription:
+      "Captación, conversión y seguimiento operan con prioridades claras, mensajes alineados y un sistema que ya no se contradice internamente.",
+  },
+  {
+    beforeTitle: "Fricción al convertir y seguir",
+    beforeDescription:
+      "Se generan conversaciones, pero se enfrían rápido porque no hay respuesta, ritmo comercial ni próximos pasos bien definidos.",
+    afterTitle: "Conversión con ritmo y seguimiento real",
+    afterDescription:
+      "Cada oportunidad entra a una secuencia más clara, con respuesta oportuna, puntos de control y continuidad hasta el cierre.",
+  },
+  {
+    beforeTitle: "Dependencia estricta del fundador",
+    beforeDescription:
+      "El criterio comercial, el impulso de venta y los cierres más importantes siguen descansando casi por completo en una sola persona.",
+    afterTitle: "Ejecución compartida, no concentrada",
+    afterDescription:
+      "El sistema ordena roles, decisiones y pasos críticos para que el equipo pueda ejecutar con más autonomía y menos cuello de botella.",
+  },
+  {
+    beforeTitle: "Estancamiento sin claridad operativa",
+    beforeDescription:
+      "La caja se frena y el crecimiento pierde fuerza, pero todavía no es evidente qué parte del sistema está frenando el avance.",
+    afterTitle: "Claridad sobre dónde intervenir primero",
+    afterDescription:
+      "El cuello de botella se vuelve visible, las prioridades se ordenan y el crecimiento deja de depender de intuición o urgencia.",
   },
 ] as const;
 
