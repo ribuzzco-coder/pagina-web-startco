@@ -40,17 +40,17 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="relative overflow-hidden rounded-[28px] border border-[#ff9cff]/35 bg-[linear-gradient(145deg,rgba(230,37,255,0.28),rgba(110,18,146,0.2))] p-6 shadow-[0_18px_50px_rgba(230,37,255,0.24),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[18px] sm:p-7">
+          <div className="relative overflow-hidden rounded-[28px] border border-[#ff9cff]/35 bg-[linear-gradient(145deg,rgba(230,37,255,0.28),rgba(110,18,146,0.2))] px-6 py-4 shadow-[0_18px_50px_rgba(230,37,255,0.24),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[18px] sm:px-7 sm:py-5">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(255,125,247,0.22),transparent_42%)]" />
             <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.62),transparent)]" />
             <div className="relative text-center">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
                 Encuentra cómo crecer
               </p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-[2rem]">
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-[2rem]">
                 Aquí mismo, sin costo.
               </h2>
-              <div className="mt-4 flex justify-center">
+              <div className="mt-2.5 flex justify-center">
                 <a
                   href="#diagnostico-form"
                   aria-label="Ir al diagnóstico"
@@ -173,3 +173,4 @@ export default function ContactPage() {
     </>
   );
 }
+

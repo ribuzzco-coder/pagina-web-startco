@@ -32,9 +32,11 @@ export function MobileMenu({ isOpen, pathname, onClose }: MobileMenuProps) {
                 className={cn(
                   "rounded-xl border px-3 py-2.5 text-sm font-medium transition-colors",
                   isActive
-                    ? "border-white/10 bg-[#161826] text-[#F5F7FA]"
+                    ? isDiagnosisLink
+                      ? "border-[#E625FF]/65 bg-[linear-gradient(135deg,#E625FF,#B11CD4)] text-white shadow-[0_0_0_1px_rgba(230,37,255,0.18),0_0_24px_rgba(230,37,255,0.28)]"
+                      : "border-white/10 bg-[#161826] text-[#F5F7FA]"
                     : isDiagnosisLink
-                      ? "border-[#E625FF]/18 text-[#E875F7] hover:border-[#E625FF]/28 hover:text-[#F5F7FA]"
+                      ? "border-[#E625FF]/65 bg-[linear-gradient(135deg,#E625FF,#B11CD4)] text-white shadow-[0_0_0_1px_rgba(230,37,255,0.18),0_0_24px_rgba(230,37,255,0.28)]"
                       : "border-white/8 text-[#98A0B3] hover:border-white/14 hover:text-[#F5F7FA]",
                 )}
               >

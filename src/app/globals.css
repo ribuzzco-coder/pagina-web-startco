@@ -139,12 +139,12 @@ body {
   background:
     radial-gradient(
       180px circle at var(--glow-x) var(--glow-y),
-      hsla(var(--glow-hue-start) 100% 78% / calc(0.68 * var(--glow-active))),
+      hsla(var(--glow-hue-start) 100% 78% / calc(0.9 * var(--glow-active))),
       transparent 58%
     ),
     radial-gradient(
       260px circle at var(--glow-x) var(--glow-y),
-      hsla(var(--glow-hue-end) 100% 72% / calc(0.34 * var(--glow-active))),
+      hsla(var(--glow-hue-end) 100% 72% / calc(0.5 * var(--glow-active))),
       transparent 62%
     );
   -webkit-mask:
@@ -162,16 +162,17 @@ body {
   background:
     radial-gradient(
       200px circle at var(--glow-x) var(--glow-y),
-      hsla(var(--glow-hue-start) 100% 70% / calc(0.1 * var(--glow-active))),
+      hsla(var(--glow-hue-start) 100% 70% / calc(0.16 * var(--glow-active))),
       transparent 60%
     );
   opacity: calc(0.2 + (0.8 * var(--glow-active)));
 }
 
 .glow-card:hover {
-  border-color: rgba(230, 37, 255, 0.2);
+  border-color: rgba(230, 37, 255, 0.26);
   box-shadow:
-    0 0 0 1px rgba(230, 37, 255, 0.08),
+    0 0 0 1px rgba(230, 37, 255, 0.14),
+    0 0 28px rgba(230, 37, 255, 0.14),
     0 16px 34px rgba(0, 0, 0, 0.24);
 }
 
