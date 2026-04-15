@@ -273,7 +273,7 @@ export default function StartcoPage() {
                 {supportCards.gifts.description}
               </p>
             </Card>
-          </div>
+          </Link>
         </div>
       </Container>
     </section>
