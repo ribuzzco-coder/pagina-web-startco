@@ -66,6 +66,7 @@ const supportCards = {
   neoMech: {
     title: "Conoce a Neo-Mech",
     description: "Explora este nuevo frente con una estética más técnica, más visual y más experimental.",
+    href: "https://www.instagram.com/neomech3d/",
   },
   gifts: {
     title: "Regalos / documentos de valor",
@@ -105,6 +106,50 @@ function LinkIcon({ type }: { type: (typeof primaryLinks)[number]["icon"] }) {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.9">
       <path d="m12 3 1.9 5.9H20l-4.95 3.6L17 18.5 12 14.8 7 18.5l1.95-6L4 8.9h6.1Z" />
+    </svg>
+  );
+}
+
+function NeoMechLogo() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 120 120"
+      className="h-24 w-24 drop-shadow-[0_0_18px_rgba(14,210,255,0.16)]"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path
+        d="M28 28 60 14l32 14v26L60 68 28 54Z"
+        stroke="#3C4558"
+        strokeWidth="5"
+      />
+      <path
+        d="M60 14v54"
+        stroke="#3C4558"
+        strokeWidth="5"
+      />
+      <path
+        d="M44 39 76 25"
+        stroke="#0FEFFD"
+        strokeWidth="5"
+      />
+      <path
+        d="M44 55 76 41"
+        stroke="#0FEFFD"
+        strokeWidth="5"
+      />
+      <path
+        d="M44 71 76 57"
+        stroke="#0FEFFD"
+        strokeWidth="5"
+      />
+      <path
+        d="M28 54v28L60 96l32-14V54"
+        stroke="#3C4558"
+        strokeWidth="5"
+      />
     </svg>
   );
 }
@@ -226,25 +271,37 @@ export default function StartcoPage() {
               </Card>
             </Link>
 
-            <Card
-              glowTone="cyan"
-              className="rounded-[28px] border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 text-left"
+            <a
+              href={supportCards.neoMech.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
             >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]" />
-              <div className="relative flex h-full flex-col justify-between gap-6">
-                <div>
-                  <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
-                    {supportCards.neoMech.title}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                    {supportCards.neoMech.description}
-                  </p>
+              <Card
+                glowTone="cyan"
+                className="rounded-[28px] border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 text-left"
+              >
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]" />
+                <div className="relative flex h-full flex-col justify-between gap-6">
+                  <div>
+                    <div className="mb-4 flex justify-start">
+                      <div className="rounded-[22px] border border-[#0FEFFD]/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                        <NeoMechLogo />
+                      </div>
+                    </div>
+                    <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
+                      {supportCards.neoMech.title}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+                      {supportCards.neoMech.description}
+                    </p>
+                  </div>
+                  <span className="inline-flex w-fit rounded-full border border-[#0FEFFD]/16 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9BF8FF]">
+                    Ver perfil
+                  </span>
                 </div>
-                <span className="inline-flex w-fit rounded-full border border-[#0FEFFD]/16 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9BF8FF]">
-                  Próximamente
-                </span>
-              </div>
-            </Card>
+              </Card>
+            </a>
           </div>
 
           <div className="relative mx-auto mt-4 max-w-5xl">
