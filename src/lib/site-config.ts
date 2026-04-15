@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   diagnosisFormUrl:
     "https://docs.google.com/forms/d/e/1FAIpQLSedUNuJeyesXwKhUzx80Mnh9RzblT5h_AGAyJ6TB2CW0SbJwA/viewform?usp=header",
   description:
-    "El sistema comercial para hacer crecer tu empresa.",
+    "Sistema de crecimiento para hacer crecer tu empresa.",
   logoPlaceholder: "/ribuzz-wordmark.png",
   logoMark: "/ribuzz-mark.png",
   ogImagePlaceholder: "/og-ribuzz-placeholder.svg",
