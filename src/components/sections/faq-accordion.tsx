@@ -1,7 +1,7 @@
 import type { FAQ } from "@/lib/content";
 
 type FAQAccordionProps = {
-  items: FAQ[];
+  items: readonly FAQ[];
 };
 
 export function FAQAccordion({ items }: FAQAccordionProps) {

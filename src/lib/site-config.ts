@@ -22,5 +22,6 @@ export const SITE_CONFIG = {
     { label: "Metodologia", href: "/methodology" },
     { label: "Sobre RiBuzz", href: "/about" },
     { label: "Solicitar diagnostico", href: "/contact" },
+    { label: "Tarjetas NFC", href: "/tarjetas-nfc" },
   ],
 } as const;
