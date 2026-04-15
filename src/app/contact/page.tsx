@@ -33,18 +33,41 @@ export default function ContactPage() {
   return (
     <>
       <section className="pb-10 pt-16 sm:pb-12 sm:pt-24">
-        <Container className="max-w-5xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-            Solicitar diagnóstico
-          </p>
-          <h1 className="mt-6 max-w-4xl font-heading text-4xl leading-tight text-[#F5F7FA] sm:text-5xl">
-            Cuéntanos cómo está operando tu sistema comercial y evaluemos si hay fit.
-          </h1>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#98A0B3] sm:text-lg">
-            El diagnóstico es la forma correcta de entender si tu negocio tiene un
-            problema de estructura comercial, en qué nivel está y qué capa de trabajo
-            realmente conviene.
-          </p>
+        <Container className="grid max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+              Solicitar diagnóstico
+            </p>
+            <h1 className="mt-6 max-w-4xl font-heading text-4xl leading-tight text-[#F5F7FA] sm:text-5xl">
+              Cuéntanos cómo está operando tu sistema comercial y evaluemos si hay fit.
+            </h1>
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#98A0B3] sm:text-lg">
+              El diagnóstico es la forma correcta de entender si tu negocio tiene un
+              problema de estructura comercial, en qué nivel está y qué capa de trabajo
+              realmente conviene.
+            </p>
+          </div>
+
+          <div className="relative overflow-hidden rounded-[28px] border border-[#ff9cff]/35 bg-[linear-gradient(145deg,rgba(230,37,255,0.28),rgba(110,18,146,0.2))] p-6 shadow-[0_18px_50px_rgba(230,37,255,0.24),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[18px] sm:p-7">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(255,125,247,0.22),transparent_42%)]" />
+            <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.62),transparent)]" />
+            <div className="relative">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
+                Diagnóstico listo abajo
+              </p>
+              <h2 className="mt-3 max-w-sm text-2xl font-semibold tracking-tight text-white sm:text-[2rem]">
+                Baja un poco y completa el formulario dentro del sitio.
+              </h2>
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-white/76 sm:text-base">
+                Lo dejamos visible en la misma página para que la experiencia se sienta
+                más directa, más limpia y más RiBuzz.
+              </p>
+              <div className="mt-5 inline-flex items-center gap-3 rounded-full border border-white/18 bg-white/10 px-4 py-2 text-sm text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#0FEFFD] shadow-[0_0_14px_rgba(15,239,253,0.88)]" />
+                Formulario integrado y vista completa
+              </div>
+            </div>
+          </div>
         </Container>
       </section>
 
@@ -54,25 +77,35 @@ export default function ContactPage() {
           contentClassName="mt-8"
           titleComponent={
             <Container className="max-w-5xl px-0">
-              <div className="max-w-3xl">
-                <p className="text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                  Primero revisamos contexto, etapa comercial, reto principal y
-                  disposición a ejecutar. Solo avanzamos cuando vemos una oportunidad
-                  real de impacto.
-                </p>
+              <div className="relative overflow-hidden rounded-[34px] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01))] px-5 pb-8 pt-6 sm:px-8 sm:pb-10">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(230,37,255,0.14),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(15,239,253,0.08),transparent_36%)]" />
+                <div className="pointer-events-none absolute -top-2 left-0 right-0 text-center font-heading text-[3rem] font-semibold uppercase leading-none tracking-[-0.06em] text-white/7 sm:text-[5.6rem] lg:text-[7.8rem]">
+                  Diagnóstico
+                </div>
+                <div className="pointer-events-none absolute top-[2.9rem] left-1/2 -translate-x-1/2 text-center font-heading text-[2.25rem] font-semibold tracking-[-0.05em] text-[#E625FF]/12 sm:top-[4.2rem] sm:text-[4.2rem] lg:text-[5.8rem]">
+                  Comercial
+                </div>
 
-                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                  <Button href={SITE_CONFIG.diagnosisPath} size="lg" variant="secondary" external>
-                    Ver en pantalla completa
-                  </Button>
-                  <Button
-                    href={SITE_CONFIG.whatsappUrl}
-                    size="lg"
-                    variant="ghost"
-                    external
-                  >
-                    Escribir por WhatsApp
-                  </Button>
+                <div className="relative z-10 max-w-3xl pt-12 sm:pt-20">
+                  <p className="text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
+                    Primero revisamos contexto, etapa comercial, reto principal y
+                    disposición a ejecutar. Solo avanzamos cuando vemos una oportunidad
+                    real de impacto.
+                  </p>
+
+                  <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                    <Button href={SITE_CONFIG.diagnosisPath} size="lg" variant="secondary" external>
+                      Ver en pantalla completa
+                    </Button>
+                    <Button
+                      href={SITE_CONFIG.whatsappUrl}
+                      size="lg"
+                      variant="ghost"
+                      external
+                    >
+                      Escribir por WhatsApp
+                    </Button>
+                  </div>
                 </div>
               </div>
             </Container>
