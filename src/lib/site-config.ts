@@ -1,4 +1,4 @@
-﻿export const SITE_CONFIG = {
+export const SITE_CONFIG = {
   name: "RiBuzz",
   shortName: "RiBuzz",
   url: "https://ribuzz.vercel.app",
@@ -21,8 +21,9 @@
     { label: "Servicios", href: "/services" },
     { label: "Metodología", href: "/methodology" },
     { label: "Sobre RiBuzz", href: "/about" },
-    { label: "Solicitar diagnostico", href: "/contact" },
-    { label: "Tarjetas NFC", href: "/tarjetas-nfc" },
+    { label: "Startco", href: "/startco" },
+    { label: "NFC", href: "/tarjetas-nfc" },
+    { label: "Solicitar diagnóstico", href: "/contact" },
   ],
 } as const;
 
