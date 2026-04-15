@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { CTASection } from "@/components/sections/cta-section";
+import { NetworkFeatureSection } from "@/components/sections/network-feature-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { StepCard } from "@/components/sections/step-card";
 import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
@@ -205,14 +206,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <CTASection
-        eyebrow="El siguiente paso"
-        className="!pt-6 !pb-16 sm:!pt-8 sm:!pb-20"
-        title="Descubre dónde se está rompiendo tu crecimiento."
-        description="Te toma menos de 10 minutos. Recibes una lectura inicial y primero revisamos si hay una verdadera oportunidad de mejora."
-        primaryLabel="Solicitar diagnóstico gratuito"
-        primaryHref={SITE_CONFIG.diagnosisPath}
-      />
+      <NetworkFeatureSection />
 
       <TestimonialShuffle />
 
@@ -243,13 +237,13 @@ export default function HomePage() {
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(15,239,253,0.06),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.04),transparent_40%)]" />
 
             <div className="relative mx-auto max-w-2xl">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0FEFFD]">
-                Información de Valor
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+                Lecturas que dejan huella
               </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA] sm:text-4xl">
                 ¿Aún no estás listo para ejecutar? Recibe nuestra lectura del mercado.
               </h2>
-              <p className="mt-5 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+              <p className="mt-4 text-base leading-relaxed text-[#98A0B3] sm:text-lg">
                 Únete a la lista para recibir análisis esporádico (sin spam) sobre diseño de sistemas comerciales, conversión, estructuración y casos de crecimiento real.
               </p>
 

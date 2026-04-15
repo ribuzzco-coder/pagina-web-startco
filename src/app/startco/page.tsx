@@ -113,12 +113,14 @@ function LinkIcon({ type }: { type: (typeof primaryLinks)[number]["icon"] }) {
 
 export default function StartcoPage() {
   return (
-    <section className="relative cv-auto overflow-hidden py-16 sm:py-20 -mt-[76px] min-h-screen flex items-center">
-      <Container className="relative z-10 max-w-3xl">
-        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(180deg,rgba(20,22,34,0.96),rgba(11,11,16,0.98))] px-6 py-8 shadow-[0_24px_64px_rgba(0,0,0,0.34)] sm:px-10 sm:py-10">
+    <section className="relative cv-auto -mt-[76px] h-[100svh] overflow-hidden">
+      <AnimatedShaderBackground />
+      <Container className="relative z-10 flex h-full max-w-3xl items-center justify-center">
+        <div className="relative w-full overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(20,22,34,0.72),rgba(11,11,16,0.64))] px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:rounded-[36px] sm:px-10 sm:py-10">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(230,37,255,0.4),transparent)]" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(230,37,255,0.1),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.08),transparent_26%)]" />
-          <AnimatedShaderBackground />
+          
+
 
           <div className="relative flex flex-col items-center text-center">
             <div className="flex h-32 w-32 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_16px_32px_rgba(0,0,0,0.22)] sm:h-36 sm:w-36">
@@ -198,7 +200,7 @@ export default function StartcoPage() {
             <Link href={supportCards.nfc.href} className="block h-full">
               <Card
                 glowTone="purple"
-                className="group relative h-full min-h-[260px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-6 py-6 text-center transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
+                className="group relative h-full min-h-[280px] overflow-hidden rounded-[28px] border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-5 py-6 text-center transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)] sm:px-6"
               >
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.08),transparent_34%)]" />
                 <div className="relative z-10 mx-auto max-w-[78%]">
@@ -209,7 +211,7 @@ export default function StartcoPage() {
                     {supportCards.nfc.description}
                   </p>
                 </div>
-                <div className="pointer-events-none absolute -bottom-[24%] md:-bottom-[14%] left-1/2 w-[58%] -translate-x-1/2 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                <div className="pointer-events-none absolute bottom-0 left-1/2 w-[54%] -translate-x-1/2 translate-y-[18%] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-[14%] md:w-[58%] md:translate-y-[8%]">
                   <Image
                     src="/startco-cards2.png"
                     alt="Mockup de tarjetas NFC RiBuzz"

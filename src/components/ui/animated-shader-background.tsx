@@ -15,15 +15,15 @@ export const AnimatedShaderBackground = () => {
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     
     const updateSize = () => {
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      const { clientWidth, clientHeight } = container;
+      renderer.setSize(clientWidth, clientHeight);
+      material.uniforms.iResolution.value.set(clientWidth, clientHeight);
     };
-    updateSize();
-    container.appendChild(renderer.domElement);
-
+    
     const material = new THREE.ShaderMaterial({
       uniforms: {
         iTime: { value: 0 },
-        iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) }
+        iResolution: { value: new THREE.Vector2(1, 1) }
       },
       vertexShader: `
         void main() {
@@ -95,6 +95,8 @@ export const AnimatedShaderBackground = () => {
     const geometry = new THREE.PlaneGeometry(2, 2);
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
+    updateSize();
+    container.appendChild(renderer.domElement);
 
     let frameId: number;
     const animate = () => {
@@ -105,14 +107,19 @@ export const AnimatedShaderBackground = () => {
     animate();
 
     const handleResize = () => {
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      material.uniforms.iResolution.value.set(window.innerWidth, window.innerHeight);
+      updateSize();
     };
     window.addEventListener('resize', handleResize);
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateSize();
+    });
+    resizeObserver.observe(container);
 
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener('resize', handleResize);
+      resizeObserver.disconnect();
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
@@ -123,6 +130,6 @@ export const AnimatedShaderBackground = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 pointer-events-none overflow-hidden h-full w-full mix-blend-screen opacity-90" />
+    <div ref={containerRef} className="absolute inset-0 h-full w-full pointer-events-none overflow-hidden mix-blend-screen opacity-90" />
   );
 };

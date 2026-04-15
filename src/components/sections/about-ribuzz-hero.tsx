@@ -1,7 +1,15 @@
-import { RibuzzCoin } from "@/components/interactive/ribuzz-coin";
+"use client";
+
+import dynamic from "next/dynamic";
+
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { PillBadge } from "@/components/ui/pill-badge";
+
+const RibuzzCoin = dynamic(
+  () => import("@/components/interactive/ribuzz-coin").then((mod) => mod.RibuzzCoin),
+  { ssr: false },
+);
 
 type AboutRibuzzHeroProps = {
   eyebrow: string;
