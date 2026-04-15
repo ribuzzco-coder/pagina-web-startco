@@ -1,4 +1,4 @@
-import { PageHero } from "@/components/common/page-hero";
+﻿import { PageHero } from "@/components/common/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StepCard } from "@/components/sections/step-card";
 import { Card } from "@/components/ui/card";
@@ -10,7 +10,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Metodologia",
+  title: "Metodología",
   description:
     "La metodología de RiBuzz trabaja en cuatro fases: diagnóstico, diseño, implementación y acompañamiento.",
   path: "/methodology",
@@ -20,21 +20,21 @@ export default function MethodologyPage() {
   return (
     <>
         <PageHero
-        eyebrow="Metodologia RiBuzz"
+        eyebrow="Metodología RiBuzz"
         title="Diagnóstico, diseño, implementación y acompañamiento para no ejecutar a ciegas"
-        description="La metodologia de RiBuzz le da mas peso al diagnostico porque ahi se decide si existe un problema real de estructura comercial, donde esta y como conviene intervenirlo."
-        primaryCtaLabel="Solicita tu diagnostico gratuito"
+        description="La metodología de RiBuzz le da mas peso al diagnóstico porqué ahi se decide sí existe un problema real de estructura comercial, donde esta y cómo conviene intervenirlo."
+        primaryCtaLabel="Solicita tu diagnóstico gratuito"
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
-        asideTitle="El diagnostico no es un tramite"
-        asideText="Es la fase que recoge informacion, hace visible el cuello de botella y evita gastar recursos en acciones que no corrigen el sistema."
+        asideTitle="El diagnóstico no es un tramite"
+        asideText="Es la fase que recoge información, hace visible el cuello de botella y evita gastar recursos en acciones que no corrigen el sistema."
       />
 
       <section className="cv-auto pb-16 sm:pb-22">
         <Container>
           <SectionTitle
             eyebrow="Fases de trabajo"
-            title="Una metodologia de 4 fases, no de 3 pasos rapidos"
-            description="Cada fase tiene una funcion concreta y una entrega clara para que el sistema comercial avance con direccion y no por intuicion."
+            title="Una metodología de 4 fases, no de 3 pasos rápidos"
+            description="Cada fase tiene una funcion concreta y una entrega clara para qué el sistema comercial avance con dirección y no por intuición."
           />
 
           <div className="relative mt-10 space-y-6 sm:space-y-8">
@@ -62,15 +62,15 @@ export default function MethodologyPage() {
         <Container className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
           <Card className="rounded-[28px] p-7 sm:p-8">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-              Por que importa
+              Por qué importa
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA]">
-              Esta metodologia importa porque evita mover el negocio sin lectura del problema.
+              Esta metodología importa porqué evita mover el negocio sin lectura del problema.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
               Cuando el orden es diagnosticar, diseñar, implementar y acompañar,
               la empresa reduce improvisacion y conecta mejor sus decisiones con la
-              operacion real.
+              operación real.
             </p>
           </Card>
 
@@ -91,8 +91,8 @@ export default function MethodologyPage() {
 
       <CTASection
         title="Si no tienes claro donde se rompe el proceso comercial, el primer paso no es ejecutar: es diagnosticar."
-        description="Solicita tu diagnostico gratuito, completalo en menos de 10 minutos y recibe una lectura inicial para entender si el cuello de botella esta en captacion, conversion, seguimiento o estructura comercial."
-        primaryLabel="Solicita tu diagnostico gratuito"
+        description="Solicita tu diagnóstico gratuito, completalo en menos de 10 minutos y recibe una lectura inicial para entender si el cuello de botella esta en captacion, conversión, seguimiento o estructura comercial."
+        primaryLabel="Solicita tu diagnóstico gratuito"
         primaryHref={SITE_CONFIG.diagnosisPath}
         secondaryLabel="Ir a contacto"
         secondaryHref="/contact"
@@ -100,3 +100,4 @@ export default function MethodologyPage() {
     </>
   );
 }
+

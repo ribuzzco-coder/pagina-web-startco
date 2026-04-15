@@ -1,4 +1,4 @@
-export const SITE_CONFIG = {
+﻿export const SITE_CONFIG = {
   name: "RiBuzz",
   shortName: "RiBuzz",
   url: "https://ribuzz.vercel.app",
@@ -9,19 +9,22 @@ export const SITE_CONFIG = {
   logoPlaceholder: "/ribuzz-wordmark.png",
   logoMark: "/ribuzz-mark.png",
   ogImagePlaceholder: "/og-ribuzz-placeholder.svg",
-  contactEmail: "hola@ribuzz.co",
+  contactEmail: "ribuzzco@gmail.com",
   whatsappUrl: "https://wa.me/573332541346",
   instagramUrl: "https://www.instagram.com/ribuzzco/",
-  diagnosisCtaLabel: "Solicita tu diagnostico gratuito",
-  diagnosisCtaShortLabel: "Diagnostico gratuito",
+  diagnosisCtaLabel: "Solicita tu diagnóstico gratuito",
+  diagnosisCtaShortLabel: "Diagnóstico gratuito",
   diagnosisSupportCopy:
-    "Te toma menos de 10 minutos y recibes una lectura inicial de tu sistema comercial. Primero revisamos si hay fit real antes de proponer cualquier intervencion.",
+    "Te toma menos de 10 minutos y recibes una lectura inicial de tu sistema comercial. Primero revisamos si hay fit real antes de proponer cualquier intervención.",
   navLinks: [
     { label: "Inicio", href: "/" },
     { label: "Servicios", href: "/services" },
-    { label: "Metodologia", href: "/methodology" },
+    { label: "Metodología", href: "/methodology" },
     { label: "Sobre RiBuzz", href: "/about" },
     { label: "Solicitar diagnostico", href: "/contact" },
     { label: "Tarjetas NFC", href: "/tarjetas-nfc" },
   ],
 } as const;
+
+
+

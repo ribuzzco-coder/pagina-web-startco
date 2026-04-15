@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -20,7 +20,7 @@ export function Footer() {
           />
           <p className="mt-4 max-w-md text-sm leading-relaxed text-[#98A0B3] sm:text-base">
             Diseñamos e implementamos sistemas comerciales para empresas que ya
-            venden, pero todavia no crecen con estructura, seguimiento y
+            venden, pero todavía no crecen con estructura, seguimiento y
             consistencia.
           </p>
           <p className="mt-4 text-sm text-[#C7CBD6]">Contacto: {SITE_CONFIG.contactEmail}</p>
@@ -74,3 +74,5 @@ export function Footer() {
     </footer>
   );
 }
+
+
