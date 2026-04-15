@@ -115,7 +115,7 @@ export function Navbar() {
         isHidden ? "-translate-y-full" : "translate-y-0",
       )}
     >
-      <Container className="flex h-[76px] items-center justify-between gap-5">
+      <Container className="flex h-[76px] items-center gap-5">
         <Link
           href="/"
           className="group inline-flex items-center"
@@ -134,7 +134,7 @@ export function Navbar() {
 
         <nav
           ref={navRef}
-          className="relative hidden items-center gap-1 rounded-full p-1 lg:flex"
+          className="relative ml-auto hidden items-center gap-1 rounded-full p-1 lg:mr-8 lg:flex xl:mr-12"
           aria-label="Principal"
         >
           <span
@@ -178,6 +178,29 @@ export function Navbar() {
               </Link>
             );
           })}
+
+          <Link
+            href={SITE_CONFIG.giftsPath}
+            aria-label="Regalos y documentos de valor"
+            className="relative z-10 ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#ff4d6d]/70 bg-[linear-gradient(135deg,#381119,#5a101d)] text-[#ff93a6] shadow-[0_0_0_1px_rgba(255,77,109,0.18),0_0_20px_rgba(255,77,109,0.28)] transition-[transform,border-color,box-shadow,background-color,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ff8ea8] hover:bg-[linear-gradient(135deg,#4a1220,#71192b)] hover:text-white hover:shadow-[0_0_0_1px_rgba(255,77,109,0.24),0_0_28px_rgba(255,77,109,0.38)]"
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="h-[18px] w-[18px]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.9"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M4.5 8.5h15v11h-15z" />
+              <path d="M3.5 8.5h17v-3h-17z" />
+              <path d="M12 5.5v14" />
+              <path d="M12 8.5h-4.2c-1.1 0-2-.9-2-2 0-1 .8-1.8 1.8-1.8 2.2 0 3.4 1.4 4.4 3.8Z" />
+              <path d="M12 8.5h4.2c1.1 0 2-.9 2-2 0-1-.8-1.8-1.8-1.8-2.2 0-3.4 1.4-4.4 3.8Z" />
+            </svg>
+          </Link>
         </nav>
 
         <button

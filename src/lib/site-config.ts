@@ -13,17 +13,18 @@
   contactEmail: "ribuzzco@gmail.com",
   whatsappUrl: "https://wa.me/573332541346",
   instagramUrl: "https://www.instagram.com/ribuzzco/",
-  diagnosisCtaLabel: "Solicita tu diagnÃ³stico gratuito",
-  diagnosisCtaShortLabel: "DiagnÃ³stico gratuito",
+  giftsPath: "/regalos",
+  diagnosisCtaLabel: "Solicita tu diagnóstico gratuito",
+  diagnosisCtaShortLabel: "Diagnóstico gratuito",
   diagnosisSupportCopy:
-    "Te toma menos de 10 minutos y recibes una lectura inicial de tu sistema comercial. Primero revisamos si hay fit real antes de proponer cualquier intervenciÃ³n.",
+    "Te toma menos de 10 minutos y recibes una lectura inicial de tu sistema comercial. Primero revisamos si hay fit real antes de proponer cualquier intervención.",
   navLinks: [
     { label: "Inicio", href: "/" },
     { label: "Servicios", href: "/services" },
     { label: "Sobre RiBuzz", href: "/about" },
     { label: "Startco", href: "/startco" },
     { label: "NFC", href: "/tarjetas-nfc" },
-    { label: "Solicitar diagnÃ³stico", href: "/contact" },
+    { label: "Solicitar diagnóstico", href: "/contact" },
   ],
 } as const;
 
