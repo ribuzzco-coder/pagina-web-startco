@@ -30,7 +30,7 @@ export default function ContactPage() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
               Solicitar diagnóstico
             </p>
-            <h1 className="mt-6 max-w-4xl font-heading text-4xl leading-tight text-[#F5F7FA] sm:text-5xl">
+            <h1 className="mt-6 max-w-4xl font-sans text-4xl font-semibold leading-tight text-[#F5F7FA] sm:text-5xl">
               Cuéntanos cómo está operando tu sistema comercial y evaluemos si hay fit.
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#98A0B3] sm:text-lg">
@@ -43,22 +43,22 @@ export default function ContactPage() {
           <div className="relative overflow-hidden rounded-[28px] border border-[#ff9cff]/35 bg-[linear-gradient(145deg,rgba(230,37,255,0.28),rgba(110,18,146,0.2))] p-6 shadow-[0_18px_50px_rgba(230,37,255,0.24),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[18px] sm:p-7">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(255,125,247,0.22),transparent_42%)]" />
             <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.62),transparent)]" />
-            <div className="relative">
+            <div className="relative text-center">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
                 Encuentra cómo crecer
               </p>
-              <h2 className="mt-3 max-w-sm text-2xl font-semibold tracking-tight text-white sm:text-[2rem]">
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-[2rem]">
                 Aquí mismo, sin costo.
               </h2>
-              <div className="mt-6 flex justify-center sm:justify-center">
+              <div className="mt-6 flex justify-center">
                 <a
                   href="#diagnostico-form"
                   aria-label="Ir al diagnóstico"
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/18 bg-white/10 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition-[background-color,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white/28 hover:bg-white/14 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_0_22px_rgba(230,37,255,0.18)]"
+                  className="inline-flex items-center justify-center py-1 text-white transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:translate-y-0.5"
                 >
-                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 5v14" />
-                    <path d="m8 15 4 4 4-4" />
+                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-9 w-9" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 4v11" />
+                    <path d="M7 14.5 12 20l5-5.5" />
                   </svg>
                 </a>
               </div>
@@ -68,11 +68,11 @@ export default function ContactPage() {
       </section>
 
       <section className="cv-auto pb-16 sm:pb-20">
-        <ContainerScroll className="mx-auto max-w-[920px] px-5 sm:px-8" contentClassName="mx-auto mt-4 w-full max-w-[820px] sm:mt-6">
-          <div className="mx-auto w-full max-w-[820px]">
-            <Card id="diagnostico-form" className="relative overflow-hidden rounded-[30px] border-[#f06cff]/18 bg-[linear-gradient(180deg,rgba(20,22,31,0.97),rgba(11,11,16,0.99))] p-3 shadow-[0_0_0_1px_rgba(230,37,255,0.09),0_20px_60px_rgba(230,37,255,0.16),0_24px_80px_rgba(0,0,0,0.4)] sm:p-4">
-              <div className="pointer-events-none absolute inset-x-8 -top-6 h-16 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.22),transparent_70%)] blur-2xl" />
-              <div className="flex items-center justify-between border-b border-white/8 px-3 pb-3 pt-1 sm:px-4">
+        <ContainerScroll className="mx-auto max-w-[980px] px-5 sm:px-8" contentClassName="mx-auto mt-4 w-full max-w-[860px] sm:mt-6">
+          <div className="mx-auto w-full max-w-[860px]">
+            <Card id="diagnostico-form" className="relative overflow-hidden rounded-[32px] border-[#ff7cf4]/24 bg-[linear-gradient(180deg,rgba(20,22,31,0.98),rgba(11,11,16,0.99))] p-0 shadow-[0_0_0_1px_rgba(230,37,255,0.12),0_28px_90px_rgba(230,37,255,0.22),0_36px_120px_rgba(0,0,0,0.42)]">
+              <div className="pointer-events-none absolute inset-x-10 -top-6 h-18 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.3),transparent_72%)] blur-2xl" />
+              <div className="flex items-center justify-between border-b border-white/8 px-4 py-4 sm:px-5">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
                     Diagnóstico RiBuzz
@@ -93,11 +93,11 @@ export default function ContactPage() {
                 </Button>
               </div>
 
-              <div className="overflow-hidden rounded-[22px] border border-white/8 bg-black/20">
+              <div className="overflow-hidden rounded-b-[32px] bg-white">
                 <iframe
                   src={embeddedDiagnosisFormUrl}
                   title="Formulario de diagnóstico RiBuzz"
-                  className="h-[700px] w-full bg-white sm:h-[980px] lg:h-[1080px]"
+                  className="h-[760px] w-full bg-white sm:h-[1020px] lg:h-[1120px]"
                   loading="lazy"
                 />
               </div>
@@ -174,6 +174,3 @@ export default function ContactPage() {
     </>
   );
 }
-
-
-

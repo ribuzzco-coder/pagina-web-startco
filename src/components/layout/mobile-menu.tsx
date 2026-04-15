@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
@@ -41,9 +40,6 @@ export function MobileMenu({ isOpen, pathname, onClose }: MobileMenuProps) {
             );
           })}
         </nav>
-        <Button href={SITE_CONFIG.diagnosisPath} className="mt-4 w-full">
-          {SITE_CONFIG.diagnosisCtaShortLabel}
-        </Button>
       </Container>
     </div>
   );

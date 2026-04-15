@@ -7,7 +7,6 @@ import type { CSSProperties } from "react";
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 
 import { MobileMenu } from "@/components/layout/mobile-menu";
-import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
@@ -166,12 +165,6 @@ export function Navbar() {
             );
           })}
         </nav>
-
-        <div className="hidden lg:block">
-          <Button href={SITE_CONFIG.diagnosisPath} size="md">
-            {SITE_CONFIG.diagnosisCtaShortLabel}
-          </Button>
-        </div>
 
         <button
           type="button"
