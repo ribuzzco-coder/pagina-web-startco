@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { cn } from "@/lib/utils";
 
 type CTASectionProps = {
   title: string;
@@ -10,6 +11,11 @@ type CTASectionProps = {
   secondaryLabel?: string;
   secondaryHref?: string;
   secondaryExternal?: boolean;
+  eyebrow?: string;
+  className?: string;
+  contentClassName?: string;
+  actionsClassName?: string;
+  accentIcon?: React.ReactNode;
 };
 
 export function CTASection({
@@ -21,17 +27,22 @@ export function CTASection({
   secondaryLabel,
   secondaryHref,
   secondaryExternal,
+  eyebrow = "Siguiente paso",
+  className,
+  contentClassName,
+  actionsClassName,
+  accentIcon,
 }: CTASectionProps) {
   return (
-    <section className="py-20 sm:py-24">
+    <section className={cn("py-20 sm:py-24", className)}>
       <Container>
         <div className="cv-auto relative overflow-hidden rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(29,33,48,0.9),rgba(24,26,36,0.84))] p-8 shadow-[0_10px_28px_rgba(0,0,0,0.18)] sm:p-10">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(230,37,255,0.32),transparent)]" />
 
-          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className={cn("relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between", contentClassName)}>
             <div className="max-w-2xl">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                Siguiente paso
+                {eyebrow}
               </p>
               <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#F5F7FA] sm:text-4xl">
                 {title}
@@ -41,7 +52,10 @@ export function CTASection({
               </p>
             </div>
 
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+            <div className={cn("flex shrink-0 flex-col gap-3 sm:flex-row", actionsClassName)}>
+              {accentIcon ? (
+                <div className="flex items-center justify-center">{accentIcon}</div>
+              ) : null}
               <Button href={primaryHref} size="lg" external={primaryExternal}>
                 {primaryLabel}
               </Button>
