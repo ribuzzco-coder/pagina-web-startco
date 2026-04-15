@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
 import { Card } from "@/components/ui/card";
@@ -140,7 +140,7 @@ export default function StartcoPage() {
               const isExternal = link.href.startsWith("http");
               const cardClassName = cn(
                 "group relative overflow-hidden rounded-[24px] px-5 py-5 text-center transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:bg-[#171B2A] hover:shadow-[0_18px_36px_rgba(0,0,0,0.22)]",
-                link.featured
+                "featured" in link && link.featured
                   ? "border-[#E625FF]/34 bg-[#141724] hover:border-[#ff8bf7]/52"
                   : "border-white/10 bg-[#141724] hover:border-white/18",
               );
