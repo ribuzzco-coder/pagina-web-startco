@@ -46,15 +46,23 @@ export default function HomePage() {
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <Container className="hero-no-select pt-[76px] text-center">
             <div className="mx-auto max-w-[58rem]">
-            <div className="inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm">
+            <div className="mt-6 inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm sm:mt-10">
               <PillBadge>Te damos la bienvenida.</PillBadge>
             </div>
 
-            <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:mt-7 sm:gap-5">
+            <div className="mt-7 flex items-center justify-center gap-4 sm:mt-8 sm:gap-5">
+              <Image
+                src="/images/branding/ribuzz-texto.png"
+                alt="RiBuzz"
+                width={606}
+                height={128}
+                priority
+                className="hero-wordmark h-12 w-auto sm:h-16 xl:h-24"
+              />
               <button
                 type="button"
                 aria-label="Logo de RiBuzz"
-                className="hero-mark-button relative flex h-24 w-24 items-center justify-center rounded-full sm:h-30 sm:w-30 xl:h-36 xl:w-36"
+                className="hero-mark-button relative flex h-24 w-24 items-center justify-center rounded-full sm:h-28 sm:w-28 xl:h-32 xl:w-32"
               >
                 <div className="absolute inset-0 rounded-full bg-[#E625FF]/18 blur-2xl" />
                 <Image
@@ -66,25 +74,17 @@ export default function HomePage() {
                   className="relative h-full w-full object-contain drop-shadow-[0_0_32px_rgba(230,37,255,0.58)]"
                 />
               </button>
-              <Image
-                src="/images/branding/ribuzz-texto.png"
-                alt="RiBuzz"
-                width={606}
-                height={128}
-                priority
-                className="h-12 w-auto sm:h-16 xl:h-24"
-              />
             </div>
 
-            <h1 className="mx-auto mt-7 max-w-4xl font-sans text-3xl font-bold leading-[1.06] text-[#F5F7FA] sm:text-[3.2rem] xl:text-[4rem]">
+            <h1 className="mx-auto mt-6 max-w-3xl font-sans text-[1.9rem] font-bold leading-[1.08] text-[#F5F7FA] sm:text-[2.45rem] xl:text-[3rem]">
               El sistema de crecimiento para tu empresa.
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-[#D9DDE7] sm:text-lg">
+            <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] sm:text-[1rem]">
               Diseñamos la estructura comercial que te ayuda a captar mejor, vender con
               más orden y sostener el crecimiento con seguimiento real.
             </p>
 
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button href={SITE_CONFIG.diagnosisPath} size="lg">
                 Realiza tu diagnóstico gratuito
               </Button>
@@ -105,7 +105,7 @@ export default function HomePage() {
       <section className="section-soft cv-auto py-18 sm:py-22" id="problemas">
         <Container>
           <SectionTitle
-            eyebrow="Lo que suele estar pasando"
+            eyebrow="¿Por qué se estancan las empresas?"
             title="El problema no siempre es vender más. Es vender con un sistema débil."
             description="Estos son los síntomas más comunes cuando no hay estructura comercial clara."
           />
