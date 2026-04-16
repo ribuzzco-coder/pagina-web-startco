@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { PillBadge } from "@/components/ui/pill-badge";
+import { cn } from "@/lib/utils";
 
 const RibuzzCoin = dynamic(
   () => import("@/components/interactive/ribuzz-coin").then((mod) => mod.RibuzzCoin),
@@ -20,6 +21,7 @@ type AboutRibuzzHeroProps = {
   primaryCtaHref: string;
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
+  titleClassName?: string;
 };
 
 export function AboutRibuzzHero({
@@ -31,6 +33,7 @@ export function AboutRibuzzHero({
   primaryCtaHref,
   secondaryCtaLabel,
   secondaryCtaHref,
+  titleClassName,
 }: AboutRibuzzHeroProps) {
   return (
     <section className="relative -mt-[76px] h-[100svh] overflow-hidden">
@@ -38,7 +41,12 @@ export function AboutRibuzzHero({
       <Container className="relative grid h-full items-center gap-8 py-[86px] sm:py-[92px] lg:grid-cols-[0.92fr_1.08fr] lg:gap-10">
         <div className="max-w-[35rem] self-center">
           <PillBadge>{eyebrow}</PillBadge>
-          <h1 className="mt-4 max-w-4xl font-heading text-[2.15rem] leading-[1.02] text-[#F5F7FA] sm:text-[2.85rem] xl:text-[3.35rem]">
+          <h1
+            className={cn(
+              "mt-4 max-w-4xl font-heading text-[2.15rem] leading-[1.02] text-[#F5F7FA] sm:text-[2.85rem] xl:text-[3.35rem]",
+              titleClassName,
+            )}
+          >
             {title}
           </h1>
           <p className="mt-4 max-w-xl text-[0.96rem] leading-relaxed text-[#C7CBD6] sm:text-[1.02rem]">
