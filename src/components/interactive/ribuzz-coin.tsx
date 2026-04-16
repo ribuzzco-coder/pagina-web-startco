@@ -83,7 +83,7 @@ export function RibuzzCoin({
   }, [hoverBoost, pointerX, pointerY]);
 
   return (
-    <div className={cn("relative mx-auto flex h-[460px] w-full max-w-[620px] items-center justify-center sm:h-[620px]", className)}>
+    <div className={cn("relative mx-auto flex h-[430px] w-full max-w-[620px] items-center justify-center sm:h-[620px]", className)}>
       <motion.div
         aria-hidden="true"
         className="absolute inset-x-[14%] bottom-10 h-18 rounded-full bg-[radial-gradient(circle,rgba(11,239,253,0.12),rgba(230,37,255,0.08)_46%,transparent_72%)] blur-2xl"
@@ -92,13 +92,13 @@ export function RibuzzCoin({
 
       <motion.div
         aria-hidden="true"
-        className="absolute h-[440px] w-[440px] rounded-full border border-white/8 bg-[radial-gradient(circle_at_50%_50%,rgba(13,18,31,0.22),rgba(11,11,16,0)_72%)] sm:h-[520px] sm:w-[520px]"
+        className="absolute h-[380px] w-[380px] rounded-full border border-white/8 bg-[radial-gradient(circle_at_50%_50%,rgba(13,18,31,0.22),rgba(11,11,16,0)_72%)] sm:h-[520px] sm:w-[520px]"
         style={{ opacity: ringOpacity, scale: haloScale }}
       />
 
       <motion.div
         aria-hidden="true"
-        className="absolute h-[350px] w-[350px] rounded-full border border-[#0feffd]/18 sm:h-[420px] sm:w-[420px]"
+        className="absolute h-[310px] w-[310px] rounded-full border border-[#0feffd]/18 sm:h-[420px] sm:w-[420px]"
         style={{
           opacity: ringOpacity,
           rotateZ: useTransform(pointerX, [-0.5, 0.5], [-18, 18]),
