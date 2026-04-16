@@ -26,7 +26,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Servicios RiBuzz"
         title="Tres capas de intervención para corregir y sostener tu sistema comercial"
-        titleClassName="[font-family:var(--font-saira)] font-bold"
+        titleClassName="[font-family:var(--font-saira)] font-semibold text-[2rem] leading-[1.05] sm:text-[2.55rem] xl:text-[2.95rem]"
         description="RiBuzz no presenta servicios sueltos. Presenta capas lógicas para pasar de lectura y estructura a capacidad operativa real y mejora continua."
         primaryCtaLabel="Solicita tu diagnóstico gratuito"
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
