@@ -2,6 +2,13 @@
 
 import Image from "next/image";
 import { type CSSProperties, useMemo, useRef, useState } from "react";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -54,62 +61,129 @@ function GiftIcon({ className }: { className?: string }) {
 }
 
 function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(pointerY, [-0.5, 0.5], [16, -16]), {
+    stiffness: 180,
+    damping: 20,
+    mass: 0.7,
+  });
+  const rotateY = useSpring(useTransform(pointerX, [-0.5, 0.5], [-20, 20]), {
+    stiffness: 180,
+    damping: 20,
+    mass: 0.7,
+  });
+  const liftX = useSpring(useTransform(pointerX, [-0.5, 0.5], [-14, 14]), {
+    stiffness: 120,
+    damping: 18,
+  });
+  const liftY = useSpring(useTransform(pointerY, [-0.5, 0.5], [-10, 10]), {
+    stiffness: 120,
+    damping: 18,
+  });
+  const glareX = useTransform(pointerX, [-0.5, 0.5], ["24%", "76%"]);
+  const glareY = useTransform(pointerY, [-0.5, 0.5], ["16%", "78%"]);
+  const glareBackground = useMotionTemplate`radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.18), rgba(255,255,255,0.06) 18%, transparent 42%)`;
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    pointerX.set(x);
+    pointerY.set(y);
+  };
+
+  const handlePointerLeave = () => {
+    pointerX.set(0);
+    pointerY.set(0);
+  };
+
   return (
-    <div
-      className="relative mx-auto h-[228px] w-[258px] [perspective:1600px] sm:h-[252px] sm:w-[304px]"
-      style={{ transformStyle: "preserve-3d" }}
+    <motion.div
+      className="relative mx-auto h-[238px] w-[264px] [perspective:1700px] sm:h-[264px] sm:w-[320px]"
+      style={{ x: liftX, y: liftY }}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
     >
-      <div className="absolute inset-x-5 top-8 h-[126px] rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.32),rgba(15,239,253,0.16)_44%,transparent_76%)] blur-[36px]" />
-      <div className="absolute inset-x-10 bottom-2 h-7 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.24),rgba(15,239,253,0.1)_55%,transparent_80%)] blur-xl" />
+      <div className="absolute inset-x-4 top-8 h-[138px] rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.34),rgba(15,239,253,0.16)_44%,transparent_76%)] blur-[40px]" />
+      <div className="absolute inset-x-10 bottom-2 h-7 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.26),rgba(15,239,253,0.1)_55%,transparent_80%)] blur-xl" />
 
-      <div className="absolute left-1/2 top-[56px] z-[6] h-[126px] w-[28px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_24px_rgba(255,91,151,0.28)]" />
-
-      <div className="absolute inset-x-[24px] bottom-[26px] z-[3] h-[126px] [transform-style:preserve-3d]">
-        <div className="absolute inset-0 rounded-[36px] border border-[#7f4c9f]/80 bg-[linear-gradient(180deg,rgba(43,20,56,0.99),rgba(23,12,33,1))] shadow-[0_34px_74px_rgba(0,0,0,0.38),0_0_48px_rgba(230,37,255,0.1)] [transform:rotateX(12deg)]" />
-        <div className="absolute inset-[9px] rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_34%_16%,rgba(255,255,255,0.14),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] [transform:translateZ(8px)]" />
-        <div className="absolute -right-[12px] top-[12px] h-[96px] w-[20px] rounded-r-[16px] bg-[linear-gradient(180deg,rgba(24,11,32,0.98),rgba(14,7,19,0.98))] [transform:rotateY(68deg)]" />
-        <div className="absolute -bottom-[10px] left-[14px] right-[14px] h-[20px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(16,8,22,0.98),rgba(8,5,12,0.98))] [transform:rotateX(-72deg)]" />
-        <div className="absolute inset-x-[32px] bottom-[18px] h-[44px] rounded-full bg-[radial-gradient(circle,rgba(13,239,253,0.2),rgba(230,37,255,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(10px)]" />
-      </div>
-
-      <div
-        className={cn(
-          "absolute inset-x-[4px] top-[28px] z-[8] h-[80px] origin-bottom [transform-style:preserve-3d] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          isUnlocked ? "-translate-y-12 rotate-[-11deg]" : "translate-y-0 rotate-0",
-        )}
+      <motion.div
+        className="relative h-full w-full [transform-style:preserve-3d]"
+        style={{ rotateX, rotateY }}
       >
-        <div className="absolute inset-0 rounded-[30px] border border-[#9d5ab0]/84 bg-[linear-gradient(180deg,rgba(88,37,104,1),rgba(49,22,60,1))] shadow-[0_22px_42px_rgba(0,0,0,0.24),0_0_34px_rgba(230,37,255,0.14)] [transform:rotateX(20deg)]" />
-        <div className="absolute inset-[9px] rounded-[24px] border border-white/7 bg-[radial-gradient(circle_at_35%_16%,rgba(255,255,255,0.14),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))]" />
-        <div className="absolute left-1/2 top-0 z-[2] h-full w-[28px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_18px_rgba(255,91,151,0.26)]" />
-        <div className="absolute inset-x-0 top-1/2 z-[2] h-[15px] -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#ff5abb,#ff5f73)] shadow-[0_0_18px_rgba(255,95,169,0.24)]" />
-      </div>
+        <div className="absolute left-1/2 top-[64px] z-[7] h-[120px] w-[24px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_24px_rgba(255,91,151,0.26)] [transform:translateZ(26px)]" />
 
-      <div
-        className={cn(
-          "pointer-events-none absolute left-1/2 top-[52px] z-[5] flex -translate-x-1/2 items-end gap-3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          isUnlocked ? "-translate-y-1 opacity-100" : "translate-y-4 opacity-0",
-        )}
-      >
-        <span className="block h-[114px] w-[80px] rotate-[-12deg] overflow-hidden rounded-[16px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_24px_rgba(15,239,253,0.12)]">
-          <Image
-            src="/regalo-iman-portada.png"
-            alt=""
-            width={80}
-            height={114}
-            className="h-full w-full object-cover object-top"
+        <div className="absolute inset-x-[24px] bottom-[34px] z-[3] h-[126px] [transform-style:preserve-3d]">
+          <div className="absolute inset-0 rounded-[36px] border border-[#7583a8]/56 bg-[linear-gradient(180deg,rgba(57,66,92,0.98),rgba(26,30,43,0.99))] shadow-[0_34px_84px_rgba(0,0,0,0.4),0_0_44px_rgba(15,239,253,0.08)] [transform:translateZ(0px)]" />
+          <div className="absolute inset-[8px] rounded-[28px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.18),rgba(255,255,255,0.03)_24%,rgba(255,255,255,0.02)_64%,rgba(0,0,0,0.14))] [transform:translateZ(8px)]" />
+          <motion.div
+            className="absolute inset-[10px] rounded-[26px]"
+            style={{ background: glareBackground, translateZ: 12 }}
           />
-        </span>
-        <span className="block h-[120px] w-[84px] rotate-[9deg] overflow-hidden rounded-[16px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_24px_rgba(230,37,255,0.14)]">
-          <Image
-            src="/regalo-oferta-portada.png"
-            alt=""
-            width={84}
-            height={120}
-            className="h-full w-full object-cover object-top"
+          <div className="absolute -right-[14px] top-[12px] h-[98px] w-[22px] rounded-r-[18px] bg-[linear-gradient(180deg,rgba(22,26,36,1),rgba(11,14,22,1))] [transform:rotateY(72deg)]" />
+          <div className="absolute -left-[12px] top-[18px] h-[90px] w-[18px] rounded-l-[16px] bg-[linear-gradient(180deg,rgba(72,83,112,0.7),rgba(25,30,43,0.95))] [transform:rotateY(-70deg)]" />
+          <div className="absolute -bottom-[10px] left-[16px] right-[16px] h-[20px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(14,17,24,1),rgba(7,9,14,1))] [transform:rotateX(-72deg)]" />
+          <div className="absolute inset-x-[34px] bottom-[18px] h-[42px] rounded-full bg-[radial-gradient(circle,rgba(13,239,253,0.2),rgba(230,37,255,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(10px)]" />
+        </div>
+
+        <motion.div
+          className="absolute inset-x-[4px] top-[28px] z-[8] h-[82px] origin-bottom [transform-style:preserve-3d]"
+          animate={
+            isUnlocked
+              ? { y: -46, rotateZ: -8, rotateX: 18 }
+              : { y: 0, rotateZ: 0, rotateX: 8 }
+          }
+          transition={{ duration: 0.78, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="absolute inset-0 rounded-[30px] border border-[#93a2c8]/60 bg-[linear-gradient(180deg,rgba(82,94,128,0.98),rgba(37,42,60,1))] shadow-[0_24px_46px_rgba(0,0,0,0.28),0_0_30px_rgba(15,239,253,0.08)] [transform:translateZ(8px)]" />
+          <div className="absolute inset-[8px] rounded-[24px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.18),rgba(255,255,255,0.02)_30%,rgba(255,255,255,0.03)_70%,rgba(0,0,0,0.12))]" />
+          <motion.div
+            className="absolute inset-[10px] rounded-[22px]"
+            style={{ background: glareBackground }}
           />
-        </span>
-      </div>
-    </div>
+          <div className="absolute left-1/2 top-0 z-[2] h-full w-[24px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_18px_rgba(255,91,151,0.24)]" />
+          <div className="absolute inset-x-0 top-1/2 z-[2] h-[15px] -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#ff5abb,#ff5f73)] shadow-[0_0_18px_rgba(255,95,169,0.24)]" />
+        </motion.div>
+
+        <motion.div
+          className="pointer-events-none absolute left-1/2 top-[44px] z-[9] flex -translate-x-1/2 items-end gap-3"
+          animate={
+            isUnlocked
+              ? { y: -8, opacity: 1 }
+              : { y: 18, opacity: 0 }
+          }
+          transition={{ duration: 0.68, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <motion.span
+            className="block h-[120px] w-[84px] rotate-[-10deg] overflow-hidden rounded-[16px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_24px_rgba(15,239,253,0.12)]"
+            animate={isUnlocked ? { y: -8, rotateZ: -12 } : { y: 20, rotateZ: -6 }}
+            transition={{ duration: 0.72, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Image
+              src="/regalo-iman-portada.png"
+              alt=""
+              width={84}
+              height={120}
+              className="h-full w-full object-cover object-top"
+            />
+          </motion.span>
+          <motion.span
+            className="block h-[126px] w-[88px] rotate-[8deg] overflow-hidden rounded-[16px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_24px_rgba(230,37,255,0.14)]"
+            animate={isUnlocked ? { y: -18, rotateZ: 10 } : { y: 24, rotateZ: 4 }}
+            transition={{ duration: 0.76, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Image
+              src="/regalo-oferta-portada.png"
+              alt=""
+              width={88}
+              height={126}
+              className="h-full w-full object-cover object-top"
+            />
+          </motion.span>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -207,7 +281,30 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
       glowTone={index === 0 ? "purple" : "cyan"}
       className="flex h-full flex-col items-center rounded-[28px] border-white/12 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(12,14,20,0.98))] p-5 text-center shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_48px_rgba(0,0,0,0.24)]"
     >
-      <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+      <div className="flex w-full items-center gap-4 rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-3 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+        <div className="overflow-hidden rounded-[18px] border border-white/10 bg-black/25 shadow-[0_10px_24px_rgba(0,0,0,0.2)]">
+          <div className="relative aspect-[9/16] w-[74px] bg-[#0c0d14] sm:w-[84px]">
+            <Image
+              src={doc.cover}
+              alt={`Portada de ${doc.title}`}
+              fill
+              className="object-cover object-top"
+              sizes="84px"
+            />
+          </div>
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+            Documento desbloqueado
+          </p>
+          <h3 className="mt-2 text-lg font-semibold leading-tight tracking-tight text-[#F5F7FA] sm:text-xl">
+            {doc.title}
+          </h3>
+        </div>
+      </div>
+
+      <div className="mt-4 overflow-hidden rounded-[22px] border border-white/10 bg-black/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
         <div className="relative mx-auto aspect-[9/16] w-full max-w-[220px] bg-[#0c0d14]">
           <Image
             src={doc.cover}
@@ -217,15 +314,6 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
             sizes="(max-width: 640px) 160px, 220px"
           />
         </div>
-      </div>
-
-      <div className="mt-5">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-          Documento desbloqueado
-        </p>
-        <h3 className="mt-3 text-xl font-semibold tracking-tight text-[#F5F7FA]">
-          {doc.title}
-        </h3>
       </div>
 
       <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
