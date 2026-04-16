@@ -18,8 +18,8 @@ export function ServicesSystemHero({
       <Container className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
         <div className="max-w-[28rem]">
           <PillBadge>Servicios RiBuzz</PillBadge>
-          <h1 className="mt-4 max-w-3xl font-heading text-[2.6rem] leading-[0.98] text-[#F5F7FA] sm:text-[2.95rem] xl:text-[3.15rem]">
-            Tres capas para optimizar tu sistema comercial
+          <h1 className="mt-5 max-w-3xl text-[2rem] leading-[1.05] text-[#F5F7FA] sm:text-[2.55rem] xl:text-[2.95rem] [font-family:var(--font-saira)] font-semibold">
+            Tres capas para convertir desorden comercial en una operación clara y sostenible
           </h1>
           <p className="mt-4 max-w-lg text-[0.96rem] leading-relaxed text-[#C7CBD6] sm:text-[0.98rem]">
             RiBuzz ofrece tres etapas secuenciales: diseño, implementación y acompañamiento. No se venden piezas sueltas; cada capa responde a un momento distinto del negocio
