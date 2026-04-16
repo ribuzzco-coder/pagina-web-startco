@@ -40,8 +40,8 @@ export function PageHero({
           </p>
           <h1
             className={cn(
-              "mt-6 max-w-4xl font-heading text-4xl leading-tight text-[#F5F7FA] sm:text-5xl",
-              titleClassName,
+              titleClassName ??
+                "mt-6 max-w-4xl font-heading text-4xl leading-tight text-[#F5F7FA] sm:text-5xl",
             )}
           >
             {title}

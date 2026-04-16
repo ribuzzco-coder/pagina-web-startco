@@ -43,8 +43,8 @@ export function AboutRibuzzHero({
           <PillBadge>{eyebrow}</PillBadge>
           <h1
             className={cn(
-              "mt-4 max-w-4xl font-heading text-[2.15rem] leading-[1.02] text-[#F5F7FA] sm:text-[2.85rem] xl:text-[3.35rem]",
-              titleClassName,
+              titleClassName ??
+                "mt-4 max-w-4xl font-heading text-[2.15rem] leading-[1.02] text-[#F5F7FA] sm:text-[2.85rem] xl:text-[3.35rem]",
             )}
           >
             {title}
