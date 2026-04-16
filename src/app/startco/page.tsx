@@ -73,7 +73,6 @@ const supportCards = {
 
 export default function StartcoPage() {
   return (
-<<<<<<< HEAD
     <section className="relative cv-auto -mt-[76px] min-h-screen">
       <div className="fixed inset-0 z-0">
         <AnimatedShaderBackground />
@@ -82,16 +81,6 @@ export default function StartcoPage() {
         <div className="relative w-full overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(20,22,34,0.72),rgba(11,11,16,0.64))] px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:rounded-[36px] sm:px-10 sm:py-10">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(230,37,255,0.4),transparent)]" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(230,37,255,0.1),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.08),transparent_26%)]" />
-          
-=======
-    <section className="relative cv-auto -mt-[76px] min-h-screen overflow-hidden py-16 sm:py-20">
-      <AnimatedShaderBackground />
-
-      <Container className="relative z-10 flex min-h-screen max-w-3xl items-center justify-center">
-        <div className="relative w-full overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(20,22,34,0.72),rgba(11,11,16,0.64))] px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:rounded-[36px] sm:px-10 sm:py-10">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(230,37,255,0.4),transparent)]" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(230,37,255,0.1),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.08),transparent_26%)]" />
->>>>>>> origin/feature/development
 
           <div className="relative flex flex-col items-center text-center">
             <div className="flex h-32 w-32 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_16px_32px_rgba(0,0,0,0.22)] sm:h-36 sm:w-36">
@@ -202,7 +191,6 @@ export default function StartcoPage() {
               </Card>
             </Link>
 
-<<<<<<< HEAD
             <Card
               glowTone="cyan"
               className="group relative flex h-full min-h-[280px] flex-col rounded-[28px] border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 text-center transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#0FEFFD]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
@@ -269,44 +257,6 @@ export default function StartcoPage() {
                 </div>
               </div>
             </Card>
-=======
-            <a
-              href={supportCards.neoMech.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <Card
-                glowTone="cyan"
-                className="rounded-[28px] border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 text-center"
-              >
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]" />
-                <div className="relative flex h-full min-h-[260px] flex-col items-center justify-between gap-4">
-                  <div>
-                    <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
-                      {supportCards.neoMech.title}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                      {supportCards.neoMech.description}
-                    </p>
-                  </div>
-
-                  <div className="flex flex-col items-center gap-2.5">
-                    <Image
-                      src="/neo-mech-logo.png"
-                      alt="Logo Neo-Mech"
-                      width={100}
-                      height={100}
-                      className="h-24 w-24 object-contain drop-shadow-[0_0_18px_rgba(14,210,255,0.16)]"
-                    />
-                    <span className="inline-flex w-fit rounded-full border border-[#0FEFFD]/16 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9BF8FF]">
-                      Ver perfil
-                    </span>
-                  </div>
-                </div>
-              </Card>
-            </a>
->>>>>>> origin/feature/development
           </div>
 
           <Link
