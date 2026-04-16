@@ -30,6 +30,7 @@ export default function AboutPage() {
       <AboutRibuzzHero
         eyebrow="Sobre RiBuzz"
         title="RiBuzz convierte la estructura comercial en un activo que genera valor."
+        titleClassName="[font-family:var(--font-saira)] font-semibold text-[2rem] leading-[1.05] sm:text-[2.55rem] xl:text-[2.95rem]"
         description="Nacimos al ver el mismo patrón una y otra vez: empresas que sí venden, pero siguen operando sin un sistema claro para captar, convertir y hacer seguimiento con consistencia."
         supportText="RiBuzz funciona como un sistema operativo comercial: aporta claridad, criterio y control para que el crecimiento deje de depender de intuición, urgencia o esfuerzo disperso."
         primaryCtaLabel="Solicita tu diagnóstico gratuito"

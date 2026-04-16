@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+﻿import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { NFCCard } from "@/components/ui/nfc-card";
@@ -15,8 +15,8 @@ export function NfcHero({ primaryHref }: NfcHeroProps) {
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
             Tarjetas NFC
           </p>
-          <h1 className="mt-5 max-w-3xl font-heading text-[2.28rem] leading-[1.03] text-[#F5F7FA] sm:text-[3.1rem] xl:text-[3.45rem]">
-            Convierte cada interacción en un contacto real con tarjetas NFC
+          <h1 className="mt-5 max-w-3xl text-[2rem] leading-[1.05] text-[#F5F7FA] sm:text-[2.55rem] xl:text-[2.95rem] [font-family:var(--font-saira)] font-semibold">
+            Convierte cada acción en un contacto real con tarjetas NFC
           </h1>
           <p className="mt-4 max-w-lg text-[0.98rem] leading-relaxed text-[#98A0B3] sm:text-base">
             Comparte tu información, redes o negocio con un solo toque.

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { cn } from "@/lib/utils";
 
 type PageHeroProps = {
   eyebrow: string;
@@ -13,6 +14,7 @@ type PageHeroProps = {
   secondaryExternal?: boolean;
   asideTitle?: string;
   asideText?: string;
+  titleClassName?: string;
 };
 
 export function PageHero({
@@ -27,6 +29,7 @@ export function PageHero({
   secondaryExternal,
   asideTitle,
   asideText,
+  titleClassName,
 }: PageHeroProps) {
   return (
     <section className="pb-18 pt-16 sm:pb-24 sm:pt-24">
@@ -35,7 +38,12 @@ export function PageHero({
           <p className="text-[11px] font-semibold tracking-[0.16em] text-[#E7B0EE] uppercase">
             {eyebrow}
           </p>
-          <h1 className="mt-6 max-w-4xl font-heading text-4xl leading-tight text-[#F5F7FA] sm:text-5xl">
+          <h1
+            className={cn(
+              "mt-6 max-w-4xl font-heading text-4xl leading-tight text-[#F5F7FA] sm:text-5xl",
+              titleClassName,
+            )}
+          >
             {title}
           </h1>
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#98A0B3] sm:text-lg">
