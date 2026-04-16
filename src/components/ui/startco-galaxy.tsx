@@ -33,10 +33,10 @@ function ShootingStars() {
     const interval = setInterval(() => {
       setStars(prev => {
         const next = [...prev, createStar()];
-        if (next.length > 6) return next.slice(1);
+        if (next.length > 14) return next.slice(1);
         return next;
       });
-    }, 2800);
+    }, 950);
 
     return () => clearInterval(interval);
   }, []);

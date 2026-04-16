@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { AnimatedShaderBackground } from "@/components/ui/animated-shader-background";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { StartcoGalaxy } from "@/components/ui/startco-galaxy";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
@@ -75,7 +75,8 @@ export default function StartcoPage() {
   return (
     <section className="relative cv-auto -mt-[76px] min-h-screen">
       <div className="fixed inset-0 z-0">
-        <AnimatedShaderBackground />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(230,37,255,0.12),transparent_34%),linear-gradient(180deg,#0b0b10,#101420_46%,#0b0b10)]" />
+        <StartcoGalaxy className="opacity-90" />
       </div>
       <Container className="relative z-10 flex min-h-screen max-w-3xl flex-col items-center justify-center py-24 sm:py-32">
         <div className="relative w-full overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(20,22,34,0.72),rgba(11,11,16,0.64))] px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:rounded-[36px] sm:px-10 sm:py-10">
@@ -179,13 +180,13 @@ export default function StartcoPage() {
                   </p>
                 </div>
 
-                <div className="pointer-events-none absolute bottom-0 left-1/2 w-[54%] -translate-x-1/2 translate-y-[18%] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-[14%] md:w-[58%] md:translate-y-[8%]">
+                <div className="pointer-events-none absolute bottom-0 left-1/2 w-[72%] -translate-x-1/2 translate-y-[34%] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-[30%] md:w-[78%] md:translate-y-[24%]">
                   <Image
                     src="/startco-cards2.png"
                     alt="Mockup de tarjetas NFC RiBuzz"
                     width={700}
                     height={1000}
-                    className="h-auto w-full object-contain drop-shadow-[0_0_28px_rgba(230,37,255,0.20)]"
+                    className="h-auto w-full object-contain drop-shadow-[0_0_34px_rgba(230,37,255,0.24)]"
                   />
                 </div>
               </Card>

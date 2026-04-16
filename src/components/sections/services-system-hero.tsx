@@ -24,7 +24,7 @@ export function ServicesSystemHero({
       <Container className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
         <div className="max-w-[31rem]">
           <PillBadge>Servicios RiBuzz</PillBadge>
-          <h1 className="mt-5 max-w-3xl font-heading text-4xl leading-[1.02] text-[#F5F7FA] sm:text-[3.35rem]">
+          <h1 className="mt-5 max-w-3xl text-[2rem] leading-[1.05] text-[#F5F7FA] sm:text-[2.55rem] xl:text-[2.95rem] [font-family:var(--font-saira)] font-semibold">
             Tres capas para convertir desorden comercial en una operación clara y sostenible
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-[#C7CBD6] sm:text-[1.02rem]">
