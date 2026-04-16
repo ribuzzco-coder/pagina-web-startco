@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import Image from "next/image";
 import { type CSSProperties, useMemo, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -10,18 +11,23 @@ type RewardDoc = {
   title: string;
   description: string;
   href: string;
+  cover: string;
 };
 
 const docs: RewardDoc[] = [
   {
     title: "Hagamos una oferta que nos lleve",
-    description: "Una guía para estructurar una oferta con más claridad, intención y dirección comercial.",
+    description:
+      "Una guía para estructurar una oferta con más claridad, intención y dirección comercial.",
     href: "/hagamos-una-oferta-que-nos-lleve.pdf",
+    cover: "/regalo-oferta-portada.png",
   },
   {
     title: "Un imán para tu oferta",
-    description: "Un recurso breve para entender cómo volver tu propuesta más atractiva y memorable.",
+    description:
+      "Un recurso breve para entender cómo volver tu propuesta más atractiva y memorable.",
     href: "/un-iman-para-tu-oferta.pdf",
+    cover: "/regalo-iman-portada.png",
   },
 ];
 
@@ -48,28 +54,56 @@ function GiftIcon({ className }: { className?: string }) {
 
 function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
   return (
-    <div className="relative mx-auto h-44 w-[220px] sm:h-48 sm:w-[248px]">
-      <div className="absolute inset-x-6 bottom-0 h-28 rounded-[30px] border border-[#a04da8]/50 bg-[linear-gradient(180deg,rgba(34,16,43,0.99),rgba(23,12,31,0.99))] shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_54px_rgba(0,0,0,0.28),0_0_28px_rgba(230,37,255,0.14)]" />
-      <div className="absolute left-1/2 top-[40px] z-20 h-[104px] w-[26px] -translate-x-1/2 rounded-[12px] bg-[linear-gradient(180deg,#ff57b2,#ff5f76)] shadow-[0_0_20px_rgba(255,95,169,0.22)]" />
+    <div
+      className="relative mx-auto h-[210px] w-[250px] [perspective:1400px] sm:h-[230px] sm:w-[280px]"
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      <div className="absolute inset-x-8 bottom-2 h-5 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.24),rgba(15,239,253,0.08)_55%,transparent_76%)] blur-xl" />
 
-      <div
-        className={cn(
-          "absolute inset-x-0 top-7 z-10 h-14 origin-bottom rounded-[22px] border border-[#a954b4]/60 bg-[linear-gradient(180deg,rgba(54,26,64,0.98),rgba(39,20,46,0.98))] shadow-[0_12px_28px_rgba(0,0,0,0.18),0_0_24px_rgba(230,37,255,0.16)] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          isUnlocked ? "-translate-y-9 rotate-[-10deg]" : "translate-y-0 rotate-0",
-        )}
-      >
-        <span className="absolute left-1/2 top-0 h-full w-[26px] -translate-x-1/2 rounded-[10px] bg-[linear-gradient(180deg,#ff57b2,#ff5f76)] shadow-[0_0_18px_rgba(255,95,169,0.2)]" />
-        <span className="absolute inset-x-0 top-1/2 h-[12px] -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#ff5db7,#ff5d72)] shadow-[0_0_18px_rgba(255,95,169,0.18)]" />
+      <div className="absolute left-1/2 top-[44px] z-[4] h-[124px] w-[34px] -translate-x-1/2 rounded-[14px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_20px_rgba(255,91,151,0.18)]" />
+
+      <div className="absolute inset-x-[18px] bottom-[28px] z-[3] h-[118px] [transform-style:preserve-3d]">
+        <div className="absolute inset-0 rounded-[28px] border border-[#7e3f8c]/70 bg-[linear-gradient(180deg,rgba(36,18,44,0.98),rgba(21,12,30,0.98))] shadow-[0_26px_56px_rgba(0,0,0,0.34),0_0_34px_rgba(230,37,255,0.1)] [transform:rotateX(10deg)]" />
+        <div className="absolute inset-x-[8px] top-[8px] h-[92px] rounded-[22px] border border-white/6 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] [transform:translateZ(6px)]" />
+        <div className="absolute -right-[10px] top-[10px] h-[94px] w-[18px] rounded-r-[12px] bg-[linear-gradient(180deg,rgba(24,12,31,0.98),rgba(13,7,18,0.98))] [transform:rotateY(64deg)]" />
+        <div className="absolute -bottom-[8px] left-[10px] right-[10px] h-[18px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(16,8,22,0.98),rgba(8,5,12,0.98))] [transform:rotateX(-72deg)]" />
       </div>
 
       <div
         className={cn(
-          "pointer-events-none absolute left-1/2 top-[48px] z-[5] flex -translate-x-1/2 items-end gap-4 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          isUnlocked ? "opacity-100" : "opacity-0",
+          "absolute inset-x-0 top-[28px] z-[7] h-[66px] origin-bottom [transform-style:preserve-3d] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          isUnlocked ? "-translate-y-7 rotate-[-9deg]" : "translate-y-0 rotate-0",
         )}
       >
-        <span className="block h-20 w-14 rotate-[-14deg] rounded-[16px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_20px_rgba(15,239,253,0.14)]" />
-        <span className="block h-24 w-16 rotate-[11deg] rounded-[16px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_24px_rgba(230,37,255,0.16)]" />
+        <div className="absolute inset-0 rounded-[24px] border border-[#9a4fa9]/78 bg-[linear-gradient(180deg,rgba(71,32,83,0.99),rgba(45,21,54,0.99))] shadow-[0_16px_36px_rgba(0,0,0,0.2),0_0_28px_rgba(230,37,255,0.12)] [transform:rotateX(16deg)]" />
+        <div className="absolute left-1/2 top-0 z-[2] h-full w-[34px] -translate-x-1/2 rounded-[12px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_18px_rgba(255,91,151,0.22)]" />
+        <div className="absolute inset-x-0 top-1/2 z-[2] h-[16px] -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#ff5abb,#ff5f73)] shadow-[0_0_18px_rgba(255,95,169,0.2)]" />
+      </div>
+
+      <div
+        className={cn(
+          "pointer-events-none absolute left-1/2 top-[58px] z-[5] flex -translate-x-1/2 items-end gap-4 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          isUnlocked ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
+        )}
+      >
+        <span className="block h-[110px] w-[78px] rotate-[-15deg] overflow-hidden rounded-[16px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_24px_rgba(15,239,253,0.12)]">
+          <Image
+            src="/regalo-iman-portada.png"
+            alt=""
+            width={78}
+            height={110}
+            className="h-full w-full object-cover object-top"
+          />
+        </span>
+        <span className="block h-[116px] w-[82px] rotate-[10deg] overflow-hidden rounded-[16px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_24px_rgba(230,37,255,0.14)]">
+          <Image
+            src="/regalo-oferta-portada.png"
+            alt=""
+            width={82}
+            height={116}
+            className="h-full w-full object-cover object-top"
+          />
+        </span>
       </div>
     </div>
   );
@@ -97,7 +131,7 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
     }
 
     setDragging(false);
-    if (progress > 0.88) {
+    if (progress > 0.8) {
       setProgress(1);
       onUnlock();
       return;
@@ -113,31 +147,35 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
     }
 
     const rect = track.getBoundingClientRect();
-    const handleSize = 56;
+    const handleSize = 58;
     const next = (clientX - rect.left - handleSize / 2) / (rect.width - handleSize);
     setProgress(Math.min(Math.max(next, 0), 1));
   };
 
   const fillWidth = `${progress * 100}%`;
-  const handleOffset = `calc(${progress * 100}% - ${progress * 56}px)`;
+  const handleOffset = `calc(${progress * 100}% - ${progress * 58}px)`;
 
   return (
     <div className="mt-8 flex justify-center">
       <div
         ref={trackRef}
-        className="relative h-16 w-full max-w-[360px] rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(18,22,34,0.94),rgba(12,14,20,0.98))] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_0_28px_rgba(230,37,255,0.08)]"
+        className="relative h-[74px] w-full max-w-[430px] rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(18,22,34,0.94),rgba(12,14,20,0.98))] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_0_28px_rgba(230,37,255,0.08)]"
+        onPointerDown={(event) => {
+          startDrag();
+          updateFromClientX(event.clientX);
+        }}
         onPointerMove={(event) => updateFromClientX(event.clientX)}
         onPointerUp={stopDrag}
         onPointerCancel={stopDrag}
         onPointerLeave={stopDrag}
       >
         <div
-          className="pointer-events-none absolute inset-y-1.5 left-1.5 rounded-full bg-[linear-gradient(90deg,rgba(230,37,255,0.32),rgba(15,239,253,0.2))] transition-[width] duration-200 ease-out"
+          className="pointer-events-none absolute inset-y-2 left-2 rounded-full bg-[linear-gradient(90deg,rgba(230,37,255,0.34),rgba(15,239,253,0.2))] transition-[width] duration-200 ease-out"
           style={{ width: fillWidth }}
         />
         <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_24%_50%,rgba(230,37,255,0.14),transparent_26%),radial-gradient(circle_at_75%_50%,rgba(15,239,253,0.1),transparent_26%)]" />
-        <div className="relative flex h-full items-center justify-center px-14 text-center">
-          <span className="text-sm font-semibold tracking-[0.18em] text-[#D5DBE7] uppercase">
+        <div className="relative flex h-full items-center justify-center px-16 text-center">
+          <span className="text-sm font-semibold tracking-[0.16em] text-[#D5DBE7] uppercase sm:text-[15px]">
             Desliza para abrir
           </span>
         </div>
@@ -145,7 +183,7 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
           type="button"
           aria-label="Deslizar para desbloquear"
           className={cn(
-            "absolute top-1.5 flex h-13 w-13 items-center justify-center rounded-full border border-white/18 bg-[linear-gradient(135deg,#FAFAFA,#EDE8F9)] text-[#7A1A8A] shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_12px_24px_rgba(0,0,0,0.22),0_0_16px_rgba(230,37,255,0.16)] transition-[transform,left] duration-200 ease-out",
+            "absolute top-2 flex h-[58px] w-[58px] items-center justify-center rounded-full border border-white/18 bg-[linear-gradient(135deg,#FAFAFA,#EDE8F9)] text-[#7A1A8A] shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_12px_24px_rgba(0,0,0,0.22),0_0_16px_rgba(230,37,255,0.16)] transition-[transform,left] duration-200 ease-out",
             dragging && "scale-[1.02]",
           )}
           style={{ left: handleOffset }}
@@ -163,14 +201,16 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
   return (
     <Card
       glowTone={index === 0 ? "purple" : "cyan"}
-      className="rounded-[28px] border-white/12 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(12,14,20,0.98))] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_48px_rgba(0,0,0,0.24)]"
+      className="flex h-full flex-col rounded-[28px] border-white/12 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(12,14,20,0.98))] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_48px_rgba(0,0,0,0.24)]"
     >
       <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-        <div className="aspect-[4/5] w-full bg-[#0c0d14]">
-          <iframe
-            title={`Vista previa de ${doc.title}`}
-            src={`${doc.href}#toolbar=0&navpanes=0&scrollbar=0&page=1&view=FitH`}
-            className="h-full w-full scale-[1.01]"
+        <div className="relative mx-auto aspect-[9/16] w-full max-w-[220px] bg-[#0c0d14]">
+          <Image
+            src={doc.cover}
+            alt={`Portada de ${doc.title}`}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 640px) 160px, 220px"
           />
         </div>
       </div>
@@ -188,8 +228,8 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
         {doc.description}
       </p>
 
-      <div className="mt-5 flex">
-        <Button href={doc.href} variant="secondary" size="md">
+      <div className="mt-auto flex pt-5">
+        <Button href={doc.href} variant="secondary" size="md" className="min-w-[108px]">
           Leer
         </Button>
       </div>
