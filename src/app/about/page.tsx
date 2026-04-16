@@ -1,5 +1,5 @@
-﻿import { AboutRibuzzHero } from "@/components/sections/about-ribuzz-hero";
-import { CTASection } from "@/components/sections/cta-section";
+import { AboutRibuzzHero } from "@/components/sections/about-ribuzz-hero";
+import { NetworkFeatureSection } from "@/components/sections/network-feature-section";
 import { PrincipleCard } from "@/components/sections/principle-card";
 import { StepCard } from "@/components/sections/step-card";
 import { Card } from "@/components/ui/card";
@@ -20,7 +20,7 @@ import { SITE_CONFIG } from "@/lib/site-config";
 export const metadata = createPageMetadata({
   title: "Sobre RiBuzz",
   description:
-    "RiBuzz nace para ayudar a empresas que ya venden, pero siguen operando sin una estructura comercial clara y sostenible.",
+    "RiBuzz nace para ayudar a que menos empresas fracasen por falta de clientes, estructura comercial y flujo de caja.",
   path: "/about",
 });
 
@@ -29,10 +29,10 @@ export default function AboutPage() {
     <>
       <AboutRibuzzHero
         eyebrow="Sobre RiBuzz"
-        title="RiBuzz convierte la estructura comercial en un activo que genera valor."
+        title="RiBuzz nace para ayudar a que menos empresas fracasen por falta de clientes, estructura comercial y flujo de caja."
         titleClassName="[font-family:var(--font-saira)] font-semibold text-[2rem] leading-[1.05] sm:text-[2.55rem] xl:text-[2.95rem]"
-        description="Nacimos al ver el mismo patrón una y otra vez: empresas que sí venden, pero siguen operando sin un sistema claro para captar, convertir y hacer seguimiento con consistencia."
-        supportText="RiBuzz funciona como un sistema operativo comercial: aporta claridad, criterio y control para que el crecimiento deje de depender de intuición, urgencia o esfuerzo disperso."
+        description="En Colombia, demasiadas empresas desaparecen antes de consolidarse. No siempre porque su producto sea malo, sino porque venden sin un sistema claro para atraer clientes, convertir oportunidades, hacer seguimiento y sostener ingresos."
+        supportText="RiBuzz existe para corregir ese punto: convertir el sistema comercial en un activo real del negocio."
         primaryCtaLabel="Solicita tu diagnóstico gratuito"
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
       />
@@ -41,8 +41,8 @@ export default function AboutPage() {
         <Container>
           <SectionTitle
             eyebrow="Nuestra manera de operar"
-            title="Trabajamos en cuatro fases para intervenir con criterio, no por intuición."
-            description="Así opera RiBuzz: primero leemos el sistema, luego definimos la estructura, activamos lo necesario y acompañamos la ejecución."
+            title="Trabajamos sobre el sistema comercial completo, no sobre piezas aisladas."
+            description="RiBuzz no empieza ejecutando por ejecutar. Primero entiende el negocio, después estructura el sistema, luego activa lo necesario y finalmente acompaña la operación para que el crecimiento no dependa de improvisación."
           />
 
           <div className="relative mt-10 space-y-6 sm:space-y-8">
@@ -70,8 +70,8 @@ export default function AboutPage() {
         <Container>
           <SectionTitle
             eyebrow="Origen"
-            title="De una observación repetida a una postura clara"
-            description="El origen de RiBuzz no está en vender más servicios. Está en corregir una forma de operar que deja desgaste, ceguera comercial y dependencia excesiva del fundador."
+            title="RiBuzz no nació para vender servicios. Nació porque demasiadas empresas no logran sostenerse."
+            description="En Colombia, 66,5 % de las empresas no sobrevive más de cinco años. Y aunque el cierre no tiene una sola causa, sí hay una señal clara que se repite."
           />
 
           <InfoGrid className="mt-8 md:grid-cols-3">
@@ -95,8 +95,8 @@ export default function AboutPage() {
         <Container>
           <SectionTitle
             eyebrow="Visión"
-            title="Qué quiere empujar RiBuzz en el mercado"
-            description="La visión no es repetir el origen. Es mover a más empresas hacia una forma de crecer menos improvisada y más estructurada."
+            title="Queremos que crecer deje de depender de la intuición."
+            description="Ayudar a que más empresas operen con sistemas comerciales más claros, sostenibles y menos dependientes del fundador."
           />
 
           <InfoGrid className="mt-8 md:grid-cols-2">
@@ -153,11 +153,10 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <CTASection
-        title="Si tu empresa ya vende, pero sigue dependiendo de intuición y urgencia, vale la pena leer el sistema antes de mover más piezas."
-        description="Solicita tu diagnóstico gratuito. Te toma menos de 10 minutos y nos permite revisar si realmente existe una oportunidad de intervención antes de avanzar."
-        primaryLabel="Solicita tu diagnóstico gratuito"
-        primaryHref={SITE_CONFIG.diagnosisPath}
+      <NetworkFeatureSection
+        title="Si tu empresa no crece como te gustaría"
+        description="Solicita tu diagnóstico gratuito. Te toma menos de 10 minutos y nos permite identificar oportunidades para que tu empresa crezca."
+        primaryButtonLabel="Solicita tu diagnóstico gratuito"
       />
     </>
   );

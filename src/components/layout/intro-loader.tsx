@@ -103,17 +103,23 @@ export function IntroLoader() {
       className={`intro-loader ${isClosing ? "intro-loader--closing" : ""}`}
       aria-hidden="true"
     >
+      <div className="intro-loader__backdrop" />
       <div className="intro-loader__glow" />
-      <video
-        ref={videoRef}
-        className="intro-loader__video"
-        muted
-        playsInline
-        preload="auto"
-        onEnded={() => scheduleClose(INTRO_END_HOLD_MS)}
-      >
-        <source src="/intro-logo.mp4" type="video/mp4" />
-      </video>
+      <div className="intro-loader__stage">
+        <div className="intro-loader__video-ambient" />
+        <div className="intro-loader__video-shell">
+          <video
+            ref={videoRef}
+            className="intro-loader__video"
+            muted
+            playsInline
+            preload="auto"
+            onEnded={() => scheduleClose(INTRO_END_HOLD_MS)}
+          >
+            <source src="/intro-logo.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
     </div>
   );
 }

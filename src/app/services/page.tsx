@@ -8,6 +8,7 @@ import { SectionTitle } from "@/components/ui/section-title";
 import { differentiators, fullServices, serviceEffects } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
+import { BoxVisual } from "@/components/ui/gift-box-visual";
 
 export const metadata = createPageMetadata({
   title: "Servicios",
@@ -53,7 +54,7 @@ export default function ServicesPage() {
       <section className="cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
-            align="center"
+            align="left"
             eyebrow="Que genera cada capa"
             title="Claridad, capacidad operativa y sostenibilidad"
             description="El valor no esta solo en hacer cosas. Esta en instalar una logica comercial que el negocio pueda usar y mejorar."
@@ -77,10 +78,10 @@ export default function ServicesPage() {
       <section className="section-soft cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
-            align="center"
+            align="left"
             eyebrow="Diferencial"
-            title="Lo que RiBuzz hace distinto frente a agencias, consultores o ejecucion aislada"
-            description="La diferencia no es solo tecnica. Es la postura de intervenir el sistema comercial con criterio y no una parte desconectada."
+            title="Descubre cómo activar tu crecimiento"
+            description="No somos una agencia más, somos la pieza que une estrategia y ejecución para que tu sistema comercial deje de ser una carga y se convierta en tu mayor ventaja competitiva."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -94,13 +95,17 @@ export default function ServicesPage() {
       </section>
 
       <CTASection
-        title="El diagnostico define que capa tiene sentido para tu momento actual."
-        description="Solicita tu diagnostico gratuito. Te toma menos de 10 minutos, recibes una lectura inicial del sistema comercial y revisamos si realmente hay fit antes de proponer una capa de trabajo."
-        primaryLabel="Solicita tu diagnostico gratuito"
-        primaryHref={SITE_CONFIG.diagnosisPath}
-        secondaryLabel="Escribir por WhatsApp"
-        secondaryHref={SITE_CONFIG.whatsappUrl}
-        secondaryExternal
+        actionsAtBottom
+        eyebrow="Recursos gratuitos"
+        title="Empieza a transformar tu operación hoy mismo"
+        description="Reclama tu regalo y accede a recursos gratuitos que te ayudarán a estructurar tu sistema comercial."
+        primaryLabel="Haz click aquí"
+        primaryHref="/regalos"
+        rightElement={
+          <div className="opacity-80 drop-shadow-[0_0_15px_rgba(230,37,255,0.15)]">
+            <BoxVisual isUnlocked={false} className="scale-90" />
+          </div>
+        }
       />
     </>
   );

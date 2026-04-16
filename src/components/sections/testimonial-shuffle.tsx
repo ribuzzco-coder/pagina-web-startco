@@ -1,7 +1,8 @@
 "use client";
 
+import { PanInfo, motion } from "framer-motion";
 import { useState } from "react";
-import { motion, PanInfo } from "framer-motion";
+
 import { Container } from "@/components/ui/container";
 import { PillBadge } from "@/components/ui/pill-badge";
 import { cn } from "@/lib/utils";
@@ -10,29 +11,28 @@ const testimonials = [
   {
     id: 1,
     quote:
-      "RiBuzz nos ayudó a ver con claridad dónde se estaba rompiendo el proceso comercial. Dejamos de mover piezas sueltas y empezamos a tomar decisiones con criterio.",
-    author: "Equipo comercial",
-    role: "Empresa de servicios B2B",
+      "La intervención de RiBuzz nos dio claridad sobre las prioridades de nuestra operación comercial. Pasamos de reaccionar a estructurar un flujo de ventas que nuestro equipo ahora ejecuta con autonomía.",
+    author: "Neomech",
+    role: "Empresa B2B en Medellín",
   },
   {
     id: 2,
     quote:
-      "Lo más valioso no fue solo la lectura inicial, sino cómo esa claridad se tradujo en estructura, prioridades y una forma más operable de vender.",
-    author: "Líder de crecimiento",
-    role: "Negocio digital en expansión",
+      "RiBuzz identificó el cuello de botella en la conversión y nos ayudó a resolverlo con herramientas y estrategias de adquisición. En dos meses llegamos a mejorar un 50% las ventas.",
+    author: "Facial Fitness",
+    role: "Empresa B2C Digital",
   },
   {
     id: 3,
     quote:
-      "Sentíamos que hacíamos mucho y entendíamos poco. El diagnóstico puso orden, foco y un siguiente paso realista para crecer con menos improvisación.",
-    author: "Fundadora",
-    role: "Marca en etapa de consolidación",
+      "Con RiBuzz redujimos la fricción en nuestro flujo de adquisición logramos transmitir una mejor experiencia al usuario. Se implementó el proceso comercial con una mejor adquisición.",
+    author: "Terratravel",
+    role: "Empresas B2B Digital",
   },
 ] as const;
 
 type CardPosition = "front" | "middle" | "back";
 
-// Framer motion variants for smooth transitions
 const variants = {
   front: {
     x: 0,
@@ -76,8 +76,7 @@ export function TestimonialShuffle() {
     });
   }
 
-  const handleDragEnd = (_: any, info: PanInfo) => {
-    // If dragged more than 50px in either direction, shuffle
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
     if (Math.abs(info.offset.x) > 50) {
       handleShuffle();
     }
@@ -89,10 +88,10 @@ export function TestimonialShuffle() {
         <div className="max-w-xl">
           <PillBadge>Testimonios</PillBadge>
           <h2 className="mt-6 max-w-lg font-heading text-3xl leading-tight text-[#F5F7FA] sm:text-4xl">
-            Un vistazo al tipo de claridad que buscamos dejar cuando intervenimos.
+            Experiencias de empresas que ordenaron su crecimiento con RiBuzz.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-            Arrastra las tarjetas para ver más testimonios y aprendizajes de nuestros clientes.
+            Arrastra las tarjetas para ver más testimonios de nuestros clientes.
           </p>
         </div>
 
@@ -107,18 +106,15 @@ export function TestimonialShuffle() {
                 key={testimonial.id}
                 variants={variants}
                 animate={position}
-                // Transition settings for manual movement
                 transition={{
                   type: "spring",
                   stiffness: 260,
                   damping: 20,
                   duration: 0.6,
                 }}
-                // Drag settings for front card only
                 drag={isFront ? "x" : false}
                 dragConstraints={{ left: 0, right: 0 }}
                 onDragEnd={handleDragEnd}
-                // Visual draggable indicator (wiggle) for front card
                 {...(isFront && {
                   animate: {
                     ...variants.front,
@@ -141,12 +137,14 @@ export function TestimonialShuffle() {
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E7B0EE]">
                       Testimonio
                     </p>
-                    {isFront && (
-                       <div className="flex gap-1.5 items-center">
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#E7B0EE]/40 animate-pulse" />
-                          <span className="text-[10px] text-[#98A0B3]/60 uppercase tracking-widest">Desliza</span>
-                       </div>
-                    )}
+                    {isFront ? (
+                      <div className="flex items-center gap-1.5">
+                        <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#E7B0EE]/40" />
+                        <span className="text-[10px] uppercase tracking-widest text-[#98A0B3]/60">
+                          Desliza
+                        </span>
+                      </div>
+                    ) : null}
                   </div>
                   <p className="mt-6 text-lg leading-relaxed text-[#F5F7FA] sm:text-[1.15rem]">
                     "{testimonial.quote}"

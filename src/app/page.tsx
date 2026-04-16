@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { CTASection } from "@/components/sections/cta-section";
 import { NetworkFeatureSection } from "@/components/sections/network-feature-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { StepCard } from "@/components/sections/step-card";
@@ -15,37 +14,70 @@ import { PillBadge } from "@/components/ui/pill-badge";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
 import {
-  contactFaqs,
   differentiators,
-  fitChecklist,
-  homePainTransitions,
+  homeFaqs,
   methodologySteps,
-  nonFitChecklist,
 } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
   title: "Inicio",
-  description:
-    "El sistema para hacer crecer tu empresa.",
+  description: "RiBuzz ayuda a que menos empresas fracasen por falta de clientes, estructura comercial y flujo de caja.",
   path: "/",
 });
 
-const homeQuickFaqs = contactFaqs.slice(0, 4);
+const homePainTransitions = [
+  {
+    beforeTitle: "Esfuerzos dispersos",
+    beforeDescription:
+      "Ventas, marketing, tecnología y seguimiento avanzan por separado, sin un sistema que los conecte.",
+    afterTitle: "Procesos conectados",
+    afterDescription:
+      "Las áreas trabajan bajo una misma lógica, con prioridades claras y una operación más coherente.",
+  },
+  {
+    beforeTitle: "Fricción al convertir y fidelizar",
+    beforeDescription:
+      "El proceso pierde fuerza por falta de continuidad, seguimiento y una experiencia comercial integrada.",
+    afterTitle: "Flujo continuo con seguimiento real",
+    afterDescription:
+      "Cada oportunidad avanza con ritmo, puntos de control y una lógica de seguimiento sostenida.",
+  },
+  {
+    beforeTitle: "Dependencia total del fundador",
+    beforeDescription:
+      "La venta y las decisiones clave dependen casi por completo de una sola persona.",
+    afterTitle: "Ejecución compartida y autónoma",
+    afterDescription:
+      "El equipo puede operar con más claridad, autonomía y menos cuello de botella en la ejecución.",
+  },
+  {
+    beforeTitle: "Estancamiento sin claridad",
+    beforeDescription:
+      "El crecimiento se frena y no hay visibilidad real sobre qué priorizar o cómo intervenir.",
+    afterTitle: "Prioridades visibles y decisiones con criterio",
+    afterDescription:
+      "El sistema hace visible dónde intervenir primero y permite decidir con más claridad.",
+  },
+] as const;
+
+
+
+
 
 export default function HomePage() {
   return (
     <>
       <section
         id="home-hero"
-        className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden -mt-[76px]"
+        className="relative -mt-[76px] flex min-h-[100dvh] items-center justify-center overflow-hidden"
       >
         <HeroGalaxy />
         <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.02),transparent_16%),radial-gradient(circle_at_18%_28%,rgba(15,239,253,0.06),transparent_24%),radial-gradient(circle_at_80%_52%,rgba(230,37,255,0.09),transparent_30%),radial-gradient(circle_at_62%_78%,rgba(63,18,92,0.14),transparent_34%),linear-gradient(180deg,rgba(11,11,16,0.04)_0%,rgba(11,11,16,0.02)_36%,rgba(11,11,16,0.08)_72%,rgba(11,11,16,0.18)_100%)]" />
 
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-            <Container className="hero-no-select text-center">
+          <Container className="hero-no-select text-center">
             <div className="mx-auto max-w-[58rem]">
               <div className="mt-1 inline-flex rounded-full border border-white/10 bg-[#0B0B10]/36 px-4 py-2 backdrop-blur-sm sm:mt-3">
                 <PillBadge>Te damos la bienvenida</PillBadge>
@@ -64,11 +96,10 @@ export default function HomePage() {
               </div>
 
               <h1 className="mx-auto mt-6 max-w-3xl font-sans text-[1.9rem] font-bold leading-[1.08] text-[#F5F7FA] sm:text-[2.45rem] xl:text-[3rem]">
-                El sistema para hacer crecer tu empresa.
+                Sistema para hacer crecer tu empresa
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] sm:text-[1rem]">
-                Diseñamos la estructura comercial que te ayuda a captar mejor, vender con
-                más orden y sostener el crecimiento con seguimiento real.
+                Capta más clientes, vende con estructura y crece con consistencia. Integramos diagnóstico, diseño y ejecución en un solo sistema.
               </p>
 
               <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -85,16 +116,16 @@ export default function HomePage() {
                 </Button>
               </div>
             </div>
-            </Container>
+          </Container>
         </div>
       </section>
 
       <section className="section-soft cv-auto py-16 sm:py-20" id="problemas">
         <Container>
           <SectionTitle
-            eyebrow="¿Por qué se estancan las empresas?"
-            title="El problema no siempre es vender más. Es vender con un sistema débil."
-            description="Mira cómo cambian estos frentes cuando la operación comercial deja de improvisarse y empieza a trabajar con estructura."
+            eyebrow="Por qué tu empresa se estanca"
+            title="El problema es no tener un sistema alineado y sostenible"
+            description="Muchas empresas que ya venden se frenan porque su sistema comercial es débil. Sin una estructura de ventas, marketing, tecnología y seguimiento se hacen por separado; esto genera fricción, estancamiento y dependencia del fundador."
           />
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
@@ -117,8 +148,9 @@ export default function HomePage() {
         <Container>
           <SectionTitle
             align="left"
-            eyebrow="Cómo trabajamos"
-            title="Diagnóstico primero. Implementación después."
+            eyebrow="Cómo lo hacemos"
+            title="Sin diagnóstico no hay resultado."
+            description="Nuestro método de cuatro pasos garantiza que cada decisión se base en datos y no en suposiciones:"
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-4">
@@ -130,6 +162,7 @@ export default function HomePage() {
                 description={step.description}
                 points={step.points}
                 outcome={step.outcome}
+                hidePoints
               />
             ))}
           </div>
@@ -147,7 +180,7 @@ export default function HomePage() {
       <section className="section-soft cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
-            align="center"
+            align="left"
             eyebrow="Diferencial"
             title="Descubre cómo activar tu crecimiento"
             description="No somos una agencia más, somos la pieza que une estrategia y ejecución para que tu sistema comercial deje de ser una carga y se convierta en tu mayor ventaja competitiva."
@@ -173,16 +206,11 @@ export default function HomePage() {
                 Para quien sí es
               </p>
               <h2 className="mt-4 text-2xl font-semibold tracking-tight text-[#F5F7FA] lg:text-3xl">
-                Empresas que ya venden y necesitan ordenar cómo crecen.
+                A quién sirve
               </h2>
-              <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#98A0B3] sm:text-base">
-                {fitChecklist.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0FEFFD]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="mt-6 border-t border-white/8 pt-6 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+                RiBuzz ayuda a empresas que ya venden en Medellín o Colombia y desean poner orden y estructura a su crecimiento. Está pensado para negocios con fricción en su crecimiento que quieren dejar de improvisar y están dispuestos a participar en el proceso.
+              </p>
             </div>
 
             <div className="flex-1 p-7 sm:p-8 lg:p-10">
@@ -190,16 +218,11 @@ export default function HomePage() {
                 Para quien no es
               </p>
               <h2 className="mt-4 text-2xl font-semibold tracking-tight text-[#F5F7FA] lg:text-3xl">
-                No es para negocios que solo quieren más marketing sin revisar el fondo.
+                A quién no sirve
               </h2>
-              <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#98A0B3] sm:text-base">
-                {nonFitChecklist.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E625FF]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="mt-6 border-t border-white/8 pt-6 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+                No está dirigido a negocios que aún no han validado su oferta, que solo buscan marketing sin revisar su estructura, que esperan resultados sin involucrarse o que quieren delegar completamente la venta.
+              </p>
             </div>
           </Card>
         </Container>
@@ -218,7 +241,7 @@ export default function HomePage() {
           />
 
           <div className="mt-8 w-full">
-            <FAQAccordion items={homeQuickFaqs} />
+            <FAQAccordion items={homeFaqs} />
           </div>
 
           <div className="mt-7 flex">
@@ -237,19 +260,21 @@ export default function HomePage() {
 
             <div className="relative mx-auto max-w-2xl">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                Lecturas que dejan huella
+                Información de valor / Newsletter
               </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA] sm:text-4xl">
-                ¿Aún no estás listo para ejecutar?<br />Recibe nuestra lectura del mercado.
+                ¿No estás listo para ejecutar?
+                <br />
+                Suscríbete y recibe análisis sobre diseño de sistemas comerciales, conversión, seguimiento y casos reales de crecimiento.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#98A0B3] sm:text-lg">
-                Únete a la lista para recibir análisis esporádico (sin spam) sobre diseño de sistemas comerciales, conversión, estructuración y casos de crecimiento real.
+                Sin spam, solo contenido útil.
               </p>
 
               <div className="mx-auto mt-10 flex justify-center">
-                <Button 
-                  href="https://forms.monday.com/forms/3cbb05c0c156282155e6fa80b5922cb1?r=use1" 
-                  size="lg" 
+                <Button
+                  href="https://forms.monday.com/forms/3cbb05c0c156282155e6fa80b5922cb1?r=use1"
+                  size="lg"
                   external
                   className="shadow-[0_0_24px_rgba(230,37,255,0.2)]"
                 >
@@ -263,5 +288,3 @@ export default function HomePage() {
     </>
   );
 }
-
-
