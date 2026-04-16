@@ -121,7 +121,7 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
       <div className="absolute inset-x-4 top-8 h-[148px] rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.4),rgba(147,89,255,0.18)_42%,transparent_78%)] blur-[44px]" />
       <div className="absolute inset-x-10 bottom-2 h-7 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.3),rgba(115,74,255,0.12)_55%,transparent_80%)] blur-xl" />
 
-      <div className="absolute left-1/2 top-[108px] z-[6] h-9 w-9 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.34),transparent_70%)] blur-lg" />
+      <div className="absolute left-1/2 top-[122px] z-[6] h-10 w-10 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.34),transparent_70%)] blur-lg" />
 
       <motion.div
         className="relative h-full w-full overflow-hidden [transform-style:preserve-3d]"
@@ -138,17 +138,17 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
           <div className="absolute -left-[12px] top-[18px] h-[90px] w-[18px] rounded-l-[16px] bg-[linear-gradient(180deg,rgba(126,122,177,0.52),rgba(40,34,68,0.95))] [transform:rotateY(-70deg)]" />
           <div className="absolute -bottom-[10px] left-[16px] right-[16px] h-[20px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(22,18,36,1),rgba(10,8,18,1))] [transform:rotateX(-72deg)]" />
           <div className="absolute inset-x-[34px] bottom-[18px] h-[42px] rounded-full bg-[radial-gradient(circle,rgba(182,95,255,0.26),rgba(230,37,255,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(10px)]" />
-          <GiftBadge className="absolute left-1/2 top-[34px] z-[14] h-14 w-14 -translate-x-1/2 [transform:translateZ(22px)]" />
+          <GiftBadge className="absolute left-1/2 top-[42px] z-[14] h-12 w-12 -translate-x-1/2 [transform:translateZ(22px)]" />
         </div>
 
         <motion.div
           className="absolute inset-x-[4px] top-[28px] z-[8] h-[82px] origin-bottom [transform-style:preserve-3d]"
           animate={
             isUnlocked
-              ? { y: -46, rotateZ: -8, rotateX: 18 }
-              : { y: 0, rotateZ: 0, rotateX: 8 }
+              ? { y: -58, rotateZ: -9, rotateX: 20, opacity: 0 }
+              : { y: 0, rotateZ: 0, rotateX: 8, opacity: 1 }
           }
-          transition={{ duration: 0.78, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.88, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="absolute inset-0 rounded-[30px] border border-[#a78ff1]/42 bg-[linear-gradient(180deg,rgba(98,102,156,0.84),rgba(49,36,78,0.96))] shadow-[0_24px_46px_rgba(0,0,0,0.28),0_0_36px_rgba(181,103,255,0.12)] [transform:translateZ(8px)] backdrop-blur-xl" />
           <div className="absolute inset-[8px] rounded-[24px] border border-white/12 bg-[linear-gradient(145deg,rgba(255,255,255,0.2),rgba(255,255,255,0.03)_30%,rgba(255,255,255,0.04)_70%,rgba(0,0,0,0.12))]" />
@@ -156,21 +156,20 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
             className="absolute inset-[10px] rounded-[22px]"
             style={{ background: glareBackground }}
           />
-          <GiftBadge className="absolute left-1/2 top-1/2 z-[6] h-14 w-14 -translate-x-1/2 -translate-y-1/2" />
         </motion.div>
 
         <motion.div
-          className="pointer-events-none absolute left-1/2 top-[72px] z-[7] flex -translate-x-1/2 items-end gap-3"
+          className="pointer-events-none absolute left-1/2 top-[98px] z-[7] flex -translate-x-1/2 items-end gap-3"
           animate={
             isUnlocked
-              ? { y: -8, opacity: 1 }
+              ? { y: -12, opacity: 1 }
               : { y: 34, opacity: 0 }
           }
           transition={{ duration: 0.68, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
         >
           <motion.span
             className="block h-[120px] w-[84px] rotate-[-10deg] overflow-hidden rounded-[16px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_24px_rgba(15,239,253,0.12)]"
-            animate={isUnlocked ? { y: -8, rotateZ: -12 } : { y: 20, rotateZ: -6 }}
+            animate={isUnlocked ? { y: -8, rotateZ: -10 } : { y: 20, rotateZ: -6 }}
             transition={{ duration: 0.72, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <Image
@@ -183,7 +182,7 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
           </motion.span>
           <motion.span
             className="block h-[126px] w-[88px] rotate-[8deg] overflow-hidden rounded-[16px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_24px_rgba(230,37,255,0.14)]"
-            animate={isUnlocked ? { y: -18, rotateZ: 10 } : { y: 24, rotateZ: 4 }}
+            animate={isUnlocked ? { y: -18, rotateZ: 8 } : { y: 24, rotateZ: 4 }}
             transition={{ duration: 0.76, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
           >
             <Image
@@ -370,9 +369,9 @@ function GalacticBurst() {
   return (
     <>
       <div className="pointer-events-none fixed inset-0 z-[120] overflow-hidden">
-        <div className="absolute left-1/2 top-1/2 h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.42),rgba(255,111,168,0.2)_28%,rgba(147,89,255,0.14)_46%,transparent_74%)] blur-3xl animate-[reward-bloom_1200ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(230,37,255,0.18),rgba(230,37,255,0.06)_34%,transparent_66%)] opacity-0 animate-[reward-bloom_980ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
-        <span className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ff9ceb]/80 shadow-[0_0_40px_rgba(230,37,255,0.32)] opacity-0 animate-[reward-streak_1300ms_cubic-bezier(0.16,1,0.3,1)_forwards]" style={{ ["--angle" as string]: "0deg", ["--distance" as string]: "0px", ["--duration" as string]: "1300ms" }} />
+        <div className="absolute left-1/2 top-1/2 h-[68rem] w-[68rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.56),rgba(255,111,168,0.26)_24%,rgba(147,89,255,0.2)_42%,transparent_74%)] blur-[72px] animate-[reward-bloom_1450ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(230,37,255,0.28),rgba(230,37,255,0.12)_30%,transparent_70%)] opacity-0 animate-[reward-bloom_1200ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
+        <span className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ff9ceb]/90 shadow-[0_0_80px_rgba(230,37,255,0.42)] opacity-0 animate-[reward-streak_1450ms_cubic-bezier(0.16,1,0.3,1)_forwards]" style={{ ["--angle" as string]: "0deg", ["--distance" as string]: "0px", ["--duration" as string]: "1450ms" }} />
       </div>
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[32px]">
