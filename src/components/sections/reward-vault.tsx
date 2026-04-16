@@ -60,6 +60,19 @@ function GiftIcon({ className }: { className?: string }) {
   );
 }
 
+function GiftBadge({ className }: { className?: string }) {
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-center rounded-full border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_10px_22px_rgba(0,0,0,0.18),0_0_24px_rgba(230,37,255,0.16)] backdrop-blur-sm",
+        className,
+      )}
+    >
+      <GiftIcon className="h-6 w-6 text-[#f3d6ff]" />
+    </div>
+  );
+}
+
 function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -105,26 +118,27 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
-      <div className="absolute inset-x-4 top-8 h-[138px] rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.34),rgba(15,239,253,0.16)_44%,transparent_76%)] blur-[40px]" />
-      <div className="absolute inset-x-10 bottom-2 h-7 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.26),rgba(15,239,253,0.1)_55%,transparent_80%)] blur-xl" />
+      <div className="absolute inset-x-4 top-8 h-[148px] rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.4),rgba(147,89,255,0.18)_42%,transparent_78%)] blur-[44px]" />
+      <div className="absolute inset-x-10 bottom-2 h-7 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.3),rgba(115,74,255,0.12)_55%,transparent_80%)] blur-xl" />
+
+      <div className="absolute left-1/2 top-[108px] z-[6] h-9 w-9 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.34),transparent_70%)] blur-lg" />
 
       <motion.div
-        className="relative h-full w-full [transform-style:preserve-3d]"
+        className="relative h-full w-full overflow-hidden [transform-style:preserve-3d]"
         style={{ rotateX, rotateY }}
       >
-        <div className="absolute left-1/2 top-[64px] z-[7] h-[120px] w-[24px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_24px_rgba(255,91,151,0.26)] [transform:translateZ(26px)]" />
-
         <div className="absolute inset-x-[24px] bottom-[34px] z-[3] h-[126px] [transform-style:preserve-3d]">
-          <div className="absolute inset-0 rounded-[36px] border border-[#7583a8]/56 bg-[linear-gradient(180deg,rgba(57,66,92,0.98),rgba(26,30,43,0.99))] shadow-[0_34px_84px_rgba(0,0,0,0.4),0_0_44px_rgba(15,239,253,0.08)] [transform:translateZ(0px)]" />
-          <div className="absolute inset-[8px] rounded-[28px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.18),rgba(255,255,255,0.03)_24%,rgba(255,255,255,0.02)_64%,rgba(0,0,0,0.14))] [transform:translateZ(8px)]" />
+          <div className="absolute inset-0 rounded-[36px] border border-[#a27df0]/38 bg-[linear-gradient(180deg,rgba(74,78,122,0.82),rgba(42,34,68,0.88)_38%,rgba(27,20,47,0.96))] shadow-[0_34px_84px_rgba(0,0,0,0.4),0_0_54px_rgba(165,96,255,0.14)] [transform:translateZ(0px)] backdrop-blur-xl" />
+          <div className="absolute inset-[8px] rounded-[28px] border border-white/12 bg-[linear-gradient(145deg,rgba(255,255,255,0.22),rgba(255,255,255,0.05)_24%,rgba(255,255,255,0.03)_64%,rgba(0,0,0,0.16))] [transform:translateZ(8px)]" />
           <motion.div
             className="absolute inset-[10px] rounded-[26px]"
             style={{ background: glareBackground, translateZ: 12 }}
           />
-          <div className="absolute -right-[14px] top-[12px] h-[98px] w-[22px] rounded-r-[18px] bg-[linear-gradient(180deg,rgba(22,26,36,1),rgba(11,14,22,1))] [transform:rotateY(72deg)]" />
-          <div className="absolute -left-[12px] top-[18px] h-[90px] w-[18px] rounded-l-[16px] bg-[linear-gradient(180deg,rgba(72,83,112,0.7),rgba(25,30,43,0.95))] [transform:rotateY(-70deg)]" />
-          <div className="absolute -bottom-[10px] left-[16px] right-[16px] h-[20px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(14,17,24,1),rgba(7,9,14,1))] [transform:rotateX(-72deg)]" />
-          <div className="absolute inset-x-[34px] bottom-[18px] h-[42px] rounded-full bg-[radial-gradient(circle,rgba(13,239,253,0.2),rgba(230,37,255,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(10px)]" />
+          <div className="absolute -right-[14px] top-[12px] h-[98px] w-[22px] rounded-r-[18px] bg-[linear-gradient(180deg,rgba(37,33,63,0.98),rgba(18,15,31,1))] [transform:rotateY(72deg)]" />
+          <div className="absolute -left-[12px] top-[18px] h-[90px] w-[18px] rounded-l-[16px] bg-[linear-gradient(180deg,rgba(126,122,177,0.52),rgba(40,34,68,0.95))] [transform:rotateY(-70deg)]" />
+          <div className="absolute -bottom-[10px] left-[16px] right-[16px] h-[20px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(22,18,36,1),rgba(10,8,18,1))] [transform:rotateX(-72deg)]" />
+          <div className="absolute inset-x-[34px] bottom-[18px] h-[42px] rounded-full bg-[radial-gradient(circle,rgba(182,95,255,0.26),rgba(230,37,255,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(10px)]" />
+          <GiftBadge className="absolute left-1/2 top-[34px] z-[14] h-14 w-14 -translate-x-1/2 [transform:translateZ(22px)]" />
         </div>
 
         <motion.div
@@ -136,22 +150,21 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
           }
           transition={{ duration: 0.78, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="absolute inset-0 rounded-[30px] border border-[#93a2c8]/60 bg-[linear-gradient(180deg,rgba(82,94,128,0.98),rgba(37,42,60,1))] shadow-[0_24px_46px_rgba(0,0,0,0.28),0_0_30px_rgba(15,239,253,0.08)] [transform:translateZ(8px)]" />
-          <div className="absolute inset-[8px] rounded-[24px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.18),rgba(255,255,255,0.02)_30%,rgba(255,255,255,0.03)_70%,rgba(0,0,0,0.12))]" />
+          <div className="absolute inset-0 rounded-[30px] border border-[#a78ff1]/42 bg-[linear-gradient(180deg,rgba(98,102,156,0.84),rgba(49,36,78,0.96))] shadow-[0_24px_46px_rgba(0,0,0,0.28),0_0_36px_rgba(181,103,255,0.12)] [transform:translateZ(8px)] backdrop-blur-xl" />
+          <div className="absolute inset-[8px] rounded-[24px] border border-white/12 bg-[linear-gradient(145deg,rgba(255,255,255,0.2),rgba(255,255,255,0.03)_30%,rgba(255,255,255,0.04)_70%,rgba(0,0,0,0.12))]" />
           <motion.div
             className="absolute inset-[10px] rounded-[22px]"
             style={{ background: glareBackground }}
           />
-          <div className="absolute left-1/2 top-0 z-[2] h-full w-[24px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_18px_rgba(255,91,151,0.24)]" />
-          <div className="absolute inset-x-0 top-1/2 z-[2] h-[15px] -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#ff5abb,#ff5f73)] shadow-[0_0_18px_rgba(255,95,169,0.24)]" />
+          <GiftBadge className="absolute left-1/2 top-1/2 z-[6] h-14 w-14 -translate-x-1/2 -translate-y-1/2" />
         </motion.div>
 
         <motion.div
-          className="pointer-events-none absolute left-1/2 top-[44px] z-[9] flex -translate-x-1/2 items-end gap-3"
+          className="pointer-events-none absolute left-1/2 top-[72px] z-[7] flex -translate-x-1/2 items-end gap-3"
           animate={
             isUnlocked
               ? { y: -8, opacity: 1 }
-              : { y: 18, opacity: 0 }
+              : { y: 34, opacity: 0 }
           }
           transition={{ duration: 0.68, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -355,7 +368,14 @@ function GalacticBurst() {
   );
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[32px]">
+    <>
+      <div className="pointer-events-none fixed inset-0 z-[120] overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.42),rgba(255,111,168,0.2)_28%,rgba(147,89,255,0.14)_46%,transparent_74%)] blur-3xl animate-[reward-bloom_1200ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(230,37,255,0.18),rgba(230,37,255,0.06)_34%,transparent_66%)] opacity-0 animate-[reward-bloom_980ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
+        <span className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ff9ceb]/80 shadow-[0_0_40px_rgba(230,37,255,0.32)] opacity-0 animate-[reward-streak_1300ms_cubic-bezier(0.16,1,0.3,1)_forwards]" style={{ ["--angle" as string]: "0deg", ["--distance" as string]: "0px", ["--duration" as string]: "1300ms" }} />
+      </div>
+
+      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[32px]">
       <div className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.34),rgba(15,239,253,0.18)_42%,transparent_72%)] blur-2xl animate-[reward-bloom_820ms_cubic-bezier(0.22,1,0.36,1)_forwards]" />
       {particles.map((particle) => (
         <span
@@ -372,7 +392,8 @@ function GalacticBurst() {
           }
         />
       ))}
-    </div>
+      </div>
+    </>
   );
 }
 
