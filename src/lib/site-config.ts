@@ -1,4 +1,4 @@
-export const SITE_CONFIG = {
+﻿export const SITE_CONFIG = {
   name: "RiBuzz",
   shortName: "RiBuzz",
   url: "https://ribuzz.vercel.app",
@@ -13,6 +13,7 @@ export const SITE_CONFIG = {
   contactEmail: "ribuzzco@gmail.com",
   whatsappUrl: "https://wa.me/573332541346",
   instagramUrl: "https://www.instagram.com/ribuzzco/",
+  giftsPath: "/regalos",
   diagnosisCtaLabel: "Solicita tu diagnóstico gratuito",
   diagnosisCtaShortLabel: "Diagnóstico gratuito",
   diagnosisSupportCopy:
@@ -20,13 +21,13 @@ export const SITE_CONFIG = {
   navLinks: [
     { label: "Inicio", href: "/" },
     { label: "Servicios", href: "/services" },
-    { label: "Metodología", href: "/methodology" },
     { label: "Sobre RiBuzz", href: "/about" },
     { label: "Startco", href: "/startco" },
     { label: "NFC", href: "/tarjetas-nfc" },
     { label: "Solicitar diagnóstico", href: "/contact" },
   ],
 } as const;
+
 
 
 

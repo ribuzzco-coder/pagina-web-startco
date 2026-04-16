@@ -44,6 +44,14 @@ export function MobileMenu({ isOpen, pathname, onClose }: MobileMenuProps) {
               </Link>
             );
           })}
+
+          <Link
+            href={SITE_CONFIG.giftsPath}
+            onClick={onClose}
+            className="rounded-xl border border-[#ff4d6d]/60 bg-[linear-gradient(135deg,#381119,#5a101d)] px-3 py-2.5 text-sm font-medium text-[#FFD6DE] shadow-[0_0_0_1px_rgba(255,77,109,0.18),0_0_20px_rgba(255,77,109,0.2)] transition-colors hover:border-[#ff8ea8] hover:text-white"
+          >
+            Regalos y documentos de valor
+          </Link>
         </nav>
       </Container>
     </div>
