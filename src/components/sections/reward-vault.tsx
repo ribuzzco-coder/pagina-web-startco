@@ -134,7 +134,7 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
             className="absolute inset-[10px] rounded-[26px]"
             style={{ background: glareBackground, translateZ: 12 }}
           />
-          <div className="absolute inset-x-[22px] top-[-20px] z-[4] h-[122px] overflow-visible [transform:translateZ(11px)]">
+          <div className="absolute inset-x-[22px] top-[-34px] z-[4] h-[138px] overflow-visible [transform:translateZ(11px)]">
             <motion.div
               className="pointer-events-none absolute left-1/2 top-[10px] flex -translate-x-1/2 items-end gap-3"
               initial={false}
@@ -144,7 +144,7 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
               <motion.span
                 className="block h-[94px] w-[66px] rotate-[-8deg] overflow-hidden rounded-[14px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_18px_rgba(15,239,253,0.1)]"
                 initial={false}
-                animate={isUnlocked ? { y: 8, rotateZ: -8 } : { y: 20, rotateZ: -4 }}
+                animate={isUnlocked ? { y: 0, rotateZ: -8 } : { y: 20, rotateZ: -4 }}
                 transition={{ duration: 0.62, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Image
@@ -158,7 +158,7 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
               <motion.span
                 className="block h-[100px] w-[70px] rotate-[6deg] overflow-hidden rounded-[14px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_18px_rgba(230,37,255,0.12)]"
                 initial={false}
-                animate={isUnlocked ? { y: 2, rotateZ: 6 } : { y: 22, rotateZ: 3 }}
+                animate={isUnlocked ? { y: -6, rotateZ: 6 } : { y: 22, rotateZ: 3 }}
                 transition={{ duration: 0.68, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Image
@@ -171,6 +171,7 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
               </motion.span>
             </motion.div>
           </div>
+          <div className="absolute inset-x-[10px] bottom-[10px] z-[12] h-[70px] rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(93,90,149,0.2),rgba(45,34,76,0.42)_20%,rgba(29,21,50,0.92))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_-12px_26px_rgba(0,0,0,0.12)] [transform:translateZ(18px)]" />
           <div className="absolute -right-[14px] top-[12px] h-[98px] w-[22px] rounded-r-[18px] bg-[linear-gradient(180deg,rgba(37,33,63,0.98),rgba(18,15,31,1))] [transform:rotateY(72deg)]" />
           <div className="absolute -left-[12px] top-[18px] h-[90px] w-[18px] rounded-l-[16px] bg-[linear-gradient(180deg,rgba(126,122,177,0.52),rgba(40,34,68,0.95))] [transform:rotateY(-70deg)]" />
           <div className="absolute -bottom-[10px] left-[16px] right-[16px] h-[20px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(22,18,36,1),rgba(10,8,18,1))] [transform:rotateX(-72deg)]" />
@@ -345,7 +346,7 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
 function GalacticBurst() {
   const comets = useMemo(
     () =>
-      Array.from({ length: 20 }, (_, index) => {
+      Array.from({ length: 24 }, (_, index) => {
         const startX = 8 + (index % 5) * 18;
         const startY = -6 - (index % 4) * 7;
         const travelX = 180 + (index % 4) * 40;
@@ -366,7 +367,7 @@ function GalacticBurst() {
           color,
           delay: `${index * 55}ms`,
           duration: `${900 + index * 22}ms`,
-          length: `${90 + (index % 4) * 20}px`,
+          length: `${120 + (index % 4) * 28}px`,
         };
       }),
     [],
@@ -375,11 +376,11 @@ function GalacticBurst() {
   return (
     <>
       <div className="pointer-events-none fixed inset-0 z-[120] overflow-hidden">
-        <div className="absolute left-1/2 top-1/2 h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.22),rgba(255,111,168,0.12)_30%,transparent_74%)] blur-[64px] animate-[reward-bloom_1200ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
+        <div className="absolute left-1/2 top-1/2 h-[50rem] w-[50rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.28),rgba(255,111,168,0.16)_30%,transparent_74%)] blur-[72px] animate-[reward-bloom_1200ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
         {comets.map((comet) => (
           <span
             key={comet.id}
-            className="absolute block h-[2px] rounded-full opacity-0 blur-[0.6px] animate-[reward-streak_var(--duration)_cubic-bezier(0.16,1,0.3,1)_forwards]"
+            className="absolute block h-[3px] rounded-full opacity-0 blur-[1px] shadow-[0_0_18px_currentColor] animate-[reward-streak_var(--duration)_cubic-bezier(0.16,1,0.3,1)_forwards]"
             style={
               {
                 top: `${comet.startY}%`,
