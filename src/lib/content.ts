@@ -277,10 +277,10 @@ export const methodologySteps: Step[] = [
 ];
 
 export const differentiators = [
-  "No empezamos ejecutando por ejecutar. Empezamos entendiendo el sistema comercial.",
-  "No vendemos piezas sueltas. Leemos captación, conversión y seguimiento cómo un solo sistema.",
-  "No reemplazamos al equipo comercial. Ayudamos a que el negocio venda con más estructura propia.",
-  "No recomendamos avanzar si el diagnóstico muestra que no hay fit o que el momento no es el correcto.",
+  "No somos una agencia de marketing reactiva. Somos un partner que diseña e interviene tu sistema comercial con criterio profesional.",
+  "Priorizamos el diagnóstico real sobre la ejecución impulsiva para que cada peso invertido tenga una intención y un retorno claro.",
+  "Conectamos los puntos ciegos entre captación y cierre, eliminando la fuga de prospectos por falta de estructura o seguimiento.",
+  "Construimos capacidad instalada en tu empresa, reduciendo la dependencia absoluta de los fundadores en el proceso de venta.",
 ] as const;
 
 export const methodologyBenefits = [

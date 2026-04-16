@@ -1,6 +1,6 @@
-﻿import { PageHero } from "@/components/common/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { ServiceCard } from "@/components/sections/service-card";
+import { ServicesSystemHero } from "@/components/sections/services-system-hero";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { SectionDivider } from "@/components/ui/section-divider";
@@ -23,16 +23,9 @@ export const metadata = createPageMetadata({
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Servicios RiBuzz"
-        title="Tres capas de intervención para corregir y sostener tu sistema comercial"
-        description="RiBuzz no presenta servicios sueltos. Presenta capas lógicas para pasar de lectura y estructura a capacidad operativa real y mejora continua."
-        primaryCtaLabel="Solicita tu diagnóstico gratuito"
+      <ServicesSystemHero
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
-        secondaryCtaLabel="Ver metodología"
         secondaryCtaHref="/methodology"
-        asideTitle="El orden importa"
-        asideText="Primero claridad y diagnóstico. Después estructura. Luego implementación y acompañamiento dónde sí hace falta."
       />
 
       <section className="cv-auto pb-16 sm:pb-22">
@@ -40,7 +33,7 @@ export default function ServicesPage() {
           <SectionTitle
             eyebrow="Capas de trabajo"
             title="Cada capa responde a un momento distinto del negocio"
-            description="La secuencia cambia según el contexto, pero la lógica es la misma: no ejecutar sin lectura del problema y no diseñar algo qué luego no pueda operar."
+            description="La secuencia cambia según el contexto, pero la lógica es la misma: no ejecutar sin lectura del problema y no diseñar algo que luego no pueda operar."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -67,7 +60,7 @@ export default function ServicesPage() {
             align="center"
             eyebrow="Qué genera cada capa"
             title="Claridad, capacidad operativa y sostenibilidad"
-            description="El valor no está solo en hacer cosas. Esta en instalar una lógica comercial qué el negocio pueda usar y mejorar."
+            description="El valor no está solo en hacer cosas. Está en instalar una lógica comercial que el negocio pueda usar y mejorar."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -116,6 +109,3 @@ export default function ServicesPage() {
     </>
   );
 }
-
-
-
