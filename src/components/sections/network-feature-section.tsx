@@ -150,7 +150,7 @@ export function NetworkFeatureSection() {
               className="z-10 w-full p-8 sm:p-12 lg:w-1/2 lg:p-16"
             >
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                Siguiente paso • Interconectividad
+                Siguiente paso
               </p>
               <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-[#F5F7FA] sm:text-4xl">
                 Descubre dónde se está rompiendo tu crecimiento.
@@ -168,7 +168,7 @@ export function NetworkFeatureSection() {
               </div>
             </motion.div>
 
-            <div className="relative h-[300px] w-full overflow-hidden sm:h-[400px] lg:h-[520px] lg:w-1/2">
+            <div className="relative h-[350px] w-full overflow-hidden sm:h-[450px] lg:h-auto lg:grow lg:self-stretch">
               <div ref={canvasRef} className="h-full w-full" />
               <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-32 bg-gradient-to-r from-[#0B0B10] to-transparent lg:block" />
             </div>

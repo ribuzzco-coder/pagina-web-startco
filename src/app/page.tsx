@@ -76,12 +76,12 @@ export default function HomePage() {
                   Realiza tu diagnóstico gratuito
                 </Button>
                 <Button
-                  href="/services"
+                  href="/regalos"
                   variant="secondary"
                   size="lg"
                   className="shadow-[0_0_0_1px_rgba(230,37,255,0.1),0_0_18px_rgba(230,37,255,0.16)]"
                 >
-                  Ver servicios
+                  Reclama tu regalo
                 </Button>
               </div>
             </div>
@@ -116,10 +116,9 @@ export default function HomePage() {
       <section className="cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
-            align="center"
+            align="left"
             eyebrow="Cómo trabajamos"
             title="Diagnóstico primero. Implementación después."
-            description="Primero claridad. Luego ejecución."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-4">
@@ -150,8 +149,8 @@ export default function HomePage() {
           <SectionTitle
             align="center"
             eyebrow="Diferencial"
-            title="Lo que RiBuzz hace distinto frente a agencias, consultores o ejecución aislada"
-            description="La diferencia no es solo técnica. Es la postura de intervenir el sistema comercial con criterio y no una parte desconectada."
+            title="Descubre cómo activar tu crecimiento"
+            description="No somos una agencia más, somos la pieza que une estrategia y ejecución para que tu sistema comercial deje de ser una carga y se convierta en tu mayor ventaja competitiva."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -241,23 +240,22 @@ export default function HomePage() {
                 Lecturas que dejan huella
               </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA] sm:text-4xl">
-                ¿Aún no estás listo para ejecutar? Recibe nuestra lectura del mercado.
+                ¿Aún no estás listo para ejecutar?<br />Recibe nuestra lectura del mercado.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#98A0B3] sm:text-lg">
                 Únete a la lista para recibir análisis esporádico (sin spam) sobre diseño de sistemas comerciales, conversión, estructuración y casos de crecimiento real.
               </p>
 
-              <form className="mx-auto mt-8 flex w-full max-w-md flex-col gap-3 sm:flex-row">
-                <input
-                  type="email"
-                  placeholder="Tu correo de trabajo"
-                  required
-                  className="flex h-12 w-full rounded-full border border-white/12 bg-white/5 px-5 py-2 text-sm text-[#F5F7FA] placeholder:text-[#98A0B3]/60 focus:border-[#E625FF]/40 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#E625FF]/20 transition-colors"
-                />
-                <Button type="submit" size="lg" className="h-12 w-full shrink-0 sm:w-auto">
-                  Suscribirme
+              <div className="mx-auto mt-10 flex justify-center">
+                <Button 
+                  href="https://forms.monday.com/forms/3cbb05c0c156282155e6fa80b5922cb1?r=use1" 
+                  size="lg" 
+                  external
+                  className="shadow-[0_0_24px_rgba(230,37,255,0.2)]"
+                >
+                  Unirme a la lista
                 </Button>
-              </form>
+              </div>
             </div>
           </div>
         </Container>

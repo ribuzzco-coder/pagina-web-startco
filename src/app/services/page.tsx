@@ -1,39 +1,27 @@
-﻿import { PageHero } from "@/components/common/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { ServiceCard } from "@/components/sections/service-card";
+import { ServicesSystemHero } from "@/components/sections/services-system-hero";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
-import {
-  differentiators,
-  fullServices,
-  serviceEffects,
-} from "@/lib/content";
+import { differentiators, fullServices, serviceEffects } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
   title: "Servicios",
   description:
-    "RiBuzz organiza su trabajo en tres capas: diseño del sistema comercial, implementación de soluciones y acompañamiento como Growth Partner.",
+    "RiBuzz organiza su trabajo en tres capas: diseno del sistema comercial, implementacion de soluciones y acompanamiento como Growth Partner.",
   path: "/services",
 });
 
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Servicios RiBuzz"
-        title="Tres capas de intervención para corregir y sostener tu sistema comercial"
-        titleClassName="[font-family:var(--font-saira)] font-semibold text-[2rem] leading-[1.05] sm:text-[2.55rem] xl:text-[2.95rem]"
-        description="RiBuzz no presenta servicios sueltos. Presenta capas lógicas para pasar de lectura y estructura a capacidad operativa real y mejora continua."
-        primaryCtaLabel="Solicita tu diagnóstico gratuito"
+      <ServicesSystemHero
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
-        secondaryCtaLabel="Ver metodología"
         secondaryCtaHref="/methodology"
-        asideTitle="El orden importa"
-        asideText="Primero claridad y diagnóstico. Después estructura. Luego implementación y acompañamiento dónde sí hace falta."
       />
 
       <section className="cv-auto pb-16 sm:pb-22">
@@ -41,7 +29,7 @@ export default function ServicesPage() {
           <SectionTitle
             eyebrow="Capas de trabajo"
             title="Cada capa responde a un momento distinto del negocio"
-            description="La secuencia cambia según el contexto, pero la lógica es la misma: no ejecutar sin lectura del problema y no diseñar algo qué luego no pueda operar."
+            description="La secuencia cambia segun el contexto, pero la logica es la misma: no ejecutar sin lectura del problema y no disenar algo que luego no pueda operar."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -66,9 +54,9 @@ export default function ServicesPage() {
         <Container>
           <SectionTitle
             align="center"
-            eyebrow="Qué genera cada capa"
+            eyebrow="Que genera cada capa"
             title="Claridad, capacidad operativa y sostenibilidad"
-            description="El valor no está solo en hacer cosas. Esta en instalar una lógica comercial qué el negocio pueda usar y mejorar."
+            description="El valor no esta solo en hacer cosas. Esta en instalar una logica comercial que el negocio pueda usar y mejorar."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -91,8 +79,8 @@ export default function ServicesPage() {
           <SectionTitle
             align="center"
             eyebrow="Diferencial"
-            title="Lo que RiBuzz hace distinto frente a agencias, consultores o ejecución aislada"
-            description="La diferencia no es solo técnica. Es la postura de intervenir el sistema comercial con criterio y no una parte desconectada."
+            title="Lo que RiBuzz hace distinto frente a agencias, consultores o ejecucion aislada"
+            description="La diferencia no es solo tecnica. Es la postura de intervenir el sistema comercial con criterio y no una parte desconectada."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -106,9 +94,9 @@ export default function ServicesPage() {
       </section>
 
       <CTASection
-        title="El diagnóstico define qué capa tiene sentido para tu momento actual."
-        description="Solicita tu diagnóstico gratuito. Te toma menos de 10 minutos, recibes una lectura inicial del sistema comercial y revisamos si realmente hay fit antes de proponer una capa de trabajo."
-        primaryLabel="Solicita tu diagnóstico gratuito"
+        title="El diagnostico define que capa tiene sentido para tu momento actual."
+        description="Solicita tu diagnostico gratuito. Te toma menos de 10 minutos, recibes una lectura inicial del sistema comercial y revisamos si realmente hay fit antes de proponer una capa de trabajo."
+        primaryLabel="Solicita tu diagnostico gratuito"
         primaryHref={SITE_CONFIG.diagnosisPath}
         secondaryLabel="Escribir por WhatsApp"
         secondaryHref={SITE_CONFIG.whatsappUrl}
@@ -117,6 +105,3 @@ export default function ServicesPage() {
     </>
   );
 }
-
-
-
