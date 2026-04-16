@@ -28,12 +28,7 @@ export function ServiceCard({
         {title}
       </h3>
       <div className="mt-5 space-y-5">
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">
-            Que es
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-[#C7CBD6] sm:text-base">{summary}</p>
-        </div>
+
 
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">

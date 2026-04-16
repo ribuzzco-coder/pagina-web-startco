@@ -78,18 +78,18 @@ export function RibuzzSystemScene({ className }: RibuzzSystemSceneProps) {
     <div
       ref={scopeRef}
       className={cn(
-        "relative h-[460px] w-full overflow-hidden rounded-[36px] border border-white/8 bg-[linear-gradient(180deg,rgba(8,10,16,0.99),rgba(6,8,14,0.99))] shadow-[0_30px_80px_rgba(0,0,0,0.34)] sm:h-[560px] lg:h-[700px]",
+        "relative h-[360px] w-full overflow-hidden rounded-[36px] border border-white/8 bg-[linear-gradient(180deg,rgba(8,10,16,0.99),rgba(6,8,14,0.99))] shadow-[0_30px_80px_rgba(0,0,0,0.34)] sm:h-[430px] lg:h-[520px]",
         className,
       )}
     >
       <AnimatedShaderBackground />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent)]" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[150px] w-[260px] -translate-x-1/2 translate-y-[138px] rounded-full bg-[radial-gradient(circle,rgba(9,14,24,0.64),transparent_72%)] blur-[20px] sm:h-[180px] sm:w-[320px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[120px] w-[220px] -translate-x-1/2 translate-y-[104px] rounded-full bg-[radial-gradient(circle,rgba(9,14,24,0.64),transparent_72%)] blur-[20px] sm:h-[150px] sm:w-[280px]" />
 
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           ref={rocketRef}
-          className="relative -translate-x-[28px] -translate-y-[6px] [transform-style:preserve-3d] sm:-translate-x-[34px] lg:-translate-x-[38px]"
+          className="relative -translate-x-[20px] -translate-y-[2px] [transform-style:preserve-3d] sm:-translate-x-[26px] lg:-translate-x-[30px]"
         >
           <div className="absolute inset-0 translate-x-[-16px] translate-y-[10px] scale-[1.03] blur-[16px] opacity-24 mix-blend-screen">
             <Image
@@ -98,7 +98,7 @@ export function RibuzzSystemScene({ className }: RibuzzSystemSceneProps) {
               aria-hidden="true"
               width={473}
               height={797}
-              className="h-auto w-[250px] sm:w-[320px] lg:w-[370px]"
+              className="h-auto w-[190px] sm:w-[240px] lg:w-[290px]"
             />
           </div>
 
@@ -109,7 +109,7 @@ export function RibuzzSystemScene({ className }: RibuzzSystemSceneProps) {
               aria-hidden="true"
               width={473}
               height={797}
-              className="h-auto w-[250px] sm:w-[320px] lg:w-[370px]"
+              className="h-auto w-[190px] sm:w-[240px] lg:w-[290px]"
             />
           </div>
 
@@ -120,7 +120,7 @@ export function RibuzzSystemScene({ className }: RibuzzSystemSceneProps) {
               aria-hidden="true"
               width={473}
               height={797}
-              className="h-auto w-[250px] brightness-[0.62] contrast-125 sm:w-[320px] lg:w-[370px]"
+              className="h-auto w-[190px] brightness-[0.62] contrast-125 sm:w-[240px] lg:w-[290px]"
             />
           </div>
 
@@ -131,7 +131,7 @@ export function RibuzzSystemScene({ className }: RibuzzSystemSceneProps) {
               width={473}
               height={797}
               priority
-              className="h-auto w-[250px] drop-shadow-[0_18px_52px_rgba(230,37,255,0.16)] sm:w-[320px] lg:w-[370px]"
+              className="h-auto w-[190px] drop-shadow-[0_18px_52px_rgba(230,37,255,0.16)] sm:w-[240px] lg:w-[290px]"
             />
           </div>
 

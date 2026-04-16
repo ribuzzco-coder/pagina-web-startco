@@ -233,22 +233,20 @@ export const methodologySteps: Step[] = [
   {
     title: "Diagnóstico",
     description:
-      "Es la entrada ideal. Recoge información, identifica dónde se rompe el proceso comercial y hace visibles oportunidades y prioridades.",
+      "Es la entrada ideal. Recoge información, identifica dónde se rompe el proceso comercial y hace visibles las prioridades reales del negocio.",
     points: [
-      "Lectura inicial del negocio, la oferta y la operación comercial",
-      "Identificación del cuello de botella en captación, conversión o seguimiento",
-      "Apoyo de IA en la lectura inicial cuando aporta velocidad y criterio",
+      "Buscamos entender qué está frenando la adquisición de clientes, la conversión, el seguimiento o el flujo de caja.",
+      "No buscamos llenar formularios por llenar, sino identificar oportunidades reales.",
     ],
-    outcome: "Entrega claridad inicial sobre dónde intervenir primero y si realmente hay fit.",
+    outcome: "Entrega claridad inicial sobre dónde intervenir primero y si realmente existe fit para avanzar.",
   },
   {
     title: "Diseño",
     description:
-      "Traduce el entendimiento en una estructura concreta para que el negocio deje de moverse sin sistema.",
+      "Traduce el diagnóstico en una estructura concreta para pasar de la lectura a la ejecución.",
     points: [
-      "Definición del flujo comercial y de sus prioridades",
-      "Estructuración de mensajes, puntos de seguimiento y soportes",
-      "Hoja de ruta para pasar de lectura a ejecución",
+      "Definición del flujo comercial, las prioridades y los mensajes estratégicos.",
+      "Establecimiento de puntos de seguimiento y criterios de acción claros.",
     ],
     outcome: "Entrega dirección, estructura y criterios claros de acción.",
   },
@@ -257,20 +255,18 @@ export const methodologySteps: Step[] = [
     description:
       "Activa herramientas, activos y soluciones para poner en marcha lo que ya fue diseñado.",
     points: [
-      "Implementación de activos comerciales y piezas de soporte",
-      "Conexión de herramientas y automatizaciones dónde hacen sentido",
-      "Puestá en marcha del sistema comercial en la operación real",
+      "Landing pages, automatizaciones y configuración de CRM según se necesite.",
+      "Despliegue de estructura de conversión y activos digitales operativos.",
     ],
     outcome: "Entrega capacidad operativa real para ejecutar con menos fricción.",
   },
   {
     title: "Acompañamiento",
     description:
-      "Revisa, ajusta y acompaña la ejecución para que el sistema no quede en papel y gane consistencia.",
+      "Revisa, ajusta y acompaña la ejecución para que el sistema no quede en papel.",
     points: [
-      "Seguimiento a tareas y avances relevantes",
-      "Ajustes tácticos y estratégicos según aprendizaje real",
-      "Soporte continuo para sostener resultados más estables",
+      "Seguimiento de hitos, revisión de avances y ajuste de decisiones en tiempo real.",
+      "Apoyo continuo bajo una lógica de growth partner para sostener la mejora.",
     ],
     outcome: "Entrega seguimiento, ajuste y continuidad para crecer con más consistencia.",
   },
@@ -326,19 +322,19 @@ export const trustSignals = [
 
 export const aboutOrigin = [
   {
-    title: "El patrón qué se repite",
+    title: "El patrón que se repite",
     description:
-      "Muchas empresas pequenas no fallan por falta de ganas o de mercado. Fallan porqué venden sin una estructura clara para atraer, convertir y hacer seguimiento.",
+      "En Colombia, 66,5 % de las empresas no sobrevive más de cinco años. Muchas terminan cayendo por baja rentabilidad, problemas financieros, falta de clientes o debilidad en su capacidad de vender.",
   },
   {
     title: "Lo que eso provoca",
     description:
-      "La ausencia de sistema produce desgaste, errores costosos, decisiones a ciegas y una dependencia excesiva del fundador.",
+      "Sin un sistema comercial claro, se atraen clientes de forma inestable, se hace un seguimiento débil y se depende totalmente del fundador, resultando en un crecimiento frágil y caja débil.",
   },
   {
     title: "Por qué existe RiBuzz",
     description:
-      "RiBuzz nace para intervenir ese vacío con una lógica más guiada, más estructurada y más útil qué las soluciones fragmentadas.",
+      "RiBuzz existe para intervenir este vacío con una lógica guiada y estructurada. No vende piezas sueltas; diseña, implementa y acompaña el sistema que convierte esfuerzo en ingresos sostenibles.",
   },
 ] as const;
 
@@ -346,12 +342,12 @@ export const aboutVisión = [
   {
     title: "Visión",
     description:
-      "Ayudar a que más empresas operen con sistemas comerciales más claros, sostenibles y menos dependientes del fundador.",
+      "Ayudar a que más empresas operen con sistemas comerciales más claros, sostenibles y menos dependientes del fundador, convirtiéndose en el referente en Colombia antes de 2030.",
   },
   {
     title: "Lo que buscamos cambiar",
     description:
-      "Qué el crecimiento deje de depender de intensidad, urgencia o ensayo y error, y se vuelva una capacidad más estructurada del negocio.",
+      "Queremos que el crecimiento deje de depender de urgencias, ensayo y error o intensidad desordenada, y se convierta en una capacidad real, predecible y estructurada del negocio.",
   },
 ] as const;
 
@@ -359,7 +355,7 @@ export const aboutPosture = [
   {
     title: "Profesional",
     description:
-      "Pensamos desde negocio, no desde piezas aisladas ni desde modas del mercado.",
+      "Pensamos desde el negocio, no desde piezas aisladas, modas o tareas sueltas.",
   },
   {
     title: "Directa",
@@ -369,7 +365,7 @@ export const aboutPosture = [
   {
     title: "Exigente",
     description:
-      "No trabajamos bien con clientes qué quieren resultados sin revisar ni ejecutar.",
+      "No trabajamos bien con clientes que quieren resultados sin revisar su operación ni ejecutar con disciplina.",
   },
   {
     title: "Orientada a ejecución",
@@ -381,7 +377,7 @@ export const aboutPosture = [
 export const corePrinciples = [
   "Todo parte del diagnóstico.",
   "No se ejecuta sin claridad.",
-  "El crecimiento debe sostenerse en estructura y no solo en intensidad.",
+  "El crecimiento debe sostenerse en estructura and no solo en intensidad.",
   "La tecnología es un habilitador, no un adorno.",
   "Toda intervención debe traducirse en mejores decisiones, mejores procesos y más capacidad de ejecución.",
 ] as const;
@@ -413,7 +409,7 @@ export const contactFaqs: FAQ[] = [
   {
     question: "Esto es consultoría o sí hay ejecución?",
     answer:
-      "Hay criterio y hay ejecución. Primero se entiende el problema, después se diseña la estructura y luego se implementa y acompaña cuando hace sentido.",
+      "Hay criterio and hay ejecución. Primero se entiende el problema, después se diseña la estructura and luego se pone en marcha y acompaña cuando hace sentido.",
   },
   {
     question: "Esto funciona si apenas estoy empezando?",
@@ -428,22 +424,22 @@ export const contactFaqs: FAQ[] = [
   {
     question: "Qué pasa después del diagnóstico?",
     answer:
-      "Se evalua si hay fit y qué capa tiene sentido activar. Puede recomendarse avanzar, ajustar el foco o incluso no continuar si no hay impacto posible.",
+      "Se evalua si hay fit and qué capa tiene sentido activar. Puede recomendarse avanzar, ajustar el foco o incluso no continuar si no hay impacto posible.",
   },
   {
     question: "Tengo qué contratar todos los servicios?",
     answer:
-      "No. RiBuzz trabaja por capas. Puedes empezar por diagnóstico y avanzar solo a la etapa qué de verdad corresponda a tu momento.",
+      "No. RiBuzz trabaja por capas. Puedes empezar por diagnóstico and avanzar solo a la etapa qué de verdad corresponda a tu momento.",
   },
   {
     question: "En cuanto tiempo voy a ver resultados?",
     answer:
-      "Puede haber quick wins tempranos en claridad, enfoqué y decisiones, pero el valor real está en construir un sistema qué sostenga resultados mejor en el tiempo.",
+      "Puede haber quick wins tempranos en claridad, enfoqué and decisiones, pero el valor real está en construir un sistema qué sostenga resultados mejor en el tiempo.",
   },
   {
     question: "Qué hace qué RiBuzz sea diferente?",
     answer:
-      "RiBuzz no empieza ejecutando, no vende servicios sueltos y no deja la solución en teoría. Entiende, prioriza, estructura, implementa y acompaña.",
+      "RiBuzz no empieza ejecutando, no vende servicios sueltos and no deja la solución en teoría. Entiende, prioriza, estructura, implementa and acompaña.",
   },
   {
     question: "Qué tipo de empresas no deberian trabajar con RiBuzz?",
@@ -458,29 +454,79 @@ export const contactFaqs: FAQ[] = [
   {
     question: "Esto aplica para cualquier industria?",
     answer:
-      "No depende tanto de la industria cómo del problema. RiBuzz ya ha trabajado en servicios, educación, construcción y contextos B2B con una misma lógica comercial.",
+      "No depende tanto de la industria cómo del problema. RiBuzz ya ha trabajado en servicios, educación, construcción and contextos B2B con una misma lógica comercial.",
   },
   {
     question: "Qué pasa si ya he trabajado con agencias o freelancers?",
     answer:
-      "Es comun. Muchas empresas llegan después de invertir en marketing o desarrollo sin resultados consistentes. RiBuzz ayuda a entender por qué paso y cómo reordenarlo mejor.",
+      "Es comun. Muchas empresas llegan después de invertir en marketing o desarrollo sin resultados consistentes. RiBuzz ayuda a entender por qué paso and cómo reordenarlo mejor.",
   },
   {
     question: "Qué tan involucrado tengo qué estar?",
     answer:
-      "Bastante. Esto no funciona si delegas todo y te desconectas. Se necesita participación, decisiones y disposición real a ejecutar.",
+      "Bastante. Esto no funciona si delegas todo and te desconectas. Se necesita participación, decisiones and disposición real a ejecutar.",
   },
   {
     question: "Cómo se si este es el momento correcto para trabajar con RiBuzz?",
     answer:
-      "Si ya estas vendiendo o intentandolo, sientes fricción, dependes demasiado del fundador y no tienes claro qué priorizar, probablemente si es el momento correcto.",
+      "Si ya estas vendiendo o intentandolo, sientes fricción, dependes demasiado del fundador and no tienes claro qué priorizar, probablemente si es el momento correcto.",
   },
   {
     question: "RiBuzz vende por mi empresa o ejecuta las ventas?",
     answer:
-      "No. RiBuzz no reemplaza tu equipo comercial ni vende por ti. Diseña el sistema, implementa soportes y ayuda a estructurar mejor cómo debe vender el negocio.",
+      "No. RiBuzz no reemplaza tu equipo comercial ni vende por ti. Diseña el sistema, implementa soportes and ayuda a estructurar mejor cómo debe vender el negocio.",
   },
 ];
 
-
-
+export const homeFaqs: FAQ[] = [
+  {
+    question: "¿Cuánto dura el diagnóstico y qué información necesito?",
+    answer:
+      "El diagnóstico inicial se realiza en menos de 10 minutos a través de un formulario estructurado. Solo necesitas información básica sobre tu oferta, clientes y proceso de ventas. A partir de ahí te damos una lectura inicial y, si hay fit, programamos sesiones más profundas.",
+  },
+  {
+    question: "¿Cuál es el costo de trabajar con RiBuzz?",
+    answer:
+      "No hay tarifas fijas. El precio depende de la complejidad de tu negocio y de la capa de intervención necesaria (diseño, implementación o acompañamiento). Solo después del diagnóstico y de validar que hay ajuste, presentamos una propuesta económica.",
+  },
+  {
+    question: "¿Qué tipo de empresas pueden trabajar con RiBuzz?",
+    answer:
+      "Trabajamos con empresas que ya tienen ventas y buscan orden y estructura para crecer. Nuestros clientes son de sectores diversos (tecnología, servicios B2B, turismo, salud, retail) y están ubicados en Medellín, Bogotá y otras ciudades de Colombia.",
+  },
+  {
+    question: "¿Necesito tener un equipo comercial interno?",
+    answer:
+      "No es indispensable, pero sí necesitas estar dispuesto a participar. Si ya tienes equipo, lo fortalecemos para que gane autonomía. Si no, ayudamos a definir roles y buscar aliados adecuados.",
+  },
+  {
+    question: "¿Cómo se protegen mis datos durante el diagnóstico y el proceso?",
+    answer:
+      "Toda la información que compartes se utiliza exclusivamente para entender tu sistema comercial. Firmamos acuerdos de confidencialidad cuando es necesario y nunca divulgamos datos a terceros sin tu aprobación.",
+  },
+  {
+    question: "¿Se integran con nuestros sistemas actuales (CRM, herramientas de marketing, etc.)?",
+    answer:
+      "Sí. Analizamos tus herramientas actuales y, cuando es posible, las conectamos al nuevo flujo comercial. Si faltan piezas, proponemos soluciones no-code o integraciones que no generen dependencias innecesarias.",
+  },
+  {
+    question: "¿Qué resultados puedo esperar y en cuánto tiempo?",
+    answer:
+      "Los resultados dependen de la fase en la que entres y de tu compromiso. Normalmente, la fase de diseño se completa en 2–4 semanas, la implementación en 4–8 semanas y el acompañamiento dura lo que necesites. Los efectos visibles suelen aparecer a partir de la implementación, cuando el sistema empieza a operar.",
+  },
+  {
+    question: "¿Qué pasa si después del diagnóstico no hay fit?",
+    answer:
+      "Si identificamos que tu negocio aún no está listo o que no hay una oportunidad real de mejora, te lo decimos de manera directa. Preferimos no iniciar un proyecto si no podemos aportar valor.",
+  },
+  {
+    question: "¿RiBuzz solo trabaja con empresas en Medellín?",
+    answer:
+      "Aunque nuestra base está en Medellín y Colombia, trabajamos con empresas de cualquier ciudad o país de habla hispana. La metodología es adaptable y podemos trabajar de forma remota.",
+  },
+  {
+    question: "¿Cómo se mide el retorno de inversión (ROI)?",
+    answer:
+      "Antes de iniciar la intervención definimos métricas clave (tasa de conversión, tiempo de cierre, valor de ventas, etc.). Durante el acompañamiento medimos estas variables para evaluar si el sistema está generando los resultados esperados y ajustamos cuando es necesario.",
+  },
+];

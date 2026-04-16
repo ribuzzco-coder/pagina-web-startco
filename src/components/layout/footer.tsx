@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -19,9 +19,7 @@ export function Footer() {
             className="h-11 w-auto object-contain opacity-95 sm:h-12"
           />
           <p className="mt-4 max-w-md text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-            Diseñamos e implementamos sistemas comerciales para empresas que ya
-            venden, pero todavía no crecen con estructura, seguimiento y
-            consistencia.
+            Diseñamos soluciones comerciales, visuales y tecnológicas para marcas que quieren crecer con más claridad, presencia y herramientas útiles.
           </p>
           <p className="mt-4 text-sm text-[#C7CBD6]">Contacto: {SITE_CONFIG.contactEmail}</p>
           <Button href={SITE_CONFIG.diagnosisPath} className="mt-5" variant="secondary">
@@ -31,8 +29,8 @@ export function Footer() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:justify-self-end">
           <div>
-            <p className="text-[11px] font-semibold tracking-[0.14em] text-[#E7B0EE] uppercase">
-              Navegacion
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#E7B0EE]">
+              Navegación
             </p>
             <div className="mt-3 space-y-2">
               {SITE_CONFIG.navLinks.map((link) => (
@@ -47,7 +45,7 @@ export function Footer() {
             </div>
           </div>
           <div>
-            <p className="text-[11px] font-semibold tracking-[0.14em] text-[#E7B0EE] uppercase">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#E7B0EE]">
               Acciones
             </p>
             <div className="mt-3 space-y-2">
@@ -74,5 +72,3 @@ export function Footer() {
     </footer>
   );
 }
-
-
