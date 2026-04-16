@@ -55,52 +55,53 @@ function GiftIcon({ className }: { className?: string }) {
 function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
   return (
     <div
-      className="relative mx-auto h-[210px] w-[250px] [perspective:1400px] sm:h-[230px] sm:w-[280px]"
+      className="relative mx-auto h-[220px] w-[252px] [perspective:1400px] sm:h-[244px] sm:w-[292px]"
       style={{ transformStyle: "preserve-3d" }}
     >
-      <div className="absolute inset-x-8 bottom-2 h-5 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.24),rgba(15,239,253,0.08)_55%,transparent_76%)] blur-xl" />
+      <div className="absolute inset-x-6 top-7 h-[120px] rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.28),rgba(15,239,253,0.14)_46%,transparent_76%)] blur-[34px]" />
+      <div className="absolute inset-x-10 bottom-3 h-6 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.22),rgba(15,239,253,0.08)_55%,transparent_78%)] blur-xl" />
 
-      <div className="absolute left-1/2 top-[44px] z-[4] h-[124px] w-[34px] -translate-x-1/2 rounded-[14px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_20px_rgba(255,91,151,0.18)]" />
+      <div className="absolute left-1/2 top-[54px] z-[4] h-[120px] w-[30px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_24px_rgba(255,91,151,0.24)]" />
 
-      <div className="absolute inset-x-[18px] bottom-[28px] z-[3] h-[118px] [transform-style:preserve-3d]">
-        <div className="absolute inset-0 rounded-[28px] border border-[#7e3f8c]/70 bg-[linear-gradient(180deg,rgba(36,18,44,0.98),rgba(21,12,30,0.98))] shadow-[0_26px_56px_rgba(0,0,0,0.34),0_0_34px_rgba(230,37,255,0.1)] [transform:rotateX(10deg)]" />
-        <div className="absolute inset-x-[8px] top-[8px] h-[92px] rounded-[22px] border border-white/6 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] [transform:translateZ(6px)]" />
-        <div className="absolute -right-[10px] top-[10px] h-[94px] w-[18px] rounded-r-[12px] bg-[linear-gradient(180deg,rgba(24,12,31,0.98),rgba(13,7,18,0.98))] [transform:rotateY(64deg)]" />
-        <div className="absolute -bottom-[8px] left-[10px] right-[10px] h-[18px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(16,8,22,0.98),rgba(8,5,12,0.98))] [transform:rotateX(-72deg)]" />
+      <div className="absolute inset-x-[22px] bottom-[30px] z-[3] h-[124px] [transform-style:preserve-3d]">
+        <div className="absolute inset-0 rounded-[34px] border border-[#7d4694]/72 bg-[linear-gradient(180deg,rgba(40,20,52,0.98),rgba(22,12,31,0.99))] shadow-[0_30px_64px_rgba(0,0,0,0.36),0_0_44px_rgba(230,37,255,0.1)] [transform:rotateX(10deg)]" />
+        <div className="absolute inset-[9px] rounded-[26px] border border-white/7 bg-[radial-gradient(circle_at_32%_20%,rgba(255,255,255,0.12),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] [transform:translateZ(8px)]" />
+        <div className="absolute inset-x-[28px] bottom-[16px] h-[44px] rounded-full bg-[radial-gradient(circle,rgba(13,239,253,0.18),rgba(230,37,255,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(9px)]" />
       </div>
 
       <div
         className={cn(
-          "absolute inset-x-0 top-[28px] z-[7] h-[66px] origin-bottom [transform-style:preserve-3d] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          isUnlocked ? "-translate-y-7 rotate-[-9deg]" : "translate-y-0 rotate-0",
+          "absolute inset-x-[6px] top-[30px] z-[7] h-[72px] origin-bottom [transform-style:preserve-3d] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          isUnlocked ? "-translate-y-10 rotate-[-10deg]" : "translate-y-0 rotate-0",
         )}
       >
-        <div className="absolute inset-0 rounded-[24px] border border-[#9a4fa9]/78 bg-[linear-gradient(180deg,rgba(71,32,83,0.99),rgba(45,21,54,0.99))] shadow-[0_16px_36px_rgba(0,0,0,0.2),0_0_28px_rgba(230,37,255,0.12)] [transform:rotateX(16deg)]" />
-        <div className="absolute left-1/2 top-0 z-[2] h-full w-[34px] -translate-x-1/2 rounded-[12px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_18px_rgba(255,91,151,0.22)]" />
-        <div className="absolute inset-x-0 top-1/2 z-[2] h-[16px] -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#ff5abb,#ff5f73)] shadow-[0_0_18px_rgba(255,95,169,0.2)]" />
+        <div className="absolute inset-0 rounded-[28px] border border-[#9950a8]/82 bg-[linear-gradient(180deg,rgba(80,36,96,0.99),rgba(48,22,58,0.99))] shadow-[0_18px_38px_rgba(0,0,0,0.22),0_0_30px_rgba(230,37,255,0.14)] [transform:rotateX(18deg)]" />
+        <div className="absolute inset-[8px] rounded-[22px] bg-[radial-gradient(circle_at_35%_18%,rgba(255,255,255,0.12),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))]" />
+        <div className="absolute left-1/2 top-0 z-[2] h-full w-[30px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_18px_rgba(255,91,151,0.24)]" />
+        <div className="absolute inset-x-0 top-1/2 z-[2] h-[14px] -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#ff5abb,#ff5f73)] shadow-[0_0_18px_rgba(255,95,169,0.22)]" />
       </div>
 
       <div
         className={cn(
-          "pointer-events-none absolute left-1/2 top-[58px] z-[5] flex -translate-x-1/2 items-end gap-4 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          isUnlocked ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
+          "pointer-events-none absolute left-1/2 top-[52px] z-[5] flex -translate-x-1/2 items-end gap-3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          isUnlocked ? "-translate-y-1 opacity-100" : "translate-y-4 opacity-0",
         )}
       >
-        <span className="block h-[110px] w-[78px] rotate-[-15deg] overflow-hidden rounded-[16px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_24px_rgba(15,239,253,0.12)]">
+        <span className="block h-[114px] w-[80px] rotate-[-12deg] overflow-hidden rounded-[16px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_24px_rgba(15,239,253,0.12)]">
           <Image
             src="/regalo-iman-portada.png"
             alt=""
-            width={78}
-            height={110}
+            width={80}
+            height={114}
             className="h-full w-full object-cover object-top"
           />
         </span>
-        <span className="block h-[116px] w-[82px] rotate-[10deg] overflow-hidden rounded-[16px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_24px_rgba(230,37,255,0.14)]">
+        <span className="block h-[120px] w-[84px] rotate-[9deg] overflow-hidden rounded-[16px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_24px_rgba(230,37,255,0.14)]">
           <Image
             src="/regalo-oferta-portada.png"
             alt=""
-            width={82}
-            height={116}
+            width={84}
+            height={120}
             className="h-full w-full object-cover object-top"
           />
         </span>
@@ -201,7 +202,7 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
   return (
     <Card
       glowTone={index === 0 ? "purple" : "cyan"}
-      className="flex h-full flex-col rounded-[28px] border-white/12 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(12,14,20,0.98))] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_48px_rgba(0,0,0,0.24)]"
+      className="flex h-full flex-col items-center rounded-[28px] border-white/12 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(12,14,20,0.98))] p-5 text-center shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_48px_rgba(0,0,0,0.24)]"
     >
       <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
         <div className="relative mx-auto aspect-[9/16] w-full max-w-[220px] bg-[#0c0d14]">
@@ -228,7 +229,7 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
         {doc.description}
       </p>
 
-      <div className="mt-auto flex pt-5">
+      <div className="mt-auto flex justify-center pt-5">
         <Button href={doc.href} variant="secondary" size="md" className="min-w-[108px]">
           Leer
         </Button>
