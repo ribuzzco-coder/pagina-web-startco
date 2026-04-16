@@ -5,6 +5,7 @@ import { type CSSProperties, useMemo, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type RewardDoc = {
@@ -55,30 +56,32 @@ function GiftIcon({ className }: { className?: string }) {
 function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
   return (
     <div
-      className="relative mx-auto h-[220px] w-[252px] [perspective:1400px] sm:h-[244px] sm:w-[292px]"
+      className="relative mx-auto h-[228px] w-[258px] [perspective:1600px] sm:h-[252px] sm:w-[304px]"
       style={{ transformStyle: "preserve-3d" }}
     >
-      <div className="absolute inset-x-6 top-7 h-[120px] rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.28),rgba(15,239,253,0.14)_46%,transparent_76%)] blur-[34px]" />
-      <div className="absolute inset-x-10 bottom-3 h-6 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.22),rgba(15,239,253,0.08)_55%,transparent_78%)] blur-xl" />
+      <div className="absolute inset-x-5 top-8 h-[126px] rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.32),rgba(15,239,253,0.16)_44%,transparent_76%)] blur-[36px]" />
+      <div className="absolute inset-x-10 bottom-2 h-7 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.24),rgba(15,239,253,0.1)_55%,transparent_80%)] blur-xl" />
 
-      <div className="absolute left-1/2 top-[54px] z-[4] h-[120px] w-[30px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_24px_rgba(255,91,151,0.24)]" />
+      <div className="absolute left-1/2 top-[56px] z-[6] h-[126px] w-[28px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_24px_rgba(255,91,151,0.28)]" />
 
-      <div className="absolute inset-x-[22px] bottom-[30px] z-[3] h-[124px] [transform-style:preserve-3d]">
-        <div className="absolute inset-0 rounded-[34px] border border-[#7d4694]/72 bg-[linear-gradient(180deg,rgba(40,20,52,0.98),rgba(22,12,31,0.99))] shadow-[0_30px_64px_rgba(0,0,0,0.36),0_0_44px_rgba(230,37,255,0.1)] [transform:rotateX(10deg)]" />
-        <div className="absolute inset-[9px] rounded-[26px] border border-white/7 bg-[radial-gradient(circle_at_32%_20%,rgba(255,255,255,0.12),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] [transform:translateZ(8px)]" />
-        <div className="absolute inset-x-[28px] bottom-[16px] h-[44px] rounded-full bg-[radial-gradient(circle,rgba(13,239,253,0.18),rgba(230,37,255,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(9px)]" />
+      <div className="absolute inset-x-[24px] bottom-[26px] z-[3] h-[126px] [transform-style:preserve-3d]">
+        <div className="absolute inset-0 rounded-[36px] border border-[#7f4c9f]/80 bg-[linear-gradient(180deg,rgba(43,20,56,0.99),rgba(23,12,33,1))] shadow-[0_34px_74px_rgba(0,0,0,0.38),0_0_48px_rgba(230,37,255,0.1)] [transform:rotateX(12deg)]" />
+        <div className="absolute inset-[9px] rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_34%_16%,rgba(255,255,255,0.14),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] [transform:translateZ(8px)]" />
+        <div className="absolute -right-[12px] top-[12px] h-[96px] w-[20px] rounded-r-[16px] bg-[linear-gradient(180deg,rgba(24,11,32,0.98),rgba(14,7,19,0.98))] [transform:rotateY(68deg)]" />
+        <div className="absolute -bottom-[10px] left-[14px] right-[14px] h-[20px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(16,8,22,0.98),rgba(8,5,12,0.98))] [transform:rotateX(-72deg)]" />
+        <div className="absolute inset-x-[32px] bottom-[18px] h-[44px] rounded-full bg-[radial-gradient(circle,rgba(13,239,253,0.2),rgba(230,37,255,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(10px)]" />
       </div>
 
       <div
         className={cn(
-          "absolute inset-x-[6px] top-[30px] z-[7] h-[72px] origin-bottom [transform-style:preserve-3d] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          isUnlocked ? "-translate-y-10 rotate-[-10deg]" : "translate-y-0 rotate-0",
+          "absolute inset-x-[4px] top-[28px] z-[8] h-[80px] origin-bottom [transform-style:preserve-3d] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          isUnlocked ? "-translate-y-12 rotate-[-11deg]" : "translate-y-0 rotate-0",
         )}
       >
-        <div className="absolute inset-0 rounded-[28px] border border-[#9950a8]/82 bg-[linear-gradient(180deg,rgba(80,36,96,0.99),rgba(48,22,58,0.99))] shadow-[0_18px_38px_rgba(0,0,0,0.22),0_0_30px_rgba(230,37,255,0.14)] [transform:rotateX(18deg)]" />
-        <div className="absolute inset-[8px] rounded-[22px] bg-[radial-gradient(circle_at_35%_18%,rgba(255,255,255,0.12),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))]" />
-        <div className="absolute left-1/2 top-0 z-[2] h-full w-[30px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_18px_rgba(255,91,151,0.24)]" />
-        <div className="absolute inset-x-0 top-1/2 z-[2] h-[14px] -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#ff5abb,#ff5f73)] shadow-[0_0_18px_rgba(255,95,169,0.22)]" />
+        <div className="absolute inset-0 rounded-[30px] border border-[#9d5ab0]/84 bg-[linear-gradient(180deg,rgba(88,37,104,1),rgba(49,22,60,1))] shadow-[0_22px_42px_rgba(0,0,0,0.24),0_0_34px_rgba(230,37,255,0.14)] [transform:rotateX(20deg)]" />
+        <div className="absolute inset-[9px] rounded-[24px] border border-white/7 bg-[radial-gradient(circle_at_35%_16%,rgba(255,255,255,0.14),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))]" />
+        <div className="absolute left-1/2 top-0 z-[2] h-full w-[28px] -translate-x-1/2 rounded-[999px] bg-[linear-gradient(180deg,#ff4fb5,#ff636d)] shadow-[0_0_18px_rgba(255,91,151,0.26)]" />
+        <div className="absolute inset-x-0 top-1/2 z-[2] h-[15px] -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#ff5abb,#ff5f73)] shadow-[0_0_18px_rgba(255,95,169,0.24)]" />
       </div>
 
       <div
@@ -316,6 +319,33 @@ export function RewardVault() {
             ) : (
               <SlideToUnlock onUnlock={() => setIsUnlocked(true)} />
             )}
+          </div>
+        </Card>
+      </div>
+
+      <div className="mx-auto mt-6 max-w-2xl">
+        <Card className="rounded-[28px] border-white/10 bg-[linear-gradient(180deg,rgba(18,21,32,0.92),rgba(12,14,20,0.96))] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_18px_44px_rgba(0,0,0,0.2)]">
+          <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+            <div className="max-w-xl">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7EF6FF]">
+                Siguiente paso
+              </p>
+              <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#F5F7FA]">
+                Si quieres aterrizar estas ideas, agendemos una conversación breve.
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
+                Podemos revisar tu caso por WhatsApp y ver si tiene sentido llevarlo a una
+                siguiente reunión.
+              </p>
+            </div>
+
+            <Button
+              href={SITE_CONFIG.whatsappUrl}
+              size="md"
+              className="min-w-[180px] shadow-[0_0_0_1px_rgba(230,37,255,0.16),0_0_24px_rgba(37,211,102,0.18)]"
+            >
+              Agendar por WhatsApp
+            </Button>
           </div>
         </Card>
       </div>
