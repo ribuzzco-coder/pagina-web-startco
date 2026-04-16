@@ -134,6 +134,43 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
             className="absolute inset-[10px] rounded-[26px]"
             style={{ background: glareBackground, translateZ: 12 }}
           />
+          <div className="absolute inset-x-[22px] top-[16px] z-[4] h-[78px] overflow-hidden rounded-[18px] [transform:translateZ(11px)]">
+            <motion.div
+              className="pointer-events-none absolute left-1/2 top-[10px] flex -translate-x-1/2 items-end gap-3"
+              initial={false}
+              animate={isUnlocked ? { y: 0, opacity: 1 } : { y: 26, opacity: 0 }}
+              transition={{ duration: 0.62, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <motion.span
+                className="block h-[94px] w-[66px] rotate-[-8deg] overflow-hidden rounded-[14px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_18px_rgba(15,239,253,0.1)]"
+                initial={false}
+                animate={isUnlocked ? { y: 6, rotateZ: -8 } : { y: 20, rotateZ: -4 }}
+                transition={{ duration: 0.62, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Image
+                  src="/regalo-iman-portada.png"
+                  alt=""
+                  width={66}
+                  height={94}
+                  className="h-full w-full object-cover object-top"
+                />
+              </motion.span>
+              <motion.span
+                className="block h-[100px] w-[70px] rotate-[6deg] overflow-hidden rounded-[14px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_18px_rgba(230,37,255,0.12)]"
+                initial={false}
+                animate={isUnlocked ? { y: 0, rotateZ: 6 } : { y: 22, rotateZ: 3 }}
+                transition={{ duration: 0.68, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Image
+                  src="/regalo-oferta-portada.png"
+                  alt=""
+                  width={70}
+                  height={100}
+                  className="h-full w-full object-cover object-top"
+                />
+              </motion.span>
+            </motion.div>
+          </div>
           <div className="absolute -right-[14px] top-[12px] h-[98px] w-[22px] rounded-r-[18px] bg-[linear-gradient(180deg,rgba(37,33,63,0.98),rgba(18,15,31,1))] [transform:rotateY(72deg)]" />
           <div className="absolute -left-[12px] top-[18px] h-[90px] w-[18px] rounded-l-[16px] bg-[linear-gradient(180deg,rgba(126,122,177,0.52),rgba(40,34,68,0.95))] [transform:rotateY(-70deg)]" />
           <div className="absolute -bottom-[10px] left-[16px] right-[16px] h-[20px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(22,18,36,1),rgba(10,8,18,1))] [transform:rotateX(-72deg)]" />
@@ -158,42 +195,6 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
           />
         </motion.div>
 
-        <motion.div
-          className="pointer-events-none absolute left-1/2 top-[98px] z-[7] flex -translate-x-1/2 items-end gap-3"
-          animate={
-            isUnlocked
-              ? { y: -12, opacity: 1 }
-              : { y: 34, opacity: 0 }
-          }
-          transition={{ duration: 0.68, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <motion.span
-            className="block h-[120px] w-[84px] rotate-[-10deg] overflow-hidden rounded-[16px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_24px_rgba(15,239,253,0.12)]"
-            animate={isUnlocked ? { y: -8, rotateZ: -10 } : { y: 20, rotateZ: -6 }}
-            transition={{ duration: 0.72, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Image
-              src="/regalo-iman-portada.png"
-              alt=""
-              width={84}
-              height={120}
-              className="h-full w-full object-cover object-top"
-            />
-          </motion.span>
-          <motion.span
-            className="block h-[126px] w-[88px] rotate-[8deg] overflow-hidden rounded-[16px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_24px_rgba(230,37,255,0.14)]"
-            animate={isUnlocked ? { y: -18, rotateZ: 8 } : { y: 24, rotateZ: 4 }}
-            transition={{ duration: 0.76, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Image
-              src="/regalo-oferta-portada.png"
-              alt=""
-              width={88}
-              height={126}
-              className="h-full w-full object-cover object-top"
-            />
-          </motion.span>
-        </motion.div>
       </motion.div>
     </motion.div>
   );
