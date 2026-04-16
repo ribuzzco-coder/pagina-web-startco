@@ -24,14 +24,14 @@ type RewardDoc = {
 
 const docs: RewardDoc[] = [
   {
-    title: "Hagamos una oferta que nos lleve",
+    title: "Hagamos una oferta que nos lleve al espacio",
     description:
       "Una guía para estructurar una oferta con más claridad, intención y dirección comercial.",
     href: "/hagamos-una-oferta-que-nos-lleve.pdf",
     cover: "/regalo-oferta-portada.png",
   },
   {
-    title: "Un imán para tu oferta",
+    title: "Un imán para tu oferta y el valor de compartirlo",
     description:
       "Un recurso breve para entender cómo volver tu propuesta más atractiva y memorable.",
     href: "/un-iman-para-tu-oferta.pdf",
@@ -134,7 +134,7 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
             className="absolute inset-[10px] rounded-[26px]"
             style={{ background: glareBackground, translateZ: 12 }}
           />
-          <div className="absolute inset-x-[22px] top-[16px] z-[4] h-[78px] overflow-hidden rounded-[18px] [transform:translateZ(11px)]">
+          <div className="absolute inset-x-[22px] top-[-20px] z-[4] h-[122px] overflow-visible [transform:translateZ(11px)]">
             <motion.div
               className="pointer-events-none absolute left-1/2 top-[10px] flex -translate-x-1/2 items-end gap-3"
               initial={false}
@@ -144,7 +144,7 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
               <motion.span
                 className="block h-[94px] w-[66px] rotate-[-8deg] overflow-hidden rounded-[14px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_18px_rgba(15,239,253,0.1)]"
                 initial={false}
-                animate={isUnlocked ? { y: 6, rotateZ: -8 } : { y: 20, rotateZ: -4 }}
+                animate={isUnlocked ? { y: 8, rotateZ: -8 } : { y: 20, rotateZ: -4 }}
                 transition={{ duration: 0.62, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Image
@@ -158,7 +158,7 @@ function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
               <motion.span
                 className="block h-[100px] w-[70px] rotate-[6deg] overflow-hidden rounded-[14px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_18px_rgba(230,37,255,0.12)]"
                 initial={false}
-                animate={isUnlocked ? { y: 0, rotateZ: 6 } : { y: 22, rotateZ: 3 }}
+                animate={isUnlocked ? { y: 2, rotateZ: 6 } : { y: 22, rotateZ: 3 }}
                 transition={{ duration: 0.68, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Image
@@ -343,11 +343,13 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
 }
 
 function GalacticBurst() {
-  const particles = useMemo(
+  const comets = useMemo(
     () =>
-      Array.from({ length: 16 }, (_, index) => {
-        const angle = (360 / 16) * index;
-        const distance = 170 + (index % 4) * 28;
+      Array.from({ length: 20 }, (_, index) => {
+        const startX = 8 + (index % 5) * 18;
+        const startY = -6 - (index % 4) * 7;
+        const travelX = 180 + (index % 4) * 40;
+        const travelY = 220 + (index % 5) * 34;
         const color =
           index % 3 === 0
             ? "rgba(230,37,255,0.95)"
@@ -357,11 +359,14 @@ function GalacticBurst() {
 
         return {
           id: index,
-          angle,
-          distance,
+          startX,
+          startY,
+          travelX,
+          travelY,
           color,
-          delay: `${index * 24}ms`,
-          duration: `${720 + index * 16}ms`,
+          delay: `${index * 55}ms`,
+          duration: `${900 + index * 22}ms`,
+          length: `${90 + (index % 4) * 20}px`,
         };
       }),
     [],
@@ -370,28 +375,30 @@ function GalacticBurst() {
   return (
     <>
       <div className="pointer-events-none fixed inset-0 z-[120] overflow-hidden">
-        <div className="absolute left-1/2 top-1/2 h-[68rem] w-[68rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.56),rgba(255,111,168,0.26)_24%,rgba(147,89,255,0.2)_42%,transparent_74%)] blur-[72px] animate-[reward-bloom_1450ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(230,37,255,0.28),rgba(230,37,255,0.12)_30%,transparent_70%)] opacity-0 animate-[reward-bloom_1200ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
-        <span className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ff9ceb]/90 shadow-[0_0_80px_rgba(230,37,255,0.42)] opacity-0 animate-[reward-streak_1450ms_cubic-bezier(0.16,1,0.3,1)_forwards]" style={{ ["--angle" as string]: "0deg", ["--distance" as string]: "0px", ["--duration" as string]: "1450ms" }} />
+        <div className="absolute left-1/2 top-1/2 h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.22),rgba(255,111,168,0.12)_30%,transparent_74%)] blur-[64px] animate-[reward-bloom_1200ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
+        {comets.map((comet) => (
+          <span
+            key={comet.id}
+            className="absolute block h-[2px] rounded-full opacity-0 blur-[0.6px] animate-[reward-streak_var(--duration)_cubic-bezier(0.16,1,0.3,1)_forwards]"
+            style={
+              {
+                top: `${comet.startY}%`,
+                left: `${comet.startX}%`,
+                width: comet.length,
+                "--angle": "45deg",
+                "--distance": `${Math.hypot(comet.travelX, comet.travelY)}px`,
+                "--duration": comet.duration,
+                animationDelay: comet.delay,
+                background: `linear-gradient(90deg, ${comet.color}, transparent)`,
+                transform: `rotate(45deg) translate(${comet.travelX / 4}px, ${comet.travelY / 4}px)`,
+              } as CSSProperties
+            }
+          />
+        ))}
       </div>
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[32px]">
-      <div className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.34),rgba(15,239,253,0.18)_42%,transparent_72%)] blur-2xl animate-[reward-bloom_820ms_cubic-bezier(0.22,1,0.36,1)_forwards]" />
-      {particles.map((particle) => (
-        <span
-          key={particle.id}
-          className="absolute left-1/2 top-1/2 block h-1.5 w-24 origin-left rounded-full opacity-0 blur-[1px] animate-[reward-streak_var(--duration)_cubic-bezier(0.16,1,0.3,1)_forwards]"
-          style={
-            {
-              "--angle": `${particle.angle}deg`,
-              "--distance": `${particle.distance}px`,
-              "--duration": particle.duration,
-              animationDelay: particle.delay,
-              background: `linear-gradient(90deg, ${particle.color}, transparent)`,
-            } as CSSProperties
-          }
-        />
-      ))}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(230,37,255,0.1),transparent_38%)] opacity-0 animate-[reward-bloom_900ms_cubic-bezier(0.22,1,0.36,1)_forwards]" />
       </div>
     </>
   );
