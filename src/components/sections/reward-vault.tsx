@@ -33,42 +33,43 @@ function GiftIcon({ className }: { className?: string }) {
       className={className}
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.9"
+      strokeWidth="1.7"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M4.5 8.5h15v11h-15z" />
-      <path d="M3.5 8.5h17v-3h-17z" />
-      <path d="M12 5.5v14" />
-      <path d="M12 8.5h-4.2c-1.1 0-2-.9-2-2 0-1 .8-1.8 1.8-1.8 2.2 0 3.4 1.4 4.4 3.8Z" />
-      <path d="M12 8.5h4.2c1.1 0 2-.9 2-2 0-1-.8-1.8-1.8-1.8-2.2 0-3.4 1.4-4.4 3.8Z" />
+      <path d="M5.25 10.25h13.5v8.5a1.25 1.25 0 0 1-1.25 1.25H6.5a1.25 1.25 0 0 1-1.25-1.25z" />
+      <path d="M4 10.25h16v-2.1A1.15 1.15 0 0 0 18.85 7H5.15A1.15 1.15 0 0 0 4 8.15z" />
+      <path d="M12 7v13" />
+      <path d="M12 7c-.15-2.45-1.2-3.85-3-3.85-1.35 0-2.25.93-2.25 2.03 0 1.18.88 1.82 2.18 1.82z" />
+      <path d="M12 7c.15-2.45 1.2-3.85 3-3.85 1.35 0 2.25.93 2.25 2.03 0 1.18-.88 1.82-2.18 1.82z" />
     </svg>
   );
 }
 
 function BoxVisual({ isUnlocked }: { isUnlocked: boolean }) {
   return (
-    <div className="relative mx-auto h-40 w-40 sm:h-44 sm:w-44">
-      <div className="absolute inset-x-5 bottom-0 h-24 rounded-[26px] border border-[#ff8ac0]/16 bg-[linear-gradient(180deg,rgba(39,21,47,0.98),rgba(19,13,27,0.98))] shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_18px_48px_rgba(0,0,0,0.24),0_0_26px_rgba(230,37,255,0.12)]" />
-      <div className="absolute inset-x-[30%] bottom-[22px] h-14 w-[40%] rounded-[18px] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))]" />
-      <div className="absolute left-1/2 top-[54px] z-20 h-[88px] w-[10px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,#ff5fa9,#ffb1d1)] shadow-[0_0_16px_rgba(255,95,169,0.24)]" />
-      <div className="absolute left-[28px] right-[28px] top-[70px] z-20 h-[10px] rounded-full bg-[linear-gradient(90deg,#ff73b1,#ffb5d5)] shadow-[0_0_16px_rgba(255,95,169,0.22)]" />
+    <div className="relative mx-auto h-44 w-[220px] sm:h-48 sm:w-[248px]">
+      <div className="absolute inset-x-6 bottom-0 h-28 rounded-[30px] border border-[#a04da8]/50 bg-[linear-gradient(180deg,rgba(34,16,43,0.99),rgba(23,12,31,0.99))] shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_54px_rgba(0,0,0,0.28),0_0_28px_rgba(230,37,255,0.14)]" />
+      <div className="absolute left-1/2 top-[40px] z-20 h-[104px] w-[26px] -translate-x-1/2 rounded-[12px] bg-[linear-gradient(180deg,#ff57b2,#ff5f76)] shadow-[0_0_20px_rgba(255,95,169,0.22)]" />
 
       <div
         className={cn(
-          "absolute inset-x-3 top-7 z-10 h-16 origin-bottom rounded-[22px] border border-[#ff9bd5]/22 bg-[linear-gradient(180deg,rgba(69,33,74,0.98),rgba(42,20,46,0.98))] shadow-[0_12px_28px_rgba(0,0,0,0.2),0_0_24px_rgba(230,37,255,0.16)] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          isUnlocked ? "-translate-y-7 rotate-[-12deg]" : "translate-y-0 rotate-0",
+          "absolute inset-x-0 top-7 z-10 h-14 origin-bottom rounded-[22px] border border-[#a954b4]/60 bg-[linear-gradient(180deg,rgba(54,26,64,0.98),rgba(39,20,46,0.98))] shadow-[0_12px_28px_rgba(0,0,0,0.18),0_0_24px_rgba(230,37,255,0.16)] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          isUnlocked ? "-translate-y-9 rotate-[-10deg]" : "translate-y-0 rotate-0",
         )}
-      />
+      >
+        <span className="absolute left-1/2 top-0 h-full w-[26px] -translate-x-1/2 rounded-[10px] bg-[linear-gradient(180deg,#ff57b2,#ff5f76)] shadow-[0_0_18px_rgba(255,95,169,0.2)]" />
+        <span className="absolute inset-x-0 top-1/2 h-[12px] -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#ff5db7,#ff5d72)] shadow-[0_0_18px_rgba(255,95,169,0.18)]" />
+      </div>
 
       <div
         className={cn(
-          "pointer-events-none absolute left-1/2 top-[58px] z-[5] flex -translate-x-1/2 items-end gap-3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "pointer-events-none absolute left-1/2 top-[48px] z-[5] flex -translate-x-1/2 items-end gap-4 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
           isUnlocked ? "opacity-100" : "opacity-0",
         )}
       >
-        <span className="block h-14 w-10 rotate-[-12deg] rounded-[12px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(20,25,38,0.98),rgba(10,13,22,0.98))] shadow-[0_0_20px_rgba(15,239,253,0.14)]" />
-        <span className="block h-16 w-11 rotate-[10deg] rounded-[12px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(29,19,36,0.98),rgba(14,11,20,0.98))] shadow-[0_0_22px_rgba(230,37,255,0.16)]" />
+        <span className="block h-20 w-14 rotate-[-14deg] rounded-[16px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_20px_rgba(15,239,253,0.14)]" />
+        <span className="block h-24 w-16 rotate-[11deg] rounded-[16px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_24px_rgba(230,37,255,0.16)]" />
       </div>
     </div>
   );
@@ -162,32 +163,34 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
   return (
     <Card
       glowTone={index === 0 ? "purple" : "cyan"}
-      className="rounded-[28px] border-white/12 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(12,14,20,0.98))] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_48px_rgba(0,0,0,0.24)]"
+      className="rounded-[28px] border-white/12 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(12,14,20,0.98))] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_48px_rgba(0,0,0,0.24)]"
     >
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-            Documento desbloqueado
-          </p>
-          <h3 className="mt-3 text-xl font-semibold tracking-tight text-[#F5F7FA]">
-            {doc.title}
-          </h3>
-        </div>
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-3 text-[#FF9BEA]">
-          <GiftIcon className="h-6 w-6" />
+      <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+        <div className="aspect-[4/5] w-full bg-[#0c0d14]">
+          <iframe
+            title={`Vista previa de ${doc.title}`}
+            src={`${doc.href}#toolbar=0&navpanes=0&scrollbar=0&page=1&view=FitH`}
+            className="h-full w-full scale-[1.01]"
+          />
         </div>
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+      <div className="mt-5">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+          Documento desbloqueado
+        </p>
+        <h3 className="mt-3 text-xl font-semibold tracking-tight text-[#F5F7FA]">
+          {doc.title}
+        </h3>
+      </div>
+
+      <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
         {doc.description}
       </p>
 
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+      <div className="mt-5 flex">
         <Button href={doc.href} variant="secondary" size="md">
           Leer
-        </Button>
-        <Button href={doc.href} size="md" external>
-          Descargar
         </Button>
       </div>
     </Card>

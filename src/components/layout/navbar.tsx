@@ -182,23 +182,23 @@ export function Navbar() {
           <Link
             href={SITE_CONFIG.giftsPath}
             aria-label="Regalos y documentos de valor"
-            className="relative z-10 ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#ff4d6d]/75 bg-[linear-gradient(135deg,#4a101b,#72182a)] text-[#ffafbf] shadow-[0_0_0_1px_rgba(255,77,109,0.18),0_0_20px_rgba(255,77,109,0.28)] transition-[transform,border-color,box-shadow,background-color,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#ffd0d8] hover:bg-[linear-gradient(135deg,#5d1320,#8a1d33)] hover:text-white hover:shadow-[0_0_0_1px_rgba(255,77,109,0.24),0_0_28px_rgba(255,77,109,0.38)]"
+            className="relative z-10 ml-1 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#c53a57] bg-[linear-gradient(180deg,#731a2d,#681426)] text-[#ffb1c2] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_0_0_1px_rgba(255,77,109,0.14),0_0_24px_rgba(255,77,109,0.24)] transition-[transform,border-color,box-shadow,background-color,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#e05a76] hover:bg-[linear-gradient(180deg,#822136,#75172b)] hover:text-[#ffdbe3] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_0_0_1px_rgba(255,77,109,0.18),0_0_30px_rgba(255,77,109,0.34)]"
           >
             <svg
               aria-hidden="true"
               viewBox="0 0 24 24"
-              className="h-[19px] w-[19px]"
+              className="h-5 w-5"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1.9"
+              strokeWidth="1.7"
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <path d="M4.5 8.5h15v11h-15z" />
-              <path d="M3.5 8.5h17v-3h-17z" />
-              <path d="M12 5.5v14" />
-              <path d="M12 8.5h-4.2c-1.1 0-2-.9-2-2 0-1 .8-1.8 1.8-1.8 2.2 0 3.4 1.4 4.4 3.8Z" />
-              <path d="M12 8.5h4.2c1.1 0 2-.9 2-2 0-1-.8-1.8-1.8-1.8-2.2 0-3.4 1.4-4.4 3.8Z" />
+              <path d="M5.25 10.25h13.5v8.5a1.25 1.25 0 0 1-1.25 1.25H6.5a1.25 1.25 0 0 1-1.25-1.25z" />
+              <path d="M4 10.25h16v-2.1A1.15 1.15 0 0 0 18.85 7H5.15A1.15 1.15 0 0 0 4 8.15z" />
+              <path d="M12 7v13" />
+              <path d="M12 7c-.15-2.45-1.2-3.85-3-3.85-1.35 0-2.25.93-2.25 2.03 0 1.18.88 1.82 2.18 1.82z" />
+              <path d="M12 7c.15-2.45 1.2-3.85 3-3.85 1.35 0 2.25.93 2.25 2.03 0 1.18-.88 1.82-2.18 1.82z" />
             </svg>
           </Link>
         </nav>
