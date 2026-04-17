@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { type CSSProperties, useMemo, useRef, useState } from "react";
+import { type CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -12,7 +12,6 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { BoxVisual, GiftIcon } from "@/components/ui/gift-box-visual";
 
@@ -27,20 +26,18 @@ const docs: RewardDoc[] = [
   {
     title: "Hagamos una oferta que nos lleve al espacio",
     description:
-      "Una guía para estructurar una oferta con más claridad, intención y dirección comercial.",
+      "Una guÃ­a para estructurar una oferta con mÃ¡s claridad, intenciÃ³n y direcciÃ³n comercial.",
     href: "/hagamos-una-oferta-que-nos-lleve.pdf",
     cover: "/regalo-oferta-portada.png",
   },
   {
-    title: "Un imán para tu oferta y el valor de compartirlo",
+    title: "Un imÃ¡n para tu oferta y el valor de compartirlo",
     description:
-      "Un recurso breve para entender cómo volver tu propuesta más atractiva y memorable.",
+      "Un recurso breve para entender cÃ³mo volver tu propuesta mÃ¡s atractiva y memorable.",
     href: "/un-iman-para-tu-oferta.pdf",
     cover: "/regalo-iman-portada.png",
   },
 ];
-
-
 
 type SlideToUnlockProps = {
   onUnlock: () => void;
@@ -51,14 +48,22 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
   const [progress, setProgress] = useState(0);
   const [dragging, setDragging] = useState(false);
 
-  const startDrag = () => {
-    if (progress >= 1) {
-      return;
-    }
-    setDragging(true);
-  };
+  const updateFromClientX = useCallback(
+    (clientX: number) => {
+      const track = trackRef.current;
+      if (!track || !dragging) {
+        return;
+      }
 
-  const stopDrag = () => {
+      const rect = track.getBoundingClientRect();
+      const handleSize = 58;
+      const next = (clientX - rect.left - handleSize / 2) / (rect.width - handleSize);
+      setProgress(Math.min(Math.max(next, 0), 1));
+    },
+    [dragging],
+  );
+
+  const stopDrag = useCallback(() => {
     if (!dragging) {
       return;
     }
@@ -71,36 +76,57 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
     }
 
     setProgress(0);
-  };
+  }, [dragging, onUnlock, progress]);
 
-  const updateFromClientX = (clientX: number) => {
-    const track = trackRef.current;
-    if (!track || !dragging) {
-      return;
-    }
+  const startDrag = useCallback(
+    (clientX?: number) => {
+      if (progress >= 1) {
+        return;
+      }
 
-    const rect = track.getBoundingClientRect();
-    const handleSize = 58;
-    const next = (clientX - rect.left - handleSize / 2) / (rect.width - handleSize);
-    setProgress(Math.min(Math.max(next, 0), 1));
-  };
+      setDragging(true);
+      if (typeof clientX === "number") {
+        updateFromClientX(clientX);
+      }
+    },
+    [progress, updateFromClientX],
+  );
 
   const fillWidth = `${progress * 100}%`;
   const handleOffset = `calc(${progress * 100}% - ${progress * 58}px)`;
+
+  useEffect(() => {
+    if (!dragging) {
+      return;
+    }
+
+    const handlePointerMove = (event: PointerEvent) => {
+      updateFromClientX(event.clientX);
+    };
+
+    const handlePointerUp = () => {
+      stopDrag();
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", handlePointerUp);
+    window.addEventListener("pointercancel", handlePointerUp);
+
+    return () => {
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", handlePointerUp);
+      window.removeEventListener("pointercancel", handlePointerUp);
+    };
+  }, [dragging, stopDrag, updateFromClientX]);
 
   return (
     <div className="mt-8 flex justify-center">
       <div
         ref={trackRef}
-        className="relative h-[74px] w-full max-w-[430px] rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(18,22,34,0.94),rgba(12,14,20,0.98))] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_0_28px_rgba(230,37,255,0.08)]"
+        className="relative h-[74px] w-full max-w-[430px] touch-pan-y rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(18,22,34,0.94),rgba(12,14,20,0.98))] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_0_28px_rgba(230,37,255,0.08)]"
         onPointerDown={(event) => {
-          startDrag();
-          updateFromClientX(event.clientX);
+          startDrag(event.clientX);
         }}
-        onPointerMove={(event) => updateFromClientX(event.clientX)}
-        onPointerUp={stopDrag}
-        onPointerCancel={stopDrag}
-        onPointerLeave={stopDrag}
       >
         <div
           className="pointer-events-none absolute inset-y-2 left-2 rounded-full bg-[linear-gradient(90deg,rgba(230,37,255,0.34),rgba(15,239,253,0.2))] transition-[width] duration-200 ease-out"
@@ -108,7 +134,7 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
         />
         <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_24%_50%,rgba(230,37,255,0.14),transparent_26%),radial-gradient(circle_at_75%_50%,rgba(15,239,253,0.1),transparent_26%)]" />
         <div className="relative flex h-full items-center justify-center px-16 text-center">
-          <span className="text-sm font-semibold tracking-[0.16em] text-[#D5DBE7] uppercase sm:text-[15px]">
+          <span className="text-sm font-semibold uppercase tracking-[0.16em] text-[#D5DBE7] sm:text-[15px]">
             Desliza para abrir
           </span>
         </div>
@@ -120,8 +146,7 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
             dragging && "scale-[1.02]",
           )}
           style={{ left: handleOffset }}
-          onPointerDown={startDrag}
-          onPointerUp={stopDrag}
+          onPointerDown={(event) => startDrag(event.clientX)}
         >
           <GiftIcon className="h-6 w-6" />
         </button>
@@ -153,7 +178,7 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
             Documento desbloqueado
           </p>
-          <h3 className="mt-2 text-lg font-semibold leading-tight tracking-tight text-[#F5F7FA] sm:text-xl">
+          <h3 className="mt-2 text-lg font-semibold tracking-tight text-[#F5F7FA] sm:text-xl">
             {doc.title}
           </h3>
         </div>
@@ -185,6 +210,14 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
 }
 
 function GalacticBurst() {
+  const pointerX = useMotionValue(0.5);
+  const pointerY = useMotionValue(0.5);
+  const pointerXSpring = useSpring(pointerX, { stiffness: 120, damping: 18, mass: 0.5 });
+  const pointerYSpring = useSpring(pointerY, { stiffness: 120, damping: 18, mass: 0.5 });
+  const glowX = useTransform(pointerXSpring, (value) => `${value * 100}%`);
+  const glowY = useTransform(pointerYSpring, (value) => `${value * 100}%`);
+  const overlayBackground = useMotionTemplate`radial-gradient(circle at ${glowX} ${glowY}, rgba(255,255,255,0.16), transparent 34%)`;
+
   const comets = useMemo(
     () =>
       Array.from({ length: 24 }, (_, index) => {
@@ -240,7 +273,10 @@ function GalacticBurst() {
       </div>
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[32px]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(230,37,255,0.1),transparent_38%)] opacity-0 animate-[reward-bloom_900ms_cubic-bezier(0.22,1,0.36,1)_forwards]" />
+        <motion.div
+          className="absolute inset-0 opacity-0 animate-[reward-bloom_900ms_cubic-bezier(0.22,1,0.36,1)_forwards]"
+          style={{ background: overlayBackground }}
+        />
       </div>
     </>
   );
@@ -256,7 +292,7 @@ export function RewardVault() {
           Regalos RiBuzz
         </p>
         <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[#F5F7FA] sm:text-5xl">
-          Te traemos valor que nos habría gustado saber antes.
+          Te traemos valor que nos habrÃ­a gustado saber antes.
         </h1>
       </div>
 
@@ -269,7 +305,7 @@ export function RewardVault() {
             <BoxVisual isUnlocked={isUnlocked} />
 
             {isUnlocked ? (
-              <div className="mt-8 grid gap-4 sm:grid-cols-2 animate-[reward-reveal_520ms_cubic-bezier(0.22,1,0.36,1)_forwards]">
+              <div className="mt-8 grid animate-[reward-reveal_520ms_cubic-bezier(0.22,1,0.36,1)_forwards] gap-4 sm:grid-cols-2">
                 {docs.map((doc, index) => (
                   <RewardCard key={doc.title} doc={doc} index={index} />
                 ))}
@@ -289,20 +325,20 @@ export function RewardVault() {
                 Siguiente paso
               </p>
               <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#F5F7FA]">
-                Si quieres aterrizar estas ideas, agendemos una conversación breve.
+                Si quieres aterrizar estas ideas, agendemos una conversacion breve.
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
-                Podemos revisar tu caso por WhatsApp y ver si tiene sentido llevarlo a una
-                siguiente reunión.
+                Reserva un espacio con RiBuzz y revisamos tu caso para definir si vale la
+                pena avanzar a un siguiente paso.
               </p>
             </div>
 
             <Button
-              href={SITE_CONFIG.whatsappUrl}
+              href="https://calendly.com/ribuzzco/conexion-ribuzz"
               size="md"
-              className="min-w-[180px] shadow-[0_0_0_1px_rgba(230,37,255,0.16),0_0_24px_rgba(37,211,102,0.18)]"
+              className="min-w-[180px] shadow-[0_0_0_1px_rgba(230,37,255,0.16),0_0_24px_rgba(230,37,255,0.18)]"
             >
-              Agendar por WhatsApp
+              Agenda reunion
             </Button>
           </div>
         </Card>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { type PointerEvent as ReactPointerEvent, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -20,15 +20,58 @@ export function BeforeAfterWipeCard({
   className,
 }: BeforeAfterWipeCardProps) {
   const [showAfter, setShowAfter] = useState(false);
+  const swipeStartXRef = useRef<number | null>(null);
+
+  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse") {
+      return;
+    }
+
+    swipeStartXRef.current = event.clientX;
+  };
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse" || swipeStartXRef.current === null) {
+      return;
+    }
+
+    const deltaX = event.clientX - swipeStartXRef.current;
+
+    if (deltaX <= -32) {
+      setShowAfter(true);
+      swipeStartXRef.current = event.clientX;
+    }
+
+    if (deltaX >= 32) {
+      setShowAfter(false);
+      swipeStartXRef.current = event.clientX;
+    }
+  };
+
+  const resetSwipe = () => {
+    swipeStartXRef.current = null;
+  };
 
   return (
     <div
       className={cn(
-        "group relative min-h-[250px] overflow-hidden rounded-[26px] border border-white/10 p-0 shadow-[0_10px_24px_rgba(0,0,0,0.22)]",
+        "group relative min-h-[250px] overflow-hidden rounded-[26px] border border-white/10 p-0 shadow-[0_10px_24px_rgba(0,0,0,0.22)] touch-pan-y",
         className,
       )}
-      onPointerEnter={() => setShowAfter(true)}
-      onPointerLeave={() => setShowAfter(false)}
+      onPointerEnter={(event) => {
+        if (event.pointerType === "mouse") {
+          setShowAfter(true);
+        }
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === "mouse") {
+          setShowAfter(false);
+        }
+      }}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={resetSwipe}
+      onPointerCancel={resetSwipe}
     >
       <div className="relative isolate h-full min-h-[250px] overflow-hidden">
         <div
@@ -40,8 +83,13 @@ export function BeforeAfterWipeCard({
           <div className="absolute inset-0 rounded-[inherit] bg-[linear-gradient(180deg,rgba(18,21,33,0.98),rgba(12,13,21,0.98))]" />
           <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_18%_20%,rgba(255,255,255,0.06),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_22%)]" />
           <div className="relative flex h-full flex-col p-5 sm:p-6">
-            <div className="inline-flex w-fit rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#98A0B3]">
-              Antes
+            <div className="flex items-center justify-between gap-3">
+              <div className="inline-flex w-fit rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#98A0B3]">
+                Antes
+              </div>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3] md:hidden">
+                Desliza
+              </span>
             </div>
             <div className="mt-4 flex-1">
               <h3 className="max-w-[17rem] text-[1.05rem] font-semibold leading-tight text-[#F5F7FA] sm:text-[1.12rem]">

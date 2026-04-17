@@ -95,7 +95,7 @@ export function TestimonialShuffle() {
           </p>
         </div>
 
-        <div className="relative mx-auto h-[360px] w-[310px] cursor-grab active:cursor-grabbing sm:h-[400px] sm:w-[360px]">
+        <div className="relative mx-auto h-[412px] w-[310px] cursor-grab active:cursor-grabbing sm:h-[400px] sm:w-[360px]">
           <div className="pointer-events-none absolute inset-x-10 bottom-2 h-18 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.18),transparent_68%)] blur-2xl" />
           {testimonials.map((testimonial, index) => {
             const position = positions[index];
@@ -129,7 +129,7 @@ export function TestimonialShuffle() {
                   },
                 })}
                 className={cn(
-                  "absolute inset-0 flex flex-col justify-between rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(22,24,38,0.96),rgba(14,16,26,0.96))] p-7 shadow-2xl",
+                  "absolute inset-0 flex flex-col justify-between rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(22,24,38,0.96),rgba(14,16,26,0.96))] p-5 shadow-2xl sm:p-7",
                 )}
               >
                 <div>
@@ -146,12 +146,12 @@ export function TestimonialShuffle() {
                       </div>
                     ) : null}
                   </div>
-                  <p className="mt-6 text-lg leading-relaxed text-[#F5F7FA] sm:text-[1.15rem]">
+                  <p className="mt-5 text-[1rem] leading-relaxed text-[#F5F7FA] sm:mt-6 sm:text-[1.15rem]">
                     "{testimonial.quote}"
                   </p>
                 </div>
 
-                <div className="mt-8 border-t border-white/8 pt-5 text-left">
+                <div className="mt-6 border-t border-white/8 pt-4 text-left sm:mt-8 sm:pt-5">
                   <p className="text-sm font-semibold text-[#F5F7FA]">{testimonial.author}</p>
                   <p className="mt-1 text-sm text-[#98A0B3]">{testimonial.role}</p>
                 </div>
