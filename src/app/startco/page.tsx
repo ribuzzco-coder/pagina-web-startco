@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export const metadata = createPageMetadata({
   title: "Startco",
   description:
-    "Startco es un hub rÃ¡pido de enlaces de RiBuzz para conectar redes, diagnÃ³stico, sitio principal y prÃ³ximos recursos de valor.",
+    "Startco es un hub rápido de enlaces de RiBuzz para conectar redes, diagnóstico, sitio principal y próximos recursos de valor.",
   path: "/startco",
 });
 
@@ -33,7 +33,7 @@ const primaryLinks = [
     featured: false,
   },
   {
-    title: "Hacer diagnÃ³stico",
+    title: "Hacer diagnóstico",
     description: "Completar lectura inicial del sistema comercial",
     href: SITE_CONFIG.diagnosisPath,
     accent: "from-[#0FEFFD]/20 via-[#0FEFFD]/10 to-transparent",
@@ -42,14 +42,14 @@ const primaryLinks = [
   },
   {
     title: "Sitio web",
-    description: "Volver a la pÃ¡gina principal de RiBuzz",
+    description: "Volver a la página principal de RiBuzz",
     href: "/",
     accent: "from-[#B16EFF]/18 via-[#E625FF]/8 to-transparent",
     glowTone: "cyan",
     featured: false,
   },
   {
-    title: "Agenda reunion",
+    title: "Agenda reunión",
     description: "Reservar una llamada con RiBuzz",
     href: "https://calendly.com/ribuzzco/conexion-ribuzz",
     accent: "from-[#0FEFFD]/22 via-[#E625FF]/14 to-transparent",
@@ -61,21 +61,19 @@ const primaryLinks = [
 const supportCards = {
   nfc: {
     title: "Tarjetas NFC",
-    description: "Accesos para networking y presentaciÃ³n fÃ­sica",
+    description: "Accesos para networking y presentación física",
     href: "/contact",
   },
   neoMech: {
     title: "Conoce a Neo-Mech",
-    description:
-      "Neo-Mech es el aliado ideal para impresiÃ³n 3D a la medida de tus necesidades.",
+    description: "Neo-Mech es el aliado ideal para impresión 3D a la medida de tus necesidades.",
     href: "https://www.instagram.com/neomech3d/",
     whatsappUrl: "https://wa.me/573008455611",
     portfolioUrl: "https://drive.google.com/file/d/1pJjucqtEM1P7hCWs0YnBBGIqUDmmeGhP/view?usp=sharing",
   },
   gifts: {
     title: "Regalos / documentos de valor",
-    description:
-      "Â¿Quieres aprender a crear una oferta y cÃ³mo entregarla? Aprende aquÃ­ cÃ³mo hacerlo.",
+    description: "¿Quieres aprender a crear una oferta y cómo entregarla? Aprende aquí cómo hacerlo.",
   },
 } as const;
 
@@ -108,9 +106,8 @@ export default function StartcoPage() {
             </h1>
 
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
-              DiseÃ±amos soluciones comerciales, visuales y digitales para marcas
-              que quieren crecer con mÃ¡s claridad, mejor presencia y herramientas
-              Ãºtiles.
+              Diseñamos soluciones comerciales, visuales y digitales para marcas que quieren
+              crecer con más claridad, mejor presencia y herramientas útiles.
             </p>
           </div>
 
@@ -135,12 +132,8 @@ export default function StartcoPage() {
                   />
                   <div className="relative flex min-h-[58px] items-center justify-center text-center">
                     <div className="relative z-10 min-w-0">
-                      <p className="text-base font-semibold text-[#F5F7FA]">
-                        {link.title}
-                      </p>
-                      <p className="mt-1 text-sm text-[#98A0B3]">
-                        {link.description}
-                      </p>
+                      <p className="text-base font-semibold text-[#F5F7FA]">{link.title}</p>
+                      <p className="mt-1 text-sm text-[#98A0B3]">{link.description}</p>
                     </div>
                   </div>
                 </>
