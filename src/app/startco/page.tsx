@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export const metadata = createPageMetadata({
   title: "Startco",
   description:
-    "Startco es un hub rápido de enlaces de RiBuzz para conectar redes, diagnóstico, sitio principal y próximos recursos de valor.",
+    "Startco es un hub rÃ¡pido de enlaces de RiBuzz para conectar redes, diagnÃ³stico, sitio principal y prÃ³ximos recursos de valor.",
   path: "/startco",
 });
 
@@ -33,7 +33,7 @@ const primaryLinks = [
     featured: false,
   },
   {
-    title: "Hacer diagnóstico",
+    title: "Hacer diagnÃ³stico",
     description: "Completar lectura inicial del sistema comercial",
     href: SITE_CONFIG.diagnosisPath,
     accent: "from-[#0FEFFD]/20 via-[#0FEFFD]/10 to-transparent",
@@ -42,10 +42,18 @@ const primaryLinks = [
   },
   {
     title: "Sitio web",
-    description: "Volver a la página principal de RiBuzz",
+    description: "Volver a la pÃ¡gina principal de RiBuzz",
     href: "/",
     accent: "from-[#B16EFF]/18 via-[#E625FF]/8 to-transparent",
     glowTone: "cyan",
+    featured: false,
+  },
+  {
+    title: "Agenda reunion",
+    description: "Reservar una llamada con RiBuzz",
+    href: "https://calendly.com/ribuzzco/conexion-ribuzz",
+    accent: "from-[#0FEFFD]/22 via-[#E625FF]/14 to-transparent",
+    glowTone: "purple",
     featured: false,
   },
 ] as const;
@@ -53,21 +61,21 @@ const primaryLinks = [
 const supportCards = {
   nfc: {
     title: "Tarjetas NFC",
-    description: "Accesos para networking y presentación física",
+    description: "Accesos para networking y presentaciÃ³n fÃ­sica",
     href: "/contact",
   },
   neoMech: {
     title: "Conoce a Neo-Mech",
     description:
-      "Neo-Mech es el aliado ideal para impresión 3D a la medida de tus necesidades.",
+      "Neo-Mech es el aliado ideal para impresiÃ³n 3D a la medida de tus necesidades.",
     href: "https://www.instagram.com/neomech3d/",
-    whatsappUrl: "https://wa.me/573117409241",
+    whatsappUrl: "https://wa.me/573008455611",
     portfolioUrl: "https://drive.google.com/file/d/1pJjucqtEM1P7hCWs0YnBBGIqUDmmeGhP/view?usp=sharing",
   },
   gifts: {
     title: "Regalos / documentos de valor",
     description:
-      "¿Quieres aprender a crear una oferta y cómo entregarla? Aprende aquí cómo hacerlo.",
+      "Â¿Quieres aprender a crear una oferta y cÃ³mo entregarla? Aprende aquÃ­ cÃ³mo hacerlo.",
   },
 } as const;
 
@@ -100,9 +108,9 @@ export default function StartcoPage() {
             </h1>
 
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
-              Diseñamos soluciones comerciales, visuales y digitales para marcas
-              que quieren crecer con más claridad, mejor presencia y herramientas
-              útiles.
+              DiseÃ±amos soluciones comerciales, visuales y digitales para marcas
+              que quieren crecer con mÃ¡s claridad, mejor presencia y herramientas
+              Ãºtiles.
             </p>
           </div>
 
@@ -114,7 +122,7 @@ export default function StartcoPage() {
                 "group relative overflow-hidden rounded-[24px] px-5 py-5 text-center transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:bg-[#171B2A] hover:shadow-[0_18px_36px_rgba(0,0,0,0.22)]",
                 link.featured
                   ? "border-[#E625FF]/40 bg-[linear-gradient(180deg,rgba(32,22,40,0.96),rgba(20,18,30,0.98))] shadow-[0_0_0_1px_rgba(230,37,255,0.12),0_0_26px_rgba(230,37,255,0.18)] hover:border-[#ff8bf7]/52 hover:shadow-[0_0_0_1px_rgba(230,37,255,0.18),0_0_32px_rgba(230,37,255,0.24)]"
-                  : "border-white/10 bg-[#141724] hover:border-white/18"
+                  : "border-white/10 bg-[#141724] hover:border-white/18",
               );
 
               const content = (
@@ -122,7 +130,7 @@ export default function StartcoPage() {
                   <div
                     className={cn(
                       "pointer-events-none absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 group-hover:opacity-100",
-                      link.accent
+                      link.accent,
                     )}
                   />
                   <div className="relative flex min-h-[58px] items-center justify-center text-center">
@@ -237,13 +245,23 @@ export default function StartcoPage() {
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[12px] font-semibold text-white transition-colors hover:bg-white/10"
                     >
-                      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" strokeLinecap="round" strokeLinejoin="round"/>
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
                       Portafolio
                     </a>
                   </div>
-                  
+
                   <a
                     href={supportCards.neoMech.href}
                     target="_blank"
@@ -251,8 +269,18 @@ export default function StartcoPage() {
                     className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9BF8FF]/70 transition-colors hover:text-[#9BF8FF]"
                   >
                     <span>Ver Instagram</span>
-                    <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-3 w-3"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <path
+                        d="M7 17L17 7M17 7H7M17 7V17"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </a>
                 </div>
@@ -260,10 +288,7 @@ export default function StartcoPage() {
             </Card>
           </div>
 
-          <Link
-            href={SITE_CONFIG.giftsPath}
-            className="relative mx-auto mt-4 block max-w-xl"
-          >
+          <Link href={SITE_CONFIG.giftsPath} className="relative mx-auto mt-4 block max-w-xl">
             <Card
               glowTone="cyan"
               className="rounded-[26px] border-dashed border-white/10 bg-[#10131C]/72 px-6 py-6 text-center md:min-h-[132px]"
