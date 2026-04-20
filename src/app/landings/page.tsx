@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+import { LandingCarousel } from "@/components/sections/landing-carousel";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -7,43 +6,12 @@ import { HeroGalaxy } from "@/components/ui/hero-galaxy";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 
-type LandingPreview = {
-  title: string;
-  status: string;
-  href?: string;
-  kind: "startco" | "offer" | "event" | "portfolio";
-};
-
 export const metadata = createPageMetadata({
   title: "Landings",
   description:
     "Acceso privado a landings RiBuzz para explorar ideas de p\u00e1ginas, biolinks y experiencias digitales a la medida.",
   path: "/landings",
 });
-
-const landingPreviews: LandingPreview[] = [
-  {
-    title: "Startco",
-    status: "Ejemplo activo",
-    href: "/startco",
-    kind: "startco",
-  },
-  {
-    title: "Oferta premium",
-    status: "Pr\u00f3ximamente",
-    kind: "offer",
-  },
-  {
-    title: "Evento o lanzamiento",
-    status: "Pr\u00f3ximamente",
-    kind: "event",
-  },
-  {
-    title: "Portafolio personal",
-    status: "Pr\u00f3ximamente",
-    kind: "portfolio",
-  },
-];
 
 function KeyIcon() {
   return (
@@ -62,67 +30,6 @@ function KeyIcon() {
       <path d="m15.4 6.8 1.8 1.8" />
       <path d="m13.2 9 1.8 1.8" />
     </svg>
-  );
-}
-
-function StartcoPreview() {
-  return (
-    <div className="landing-preview landing-preview--startco">
-      <div className="landing-preview__phone">
-        <div className="landing-preview__avatar">
-          <Image src={SITE_CONFIG.logoMark} alt="" width={76} height={76} className="h-full w-full object-contain" />
-        </div>
-        <p className="landing-preview__brand">RiBuzz</p>
-        <p className="landing-preview__tagline">Conecta, explora y crece con claridad.</p>
-        <div className="landing-preview__links">
-          <span>Instagram</span>
-          <span>WhatsApp</span>
-          <span>Diagn&oacute;stico</span>
-          <span>Sitio web</span>
-        </div>
-        <div className="landing-preview__feature-grid">
-          <span>NFC</span>
-          <span>Neo-Mech</span>
-        </div>
-        <div className="landing-preview__soon">Recursos y accesos</div>
-      </div>
-    </div>
-  );
-}
-
-function PlaceholderPreview({ kind }: { kind: LandingPreview["kind"] }) {
-  const isOffer = kind === "offer";
-  const isEvent = kind === "event";
-
-  return (
-    <div className={`landing-preview landing-preview--${kind}`}>
-      <div className="landing-preview__mock">
-        <div className="landing-preview__orb" />
-        <div className="landing-preview__bar landing-preview__bar--wide" />
-        <div className="landing-preview__bar" />
-        <div className="landing-preview__grid">
-          <span />
-          <span />
-          <span />
-        </div>
-        <div className="landing-preview__cta">
-          {isOffer ? "Oferta" : isEvent ? "Evento" : "Perfil"}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PreviewContent({ item }: { item: LandingPreview }) {
-  return (
-    <>
-      <div className="landing-carousel__shine" />
-      {item.kind === "startco" ? <StartcoPreview /> : <PlaceholderPreview kind={item.kind} />}
-      <div className="landing-carousel__label">
-        <p>{item.title}</p>
-        <span>{item.status}</span>
-      </div>
-    </>
   );
 }
 
@@ -175,32 +82,7 @@ export default function LandingsPage() {
               </Button>
             </div>
 
-            <div className="landing-carousel mt-14" aria-label="Ejemplos de landings">
-              <div className="landing-carousel__arrow landing-carousel__arrow--left" aria-hidden="true">
-                <span />
-              </div>
-              <div className="landing-carousel__arrow landing-carousel__arrow--right" aria-hidden="true">
-                <span />
-              </div>
-              <div className="landing-carousel__floor" />
-              {landingPreviews.map((item) => {
-                const cardClassName = `landing-carousel__card landing-carousel__card--${item.kind}`;
-
-                if (item.href) {
-                  return (
-                    <a key={item.title} href={item.href} className={cardClassName}>
-                      <PreviewContent item={item} />
-                    </a>
-                  );
-                }
-
-                return (
-                  <article key={item.title} className={cardClassName}>
-                    <PreviewContent item={item} />
-                  </article>
-                );
-              })}
-            </div>
+            <LandingCarousel />
 
             <p className="mt-8 text-xs font-semibold uppercase tracking-[0.16em] text-[#7f8798]">
               Ejemplos previos
