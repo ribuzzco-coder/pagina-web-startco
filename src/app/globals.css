@@ -348,12 +348,13 @@ textarea,
   mix-blend-mode: screen;
   overflow: hidden;
   background:
-    linear-gradient(90deg, transparent 0 18%, rgba(230, 37, 255, 0.16) 19%, transparent 21% 100%),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 7px),
-    radial-gradient(circle at 58% 42%, rgba(230, 37, 255, 0.26), transparent 34%),
-    radial-gradient(circle at 28% 52%, rgba(255, 87, 199, 0.18), transparent 28%);
-  clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
-  animation: hero-glitch-field 760ms steps(2, end) forwards;
+    linear-gradient(90deg, transparent 0 16%, rgba(230, 37, 255, 0.2) 17%, transparent 20% 100%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(230, 37, 255, 0.08) 0 1px, transparent 1px 11px),
+    radial-gradient(circle at 58% 42%, rgba(230, 37, 255, 0.3), transparent 34%),
+    radial-gradient(circle at 28% 52%, rgba(255, 87, 199, 0.22), transparent 28%);
+  clip-path: polygon(0 5%, 100% 0, 100% 94%, 0 100%);
+  animation: hero-glitch-field 980ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-glitch-burst::before,
@@ -362,9 +363,9 @@ textarea,
   position: absolute;
   inset: -8%;
   background:
-    linear-gradient(90deg, transparent 0 44%, rgba(255, 106, 244, 0.42) 45%, transparent 48% 100%),
-    repeating-linear-gradient(90deg, transparent 0 42px, rgba(230, 37, 255, 0.2) 43px 45px, transparent 46px 80px);
-  filter: blur(0.4px);
+    linear-gradient(90deg, transparent 0 44%, rgba(255, 106, 244, 0.5) 45%, transparent 48% 100%),
+    repeating-linear-gradient(90deg, transparent 0 26px, rgba(230, 37, 255, 0.22) 27px 29px, transparent 30px 72px);
+  filter: blur(0.35px);
   opacity: 0;
 }
 
@@ -406,6 +407,93 @@ textarea,
   top: 68%;
   height: 5vh;
   animation: hero-glitch-scan 560ms ease-out 180ms forwards;
+}
+
+.hero-glitch-scan--four {
+  top: 36%;
+  height: 4vh;
+  background: linear-gradient(90deg, transparent, rgba(15, 239, 253, 0.2), rgba(230, 37, 255, 0.32), transparent);
+  animation: hero-glitch-scan 700ms ease-out 260ms forwards;
+}
+
+.hero-glitch-noise {
+  position: absolute;
+  inset: -10%;
+  opacity: 0;
+  background:
+    repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,0.18) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(0deg, transparent 0 8px, rgba(230,37,255,0.1) 9px 10px, transparent 11px 18px);
+  filter: contrast(1.45) saturate(1.5);
+  animation: hero-glitch-noise 820ms steps(5, end) forwards;
+}
+
+.hero-glitch-noise--two {
+  mix-blend-mode: color-dodge;
+  transform: rotate(180deg);
+  animation-delay: 90ms;
+}
+
+.landing-gallery {
+  margin-inline: auto;
+  max-width: 54rem;
+  overflow: hidden;
+  padding-block: 1.25rem;
+  mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+}
+
+.landing-gallery__track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: landing-gallery-drift 28s linear infinite;
+}
+
+.landing-gallery:hover .landing-gallery__track {
+  animation-play-state: paused;
+}
+
+.landing-gallery__card {
+  position: relative;
+  min-height: 18rem;
+  width: min(72vw, 18rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(23, 27, 40, 0.96), rgba(13, 15, 22, 0.98)),
+    radial-gradient(circle at 50% 0%, rgba(230, 37, 255, 0.18), transparent 38%);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  color: inherit;
+  padding: 1.4rem;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.landing-gallery__card:nth-child(4n + 2) {
+  transform: translateY(12px) rotate(-1deg);
+}
+
+.landing-gallery__card:nth-child(4n + 3) {
+  transform: translateY(-6px) rotate(1deg);
+}
+
+.landing-gallery__card:nth-child(4n + 4) {
+  transform: translateY(8px) rotate(0.8deg);
+}
+
+.landing-gallery__card--active,
+.landing-gallery__card:hover {
+  border-color: rgba(230, 37, 255, 0.38);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.3),
+    0 0 34px rgba(230, 37, 255, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .nfc-approach-card {
@@ -638,24 +726,34 @@ textarea,
 @keyframes hero-glitch-field {
   0% {
     opacity: 0;
-    transform: translateX(-1.8vw) skewX(-2deg);
+    transform: translate3d(-1.8vw, 0, 0) skewX(-2deg) scale(1.006);
   }
 
-  12%, 38% {
-    opacity: 0.95;
+  10%, 46% {
+    opacity: 0.9;
   }
 
-  22% {
-    transform: translateX(1.4vw) skewX(4deg);
+  18% {
+    transform: translate3d(1.1vw, -0.4vh, 0) skewX(3deg) scale(1.012);
   }
 
-  44% {
-    transform: translateX(-0.8vw) skewX(-5deg);
+  34% {
+    transform: translate3d(-0.7vw, 0.5vh, 0) skewX(-4deg) scale(1.004);
+  }
+
+  56% {
+    opacity: 0.72;
+    transform: translate3d(0.9vw, 0, 0) skewX(5deg) scale(1.01);
+  }
+
+  72% {
+    opacity: 0.38;
+    transform: translate3d(-0.3vw, -0.2vh, 0) skewX(-1deg) scale(1.002);
   }
 
   100% {
     opacity: 0;
-    transform: translateX(0) skewX(0deg);
+    transform: translate3d(0, 0, 0) skewX(0deg) scale(1);
   }
 }
 
@@ -697,6 +795,41 @@ textarea,
   100% {
     opacity: 0;
     transform: translateX(18vw) skewX(-18deg) scaleX(1.08);
+  }
+}
+
+@keyframes hero-glitch-noise {
+  0% {
+    opacity: 0;
+    transform: translate3d(-1vw, -1vh, 0) scale(1.02);
+  }
+
+  16%, 56% {
+    opacity: 0.42;
+  }
+
+  32% {
+    transform: translate3d(1.4vw, 0.6vh, 0) scale(1.05);
+  }
+
+  64% {
+    opacity: 0.24;
+    transform: translate3d(-0.6vw, 1vh, 0) scale(1.03);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes landing-gallery-drift {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
   }
 }
 

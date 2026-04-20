@@ -57,6 +57,9 @@ export function HeroMarkButton({ src, alt }: HeroMarkButtonProps) {
           <span className="hero-glitch-scan hero-glitch-scan--one" />
           <span className="hero-glitch-scan hero-glitch-scan--two" />
           <span className="hero-glitch-scan hero-glitch-scan--three" />
+          <span className="hero-glitch-scan hero-glitch-scan--four" />
+          <span className="hero-glitch-noise hero-glitch-noise--one" />
+          <span className="hero-glitch-noise hero-glitch-noise--two" />
         </div>
       ) : null}
 
