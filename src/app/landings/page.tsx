@@ -80,13 +80,11 @@ function StartcoPreview() {
           <span>Diagn&oacute;stico</span>
           <span>Sitio web</span>
         </div>
-        <Image
-          src="/startco-cards2.png"
-          alt=""
-          width={220}
-          height={220}
-          className="landing-preview__cards"
-        />
+        <div className="landing-preview__feature-grid">
+          <span>NFC</span>
+          <span>Neo-Mech</span>
+        </div>
+        <div className="landing-preview__soon">Recursos y accesos</div>
       </div>
     </div>
   );
@@ -150,7 +148,7 @@ export default function LandingsPage() {
               Landings RiBuzz
             </h1>
 
-            <div className="mx-auto mt-7 grid max-w-4xl gap-3 text-left md:grid-cols-3">
+            <div className="mx-auto mt-7 grid max-w-4xl gap-3 text-center md:grid-cols-3">
               <div className="rounded-[24px] border border-white/10 bg-white/[0.035] p-5">
                 <p className="text-sm font-semibold text-[#F5F7FA]">Biolinks con intenci&oacute;n</p>
                 <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
@@ -178,6 +176,12 @@ export default function LandingsPage() {
             </div>
 
             <div className="landing-carousel mt-14" aria-label="Ejemplos de landings">
+              <div className="landing-carousel__arrow landing-carousel__arrow--left" aria-hidden="true">
+                <span />
+              </div>
+              <div className="landing-carousel__arrow landing-carousel__arrow--right" aria-hidden="true">
+                <span />
+              </div>
               <div className="landing-carousel__floor" />
               {landingPreviews.map((item) => {
                 const cardClassName = `landing-carousel__card landing-carousel__card--${item.kind}`;
