@@ -340,6 +340,74 @@ textarea,
   animation: hero-mark-ring 920ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.hero-glitch-burst {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  mix-blend-mode: screen;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, transparent 0 18%, rgba(230, 37, 255, 0.16) 19%, transparent 21% 100%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 7px),
+    radial-gradient(circle at 58% 42%, rgba(230, 37, 255, 0.26), transparent 34%),
+    radial-gradient(circle at 28% 52%, rgba(255, 87, 199, 0.18), transparent 28%);
+  clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
+  animation: hero-glitch-field 760ms steps(2, end) forwards;
+}
+
+.hero-glitch-burst::before,
+.hero-glitch-burst::after {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  background:
+    linear-gradient(90deg, transparent 0 44%, rgba(255, 106, 244, 0.42) 45%, transparent 48% 100%),
+    repeating-linear-gradient(90deg, transparent 0 42px, rgba(230, 37, 255, 0.2) 43px 45px, transparent 46px 80px);
+  filter: blur(0.4px);
+  opacity: 0;
+}
+
+.hero-glitch-burst::before {
+  animation: hero-glitch-slice 720ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-glitch-burst::after {
+  background:
+    linear-gradient(90deg, transparent 0 36%, rgba(15, 239, 253, 0.18) 37%, transparent 40% 100%),
+    linear-gradient(180deg, transparent 0 52%, rgba(230, 37, 255, 0.28) 53%, transparent 56% 100%);
+  animation: hero-glitch-slice 650ms cubic-bezier(0.16, 1, 0.3, 1) 70ms forwards reverse;
+}
+
+.hero-glitch-scan {
+  position: absolute;
+  left: -12vw;
+  width: 124vw;
+  height: 10vh;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(230, 37, 255, 0.34), rgba(255, 255, 255, 0.24), transparent);
+  filter: blur(10px);
+  opacity: 0;
+  transform: skewX(-18deg);
+}
+
+.hero-glitch-scan--one {
+  top: 22%;
+  animation: hero-glitch-scan 520ms ease-out 40ms forwards;
+}
+
+.hero-glitch-scan--two {
+  top: 48%;
+  height: 7vh;
+  animation: hero-glitch-scan 620ms ease-out 120ms forwards;
+}
+
+.hero-glitch-scan--three {
+  top: 68%;
+  height: 5vh;
+  animation: hero-glitch-scan 560ms ease-out 180ms forwards;
+}
+
 .nfc-approach-card {
   animation: nfc-card-approach 4.6s ease-in-out infinite;
 }
@@ -564,6 +632,71 @@ textarea,
     width: 118vw;
     height: 118vw;
     transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes hero-glitch-field {
+  0% {
+    opacity: 0;
+    transform: translateX(-1.8vw) skewX(-2deg);
+  }
+
+  12%, 38% {
+    opacity: 0.95;
+  }
+
+  22% {
+    transform: translateX(1.4vw) skewX(4deg);
+  }
+
+  44% {
+    transform: translateX(-0.8vw) skewX(-5deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(0) skewX(0deg);
+  }
+}
+
+@keyframes hero-glitch-slice {
+  0% {
+    opacity: 0;
+    transform: translate3d(-5vw, -2vh, 0) skewX(-12deg);
+    clip-path: inset(12% 0 74% 0);
+  }
+
+  28% {
+    opacity: 1;
+    clip-path: inset(28% 0 52% 0);
+  }
+
+  58% {
+    opacity: 0.72;
+    transform: translate3d(4vw, 1vh, 0) skewX(10deg);
+    clip-path: inset(58% 0 26% 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) skewX(0deg);
+    clip-path: inset(82% 0 8% 0);
+  }
+}
+
+@keyframes hero-glitch-scan {
+  0% {
+    opacity: 0;
+    transform: translateX(-16vw) skewX(-18deg) scaleX(0.72);
+  }
+
+  32% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(18vw) skewX(-18deg) scaleX(1.08);
   }
 }
 
