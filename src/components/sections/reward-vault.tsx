@@ -12,6 +12,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { BoxVisual, GiftIcon } from "@/components/ui/gift-box-visual";
 
