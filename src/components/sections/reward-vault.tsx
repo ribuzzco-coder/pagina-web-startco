@@ -325,7 +325,11 @@ export function RewardVault() {
                 Siguiente paso
               </p>
               <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#F5F7FA]">
+<<<<<<< Updated upstream
                 Si quieres aterrizar estas ideas, agendemos una conversacion breve.
+=======
+                Si quieres aterrizar estas ideas, contáctanos por WhatsApp.
+>>>>>>> Stashed changes
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
                 Reserva un espacio con RiBuzz y revisamos tu caso para definir si vale la
@@ -338,7 +342,11 @@ export function RewardVault() {
               size="md"
               className="min-w-[180px] shadow-[0_0_0_1px_rgba(230,37,255,0.16),0_0_24px_rgba(230,37,255,0.18)]"
             >
+<<<<<<< Updated upstream
               Agenda reunion
+=======
+              Contáctanos por WhatsApp
+>>>>>>> Stashed changes
             </Button>
           </div>
         </Card>

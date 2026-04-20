@@ -4,7 +4,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Regalos",
   description:
-    "Una caja desbloqueable con recursos de valor de RiBuzz para leer o descargar.",
+    "Una caja desbloqueable con recursos de valor de RiBuzz para leer directamente.",
   path: "/regalos",
 });
 
