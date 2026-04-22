@@ -827,6 +827,346 @@ textarea,
   letter-spacing: 0.12em;
 }
 
+.hotel-caribe-page {
+  --hotel-blue: #00427a;
+  --hotel-cyan: #a9eef2;
+  --hotel-gold: #cf8c1a;
+  background:
+    linear-gradient(180deg, rgba(236, 252, 255, 0.92), rgba(218, 239, 247, 0.92)),
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.9), transparent 34%);
+  color: var(--hotel-blue);
+  font-family: var(--font-saira), sans-serif;
+}
+
+.hotel-caribe-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  overflow: hidden;
+  padding: 2rem 1.1rem 3rem;
+  text-align: center;
+}
+
+.hotel-caribe-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(237, 247, 249, 0.74) 42%, rgba(191, 224, 232, 0.9) 100%),
+    radial-gradient(circle at 50% 46%, rgba(255, 214, 101, 0.36), transparent 22%);
+}
+
+.hotel-caribe-hero::after {
+  content: "";
+  position: absolute;
+  inset: 42% 0 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.52)),
+    repeating-linear-gradient(172deg, rgba(0, 96, 140, 0.1) 0 2px, transparent 3px 26px);
+  clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%);
+}
+
+.hotel-caribe-leaves {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 7rem;
+  background:
+    radial-gradient(ellipse at 8% 24%, #0bb6ad 0 12%, transparent 13%),
+    radial-gradient(ellipse at 22% 8%, #f2553f 0 10%, transparent 11%),
+    radial-gradient(ellipse at 78% 8%, #16a85d 0 10%, transparent 11%),
+    radial-gradient(ellipse at 92% 22%, #ff7e31 0 13%, transparent 14%),
+    linear-gradient(135deg, transparent 0 45%, rgba(33, 155, 90, 0.24) 46% 48%, transparent 49%);
+  opacity: 0.95;
+}
+
+.hotel-caribe-logo-card {
+  display: grid;
+  width: 8.3rem;
+  height: 8.3rem;
+  margin: 4.4rem auto 0.7rem;
+  place-items: center;
+  border-radius: 0 0 34px 34px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 36px rgba(0, 66, 122, 0.16);
+  padding: 0.8rem;
+}
+
+.hotel-caribe-nit {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.hotel-caribe-hero h1 {
+  margin: 0.8rem auto 0;
+  max-width: 22rem;
+  color: var(--hotel-blue);
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.08;
+}
+
+.hotel-caribe-socials,
+.hotel-caribe-footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 2.2rem;
+  margin-top: 1.1rem;
+}
+
+.hotel-caribe-socials span,
+.hotel-caribe-footer-socials span {
+  display: grid;
+  min-width: 2.2rem;
+  min-height: 2.2rem;
+  place-items: center;
+  color: var(--hotel-blue);
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.hotel-caribe-actions {
+  display: grid;
+  gap: 0.92rem;
+  width: min(100%, 20rem);
+  margin: 2rem auto 0;
+}
+
+.hotel-caribe-actions a {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  align-items: center;
+  min-height: 3.2rem;
+  border: 1.5px solid rgba(0, 119, 145, 0.8);
+  border-radius: 4px;
+  background: rgba(169, 238, 242, 0.82);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    0 8px 18px rgba(0, 66, 122, 0.08);
+  color: var(--hotel-blue);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 0.3rem 1rem;
+  text-decoration: none;
+}
+
+.hotel-caribe-actions svg {
+  justify-self: center;
+}
+
+.hotel-caribe-rooms {
+  position: relative;
+  overflow: hidden;
+  padding: 3.2rem 1rem;
+  background:
+    linear-gradient(180deg, rgba(197, 224, 236, 0.92), rgba(232, 240, 242, 0.94)),
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.65), transparent 28%);
+}
+
+.hotel-caribe-rooms h2,
+.hotel-caribe-amenities h2 {
+  margin-inline: auto;
+  max-width: 20rem;
+  text-align: center;
+  color: var(--hotel-blue);
+  font-size: clamp(2rem, 7vw, 2.7rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+}
+
+.hotel-caribe-room-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(100%, 25rem);
+  margin: 2.5rem auto 0;
+}
+
+.hotel-caribe-room {
+  overflow: hidden;
+  border-radius: 2px;
+  background: white;
+  box-shadow: 0 10px 24px rgba(0, 66, 122, 0.12);
+}
+
+.hotel-caribe-room:last-child {
+  grid-column: 1 / -1;
+  width: min(70%, 16rem);
+  justify-self: center;
+}
+
+.hotel-caribe-room__photo {
+  display: grid;
+  min-height: 7rem;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(223, 230, 229, 0.82)),
+    repeating-linear-gradient(90deg, rgba(0, 66, 122, 0.05) 0 1px, transparent 1px 30px);
+  color: rgba(0, 66, 122, 0.38);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hotel-caribe-room--warm .hotel-caribe-room__photo {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(238, 226, 215, 0.88));
+}
+
+.hotel-caribe-room--sun .hotel-caribe-room__photo {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(240, 224, 188, 0.78));
+}
+
+.hotel-caribe-room--sea .hotel-caribe-room__photo {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(199, 225, 230, 0.78));
+}
+
+.hotel-caribe-room p {
+  background: var(--hotel-gold);
+  color: white;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  padding: 0.55rem 0.75rem;
+}
+
+.hotel-caribe-amenities {
+  background: var(--hotel-blue);
+  color: white;
+  padding: 2.2rem 1.4rem 2.5rem;
+}
+
+.hotel-caribe-amenities h2 {
+  color: white;
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+}
+
+.hotel-caribe-amenity-list {
+  display: grid;
+  gap: 0.7rem;
+  width: min(100%, 20rem);
+  margin: 1.6rem auto 0;
+}
+
+.hotel-caribe-amenity-list div {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  align-items: start;
+  color: white;
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+
+.hotel-caribe-contact {
+  padding: 1.5rem 1.1rem 2.4rem;
+  background: #cddde5;
+}
+
+.hotel-caribe-map {
+  position: relative;
+  display: grid;
+  min-height: 10.5rem;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(0, 66, 122, 0.12);
+  background:
+    linear-gradient(90deg, transparent 0 49%, rgba(0, 66, 122, 0.18) 50% 51%, transparent 52%),
+    linear-gradient(0deg, transparent 0 49%, rgba(0, 66, 122, 0.18) 50% 51%, transparent 52%),
+    repeating-linear-gradient(38deg, rgba(255, 255, 255, 0.75) 0 12px, rgba(222, 231, 234, 0.75) 13px 28px);
+}
+
+.hotel-caribe-map p {
+  margin-top: 4rem;
+  color: #c94b41;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.hotel-caribe-map__pin {
+  position: absolute;
+  top: 42%;
+  left: 52%;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50% 50% 50% 0;
+  background: #e44135;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+}
+
+.hotel-caribe-map__pin::after {
+  content: "";
+  position: absolute;
+  inset: 0.42rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.hotel-caribe-contact-card {
+  display: grid;
+  grid-template-columns: 4.4rem 1fr;
+  gap: 1rem;
+  width: min(100%, 24rem);
+  margin: 1.4rem auto 0;
+  color: var(--hotel-blue);
+  text-align: left;
+}
+
+.hotel-caribe-contact-logo {
+  display: grid;
+  height: 4.6rem;
+  place-items: center;
+  background: white;
+  padding: 0.4rem;
+}
+
+.hotel-caribe-contact-card h2 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.hotel-caribe-contact-card p {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+}
+
+.hotel-caribe-footer-socials {
+  gap: 1.8rem;
+  margin-top: 1.6rem;
+}
+
+.hotel-caribe-footer-socials span {
+  font-size: 1rem;
+}
+
+.hotel-caribe-footer-name {
+  margin-top: 1.2rem;
+  text-align: center;
+  color: var(--hotel-blue);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+@media (min-width: 768px) {
+  .hotel-caribe-hero {
+    max-width: 30rem;
+    margin-inline: auto;
+  }
+
+  .hotel-caribe-page {
+    background: #cddde5;
+  }
+}
+
 .nfc-approach-card {
   animation: nfc-card-approach 4.6s ease-in-out infinite;
 }
