@@ -9,7 +9,7 @@ type LandingPreview = {
   title: string;
   status: string;
   href?: string;
-  kind: "startco" | "offer" | "event" | "portfolio";
+  kind: "startco" | "hotel" | "offer" | "event" | "portfolio";
 };
 
 const landingPreviews: LandingPreview[] = [
@@ -18,6 +18,12 @@ const landingPreviews: LandingPreview[] = [
     status: "Tu Dise\u00f1o",
     href: "/startco",
     kind: "startco",
+  },
+  {
+    title: "Hotel Caribe Plaza",
+    status: "Espacio vac\u00edo",
+    href: "/hotelcaribeplaza",
+    kind: "hotel",
   },
   {
     title: "Oferta premium",
@@ -70,6 +76,7 @@ function StartcoPreview() {
 function PlaceholderPreview({ kind }: { kind: LandingPreview["kind"] }) {
   const isOffer = kind === "offer";
   const isEvent = kind === "event";
+  const isHotel = kind === "hotel";
 
   return (
     <div className={`landing-preview landing-preview--${kind}`}>
@@ -83,7 +90,7 @@ function PlaceholderPreview({ kind }: { kind: LandingPreview["kind"] }) {
           <span />
         </div>
         <div className="landing-preview__cta">
-          {isOffer ? "Oferta" : isEvent ? "Evento" : "Perfil"}
+          {isOffer ? "Oferta" : isEvent ? "Evento" : isHotel ? "Hotel" : "Perfil"}
         </div>
       </div>
     </div>
@@ -116,6 +123,10 @@ function getSlot(index: number, activeIndex: number) {
 
   if (offset === 2) {
     return "back";
+  }
+
+  if (offset === 3) {
+    return "back-left";
   }
 
   return "left";

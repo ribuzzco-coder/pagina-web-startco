@@ -566,6 +566,13 @@ textarea,
   transform: translate3d(-50%, 26px, -360px) rotateY(0deg) scale(0.68);
 }
 
+.landing-carousel__card--slot-back-left {
+  z-index: 12;
+  opacity: 0.4;
+  filter: blur(2.5px);
+  transform: translate3d(-92%, 32px, -300px) rotateY(30deg) scale(0.68);
+}
+
 .landing-carousel__card--slot-left {
   z-index: 25;
   opacity: 0.72;
@@ -745,6 +752,13 @@ textarea,
   background:
     radial-gradient(circle at 50% 24%, rgba(15, 239, 253, 0.18), transparent 34%),
     linear-gradient(180deg, rgba(13, 28, 38, 0.98), rgba(8, 10, 16, 1));
+}
+
+.landing-preview--hotel .landing-preview__mock {
+  background:
+    radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.16), transparent 34%),
+    radial-gradient(circle at 76% 64%, rgba(230, 37, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(26, 28, 36, 0.98), rgba(8, 9, 14, 1));
 }
 
 .landing-preview__orb {

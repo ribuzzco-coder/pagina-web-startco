@@ -5,6 +5,7 @@ import { FloatingWhatsAppButton } from "@/components/layout/floating-whatsapp-bu
 import { Footer } from "@/components/layout/footer";
 import { IntroLoader } from "@/components/layout/intro-loader";
 import { Navbar } from "@/components/layout/navbar";
+import { RouteVisibility } from "@/components/layout/route-visibility";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 import "./globals.css";
@@ -72,11 +73,15 @@ export default function RootLayout({
         </div>
 
         <div className="relative flex min-h-screen flex-col">
-          <IntroLoader />
-          <Navbar />
+          <RouteVisibility>
+            <IntroLoader />
+            <Navbar />
+          </RouteVisibility>
           <main className="flex-1 pt-[76px]">{children}</main>
-          <Footer />
-          <FloatingWhatsAppButton />
+          <RouteVisibility>
+            <Footer />
+            <FloatingWhatsAppButton />
+          </RouteVisibility>
         </div>
       </body>
     </html>
