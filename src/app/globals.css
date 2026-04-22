@@ -580,6 +580,14 @@ textarea,
   transform: translate3d(-118%, 20px, -140px) rotateY(42deg) scale(0.82);
 }
 
+.landing-carousel__card--slot-hidden {
+  z-index: 0;
+  opacity: 0;
+  filter: blur(5px);
+  pointer-events: none;
+  transform: translate3d(-50%, 40px, -460px) rotateY(0deg) scale(0.58);
+}
+
 .landing-carousel__shine {
   pointer-events: none;
   position: absolute;
@@ -759,6 +767,13 @@ textarea,
     radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.16), transparent 34%),
     radial-gradient(circle at 76% 64%, rgba(230, 37, 255, 0.12), transparent 28%),
     linear-gradient(180deg, rgba(26, 28, 36, 0.98), rgba(8, 9, 14, 1));
+}
+
+.landing-preview--business .landing-preview__mock {
+  background:
+    radial-gradient(circle at 50% 24%, rgba(15, 239, 253, 0.18), transparent 34%),
+    radial-gradient(circle at 76% 64%, rgba(230, 37, 255, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(14, 24, 34, 0.98), rgba(8, 9, 14, 1));
 }
 
 .landing-preview__orb {

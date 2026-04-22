@@ -9,7 +9,7 @@ type LandingPreview = {
   title: string;
   status: string;
   href?: string;
-  kind: "startco" | "hotel" | "offer" | "event" | "portfolio";
+  kind: "startco" | "hotel" | "business" | "offer" | "event" | "portfolio";
 };
 
 const landingPreviews: LandingPreview[] = [
@@ -24,6 +24,36 @@ const landingPreviews: LandingPreview[] = [
     status: "Espacio vac\u00edo",
     href: "/hotelcaribeplaza",
     kind: "hotel",
+  },
+  {
+    title: "Hotel Virrey Cartagena",
+    status: "Espacio vac\u00edo",
+    href: "/hotelvirreycartagena",
+    kind: "hotel",
+  },
+  {
+    title: "Hotel Caribe Covenas",
+    status: "Espacio vac\u00edo",
+    href: "/hotelcaribecovenas",
+    kind: "hotel",
+  },
+  {
+    title: "Hotel Marie Real Cartagena",
+    status: "Espacio vac\u00edo",
+    href: "/hotelmarierealcartagena",
+    kind: "hotel",
+  },
+  {
+    title: "Hotel Caribbean Cartagena",
+    status: "Espacio vac\u00edo",
+    href: "/hotelcaribbeancartagena",
+    kind: "hotel",
+  },
+  {
+    title: "Motronik",
+    status: "Espacio vac\u00edo",
+    href: "/motronik",
+    kind: "business",
   },
   {
     title: "Oferta premium",
@@ -77,6 +107,7 @@ function PlaceholderPreview({ kind }: { kind: LandingPreview["kind"] }) {
   const isOffer = kind === "offer";
   const isEvent = kind === "event";
   const isHotel = kind === "hotel";
+  const isBusiness = kind === "business";
 
   return (
     <div className={`landing-preview landing-preview--${kind}`}>
@@ -90,7 +121,15 @@ function PlaceholderPreview({ kind }: { kind: LandingPreview["kind"] }) {
           <span />
         </div>
         <div className="landing-preview__cta">
-          {isOffer ? "Oferta" : isEvent ? "Evento" : isHotel ? "Hotel" : "Perfil"}
+          {isOffer
+            ? "Oferta"
+            : isEvent
+              ? "Evento"
+              : isHotel
+                ? "Hotel"
+                : isBusiness
+                  ? "Marca"
+                  : "Perfil"}
         </div>
       </div>
     </div>
@@ -112,6 +151,8 @@ function PreviewContent({ item }: { item: LandingPreview }) {
 
 function getSlot(index: number, activeIndex: number) {
   const offset = (index - activeIndex + landingPreviews.length) % landingPreviews.length;
+  const lastOffset = landingPreviews.length - 1;
+  const penultimateOffset = landingPreviews.length - 2;
 
   if (offset === 0) {
     return "center";
@@ -129,7 +170,15 @@ function getSlot(index: number, activeIndex: number) {
     return "back-left";
   }
 
-  return "left";
+  if (offset === penultimateOffset) {
+    return "back-left";
+  }
+
+  if (offset === lastOffset) {
+    return "left";
+  }
+
+  return "hidden";
 }
 
 export function LandingCarousel() {

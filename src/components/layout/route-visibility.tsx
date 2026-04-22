@@ -10,7 +10,14 @@ type RouteVisibilityProps = {
 
 export function RouteVisibility({
   children,
-  hiddenPrefixes = ["/hotelcaribeplaza"],
+  hiddenPrefixes = [
+    "/hotelcaribeplaza",
+    "/hotelvirreycartagena",
+    "/hotelcaribecovenas",
+    "/hotelmarierealcartagena",
+    "/hotelcaribbeancartagena",
+    "/motronik",
+  ],
 }: RouteVisibilityProps) {
   const pathname = usePathname();
   const shouldHide = hiddenPrefixes.some((prefix) => pathname.startsWith(prefix));
