@@ -236,7 +236,12 @@ export default function HotelCaribePlazaPage() {
 
           <div className="hotel-caribe-actions">
             {quickLinks.map((link) => (
-              <a key={link.label} href={link.href} {...externalProps(link.href)}>
+              <a
+                key={link.label}
+                href={link.href}
+                className={link.icon === "wa" ? "hotel-caribe-action-link hotel-caribe-action-link--wa" : "hotel-caribe-action-link"}
+                {...externalProps(link.href)}
+              >
                 <Icon name={link.icon} />
                 <span>{link.label}</span>
               </a>
@@ -333,7 +338,12 @@ export default function HotelCaribePlazaPage() {
           <a href={hotelLinks.instagram} aria-label="Instagram" {...externalProps(hotelLinks.instagram)}>
             <Icon name="instagram" />
           </a>
-          <a href={hotelLinks.whatsapp} aria-label="WhatsApp" {...externalProps(hotelLinks.whatsapp)}>
+          <a
+            href={hotelLinks.whatsapp}
+            aria-label="WhatsApp"
+            className="hotel-caribe-footer-socials__wa"
+            {...externalProps(hotelLinks.whatsapp)}
+          >
             <Icon name="wa" />
           </a>
           <a href={hotelLinks.facebook} aria-label="Facebook" {...externalProps(hotelLinks.facebook)}>
