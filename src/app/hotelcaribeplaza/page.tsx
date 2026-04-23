@@ -13,11 +13,11 @@ const hotelLinks = {
 
 const quickLinks = [
   { label: "Cont\u00e1ctanos", icon: "wa", href: hotelLinks.whatsapp },
-  { label: "Reserva aqu\u00ed", icon: "calendar", href: hotelLinks.whatsapp },
+  { label: "Haz tu reserva", icon: "calendar", href: hotelLinks.whatsapp },
   { label: "P\u00e1gina Web", icon: "web", href: hotelLinks.website },
   { label: "Calif\u00edcanos", icon: "star", href: hotelLinks.maps },
   { label: "Recepci\u00f3n", icon: "phone", href: hotelLinks.whatsapp },
-  { label: "Ubicaci\u00f3n", icon: "pin", href: hotelLinks.maps },
+  { label: "C\u00f3mo llegar", icon: "pin", href: hotelLinks.maps },
 ] as const;
 
 const galleryMoments = [
@@ -189,37 +189,44 @@ export default function HotelCaribePlazaPage() {
   return (
     <main className="hotel-caribe-page -mt-[76px] min-h-[100dvh]">
       <section className="hotel-caribe-hero">
+        <div className="hotel-caribe-photo-bg hotel-caribe-photo-bg--one" />
+        <div className="hotel-caribe-photo-bg hotel-caribe-photo-bg--two" />
+        <div className="hotel-caribe-photo-bg hotel-caribe-photo-bg--three" />
         <div className="hotel-caribe-leaves hotel-caribe-leaves--top" />
         <div className="hotel-caribe-wind hotel-caribe-wind--one" />
         <div className="hotel-caribe-wind hotel-caribe-wind--two" />
-        <div className="hotel-caribe-logo-card">
-          <Image
-            src="/images/client-cards/hotel-caribe-plaza-front.png"
-            alt="Hotel Caribe Plaza"
-            width={240}
-            height={240}
-            priority
-            className="h-full w-full object-contain"
-          />
-        </div>
-        <p className="hotel-caribe-nit">RN 1167724</p>
-        <h1>Hotel Caribe Plaza Barranquilla</h1>
-        <div className="hotel-caribe-socials" aria-label="Redes sociales">
-          <a href={hotelLinks.instagram} aria-label="Instagram" {...externalProps(hotelLinks.instagram)}>
-            IG
-          </a>
-          <a href={hotelLinks.facebook} aria-label="Facebook" {...externalProps(hotelLinks.facebook)}>
-            f
-          </a>
-        </div>
 
-        <div className="hotel-caribe-actions">
-          {quickLinks.map((link) => (
-            <a key={link.label} href={link.href} {...externalProps(link.href)}>
-              <Icon name={link.icon} />
-              <span>{link.label}</span>
+        <div className="hotel-caribe-biolink">
+          <div className="hotel-caribe-logo-card">
+            <Image
+              src="/images/client-cards/hotel-caribe-plaza-front.png"
+              alt="Hotel Caribe Plaza"
+              width={280}
+              height={280}
+              priority
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <h1>Hotel Caribe Plaza Barranquilla</h1>
+          <p className="hotel-caribe-nit">RNT 1167724</p>
+
+          <div className="hotel-caribe-actions">
+            {quickLinks.map((link) => (
+              <a key={link.label} href={link.href} {...externalProps(link.href)}>
+                <Icon name={link.icon} />
+                <span>{link.label}</span>
+              </a>
+            ))}
+          </div>
+
+          <div className="hotel-caribe-socials" aria-label="Redes sociales">
+            <a href={hotelLinks.instagram} aria-label="Instagram" {...externalProps(hotelLinks.instagram)}>
+              Instagram
             </a>
-          ))}
+            <a href={hotelLinks.facebook} aria-label="Facebook" {...externalProps(hotelLinks.facebook)}>
+              Facebook
+            </a>
+          </div>
         </div>
       </section>
 
@@ -278,16 +285,26 @@ export default function HotelCaribePlazaPage() {
       </section>
 
       <section className="hotel-caribe-contact" id="contacto">
-        <a
+        <div
           className="hotel-caribe-map"
           id="ubicacion"
-          href={hotelLinks.maps}
-          aria-label="Abrir ubicacion en Google Maps"
-          {...externalProps(hotelLinks.maps)}
         >
-          <div className="hotel-caribe-map__pin" />
-          <p>Hotel Caribe Plaza Barranquilla</p>
-        </a>
+          <iframe
+            title="Ubicacion Hotel Caribe Plaza Barranquilla"
+            src="https://www.google.com/maps?q=Hotel%20Caribe%20Plaza%20Barranquilla&output=embed"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+          <a
+            className="hotel-caribe-map__label"
+            href={hotelLinks.maps}
+            aria-label="Abrir ubicacion en Google Maps"
+            {...externalProps(hotelLinks.maps)}
+          >
+            <Icon name="pin" />
+            <span>Ver ubicaci&oacute;n real</span>
+          </a>
+        </div>
 
         <div className="hotel-caribe-contact-card">
           <div className="hotel-caribe-contact-logo">
@@ -317,8 +334,26 @@ export default function HotelCaribePlazaPage() {
             f
           </a>
         </div>
+        <div className="hotel-caribe-footer-brand" aria-hidden="true">
+          <Image
+            src="/images/client-cards/hotel-caribe-plaza-front.png"
+            alt=""
+            width={120}
+            height={120}
+            className="h-full w-full object-contain"
+          />
+        </div>
         <p className="hotel-caribe-footer-name">Hotel Caribe Plaza Barranquilla</p>
       </section>
+
+      <a
+        className="hotel-caribe-floating-wa"
+        href={hotelLinks.whatsapp}
+        aria-label="Escribir por WhatsApp a Hotel Caribe Plaza"
+        {...externalProps(hotelLinks.whatsapp)}
+      >
+        <Icon name="wa" />
+      </a>
     </main>
   );
 }
