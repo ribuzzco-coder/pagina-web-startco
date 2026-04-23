@@ -20,11 +20,11 @@ export function HotelCaribeHeroGallery() {
   const { scrollY } = useScroll();
   const prefersReducedMotion = useReducedMotion();
 
-  const raw0 = useTransform(scrollY, [0, 260, 760, 1120], [1, 1, 0.18, 0]);
-  const raw1 = useTransform(scrollY, [760, 1080, 1640, 2040], [0, 0.24, 1, 0]);
-  const raw2 = useTransform(scrollY, [1700, 2080, 2700, 3160], [0, 0.24, 1, 0]);
-  const raw3 = useTransform(scrollY, [2740, 3200, 3900, 4460], [0, 0.24, 1, 0]);
-  const raw4 = useTransform(scrollY, [3880, 4380, 5200, 5900], [0, 0.22, 1, 1]);
+  const raw0 = useTransform(scrollY, [0, 180, 520, 840], [1, 1, 0.2, 0]);
+  const raw1 = useTransform(scrollY, [520, 820, 1260, 1640], [0, 0.26, 1, 0]);
+  const raw2 = useTransform(scrollY, [1260, 1640, 2100, 2520], [0, 0.26, 1, 0]);
+  const raw3 = useTransform(scrollY, [2100, 2500, 3020, 3460], [0, 0.26, 1, 0]);
+  const raw4 = useTransform(scrollY, [2960, 3400, 4040, 4700], [0, 0.24, 1, 1]);
 
   const springConfig = { stiffness: 42, damping: 26, mass: 0.9 };
 
