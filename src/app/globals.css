@@ -835,7 +835,7 @@ textarea,
   --hotel-flower: #ef3f5f;
   --hotel-purple: #4f206f;
   position: relative;
-  background: linear-gradient(180deg, rgba(255, 250, 247, 0.3) 0%, rgba(255, 243, 238, 0.22) 38%, rgba(255, 248, 244, 0.26) 100%);
+  background: linear-gradient(180deg, rgba(255, 251, 248, 0.4) 0%, rgba(255, 246, 241, 0.3) 38%, rgba(255, 249, 245, 0.34) 100%);
   color: var(--hotel-blue);
   font-family: var(--font-open-sans), var(--font-saira), sans-serif;
 }
@@ -854,7 +854,7 @@ textarea,
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: linear-gradient(180deg, rgba(255, 249, 244, 0.08) 0%, rgba(255, 244, 239, 0.06) 100%);
+  background: linear-gradient(180deg, rgba(255, 250, 246, 0.12) 0%, rgba(255, 246, 241, 0.1) 100%);
 }
 
 .hotel-caribe-hero::after {
@@ -862,7 +862,7 @@ textarea,
   position: absolute;
   inset: 42% 0 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.03));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.07));
   clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%);
 }
 
@@ -891,7 +891,7 @@ textarea,
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255, 252, 247, 0.08), rgba(255, 140, 82, 0.06) 38%, rgba(171, 108, 255, 0.1) 100%),
+    linear-gradient(180deg, rgba(255, 252, 247, 0.14), rgba(255, 140, 82, 0.05) 38%, rgba(171, 108, 255, 0.08) 100%),
     radial-gradient(circle at 22% 28%, rgba(255, 175, 72, 0.12), transparent 20rem),
     radial-gradient(circle at 72% 16%, rgba(184, 98, 255, 0.12), transparent 18rem);
   mix-blend-mode: normal;
@@ -1759,7 +1759,7 @@ textarea,
   }
 
   .hotel-caribe-page {
-    background: linear-gradient(180deg, rgba(255, 250, 247, 0.3) 0%, rgba(255, 243, 238, 0.22) 38%, rgba(255, 248, 244, 0.26) 100%);
+    background: linear-gradient(180deg, rgba(255, 251, 248, 0.4) 0%, rgba(255, 246, 241, 0.3) 38%, rgba(255, 249, 245, 0.34) 100%);
   }
 }
 
