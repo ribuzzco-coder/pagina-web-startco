@@ -1,14 +1,46 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 import { createPageMetadata } from "@/lib/metadata";
 
+const hotelLinks = {
+  whatsapp: "https://wa.me/573225428091",
+  website: "https://hotelcaribeplazabarranquilla.com/",
+  maps: "https://maps.app.goo.gl/onTRgTaQ8tQNdtzi8",
+  facebook: "https://www.facebook.com/hotelcaribeplazaba?_rdc=1&_rdr#",
+  instagram: "https://www.instagram.com/hotelcaribeplazaba/",
+};
+
 const quickLinks = [
-  { label: "Cont\u00e1ctanos", icon: "wa", href: "#contacto" },
-  { label: "Reserva aqu\u00ed", icon: "calendar", href: "#habitaciones" },
-  { label: "P\u00e1gina Web", icon: "web", href: "#" },
-  { label: "Calif\u00edcanos", icon: "star", href: "#" },
-  { label: "Recepci\u00f3n", icon: "phone", href: "#contacto" },
-  { label: "Ubicaci\u00f3n", icon: "pin", href: "#ubicacion" },
+  { label: "Cont\u00e1ctanos", icon: "wa", href: hotelLinks.whatsapp },
+  { label: "Reserva aqu\u00ed", icon: "calendar", href: hotelLinks.whatsapp },
+  { label: "P\u00e1gina Web", icon: "web", href: hotelLinks.website },
+  { label: "Calif\u00edcanos", icon: "star", href: hotelLinks.maps },
+  { label: "Recepci\u00f3n", icon: "phone", href: hotelLinks.whatsapp },
+  { label: "Ubicaci\u00f3n", icon: "pin", href: hotelLinks.maps },
+] as const;
+
+const galleryMoments = [
+  {
+    title: "Llegada Caribe",
+    description: "Una entrada c\u00e1lida para empezar la estad\u00eda con calma.",
+    tone: "sunset",
+  },
+  {
+    title: "Habitaciones",
+    description: "Espacios sencillos, frescos y listos para descansar.",
+    tone: "room",
+  },
+  {
+    title: "Barranquilla cerca",
+    description: "Ubicaci\u00f3n pr\u00e1ctica para moverte por la ciudad.",
+    tone: "city",
+  },
+  {
+    title: "Plan familiar",
+    description: "Comodidad para viajes cortos, turismo y trabajo.",
+    tone: "family",
+  },
 ] as const;
 
 const rooms = [
@@ -31,9 +63,18 @@ const amenities = [
 export const metadata = createPageMetadata({
   title: "Hotel Caribe Plaza",
   description:
-    "Espacio reservado para la landing Hotel Caribe Plaza.",
+    "Landing de acceso rapido para Hotel Caribe Plaza Barranquilla.",
   path: "/hotelcaribeplaza",
 });
+
+function externalProps(href: string) {
+  if (!href.startsWith("http")) return {};
+
+  return {
+    target: "_blank",
+    rel: "noopener noreferrer",
+  };
+}
 
 function Icon({ name }: { name: string }) {
   const commonProps = {
@@ -149,6 +190,8 @@ export default function HotelCaribePlazaPage() {
     <main className="hotel-caribe-page -mt-[76px] min-h-[100dvh]">
       <section className="hotel-caribe-hero">
         <div className="hotel-caribe-leaves hotel-caribe-leaves--top" />
+        <div className="hotel-caribe-wind hotel-caribe-wind--one" />
+        <div className="hotel-caribe-wind hotel-caribe-wind--two" />
         <div className="hotel-caribe-logo-card">
           <Image
             src="/images/client-cards/hotel-caribe-plaza-front.png"
@@ -162,16 +205,48 @@ export default function HotelCaribePlazaPage() {
         <p className="hotel-caribe-nit">RN 1167724</p>
         <h1>Hotel Caribe Plaza Barranquilla</h1>
         <div className="hotel-caribe-socials" aria-label="Redes sociales">
-          <span>IG</span>
-          <span>f</span>
+          <a href={hotelLinks.instagram} aria-label="Instagram" {...externalProps(hotelLinks.instagram)}>
+            IG
+          </a>
+          <a href={hotelLinks.facebook} aria-label="Facebook" {...externalProps(hotelLinks.facebook)}>
+            f
+          </a>
         </div>
 
         <div className="hotel-caribe-actions">
           {quickLinks.map((link) => (
-            <a key={link.label} href={link.href}>
+            <a key={link.label} href={link.href} {...externalProps(link.href)}>
               <Icon name={link.icon} />
               <span>{link.label}</span>
             </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="hotel-caribe-gallery" aria-label="Galeria del hotel">
+        <div className="hotel-caribe-gallery__intro">
+          <p>Galer&iacute;a del Caribe</p>
+          <h2>Im&aacute;genes que aparecen con el scroll</h2>
+          <span>
+            Inspirado en la galer&iacute;a oficial: bloques suaves, color de atardecer y movimiento
+            tropical.
+          </span>
+        </div>
+        <div className="hotel-caribe-gallery__stack">
+          {galleryMoments.map((moment, index) => (
+            <article
+              key={moment.title}
+              className={`hotel-caribe-gallery-card hotel-caribe-gallery-card--${moment.tone}`}
+              style={{ "--gallery-index": index } as CSSProperties}
+            >
+              <div className="hotel-caribe-gallery-card__image" aria-hidden="true">
+                <span>{moment.title}</span>
+              </div>
+              <div>
+                <h3>{moment.title}</h3>
+                <p>{moment.description}</p>
+              </div>
+            </article>
           ))}
         </div>
       </section>
@@ -203,10 +278,16 @@ export default function HotelCaribePlazaPage() {
       </section>
 
       <section className="hotel-caribe-contact" id="contacto">
-        <div className="hotel-caribe-map" id="ubicacion">
+        <a
+          className="hotel-caribe-map"
+          id="ubicacion"
+          href={hotelLinks.maps}
+          aria-label="Abrir ubicacion en Google Maps"
+          {...externalProps(hotelLinks.maps)}
+        >
           <div className="hotel-caribe-map__pin" />
           <p>Hotel Caribe Plaza Barranquilla</p>
-        </div>
+        </a>
 
         <div className="hotel-caribe-contact-card">
           <div className="hotel-caribe-contact-logo">
@@ -226,9 +307,15 @@ export default function HotelCaribePlazaPage() {
           </div>
         </div>
         <div className="hotel-caribe-footer-socials">
-          <span>IG</span>
-          <span>WA</span>
-          <span>f</span>
+          <a href={hotelLinks.instagram} aria-label="Instagram" {...externalProps(hotelLinks.instagram)}>
+            IG
+          </a>
+          <a href={hotelLinks.whatsapp} aria-label="WhatsApp" {...externalProps(hotelLinks.whatsapp)}>
+            WA
+          </a>
+          <a href={hotelLinks.facebook} aria-label="Facebook" {...externalProps(hotelLinks.facebook)}>
+            f
+          </a>
         </div>
         <p className="hotel-caribe-footer-name">Hotel Caribe Plaza Barranquilla</p>
       </section>
