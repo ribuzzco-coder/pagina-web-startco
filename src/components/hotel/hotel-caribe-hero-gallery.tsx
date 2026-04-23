@@ -14,11 +14,11 @@ export function HotelCaribeHeroGallery() {
   const { scrollY } = useScroll();
   const prefersReducedMotion = useReducedMotion();
 
-  const opacity0 = useTransform(scrollY, [0, 220, 540], [1, 1, 0]);
-  const opacity1 = useTransform(scrollY, [320, 650, 980], [0, 1, 0]);
-  const opacity2 = useTransform(scrollY, [820, 1180, 1550], [0, 1, 0]);
-  const opacity3 = useTransform(scrollY, [1360, 1760, 2180], [0, 1, 0]);
-  const opacity4 = useTransform(scrollY, [1960, 2360, 2920], [0, 1, 1]);
+  const opacity0 = useTransform(scrollY, [0, 420, 980], [1, 1, 0]);
+  const opacity1 = useTransform(scrollY, [420, 980, 1560], [0, 1, 0]);
+  const opacity2 = useTransform(scrollY, [980, 1560, 2200], [0, 1, 0]);
+  const opacity3 = useTransform(scrollY, [1560, 2300, 3040], [0, 1, 0]);
+  const opacity4 = useTransform(scrollY, [2280, 3080, 3880], [0, 1, 1]);
 
   const opacities = [opacity0, opacity1, opacity2, opacity3, opacity4];
 
