@@ -107,6 +107,7 @@ function HotelCaribePreview() {
   return (
     <div className="landing-preview landing-preview--hotel-real">
       <div className="landing-preview__hotel-frame">
+        <div className="landing-preview__hotel-frame-art" />
         <div className="landing-preview__hotel-logo">
           <Image
             src="/images/hotel-caribe/logo-vertical.png"
@@ -119,13 +120,18 @@ function HotelCaribePreview() {
         <p className="landing-preview__hotel-city">Barranquilla</p>
         <span className="landing-preview__hotel-rnt">RNT 1167724</span>
         <div className="landing-preview__hotel-socials">
-          <span>IG</span>
-          <span>FB</span>
+          <span>Instagram</span>
+          <span>Facebook</span>
         </div>
         <div className="landing-preview__hotel-actions">
           <span>Contáctanos</span>
           <span>Reserva</span>
           <span>Página web</span>
+        </div>
+        <div className="landing-preview__hotel-room-grid">
+          <span />
+          <span />
+          <span />
         </div>
       </div>
     </div>

@@ -791,6 +791,22 @@ textarea,
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
     0 18px 34px rgba(0, 0, 0, 0.2);
+  isolation: isolate;
+}
+
+.landing-preview__hotel-frame-art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent 24%),
+    radial-gradient(circle at 50% 18%, rgba(255, 144, 89, 0.22), transparent 28%),
+    radial-gradient(circle at 78% 84%, rgba(72, 189, 225, 0.14), transparent 24%);
+}
+
+.landing-preview__hotel-frame > *:not(.landing-preview__hotel-frame-art) {
+  position: relative;
+  z-index: 1;
 }
 
 .landing-preview__hotel-logo {
@@ -832,14 +848,15 @@ textarea,
 
 .landing-preview__hotel-socials span {
   display: grid;
-  width: 1.9rem;
+  min-width: 3rem;
   height: 1.9rem;
   place-items: center;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.7);
   color: #00427a;
-  font-size: 0.55rem;
+  font-size: 0.48rem;
   font-weight: 800;
+  padding-inline: 0.45rem;
 }
 
 .landing-preview__hotel-actions {
@@ -855,6 +872,22 @@ textarea,
   font-size: 0.6rem;
   font-weight: 800;
   padding: 0.52rem 0.65rem;
+}
+
+.landing-preview__hotel-room-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+}
+
+.landing-preview__hotel-room-grid span {
+  height: 2.2rem;
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.08)),
+    linear-gradient(135deg, rgba(255, 166, 93, 0.18), rgba(93, 196, 225, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 .landing-preview--business .landing-preview__mock {
@@ -2383,32 +2416,32 @@ textarea,
 
 @media (max-width: 640px) {
   .landing-carousel {
-    height: 25.5rem;
+    height: 21.5rem;
     max-width: 100%;
     perspective: 900px;
   }
 
   .landing-carousel__card {
-    top: 1.25rem;
-    width: min(74vw, 16.5rem);
-    height: 22.6rem;
-    border-radius: 28px;
+    top: 0.9rem;
+    width: min(62vw, 13.4rem);
+    height: 18.6rem;
+    border-radius: 24px;
   }
 
   .landing-carousel__card--slot-center {
-    transform: translate3d(-50%, 0, 90px) rotateY(0deg) scale(1);
+    transform: translate3d(-50%, 0, 60px) rotateY(0deg) scale(1);
   }
 
   .landing-carousel__card--slot-right {
     opacity: 0.76;
     filter: blur(0.6px);
-    transform: translate3d(4%, 14px, -70px) rotateY(-26deg) scale(0.82);
+    transform: translate3d(14%, 12px, -64px) rotateY(-24deg) scale(0.76);
   }
 
   .landing-carousel__card--slot-left {
     opacity: 0.76;
     filter: blur(0.6px);
-    transform: translate3d(-104%, 14px, -70px) rotateY(26deg) scale(0.82);
+    transform: translate3d(-114%, 12px, -64px) rotateY(24deg) scale(0.76);
   }
 
   .landing-carousel__card--slot-back,
@@ -2422,15 +2455,15 @@ textarea,
   .landing-preview__phone,
   .landing-preview__mock,
   .landing-preview__hotel-frame {
-    width: 78%;
-    height: 82%;
+    width: 80%;
+    height: 80%;
   }
 
   .landing-carousel__arrow {
     top: auto;
-    bottom: 0.35rem;
-    width: 3.2rem;
-    height: 3.2rem;
+    bottom: 0.15rem;
+    width: 2.85rem;
+    height: 2.85rem;
     z-index: 80;
   }
 
@@ -2442,38 +2475,73 @@ textarea,
   }
 
   .landing-carousel__arrow--left {
-    left: calc(50% - 4.3rem);
+    left: calc(50% - 3.8rem);
   }
 
   .landing-carousel__arrow--right {
-    right: calc(50% - 4.3rem);
+    right: calc(50% - 3.8rem);
   }
 
   .landing-carousel__floor {
-    inset: auto 16% 1.3rem;
-    height: 3.4rem;
+    inset: auto 20% 1rem;
+    height: 2.6rem;
   }
 
   .landing-carousel__label {
     inset-inline: 0.8rem;
-    bottom: 0.9rem;
-    padding: 0.62rem 0.78rem;
+    bottom: 0.65rem;
+    padding: 0.5rem 0.68rem;
   }
 
   .landing-carousel__label p {
-    font-size: 0.78rem;
+    font-size: 0.7rem;
   }
 
   .landing-carousel__label span {
-    font-size: 0.54rem;
+    font-size: 0.5rem;
   }
 
   .landing-preview__hotel-logo {
-    width: 4.1rem;
-    height: 5.2rem;
+    width: 3.45rem;
+    height: 4.4rem;
   }
 
   .landing-preview__hotel-city {
-    font-size: 0.76rem;
+    font-size: 0.68rem;
+  }
+
+  .landing-preview__hotel-rnt {
+    font-size: 0.46rem;
+    padding: 0.3rem 0.52rem;
+  }
+
+  .landing-preview__hotel-socials {
+    gap: 0.35rem;
+    margin-top: 0.55rem;
+  }
+
+  .landing-preview__hotel-socials span {
+    min-width: 2.45rem;
+    height: 1.65rem;
+    font-size: 0.42rem;
+  }
+
+  .landing-preview__hotel-actions {
+    gap: 0.34rem;
+    margin-top: 0.65rem;
+  }
+
+  .landing-preview__hotel-actions span {
+    font-size: 0.5rem;
+    padding: 0.44rem 0.52rem;
+  }
+
+  .landing-preview__hotel-room-grid {
+    gap: 0.28rem;
+    margin-top: 0.52rem;
+  }
+
+  .landing-preview__hotel-room-grid span {
+    height: 1.65rem;
   }
 }
