@@ -213,19 +213,21 @@ export default function HotelCaribePlazaPage() {
         <div className="hotel-caribe-wind hotel-caribe-wind--two" />
 
         <div className="hotel-caribe-biolink">
-          <div className="hotel-caribe-logo-card">
-            <HotelBrandMark />
-          </div>
-          <h1>Barranquilla</h1>
-          <p className="hotel-caribe-nit">RNT 1167724</p>
+          <div className="hotel-caribe-identity-card">
+            <div className="hotel-caribe-logo-card">
+              <HotelBrandMark />
+            </div>
+            <h1>Barranquilla</h1>
+            <p className="hotel-caribe-nit">RNT 1167724</p>
 
-          <div className="hotel-caribe-socials" aria-label="Redes sociales">
-            <a href={hotelLinks.instagram} aria-label="Instagram" {...externalProps(hotelLinks.instagram)}>
-              <Icon name="instagram" />
-            </a>
-            <a href={hotelLinks.facebook} aria-label="Facebook" {...externalProps(hotelLinks.facebook)}>
-              <Icon name="facebook" />
-            </a>
+            <div className="hotel-caribe-socials" aria-label="Redes sociales">
+              <a href={hotelLinks.instagram} aria-label="Instagram" {...externalProps(hotelLinks.instagram)}>
+                <Icon name="instagram" />
+              </a>
+              <a href={hotelLinks.facebook} aria-label="Facebook" {...externalProps(hotelLinks.facebook)}>
+                <Icon name="facebook" />
+              </a>
+            </div>
           </div>
 
           <div className="hotel-caribe-actions">
@@ -240,40 +242,46 @@ export default function HotelCaribePlazaPage() {
       </section>
 
       <section className="hotel-caribe-rooms" id="habitaciones">
-        <h2>Conoce nuestras habitaciones</h2>
-        <div className="hotel-caribe-room-grid">
-          {rooms.map((room, index) => (
-            <article key={room.name} className={`hotel-caribe-room hotel-caribe-room--${room.tone}`}>
-              <div className="hotel-caribe-room__photo">
-                <span>Cama {index + 1}</span>
-              </div>
-              <p>{room.name}</p>
-            </article>
-          ))}
+        <div className="hotel-caribe-section-card">
+          <h2>Conoce nuestras habitaciones</h2>
+          <div className="hotel-caribe-room-grid">
+            {rooms.map((room, index) => (
+              <article key={room.name} className={`hotel-caribe-room hotel-caribe-room--${room.tone}`}>
+                <div className="hotel-caribe-room__photo">
+                  <span>Cama {index + 1}</span>
+                </div>
+                <p>{room.name}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="hotel-caribe-spaces" id="espacios">
-        <h2>Conoce nuestros espacios</h2>
-        <div className="hotel-caribe-space-grid">
-          {spaces.map((space) => (
-            <article key={space.name} className={`hotel-caribe-space hotel-caribe-space--${space.tone}`}>
-              <div className="hotel-caribe-space__photo" aria-hidden="true" />
-              <p>{space.name}</p>
-            </article>
-          ))}
+        <div className="hotel-caribe-section-card">
+          <h2>Conoce nuestros espacios</h2>
+          <div className="hotel-caribe-space-grid">
+            {spaces.map((space) => (
+              <article key={space.name} className={`hotel-caribe-space hotel-caribe-space--${space.tone}`}>
+                <div className="hotel-caribe-space__photo" aria-hidden="true" />
+                <p>{space.name}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="hotel-caribe-amenities">
-        <h2>Adem&aacute;s contamos con:</h2>
-        <div className="hotel-caribe-amenity-list">
-          {amenities.map((item) => (
-            <div key={item.label}>
-              <Icon name={item.icon} />
-              <span>{item.label}</span>
-            </div>
-          ))}
+        <div className="hotel-caribe-section-card hotel-caribe-section-card--dark">
+          <h2>Adem&aacute;s contamos con:</h2>
+          <div className="hotel-caribe-amenity-list">
+            {amenities.map((item) => (
+              <div key={item.label}>
+                <Icon name={item.icon} />
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
