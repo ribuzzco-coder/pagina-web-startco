@@ -103,6 +103,35 @@ function StartcoPreview() {
   );
 }
 
+function HotelCaribePreview() {
+  return (
+    <div className="landing-preview landing-preview--hotel-real">
+      <div className="landing-preview__hotel-frame">
+        <div className="landing-preview__hotel-logo">
+          <Image
+            src="/images/hotel-caribe/logo-vertical.png"
+            alt=""
+            width={120}
+            height={160}
+            className="h-full w-full object-contain"
+          />
+        </div>
+        <p className="landing-preview__hotel-city">Barranquilla</p>
+        <span className="landing-preview__hotel-rnt">RNT 1167724</span>
+        <div className="landing-preview__hotel-socials">
+          <span>IG</span>
+          <span>FB</span>
+        </div>
+        <div className="landing-preview__hotel-actions">
+          <span>Contáctanos</span>
+          <span>Reserva</span>
+          <span>Página web</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function PlaceholderPreview({ kind }: { kind: LandingPreview["kind"] }) {
   const isOffer = kind === "offer";
   const isEvent = kind === "event";
@@ -140,7 +169,13 @@ function PreviewContent({ item }: { item: LandingPreview }) {
   return (
     <>
       <div className="landing-carousel__shine" />
-      {item.kind === "startco" ? <StartcoPreview /> : <PlaceholderPreview kind={item.kind} />}
+      {item.kind === "startco" ? (
+        <StartcoPreview />
+      ) : item.title === "Hotel Caribe Plaza" ? (
+        <HotelCaribePreview />
+      ) : (
+        <PlaceholderPreview kind={item.kind} />
+      )}
       <div className="landing-carousel__label">
         <p>{item.title}</p>
         <span>{item.status}</span>
