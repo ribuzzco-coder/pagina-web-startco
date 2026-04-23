@@ -11,6 +11,8 @@ const hotelLinks = {
   instagram: "https://www.instagram.com/hotelcaribeplazaba/",
 };
 
+const hotelLogoSrc = "/images/client-cards/hotel-caribe-plaza-logo-horizontal.png";
+
 const quickLinks = [
   { label: "Cont\u00e1ctanos", icon: "wa", href: hotelLinks.whatsapp },
   { label: "Haz tu reserva", icon: "calendar", href: hotelLinks.whatsapp },
@@ -76,6 +78,21 @@ function externalProps(href: string) {
   };
 }
 
+function HotelBrandMark() {
+  return (
+    <div className="hotel-caribe-brand-mark">
+      <Image
+        src={hotelLogoSrc}
+        alt="Hotel Caribe Plaza"
+        width={520}
+        height={420}
+        priority
+        className="h-full w-full object-contain"
+      />
+    </div>
+  );
+}
+
 function Icon({ name }: { name: string }) {
   const commonProps = {
     className: "h-5 w-5",
@@ -112,6 +129,23 @@ function Icon({ name }: { name: string }) {
           <circle cx="12" cy="12" r="9" />
           <path d="M3 12h18" />
           <path d="M12 3c2.3 2.4 3.4 5.4 3.4 9s-1.1 6.6-3.4 9c-2.3-2.4-3.4-5.4-3.4-9S9.7 5.4 12 3Z" />
+        </svg>
+      );
+    case "instagram":
+      return (
+        <svg {...commonProps}>
+          <rect x="4" y="4" width="16" height="16" rx="5" />
+          <circle cx="12" cy="12" r="3.2" />
+          <path d="M16.8 7.2h.01" />
+        </svg>
+      );
+    case "facebook":
+      return (
+        <svg className="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M14.2 21v-7h2.3l.4-2.8h-2.7V9.4c0-.8.2-1.4 1.4-1.4h1.5V5.5c-.7-.1-1.5-.2-2.2-.2-2.2 0-3.8 1.4-3.8 3.9v2H8.6V14h2.5v7h3.1Z"
+          />
         </svg>
       );
     case "star":
@@ -198,14 +232,7 @@ export default function HotelCaribePlazaPage() {
 
         <div className="hotel-caribe-biolink">
           <div className="hotel-caribe-logo-card">
-            <Image
-              src="/images/client-cards/hotel-caribe-plaza-front.png"
-              alt="Hotel Caribe Plaza"
-              width={280}
-              height={280}
-              priority
-              className="h-full w-full object-contain"
-            />
+            <HotelBrandMark />
           </div>
           <h1>Hotel Caribe Plaza Barranquilla</h1>
           <p className="hotel-caribe-nit">RNT 1167724</p>
@@ -221,10 +248,10 @@ export default function HotelCaribePlazaPage() {
 
           <div className="hotel-caribe-socials" aria-label="Redes sociales">
             <a href={hotelLinks.instagram} aria-label="Instagram" {...externalProps(hotelLinks.instagram)}>
-              Instagram
+              <Icon name="instagram" />
             </a>
             <a href={hotelLinks.facebook} aria-label="Facebook" {...externalProps(hotelLinks.facebook)}>
-              Facebook
+              <Icon name="facebook" />
             </a>
           </div>
         </div>
@@ -308,13 +335,7 @@ export default function HotelCaribePlazaPage() {
 
         <div className="hotel-caribe-contact-card">
           <div className="hotel-caribe-contact-logo">
-            <Image
-              src="/images/client-cards/hotel-caribe-plaza-front.png"
-              alt=""
-              width={90}
-              height={90}
-              className="h-full w-full object-contain"
-            />
+            <HotelBrandMark />
           </div>
           <div>
             <h2>Cont&aacute;ctanos:</h2>
@@ -325,23 +346,17 @@ export default function HotelCaribePlazaPage() {
         </div>
         <div className="hotel-caribe-footer-socials">
           <a href={hotelLinks.instagram} aria-label="Instagram" {...externalProps(hotelLinks.instagram)}>
-            IG
+            <Icon name="instagram" />
           </a>
           <a href={hotelLinks.whatsapp} aria-label="WhatsApp" {...externalProps(hotelLinks.whatsapp)}>
-            WA
+            <Icon name="wa" />
           </a>
           <a href={hotelLinks.facebook} aria-label="Facebook" {...externalProps(hotelLinks.facebook)}>
-            f
+            <Icon name="facebook" />
           </a>
         </div>
         <div className="hotel-caribe-footer-brand" aria-hidden="true">
-          <Image
-            src="/images/client-cards/hotel-caribe-plaza-front.png"
-            alt=""
-            width={120}
-            height={120}
-            className="h-full w-full object-contain"
-          />
+          <HotelBrandMark />
         </div>
         <p className="hotel-caribe-footer-name">Hotel Caribe Plaza Barranquilla</p>
       </section>
