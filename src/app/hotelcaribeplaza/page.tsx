@@ -25,8 +25,8 @@ const quickLinks = [
 const rooms = [
   { name: "Sencilla", tone: "soft", image: "/images/hotel-caribe/sencilla.jpg" },
   { name: "Doble", tone: "warm", image: "/images/hotel-caribe/doble.jpeg" },
-  { name: "Doble twin", tone: "sun" },
-  { name: "Triple", tone: "sea" },
+  { name: "Doble twin", tone: "sun", image: null },
+  { name: "Triple", tone: "sea", image: null },
   { name: "Familiar", tone: "light", image: "/images/hotel-caribe/familiar.jpg" },
 ] as const;
 
