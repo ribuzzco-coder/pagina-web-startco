@@ -3,11 +3,11 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
 const heroImages = [
-  "/images/hotel-caribe/rotacion-0.jpg",
-  "/images/hotel-caribe/rotacion-1.jpg",
-  "/images/hotel-caribe/rotacion-2.jpg",
-  "/images/hotel-caribe/rotacion-3.jpg",
-  "/images/hotel-caribe/rotacion-4.jpg",
+  "/images/hotel-caribe/rotar-1.png",
+  "/images/hotel-caribe/rotar-2.png",
+  "/images/hotel-caribe/rotar-3.png",
+  "/images/hotel-caribe/rotar-4.png",
+  "/images/hotel-caribe/rotar-5.png",
 ] as const;
 
 export function HotelCaribeHeroGallery() {

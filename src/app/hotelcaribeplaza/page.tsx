@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { HotelCaribeHeroGallery } from "@/components/hotel/hotel-caribe-hero-gallery";
+import { HotelCaribeMediaGrid } from "@/components/hotel/hotel-caribe-media-grid";
 import { createPageMetadata } from "@/lib/metadata";
 
 const hotelLinks = {
@@ -25,8 +26,8 @@ const quickLinks = [
 const rooms = [
   { name: "Sencilla", tone: "soft", image: "/images/hotel-caribe/sencilla.jpg" },
   { name: "Doble", tone: "warm", image: "/images/hotel-caribe/doble.jpeg" },
-  { name: "Doble twin", tone: "sun", image: null },
-  { name: "Triple", tone: "sea", image: null },
+  { name: "Doble twin", tone: "sun", image: "/images/hotel-caribe/doble-twin.jpg" },
+  { name: "Triple", tone: "sea", image: "/images/hotel-caribe/triple.jpg" },
   { name: "Familiar", tone: "light", image: "/images/hotel-caribe/familiar.jpg" },
 ] as const;
 
@@ -253,37 +254,14 @@ export default function HotelCaribePlazaPage() {
       <section className="hotel-caribe-rooms" id="habitaciones">
         <div className="hotel-caribe-section-card">
           <h2>Conoce nuestras habitaciones</h2>
-          <div className="hotel-caribe-room-grid">
-            {rooms.map((room, index) => (
-              <article key={room.name} className={`hotel-caribe-room hotel-caribe-room--${room.tone}`}>
-                <div
-                  className="hotel-caribe-room__photo"
-                  style={room.image ? { backgroundImage: `url(${room.image})` } : undefined}
-                >
-                  {!room.image ? <span>Cama {index + 1}</span> : null}
-                </div>
-                <p>{room.name}</p>
-              </article>
-            ))}
-          </div>
+          <HotelCaribeMediaGrid items={rooms} type="room" />
         </div>
       </section>
 
       <section className="hotel-caribe-spaces" id="espacios">
         <div className="hotel-caribe-section-card">
           <h2>Conoce nuestros espacios</h2>
-          <div className="hotel-caribe-space-grid">
-            {spaces.map((space) => (
-              <article key={space.name} className={`hotel-caribe-space hotel-caribe-space--${space.tone}`}>
-                <div
-                  className="hotel-caribe-space__photo"
-                  aria-hidden="true"
-                  style={{ backgroundImage: `url(${space.image})` }}
-                />
-                <p>{space.name}</p>
-              </article>
-            ))}
-          </div>
+          <HotelCaribeMediaGrid items={spaces} type="space" />
         </div>
       </section>
 
