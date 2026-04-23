@@ -1,5 +1,4 @@
 import Image from "next/image";
-import type { CSSProperties } from "react";
 
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -22,35 +21,18 @@ const quickLinks = [
   { label: "C\u00f3mo llegar", icon: "pin", href: hotelLinks.maps },
 ] as const;
 
-const galleryMoments = [
-  {
-    title: "Llegada Caribe",
-    description: "Una entrada c\u00e1lida para empezar la estad\u00eda con calma.",
-    tone: "sunset",
-  },
-  {
-    title: "Habitaciones",
-    description: "Espacios sencillos, frescos y listos para descansar.",
-    tone: "room",
-  },
-  {
-    title: "Barranquilla cerca",
-    description: "Ubicaci\u00f3n pr\u00e1ctica para moverte por la ciudad.",
-    tone: "city",
-  },
-  {
-    title: "Plan familiar",
-    description: "Comodidad para viajes cortos, turismo y trabajo.",
-    tone: "family",
-  },
-] as const;
-
 const rooms = [
   { name: "Sencilla", tone: "soft" },
   { name: "Doble", tone: "warm" },
   { name: "Doble twin", tone: "sun" },
   { name: "Triple", tone: "sea" },
   { name: "Cu\u00e1druple", tone: "light" },
+] as const;
+
+const spaces = [
+  { name: "Terraza y jacuzzis", tone: "terrace" },
+  { name: "Restaurante", tone: "restaurant" },
+  { name: "Salones sociales", tone: "events" },
 ] as const;
 
 const amenities = [
@@ -87,7 +69,7 @@ function HotelBrandMark() {
         width={520}
         height={420}
         priority
-        className="h-full w-full object-contain"
+        className="hotel-caribe-brand-mark__image"
       />
     </div>
   );
@@ -234,17 +216,8 @@ export default function HotelCaribePlazaPage() {
           <div className="hotel-caribe-logo-card">
             <HotelBrandMark />
           </div>
-          <h1>Hotel Caribe Plaza Barranquilla</h1>
+          <h1>Barranquilla</h1>
           <p className="hotel-caribe-nit">RNT 1167724</p>
-
-          <div className="hotel-caribe-actions">
-            {quickLinks.map((link) => (
-              <a key={link.label} href={link.href} {...externalProps(link.href)}>
-                <Icon name={link.icon} />
-                <span>{link.label}</span>
-              </a>
-            ))}
-          </div>
 
           <div className="hotel-caribe-socials" aria-label="Redes sociales">
             <a href={hotelLinks.instagram} aria-label="Instagram" {...externalProps(hotelLinks.instagram)}>
@@ -254,34 +227,15 @@ export default function HotelCaribePlazaPage() {
               <Icon name="facebook" />
             </a>
           </div>
-        </div>
-      </section>
 
-      <section className="hotel-caribe-gallery" aria-label="Galeria del hotel">
-        <div className="hotel-caribe-gallery__intro">
-          <p>Galer&iacute;a del Caribe</p>
-          <h2>Im&aacute;genes que aparecen con el scroll</h2>
-          <span>
-            Inspirado en la galer&iacute;a oficial: bloques suaves, color de atardecer y movimiento
-            tropical.
-          </span>
-        </div>
-        <div className="hotel-caribe-gallery__stack">
-          {galleryMoments.map((moment, index) => (
-            <article
-              key={moment.title}
-              className={`hotel-caribe-gallery-card hotel-caribe-gallery-card--${moment.tone}`}
-              style={{ "--gallery-index": index } as CSSProperties}
-            >
-              <div className="hotel-caribe-gallery-card__image" aria-hidden="true">
-                <span>{moment.title}</span>
-              </div>
-              <div>
-                <h3>{moment.title}</h3>
-                <p>{moment.description}</p>
-              </div>
-            </article>
-          ))}
+          <div className="hotel-caribe-actions">
+            {quickLinks.map((link) => (
+              <a key={link.label} href={link.href} {...externalProps(link.href)}>
+                <Icon name={link.icon} />
+                <span>{link.label}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -294,6 +248,18 @@ export default function HotelCaribePlazaPage() {
                 <span>Cama {index + 1}</span>
               </div>
               <p>{room.name}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="hotel-caribe-spaces" id="espacios">
+        <h2>Conoce nuestros espacios</h2>
+        <div className="hotel-caribe-space-grid">
+          {spaces.map((space) => (
+            <article key={space.name} className={`hotel-caribe-space hotel-caribe-space--${space.tone}`}>
+              <div className="hotel-caribe-space__photo" aria-hidden="true" />
+              <p>{space.name}</p>
             </article>
           ))}
         </div>
@@ -354,9 +320,6 @@ export default function HotelCaribePlazaPage() {
           <a href={hotelLinks.facebook} aria-label="Facebook" {...externalProps(hotelLinks.facebook)}>
             <Icon name="facebook" />
           </a>
-        </div>
-        <div className="hotel-caribe-footer-brand" aria-hidden="true">
-          <HotelBrandMark />
         </div>
         <p className="hotel-caribe-footer-name">Hotel Caribe Plaza Barranquilla</p>
       </section>
