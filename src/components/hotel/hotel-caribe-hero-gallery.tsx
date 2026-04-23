@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 const heroImages = [
   "/images/hotel-caribe/rotar-1.png",
@@ -14,13 +20,21 @@ export function HotelCaribeHeroGallery() {
   const { scrollY } = useScroll();
   const prefersReducedMotion = useReducedMotion();
 
-  const opacity0 = useTransform(scrollY, [0, 420, 980], [1, 1, 0]);
-  const opacity1 = useTransform(scrollY, [420, 980, 1560], [0, 1, 0]);
-  const opacity2 = useTransform(scrollY, [980, 1560, 2200], [0, 1, 0]);
-  const opacity3 = useTransform(scrollY, [1560, 2300, 3040], [0, 1, 0]);
-  const opacity4 = useTransform(scrollY, [2280, 3080, 3880], [0, 1, 1]);
+  const raw0 = useTransform(scrollY, [0, 260, 760, 1120], [1, 1, 0.18, 0]);
+  const raw1 = useTransform(scrollY, [760, 1080, 1640, 2040], [0, 0.24, 1, 0]);
+  const raw2 = useTransform(scrollY, [1700, 2080, 2700, 3160], [0, 0.24, 1, 0]);
+  const raw3 = useTransform(scrollY, [2740, 3200, 3900, 4460], [0, 0.24, 1, 0]);
+  const raw4 = useTransform(scrollY, [3880, 4380, 5200, 5900], [0, 0.22, 1, 1]);
 
-  const opacities = [opacity0, opacity1, opacity2, opacity3, opacity4];
+  const springConfig = { stiffness: 42, damping: 26, mass: 0.9 };
+
+  const opacities = [
+    useSpring(raw0, springConfig),
+    useSpring(raw1, springConfig),
+    useSpring(raw2, springConfig),
+    useSpring(raw3, springConfig),
+    useSpring(raw4, springConfig),
+  ];
 
   return (
     <div className="hotel-caribe-hero-gallery" aria-hidden="true">

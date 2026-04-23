@@ -14,25 +14,37 @@ type HotelCaribeMediaGridProps = {
   type: "room" | "space";
 };
 
-export function HotelCaribeMediaGrid({ items, type }: HotelCaribeMediaGridProps) {
+export function HotelCaribeMediaGrid({
+  items,
+  type,
+}: HotelCaribeMediaGridProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (selectedIndex === null) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelectedIndex(null);
+      if (event.key === "Escape") {
+        setSelectedIndex(null);
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedIndex]);
 
-  const selectedItem = selectedIndex === null ? null : items[selectedIndex];
+  const selectedItem =
+    selectedIndex === null ? null : (items[selectedIndex] ?? null);
 
   return (
     <>
-      <div className={type === "room" ? "hotel-caribe-room-grid" : "hotel-caribe-space-grid"}>
+      <div
+        className={
+          type === "room"
+            ? "hotel-caribe-room-grid"
+            : "hotel-caribe-space-grid"
+        }
+      >
         {items.map((item, index) => {
           const cardClassName =
             type === "room"
@@ -40,10 +52,14 @@ export function HotelCaribeMediaGrid({ items, type }: HotelCaribeMediaGridProps)
               : `hotel-caribe-space hotel-caribe-space--${item.tone}`;
 
           const photoClassName =
-            type === "room" ? "hotel-caribe-room__photo" : "hotel-caribe-space__photo";
+            type === "room"
+              ? "hotel-caribe-room__photo"
+              : "hotel-caribe-space__photo";
 
           const imageClassName =
-            type === "room" ? "hotel-caribe-room__image" : "hotel-caribe-space__image";
+            type === "room"
+              ? "hotel-caribe-room__image"
+              : "hotel-caribe-space__image";
 
           return (
             <article key={item.name} className={cardClassName}>
@@ -59,7 +75,11 @@ export function HotelCaribeMediaGrid({ items, type }: HotelCaribeMediaGridProps)
                       src={item.image}
                       alt={item.name}
                       fill
-                      sizes={type === "room" ? "(max-width: 767px) 45vw, 220px" : "(max-width: 767px) 82vw, 340px"}
+                      sizes={
+                        type === "room"
+                          ? "(max-width: 767px) 45vw, 240px"
+                          : "(max-width: 767px) 82vw, 360px"
+                      }
                       className="hotel-caribe-media-image"
                     />
                   </div>
@@ -79,15 +99,19 @@ export function HotelCaribeMediaGrid({ items, type }: HotelCaribeMediaGridProps)
           aria-label={selectedItem.name}
           onClick={() => setSelectedIndex(null)}
         >
-          <div className="hotel-caribe-lightbox__panel" onClick={(event) => event.stopPropagation()}>
-            <button
-              type="button"
-              className="hotel-caribe-lightbox__close"
-              onClick={() => setSelectedIndex(null)}
-              aria-label="Cerrar imagen ampliada"
-            >
-              ×
-            </button>
+          <button
+            type="button"
+            className="hotel-caribe-lightbox__close"
+            onClick={() => setSelectedIndex(null)}
+            aria-label="Cerrar imagen ampliada"
+          >
+            &times;
+          </button>
+
+          <div
+            className="hotel-caribe-lightbox__panel"
+            onClick={(event) => event.stopPropagation()}
+          >
             <div className="hotel-caribe-lightbox__media">
               <Image
                 src={selectedItem.image}
@@ -98,7 +122,9 @@ export function HotelCaribeMediaGrid({ items, type }: HotelCaribeMediaGridProps)
                 priority
               />
             </div>
-            <p className="hotel-caribe-lightbox__caption">{selectedItem.name}</p>
+            <p className="hotel-caribe-lightbox__caption">
+              {selectedItem.name}
+            </p>
           </div>
         </div>
       ) : null}
