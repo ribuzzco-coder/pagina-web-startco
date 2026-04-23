@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { HotelCaribeHeroGallery } from "@/components/hotel/hotel-caribe-hero-gallery";
 import { createPageMetadata } from "@/lib/metadata";
 
 const hotelLinks = {
@@ -10,7 +11,7 @@ const hotelLinks = {
   instagram: "https://www.instagram.com/hotelcaribeplazaba/",
 };
 
-const hotelLogoSrc = "/images/client-cards/hotel-caribe-plaza-logo-horizontal.png";
+const hotelLogoSrc = "/images/hotel-caribe/logo-vertical.png";
 
 const quickLinks = [
   { label: "Cont\u00e1ctanos", icon: "wa", href: hotelLinks.whatsapp },
@@ -22,17 +23,17 @@ const quickLinks = [
 ] as const;
 
 const rooms = [
-  { name: "Sencilla", tone: "soft" },
-  { name: "Doble", tone: "warm" },
+  { name: "Sencilla", tone: "soft", image: "/images/hotel-caribe/sencilla.jpg" },
+  { name: "Doble", tone: "warm", image: "/images/hotel-caribe/doble.jpeg" },
   { name: "Doble twin", tone: "sun" },
   { name: "Triple", tone: "sea" },
-  { name: "Cu\u00e1druple", tone: "light" },
+  { name: "Familiar", tone: "light", image: "/images/hotel-caribe/familiar.jpg" },
 ] as const;
 
 const spaces = [
-  { name: "Terraza y jacuzzis", tone: "terrace" },
-  { name: "Restaurante", tone: "restaurant" },
-  { name: "Salones sociales", tone: "events" },
+  { name: "Terraza y jacuzzis", tone: "terrace", image: "/images/hotel-caribe/terraza-1.jpg" },
+  { name: "Restaurante", tone: "restaurant", image: "/images/hotel-caribe/restaurante-1.jpg" },
+  { name: "Salones sociales", tone: "events", image: "/images/hotel-caribe/salon-social-1.jpg" },
 ] as const;
 
 const amenities = [
@@ -205,9 +206,7 @@ export default function HotelCaribePlazaPage() {
   return (
     <main className="hotel-caribe-page -mt-[76px] min-h-[100dvh]">
       <section className="hotel-caribe-hero">
-        <div className="hotel-caribe-photo-bg hotel-caribe-photo-bg--one" />
-        <div className="hotel-caribe-photo-bg hotel-caribe-photo-bg--two" />
-        <div className="hotel-caribe-photo-bg hotel-caribe-photo-bg--three" />
+        <HotelCaribeHeroGallery />
         <div className="hotel-caribe-leaves hotel-caribe-leaves--top" />
         <div className="hotel-caribe-wind hotel-caribe-wind--one" />
         <div className="hotel-caribe-wind hotel-caribe-wind--two" />
@@ -247,8 +246,11 @@ export default function HotelCaribePlazaPage() {
           <div className="hotel-caribe-room-grid">
             {rooms.map((room, index) => (
               <article key={room.name} className={`hotel-caribe-room hotel-caribe-room--${room.tone}`}>
-                <div className="hotel-caribe-room__photo">
-                  <span>Cama {index + 1}</span>
+                <div
+                  className="hotel-caribe-room__photo"
+                  style={room.image ? { backgroundImage: `url(${room.image})` } : undefined}
+                >
+                  {!room.image ? <span>Cama {index + 1}</span> : null}
                 </div>
                 <p>{room.name}</p>
               </article>
@@ -263,7 +265,11 @@ export default function HotelCaribePlazaPage() {
           <div className="hotel-caribe-space-grid">
             {spaces.map((space) => (
               <article key={space.name} className={`hotel-caribe-space hotel-caribe-space--${space.tone}`}>
-                <div className="hotel-caribe-space__photo" aria-hidden="true" />
+                <div
+                  className="hotel-caribe-space__photo"
+                  aria-hidden="true"
+                  style={{ backgroundImage: `url(${space.image})` }}
+                />
                 <p>{space.name}</p>
               </article>
             ))}

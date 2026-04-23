@@ -857,10 +857,9 @@ textarea,
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(circle at 18% 20%, rgba(255, 230, 42, 0.28), transparent 9rem),
-    radial-gradient(circle at 82% 16%, rgba(0, 135, 196, 0.42), transparent 10rem),
-    linear-gradient(180deg, rgba(12, 11, 18, 0.78) 0%, rgba(79, 32, 111, 0.34) 42%, rgba(255, 130, 45, 0.2) 100%),
-    linear-gradient(140deg, rgba(255, 228, 43, 0.72) 0 18%, rgba(255, 169, 39, 0.58) 19% 37%, rgba(17, 189, 203, 0.54) 38% 62%, rgba(0, 114, 180, 0.62) 63% 100%);
+    radial-gradient(circle at 18% 20%, rgba(255, 230, 42, 0.18), transparent 9rem),
+    radial-gradient(circle at 82% 16%, rgba(0, 135, 196, 0.28), transparent 10rem),
+    linear-gradient(180deg, rgba(12, 11, 18, 0.8) 0%, rgba(79, 32, 111, 0.42) 42%, rgba(255, 130, 45, 0.22) 100%);
 }
 
 .hotel-caribe-hero::after {
@@ -875,51 +874,34 @@ textarea,
   clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%);
 }
 
-.hotel-caribe-photo-bg {
+.hotel-caribe-hero-gallery {
   position: absolute;
   z-index: -3;
-  overflow: hidden;
-  border-radius: 34px;
-  opacity: 0.42;
-  filter: saturate(1.35) contrast(1.08);
-  box-shadow: 0 30px 70px rgba(25, 8, 45, 0.28);
+  inset: 0;
 }
 
-.hotel-caribe-photo-bg::before {
+.hotel-caribe-hero-gallery__layer,
+.hotel-caribe-hero-gallery__image {
+  position: absolute;
+  inset: 0;
+}
+
+.hotel-caribe-hero-gallery__image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: saturate(1.12) contrast(0.96);
+}
+
+.hotel-caribe-hero-gallery__image::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, rgba(74, 18, 106, 0.5), rgba(255, 125, 50, 0.32)),
-    radial-gradient(circle at 34% 18%, rgba(255, 255, 255, 0.82), transparent 0.13rem),
-    radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.74), transparent 0.11rem),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.18) 0 1px, transparent 1px 32px),
-    linear-gradient(145deg, #f4ddaa, #5ec5d7 54%, #073f74);
-}
-
-.hotel-caribe-photo-bg--one {
-  top: 6rem;
-  left: -5rem;
-  width: 16rem;
-  height: 20rem;
-  transform: rotate(-9deg);
-}
-
-.hotel-caribe-photo-bg--two {
-  top: 1.5rem;
-  right: -6rem;
-  width: 17rem;
-  height: 24rem;
-  transform: rotate(10deg);
-}
-
-.hotel-caribe-photo-bg--three {
-  right: 9%;
-  bottom: 3.2rem;
-  width: 14rem;
-  height: 10rem;
-  opacity: 0.32;
-  transform: rotate(-5deg);
+    linear-gradient(180deg, rgba(18, 9, 24, 0.62), rgba(255, 122, 54, 0.18) 46%, rgba(0, 67, 121, 0.34) 100%),
+    radial-gradient(circle at 26% 28%, rgba(255, 175, 72, 0.26), transparent 20rem),
+    radial-gradient(circle at 72% 16%, rgba(154, 78, 208, 0.28), transparent 18rem);
+  mix-blend-mode: multiply;
 }
 
 .hotel-caribe-leaves {
@@ -963,9 +945,9 @@ textarea,
 
 .hotel-caribe-logo-card {
   display: grid;
-  width: min(100%, 14rem);
-  height: clamp(12rem, 43vw, 15rem);
-  margin: 0 auto 0.85rem;
+  width: min(100%, 12.5rem);
+  height: clamp(10.2rem, 38vw, 13rem);
+  margin: 0 auto 1.15rem;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 28px;
@@ -1010,7 +992,7 @@ textarea,
 }
 
 .hotel-caribe-hero h1 {
-  margin: 0.1rem auto 0;
+  margin: 0.2rem auto 0;
   max-width: 22rem;
   color: white;
   font-size: clamp(1.35rem, 5.7vw, 2.15rem);
@@ -1026,7 +1008,7 @@ textarea,
 .hotel-caribe-biolink {
   position: relative;
   z-index: 2;
-  width: min(100%, 32rem);
+  width: min(100%, 34rem);
   margin: 0 auto;
   padding-top: 1.55rem;
 }
@@ -1041,12 +1023,12 @@ textarea,
   box-shadow:
     0 18px 42px rgba(25, 8, 45, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.38);
-  padding: 1rem;
+  padding: 1.05rem;
   backdrop-filter: blur(18px);
 }
 
 .hotel-caribe-section-card {
-  width: min(100%, 31rem);
+  width: min(100%, 33rem);
   margin-inline: auto;
   padding: 1.25rem 1rem 1.35rem;
 }
@@ -1111,7 +1093,7 @@ textarea,
 .hotel-caribe-actions {
   display: grid;
   gap: 0.82rem;
-  width: min(100%, 30rem);
+  width: min(100%, 32rem);
   margin: 1.55rem auto 0;
   border: 1px solid rgba(255, 255, 255, 0.36);
   border-radius: 30px;
@@ -1368,7 +1350,8 @@ textarea,
 .hotel-caribe-spaces h2,
 .hotel-caribe-amenities h2 {
   margin-inline: auto;
-  max-width: 18rem;
+  width: 100%;
+  max-width: 100%;
   white-space: nowrap;
   text-align: center;
   color: var(--hotel-blue);
@@ -1403,6 +1386,7 @@ textarea,
 }
 
 .hotel-caribe-room__photo {
+  position: relative;
   display: grid;
   min-height: 8.8rem;
   place-items: center;
@@ -1413,6 +1397,21 @@ textarea,
   font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  isolation: isolate;
+}
+
+.hotel-caribe-room__photo::after,
+.hotel-caribe-space__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(24, 14, 26, 0.06), rgba(24, 14, 26, 0.24)),
+    linear-gradient(135deg, rgba(255, 130, 45, 0.16), rgba(98, 190, 214, 0.14));
+  pointer-events: none;
 }
 
 .hotel-caribe-room--warm .hotel-caribe-room__photo {
@@ -1465,12 +1464,16 @@ textarea,
 }
 
 .hotel-caribe-space__photo {
+  position: relative;
   min-height: 9rem;
   background:
     linear-gradient(135deg, rgba(0, 66, 122, 0.14), rgba(255, 122, 54, 0.18)),
     radial-gradient(circle at 24% 34%, rgba(255, 255, 255, 0.85), transparent 0.14rem),
     radial-gradient(circle at 68% 24%, rgba(255, 255, 255, 0.76), transparent 0.12rem),
     linear-gradient(145deg, #ffe0a0, #a8dde7 48%, #0b6097);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hotel-caribe-space--restaurant .hotel-caribe-space__photo {
