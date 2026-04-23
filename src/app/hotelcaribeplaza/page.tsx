@@ -212,6 +212,7 @@ function Icon({ name }: { name: string }) {
 export default function HotelCaribePlazaPage() {
   return (
     <main className="hotel-caribe-page -mt-[76px] min-h-[100dvh]">
+      <div className="hotel-caribe-ui-frame" aria-hidden="true" />
       <HotelCaribeHeroGallery />
       <section className="hotel-caribe-hero">
         <div className="hotel-caribe-wind hotel-caribe-wind--one" />
