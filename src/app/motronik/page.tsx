@@ -2,10 +2,12 @@ import Image from "next/image";
 
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { InteractiveRobotSpline } from "@/components/ui/interactive-3d-robot";
 import { createPageMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
 const motronikLogo = "/images/motronik/logo.webp";
+const motronikElement = "/images/motronik/element.png";
 
 const motronikLinks = {
   instagram: "https://www.instagram.com/motronikmedellin/",
@@ -211,6 +213,14 @@ export default function MotronikPage() {
       <Container className="relative z-10 flex min-h-screen max-w-3xl flex-col items-center justify-center py-24 sm:py-32">
         <div className="motronik-shell relative w-full overflow-hidden rounded-[32px] border border-white/10 px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:rounded-[36px] sm:px-10 sm:py-10">
           <div className="motronik-shell__flare" />
+
+          <div className="relative mb-10 sm:mb-12">
+            <InteractiveRobotSpline
+              scene={motronikElement}
+              alt="Elemento central Motronik"
+              className="min-h-[260px] sm:min-h-[320px]"
+            />
+          </div>
 
           <div className="relative flex flex-col items-center text-center">
             <div className="motronik-logo-ring flex h-32 w-32 items-center justify-center rounded-full border shadow-[0_16px_32px_rgba(0,0,0,0.24)] sm:h-36 sm:w-36">
