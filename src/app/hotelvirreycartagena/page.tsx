@@ -60,7 +60,7 @@ const hotelLogoSrc = "/images/hotel-virrey/logo.png";
 
 export const metadata = createPageMetadata({
   title: "Hotel Virrey Cartagena",
-  description: "Landing activa para Hotel Virrey Cartagena.",
+  description: "Landing activa para Hotel Virrey Cartagena. Lista para personalización.",
   path: "/hotelvirreycartagena",
 });
 
