@@ -1890,6 +1890,112 @@ textarea,
     transform: translateY(-2px);
   }
 
+.hotel-virrey-page {
+  --hotel-blue: #171310;
+}
+
+.hotel-virrey-page .hotel-caribe-identity-card,
+.hotel-virrey-page .hotel-caribe-section-card,
+.hotel-virrey-page .hotel-caribe-contact-card,
+.hotel-virrey-page .hotel-caribe-actions,
+.hotel-virrey-page .hotel-caribe-map__label {
+  color: #16110d;
+}
+
+.hotel-virrey-page .hotel-caribe-identity-card h1,
+.hotel-virrey-page .hotel-caribe-section-card h2,
+.hotel-virrey-page .hotel-caribe-contact-card h2,
+.hotel-virrey-page .hotel-caribe-footer-name,
+.hotel-virrey-page .hotel-caribe-actions span,
+.hotel-virrey-page .hotel-caribe-map__label span {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #11100d;
+}
+
+.hotel-virrey-page .hotel-caribe-nit {
+  border-color: rgba(140, 102, 38, 0.24);
+  background: rgba(255, 246, 221, 0.86);
+  color: #5f4311;
+}
+
+.hotel-virrey-page .hotel-caribe-socials a,
+.hotel-virrey-page .hotel-caribe-footer-socials a {
+  border-color: rgba(133, 100, 44, 0.22);
+  background: linear-gradient(135deg, rgba(255, 250, 236, 0.86), rgba(239, 222, 179, 0.44));
+  color: #53401a;
+}
+
+.hotel-virrey-page .hotel-caribe-actions a,
+.hotel-virrey-page .hotel-caribe-map__label {
+  border-color: rgba(174, 133, 58, 0.36);
+  background:
+    linear-gradient(120deg, rgba(255, 252, 244, 0.38), transparent 45%),
+    linear-gradient(135deg, rgba(250, 238, 205, 0.92), rgba(208, 167, 92, 0.44));
+  color: #2b2115;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 14px 30px rgba(99, 72, 24, 0.14),
+    0 0 24px rgba(199, 152, 74, 0.14);
+}
+
+.hotel-virrey-page .hotel-caribe-actions a:hover,
+.hotel-virrey-page .hotel-caribe-socials a:hover,
+.hotel-virrey-page .hotel-caribe-footer-socials a:hover,
+.hotel-virrey-page .hotel-caribe-map__label:hover {
+  border-color: rgba(204, 163, 88, 0.52);
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.42), transparent 45%),
+    linear-gradient(135deg, rgba(253, 244, 220, 0.96), rgba(219, 180, 102, 0.52));
+  color: #21170d;
+}
+
+.hotel-virrey-page .hotel-caribe-action-link--wa,
+.hotel-virrey-page .hotel-caribe-footer-socials__wa,
+.hotel-virrey-page .hotel-caribe-floating-wa {
+  background:
+    linear-gradient(120deg, rgba(255, 252, 244, 0.34), transparent 45%),
+    linear-gradient(135deg, rgba(247, 233, 193, 0.98), rgba(182, 132, 41, 0.66));
+  color: #3a2a12;
+  border-color: rgba(166, 119, 36, 0.34);
+  box-shadow: 0 12px 24px rgba(93, 68, 20, 0.18);
+}
+
+.hotel-virrey-page .hotel-caribe-action-link--wa svg,
+.hotel-virrey-page .hotel-caribe-footer-socials__wa svg,
+.hotel-virrey-page .hotel-caribe-floating-wa svg,
+.hotel-virrey-page .hotel-caribe-actions svg,
+.hotel-virrey-page .hotel-caribe-socials svg,
+.hotel-virrey-page .hotel-caribe-footer-socials svg,
+.hotel-virrey-page .hotel-caribe-amenity-list svg {
+  color: #6f521e;
+  filter: none;
+}
+
+.hotel-virrey-page .hotel-caribe-room p {
+  background: linear-gradient(135deg, rgba(161, 114, 34, 0.96), rgba(210, 165, 92, 0.92));
+}
+
+.hotel-virrey-page .hotel-caribe-space p {
+  background: linear-gradient(135deg, rgba(117, 84, 28, 0.96), rgba(187, 149, 78, 0.94));
+}
+
+.hotel-virrey-page .hotel-caribe-section-card--dark {
+  border-color: rgba(182, 143, 76, 0.26);
+  background:
+    linear-gradient(180deg, rgba(76, 52, 21, 0.9), rgba(38, 26, 12, 0.94)),
+    radial-gradient(circle at 50% 0%, rgba(225, 184, 107, 0.16), transparent 34%);
+}
+
+.hotel-virrey-page .hotel-caribe-section-card--dark h2,
+.hotel-virrey-page .hotel-caribe-section-card--dark .hotel-caribe-amenity-list span,
+.hotel-virrey-page .hotel-caribe-section-card--dark .hotel-caribe-amenity-list svg {
+  color: #f4e7c9;
+}
+
+.hotel-virrey-page .hotel-caribe-contact-card p {
+  color: #2b2115;
+}
+
 .hotel-caribe-actions button:disabled,
 .hotel-caribe-socials button:disabled,
 .hotel-caribe-footer-socials button:disabled,

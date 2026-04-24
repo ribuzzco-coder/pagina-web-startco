@@ -8,7 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 
-const heroImages = [
+const defaultHeroImages = [
   "/images/hotel-caribe/rotar-1.png",
   "/images/hotel-caribe/rotar-2.png",
   "/images/hotel-caribe/rotar-3.png",
@@ -16,7 +16,11 @@ const heroImages = [
   "/images/hotel-caribe/rotar-5.png",
 ] as const;
 
-export function HotelCaribeHeroGallery() {
+export function HotelCaribeHeroGallery({
+  images = defaultHeroImages,
+}: {
+  images?: readonly string[];
+}) {
   const { scrollY } = useScroll();
   const prefersReducedMotion = useReducedMotion();
 
@@ -38,7 +42,7 @@ export function HotelCaribeHeroGallery() {
 
   return (
     <div className="hotel-caribe-hero-gallery" aria-hidden="true">
-      {heroImages.map((src, index) => (
+      {images.map((src, index) => (
         <motion.div
           key={src}
           className="hotel-caribe-hero-gallery__layer"
