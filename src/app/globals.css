@@ -966,7 +966,7 @@ textarea,
   isolation: isolate;
   min-height: 100dvh;
   overflow: hidden;
-  padding: 2.2rem 1rem 3.4rem;
+  padding: 2.2rem 1rem 1.5rem;
   text-align: center;
 }
 
@@ -1121,7 +1121,7 @@ textarea,
   z-index: 2;
   width: min(100%, 30rem);
   margin: 0 auto;
-  padding-top: 0.8rem;
+  padding-top: 0.45rem;
 }
 
 .hotel-caribe-identity-card,
@@ -1141,7 +1141,7 @@ textarea,
 .hotel-caribe-section-card {
   width: min(100%, 29rem);
   margin-inline: auto;
-  padding: 1.25rem 1rem 1.35rem;
+  padding: 1.05rem 1rem 1.1rem;
 }
 
 .hotel-caribe-section-card--dark {
@@ -1212,7 +1212,7 @@ textarea,
   display: grid;
   gap: 0.82rem;
   width: min(100%, 28.8rem);
-  margin: 1.55rem auto 0;
+  margin: 1.05rem auto 0;
   border: 1px solid rgba(255, 255, 255, 0.36);
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.14);
@@ -1445,7 +1445,7 @@ textarea,
 .hotel-caribe-rooms {
   position: relative;
   overflow: hidden;
-  padding: 2.8rem 1rem;
+  padding: 0.8rem 1rem 1rem;
   background: transparent;
 }
 
@@ -1469,7 +1469,7 @@ textarea,
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.05rem;
   width: 100%;
-  margin: 1.65rem auto 0;
+  margin: 1rem auto 0;
 }
 
 .hotel-caribe-room {
@@ -1564,7 +1564,7 @@ textarea,
 .hotel-caribe-spaces {
   position: relative;
   overflow: hidden;
-  padding: 2.8rem 1rem;
+  padding: 0.85rem 1rem 1rem;
   background: transparent;
 }
 
@@ -1573,7 +1573,7 @@ textarea,
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   width: 100%;
-  margin: 1.65rem auto 0;
+  margin: 1rem auto 0;
 }
 
 .hotel-caribe-space {
@@ -1688,7 +1688,7 @@ textarea,
 .hotel-caribe-amenities {
   background: transparent;
   color: white;
-  padding: 2.4rem 1rem;
+  padding: 0.85rem 1rem 1rem;
 }
 
 .hotel-caribe-amenities h2 {
@@ -1699,7 +1699,7 @@ textarea,
   display: grid;
   gap: 0.7rem;
   width: min(100%, 20rem);
-  margin: 1.6rem auto 0;
+  margin: 1rem auto 0;
 }
 
 .hotel-caribe-amenity-list div {
@@ -1714,7 +1714,7 @@ textarea,
 .hotel-caribe-contact {
   position: relative;
   overflow: hidden;
-  padding: 2.2rem 1rem 4.3rem;
+  padding: 0.85rem 1rem 2rem;
   background: transparent;
 }
 
@@ -1780,7 +1780,7 @@ textarea,
   grid-template-columns: 5.2rem 1fr;
   gap: 1.1rem;
   width: min(100%, 24.8rem);
-  margin: 1.4rem auto 0;
+  margin: 1rem auto 0;
   border: 1px solid rgba(255, 255, 255, 0.58);
   border-radius: 26px;
   background: rgba(255, 255, 255, 0.42);
@@ -1822,7 +1822,7 @@ textarea,
 
 .hotel-caribe-footer-socials {
   gap: 1.8rem;
-  margin-top: 1.6rem;
+  margin-top: 1rem;
 }
 
 .hotel-caribe-footer-socials a {
@@ -1833,7 +1833,7 @@ textarea,
 }
 
 .hotel-caribe-footer-name {
-  margin-top: 1.2rem;
+  margin-top: 0.7rem;
   text-align: center;
   color: var(--hotel-blue);
   font-size: 0.95rem;
