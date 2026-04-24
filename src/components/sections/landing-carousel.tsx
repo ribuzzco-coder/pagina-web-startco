@@ -116,19 +116,6 @@ function HotelCaribePreview() {
           fill
           className="landing-preview__hotel-screenshot"
         />
-        <div className="landing-preview__hotel-logo landing-preview__hotel-logo--overlay">
-          <Image
-            src="/images/hotel-caribe/logo-vertical.png"
-            alt=""
-            width={120}
-            height={160}
-            className="h-full w-full object-contain"
-          />
-        </div>
-        <div className="landing-preview__hotel-badge">
-          <p>Barranquilla</p>
-          <span>RNT 1167724</span>
-        </div>
       </div>
     </div>
   );

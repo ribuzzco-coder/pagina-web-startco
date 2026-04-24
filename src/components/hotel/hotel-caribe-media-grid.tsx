@@ -99,10 +99,7 @@ export function HotelCaribeMediaGrid({
           aria-label={selectedItem.name}
           onClick={() => setSelectedIndex(null)}
         >
-          <div
-            className="hotel-caribe-lightbox__panel"
-            onClick={(event) => event.stopPropagation()}
-          >
+          <div className="hotel-caribe-lightbox__panel" onClick={(event) => event.stopPropagation()}>
             <button
               type="button"
               className="hotel-caribe-lightbox__close"
@@ -121,9 +118,6 @@ export function HotelCaribeMediaGrid({
                 priority
               />
             </div>
-            <p className="hotel-caribe-lightbox__caption">
-              {selectedItem.name}
-            </p>
           </div>
         </div>
       ) : null}
