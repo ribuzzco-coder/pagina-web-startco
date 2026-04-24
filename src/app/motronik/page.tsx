@@ -299,14 +299,15 @@ export default function MotronikPage() {
                 </p>
               </div>
 
-              <div className="relative z-10 mt-5 overflow-hidden rounded-[20px] border border-white/10 bg-black/20 shadow-[0_18px_34px_rgba(0,0,0,0.18)]">
+              <div className="motronik-map-embed relative z-10 mt-5 overflow-hidden rounded-[20px] border border-white/10 bg-black/20 shadow-[0_18px_34px_rgba(0,0,0,0.18)]">
                 <iframe
                   title="Mapa Motronik"
                   src="https://www.google.com/maps?q=motronik%20medellin&output=embed"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="h-[270px] w-full border-0 sm:h-[320px]"
+                  className="motronik-map-embed__frame h-[270px] w-full border-0 sm:h-[320px]"
                 />
+                <div className="motronik-map-embed__shader" aria-hidden="true" />
                 <a
                   href={motronikLinks.maps}
                   className="motronik-map-action absolute bottom-3 right-3 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white transition duration-300"
