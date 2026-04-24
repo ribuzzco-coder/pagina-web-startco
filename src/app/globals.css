@@ -964,18 +964,14 @@ textarea,
 .hotel-caribe-hero {
   position: relative;
   isolation: isolate;
-  min-height: 100dvh;
+  min-height: auto;
   overflow: hidden;
   padding: 2.2rem 1rem 1.5rem;
   text-align: center;
 }
 
 .hotel-caribe-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 54%, rgba(255, 255, 255, 0.22) 100%);
+  content: none;
 }
 
 .hotel-caribe-hero::after {
@@ -1445,7 +1441,7 @@ textarea,
 .hotel-caribe-rooms {
   position: relative;
   overflow: hidden;
-  padding: 0.8rem 1rem 1rem;
+  padding: 0.15rem 1rem 1rem;
   background: transparent;
 }
 
@@ -1611,8 +1607,13 @@ textarea,
   font-size: 0.98rem;
   font-weight: 850;
   letter-spacing: 0.03em;
+  line-height: 1.18;
+  min-height: 3.2rem;
+  display: grid;
+  place-items: center;
   padding: 0.72rem 1rem;
   text-align: center;
+  text-wrap: balance;
 }
 
 .hotel-caribe-lightbox {
@@ -1621,33 +1622,31 @@ textarea,
   z-index: 80;
   display: grid;
   place-items: center;
-  background: rgba(10, 9, 16, 0.9);
-  padding: 1.2rem;
-  backdrop-filter: blur(10px);
+  background: rgba(10, 9, 16, 0.82);
+  padding: 1rem;
+  backdrop-filter: blur(6px);
 }
 
 .hotel-caribe-lightbox__panel {
   position: relative;
-  width: min(100%, 54rem);
-  max-height: min(88vh, 46rem);
-  background: transparent;
-  padding: 0;
+  width: min(100%, 62rem);
+  max-height: 90vh;
   display: grid;
   place-items: center;
 }
 
 .hotel-caribe-lightbox__close {
   position: absolute;
-  top: -0.2rem;
-  right: -0.1rem;
+  top: 0.45rem;
+  right: 0.45rem;
   z-index: 3;
   display: grid;
   width: 2.4rem;
   height: 2.4rem;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(15, 16, 22, 0.48);
   color: white;
   font-size: 1.5rem;
   line-height: 1;
@@ -1656,12 +1655,12 @@ textarea,
 
 .hotel-caribe-lightbox__media {
   position: relative;
-  width: min(100%, 54rem);
-  height: min(78vh, 42rem);
+  width: min(100%, 62rem);
+  height: min(84vh, 48rem);
   overflow: hidden;
-  border-radius: 24px;
-  background: rgba(0, 0, 0, 0.18);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+  border-radius: 22px;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
 }
 
 .hotel-caribe-lightbox__image {
@@ -1671,7 +1670,7 @@ textarea,
 .hotel-caribe-lightbox__caption {
   position: absolute;
   left: 50%;
-  bottom: -2.1rem;
+  bottom: 0.9rem;
   transform: translateX(-50%);
   margin-top: 0;
   color: white;
@@ -1680,7 +1679,7 @@ textarea,
   text-align: center;
   letter-spacing: 0.04em;
   opacity: 0.92;
-  background: rgba(15, 12, 22, 0.32);
+  background: rgba(15, 12, 22, 0.46);
   border-radius: 999px;
   padding: 0.45rem 0.9rem;
 }
@@ -1876,6 +1875,14 @@ textarea,
 
   .hotel-caribe-hero h1 {
     margin-top: 1.35rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hotel-caribe-space p {
+    font-size: 0.9rem;
+    min-height: 3.45rem;
+    padding: 0.7rem 0.75rem;
   }
 }
 
