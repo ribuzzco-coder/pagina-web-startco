@@ -2,7 +2,6 @@ import Image from "next/image";
 
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
-import { StartcoGalaxy } from "@/components/ui/startco-galaxy";
 import { createPageMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
@@ -13,65 +12,79 @@ const motronikLinks = {
   whatsapp:
     "https://api.whatsapp.com/send/?phone=573014055073&text=Hola%2C+quiero+m%C3%A1s+informaci%C3%B3n+sobre+este+producto&type=phone_number&app_absent=0",
   website: "https://motronikcol.com/",
-  catalog: "https://www.mercadolibre.com.ar/tienda/motronik-repuestos",
+  market: "https://www.mercadolibre.com.ar/tienda/motronik-repuestos",
   facebook: "https://www.facebook.com/motronikmedellin/",
-  maps: "https://www.google.com/maps/search/motronik/@6.2571674,-75.5709437,13z?entry=s&sa=X&ved=1t%3A199789",
+  maps:
+    "https://www.google.com/maps/search/motronik/@6.2571674,-75.5709437,13z?entry=s&sa=X&ved=1t%3A199789",
 } as const;
 
-export const metadata = createPageMetadata({
-  title: "Motronik",
-  description:
-    "Base inicial para la landing de Motronik con la misma estructura general de Startco.",
-  path: "/motronik",
-});
-
-const primaryLinks = [
+const catalogButtons = [
   {
-    title: "Catálogo",
-    description: "Acceso principal a productos o soluciones",
-    accent: "from-[#FF6A45]/22 via-[#FF3B5C]/12 to-transparent",
-    glowTone: "pink",
+    title: "Accesorios",
+    description: "PDF próximamente",
+    href: undefined,
+    featured: false,
+    checker: "left",
+  },
+  {
+    title: "Repuestos",
+    description: "PDF próximamente",
+    href: undefined,
     featured: true,
-    href: motronikLinks.catalog,
+    checker: "center",
   },
   {
-    title: "Sitio web",
-    description: "Volver a la página principal de Motronik",
-    accent: "from-[#FF8C66]/18 via-[#FF4D6D]/10 to-transparent",
-    glowTone: "pink",
+    title: "Mercado Libre",
+    description: "Catálogo activo",
+    href: motronikLinks.market,
     featured: false,
-    href: motronikLinks.website,
-  },
-  {
-    title: "Agenda reunión",
-    description: "Habla directo con el equipo",
-    accent: "from-[#FF7A6B]/20 via-[#FF3B5C]/12 to-transparent",
-    glowTone: "pink",
-    featured: false,
-    href: motronikLinks.whatsapp,
+    checker: "right",
   },
 ] as const;
 
 const supportCards = {
-  first: {
+  map: {
     title: "Cómo llegar",
-    description:
-      "Ubicación base para que la gente encuentre el punto Motronik rápido.",
   },
-  second: {
+  special: {
     title: "Solución especial",
     description:
-      "Bloque reservado para una propuesta o vertical importante de la marca.",
-    logo: motronikLogo,
-    primaryAction: "Conocer más",
-    secondaryAction: "Ver ficha",
+      "Este bloque queda reservado para la ruleta o una dinámica especial de la marca.",
+    primaryAction: "Próximamente",
+    secondaryAction: "En desarrollo",
   },
-  third: {
-    title: "Hablemos de tu necesidad",
+  cta: {
+    title: "Hablemos de tu moto",
     description:
-      "CTA temporal para llevar la conversación a WhatsApp mientras definimos recursos o documentos.",
+      "Mientras terminamos de cargar catálogos y materiales, puedes escribirnos y te guiamos directo por WhatsApp.",
+    action: "Cotiza por WhatsApp",
   },
 } as const;
+
+const ashSparks = [
+  { left: "6%", top: "14%", delay: "0s", duration: "9s", size: "10px" },
+  { left: "18%", top: "28%", delay: "1.4s", duration: "11s", size: "6px" },
+  { left: "29%", top: "10%", delay: "0.6s", duration: "10s", size: "8px" },
+  { left: "42%", top: "20%", delay: "2.1s", duration: "12s", size: "9px" },
+  { left: "58%", top: "12%", delay: "1.1s", duration: "9.5s", size: "7px" },
+  { left: "71%", top: "26%", delay: "2.8s", duration: "10.8s", size: "8px" },
+  { left: "84%", top: "15%", delay: "0.9s", duration: "11.4s", size: "11px" },
+  { left: "92%", top: "34%", delay: "2.4s", duration: "9.8s", size: "6px" },
+] as const;
+
+const neonLines = [
+  { left: "8%", top: "22%", width: "104px", rotate: "-10deg", delay: "0.4s" },
+  { left: "78%", top: "18%", width: "84px", rotate: "12deg", delay: "1.8s" },
+  { left: "14%", top: "72%", width: "92px", rotate: "8deg", delay: "1.1s" },
+  { left: "74%", top: "76%", width: "118px", rotate: "-14deg", delay: "2.5s" },
+] as const;
+
+export const metadata = createPageMetadata({
+  title: "Motronik",
+  description:
+    "Landing inicial de Motronik con catálogo, contacto rápido y ubicación.",
+  path: "/motronik",
+});
 
 function externalProps(href: string) {
   if (!href.startsWith("http")) return {};
@@ -120,59 +133,95 @@ function SocialIcon({
   );
 }
 
-function PrimaryLink({
+function CatalogButton({
   title,
   description,
-  accent,
-  glowTone,
-  featured,
   href,
-}: (typeof primaryLinks)[number]) {
-  const cardClassName = cn(
-    "group relative overflow-hidden rounded-[24px] px-5 py-5 text-center transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:bg-[#171B2A] hover:shadow-[0_18px_36px_rgba(0,0,0,0.22)]",
-    featured
-      ? "border-[#FF3B5C]/40 bg-[linear-gradient(180deg,rgba(40,20,28,0.96),rgba(26,16,20,0.98))] shadow-[0_0_0_1px_rgba(255,59,92,0.12),0_0_26px_rgba(255,59,92,0.18)] hover:border-[#ff8c98]/52 hover:shadow-[0_0_0_1px_rgba(255,59,92,0.18),0_0_32px_rgba(255,59,92,0.24)]"
-      : "border-white/10 bg-[#141724] hover:border-white/18",
+  featured,
+  checker,
+}: (typeof catalogButtons)[number]) {
+  const isActive = Boolean(href);
+
+  const content = (
+    <Card
+      glowTone="pink"
+      className={cn(
+        "motronik-catalog-button group relative min-h-[132px] rounded-[24px] border px-4 py-5 text-center transition duration-300",
+        featured
+          ? "border-[#ff5c48]/46 bg-[linear-gradient(180deg,rgba(42,16,16,0.97),rgba(23,11,11,0.98))]"
+          : "border-white/10 bg-[linear-gradient(180deg,rgba(19,21,30,0.96),rgba(11,13,20,0.98))]",
+        !isActive && "motronik-catalog-button--disabled",
+      )}
+    >
+      <span className={`motronik-checker motronik-checker--${checker}`} />
+      <span className="motronik-neon-edge" />
+      <div className="relative z-10 flex h-full flex-col items-center justify-center gap-2">
+        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[#F5F7FA]">
+          {title}
+        </p>
+        <p className="text-xs leading-relaxed text-[#A8AFBE]">{description}</p>
+      </div>
+    </Card>
   );
+
+  if (!href) {
+    return <div className="block w-full">{content}</div>;
+  }
 
   return (
     <a href={href} className="block w-full" {...externalProps(href)}>
-      <Card glowTone={glowTone} className={cardClassName}>
-        <div
-          className={cn(
-            "pointer-events-none absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 group-hover:opacity-100",
-            accent,
-          )}
-        />
-        <div className="relative flex min-h-[58px] items-center justify-center text-center">
-          <div className="relative z-10 min-w-0">
-            <p className="text-base font-semibold text-[#F5F7FA]">{title}</p>
-            <p className="mt-1 text-sm text-[#98A0B3]">{description}</p>
-          </div>
-        </div>
-      </Card>
+      {content}
     </a>
   );
 }
 
 export default function MotronikPage() {
   return (
-    <section className="relative cv-auto -mt-[76px] min-h-screen">
-      <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,59,92,0.16),transparent_34%),linear-gradient(180deg,#0b0b10,#12131c_46%,#0b0b10)]" />
-        <StartcoGalaxy className="opacity-90" />
+    <section className="motronik-page relative -mt-[76px] min-h-screen overflow-hidden">
+      <div className="motronik-page__background" aria-hidden="true">
+        <div className="motronik-page__backdrop" />
+        <div className="motronik-page__ashfield">
+          {ashSparks.map((spark) => (
+            <span
+              key={`${spark.left}-${spark.top}`}
+              className="motronik-ash"
+              style={{
+                left: spark.left,
+                top: spark.top,
+                animationDelay: spark.delay,
+                animationDuration: spark.duration,
+                width: spark.size,
+                height: spark.size,
+              }}
+            />
+          ))}
+        </div>
+        <div className="motronik-page__neon-lines">
+          {neonLines.map((line) => (
+            <span
+              key={`${line.left}-${line.top}`}
+              className="motronik-neon-line"
+              style={{
+                left: line.left,
+                top: line.top,
+                width: line.width,
+                transform: `rotate(${line.rotate})`,
+                animationDelay: line.delay,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <Container className="relative z-10 flex min-h-screen max-w-3xl flex-col items-center justify-center py-24 sm:py-32">
-        <div className="relative w-full overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(20,22,34,0.72),rgba(11,11,16,0.64))] px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:rounded-[36px] sm:px-10 sm:py-10">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,59,92,0.4),transparent)]" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,59,92,0.1),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(255,124,77,0.08),transparent_26%)]" />
+        <div className="motronik-shell relative w-full overflow-hidden rounded-[32px] border border-white/10 px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:rounded-[36px] sm:px-10 sm:py-10">
+          <div className="motronik-shell__flare" />
 
           <div className="relative flex flex-col items-center text-center">
-            <div className="flex h-32 w-32 items-center justify-center rounded-full border border-white/22 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(245,245,247,0.9))] shadow-[0_16px_32px_rgba(0,0,0,0.22)] sm:h-36 sm:w-36">
+            <div className="motronik-logo-ring flex h-32 w-32 items-center justify-center rounded-full border shadow-[0_16px_32px_rgba(0,0,0,0.24)] sm:h-36 sm:w-36">
               <Image
                 src={motronikLogo}
-                alt="Logo Motronik"
+                alt="Logo MOTRONIK"
                 width={112}
                 height={112}
                 className="h-24 w-24 object-contain sm:h-28 sm:w-28"
@@ -180,21 +229,20 @@ export default function MotronikPage() {
               />
             </div>
 
-            <h1 className="mt-6 text-4xl font-normal tracking-tight text-[#F5F7FA] sm:text-5xl [font-family:var(--font-zen-dots)]">
-              Motronik
+            <h1 className="mt-6 text-4xl font-normal tracking-[0.08em] text-[#F5F7FA] sm:text-5xl [font-family:var(--font-zen-dots)]">
+              MOTRONIK
             </h1>
 
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
-              Base inicial de la landing Motronik. Conserva el orden y la
-              estructura de Startco para luego ajustar identidad, textos,
-              accesos y visuales propios.
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#D0D4DE] sm:text-base">
+              En Motronik ofrecemos accesorios, lujos y repuestos de alta
+              calidad para mejorar el rendimiento y la estética de tu moto.
             </p>
 
             <div className="mt-5 flex items-center justify-center gap-3">
               <a
                 href={motronikLinks.instagram}
                 aria-label="Instagram Motronik"
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white/5 text-white transition duration-300 hover:-translate-y-[1px] hover:border-[#ff8c98]/45 hover:bg-[#FF3B5C]/10 sm:h-14 sm:w-14"
+                className="motronik-social"
                 {...externalProps(motronikLinks.instagram)}
               >
                 <SocialIcon name="instagram" />
@@ -202,7 +250,7 @@ export default function MotronikPage() {
               <a
                 href={motronikLinks.whatsapp}
                 aria-label="WhatsApp Motronik"
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white/5 text-white transition duration-300 hover:-translate-y-[1px] hover:border-[#ff8c98]/45 hover:bg-[#FF3B5C]/10 sm:h-14 sm:w-14"
+                className="motronik-social"
                 {...externalProps(motronikLinks.whatsapp)}
               >
                 <SocialIcon name="whatsapp" />
@@ -210,7 +258,7 @@ export default function MotronikPage() {
               <a
                 href={motronikLinks.facebook}
                 aria-label="Facebook Motronik"
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white/5 text-white transition duration-300 hover:-translate-y-[1px] hover:border-[#ff8c98]/45 hover:bg-[#FF3B5C]/10 sm:h-14 sm:w-14"
+                className="motronik-social"
                 {...externalProps(motronikLinks.facebook)}
               >
                 <SocialIcon name="facebook" />
@@ -218,21 +266,20 @@ export default function MotronikPage() {
             </div>
           </div>
 
-          <div className="relative mx-auto mt-10 grid max-w-xl gap-4">
-            {primaryLinks.map((link) => (
-              <PrimaryLink key={link.title} {...link} />
+          <div className="relative mx-auto mt-10 grid max-w-xl gap-4 sm:grid-cols-3">
+            {catalogButtons.map((link) => (
+              <CatalogButton key={link.title} {...link} />
             ))}
           </div>
 
           <div className="relative mx-auto mt-8 grid max-w-xl gap-4 md:grid-cols-2">
             <Card
               glowTone="pink"
-              className="group relative h-full min-h-[280px] overflow-hidden rounded-[28px] border-[#FF3B5C]/20 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] px-5 py-6 text-center sm:px-6"
+              className="motronik-card motronik-card--map group relative h-full min-h-[300px] overflow-hidden rounded-[28px] border px-5 py-6 text-center sm:px-6"
             >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(255,59,92,0.08),transparent_34%)]" />
               <div className="relative z-10 mx-auto max-w-[78%]">
                 <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
-                  {supportCards.first.title}
+                  {supportCards.map.title}
                 </p>
               </div>
 
@@ -242,11 +289,11 @@ export default function MotronikPage() {
                   src="https://www.google.com/maps?q=motronik%20medellin&output=embed"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="h-[250px] w-full border-0 sm:h-[290px]"
+                  className="h-[270px] w-full border-0 sm:h-[320px]"
                 />
                 <a
                   href={motronikLinks.maps}
-                  className="absolute bottom-3 right-3 rounded-full border border-white/18 bg-[rgba(16,19,28,0.72)] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md transition duration-300 hover:border-[#ff8c98]/45 hover:bg-[rgba(255,59,92,0.18)]"
+                  className="motronik-map-action absolute bottom-3 right-3 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white transition duration-300"
                   {...externalProps(motronikLinks.maps)}
                 >
                   Abrir mapa
@@ -256,28 +303,27 @@ export default function MotronikPage() {
 
             <Card
               glowTone="pink"
-              className="group relative flex h-full min-h-[280px] flex-col rounded-[28px] border-[#FF6A45]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 text-center"
+              className="motronik-card motronik-card--special group relative flex h-full min-h-[300px] flex-col rounded-[28px] border px-6 py-6 text-center"
             >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,106,69,0.12),transparent_26%)]" />
               <div className="relative flex flex-1 flex-col items-center justify-between gap-6">
                 <div>
                   <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
-                    {supportCards.second.title}
+                    {supportCards.special.title}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                    {supportCards.second.description}
+                    {supportCards.special.description}
                   </p>
                 </div>
 
                 <div className="flex flex-col items-center gap-5">
-                  <div className="relative">
-                    <div className="absolute inset-0 rounded-full bg-[#FF5A45]/20 blur-xl" />
+                  <div className="motronik-special-mark relative">
+                    <div className="motronik-special-mark__glow" />
                     <Image
-                      src={supportCards.second.logo}
+                      src={motronikLogo}
                       alt="Marca base Motronik"
-                      width={100}
-                      height={100}
-                      className="relative h-20 w-20 object-contain drop-shadow-[0_0_18px_rgba(255,90,69,0.16)] sm:h-24 sm:w-24"
+                      width={110}
+                      height={110}
+                      className="relative h-20 w-20 object-contain sm:h-24 sm:w-24"
                     />
                   </div>
 
@@ -286,17 +332,17 @@ export default function MotronikPage() {
                       type="button"
                       disabled
                       aria-disabled="true"
-                      className="cursor-default rounded-full border border-[#FF6A45]/22 bg-[#FF6A45]/8 px-4 py-2 text-[12px] font-semibold text-[#FFB09E]"
+                      className="motronik-pill motronik-pill--red cursor-default"
                     >
-                      {supportCards.second.primaryAction}
+                      {supportCards.special.primaryAction}
                     </button>
                     <button
                       type="button"
                       disabled
                       aria-disabled="true"
-                      className="cursor-default rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[12px] font-semibold text-white"
+                      className="motronik-pill cursor-default"
                     >
-                      {supportCards.second.secondaryAction}
+                      {supportCards.special.secondaryAction}
                     </button>
                   </div>
                 </div>
@@ -305,24 +351,21 @@ export default function MotronikPage() {
           </div>
 
           <div className="relative mx-auto mt-4 block max-w-xl">
-            <Card
-              glowTone="pink"
-              className="rounded-[26px] border-dashed border-white/10 bg-[#10131C]/72 px-6 py-6 text-center md:min-h-[132px]"
-            >
+            <Card className="motronik-card motronik-card--cta rounded-[26px] border-dashed px-6 py-6 text-center md:min-h-[132px]">
               <div className="flex flex-col items-center justify-center gap-3">
                 <p className="text-base font-semibold text-[#F5F7FA]">
-                  {supportCards.third.title}
+                  {supportCards.cta.title}
                 </p>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-[#98A0B3]">
-                {supportCards.third.description}
+                {supportCards.cta.description}
               </p>
               <a
                 href={motronikLinks.whatsapp}
-                className="mt-4 inline-flex rounded-full border border-[#FF3B5C]/32 bg-[#FF3B5C]/10 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#FFB0BD] transition duration-300 hover:-translate-y-[1px] hover:border-[#ff8c98]/48 hover:bg-[#FF3B5C]/18"
+                className="motronik-cta-link mt-4 inline-flex rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] transition duration-300"
                 {...externalProps(motronikLinks.whatsapp)}
               >
-                Escríbenos por WhatsApp
+                {supportCards.cta.action}
               </a>
             </Card>
           </div>

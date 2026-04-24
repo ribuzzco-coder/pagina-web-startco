@@ -112,13 +112,10 @@ export function HotelCaribeMediaGrid({
           >
             <button
               type="button"
-              className="hotel-caribe-lightbox__close"
+              className="hotel-caribe-lightbox__media"
               onClick={() => setSelectedIndex(null)}
-              aria-label="Cerrar imagen ampliada"
+              aria-label={`Cerrar imagen ampliada de ${selectedItem.name}`}
             >
-              &times;
-            </button>
-            <div className="hotel-caribe-lightbox__media">
               <Image
                 src={selectedItem.image}
                 alt={selectedItem.name}
@@ -127,7 +124,7 @@ export function HotelCaribeMediaGrid({
                 className="hotel-caribe-lightbox__image"
                 priority
               />
-            </div>
+            </button>
           </div>
         </div>,
             document.body,
