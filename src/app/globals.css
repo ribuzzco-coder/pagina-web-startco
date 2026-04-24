@@ -1926,12 +1926,11 @@ textarea,
   background:
     radial-gradient(circle at 18% 18%, rgba(255, 83, 60, 0.24), transparent 24%),
     radial-gradient(circle at 82% 12%, rgba(255, 60, 60, 0.16), transparent 24%),
-    radial-gradient(circle at 82% 78%, rgba(37, 184, 255, 0.12), transparent 26%),
     linear-gradient(180deg, rgba(10, 12, 18, 0.92), rgba(5, 7, 11, 0.98));
 }
 
 .motronik-page__ashfield,
-.motronik-page__neon-lines {
+.motronik-page__smoke {
   position: absolute;
   inset: 0;
 }
@@ -1949,16 +1948,13 @@ textarea,
   animation: motronik-ash-drift linear infinite;
 }
 
-.motronik-neon-line {
+.motronik-smoke {
   position: absolute;
-  height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(37, 184, 255, 0), rgba(37, 184, 255, 0.95), rgba(126, 231, 255, 0));
-  box-shadow:
-    0 0 18px rgba(37, 184, 255, 0.52),
-    0 0 32px rgba(37, 184, 255, 0.24);
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12), rgba(180, 186, 198, 0.08) 38%, rgba(40, 42, 50, 0.02) 72%, transparent 100%);
+  filter: blur(18px);
   opacity: 0;
-  animation: motronik-neon-line 5.8s ease-in-out infinite;
+  animation: motronik-smoke-drift 12s ease-in-out infinite;
 }
 
 .motronik-shell {
@@ -1986,8 +1982,8 @@ textarea,
 
 .motronik-social {
   display: flex;
-  height: 3.45rem;
-  width: 3.45rem;
+  height: 3.9rem;
+  width: 3.9rem;
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -2007,8 +2003,7 @@ textarea,
   transform: translateY(-2px) scale(1.04);
   border-color: rgba(255, 77, 56, 0.4);
   box-shadow:
-    0 0 24px rgba(255, 77, 56, 0.18),
-    0 0 18px rgba(37, 184, 255, 0.12);
+    0 0 24px rgba(255, 77, 56, 0.18);
 }
 
 .motronik-catalog-button {
@@ -2019,42 +2014,21 @@ textarea,
   opacity: 0.92;
 }
 
-.motronik-checker {
-  position: absolute;
-  top: 0;
-  height: 8px;
-  width: 44%;
-  border-radius: 999px;
-  opacity: 0.92;
-  background:
-    linear-gradient(90deg, #fff 0 12.5%, #101217 12.5% 25%, #fff 25% 37.5%, #101217 37.5% 50%, #fff 50% 62.5%, #101217 62.5% 75%, #fff 75% 87.5%, #101217 87.5% 100%);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.12);
-}
-
-.motronik-checker--left {
-  left: 0.8rem;
-}
-
-.motronik-checker--center {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.motronik-checker--right {
-  right: 0.8rem;
-}
-
 .motronik-neon-edge {
   position: absolute;
   inset: auto 1rem 0.9rem;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(37, 184, 255, 0.9), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 92, 72, 0.9), transparent);
   box-shadow:
-    0 0 12px rgba(37, 184, 255, 0.52),
-    0 0 24px rgba(37, 184, 255, 0.24);
+    0 0 12px rgba(255, 92, 72, 0.48),
+    0 0 24px rgba(255, 92, 72, 0.18);
   opacity: 0.62;
   animation: motronik-edge-pulse 4.2s ease-in-out infinite;
+}
+
+.motronik-site-link:hover .glow-card {
+  transform: translateY(-1px);
 }
 
 .motronik-card {
@@ -2152,16 +2126,17 @@ textarea,
   }
 }
 
-@keyframes motronik-neon-line {
+@keyframes motronik-smoke-drift {
   0%,
-  70%,
   100% {
     opacity: 0;
+    transform: translate3d(0, 12px, 0) scale(0.88);
   }
 
-  18%,
-  28% {
-    opacity: 0.82;
+  25%,
+  72% {
+    opacity: 0.28;
+    transform: translate3d(22px, -18px, 0) scale(1.02);
   }
 }
 
@@ -2178,12 +2153,8 @@ textarea,
 
 @media (max-width: 640px) {
   .motronik-social {
-    height: 3.15rem;
-    width: 3.15rem;
-  }
-
-  .motronik-checker {
-    width: 52%;
+    height: 3.45rem;
+    width: 3.45rem;
   }
 }
 

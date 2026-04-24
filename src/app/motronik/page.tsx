@@ -24,21 +24,18 @@ const catalogButtons = [
     description: "PDF próximamente",
     href: undefined,
     featured: false,
-    checker: "left",
   },
   {
     title: "Repuestos",
     description: "PDF próximamente",
     href: undefined,
     featured: true,
-    checker: "center",
   },
   {
     title: "Mercado Libre",
     description: "Catálogo activo",
     href: motronikLinks.market,
     featured: false,
-    checker: "right",
   },
 ] as const;
 
@@ -72,11 +69,11 @@ const ashSparks = [
   { left: "92%", top: "34%", delay: "2.4s", duration: "9.8s", size: "6px" },
 ] as const;
 
-const neonLines = [
-  { left: "8%", top: "22%", width: "104px", rotate: "-10deg", delay: "0.4s" },
-  { left: "78%", top: "18%", width: "84px", rotate: "12deg", delay: "1.8s" },
-  { left: "14%", top: "72%", width: "92px", rotate: "8deg", delay: "1.1s" },
-  { left: "74%", top: "76%", width: "118px", rotate: "-14deg", delay: "2.5s" },
+const smokeClouds = [
+  { left: "9%", top: "16%", width: "220px", height: "120px", delay: "0s" },
+  { left: "68%", top: "14%", width: "260px", height: "140px", delay: "2s" },
+  { left: "18%", top: "72%", width: "240px", height: "128px", delay: "1.2s" },
+  { left: "72%", top: "76%", width: "210px", height: "116px", delay: "3.1s" },
 ] as const;
 
 export const metadata = createPageMetadata({
@@ -138,7 +135,6 @@ function CatalogButton({
   description,
   href,
   featured,
-  checker,
 }: (typeof catalogButtons)[number]) {
   const isActive = Boolean(href);
 
@@ -153,7 +149,6 @@ function CatalogButton({
         !isActive && "motronik-catalog-button--disabled",
       )}
     >
-      <span className={`motronik-checker motronik-checker--${checker}`} />
       <span className="motronik-neon-edge" />
       <div className="relative z-10 flex h-full flex-col items-center justify-center gap-2">
         <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[#F5F7FA]">
@@ -196,17 +191,17 @@ export default function MotronikPage() {
             />
           ))}
         </div>
-        <div className="motronik-page__neon-lines">
-          {neonLines.map((line) => (
+        <div className="motronik-page__smoke">
+          {smokeClouds.map((cloud) => (
             <span
-              key={`${line.left}-${line.top}`}
-              className="motronik-neon-line"
+              key={`${cloud.left}-${cloud.top}`}
+              className="motronik-smoke"
               style={{
-                left: line.left,
-                top: line.top,
-                width: line.width,
-                transform: `rotate(${line.rotate})`,
-                animationDelay: line.delay,
+                left: cloud.left,
+                top: cloud.top,
+                width: cloud.width,
+                height: cloud.height,
+                animationDelay: cloud.delay,
               }}
             />
           ))}
@@ -270,6 +265,27 @@ export default function MotronikPage() {
             {catalogButtons.map((link) => (
               <CatalogButton key={link.title} {...link} />
             ))}
+          </div>
+
+          <div className="relative mx-auto mt-4 max-w-xl">
+            <a
+              href={motronikLinks.website}
+              className="motronik-site-link block w-full"
+              {...externalProps(motronikLinks.website)}
+            >
+              <Card
+                glowTone="pink"
+                className="rounded-[24px] border border-[#ff5c48]/26 bg-[linear-gradient(180deg,rgba(35,16,18,0.96),rgba(18,10,12,0.98))] px-5 py-5 text-center transition duration-300 hover:-translate-y-[1px]"
+              >
+                <span className="motronik-neon-edge" />
+                <div className="relative z-10">
+                  <p className="text-base font-semibold text-[#F5F7FA]">Sitio web</p>
+                  <p className="mt-1 text-sm text-[#A8AFBE]">
+                    Conoce la página principal de Motronik
+                  </p>
+                </div>
+              </Card>
+            </a>
           </div>
 
           <div className="relative mx-auto mt-8 grid max-w-xl gap-4 md:grid-cols-2">
