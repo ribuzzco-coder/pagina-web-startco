@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import type { TouchEvent } from "react";
 import { useCallback, useEffect, useState } from "react";
 
 import { SITE_CONFIG } from "@/lib/site-config";
@@ -21,7 +22,7 @@ const landingPreviews: LandingPreview[] = [
   },
   {
     title: "Hotel Caribe Plaza",
-    status: "Espacio vac\u00edo",
+    status: "Tu Dise\u00f1o",
     href: "/hotelcaribeplaza",
     kind: "hotel",
   },
@@ -86,7 +87,9 @@ function StartcoPreview() {
           />
         </div>
         <p className="landing-preview__brand">RiBuzz</p>
-        <p className="landing-preview__tagline">Conecta, explora y crece con claridad.</p>
+        <p className="landing-preview__tagline">
+          Conecta, explora y crece con claridad.
+        </p>
         <div className="landing-preview__links">
           <span>Instagram</span>
           <span>WhatsApp</span>
@@ -120,15 +123,17 @@ function HotelCaribePreview() {
         <p className="landing-preview__hotel-city">Barranquilla</p>
         <span className="landing-preview__hotel-rnt">RNT 1167724</span>
         <div className="landing-preview__hotel-socials">
-          <span>Instagram</span>
-          <span>Facebook</span>
+          <span>IG</span>
+          <span>FB</span>
         </div>
         <div className="landing-preview__hotel-actions">
-          <span>Contáctanos</span>
+          <span>Cont\u00e1ctanos</span>
           <span>Reserva</span>
-          <span>Página web</span>
+          <span>P\u00e1gina web</span>
+          <span>C\u00f3mo llegar</span>
         </div>
         <div className="landing-preview__hotel-room-grid">
+          <span />
           <span />
           <span />
           <span />
@@ -191,7 +196,8 @@ function PreviewContent({ item }: { item: LandingPreview }) {
 }
 
 function getSlot(index: number, activeIndex: number) {
-  const offset = (index - activeIndex + landingPreviews.length) % landingPreviews.length;
+  const offset =
+    (index - activeIndex + landingPreviews.length) % landingPreviews.length;
   const lastOffset = landingPreviews.length - 1;
   const penultimateOffset = landingPreviews.length - 2;
 
@@ -225,13 +231,16 @@ function getSlot(index: number, activeIndex: number) {
 export function LandingCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const goNext = useCallback(() => {
     setActiveIndex((current) => (current + 1) % landingPreviews.length);
   }, []);
 
   const goPrevious = useCallback(() => {
-    setActiveIndex((current) => (current - 1 + landingPreviews.length) % landingPreviews.length);
+    setActiveIndex(
+      (current) => (current - 1 + landingPreviews.length) % landingPreviews.length,
+    );
   }, []);
 
   useEffect(() => {
@@ -243,12 +252,40 @@ export function LandingCarousel() {
     return () => window.clearInterval(interval);
   }, [goNext, isPaused]);
 
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(event.touches[0]?.clientX ?? null);
+    setIsPaused(true);
+  };
+
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    if (touchStartX === null) {
+      setIsPaused(false);
+      return;
+    }
+
+    const endX = event.changedTouches[0]?.clientX ?? touchStartX;
+    const deltaX = endX - touchStartX;
+
+    if (Math.abs(deltaX) > 40) {
+      if (deltaX < 0) {
+        goNext();
+      } else {
+        goPrevious();
+      }
+    }
+
+    setTouchStartX(null);
+    setIsPaused(false);
+  };
+
   return (
     <div
       className="landing-carousel mt-14"
       aria-label="Ejemplos de landings"
       onPointerEnter={() => setIsPaused(true)}
       onPointerLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       <button
         type="button"
