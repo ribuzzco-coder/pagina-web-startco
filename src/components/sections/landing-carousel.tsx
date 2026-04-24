@@ -128,8 +128,10 @@ function HotelCaribePreview() {
         </div>
         <div className="landing-preview__hotel-actions">
           <span>Cont\u00e1ctanos</span>
-          <span>Reserva</span>
-          <span>P\u00e1gina web</span>
+          <span>Haz tu reserva</span>
+          <span>Página web</span>
+          <span>Califícanos</span>
+          <span>Recepción</span>
           <span>C\u00f3mo llegar</span>
         </div>
         <div className="landing-preview__hotel-room-grid">

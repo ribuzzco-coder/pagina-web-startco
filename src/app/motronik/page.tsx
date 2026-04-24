@@ -27,14 +27,6 @@ export const metadata = createPageMetadata({
 
 const primaryLinks = [
   {
-    title: "Mercado Libre",
-    description: "Explora el catálogo disponible",
-    accent: "from-[#FFE16B]/22 via-[#FFB13B]/12 to-transparent",
-    glowTone: "green",
-    featured: false,
-    href: motronikLinks.catalog,
-  },
-  {
     title: "Catálogo",
     description: "Acceso principal a productos o soluciones",
     accent: "from-[#FF6A45]/22 via-[#FF3B5C]/12 to-transparent",
@@ -177,7 +169,7 @@ export default function MotronikPage() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,59,92,0.1),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(255,124,77,0.08),transparent_26%)]" />
 
           <div className="relative flex flex-col items-center text-center">
-            <div className="flex h-32 w-32 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_16px_32px_rgba(0,0,0,0.22)] sm:h-36 sm:w-36">
+            <div className="flex h-32 w-32 items-center justify-center rounded-full border border-white/22 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(245,245,247,0.9))] shadow-[0_16px_32px_rgba(0,0,0,0.22)] sm:h-36 sm:w-36">
               <Image
                 src={motronikLogo}
                 alt="Logo Motronik"
@@ -202,7 +194,7 @@ export default function MotronikPage() {
               <a
                 href={motronikLinks.instagram}
                 aria-label="Instagram Motronik"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/5 text-white transition duration-300 hover:-translate-y-[1px] hover:border-[#ff8c98]/45 hover:bg-[#FF3B5C]/10"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white/5 text-white transition duration-300 hover:-translate-y-[1px] hover:border-[#ff8c98]/45 hover:bg-[#FF3B5C]/10 sm:h-14 sm:w-14"
                 {...externalProps(motronikLinks.instagram)}
               >
                 <SocialIcon name="instagram" />
@@ -210,7 +202,7 @@ export default function MotronikPage() {
               <a
                 href={motronikLinks.whatsapp}
                 aria-label="WhatsApp Motronik"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/5 text-white transition duration-300 hover:-translate-y-[1px] hover:border-[#ff8c98]/45 hover:bg-[#FF3B5C]/10"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white/5 text-white transition duration-300 hover:-translate-y-[1px] hover:border-[#ff8c98]/45 hover:bg-[#FF3B5C]/10 sm:h-14 sm:w-14"
                 {...externalProps(motronikLinks.whatsapp)}
               >
                 <SocialIcon name="whatsapp" />
@@ -218,7 +210,7 @@ export default function MotronikPage() {
               <a
                 href={motronikLinks.facebook}
                 aria-label="Facebook Motronik"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/5 text-white transition duration-300 hover:-translate-y-[1px] hover:border-[#ff8c98]/45 hover:bg-[#FF3B5C]/10"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white/5 text-white transition duration-300 hover:-translate-y-[1px] hover:border-[#ff8c98]/45 hover:bg-[#FF3B5C]/10 sm:h-14 sm:w-14"
                 {...externalProps(motronikLinks.facebook)}
               >
                 <SocialIcon name="facebook" />
@@ -242,9 +234,6 @@ export default function MotronikPage() {
                 <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
                   {supportCards.first.title}
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                  {supportCards.first.description}
-                </p>
               </div>
 
               <div className="relative z-10 mt-5 overflow-hidden rounded-[20px] border border-white/10 bg-black/20 shadow-[0_18px_34px_rgba(0,0,0,0.18)]">
@@ -253,7 +242,7 @@ export default function MotronikPage() {
                   src="https://www.google.com/maps?q=motronik%20medellin&output=embed"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="h-[190px] w-full border-0"
+                  className="h-[250px] w-full border-0 sm:h-[290px]"
                 />
                 <a
                   href={motronikLinks.maps}
