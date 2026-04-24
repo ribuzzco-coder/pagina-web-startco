@@ -95,13 +95,13 @@ export function InteractiveRobotSpline({
           style={{
             transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
           }}
-        >
-          <div
-            className="pointer-events-none absolute inset-x-[12%] bottom-[10%] h-10 rounded-full bg-[radial-gradient(circle,rgba(0,0,0,0.4),transparent_72%)] blur-2xl"
-            style={{
-              transform: `translate3d(${tilt.translateX * 0.65}px, ${12 + tilt.translateY * 0.2}px, -80px) scale(${1 + Math.abs(tilt.rotateY) * 0.006})`,
-            }}
-          />
+          >
+            <div
+              className="pointer-events-none absolute inset-x-[12%] bottom-[10%] h-10 rounded-full bg-[radial-gradient(circle,rgba(0,0,0,0.4),transparent_72%)] blur-2xl"
+              style={{
+                transform: `translate3d(${tilt.translateX * 0.65}px, ${12 + tilt.translateY * 0.2}px, -80px) scale(${1 + Math.abs(tilt.rotateY) * 0.006})`,
+              }}
+            />
 
           <div
             className="pointer-events-none absolute inset-0 rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02))] opacity-70 blur-[0.2px]"
@@ -109,6 +109,38 @@ export function InteractiveRobotSpline({
               transform: `translate3d(${tilt.translateX * 0.2}px, ${tilt.translateY * 0.14}px, 30px)`,
             }}
           />
+
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 w-[min(90vw,42rem)] max-w-[42rem] -translate-x-1/2 -translate-y-1/2 opacity-28 blur-xl mix-blend-screen"
+            style={{
+              transform: `translate3d(calc(-50% + ${tilt.translateX * 0.15}px), calc(-50% + ${tilt.translateY * 0.08}px), -30px) scale(1.02)`,
+            }}
+          >
+            <Image
+              src={scene}
+              alt=""
+              width={1500}
+              height={1500}
+              aria-hidden="true"
+              className="h-auto w-full object-contain [filter:brightness(0.72)_contrast(1.25)_drop-shadow(0_18px_30px_rgba(0,0,0,0.24))]"
+            />
+          </div>
+
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 w-[min(90vw,42rem)] max-w-[42rem] -translate-x-1/2 -translate-y-1/2 opacity-40 blur-2xl"
+            style={{
+              transform: `translate3d(calc(-50% + ${tilt.translateX * -0.22}px), calc(-50% + ${tilt.translateY * 0.18}px), -60px) scale(1.05)`,
+            }}
+          >
+            <Image
+              src={scene}
+              alt=""
+              width={1500}
+              height={1500}
+              aria-hidden="true"
+              className="h-auto w-full object-contain [filter:brightness(0)_saturate(100%)_drop-shadow(0_28px_44px_rgba(0,0,0,0.42))]"
+            />
+          </div>
 
           <div
             className="relative mx-auto w-[min(90vw,42rem)] max-w-[42rem] transition-transform duration-300 ease-out"
@@ -123,6 +155,22 @@ export function InteractiveRobotSpline({
               height={1500}
               priority
               className="h-auto w-full object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.26)] select-none"
+            />
+          </div>
+
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 w-[min(90vw,42rem)] max-w-[42rem] -translate-x-1/2 -translate-y-1/2 opacity-30 mix-blend-screen"
+            style={{
+              transform: `translate3d(calc(-50% + ${tilt.translateX * 0.42}px), calc(-50% + ${tilt.translateY * -0.16}px), 110px) scale(1.006)`,
+            }}
+          >
+            <Image
+              src={scene}
+              alt=""
+              width={1500}
+              height={1500}
+              aria-hidden="true"
+              className="h-auto w-full object-contain [filter:brightness(1.18)_contrast(1.08)]"
             />
           </div>
 

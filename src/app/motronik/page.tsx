@@ -7,7 +7,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
 const motronikLogo = "/images/motronik/logo.webp";
-const motronikElement = "/images/motronik/element.png";
+const motronikElement = "/images/motronik/element-cutout.png";
 
 const motronikLinks = {
   instagram: "https://www.instagram.com/motronikmedellin/",
