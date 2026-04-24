@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { createPortal } from "react-dom";
 import { useEffect, useState } from "react";
 
 type MediaItem = {
@@ -19,6 +20,11 @@ export function HotelCaribeMediaGrid({
   type,
 }: HotelCaribeMediaGridProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (selectedIndex === null) return;
@@ -91,7 +97,8 @@ export function HotelCaribeMediaGrid({
         })}
       </div>
 
-      {selectedItem ? (
+      {mounted && selectedItem
+        ? createPortal(
         <div
           className="hotel-caribe-lightbox"
           role="dialog"
@@ -99,7 +106,10 @@ export function HotelCaribeMediaGrid({
           aria-label={selectedItem.name}
           onClick={() => setSelectedIndex(null)}
         >
-          <div className="hotel-caribe-lightbox__panel">
+          <div
+            className="hotel-caribe-lightbox__panel"
+            onClick={(event) => event.stopPropagation()}
+          >
             <button
               type="button"
               className="hotel-caribe-lightbox__close"
@@ -119,8 +129,10 @@ export function HotelCaribeMediaGrid({
               />
             </div>
           </div>
-        </div>
-      ) : null}
+        </div>,
+            document.body,
+          )
+        : null}
     </>
   );
 }
