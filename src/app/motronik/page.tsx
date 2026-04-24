@@ -31,10 +31,11 @@ const primaryLinks = [
     description: "Explora el catálogo disponible",
     accent: "from-[#FFE16B]/22 via-[#FFB13B]/12 to-transparent",
     glowTone: "green",
+    featured: false,
     href: motronikLinks.catalog,
   },
   {
-    title: "Cat\u00e1logo",
+    title: "Catálogo",
     description: "Acceso principal a productos o soluciones",
     accent: "from-[#FF6A45]/22 via-[#FF3B5C]/12 to-transparent",
     glowTone: "pink",
@@ -43,38 +44,40 @@ const primaryLinks = [
   },
   {
     title: "Sitio web",
-    description: "Volver a la p\u00e1gina principal de Motronik",
+    description: "Volver a la página principal de Motronik",
     accent: "from-[#FF8C66]/18 via-[#FF4D6D]/10 to-transparent",
     glowTone: "pink",
+    featured: false,
     href: motronikLinks.website,
   },
   {
-    title: "Agenda reuni\u00f3n",
+    title: "Agenda reunión",
     description: "Habla directo con el equipo",
     accent: "from-[#FF7A6B]/20 via-[#FF3B5C]/12 to-transparent",
     glowTone: "pink",
+    featured: false,
     href: motronikLinks.whatsapp,
   },
 ] as const;
 
 const supportCards = {
   first: {
-    title: "C\u00f3mo llegar",
+    title: "Cómo llegar",
     description:
-      "Ubicaci\u00f3n base para que la gente encuentre el punto Motronik r\u00e1pido.",
+      "Ubicación base para que la gente encuentre el punto Motronik rápido.",
   },
   second: {
-    title: "Soluci\u00f3n especial",
+    title: "Solución especial",
     description:
       "Bloque reservado para una propuesta o vertical importante de la marca.",
     logo: motronikLogo,
-    primaryAction: "Conocer m\u00e1s",
+    primaryAction: "Conocer más",
     secondaryAction: "Ver ficha",
   },
   third: {
     title: "Hablemos de tu necesidad",
     description:
-      "CTA temporal para llevar la conversaci\u00f3n a WhatsApp mientras definimos recursos o documentos.",
+      "CTA temporal para llevar la conversación a WhatsApp mientras definimos recursos o documentos.",
   },
 } as const;
 
@@ -87,7 +90,11 @@ function externalProps(href: string) {
   };
 }
 
-function SocialIcon({ name }: { name: "instagram" | "whatsapp" | "facebook" }) {
+function SocialIcon({
+  name,
+}: {
+  name: "instagram" | "whatsapp" | "facebook";
+}) {
   if (name === "facebook") {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
@@ -106,7 +113,14 @@ function SocialIcon({ name }: { name: "instagram" | "whatsapp" | "facebook" }) {
   }
 
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="h-5 w-5 fill-none stroke-current"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="4" y="4" width="16" height="16" rx="5" />
       <circle cx="12" cy="12" r="3.2" />
       <path d="M16.8 7.2h.01" />
@@ -114,7 +128,7 @@ function SocialIcon({ name }: { name: "instagram" | "whatsapp" | "facebook" }) {
   );
 }
 
-function DisabledPrimaryLink({
+function PrimaryLink({
   title,
   description,
   accent,
@@ -130,11 +144,7 @@ function DisabledPrimaryLink({
   );
 
   return (
-    <a
-      href={href}
-      className="block w-full"
-      {...externalProps(href)}
-    >
+    <a href={href} className="block w-full" {...externalProps(href)}>
       <Card glowTone={glowTone} className={cardClassName}>
         <div
           className={cn(
@@ -218,7 +228,7 @@ export default function MotronikPage() {
 
           <div className="relative mx-auto mt-10 grid max-w-xl gap-4">
             {primaryLinks.map((link) => (
-              <DisabledPrimaryLink key={link.title} {...link} />
+              <PrimaryLink key={link.title} {...link} />
             ))}
           </div>
 
@@ -323,7 +333,7 @@ export default function MotronikPage() {
                 className="mt-4 inline-flex rounded-full border border-[#FF3B5C]/32 bg-[#FF3B5C]/10 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#FFB0BD] transition duration-300 hover:-translate-y-[1px] hover:border-[#ff8c98]/48 hover:bg-[#FF3B5C]/18"
                 {...externalProps(motronikLinks.whatsapp)}
               >
-                Escr\u00edbenos por WhatsApp
+                Escríbenos por WhatsApp
               </a>
             </Card>
           </div>
