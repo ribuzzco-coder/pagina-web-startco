@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Open_Sans, Saira, Space_Grotesk, Zen_Dots } from "next/font/google";
+import { Lato, Open_Sans, Saira, Space_Grotesk, Zen_Dots } from "next/font/google";
 
 import { FloatingWhatsAppButton } from "@/components/layout/floating-whatsapp-button";
 import { Footer } from "@/components/layout/footer";
@@ -32,6 +32,13 @@ const zenDots = Zen_Dots({
 const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const lato = Lato({
+  variable: "--font-lato",
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
   display: "swap",
 });
 
@@ -73,7 +80,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${spaceGrotesk.variable} ${saira.variable} ${zenDots.variable} ${openSans.variable} h-full`}
+      className={`${spaceGrotesk.variable} ${saira.variable} ${zenDots.variable} ${openSans.variable} ${lato.variable} h-full`}
     >
       <body className="min-h-full bg-ribuzz-bg text-ribuzz-textPrimary antialiased">
         <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
