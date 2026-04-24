@@ -28,7 +28,7 @@ const landingPreviews: LandingPreview[] = [
   },
   {
     title: "Hotel Virrey Cartagena",
-    status: "Espacio vac\u00edo",
+    status: "Tu Dise\u00f1o",
     href: "/hotelvirreycartagena",
     kind: "hotel",
   },
@@ -121,6 +121,21 @@ function HotelCaribePreview() {
   );
 }
 
+function HotelVirreyPreview() {
+  return (
+    <div className="landing-preview landing-preview--hotel-real">
+      <div className="landing-preview__hotel-frame">
+        <Image
+          src="/images/hotel-virrey/preview.png"
+          alt="Vista previa Hotel Virrey Cartagena"
+          fill
+          className="landing-preview__hotel-screenshot"
+        />
+      </div>
+    </div>
+  );
+}
+
 function PlaceholderPreview({ kind }: { kind: LandingPreview["kind"] }) {
   const isOffer = kind === "offer";
   const isEvent = kind === "event";
@@ -162,6 +177,8 @@ function PreviewContent({ item }: { item: LandingPreview }) {
         <StartcoPreview />
       ) : item.title === "Hotel Caribe Plaza" ? (
         <HotelCaribePreview />
+      ) : item.title === "Hotel Virrey Cartagena" ? (
+        <HotelVirreyPreview />
       ) : (
         <PlaceholderPreview kind={item.kind} />
       )}

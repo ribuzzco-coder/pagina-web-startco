@@ -342,7 +342,7 @@ export default function HotelVirreyCartagenaPage() {
               alt="RiBuzz"
               width={30}
               height={30}
-              className="h-7 w-7 object-contain"
+              className="hotel-virrey-ribuzz-mark h-7 w-7 object-contain"
             />
           </a>
         </div>
