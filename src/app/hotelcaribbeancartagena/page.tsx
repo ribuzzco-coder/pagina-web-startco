@@ -1,16 +1,19 @@
+import { HotelLandingClonePage } from "@/components/hotel/hotel-landing-clone-page";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
   title: "Hotel Caribbean Cartagena",
-  description: "Espacio reservado para la landing Hotel Caribbean Cartagena.",
+  description: "Base inicial de la landing Hotel Caribbean Cartagena.",
   path: "/hotelcaribbeancartagena",
 });
 
 export default function HotelCaribbeanCartagenaPage() {
   return (
-    <section
-      aria-label="Hotel Caribbean Cartagena"
-      className="-mt-[76px] min-h-[100dvh] bg-[#0B0B10]"
+    <HotelLandingClonePage
+      title="Hotel Caribbean Cartagena"
+      city="Cartagena"
+      rnt="RNT próximamente"
+      footerName="Hotel Caribbean Cartagena"
     />
   );
 }

@@ -1165,7 +1165,9 @@ textarea,
 }
 
 .hotel-caribe-socials a,
-.hotel-caribe-footer-socials a {
+.hotel-caribe-socials button,
+.hotel-caribe-footer-socials a,
+.hotel-caribe-footer-socials button {
   display: grid;
   width: 3.35rem;
   min-height: 3.35rem;
@@ -1182,6 +1184,8 @@ textarea,
   text-transform: uppercase;
   backdrop-filter: blur(12px);
   cursor: pointer;
+  appearance: none;
+  outline: none;
   transition:
     background 180ms ease,
     border-color 180ms ease,
@@ -1190,14 +1194,17 @@ textarea,
 }
 
 .hotel-caribe-socials a:hover,
-.hotel-caribe-footer-socials a:hover {
+.hotel-caribe-socials button:hover,
+.hotel-caribe-footer-socials a:hover,
+.hotel-caribe-footer-socials button:hover {
   border-color: rgba(255, 220, 128, 0.72);
   background: rgba(255, 122, 54, 0.2);
   color: var(--hotel-blue);
   transform: translateY(-2px);
 }
 
-.hotel-caribe-footer-socials a img {
+.hotel-caribe-footer-socials a img,
+.hotel-caribe-footer-socials button img {
   filter: drop-shadow(0 2px 8px rgba(17, 34, 58, 0.12));
 }
 
@@ -1232,7 +1239,8 @@ textarea,
   backdrop-filter: blur(18px);
 }
 
-.hotel-caribe-actions a {
+.hotel-caribe-actions a,
+.hotel-caribe-actions button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1252,8 +1260,10 @@ textarea,
   letter-spacing: 0.03em;
   padding: 0.72rem 1.2rem;
   text-align: center;
-  text-decoration: none;
-  backdrop-filter: blur(14px);
+    text-decoration: none;
+    appearance: none;
+    outline: none;
+    backdrop-filter: blur(14px);
   cursor: pointer;
   transition:
     background 180ms ease,
@@ -1268,7 +1278,8 @@ textarea,
   filter: none;
 }
 
-.hotel-caribe-actions a:hover {
+.hotel-caribe-actions a:hover,
+.hotel-caribe-actions button:hover {
   border-color: rgba(255, 231, 146, 0.86);
   background:
     linear-gradient(120deg, rgba(255, 255, 255, 0.42), transparent 45%),
@@ -1281,9 +1292,12 @@ textarea,
 }
 
 .hotel-caribe-actions a:active,
+.hotel-caribe-actions button:active,
 .hotel-caribe-socials a:active,
+.hotel-caribe-socials button:active,
 .hotel-caribe-footer-socials a:active,
-.hotel-caribe-media-trigger:active {
+.hotel-caribe-footer-socials button:active,
+  .hotel-caribe-media-trigger:active {
   transform: scale(0.985);
 }
 
@@ -1772,9 +1786,11 @@ textarea,
   font-weight: 800;
   letter-spacing: 0.04em;
   padding: 0.62rem 0.85rem;
-  text-decoration: none;
-  backdrop-filter: blur(12px);
-}
+    text-decoration: none;
+    appearance: none;
+    outline: none;
+    backdrop-filter: blur(12px);
+  }
 
 .hotel-caribe-map__label svg {
   width: 1rem;
@@ -1831,7 +1847,8 @@ textarea,
   margin-top: 1rem;
 }
 
-.hotel-caribe-footer-socials a {
+.hotel-caribe-footer-socials a,
+.hotel-caribe-footer-socials button {
   border-color: rgba(0, 66, 122, 0.18);
   background: rgba(255, 255, 255, 0.38);
   color: var(--hotel-blue);
@@ -1847,7 +1864,7 @@ textarea,
 }
 
 .hotel-caribe-floating-wa {
-  position: fixed;
+    position: fixed;
   right: 1rem;
   bottom: 1rem;
   z-index: 50;
@@ -1858,17 +1875,27 @@ textarea,
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 999px;
   background: #18b45f;
-  box-shadow: 0 10px 22px rgba(0, 78, 55, 0.14);
-  color: white;
-  backdrop-filter: blur(10px);
+    box-shadow: 0 10px 22px rgba(0, 78, 55, 0.14);
+    color: white;
+    appearance: none;
+    outline: none;
+    backdrop-filter: blur(10px);
   transition:
     box-shadow 180ms ease,
     transform 180ms ease;
 }
 
 .hotel-caribe-floating-wa:hover {
-  box-shadow: 0 12px 24px rgba(0, 78, 55, 0.2);
-  transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 78, 55, 0.2);
+    transform: translateY(-2px);
+  }
+
+.hotel-caribe-actions button:disabled,
+.hotel-caribe-socials button:disabled,
+.hotel-caribe-footer-socials button:disabled,
+.hotel-caribe-map__label:disabled,
+.hotel-caribe-floating-wa:disabled {
+  cursor: default;
 }
 
 @media (min-width: 768px) {

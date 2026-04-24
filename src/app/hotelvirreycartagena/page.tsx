@@ -1,16 +1,19 @@
+import { HotelLandingClonePage } from "@/components/hotel/hotel-landing-clone-page";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
   title: "Hotel Virrey Cartagena",
-  description: "Espacio reservado para la landing Hotel Virrey Cartagena.",
+  description: "Base inicial de la landing Hotel Virrey Cartagena.",
   path: "/hotelvirreycartagena",
 });
 
 export default function HotelVirreyCartagenaPage() {
   return (
-    <section
-      aria-label="Hotel Virrey Cartagena"
-      className="-mt-[76px] min-h-[100dvh] bg-[#0B0B10]"
+    <HotelLandingClonePage
+      title="Hotel Virrey Cartagena"
+      city="Cartagena"
+      rnt="RNT próximamente"
+      footerName="Hotel Virrey Cartagena"
     />
   );
 }

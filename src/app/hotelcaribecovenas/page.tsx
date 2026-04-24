@@ -1,16 +1,19 @@
+import { HotelLandingClonePage } from "@/components/hotel/hotel-landing-clone-page";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
-  title: "Hotel Caribe Covenas",
-  description: "Espacio reservado para la landing Hotel Caribe Covenas.",
+  title: "Hotel Caribe Coveñas",
+  description: "Base inicial de la landing Hotel Caribe Coveñas.",
   path: "/hotelcaribecovenas",
 });
 
 export default function HotelCaribeCovenasPage() {
   return (
-    <section
-      aria-label="Hotel Caribe Covenas"
-      className="-mt-[76px] min-h-[100dvh] bg-[#0B0B10]"
+    <HotelLandingClonePage
+      title="Hotel Caribe Coveñas"
+      city="Coveñas"
+      rnt="RNT próximamente"
+      footerName="Hotel Caribe Coveñas"
     />
   );
 }
