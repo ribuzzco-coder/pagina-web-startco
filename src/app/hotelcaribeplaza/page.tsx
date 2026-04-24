@@ -3,6 +3,7 @@ import Image from "next/image";
 import { HotelCaribeHeroGallery } from "@/components/hotel/hotel-caribe-hero-gallery";
 import { HotelCaribeMediaGrid } from "@/components/hotel/hotel-caribe-media-grid";
 import { createPageMetadata } from "@/lib/metadata";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 const hotelLinks = {
   whatsapp: "https://wa.me/573225428091",
@@ -326,6 +327,15 @@ export default function HotelCaribePlazaPage() {
           </a>
           <a href={hotelLinks.facebook} aria-label="Facebook" {...externalProps(hotelLinks.facebook)}>
             <Icon name="facebook" />
+          </a>
+          <a href="/" aria-label="Ir a la página principal de RiBuzz">
+            <Image
+              src={SITE_CONFIG.logoMark}
+              alt="RiBuzz"
+              width={30}
+              height={30}
+              className="h-7 w-7 object-contain"
+            />
           </a>
         </div>
         <p className="hotel-caribe-footer-name">Hotel Caribe Plaza Barranquilla</p>

@@ -110,8 +110,13 @@ function HotelCaribePreview() {
   return (
     <div className="landing-preview landing-preview--hotel-real">
       <div className="landing-preview__hotel-frame">
-        <div className="landing-preview__hotel-frame-art" />
-        <div className="landing-preview__hotel-logo">
+        <Image
+          src="/images/hotel-caribe/preview-card.png"
+          alt="Vista previa Hotel Caribe Plaza"
+          fill
+          className="landing-preview__hotel-screenshot"
+        />
+        <div className="landing-preview__hotel-logo landing-preview__hotel-logo--overlay">
           <Image
             src="/images/hotel-caribe/logo-vertical.png"
             alt=""
@@ -120,25 +125,9 @@ function HotelCaribePreview() {
             className="h-full w-full object-contain"
           />
         </div>
-        <p className="landing-preview__hotel-city">Barranquilla</p>
-        <span className="landing-preview__hotel-rnt">RNT 1167724</span>
-        <div className="landing-preview__hotel-socials">
-          <span>IG</span>
-          <span>FB</span>
-        </div>
-        <div className="landing-preview__hotel-actions">
-          <span>Cont\u00e1ctanos</span>
-          <span>Haz tu reserva</span>
-          <span>Página web</span>
-          <span>Califícanos</span>
-          <span>Recepción</span>
-          <span>C\u00f3mo llegar</span>
-        </div>
-        <div className="landing-preview__hotel-room-grid">
-          <span />
-          <span />
-          <span />
-          <span />
+        <div className="landing-preview__hotel-badge">
+          <p>Barranquilla</p>
+          <span>RNT 1167724</span>
         </div>
       </div>
     </div>
@@ -203,30 +192,12 @@ function getSlot(index: number, activeIndex: number) {
   const lastOffset = landingPreviews.length - 1;
   const penultimateOffset = landingPreviews.length - 2;
 
-  if (offset === 0) {
-    return "center";
-  }
-
-  if (offset === 1) {
-    return "right";
-  }
-
-  if (offset === 2) {
-    return "back";
-  }
-
-  if (offset === 3) {
-    return "back-left";
-  }
-
-  if (offset === penultimateOffset) {
-    return "back-left";
-  }
-
-  if (offset === lastOffset) {
-    return "left";
-  }
-
+  if (offset === 0) return "center";
+  if (offset === 1) return "right";
+  if (offset === 2) return "back";
+  if (offset === 3) return "back-left";
+  if (offset === penultimateOffset) return "back-left";
+  if (offset === lastOffset) return "left";
   return "hidden";
 }
 
@@ -246,10 +217,7 @@ export function LandingCarousel() {
   }, []);
 
   useEffect(() => {
-    if (isPaused) {
-      return;
-    }
-
+    if (isPaused) return;
     const interval = window.setInterval(goNext, 5400);
     return () => window.clearInterval(interval);
   }, [goNext, isPaused]);
