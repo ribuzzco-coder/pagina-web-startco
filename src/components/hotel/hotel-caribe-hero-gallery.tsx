@@ -20,13 +20,13 @@ export function HotelCaribeHeroGallery() {
   const { scrollY } = useScroll();
   const prefersReducedMotion = useReducedMotion();
 
-  const raw0 = useTransform(scrollY, [0, 160, 420, 700], [1, 1, 0.22, 0]);
-  const raw1 = useTransform(scrollY, [420, 700, 1080, 1420], [0, 0.28, 1, 0]);
-  const raw2 = useTransform(scrollY, [1080, 1420, 1860, 2240], [0, 0.28, 1, 0]);
-  const raw3 = useTransform(scrollY, [1860, 2240, 2720, 3140], [0, 0.28, 1, 0]);
-  const raw4 = useTransform(scrollY, [2680, 3100, 3660, 4300], [0, 0.26, 1, 1]);
+  const raw0 = useTransform(scrollY, [0, 180, 620, 960], [1, 1, 0.16, 0]);
+  const raw1 = useTransform(scrollY, [520, 900, 1400, 1820], [0, 0.22, 1, 0]);
+  const raw2 = useTransform(scrollY, [1340, 1760, 2320, 2740], [0, 0.22, 1, 0]);
+  const raw3 = useTransform(scrollY, [2260, 2700, 3280, 3740], [0, 0.22, 1, 0]);
+  const raw4 = useTransform(scrollY, [3200, 3660, 4300, 4900], [0, 0.22, 1, 1]);
 
-  const springConfig = { stiffness: 42, damping: 26, mass: 0.9 };
+  const springConfig = { stiffness: 34, damping: 24, mass: 1.05 };
 
   const opacities = [
     useSpring(raw0, springConfig),
@@ -42,9 +42,14 @@ export function HotelCaribeHeroGallery() {
         <motion.div
           key={src}
           className="hotel-caribe-hero-gallery__layer"
-          style={{ opacity: prefersReducedMotion ? (index === 0 ? 1 : 0) : opacities[index] }}
+          style={{
+            opacity: prefersReducedMotion ? (index === 0 ? 1 : 0) : opacities[index],
+          }}
         >
-          <div className="hotel-caribe-hero-gallery__image" style={{ backgroundImage: `url(${src})` }} />
+          <div
+            className="hotel-caribe-hero-gallery__image"
+            style={{ backgroundImage: `url(${src})` }}
+          />
         </motion.div>
       ))}
     </div>
