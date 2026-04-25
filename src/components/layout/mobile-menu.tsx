@@ -7,10 +7,20 @@ import { cn } from "@/lib/utils";
 type MobileMenuProps = {
   isOpen: boolean;
   pathname: string;
+  isAuthenticated: boolean;
+  isAuthLoading: boolean;
+  onLogout: () => void;
   onClose: () => void;
 };
 
-export function MobileMenu({ isOpen, pathname, onClose }: MobileMenuProps) {
+export function MobileMenu({
+  isOpen,
+  pathname,
+  isAuthenticated,
+  isAuthLoading,
+  onLogout,
+  onClose,
+}: MobileMenuProps) {
   if (!isOpen) {
     return null;
   }
@@ -52,6 +62,49 @@ export function MobileMenu({ isOpen, pathname, onClose }: MobileMenuProps) {
           >
             Regalos y documentos de valor
           </Link>
+
+          {isAuthLoading ? (
+            <span className="rounded-xl border border-white/8 px-3 py-2.5 text-sm text-[#98A0B3]">
+              Cargando sesion...
+            </span>
+          ) : isAuthenticated ? (
+            <>
+              <Link
+                href="/dashboard"
+                onClick={onClose}
+                className="rounded-xl border border-[#E625FF]/65 bg-[linear-gradient(135deg,#E625FF,#B11CD4)] px-3 py-2.5 text-sm font-medium text-white shadow-[0_0_0_1px_rgba(230,37,255,0.18),0_0_24px_rgba(230,37,255,0.28)] transition-colors hover:brightness-110"
+              >
+                Dashboard
+              </Link>
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onLogout();
+                }}
+                className="rounded-xl border border-white/10 px-3 py-2.5 text-left text-sm font-medium text-[#D9DDE7] transition-colors hover:border-white/16 hover:text-white"
+              >
+                Cerrar sesion
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                onClick={onClose}
+                className="rounded-xl border border-white/10 px-3 py-2.5 text-sm font-medium text-[#D9DDE7] transition-colors hover:border-white/16 hover:text-white"
+              >
+                Login
+              </Link>
+              <Link
+                href="/signup"
+                onClick={onClose}
+                className="rounded-xl border border-[#E625FF]/65 bg-[linear-gradient(135deg,#E625FF,#B11CD4)] px-3 py-2.5 text-sm font-medium text-white shadow-[0_0_0_1px_rgba(230,37,255,0.18),0_0_24px_rgba(230,37,255,0.28)] transition-colors hover:brightness-110"
+              >
+                Signup
+              </Link>
+            </>
+          )}
         </nav>
       </Container>
     </div>

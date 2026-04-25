@@ -260,6 +260,31 @@ Definidas y validadas en [`src/lib/env.ts`](../src/lib/env.ts) y [`src/lib/publi
 
 ---
 
+## Integracion frontend (login/signup/dashboard)
+
+La UI actual consume estas rutas con `fetch` desde cliente:
+
+- Helper reutilizable: [`src/lib/auth/client.ts`](../src/lib/auth/client.ts)
+- Login: [`src/app/login/page.tsx`](../src/app/login/page.tsx)
+- Signup: [`src/app/signup/page.tsx`](../src/app/signup/page.tsx)
+- Dashboard: [`src/app/dashboard/page.tsx`](../src/app/dashboard/page.tsx)
+- Navbar y menu movil: [`src/components/layout/navbar.tsx`](../src/components/layout/navbar.tsx), [`src/components/layout/mobile-menu.tsx`](../src/components/layout/mobile-menu.tsx)
+
+### Flujo esperado
+
+1. Usuario sin sesion ve `Login` / `Signup`.
+2. `POST /api/auth/login` o `POST /api/auth/signup`.
+3. Redireccion a `/dashboard`.
+4. Dashboard carga `GET /api/auth/me`.
+5. Si `me` no autoriza, redireccion a `/login`.
+6. Logout via `POST /api/auth/logout` y retorno a `/login`.
+
+### Nota de proteccion de ruta (iteracion actual)
+
+`/dashboard` usa un guard de cliente (`GET /api/auth/me` + redirect), no middleware global. Si se quiere endurecer, se puede agregar middleware server-side en una iteracion posterior.
+
+---
+
 ## Verificacion rapida (smoke tests)
 
 | Comando | Proposito |

@@ -2,20 +2,25 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import type { CSSProperties } from "react";
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 
 import { MobileMenu } from "@/components/layout/mobile-menu";
 import { Container } from "@/components/ui/container";
+import { getSessionSummary, logoutUser } from "@/lib/auth/client";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
+  const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isHeroTop, setIsHeroTop] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [activeBubbleStyle, setActiveBubbleStyle] = useState<{
     width: number;
     x: number;
@@ -104,6 +109,54 @@ export function Navbar() {
       }
     };
   }, [pathname]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadSession() {
+      setIsAuthLoading(true);
+      try {
+        const result = await getSessionSummary();
+        if (!isMounted) {
+          return;
+        }
+
+        if (!result.ok) {
+          setIsAuthenticated(false);
+          return;
+        }
+
+        setIsAuthenticated(Boolean(result.data.authenticated));
+      } catch {
+        if (isMounted) {
+          setIsAuthenticated(false);
+        }
+      } finally {
+        if (isMounted) {
+          setIsAuthLoading(false);
+        }
+      }
+    }
+
+    void loadSession();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [pathname]);
+
+  async function handleLogout() {
+    setIsLoggingOut(true);
+    try {
+      await logoutUser();
+      setIsAuthenticated(false);
+      setIsOpen(false);
+      router.replace("/login");
+      router.refresh();
+    } catch {
+      setIsLoggingOut(false);
+    }
+  }
 
   return (
     <header
@@ -203,6 +256,44 @@ export function Navbar() {
           </Link>
         </nav>
 
+        {isAuthLoading ? (
+          <span className="hidden rounded-full border border-white/10 px-3 py-2 text-xs text-[#98A0B3] lg:inline-flex">
+            Cargando...
+          </span>
+        ) : isAuthenticated ? (
+          <div className="hidden items-center gap-2 lg:flex">
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center rounded-full border border-white/10 px-3 py-2 text-sm text-[#D9DDE7] transition hover:border-white/20 hover:text-white"
+            >
+              Dashboard
+            </Link>
+            <button
+              type="button"
+              onClick={handleLogout}
+              disabled={isLoggingOut}
+              className="inline-flex items-center rounded-full border border-[#E625FF]/65 bg-[linear-gradient(135deg,#E625FF,#B11CD4)] px-3 py-2 text-sm font-medium text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {isLoggingOut ? "Saliendo..." : "Salir"}
+            </button>
+          </div>
+        ) : (
+          <div className="hidden items-center gap-2 lg:flex">
+            <Link
+              href="/login"
+              className="inline-flex items-center rounded-full border border-white/10 px-3 py-2 text-sm text-[#D9DDE7] transition hover:border-white/20 hover:text-white"
+            >
+              Login
+            </Link>
+            <Link
+              href="/signup"
+              className="inline-flex items-center rounded-full border border-[#E625FF]/65 bg-[linear-gradient(135deg,#E625FF,#B11CD4)] px-3 py-2 text-sm font-medium text-white transition hover:brightness-110"
+            >
+              Signup
+            </Link>
+          </div>
+        )}
+
         <button
           type="button"
           aria-label="Abrir menu"
@@ -213,7 +304,14 @@ export function Navbar() {
         </button>
       </Container>
 
-      <MobileMenu isOpen={isOpen} pathname={pathname} onClose={() => setIsOpen(false)} />
+      <MobileMenu
+        isOpen={isOpen}
+        pathname={pathname}
+        isAuthenticated={isAuthenticated}
+        isAuthLoading={isAuthLoading}
+        onLogout={handleLogout}
+        onClose={() => setIsOpen(false)}
+      />
     </header>
   );
 }
