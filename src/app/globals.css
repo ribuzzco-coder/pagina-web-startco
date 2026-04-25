@@ -1939,7 +1939,7 @@ textarea,
   width: min(100%, 9.2rem);
   height: clamp(8.8rem, 28vw, 10.4rem);
   margin-top: 0.4rem;
-  margin-bottom: 2.1rem;
+  margin-bottom: 1.35rem;
   padding: 0;
   background-image: none;
   border-radius: 0;
@@ -1957,6 +1957,10 @@ textarea,
   box-shadow:
     0 14px 28px rgba(99, 72, 24, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.hotel-virrey-page .hotel-caribe-hero h1 {
+  margin-top: 0.55rem;
 }
 
 .hotel-virrey-page .hotel-caribe-identity-card,
@@ -2382,6 +2386,29 @@ textarea,
     font-size: 0.9rem;
     min-height: 3.45rem;
     padding: 0.7rem 0.75rem;
+  }
+
+  .hotel-caribe-hero-gallery__image {
+    background-position: center 28%;
+    transform: scale(1.012);
+    filter: saturate(1.22) contrast(1.03) blur(5.5px);
+  }
+
+  .hotel-caribe-hero-gallery__image::before {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.045) 42%,
+      rgba(255, 255, 255, 0.14) 100%
+    );
+  }
+
+  .hotel-virrey-page .hotel-caribe-logo-card {
+    margin-bottom: 1rem;
+  }
+
+  .hotel-virrey-page .hotel-caribe-hero h1 {
+    margin-top: 0.35rem;
   }
 }
 
