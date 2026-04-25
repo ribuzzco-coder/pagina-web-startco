@@ -1908,14 +1908,17 @@ textarea,
   content: "";
   position: absolute;
   inset: 0 0 auto;
-  height: 8.7rem;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 8.1rem;
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 320' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C120 24 248 24 368 62 S616 100 736 62 984 24 1200 62' fill='none' stroke='rgba(255,255,255,0.92)' stroke-width='10' stroke-linecap='round'/%3E%3Cpath d='M0 144 C120 106 248 106 368 144 S616 182 736 144 984 106 1200 144' fill='none' stroke='rgba(255,255,255,0.86)' stroke-width='10' stroke-linecap='round'/%3E%3Cpath d='M0 226 C120 188 248 188 368 226 S616 264 736 226 984 188 1200 226' fill='none' stroke='rgba(255,255,255,0.78)' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E"),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 72%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 220' preserveAspectRatio='none'%3E%3Cpath d='M0 40 C80 18 160 18 240 40 S400 62 480 40 640 18 720 40 880 62 960 40 1120 18 1200 40 1360 62 1440 40' fill='none' stroke='rgba(255,255,255,0.98)' stroke-width='8' stroke-linecap='round'/%3E%3Cpath d='M0 92 C80 70 160 70 240 92 S400 114 480 92 640 70 720 92 880 114 960 92 1120 70 1200 92 1360 114 1440 92' fill='none' stroke='rgba(255,255,255,0.92)' stroke-width='8' stroke-linecap='round'/%3E%3Cpath d='M0 144 C80 122 160 122 240 144 S400 166 480 144 640 122 720 144 880 166 960 144 1120 122 1200 144 1360 166 1440 144' fill='none' stroke='rgba(255,255,255,0.84)' stroke-width='8' stroke-linecap='round'/%3E%3Cpath d='M0 196 C80 174 160 174 240 196 S400 218 480 196 640 174 720 196 880 218 960 196 1120 174 1200 196 1360 218 1440 196' fill='none' stroke='rgba(255,255,255,0.74)' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04) 62%, transparent 100%);
   background-repeat: no-repeat;
-  background-position: center top;
-  background-size: 100% 100%, 100% 100%;
-  opacity: 0.96;
+  background-position: left top, center top;
+  background-size: 100% 8.1rem, 100% 100%;
+  opacity: 0.99;
   pointer-events: none;
   z-index: 0;
 }
