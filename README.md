@@ -10,7 +10,7 @@ La base backend ya queda preparada para produccion ligera sobre Supabase:
 - clientes Supabase separados por contexto
 - migraciones SQL reproducibles
 - capas `repository/service`
-- rutas API publicas y admin-ready
+- rutas API publicas y admin-ready (referencia HTTP: [docs/API.md](docs/API.md))
 - RLS, rate limiting, honeypot y Turnstile opcional
 
 ## Variables de entorno requeridas
@@ -36,6 +36,8 @@ CTA_TRACK_RATE_LIMIT_MAX=60
 DIAGNOSTIC_DUPLICATE_WINDOW_HOURS=24
 ```
 
+Las variables opcionales de autenticacion, callbacks y el archivo **`.env.supabase.docker`** para el stack local estan descritas en la referencia de API: [docs/API.md](docs/API.md).
+
 ## Supabase Setup
 
 1. Crea un proyecto en Supabase.
@@ -54,18 +56,33 @@ supabase db push
 
 Si todavia no usas la CLI, puedes ejecutar la migracion SQL directamente en el SQL Editor de Supabase.
 
-## Endpoints preparados
+## Supabase local (Docker, CLI)
 
-Publicos:
+El repo incluye [`supabase/config.toml`](supabase/config.toml) y migraciones en [`supabase/migrations/`](supabase/migrations/) para la CLI. Para levantar Postgres, Auth, PostgREST y el resto del stack en contenedores:
 
-- `POST /api/diagnostic-request`
-- `POST /api/track-cta`
-- `GET /api/health`
+```bash
+supabase start
+```
 
-Admin / internal:
+- Studio: `http://127.0.0.1:54323`
+- API: `http://127.0.0.1:54321` (coincide con [`.env.supabase.docker`](.env.supabase.docker))
+- Claves y URLs al vuelo: `supabase status -o env`
 
-- `GET /api/admin/diagnostic-requests`
-- `PATCH /api/admin/diagnostic-requests/[id]`
+Las migraciones en `supabase/migrations/` se aplican al arrancar el stack local. Para comprobar conectividad contra esa instancia (sin depender de `.env.local` de cloud):
+
+```bash
+npm run test:supabase:docker
+```
+
+Para desarrollo Next contra el mismo stack, puedes copiar las variables de `.env.supabase.docker` a `.env.local` o mezclarlas a mano. Cuando termines:
+
+```bash
+supabase stop
+```
+
+## Referencia HTTP (API)
+
+La documentacion dedicada a **todas** las rutas bajo `src/app/api/**` (metodos, JSON, queries, cabeceras, errores, rate limits, variables que afectan la API y ejemplos) esta en **[docs/API.md](docs/API.md)**. Actualizala cuando cambie la superficie HTTP publica.
 
 ## Seguridad
 
@@ -75,6 +92,18 @@ Admin / internal:
 - No hay acceso publico directo a tablas de leads.
 - Las rutas publicas validan con Zod, soportan honeypot y pueden validar Turnstile.
 - Hay rate limiting en memoria listo para reemplazarse por Redis/Upstash si mas adelante hace falta distribucion real.
+- Detalle de seguridad por endpoint (auth, callback, admin): [docs/API.md](docs/API.md).
+
+## Pruebas contra Supabase (smoke tests)
+
+Script: [`scripts/supabase-smoke-test.mjs`](scripts/supabase-smoke-test.mjs). Hace una lectura ligera a `diagnostic_requests` con el **service role** (misma idea que [`src/services/health-service.ts`](src/services/health-service.ts)).
+
+| Script npm | Cuando usarlo |
+|------------|----------------|
+| `npm run test:supabase` | Variables en `.env.local` / `.env` (proyecto cloud o el que configures). |
+| `npm run test:supabase:docker` | Tras `supabase start`; fuerza `.env.supabase.docker` para apuntar al API local aunque `.env.local` sea de otro entorno. |
+
+Tests de esquema Zod (auth): `node --test src/lib/schemas/auth.test.ts`.
 
 ## Desarrollo
 

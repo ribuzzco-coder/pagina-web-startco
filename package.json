@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:supabase": "node scripts/supabase-smoke-test.mjs",
+    "test:supabase:docker": "node scripts/supabase-smoke-test.mjs docker",
     "docker:preview": "docker compose --env-file .env.local up --build",
     "docker:preview:rebuild": "docker compose --env-file .env.local build --no-cache",
     "docker:down": "docker compose down"

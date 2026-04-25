@@ -1,0 +1,18 @@
+---
+description: RiBuzz API, Supabase, env, and service-layer guardrails for agents
+globs: src/app/api/**/*.ts,src/lib/supabase/**/*.ts,src/lib/env.ts,src/lib/public-env.ts,src/lib/schemas/**/*.ts,src/repositories/**/*.ts,src/services/**/*.ts
+alwaysApply: false
+---
+
+# RiBuzz — high-risk paths
+
+- **Next.js 16**: Do not assume pre-16 APIs. Check `node_modules/next/dist/docs/` when unsure.
+- **`env` ([`src/lib/env.ts`](src/lib/env.ts))**: Server-only. Never import into `"use client"` files or shared modules used by the browser.
+- **`publicEnv` ([`src/lib/public-env.ts`](src/lib/public-env.ts))**: Only `NEXT_PUBLIC_*` for client bundles.
+- **Service role**: [`src/lib/supabase/admin.ts`](src/lib/supabase/admin.ts) only on the server. Repositories used by [`createBackendServices`](src/services/bootstrap.ts) use the admin client by design; do not duplicate raw admin queries in route files without going through services.
+- **Admin routes**: Start with [`requireAdminAccess`](src/services/admin-access-service.ts) — Bearer / `x-admin-api-key` for internal key, or Supabase session + `admin_profiles`.
+- **Public API handlers**: Rate limit → validate body/query with Zod in [`src/lib/schemas/`](src/lib/schemas/) → [`apiOk` / `apiError` / `handleRouteError`](src/lib/api/response.ts). Preserve Turnstile and honeypot behavior where already implemented.
+- **Schema changes**: Update [`supabase/migrations/`](supabase/migrations/) and [`src/types/database.ts`](src/types/database.ts) together.
+- **API documentation**: Keep [`docs/API.md`](docs/API.md) in sync with any change to `src/app/api/**` (that file is the dedicated HTTP API reference).
+
+Full context: root [`AGENTS.md`](AGENTS.md); HTTP API reference: [`docs/API.md`](docs/API.md).
