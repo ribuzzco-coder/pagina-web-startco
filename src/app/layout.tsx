@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lato, Open_Sans, Saira, Space_Grotesk, Zen_Dots } from "next/font/google";
+import { Barlow, Lato, Open_Sans, Saira, Space_Grotesk, Zen_Dots } from "next/font/google";
 
 import { FloatingWhatsAppButton } from "@/components/layout/floating-whatsapp-button";
 import { Footer } from "@/components/layout/footer";
@@ -42,6 +42,13 @@ const lato = Lato({
   display: "swap",
 });
 
+const barlow = Barlow({
+  variable: "--font-barlow",
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
@@ -80,7 +87,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${spaceGrotesk.variable} ${saira.variable} ${zenDots.variable} ${openSans.variable} ${lato.variable} h-full`}
+      className={`${spaceGrotesk.variable} ${saira.variable} ${zenDots.variable} ${openSans.variable} ${lato.variable} ${barlow.variable} h-full`}
     >
       <body className="min-h-full bg-ribuzz-bg text-ribuzz-textPrimary antialiased">
         <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">

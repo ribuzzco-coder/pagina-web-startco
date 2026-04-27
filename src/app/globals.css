@@ -2065,6 +2065,156 @@ textarea,
   opacity: 0.96;
 }
 
+.hotel-covenas-page {
+  --hotel-blue: #0f327a;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.46) 0%, rgba(244, 250, 255, 0.3) 45%, rgba(236, 246, 255, 0.42) 100%);
+}
+
+.hotel-covenas-page .hotel-caribe-identity-card,
+.hotel-covenas-page .hotel-caribe-section-card,
+.hotel-covenas-page .hotel-caribe-contact-card,
+.hotel-covenas-page .hotel-caribe-actions,
+.hotel-covenas-page .hotel-caribe-map__label {
+  color: #0b2558;
+}
+
+.hotel-covenas-page .hotel-caribe-identity-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 8rem;
+  transform: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 220' preserveAspectRatio='none'%3E%3Cpath d='M0 40 C90 24 170 24 250 40 S410 56 490 40 650 24 730 40 890 56 970 40 1130 24 1210 40 1370 56 1440 40' fill='none' stroke='rgba(255,255,255,0.94)' stroke-width='9' stroke-linecap='round'/%3E%3Cpath d='M0 96 C90 80 170 80 250 96 S410 112 490 96 650 80 730 96 890 112 970 96 1130 80 1210 96 1370 112 1440 96' fill='none' stroke='rgba(255,255,255,0.78)' stroke-width='8' stroke-linecap='round'/%3E%3Cpath d='M0 152 C90 136 170 136 250 152 S410 168 490 152 650 136 730 152 890 168 970 152 1130 136 1210 152 1370 168 1440 152' fill='none' stroke='rgba(255,255,255,0.62)' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.03) 66%, transparent 100%);
+  background-repeat: no-repeat;
+  background-position: left top, center top;
+  background-size: 100% 8rem, 100% 100%;
+  opacity: 0.98;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hotel-covenas-page .hotel-caribe-identity-card h1,
+.hotel-covenas-page .hotel-caribe-section-card h2,
+.hotel-covenas-page .hotel-caribe-contact-card h2,
+.hotel-covenas-page .hotel-caribe-footer-name,
+.hotel-covenas-page .hotel-caribe-actions span,
+.hotel-covenas-page .hotel-caribe-map__label span {
+  font-family: var(--font-barlow), var(--font-open-sans), sans-serif;
+  color: #0a2f75;
+}
+
+.hotel-covenas-page .hotel-caribe-logo-card {
+  width: min(100%, 9rem);
+  height: clamp(8.5rem, 27vw, 10rem);
+  margin-top: 0.4rem;
+  margin-bottom: 1.35rem;
+  padding: 0;
+  background-image: none;
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 2;
+}
+
+.hotel-covenas-page .hotel-caribe-hero h1 {
+  margin-top: 0.6rem;
+}
+
+.hotel-covenas-page .hotel-caribe-brand-mark {
+  padding: 0.25rem;
+}
+
+.hotel-covenas-page .hotel-caribe-brand-mark__image {
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 16px 34px rgba(16, 54, 126, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.84);
+}
+
+.hotel-covenas-page .hotel-caribe-room:last-child {
+  grid-column: auto;
+  width: 100%;
+  justify-self: stretch;
+}
+
+.hotel-covenas-page .hotel-caribe-nit {
+  border-color: rgba(26, 87, 176, 0.22);
+  background: rgba(241, 248, 255, 0.88);
+  color: #1b4ea2;
+}
+
+.hotel-covenas-page .hotel-caribe-socials a,
+.hotel-covenas-page .hotel-caribe-footer-socials a {
+  border-color: rgba(29, 88, 177, 0.2);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(222, 237, 255, 0.58));
+  color: #174caa;
+}
+
+.hotel-covenas-page .hotel-caribe-actions a,
+.hotel-covenas-page .hotel-caribe-map__label {
+  border-color: rgba(33, 96, 189, 0.22);
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.46), transparent 45%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(198, 224, 255, 0.72));
+  color: #0f3f96;
+  box-shadow:
+    0 18px 34px rgba(17, 66, 147, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+.hotel-covenas-page .hotel-caribe-socials a:hover,
+.hotel-covenas-page .hotel-caribe-footer-socials a:hover,
+.hotel-covenas-page .hotel-caribe-map__label:hover {
+  border-color: rgba(59, 121, 211, 0.46);
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.54), transparent 45%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(180, 212, 255, 0.82));
+  color: #0d419d;
+}
+
+.hotel-covenas-page .hotel-caribe-socials svg,
+.hotel-covenas-page .hotel-caribe-footer-socials svg,
+.hotel-covenas-page .hotel-caribe-amenity-list svg {
+  color: #1b58be;
+  filter: none;
+}
+
+.hotel-covenas-page .hotel-caribe-room p {
+  background: linear-gradient(135deg, rgba(18, 78, 170, 0.98), rgba(56, 132, 229, 0.92));
+}
+
+.hotel-covenas-page .hotel-caribe-space p {
+  background: linear-gradient(135deg, rgba(12, 59, 144, 0.98), rgba(30, 120, 214, 0.94));
+}
+
+.hotel-covenas-page .hotel-caribe-section-card--dark {
+  border-color: rgba(30, 95, 191, 0.22);
+  background:
+    linear-gradient(145deg, rgba(20, 70, 155, 0.9), rgba(10, 44, 102, 0.86)),
+    rgba(14, 50, 112, 0.88);
+  box-shadow:
+    0 28px 50px rgba(8, 33, 83, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.hotel-covenas-page .hotel-caribe-section-card--dark h2,
+.hotel-covenas-page .hotel-caribe-section-card--dark .hotel-caribe-amenity-list span,
+.hotel-covenas-page .hotel-caribe-section-card--dark .hotel-caribe-amenity-list svg {
+  color: #f6fbff;
+}
+
+.hotel-covenas-ribuzz-mark {
+  filter: brightness(0) saturate(100%);
+  opacity: 0.96;
+}
+
 .hotel-caribe-actions button:disabled,
 .hotel-caribe-socials button:disabled,
 .hotel-caribe-footer-socials button:disabled,
