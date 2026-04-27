@@ -2080,24 +2080,7 @@ textarea,
 }
 
 .hotel-covenas-page .hotel-caribe-identity-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  width: 100%;
-  height: 8rem;
-  transform: none;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 220' preserveAspectRatio='none'%3E%3Cpath d='M0 40 C90 24 170 24 250 40 S410 56 490 40 650 24 730 40 890 56 970 40 1130 24 1210 40 1370 56 1440 40' fill='none' stroke='rgba(255,255,255,0.94)' stroke-width='9' stroke-linecap='round'/%3E%3Cpath d='M0 96 C90 80 170 80 250 96 S410 112 490 96 650 80 730 96 890 112 970 96 1130 80 1210 96 1370 112 1440 96' fill='none' stroke='rgba(255,255,255,0.78)' stroke-width='8' stroke-linecap='round'/%3E%3Cpath d='M0 152 C90 136 170 136 250 152 S410 168 490 152 650 136 730 152 890 168 970 152 1130 136 1210 152 1370 168 1440 152' fill='none' stroke='rgba(255,255,255,0.62)' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E"),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.03) 66%, transparent 100%);
-  background-repeat: no-repeat;
-  background-position: left top, center top;
-  background-size: 100% 8rem, 100% 100%;
-  opacity: 0.98;
-  pointer-events: none;
-  z-index: 0;
+  content: none;
 }
 
 .hotel-covenas-page .hotel-caribe-identity-card h1,
@@ -2191,7 +2174,7 @@ textarea,
 }
 
 .hotel-covenas-page .hotel-caribe-space p {
-  background: linear-gradient(135deg, rgba(12, 59, 144, 0.98), rgba(30, 120, 214, 0.94));
+  background: linear-gradient(135deg, rgba(8, 34, 94, 0.98), rgba(14, 66, 156, 0.94));
 }
 
 .hotel-covenas-page .hotel-caribe-section-card--dark {
