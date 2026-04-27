@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Saira, Space_Grotesk, Zen_Dots } from "next/font/google";
+import { Lato, Open_Sans, Saira, Space_Grotesk, Zen_Dots } from "next/font/google";
 
 import { FloatingWhatsAppButton } from "@/components/layout/floating-whatsapp-button";
 import { Footer } from "@/components/layout/footer";
 import { IntroLoader } from "@/components/layout/intro-loader";
 import { Navbar } from "@/components/layout/navbar";
+import { RouteVisibility } from "@/components/layout/route-visibility";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 import "./globals.css";
@@ -25,6 +26,19 @@ const zenDots = Zen_Dots({
   variable: "--font-zen-dots",
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
+});
+
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const lato = Lato({
+  variable: "--font-lato",
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
   display: "swap",
 });
 
@@ -64,7 +78,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${spaceGrotesk.variable} ${saira.variable} ${zenDots.variable} h-full`}>
+    <html
+      lang="es"
+      className={`${spaceGrotesk.variable} ${saira.variable} ${zenDots.variable} ${openSans.variable} ${lato.variable} h-full`}
+    >
       <body className="min-h-full bg-ribuzz-bg text-ribuzz-textPrimary antialiased">
         <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(15,239,253,0.05),transparent_22%),radial-gradient(circle_at_82%_16%,rgba(230,37,255,0.06),transparent_30%),linear-gradient(180deg,#0B0B10_0%,#101119_52%,#0C0D13_100%)]" />
@@ -72,11 +89,15 @@ export default function RootLayout({
         </div>
 
         <div className="relative flex min-h-screen flex-col">
-          <IntroLoader />
-          <Navbar />
+          <RouteVisibility>
+            <IntroLoader />
+            <Navbar />
+          </RouteVisibility>
           <main className="flex-1 pt-[76px]">{children}</main>
-          <Footer />
-          <FloatingWhatsAppButton />
+          <RouteVisibility>
+            <Footer />
+            <FloatingWhatsAppButton />
+          </RouteVisibility>
         </div>
       </body>
     </html>

@@ -12,6 +12,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { BoxVisual, GiftIcon } from "@/components/ui/gift-box-visual";
 
@@ -26,14 +27,14 @@ const docs: RewardDoc[] = [
   {
     title: "Hagamos una oferta que nos lleve al espacio",
     description:
-      "Una guÃ­a para estructurar una oferta con mÃ¡s claridad, intenciÃ³n y direcciÃ³n comercial.",
+      "Una gu\u00eda para estructurar una oferta con m\u00e1s claridad, intenci\u00f3n y direcci\u00f3n comercial.",
     href: "/hagamos-una-oferta-que-nos-lleve.pdf",
     cover: "/regalo-oferta-portada.png",
   },
   {
-    title: "Un imÃ¡n para tu oferta y el valor de compartirlo",
+    title: "Un im\u00e1n para tu oferta y el valor de compartirlo",
     description:
-      "Un recurso breve para entender cÃ³mo volver tu propuesta mÃ¡s atractiva y memorable.",
+      "Un recurso breve para entender c\u00f3mo volver tu propuesta m\u00e1s atractiva y memorable.",
     href: "/un-iman-para-tu-oferta.pdf",
     cover: "/regalo-iman-portada.png",
   },
@@ -292,7 +293,7 @@ export function RewardVault() {
           Regalos RiBuzz
         </p>
         <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[#F5F7FA] sm:text-5xl">
-          Te traemos valor que nos habrÃ­a gustado saber antes.
+          Te traemos valor que nos habr&iacute;a gustado saber antes.
         </h1>
       </div>
 
@@ -325,20 +326,20 @@ export function RewardVault() {
                 Siguiente paso
               </p>
               <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#F5F7FA]">
-                Si quieres aterrizar estas ideas, agendemos una conversacion breve.
+                Si quieres aterrizar estas ideas, cont&aacute;ctanos por WhatsApp.
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
-                Reserva un espacio con RiBuzz y revisamos tu caso para definir si vale la
-                pena avanzar a un siguiente paso.
+                Podemos revisar tu caso por WhatsApp y ver si tiene sentido llevarlo a una
+                siguiente reuni&oacute;n.
               </p>
             </div>
 
             <Button
-              href="https://calendly.com/ribuzzco/conexion-ribuzz"
+              href={SITE_CONFIG.whatsappUrl}
               size="md"
               className="min-w-[180px] shadow-[0_0_0_1px_rgba(230,37,255,0.16),0_0_24px_rgba(230,37,255,0.18)]"
             >
-              Agenda reunion
+              Cont&aacute;ctanos por WhatsApp
             </Button>
           </div>
         </Card>
