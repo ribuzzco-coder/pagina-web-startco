@@ -2524,7 +2524,7 @@ textarea,
   .hotel-caribe-hero-gallery__image {
     background-position: center 28%;
     transform: scale(1.012);
-    filter: saturate(1.22) contrast(1.03) blur(5.5px);
+    filter: saturate(1.22) contrast(1.03) blur(0);
   }
 
   .hotel-caribe-hero-gallery__image::before {
