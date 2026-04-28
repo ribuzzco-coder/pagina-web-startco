@@ -70,7 +70,8 @@ export function HeroMarkButton({ src, alt }: HeroMarkButtonProps) {
             } as CSSProperties
           }
         >
-          <span className="hero-radial-flash__disc" />
+          <span className="hero-radial-flash__disc hero-radial-flash__disc--invert" />
+          <span className="hero-radial-flash__disc hero-radial-flash__disc--restore" />
         </div>
       ) : null}
 
