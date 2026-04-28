@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -9,54 +10,72 @@ type HeroMarkButtonProps = {
 };
 
 export function HeroMarkButton({ src, alt }: HeroMarkButtonProps) {
-  const [isGlitching, setIsGlitching] = useState(false);
-  const glitchTimeoutRef = useRef<number | null>(null);
+  const [flashState, setFlashState] = useState<{
+    active: boolean;
+    x: number;
+    y: number;
+  }>({
+    active: false,
+    x: 0,
+    y: 0,
+  });
+  const flashTimeoutRef = useRef<number | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
-    if (isGlitching) {
-      document.documentElement.classList.add("hero-site-glitching");
-    } else {
-      document.documentElement.classList.remove("hero-site-glitching");
-    }
-
     return () => {
-      if (glitchTimeoutRef.current !== null) {
-        window.clearTimeout(glitchTimeoutRef.current);
+      if (flashTimeoutRef.current !== null) {
+        window.clearTimeout(flashTimeoutRef.current);
       }
-
-      document.documentElement.classList.remove("hero-site-glitching");
     };
-  }, [isGlitching]);
+  }, []);
 
   const handleClick = () => {
-    setIsGlitching(false);
-
-    if (glitchTimeoutRef.current !== null) {
-      window.clearTimeout(glitchTimeoutRef.current);
+    if (flashTimeoutRef.current !== null) {
+      window.clearTimeout(flashTimeoutRef.current);
     }
 
+    const rect = buttonRef.current?.getBoundingClientRect();
+    const x = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
+    const y = rect ? rect.top + rect.height / 2 : window.innerHeight / 2;
+
+    setFlashState({
+      active: false,
+      x,
+      y,
+    });
+
     window.requestAnimationFrame(() => {
-      setIsGlitching(true);
-      glitchTimeoutRef.current = window.setTimeout(() => {
-        setIsGlitching(false);
-      }, 980);
+      setFlashState({
+        active: true,
+        x,
+        y,
+      });
+      flashTimeoutRef.current = window.setTimeout(() => {
+        setFlashState((current) => ({ ...current, active: false }));
+      }, 1120);
     });
   };
 
   return (
     <>
-      {isGlitching ? (
-        <div aria-hidden="true" className="hero-glitch-burst">
-          <span className="hero-glitch-scan hero-glitch-scan--one" />
-          <span className="hero-glitch-scan hero-glitch-scan--two" />
-          <span className="hero-glitch-scan hero-glitch-scan--three" />
-          <span className="hero-glitch-scan hero-glitch-scan--four" />
-          <span className="hero-glitch-noise hero-glitch-noise--one" />
-          <span className="hero-glitch-noise hero-glitch-noise--two" />
+      {flashState.active ? (
+        <div
+          aria-hidden="true"
+          className="hero-radial-flash"
+          style={
+            {
+              "--hero-flash-x": `${flashState.x}px`,
+              "--hero-flash-y": `${flashState.y}px`,
+            } as CSSProperties
+          }
+        >
+          <span className="hero-radial-flash__disc" />
         </div>
       ) : null}
 
       <button
+        ref={buttonRef}
         type="button"
         aria-label="Logo de RiBuzz"
         onClick={handleClick}

@@ -327,101 +327,28 @@ textarea,
     drop-shadow(0 0 24px rgba(255, 255, 255, 0.14));
 }
 
-html.hero-site-glitching body {
-  animation: hero-site-invert 980ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-glitch-burst {
+.hero-radial-flash {
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 90;
   mix-blend-mode: difference;
   overflow: hidden;
-  background:
-    linear-gradient(90deg, transparent 0 14%, rgba(255, 255, 255, 0.26) 15%, transparent 19% 100%),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 11px),
-    radial-gradient(circle at 58% 42%, rgba(255, 255, 255, 0.24), transparent 34%),
-    radial-gradient(circle at 28% 52%, rgba(255, 255, 255, 0.16), transparent 28%);
-  clip-path: polygon(0 5%, 100% 0, 100% 94%, 0 100%);
-  animation: hero-glitch-field 980ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero-glitch-burst::before,
-.hero-glitch-burst::after {
-  content: "";
+.hero-radial-flash__disc {
   position: absolute;
-  inset: -8%;
-  background:
-    linear-gradient(90deg, transparent 0 44%, rgba(255, 255, 255, 0.5) 45%, transparent 48% 100%),
-    repeating-linear-gradient(90deg, transparent 0 26px, rgba(255, 255, 255, 0.22) 27px 29px, transparent 30px 72px);
-  filter: blur(0.35px);
-  opacity: 0;
-}
-
-.hero-glitch-burst::before {
-  animation: hero-glitch-slice 720ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.hero-glitch-burst::after {
-  background:
-    linear-gradient(90deg, transparent 0 36%, rgba(255, 255, 255, 0.18) 37%, transparent 40% 100%),
-    linear-gradient(180deg, transparent 0 52%, rgba(255, 255, 255, 0.24) 53%, transparent 56% 100%);
-  animation: hero-glitch-slice 650ms cubic-bezier(0.16, 1, 0.3, 1) 70ms forwards reverse;
-}
-
-.hero-glitch-scan {
-  position: absolute;
-  left: -12vw;
-  width: 124vw;
-  height: 10vh;
+  left: var(--hero-flash-x);
+  top: var(--hero-flash-y);
+  width: 36px;
+  height: 36px;
+  transform: translate(-50%, -50%) scale(0);
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.24), transparent);
-  filter: blur(10px);
-  opacity: 0;
-  transform: skewX(-18deg);
-}
-
-.hero-glitch-scan--one {
-  top: 22%;
-  animation: hero-glitch-scan 520ms ease-out 40ms forwards;
-}
-
-.hero-glitch-scan--two {
-  top: 48%;
-  height: 7vh;
-  animation: hero-glitch-scan 620ms ease-out 120ms forwards;
-}
-
-.hero-glitch-scan--three {
-  top: 68%;
-  height: 5vh;
-  animation: hero-glitch-scan 560ms ease-out 180ms forwards;
-}
-
-.hero-glitch-scan--four {
-  top: 36%;
-  height: 4vh;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.32), transparent);
-  animation: hero-glitch-scan 700ms ease-out 260ms forwards;
-}
-
-.hero-glitch-noise {
-  position: absolute;
-  inset: -10%;
-  opacity: 0;
   background:
-    repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,0.18) 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(0deg, transparent 0 8px, rgba(255,255,255,0.1) 9px 10px, transparent 11px 18px);
-  filter: contrast(1.45) saturate(1.5);
-  animation: hero-glitch-noise 820ms steps(5, end) forwards;
-}
-
-.hero-glitch-noise--two {
-  mix-blend-mode: color-dodge;
-  transform: rotate(180deg);
-  animation-delay: 90ms;
+    radial-gradient(circle, rgba(255, 255, 255, 1) 0 54%, rgba(255, 255, 255, 0.82) 62%, rgba(255, 255, 255, 0.18) 74%, transparent 86%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.32) 0 58%, transparent 78%);
+  filter: blur(0.6px);
+  animation: hero-radial-invert 1080ms cubic-bezier(0.2, 1, 0.3, 1) forwards;
 }
 
 .landing-carousel {
@@ -3305,6 +3232,38 @@ html.hero-site-glitching body {
   100% {
     opacity: 0;
     transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes hero-radial-invert {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(22);
+  }
+
+  38% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(136);
+  }
+
+  58% {
+    opacity: 0.96;
+    transform: translate(-50%, -50%) scale(148);
+  }
+
+  82% {
+    opacity: 0.82;
+    transform: translate(-50%, -50%) scale(58);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
   }
 }
 
