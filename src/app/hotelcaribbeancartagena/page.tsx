@@ -13,8 +13,7 @@ const caribbeanLinks = {
     "https://www.google.com/maps?cid=6194759648847059427&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYASAA&hl=es-419&source=embed",
   phone: "tel:3216803647",
   facebook: "https://www.facebook.com/profile.php?id=100082929587159",
-  instagram:
-    "https://www.instagram.com/hotelcaribbeancartagena/?hl=es-la",
+  instagram: "https://www.instagram.com/hotelcaribbeancartagena/?hl=es-la",
 } as const;
 
 const heroImages = [
@@ -58,15 +57,56 @@ const spaces = [
     tone: "events",
     image: "/images/hotel-caribbean/piscinas.webp",
   },
+  {
+    name: "Jacuzzi",
+    tone: "restaurant",
+    image: "/images/hotel-caribbean/jacuzzi.webp",
+  },
 ] as const;
 
-const amenities = [
-  { label: "Vista al mar", icon: "pin" },
-  { label: "Piscinas", icon: "pool" },
-  { label: "WiFi - Internet", icon: "wifi" },
-  { label: "Atención hotelera", icon: "building" },
-  { label: "Ubicación caribeña", icon: "pin" },
-  { label: "Experiencia frente al mar", icon: "star" },
+const featureCards = [
+  {
+    title: "Disfruta del Comfort",
+    description:
+      "¡Cartagena te espera! Vive una estadía con la calidez y la comodidad de tu hogar. ¡Será inolvidable!",
+    icon: "bed",
+    inverted: false,
+  },
+  {
+    title: "Desayuno incluido",
+    description:
+      "¡Tu estancia comienza aquí! Vive el confort de nuestro hotel con desayuno incluido. ¡Inicia un viaje inolvidable!",
+    icon: "coffee",
+    inverted: true,
+  },
+  {
+    title: "Piscina para adultos y niños",
+    description:
+      "¡Te esperamos! Disfruta nuestro confort y la piscina para adultos y niños. ¡Una estancia inolvidable!",
+    icon: "pool",
+    inverted: false,
+  },
+  {
+    title: "Jacuzzi frente al mar",
+    description:
+      "¡La relajación te espera! Disfruta de un jacuzzi con vista al mar en una experiencia solo para ti.",
+    icon: "jacuzzi",
+    inverted: true,
+  },
+  {
+    title: "Cerca a la playa",
+    description:
+      "¡Ubicación perfecta! El mar está a pasos del hotel. ¡Disfruta el paraíso sin excusas!",
+    icon: "beach",
+    inverted: false,
+  },
+  {
+    title: "Restaurante",
+    description:
+      "¡Sabor y conveniencia! No busques más. Disfruta de la mejor gastronomía sin salir del hotel.",
+    icon: "cutlery",
+    inverted: true,
+  },
 ] as const;
 
 const hotelLogoSrc = "/images/hotel-caribbean/logo.png";
@@ -210,6 +250,55 @@ function Icon({ name }: { name: string }) {
           <path d="M11 10h5a2 2 0 0 1 2 2v1" />
         </svg>
       );
+    case "cutlery":
+      return (
+        <svg {...commonProps}>
+          <path d="M4 3v7" />
+          <path d="M7 3v7" />
+          <path d="M4 7h3" />
+          <path d="M5.5 10v11" />
+          <path d="M14 3v8" />
+          <path d="M18 3v18" />
+          <path d="M14 11h4" />
+        </svg>
+      );
+    case "bed":
+      return (
+        <svg {...commonProps}>
+          <path d="M3 18V8" />
+          <path d="M3 15h18" />
+          <path d="M7 11h5a2 2 0 0 1 2 2v2" />
+          <path d="M14 10h4a3 3 0 0 1 3 3v5" />
+          <path d="M5 18v3" />
+          <path d="M19 18v3" />
+        </svg>
+      );
+    case "coffee":
+      return (
+        <svg {...commonProps}>
+          <path d="M4 7h10v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z" />
+          <path d="M14 9h2a2 2 0 1 1 0 4h-2" />
+          <path d="M5 21h12" />
+        </svg>
+      );
+    case "beach":
+      return (
+        <svg {...commonProps}>
+          <path d="M4 21h16" />
+          <path d="M12 7v14" />
+          <path d="M6 10a6 6 0 0 1 12 0Z" />
+          <path d="M10 21 8 17" />
+        </svg>
+      );
+    case "jacuzzi":
+      return (
+        <svg {...commonProps}>
+          <path d="M4 17c1.2 0 1.8-.7 2.5-.7s1.3.7 2.5.7 1.8-.7 2.5-.7 1.3.7 2.5.7 1.8-.7 2.5-.7 1.3.7 2.5.7 1.8-.7 2.5-.7" />
+          <path d="M7 13a5 5 0 0 1 10 0" />
+          <path d="M9 7c0-1 .6-1.6 1.3-2.3" />
+          <path d="M14 7c0-1 .6-1.6 1.3-2.3" />
+        </svg>
+      );
     default:
       return null;
   }
@@ -278,12 +367,18 @@ export default function HotelCaribbeanCartagenaPage() {
       <section className="hotel-caribe-amenities">
         <div className="hotel-caribe-section-card hotel-caribe-section-card--dark">
           <h2>Además contamos con:</h2>
-          <div className="hotel-caribe-amenity-list">
-            {amenities.map((item) => (
-              <div key={item.label}>
-                <Icon name={item.icon} />
-                <span>{item.label}</span>
-              </div>
+          <div className="hotel-caribbean-feature-grid">
+            {featureCards.map((item) => (
+              <article
+                key={item.title}
+                className={item.inverted ? "hotel-caribbean-feature-card hotel-caribbean-feature-card--inverted" : "hotel-caribbean-feature-card"}
+              >
+                <div className="hotel-caribbean-feature-card__icon">
+                  <Icon name={item.icon} />
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
             ))}
           </div>
         </div>
