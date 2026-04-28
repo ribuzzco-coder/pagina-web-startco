@@ -22,7 +22,7 @@ export function MobileMenu({ isOpen, pathname, onClose }: MobileMenuProps) {
           {SITE_CONFIG.navLinks.map((link) => {
             const isActive =
               link.href === "/" ? pathname === link.href : pathname.startsWith(link.href);
-            const isDiagnosisLink = link.href === "/contact";
+            const isDiagnosisLink = link.href === "/diagnostico";
 
             return (
               <Link

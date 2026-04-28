@@ -95,7 +95,7 @@ export default function MethodologyPage() {
         primaryLabel="Solicita tu diagnóstico gratuito"
         primaryHref={SITE_CONFIG.diagnosisPath}
         secondaryLabel="Ir a contacto"
-        secondaryHref="/contact"
+        secondaryHref="/contacto"
       />
     </>
   );

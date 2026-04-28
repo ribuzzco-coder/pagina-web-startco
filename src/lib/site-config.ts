@@ -2,7 +2,7 @@
   name: "RiBuzz",
   shortName: "RiBuzz",
   url: "https://ribuzz.vercel.app",
-  diagnosisPath: "/contact",
+  diagnosisPath: "/diagnostico",
   diagnosisFormUrl:
     "https://docs.google.com/forms/d/e/1FAIpQLSedUNuJeyesXwKhUzx80Mnh9RzblT5h_AGAyJ6TB2CW0SbJwA/viewform?usp=header",
   description:
@@ -22,9 +22,9 @@
     { label: "Inicio", href: "/" },
     { label: "Servicios", href: "/services" },
     { label: "Sobre RiBuzz", href: "/about" },
-    { label: "Startco", href: "/startco" },
+    { label: "Contacto", href: "/contacto" },
     { label: "NFC", href: "/tarjetas-nfc" },
-    { label: "Solicitar diagnóstico", href: "/contact" },
+    { label: "Solicitar diagnóstico", href: "/diagnostico" },
   ],
 } as const;
 

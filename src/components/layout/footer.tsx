@@ -94,7 +94,7 @@ export function Footer() {
                 aria-label="Acceso privado a landings"
               >
                 <KeyIcon />
-                <span>Desarrollos</span>
+                <span>Landings</span>
               </Link>
             </div>
           </div>

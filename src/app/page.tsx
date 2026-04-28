@@ -245,7 +245,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-7 flex">
-            <Button href="/contact" variant="secondary">
+            <Button href="/diagnostico" variant="secondary">
               Ver contacto y FAQ completa
             </Button>
           </div>

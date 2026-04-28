@@ -15,9 +15,9 @@ type LandingPreview = {
 
 const landingPreviews: LandingPreview[] = [
   {
-    title: "Startco",
+    title: "Contacto",
     status: "Tu Dise\u00f1o",
-    href: "/startco",
+    href: "/contacto",
     kind: "startco",
   },
   {
