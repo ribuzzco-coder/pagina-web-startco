@@ -292,10 +292,10 @@ export default function ContactoClient() {
                   />
                   <div className="relative flex min-h-[58px] items-center justify-center text-center">
                     <div className="relative z-10 min-w-0">
-                      <p className={cn("text-base font-semibold", isDayMode ? "text-[#111827]" : "text-[#F5F7FA]")}>
+                      <p className="text-base font-semibold text-[#F5F7FA]">
                         {link.title}
                       </p>
-                      <p className={cn("mt-1 text-sm", isDayMode ? "text-[#6B7280]" : "text-[#98A0B3]")}>
+                      <p className="mt-1 text-sm text-[#C9D1E2]">
                         {link.description}
                       </p>
                     </div>
@@ -336,10 +336,10 @@ export default function ContactoClient() {
               >
                 <div className={cn("pointer-events-none absolute inset-0", isDayMode ? "bg-[radial-gradient(circle_at_80%_80%,rgba(17,24,39,0.04),transparent_34%)]" : "bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.08),transparent_34%)]")} />
                 <div className="relative z-10 mx-auto max-w-[78%]">
-                  <p className={cn("text-xl font-semibold tracking-tight", isDayMode ? "text-[#111827]" : "text-[#F5F7FA]")}>
+                  <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
                     {supportCards.nfc.title}
                   </p>
-                  <p className={cn("mt-3 text-sm leading-relaxed sm:text-base", isDayMode ? "text-[#6B7280]" : "text-[#98A0B3]")}>
+                  <p className="mt-3 text-sm leading-relaxed text-[#C9D1E2] sm:text-base">
                     {supportCards.nfc.description}
                   </p>
                 </div>
@@ -368,10 +368,10 @@ export default function ContactoClient() {
               <div className={cn("pointer-events-none absolute inset-0", isDayMode ? "bg-[radial-gradient(circle_at_80%_20%,rgba(17,24,39,0.05),transparent_26%)]" : "bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]")} />
               <div className="relative flex flex-1 flex-col items-center justify-between gap-6">
                 <div>
-                  <p className={cn("text-xl font-semibold tracking-tight", isDayMode ? "text-[#111827]" : "text-[#F5F7FA]")}>
+                  <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
                     {supportCards.neoMech.title}
                   </p>
-                  <p className={cn("mt-3 text-sm leading-relaxed sm:text-base", isDayMode ? "text-[#6B7280]" : "text-[#98A0B3]")}>
+                  <p className="mt-3 text-sm leading-relaxed text-[#C9D1E2] sm:text-base">
                     {supportCards.neoMech.description}
                   </p>
                 </div>
@@ -396,7 +396,7 @@ export default function ContactoClient() {
                       className={cn(
                         "flex items-center justify-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold transition-colors",
                         isDayMode
-                          ? "border border-[#25D366]/24 bg-[#25D366]/8 text-[#1E9E53] hover:bg-[#25D366]/12"
+                          ? "border border-[#25D366]/24 bg-[#25D366]/8 text-white hover:bg-[#25D366]/12"
                           : "border border-[#25D366]/30 bg-[#25D366]/5 text-[#6AFFB6] hover:bg-[#25D366]/10",
                       )}
                     >
@@ -409,7 +409,7 @@ export default function ContactoClient() {
                       className={cn(
                         "flex items-center justify-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold transition-colors",
                         isDayMode
-                          ? "border border-[#111827]/10 bg-[#111827]/4 text-[#111827] hover:bg-[#111827]/8"
+                          ? "border border-[#111827]/10 bg-[#111827]/16 text-white hover:bg-[#111827]/22"
                           : "border border-white/10 bg-white/5 text-white hover:bg-white/10",
                       )}
                     >
@@ -423,7 +423,7 @@ export default function ContactoClient() {
                     rel="noopener noreferrer"
                     className={cn(
                       "inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors",
-                      isDayMode ? "text-[#0F172A]/60 hover:text-[#0F172A]" : "text-[#9BF8FF]/70 hover:text-[#9BF8FF]",
+                      isDayMode ? "text-[#E6ECF8]/78 hover:text-white" : "text-[#9BF8FF]/70 hover:text-[#9BF8FF]",
                     )}
                   >
                     <span>Ver Instagram</span>
@@ -444,14 +444,14 @@ export default function ContactoClient() {
               )}
             >
               <div className="flex flex-col items-center justify-center gap-3">
-                <p className={cn("text-base font-semibold", isDayMode ? "text-[#111827]" : "text-[#F5F7FA]")}>
+                <p className="text-base font-semibold text-[#F5F7FA]">
                   {supportCards.gifts.title}
                 </p>
                 <span className="rounded-full border border-[#ff4d6d]/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#FF9EB0]">
                   Ver regalos
                 </span>
               </div>
-              <p className={cn("mt-3 text-sm leading-relaxed", isDayMode ? "text-[#6B7280]" : "text-[#98A0B3]")}>
+              <p className="mt-3 text-sm leading-relaxed text-[#C9D1E2]">
                 {supportCards.gifts.description}
               </p>
             </Card>
