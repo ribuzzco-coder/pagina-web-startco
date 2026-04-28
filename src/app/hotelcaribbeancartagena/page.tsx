@@ -68,42 +68,42 @@ const featureCards = [
   {
     title: "Disfruta del Comfort",
     description:
-      "¡Cartagena te espera! Vive una estadía con la calidez y la comodidad de tu hogar. ¡Será inolvidable!",
+      "Vive una estadía cómoda, cálida y pensada para descansar.",
     icon: "bed",
     inverted: false,
   },
   {
     title: "Desayuno incluido",
     description:
-      "¡Tu estancia comienza aquí! Vive el confort de nuestro hotel con desayuno incluido. ¡Inicia un viaje inolvidable!",
+      "Empieza tu experiencia con desayuno incluido y más comodidad.",
     icon: "coffee",
     inverted: true,
   },
   {
     title: "Piscina para adultos y niños",
     description:
-      "¡Te esperamos! Disfruta nuestro confort y la piscina para adultos y niños. ¡Una estancia inolvidable!",
+      "Disfruta una piscina pensada para grandes y pequeños.",
     icon: "pool",
     inverted: false,
   },
   {
     title: "Jacuzzi frente al mar",
     description:
-      "¡La relajación te espera! Disfruta de un jacuzzi con vista al mar en una experiencia solo para ti.",
+      "Relájate con jacuzzi y vista al mar en una experiencia especial.",
     icon: "jacuzzi",
     inverted: true,
   },
   {
     title: "Cerca a la playa",
     description:
-      "¡Ubicación perfecta! El mar está a pasos del hotel. ¡Disfruta el paraíso sin excusas!",
+      "El mar está a pocos pasos para vivir la playa sin rodeos.",
     icon: "beach",
     inverted: false,
   },
   {
     title: "Restaurante",
     description:
-      "¡Sabor y conveniencia! No busques más. Disfruta de la mejor gastronomía sin salir del hotel.",
+      "Buena gastronomía y conveniencia sin salir del hotel.",
     icon: "cutlery",
     inverted: true,
   },
