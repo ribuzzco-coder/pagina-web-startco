@@ -9,44 +9,37 @@ type HeroMarkButtonProps = {
 };
 
 export function HeroMarkButton({ src, alt }: HeroMarkButtonProps) {
-  const [isRippling, setIsRippling] = useState(false);
   const [isGlitching, setIsGlitching] = useState(false);
-  const timeoutRef = useRef<number | null>(null);
   const glitchTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
-    return () => {
-      if (timeoutRef.current !== null) {
-        window.clearTimeout(timeoutRef.current);
-      }
+    if (isGlitching) {
+      document.documentElement.classList.add("hero-site-glitching");
+    } else {
+      document.documentElement.classList.remove("hero-site-glitching");
+    }
 
+    return () => {
       if (glitchTimeoutRef.current !== null) {
         window.clearTimeout(glitchTimeoutRef.current);
       }
+
+      document.documentElement.classList.remove("hero-site-glitching");
     };
-  }, []);
+  }, [isGlitching]);
 
   const handleClick = () => {
-    setIsRippling(false);
     setIsGlitching(false);
-
-    if (timeoutRef.current !== null) {
-      window.clearTimeout(timeoutRef.current);
-    }
 
     if (glitchTimeoutRef.current !== null) {
       window.clearTimeout(glitchTimeoutRef.current);
     }
 
     window.requestAnimationFrame(() => {
-      setIsRippling(true);
       setIsGlitching(true);
-      timeoutRef.current = window.setTimeout(() => {
-        setIsRippling(false);
-      }, 1050);
       glitchTimeoutRef.current = window.setTimeout(() => {
         setIsGlitching(false);
-      }, 780);
+      }, 980);
     });
   };
 
@@ -66,7 +59,6 @@ export function HeroMarkButton({ src, alt }: HeroMarkButtonProps) {
       <button
         type="button"
         aria-label="Logo de RiBuzz"
-        data-rippling={isRippling ? "true" : "false"}
         onClick={handleClick}
         className="hero-mark-button relative flex h-24 w-24 items-center justify-center rounded-full sm:h-28 sm:w-28 xl:h-32 xl:w-32"
       >

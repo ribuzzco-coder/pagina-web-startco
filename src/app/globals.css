@@ -320,24 +320,15 @@ textarea,
   transform: translateY(-1px) scale(1.015);
 }
 
-.hero-mark-button[data-rippling="true"] {
+.hero-mark-button:active {
   transform: scale(0.985);
   filter:
-    drop-shadow(0 0 16px rgba(230, 37, 255, 0.42))
-    drop-shadow(0 0 30px rgba(15, 239, 253, 0.22));
+    drop-shadow(0 0 14px rgba(230, 37, 255, 0.34))
+    drop-shadow(0 0 24px rgba(255, 255, 255, 0.14));
 }
 
-.hero-mark-button[data-rippling="true"]::before {
-  display: none;
-}
-
-.hero-mark-button[data-rippling="true"]::after {
-  z-index: -2;
-  border: 1px solid rgba(255, 148, 248, 0.32);
-  box-shadow:
-    0 0 0 1px rgba(230, 37, 255, 0.14),
-    0 0 20px rgba(230, 37, 255, 0.14);
-  animation: hero-mark-ring 920ms cubic-bezier(0.22, 1, 0.36, 1);
+html.hero-site-glitching body {
+  animation: hero-site-invert 980ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-glitch-burst {
@@ -345,14 +336,14 @@ textarea,
   position: fixed;
   inset: 0;
   z-index: 90;
-  mix-blend-mode: screen;
+  mix-blend-mode: difference;
   overflow: hidden;
   background:
-    linear-gradient(90deg, transparent 0 16%, rgba(230, 37, 255, 0.2) 17%, transparent 20% 100%),
+    linear-gradient(90deg, transparent 0 14%, rgba(255, 255, 255, 0.26) 15%, transparent 19% 100%),
     repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(90deg, rgba(230, 37, 255, 0.08) 0 1px, transparent 1px 11px),
-    radial-gradient(circle at 58% 42%, rgba(230, 37, 255, 0.3), transparent 34%),
-    radial-gradient(circle at 28% 52%, rgba(255, 87, 199, 0.22), transparent 28%);
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 11px),
+    radial-gradient(circle at 58% 42%, rgba(255, 255, 255, 0.24), transparent 34%),
+    radial-gradient(circle at 28% 52%, rgba(255, 255, 255, 0.16), transparent 28%);
   clip-path: polygon(0 5%, 100% 0, 100% 94%, 0 100%);
   animation: hero-glitch-field 980ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -363,8 +354,8 @@ textarea,
   position: absolute;
   inset: -8%;
   background:
-    linear-gradient(90deg, transparent 0 44%, rgba(255, 106, 244, 0.5) 45%, transparent 48% 100%),
-    repeating-linear-gradient(90deg, transparent 0 26px, rgba(230, 37, 255, 0.22) 27px 29px, transparent 30px 72px);
+    linear-gradient(90deg, transparent 0 44%, rgba(255, 255, 255, 0.5) 45%, transparent 48% 100%),
+    repeating-linear-gradient(90deg, transparent 0 26px, rgba(255, 255, 255, 0.22) 27px 29px, transparent 30px 72px);
   filter: blur(0.35px);
   opacity: 0;
 }
@@ -375,8 +366,8 @@ textarea,
 
 .hero-glitch-burst::after {
   background:
-    linear-gradient(90deg, transparent 0 36%, rgba(15, 239, 253, 0.18) 37%, transparent 40% 100%),
-    linear-gradient(180deg, transparent 0 52%, rgba(230, 37, 255, 0.28) 53%, transparent 56% 100%);
+    linear-gradient(90deg, transparent 0 36%, rgba(255, 255, 255, 0.18) 37%, transparent 40% 100%),
+    linear-gradient(180deg, transparent 0 52%, rgba(255, 255, 255, 0.24) 53%, transparent 56% 100%);
   animation: hero-glitch-slice 650ms cubic-bezier(0.16, 1, 0.3, 1) 70ms forwards reverse;
 }
 
@@ -386,7 +377,7 @@ textarea,
   width: 124vw;
   height: 10vh;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(230, 37, 255, 0.34), rgba(255, 255, 255, 0.24), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.24), transparent);
   filter: blur(10px);
   opacity: 0;
   transform: skewX(-18deg);
@@ -412,7 +403,7 @@ textarea,
 .hero-glitch-scan--four {
   top: 36%;
   height: 4vh;
-  background: linear-gradient(90deg, transparent, rgba(15, 239, 253, 0.2), rgba(230, 37, 255, 0.32), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.32), transparent);
   animation: hero-glitch-scan 700ms ease-out 260ms forwards;
 }
 
@@ -422,7 +413,7 @@ textarea,
   opacity: 0;
   background:
     repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,0.18) 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(0deg, transparent 0 8px, rgba(230,37,255,0.1) 9px 10px, transparent 11px 18px);
+    repeating-linear-gradient(0deg, transparent 0 8px, rgba(255,255,255,0.1) 9px 10px, transparent 11px 18px);
   filter: contrast(1.45) saturate(1.5);
   animation: hero-glitch-noise 820ms steps(5, end) forwards;
 }
@@ -3184,6 +3175,36 @@ textarea,
     width: 118vw;
     height: 118vw;
     transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes hero-site-invert {
+  0% {
+    filter: invert(0) hue-rotate(0deg) contrast(1) saturate(1);
+  }
+
+  10% {
+    filter: invert(1) hue-rotate(180deg) contrast(1.16) saturate(1.08);
+  }
+
+  22% {
+    filter: invert(1) hue-rotate(180deg) contrast(1.08) saturate(1.02);
+  }
+
+  38% {
+    filter: invert(0.86) hue-rotate(156deg) contrast(1.12) saturate(1.06);
+  }
+
+  56% {
+    filter: invert(1) hue-rotate(180deg) contrast(1.04) saturate(1);
+  }
+
+  74% {
+    filter: invert(0.18) hue-rotate(24deg) contrast(1.03) saturate(1);
+  }
+
+  100% {
+    filter: invert(0) hue-rotate(0deg) contrast(1) saturate(1);
   }
 }
 
