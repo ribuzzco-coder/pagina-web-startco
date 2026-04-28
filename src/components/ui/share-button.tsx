@@ -39,7 +39,7 @@ export function ShareButton({
       <svg
         aria-hidden="true"
         viewBox="0 0 24 24"
-        className="h-[18px] w-[18px]"
+        className="h-[21px] w-[21px]"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.9"
