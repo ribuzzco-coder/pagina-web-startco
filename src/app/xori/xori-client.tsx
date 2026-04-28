@@ -121,7 +121,7 @@ export default function XoriClient() {
           <ShareButton
             title="Xori"
             text="Explora la landing de Xori"
-            url={`${SITE_CONFIG.url}/xori`}
+            url="https://ribuzz.com/duvansequeira"
             iconOnly
             className="absolute right-4 top-4 z-20 inline-flex h-[3.35rem] w-[3.35rem] items-center justify-center rounded-full border border-white/14 bg-white/8 text-white shadow-[0_10px_24px_rgba(0,0,0,0.2)] backdrop-blur-[12px] transition-[transform,border-color,background-color,box-shadow,color,filter] duration-300 hover:-translate-y-[1px] hover:scale-[1.06] hover:border-white/28 hover:bg-white/14 hover:text-white hover:[filter:drop-shadow(0_0_18px_rgba(255,255,255,0.24))] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_0_24px_rgba(255,255,255,0.12)] active:scale-[0.97] sm:right-6 sm:top-6 sm:h-14 sm:w-14"
           />

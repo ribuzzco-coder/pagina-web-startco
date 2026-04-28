@@ -1,14 +1,5 @@
-import { createPageMetadata } from "@/lib/metadata";
+import { redirect } from "next/navigation";
 
-import XoriClient from "./xori-client";
-
-export const metadata = createPageMetadata({
-  title: "Xori",
-  description:
-    "Base visual de Xori lista para personalizar con enlaces, bloques y recursos propios.",
-  path: "/xori",
-});
-
-export default function XoriPage() {
-  return <XoriClient />;
+export default function XoriRedirectPage() {
+  redirect("/duvansequeira");
 }

@@ -18,6 +18,7 @@ export function RouteVisibility({
     "/hotelcaribbeancartagena",
     "/motronik",
     "/xori",
+    "/duvansequeira",
   ],
 }: RouteVisibilityProps) {
   const pathname = usePathname();

@@ -23,7 +23,7 @@ const landingPreviews: LandingPreview[] = [
   {
     title: "Xori",
     status: "Tu Dise\u00f1o",
-    href: "/xori",
+    href: "/duvansequeira",
     kind: "startco",
   },
   {
