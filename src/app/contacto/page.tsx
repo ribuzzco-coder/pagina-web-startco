@@ -100,7 +100,8 @@ export default function ContactoPage() {
             title="Contacto RiBuzz"
             text="Conecta con RiBuzz"
             url={`${SITE_CONFIG.url}/contacto`}
-            className="absolute right-4 top-4 z-20 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-3 py-2 text-xs font-semibold text-[#F5F7FA] shadow-[0_10px_24px_rgba(0,0,0,0.2)] backdrop-blur-[12px] transition-colors hover:border-white/20 hover:bg-white/10 sm:right-6 sm:top-6"
+            iconOnly
+            className="absolute right-4 top-4 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/14 bg-white/8 text-white shadow-[0_10px_24px_rgba(0,0,0,0.2)] backdrop-blur-[12px] transition-[transform,border-color,background-color,box-shadow] duration-300 hover:-translate-y-[1px] hover:border-white/24 hover:bg-white/14 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_0_22px_rgba(255,255,255,0.14)] sm:right-6 sm:top-6"
           />
 
           <div className="relative flex flex-col items-center text-center">
@@ -124,13 +125,13 @@ export default function ContactoPage() {
               crecer con más claridad, mejor presencia y herramientas útiles.
             </p>
 
-            <div className="mt-5 flex items-center justify-center gap-3">
+            <div className="mt-5 flex items-center justify-center gap-4">
               <a
                 href={SITE_CONFIG.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#FF7AE6] transition-colors hover:border-white/18 hover:bg-white/10"
+                className="inline-flex h-14 w-14 items-center justify-center text-white transition-[transform,color,filter] duration-300 hover:-translate-y-[1px] hover:text-[#FF7AE6] hover:[filter:drop-shadow(0_0_16px_rgba(255,122,230,0.48))]"
               >
                 <SocialIcon name="instagram" />
               </a>
@@ -139,7 +140,7 @@ export default function ContactoPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#6AFFB6] transition-colors hover:border-white/18 hover:bg-white/10"
+                className="inline-flex h-14 w-14 items-center justify-center text-white transition-[transform,color,filter] duration-300 hover:-translate-y-[1px] hover:text-[#6AFFB6] hover:[filter:drop-shadow(0_0_16px_rgba(106,255,182,0.46))]"
               >
                 <SocialIcon name="whatsapp" />
               </a>

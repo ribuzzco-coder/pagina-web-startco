@@ -7,6 +7,7 @@ type ShareButtonProps = {
   text: string;
   url: string;
   className?: string;
+  iconOnly?: boolean;
 };
 
 export function ShareButton({
@@ -14,6 +15,7 @@ export function ShareButton({
   text,
   url,
   className,
+  iconOnly = false,
 }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
 
@@ -44,13 +46,11 @@ export function ShareButton({
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <circle cx="18" cy="5" r="3" />
-        <circle cx="6" cy="12" r="3" />
-        <circle cx="18" cy="19" r="3" />
-        <path d="m8.6 10.8 6.8-4.1" />
-        <path d="m8.6 13.2 6.8 4.1" />
+        <path d="M12 16V4" />
+        <path d="m7.5 8.5 4.5-4.5 4.5 4.5" />
+        <path d="M5 13.5v4.2A1.3 1.3 0 0 0 6.3 19h11.4a1.3 1.3 0 0 0 1.3-1.3v-4.2" />
       </svg>
-      <span>{copied ? "Copiado" : "Compartir"}</span>
+      {!iconOnly ? <span>{copied ? "Copiado" : "Compartir"}</span> : null}
     </button>
   );
 }
