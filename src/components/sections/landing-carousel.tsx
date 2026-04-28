@@ -21,6 +21,12 @@ const landingPreviews: LandingPreview[] = [
     kind: "startco",
   },
   {
+    title: "Xori",
+    status: "Espacio vac\u00edo",
+    href: "/xori",
+    kind: "startco",
+  },
+  {
     title: "Hotel Caribe Plaza",
     status: "Tu Dise\u00f1o",
     href: "/hotelcaribeplaza",
