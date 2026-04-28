@@ -2198,6 +2198,153 @@ textarea,
   opacity: 0.96;
 }
 
+.hotel-marie-page {
+  --hotel-blue: #151210;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.42) 0%, rgba(247, 238, 224, 0.26) 45%, rgba(255, 247, 232, 0.38) 100%);
+}
+
+.hotel-marie-page .hotel-caribe-identity-card,
+.hotel-marie-page .hotel-caribe-section-card,
+.hotel-marie-page .hotel-caribe-contact-card,
+.hotel-marie-page .hotel-caribe-actions,
+.hotel-marie-page .hotel-caribe-map__label {
+  color: #171310;
+}
+
+.hotel-marie-page .hotel-caribe-identity-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 7.8rem;
+  transform: none;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 42%),
+    linear-gradient(180deg, rgba(239, 221, 178, 0.22), rgba(255, 255, 255, 0.02) 70%, transparent 100%);
+  opacity: 0.98;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hotel-marie-page .hotel-caribe-identity-card h1,
+.hotel-marie-page .hotel-caribe-section-card h2,
+.hotel-marie-page .hotel-caribe-contact-card h2,
+.hotel-marie-page .hotel-caribe-footer-name,
+.hotel-marie-page .hotel-caribe-actions span,
+.hotel-marie-page .hotel-caribe-map__label span {
+  font-family: var(--font-jost), var(--font-open-sans), sans-serif;
+  color: #14110f;
+}
+
+.hotel-marie-page .hotel-caribe-logo-card {
+  width: min(100%, 9.2rem);
+  height: clamp(8.6rem, 28vw, 10.2rem);
+  margin-top: 0.45rem;
+  margin-bottom: 1.3rem;
+  padding: 0;
+  background-image: none;
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 2;
+}
+
+.hotel-marie-page .hotel-caribe-hero h1 {
+  margin-top: 0.52rem;
+}
+
+.hotel-marie-page .hotel-caribe-brand-mark {
+  padding: 0.22rem;
+}
+
+.hotel-marie-page .hotel-caribe-brand-mark__image {
+  border-radius: 24px;
+  background: rgba(255, 252, 247, 0.96);
+  box-shadow:
+    0 16px 34px rgba(38, 24, 12, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+.hotel-marie-page .hotel-caribe-room:last-child {
+  grid-column: auto;
+  width: 100%;
+  justify-self: stretch;
+}
+
+.hotel-marie-page .hotel-caribe-nit {
+  border-color: rgba(163, 123, 47, 0.24);
+  background: rgba(255, 247, 228, 0.88);
+  color: #6f4f12;
+}
+
+.hotel-marie-page .hotel-caribe-socials a,
+.hotel-marie-page .hotel-caribe-footer-socials a {
+  border-color: rgba(142, 110, 48, 0.18);
+  background: linear-gradient(135deg, rgba(255, 250, 240, 0.92), rgba(232, 214, 178, 0.52));
+  color: #6a4a13;
+}
+
+.hotel-marie-page .hotel-caribe-actions a,
+.hotel-marie-page .hotel-caribe-map__label {
+  border-color: rgba(153, 118, 46, 0.22);
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.44), transparent 45%),
+    linear-gradient(135deg, rgba(255, 251, 244, 0.96), rgba(227, 203, 153, 0.62));
+  color: #5f4210;
+  box-shadow:
+    0 18px 34px rgba(66, 40, 16, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.84);
+}
+
+.hotel-marie-page .hotel-caribe-socials a:hover,
+.hotel-marie-page .hotel-caribe-footer-socials a:hover,
+.hotel-marie-page .hotel-caribe-map__label:hover {
+  border-color: rgba(192, 150, 66, 0.44);
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.56), transparent 45%),
+    linear-gradient(135deg, rgba(255, 252, 246, 0.98), rgba(219, 187, 118, 0.66));
+  color: #52380c;
+}
+
+.hotel-marie-page .hotel-caribe-socials svg,
+.hotel-marie-page .hotel-caribe-footer-socials svg,
+.hotel-marie-page .hotel-caribe-amenity-list svg {
+  color: #7f5a18;
+  filter: none;
+}
+
+.hotel-marie-page .hotel-caribe-room p {
+  background: linear-gradient(135deg, rgba(169, 126, 46, 0.98), rgba(221, 180, 100, 0.92));
+}
+
+.hotel-marie-page .hotel-caribe-space p {
+  background: linear-gradient(135deg, rgba(18, 16, 15, 0.96), rgba(88, 66, 23, 0.94));
+}
+
+.hotel-marie-page .hotel-caribe-section-card--dark {
+  border-color: rgba(166, 126, 49, 0.24);
+  background:
+    linear-gradient(145deg, rgba(33, 25, 19, 0.92), rgba(16, 13, 11, 0.9)),
+    rgba(20, 16, 13, 0.92);
+  box-shadow:
+    0 28px 50px rgba(18, 12, 9, 0.28),
+    inset 0 1px 0 rgba(255, 233, 186, 0.12);
+}
+
+.hotel-marie-page .hotel-caribe-section-card--dark h2,
+.hotel-marie-page .hotel-caribe-section-card--dark .hotel-caribe-amenity-list span,
+.hotel-marie-page .hotel-caribe-section-card--dark .hotel-caribe-amenity-list svg {
+  color: #fff4da;
+}
+
+.hotel-marie-ribuzz-mark {
+  filter: brightness(0) saturate(100%);
+  opacity: 0.96;
+}
+
 .hotel-caribe-actions button:disabled,
 .hotel-caribe-socials button:disabled,
 .hotel-caribe-footer-socials button:disabled,
