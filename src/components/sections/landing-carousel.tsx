@@ -22,7 +22,7 @@ const landingPreviews: LandingPreview[] = [
   },
   {
     title: "Xori",
-    status: "Espacio vac\u00edo",
+    status: "Tu Dise\u00f1o",
     href: "/xori",
     kind: "startco",
   },
@@ -165,7 +165,12 @@ function PreviewContent({ item }: { item: LandingPreview }) {
   return (
     <>
       <div className="landing-carousel__shine" />
-      {item.kind === "startco" ? (
+      {item.title === "Xori" ? (
+        <HotelImagePreview
+          src="/images/landing-previews/xori-space.png"
+          alt="Vista previa XORI SPACE"
+        />
+      ) : item.kind === "startco" ? (
         <StartcoPreview />
       ) : item.title === "Hotel Caribe Plaza" ? (
         <HotelImagePreview
