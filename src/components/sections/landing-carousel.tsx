@@ -62,11 +62,6 @@ const landingPreviews: LandingPreview[] = [
     kind: "offer",
   },
   {
-    title: "Evento o lanzamiento",
-    status: "Pr\u00f3ximamente",
-    kind: "event",
-  },
-  {
     title: "Portafolio personal",
     status: "Pr\u00f3ximamente",
     kind: "portfolio",
