@@ -106,28 +106,19 @@ function StartcoPreview() {
   );
 }
 
-function HotelCaribePreview() {
+function HotelImagePreview({
+  src,
+  alt,
+}: {
+  src: string;
+  alt: string;
+}) {
   return (
     <div className="landing-preview landing-preview--hotel-real">
       <div className="landing-preview__hotel-frame">
         <Image
-          src="/images/hotel-caribe/preview-card.png"
-          alt="Vista previa Hotel Caribe Plaza"
-          fill
-          className="landing-preview__hotel-screenshot"
-        />
-      </div>
-    </div>
-  );
-}
-
-function HotelVirreyPreview() {
-  return (
-    <div className="landing-preview landing-preview--hotel-real">
-      <div className="landing-preview__hotel-frame">
-        <Image
-          src="/images/hotel-virrey/preview.png"
-          alt="Vista previa Hotel Virrey Cartagena"
+          src={src}
+          alt={alt}
           fill
           className="landing-preview__hotel-screenshot"
         />
@@ -176,9 +167,30 @@ function PreviewContent({ item }: { item: LandingPreview }) {
       {item.kind === "startco" ? (
         <StartcoPreview />
       ) : item.title === "Hotel Caribe Plaza" ? (
-        <HotelCaribePreview />
+        <HotelImagePreview
+          src="/images/hotel-caribe/preview-card.png"
+          alt="Vista previa Hotel Caribe Plaza"
+        />
       ) : item.title === "Hotel Virrey Cartagena" ? (
-        <HotelVirreyPreview />
+        <HotelImagePreview
+          src="/images/hotel-virrey/preview.png"
+          alt="Vista previa Hotel Virrey Cartagena"
+        />
+      ) : item.title === "Hotel Caribe Covenas" ? (
+        <HotelImagePreview
+          src="/images/landing-previews/hotel-caribe-covenas.png"
+          alt="Vista previa Hotel Caribe Coveñas"
+        />
+      ) : item.title === "Hotel Marie Real Cartagena" ? (
+        <HotelImagePreview
+          src="/images/landing-previews/hotel-marie-real.png"
+          alt="Vista previa Hotel Marie Real Cartagena"
+        />
+      ) : item.title === "Hotel Caribbean Cartagena" ? (
+        <HotelImagePreview
+          src="/images/landing-previews/hotel-caribbean-cartagena.png"
+          alt="Vista previa Hotel Caribbean Cartagena"
+        />
       ) : (
         <PlaceholderPreview kind={item.kind} />
       )}

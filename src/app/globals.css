@@ -3469,11 +3469,11 @@ textarea,
   }
 
   .landing-carousel__arrow--left {
-        left: max(-0.2rem, calc(50% - 8.8rem));
+        left: max(-0.25rem, calc(50% - 9.6rem));
     }
 
     .landing-carousel__arrow--right {
-        right: max(-0.2rem, calc(50% - 8.8rem));
+        right: max(-0.25rem, calc(50% - 9.6rem));
     }
 
 
