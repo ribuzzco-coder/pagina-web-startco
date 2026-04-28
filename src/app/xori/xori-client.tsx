@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
+
+import { Card } from "@/components/ui/card";
+import { Container } from "@/components/ui/container";
 import { ShareButton } from "@/components/ui/share-button";
 import { StartcoGalaxy } from "@/components/ui/startco-galaxy";
-import { Container } from "@/components/ui/container";
-import { Card } from "@/components/ui/card";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 const primaryLinks = [
@@ -11,23 +13,23 @@ const primaryLinks = [
     title: "Xori Space",
     description: "Plataforma principal y universo de marca.",
     href: "https://xori.space/",
-    accent: "from-white/16 via-white/6 to-transparent",
-    glowTone: "cyan",
+    accent: "from-white/14 via-white/5 to-transparent",
+    glowTone: "purple",
     featured: true,
   },
   {
     title: "Xori Space | Astros",
     description: "Ruta para Astropreneurs dentro del ecosistema.",
     href: "https://xori.space/edtech-space-academy#astropreneurs",
-    accent: "from-[#8EEBFF]/18 via-[#8EEBFF]/8 to-transparent",
-    glowTone: "cyan",
+    accent: "from-white/12 via-white/4 to-transparent",
+    glowTone: "purple",
     featured: false,
   },
   {
     title: "Xtelar Space",
     description: "Proyecto conectado al universo Xori.",
     href: "https://xtelar.space/",
-    accent: "from-[#DADCF9]/16 via-[#DADCF9]/6 to-transparent",
+    accent: "from-white/12 via-white/4 to-transparent",
     glowTone: "purple",
     featured: false,
   },
@@ -35,7 +37,7 @@ const primaryLinks = [
     title: "Agiltech",
     description: "Enlace directo a la línea tecnológica aliada.",
     href: "https://agiltech.tech/",
-    accent: "from-[#F0F3FF]/16 via-[#F0F3FF]/5 to-transparent",
+    accent: "from-white/12 via-white/4 to-transparent",
     glowTone: "purple",
     featured: false,
   },
@@ -45,7 +47,7 @@ const contacts = [
   {
     name: "WhatsApp",
     href: "https://wa.me/573012499710",
-    glow: "hover:text-[#6AFFB6] hover:[filter:drop-shadow(0_0_20px_rgba(106,255,182,0.42))]",
+    glow: "hover:text-white hover:[filter:drop-shadow(0_0_20px_rgba(255,255,255,0.28))]",
     icon: (
       <svg viewBox="0 0 24 24" className="h-7 w-7 fill-current" aria-hidden="true">
         <path d="M20.52 3.48A11.8 11.8 0 0 0 12.06 0C5.56 0 .27 5.28.27 11.79c0 2.08.54 4.1 1.57 5.88L0 24l6.52-1.71a11.78 11.78 0 0 0 5.54 1.41h.01c6.5 0 11.79-5.29 11.79-11.79 0-3.15-1.22-6.1-3.34-8.43Zm-8.46 18.2h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.87 1.01 1.04-3.77-.23-.39a9.8 9.8 0 0 1-1.5-5.15c0-5.43 4.42-9.85 9.87-9.85 2.63 0 5.1 1.02 6.96 2.88a9.8 9.8 0 0 1 2.88 6.97c0 5.44-4.42 9.86-9.84 9.89Z" />
@@ -56,7 +58,7 @@ const contacts = [
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/duvansequeira/",
-    glow: "hover:text-[#8CC8FF] hover:[filter:drop-shadow(0_0_20px_rgba(140,200,255,0.42))]",
+    glow: "hover:text-white hover:[filter:drop-shadow(0_0_20px_rgba(255,255,255,0.28))]",
     icon: (
       <svg viewBox="0 0 24 24" className="h-7 w-7 fill-current" aria-hidden="true">
         <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.97 1.97 0 0 0 3.28 4.97c0 1.09.87 1.97 1.95 1.97h.02a1.97 1.97 0 1 0 0-3.94ZM20.72 13.1c0-3.47-1.85-5.08-4.32-5.08-1.99 0-2.88 1.1-3.38 1.87V8.5H9.64c.04.92 0 11.5 0 11.5h3.38v-6.42c0-.34.03-.67.12-.91.27-.67.88-1.36 1.9-1.36 1.34 0 1.87 1.02 1.87 2.52V20H20.3l.42-6.9Z" />
@@ -66,7 +68,7 @@ const contacts = [
   {
     name: "Instagram",
     href: "https://www.instagram.com/duv.space/",
-    glow: "hover:text-[#FF93E8] hover:[filter:drop-shadow(0_0_20px_rgba(255,147,232,0.42))]",
+    glow: "hover:text-white hover:[filter:drop-shadow(0_0_20px_rgba(255,255,255,0.28))]",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -84,7 +86,7 @@ const contacts = [
   {
     name: "Email",
     href: "mailto:duv@xori.space",
-    glow: "hover:text-[#FFD89A] hover:[filter:drop-shadow(0_0_20px_rgba(255,216,154,0.42))]",
+    glow: "hover:text-white hover:[filter:drop-shadow(0_0_20px_rgba(255,255,255,0.28))]",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -107,12 +109,12 @@ export default function XoriClient() {
     <section className="relative cv-auto -mt-[76px] min-h-screen overflow-hidden">
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.06),transparent_22%),linear-gradient(180deg,#050608,#0A0C10_40%,#040506)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(255,255,255,0.06),transparent_24%),radial-gradient(circle_at_84%_18%,rgba(184,195,255,0.07),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_34%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(255,255,255,0.06),transparent_24%),radial-gradient(circle_at_84%_18%,rgba(255,255,255,0.05),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_34%)]" />
         <StartcoGalaxy className="opacity-40" />
       </div>
 
       <Container className="relative z-10 flex min-h-screen max-w-3xl flex-col items-center justify-center py-24 sm:py-32">
-        <div className="relative w-full overflow-hidden rounded-[34px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,19,24,0.82),rgba(7,8,11,0.74))] px-5 py-7 shadow-[0_28px_80px_rgba(0,0,0,0.42)] backdrop-blur-[16px] sm:rounded-[38px] sm:px-10 sm:py-10">
+        <div className="relative w-full overflow-hidden rounded-[34px] border border-white/12 bg-[linear-gradient(180deg,rgba(18,19,24,0.82),rgba(7,8,11,0.74))] px-5 py-7 shadow-[0_28px_80px_rgba(0,0,0,0.42)] backdrop-blur-[16px] sm:rounded-[38px] sm:px-10 sm:py-10">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.24),transparent)]" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.06),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.04),transparent_22%)]" />
 
@@ -125,23 +127,31 @@ export default function XoriClient() {
           />
 
           <div className="relative flex flex-col items-center text-center">
-            <div className="flex h-32 w-32 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] shadow-[0_16px_32px_rgba(0,0,0,0.28)] sm:h-36 sm:w-36">
-              <span className="text-5xl font-semibold tracking-[0.02em] text-white [font-family:var(--font-space-grotesk)] sm:text-6xl">
-                X
-              </span>
+            <div className="group [perspective:1400px]">
+              <div className="relative h-32 w-32 transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] sm:h-36 sm:w-36">
+                <div className="absolute inset-0 overflow-hidden rounded-full border border-white/16 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] shadow-[0_16px_32px_rgba(0,0,0,0.28)] [backface-visibility:hidden]">
+                  <Image
+                    src="/images/xori-photo.jpeg"
+                    alt="Retrato de Xori"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center rounded-full border border-white/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.11),rgba(255,255,255,0.03))] text-white shadow-[0_16px_32px_rgba(0,0,0,0.28)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <span className="text-5xl font-semibold tracking-[0.02em] [font-family:var(--font-space-grotesk)] sm:text-6xl">
+                    X
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <h1 className="mt-6 text-4xl font-semibold tracking-[-0.04em] text-[#F8F9FB] sm:text-[3.45rem] [font-family:var(--font-space-grotesk)]">
-              Xori
+            <h1 className="mt-6 text-[2.9rem] font-semibold uppercase tracking-[-0.06em] text-[#F8F9FB] sm:text-[4.35rem] [font-family:var(--font-space-grotesk)]">
+              XORI SPACE
             </h1>
 
-            <p className="mt-2 text-base font-medium tracking-[0.08em] text-[#C9CFD9] uppercase [font-family:var(--font-space-grotesk)]">
+            <p className="mt-2 text-base font-medium uppercase tracking-[0.08em] text-[#C9CFD9] [font-family:var(--font-space-grotesk)]">
               Duvan Sequera
-            </p>
-
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#AAB1BD] sm:text-base [font-family:var(--font-space-grotesk)]">
-              Un punto de acceso elegante para proyectos, productos y espacios digitales
-              conectados con visión tecnológica y diseño sobrio.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
@@ -152,7 +162,7 @@ export default function XoriClient() {
                   target={contact.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={contact.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
                   aria-label={contact.name}
-                  className={`inline-flex h-[4.25rem] w-[4.25rem] items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white transition-[transform,color,filter,border-color,background-color] duration-300 hover:-translate-y-[1px] hover:scale-[1.05] hover:border-white/16 hover:bg-white/[0.05] active:scale-[0.97] ${contact.glow}`}
+                  className={`inline-flex h-[4.25rem] w-[4.25rem] items-center justify-center rounded-full border border-white/12 bg-white/[0.03] text-white transition-[transform,color,filter,border-color,background-color,box-shadow] duration-300 hover:-translate-y-[1px] hover:scale-[1.05] hover:border-white/22 hover:bg-white/[0.06] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_0_20px_rgba(255,255,255,0.08)] active:scale-[0.97] ${contact.glow}`}
                 >
                   <div className="scale-[1.18]">{contact.icon}</div>
                 </a>
@@ -171,10 +181,11 @@ export default function XoriClient() {
               >
                 <Card
                   glowTone={link.glowTone}
+                  interactiveGlow={false}
                   className={
                     link.featured
-                      ? "group relative overflow-hidden rounded-[24px] border border-white/16 bg-[linear-gradient(180deg,rgba(28,31,38,0.98),rgba(18,19,24,0.98))] px-5 py-5 text-center shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_0_28px_rgba(255,255,255,0.06)] transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-white/28 hover:bg-[#171B22] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_0_36px_rgba(255,255,255,0.08)]"
-                      : "group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#101218] px-5 py-5 text-center transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-white/18 hover:bg-[#141821] hover:shadow-[0_18px_36px_rgba(0,0,0,0.28)]"
+                      ? "group relative overflow-hidden rounded-[24px] border border-white/16 bg-[linear-gradient(180deg,rgba(28,31,38,0.98),rgba(18,19,24,0.98))] px-5 py-5 text-center shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_0_28px_rgba(255,255,255,0.05)] transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-white/28 hover:bg-[#171B22] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_0_34px_rgba(255,255,255,0.08)]"
+                      : "group relative overflow-hidden rounded-[24px] border border-white/12 bg-[#101218] px-5 py-5 text-center transition-[border-color,transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-white/20 hover:bg-[#141821] hover:shadow-[0_18px_36px_rgba(0,0,0,0.28)]"
                   }
                 >
                   <div

@@ -21,19 +21,19 @@ const primaryLinks = [
     featured: true,
   },
   {
-    title: "Sitio web",
-    description: "Volver a la página principal de RiBuzz",
-    href: "/",
-    accent: "from-[#B16EFF]/18 via-[#E625FF]/8 to-transparent",
-    glowTone: "cyan",
-    featured: false,
-  },
-  {
     title: "Agenda reunión",
     description: "Reservar una llamada con RiBuzz",
     href: "https://calendly.com/ribuzzco/conexion-ribuzz",
     accent: "from-[#0FEFFD]/22 via-[#E625FF]/14 to-transparent",
     glowTone: "purple",
+    featured: false,
+  },
+  {
+    title: "Crea tu landing",
+    description: "Explora ejemplos y arma una experiencia a tu medida",
+    href: "/landings",
+    accent: "from-[#FFB347]/24 via-[#FF7A18]/14 to-transparent",
+    glowTone: "pink",
     featured: false,
   },
 ] as const;
@@ -115,9 +115,7 @@ function ThemeToggle({
         strokeLinejoin="round"
       >
         {isDayMode ? (
-          <>
-            <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.7 6.7 0 0 0 9.8 9.8Z" />
-          </>
+          <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.7 6.7 0 0 0 9.8 9.8Z" />
         ) : (
           <>
             <circle cx="12" cy="12" r="4.2" />
@@ -143,8 +141,14 @@ export default function ContactoClient() {
               : "bg-[radial-gradient(circle_at_50%_0%,rgba(230,37,255,0.12),transparent_34%),linear-gradient(180deg,#0b0b10,#101420_46%,#0b0b10)]",
           )}
         />
-        <StartcoGalaxy className={cn("transition-opacity duration-500", isDayMode ? "opacity-20" : "opacity-90")} />
+        <StartcoGalaxy
+          className={cn(
+            "transition-opacity duration-500",
+            isDayMode ? "opacity-20" : "opacity-90",
+          )}
+        />
       </div>
+
       <Container className="relative z-10 flex min-h-screen max-w-3xl flex-col items-center justify-center py-24 sm:py-32">
         <div
           className={cn(
@@ -171,7 +175,10 @@ export default function ContactoClient() {
             )}
           />
 
-          <ThemeToggle isDayMode={isDayMode} onToggle={() => setIsDayMode((value) => !value)} />
+          <ThemeToggle
+            isDayMode={isDayMode}
+            onToggle={() => setIsDayMode((value) => !value)}
+          />
 
           <ShareButton
             title="Contacto RiBuzz"
@@ -234,10 +241,10 @@ export default function ContactoClient() {
                 rel="noopener noreferrer"
                 aria-label="Instagram"
                 className={cn(
-                  "inline-flex h-[4.6rem] w-[4.6rem] items-center justify-center transition-[transform,color,filter] duration-300 hover:-translate-y-[1px] hover:scale-[1.06] active:scale-[0.97]",
+                  "inline-flex h-[4.6rem] w-[4.6rem] items-center justify-center rounded-full border shadow-[0_10px_24px_rgba(0,0,0,0.12)] backdrop-blur-[10px] transition-[transform,color,filter,border-color,background-color,box-shadow] duration-300 hover:-translate-y-[1px] hover:scale-[1.06] active:scale-[0.97]",
                   isDayMode
-                    ? "text-[#111827] hover:text-[#FF4FD9] hover:[filter:drop-shadow(0_0_20px_rgba(255,79,217,0.36))]"
-                    : "text-white hover:text-[#FF7AE6] hover:[filter:drop-shadow(0_0_18px_rgba(255,122,230,0.52))]",
+                    ? "border-[#111827]/10 bg-[#111827]/6 text-[#111827] hover:border-[#FF4FD9]/24 hover:bg-[#111827]/8 hover:text-[#FF4FD9] hover:[filter:drop-shadow(0_0_20px_rgba(255,79,217,0.36))]"
+                    : "border-white/12 bg-white/6 text-white hover:border-[#FF7AE6]/28 hover:bg-white/10 hover:text-[#FF7AE6] hover:[filter:drop-shadow(0_0_18px_rgba(255,122,230,0.52))] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_0_20px_rgba(255,122,230,0.12)]",
                 )}
               >
                 <div className="scale-[1.26]">
@@ -250,10 +257,10 @@ export default function ContactoClient() {
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
                 className={cn(
-                  "inline-flex h-[4.6rem] w-[4.6rem] items-center justify-center transition-[transform,color,filter] duration-300 hover:-translate-y-[1px] hover:scale-[1.06] active:scale-[0.97]",
+                  "inline-flex h-[4.6rem] w-[4.6rem] items-center justify-center rounded-full border shadow-[0_10px_24px_rgba(0,0,0,0.12)] backdrop-blur-[10px] transition-[transform,color,filter,border-color,background-color,box-shadow] duration-300 hover:-translate-y-[1px] hover:scale-[1.06] active:scale-[0.97]",
                   isDayMode
-                    ? "text-[#111827] hover:text-[#25D366] hover:[filter:drop-shadow(0_0_20px_rgba(37,211,102,0.34))]"
-                    : "text-white hover:text-[#6AFFB6] hover:[filter:drop-shadow(0_0_18px_rgba(106,255,182,0.5))]",
+                    ? "border-[#111827]/10 bg-[#111827]/6 text-[#111827] hover:border-[#25D366]/24 hover:bg-[#111827]/8 hover:text-[#25D366] hover:[filter:drop-shadow(0_0_20px_rgba(37,211,102,0.34))]"
+                    : "border-white/12 bg-white/6 text-white hover:border-[#6AFFB6]/28 hover:bg-white/10 hover:text-[#6AFFB6] hover:[filter:drop-shadow(0_0_18px_rgba(106,255,182,0.5))] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_0_20px_rgba(106,255,182,0.12)]",
                 )}
               >
                 <div className="scale-[1.26]">
@@ -275,11 +282,15 @@ export default function ContactoClient() {
                 !isDayMode &&
                   (link.featured
                     ? "border-[#E625FF]/40 bg-[linear-gradient(180deg,rgba(32,22,40,0.96),rgba(20,18,30,0.98))] shadow-[0_0_0_1px_rgba(230,37,255,0.12),0_0_26px_rgba(230,37,255,0.18)] hover:border-[#ff8bf7]/52 hover:shadow-[0_0_0_1px_rgba(230,37,255,0.18),0_0_32px_rgba(230,37,255,0.24)]"
-                    : "border-white/10 bg-[#141724] hover:border-white/18"),
+                    : link.title === "Crea tu landing"
+                      ? "border-[#FF9A3D]/28 bg-[linear-gradient(180deg,rgba(38,24,16,0.96),rgba(24,18,15,0.98))] shadow-[0_0_0_1px_rgba(255,154,61,0.08),0_0_24px_rgba(255,122,24,0.14)] hover:border-[#FFB866]/42 hover:shadow-[0_0_0_1px_rgba(255,154,61,0.14),0_0_30px_rgba(255,122,24,0.2)]"
+                      : "border-white/10 bg-[#141724] hover:border-white/18"),
                 isDayMode &&
                   (link.featured
                     ? "border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(255,240,251,0.96),rgba(255,255,255,0.98))] shadow-[0_10px_24px_rgba(230,37,255,0.08)] hover:border-[#E625FF]/28"
-                    : ""),
+                    : link.title === "Crea tu landing"
+                      ? "border-[#FF9A3D]/18 bg-[linear-gradient(180deg,rgba(255,247,240,0.98),rgba(255,255,255,0.98))] shadow-[0_10px_24px_rgba(255,154,61,0.08)] hover:border-[#FF9A3D]/28"
+                      : ""),
               );
 
               const content = (
@@ -292,12 +303,8 @@ export default function ContactoClient() {
                   />
                   <div className="relative flex min-h-[58px] items-center justify-center text-center">
                     <div className="relative z-10 min-w-0">
-                      <p className="text-base font-semibold text-[#F5F7FA]">
-                        {link.title}
-                      </p>
-                      <p className="mt-1 text-sm text-[#C9D1E2]">
-                        {link.description}
-                      </p>
+                      <p className="text-base font-semibold text-[#F5F7FA]">{link.title}</p>
+                      <p className="mt-1 text-sm text-[#C9D1E2]">{link.description}</p>
                     </div>
                   </div>
                 </>
@@ -305,7 +312,13 @@ export default function ContactoClient() {
 
               if (isExternal) {
                 return (
-                  <a key={link.title} href={link.href} target="_blank" rel="noopener noreferrer" className="block">
+                  <a
+                    key={link.title}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
                     <Card glowTone={link.glowTone} className={cardClassName}>
                       {content}
                     </Card>
@@ -334,7 +347,14 @@ export default function ContactoClient() {
                     : "border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]",
                 )}
               >
-                <div className={cn("pointer-events-none absolute inset-0", isDayMode ? "bg-[radial-gradient(circle_at_80%_80%,rgba(17,24,39,0.04),transparent_34%)]" : "bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.08),transparent_34%)]")} />
+                <div
+                  className={cn(
+                    "pointer-events-none absolute inset-0",
+                    isDayMode
+                      ? "bg-[radial-gradient(circle_at_80%_80%,rgba(17,24,39,0.04),transparent_34%)]"
+                      : "bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.08),transparent_34%)]",
+                  )}
+                />
                 <div className="relative z-10 mx-auto max-w-[78%]">
                   <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
                     {supportCards.nfc.title}
@@ -350,7 +370,12 @@ export default function ContactoClient() {
                     alt="Mockup de tarjetas NFC RiBuzz"
                     width={700}
                     height={1000}
-                    className={cn("h-auto w-full object-contain", isDayMode ? "drop-shadow-[0_0_18px_rgba(17,24,39,0.08)]" : "drop-shadow-[0_0_34px_rgba(230,37,255,0.24)]")}
+                    className={cn(
+                      "h-auto w-full object-contain",
+                      isDayMode
+                        ? "drop-shadow-[0_0_18px_rgba(17,24,39,0.08)]"
+                        : "drop-shadow-[0_0_34px_rgba(230,37,255,0.24)]",
+                    )}
                   />
                 </div>
               </Card>
@@ -365,7 +390,14 @@ export default function ContactoClient() {
                   : "border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] hover:border-[#0FEFFD]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]",
               )}
             >
-              <div className={cn("pointer-events-none absolute inset-0", isDayMode ? "bg-[radial-gradient(circle_at_80%_20%,rgba(17,24,39,0.05),transparent_26%)]" : "bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]")} />
+              <div
+                className={cn(
+                  "pointer-events-none absolute inset-0",
+                  isDayMode
+                    ? "bg-[radial-gradient(circle_at_80%_20%,rgba(17,24,39,0.05),transparent_26%)]"
+                    : "bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]",
+                )}
+              />
               <div className="relative flex flex-1 flex-col items-center justify-between gap-6">
                 <div>
                   <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
@@ -378,7 +410,12 @@ export default function ContactoClient() {
 
                 <div className="flex flex-col items-center gap-5">
                   <div className="relative">
-                    <div className={cn("absolute inset-0 rounded-full blur-xl transition-opacity duration-300 group-hover:opacity-100", isDayMode ? "bg-[#111827]/10" : "bg-[#0FEFFD]/20")} />
+                    <div
+                      className={cn(
+                        "absolute inset-0 rounded-full blur-xl transition-opacity duration-300 group-hover:opacity-100",
+                        isDayMode ? "bg-[#111827]/10" : "bg-[#0FEFFD]/20",
+                      )}
+                    />
                     <Image
                       src="/neo-mech-logo.png"
                       alt="Logo Neo-Mech"
@@ -423,7 +460,9 @@ export default function ContactoClient() {
                     rel="noopener noreferrer"
                     className={cn(
                       "inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors",
-                      isDayMode ? "text-[#E6ECF8]/78 hover:text-white" : "text-[#9BF8FF]/70 hover:text-[#9BF8FF]",
+                      isDayMode
+                        ? "text-[#E6ECF8]/78 hover:text-white"
+                        : "text-[#9BF8FF]/70 hover:text-[#9BF8FF]",
                     )}
                   >
                     <span>Ver Instagram</span>
@@ -433,7 +472,10 @@ export default function ContactoClient() {
             </Card>
           </div>
 
-          <Link href={SITE_CONFIG.giftsPath} className="relative mx-auto mt-4 block max-w-xl">
+          <Link
+            href={SITE_CONFIG.giftsPath}
+            className="relative mx-auto mt-4 block max-w-xl"
+          >
             <Card
               glowTone="cyan"
               className={cn(
