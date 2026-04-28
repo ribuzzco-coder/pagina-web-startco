@@ -2385,8 +2385,8 @@ textarea,
 }
 
 .hotel-caribbean-page .hotel-caribe-logo-card {
-  width: min(100%, 10.4rem);
-  height: clamp(9.8rem, 31vw, 11.6rem);
+  width: min(100%, 12.4rem);
+  height: clamp(8.8rem, 24vw, 10.1rem);
   margin-top: 0.48rem;
   margin-bottom: 1.35rem;
   padding: 0;
@@ -2405,7 +2405,7 @@ textarea,
 }
 
 .hotel-caribbean-page .hotel-caribe-brand-mark__image {
-  border-radius: 24px;
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.95);
   box-shadow:
     0 16px 36px rgba(21, 64, 130, 0.14),
@@ -2414,7 +2414,7 @@ textarea,
 
 .hotel-caribbean-page .hotel-caribe-section-card,
 .hotel-caribbean-page .hotel-caribe-contact-card {
-  clip-path: polygon(0 0, 100% 0, 100% 92%, 66% 100%, 50% 95%, 34% 100%, 0 92%);
+  clip-path: none;
 }
 
 .hotel-caribbean-page .hotel-caribe-room:last-child {
@@ -2453,15 +2453,7 @@ textarea,
 
 .hotel-caribbean-page .hotel-caribe-actions a::before,
 .hotel-caribbean-page .hotel-caribe-map__label::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(136deg, rgba(255, 190, 63, 0.16) 0%, transparent 30%),
-    linear-gradient(316deg, rgba(255, 142, 35, 0.12) 0%, transparent 24%);
-  clip-path: polygon(0 0, 18% 0, 50% 28%, 82% 0, 100% 0, 100% 10%, 50% 42%, 0 10%);
-  pointer-events: none;
-  opacity: 0.9;
+  content: none;
 }
 
 .hotel-caribbean-page .hotel-caribe-socials a:hover,
@@ -2523,7 +2515,8 @@ textarea,
   color: #163f78;
   padding: 1.45rem 1.5rem 1.55rem;
   box-shadow: 0 18px 32px rgba(18, 60, 126, 0.12);
-  clip-path: polygon(0 0, 100% 0, 100% 92%, 68% 100%, 50% 95%, 32% 100%, 0 92%);
+  clip-path: none;
+  text-align: center;
 }
 
 .hotel-caribbean-feature-card::before {
@@ -2550,7 +2543,7 @@ textarea,
   place-items: center;
   width: 2.9rem;
   height: 2.9rem;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
   color: #1c6aa5;
 }
 
@@ -2571,6 +2564,7 @@ textarea,
   font-weight: 800;
   line-height: 1.05;
   color: inherit;
+  text-align: center;
 }
 
 .hotel-caribbean-feature-card p {
@@ -2578,6 +2572,7 @@ textarea,
   font-size: 0.97rem;
   line-height: 1.42;
   color: inherit;
+  text-align: center;
 }
 
 .hotel-caribbean-ribuzz-mark {
