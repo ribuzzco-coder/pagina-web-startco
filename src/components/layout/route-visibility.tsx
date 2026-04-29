@@ -17,6 +17,7 @@ export function RouteVisibility({
     "/hotelmarierealcartagena",
     "/hotelcaribbeancartagena",
     "/motronik",
+    "/neomech",
     "/xori",
     "/duvansequeira",
   ],

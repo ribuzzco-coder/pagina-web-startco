@@ -5,7 +5,7 @@ import NeoMechClient from "./neomech-client";
 export const metadata = createPageMetadata({
   title: "Neo-Mech",
   description:
-    "Plantilla base de Neo-Mech lista para personalizar con enlaces, bloques y recursos propios.",
+    "Neo-Mech transforma ideas en productos físicos hechos a medida para marcas que quieren destacar.",
   path: "/neomech",
 });
 
