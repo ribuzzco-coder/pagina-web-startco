@@ -25,14 +25,6 @@ const primaryLinks = [
     glowTone: "cyan",
     featured: false,
   },
-  {
-    title: "Correo directo",
-    description: "Comparte referencias, medidas o el contexto completo de tu proyecto.",
-    href: "mailto:Neomech3d@gmail.com",
-    accent: "from-[#9BE6FF]/16 via-[#9BE6FF]/6 to-transparent",
-    glowTone: "cyan",
-    featured: false,
-  },
 ] as const;
 
 const detailCards = [
@@ -214,7 +206,7 @@ export default function NeoMechClient() {
               <Card
                 key={card.title}
                 glowTone="cyan"
-                className="rounded-[28px] border border-[#67F1FF]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 transition-[border-color,box-shadow,transform,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#8DF7FF]/32 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
+                className="rounded-[28px] border border-[#67F1FF]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] px-6 py-6 text-center transition-[border-color,box-shadow,transform,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] hover:border-[#8DF7FF]/32 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]"
               >
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A9F5FF]">
                   {card.title}

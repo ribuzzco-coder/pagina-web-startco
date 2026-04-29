@@ -21,6 +21,12 @@ const landingPreviews: LandingPreview[] = [
     kind: "startco",
   },
   {
+    title: "Neo-Mech",
+    status: "Tu Dise\u00f1o",
+    href: "/neomech",
+    kind: "business",
+  },
+  {
     title: "Xori",
     status: "Tu Dise\u00f1o",
     href: "/duvansequeira",
@@ -61,11 +67,6 @@ const landingPreviews: LandingPreview[] = [
     status: "Espacio vac\u00edo",
     href: "/motronik",
     kind: "business",
-  },
-  {
-    title: "Oferta premium",
-    status: "Pr\u00f3ximamente",
-    kind: "offer",
   },
   {
     title: "Portafolio personal",
@@ -196,6 +197,11 @@ function PreviewContent({ item }: { item: LandingPreview }) {
         <HotelImagePreview
           src="/images/landing-previews/hotel-caribbean-cartagena.png"
           alt="Vista previa Hotel Caribbean Cartagena"
+        />
+      ) : item.title === "Neo-Mech" ? (
+        <HotelImagePreview
+          src="/images/landing-previews/neomech.png"
+          alt="Vista previa Neo-Mech"
         />
       ) : (
         <PlaceholderPreview kind={item.kind} />

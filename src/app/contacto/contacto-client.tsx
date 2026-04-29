@@ -48,10 +48,7 @@ const supportCards = {
     title: "Conoce a Neo-Mech",
     description:
       "Neo-Mech es el aliado ideal para impresión 3D a la medida de tus necesidades.",
-    href: "https://www.instagram.com/neomech3d/",
-    whatsappUrl: "https://wa.me/573008455611",
-    portfolioUrl:
-      "https://drive.google.com/file/d/1pJjucqtEM1P7hCWs0YnBBGIqUDmmeGhP/view?usp=sharing",
+    href: "/neomech",
   },
   gifts: {
     title: "Regalos / documentos de valor",
@@ -142,10 +139,7 @@ export default function ContactoClient() {
           )}
         />
         <StartcoGalaxy
-          className={cn(
-            "transition-opacity duration-500",
-            isDayMode ? "opacity-20" : "opacity-90",
-          )}
+          className={cn("transition-opacity duration-500", isDayMode ? "opacity-20" : "opacity-90")}
         />
       </div>
 
@@ -175,15 +169,12 @@ export default function ContactoClient() {
             )}
           />
 
-          <ThemeToggle
-            isDayMode={isDayMode}
-            onToggle={() => setIsDayMode((value) => !value)}
-          />
+          <ThemeToggle isDayMode={isDayMode} onToggle={() => setIsDayMode((value) => !value)} />
 
           <ShareButton
             title="Contacto RiBuzz"
             text="Conecta con RiBuzz"
-            url={`${SITE_CONFIG.url}/contacto`}
+            url="https://ribuzz.com/contacto"
             iconOnly
             className={cn(
               "absolute right-4 top-4 z-20 inline-flex h-[3.35rem] w-[3.35rem] items-center justify-center rounded-full border shadow-[0_10px_24px_rgba(0,0,0,0.2)] backdrop-blur-[12px] transition-[transform,border-color,background-color,box-shadow,color,filter] duration-300 hover:-translate-y-[1px] hover:scale-[1.06] active:scale-[0.97] sm:right-6 sm:top-6 sm:h-14 sm:w-14",
@@ -381,34 +372,25 @@ export default function ContactoClient() {
               </Card>
             </Link>
 
-            <Card
-              glowTone="cyan"
-              className={cn(
-                "group relative flex h-full min-h-[280px] flex-col rounded-[28px] px-6 py-6 text-center transition-[border-color,box-shadow,transform,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px]",
-                isDayMode
-                  ? "border-[#111827]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,248,252,0.98))] hover:border-[#111827]/16 hover:shadow-[0_18px_38px_rgba(17,24,39,0.08)]"
-                  : "border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] hover:border-[#0FEFFD]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]",
-              )}
-            >
-              <div
+            <Link href={supportCards.neoMech.href} className="block h-full">
+              <Card
+                glowTone="cyan"
                 className={cn(
-                  "pointer-events-none absolute inset-0",
+                  "group relative flex h-full min-h-[280px] flex-col rounded-[28px] px-6 py-6 text-center transition-[border-color,box-shadow,transform,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px]",
                   isDayMode
-                    ? "bg-[radial-gradient(circle_at_80%_20%,rgba(17,24,39,0.05),transparent_26%)]"
-                    : "bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]",
+                    ? "border-[#111827]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,248,252,0.98))] hover:border-[#111827]/16 hover:shadow-[0_18px_38px_rgba(17,24,39,0.08)]"
+                    : "border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] hover:border-[#0FEFFD]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]",
                 )}
-              />
-              <div className="relative flex flex-1 flex-col items-center justify-between gap-6">
-                <div>
-                  <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
-                    {supportCards.neoMech.title}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-[#C9D1E2] sm:text-base">
-                    {supportCards.neoMech.description}
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-center gap-5">
+              >
+                <div
+                  className={cn(
+                    "pointer-events-none absolute inset-0",
+                    isDayMode
+                      ? "bg-[radial-gradient(circle_at_80%_20%,rgba(17,24,39,0.05),transparent_26%)]"
+                      : "bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]",
+                  )}
+                />
+                <div className="relative flex flex-1 flex-col items-center justify-center gap-5">
                   <div className="relative">
                     <div
                       className={cn(
@@ -425,64 +407,25 @@ export default function ContactoClient() {
                     />
                   </div>
 
-                  <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
-                    <a
-                      href={supportCards.neoMech.whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={cn(
-                        "flex items-center justify-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold transition-colors",
-                        isDayMode
-                          ? "border border-[#25D366]/24 bg-[#25D366]/8 text-white hover:bg-[#25D366]/12"
-                          : "border border-[#25D366]/30 bg-[#25D366]/5 text-[#6AFFB6] hover:bg-[#25D366]/10",
-                      )}
-                    >
-                      Contactar
-                    </a>
-                    <a
-                      href={supportCards.neoMech.portfolioUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={cn(
-                        "flex items-center justify-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold transition-colors",
-                        isDayMode
-                          ? "border border-[#111827]/10 bg-[#111827]/16 text-white hover:bg-[#111827]/22"
-                          : "border border-white/10 bg-white/5 text-white hover:bg-white/10",
-                      )}
-                    >
-                      Portafolio
-                    </a>
+                  <div>
+                    <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
+                      {supportCards.neoMech.title}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-[#C9D1E2] sm:text-base">
+                      {supportCards.neoMech.description}
+                    </p>
                   </div>
-
-                  <a
-                    href={supportCards.neoMech.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cn(
-                      "inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors",
-                      isDayMode
-                        ? "text-[#E6ECF8]/78 hover:text-white"
-                        : "text-[#9BF8FF]/70 hover:text-[#9BF8FF]",
-                    )}
-                  >
-                    <span>Ver Instagram</span>
-                  </a>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </Link>
           </div>
 
-          <Link
-            href={SITE_CONFIG.giftsPath}
-            className="relative mx-auto mt-4 block max-w-xl"
-          >
+          <Link href={SITE_CONFIG.giftsPath} className="relative mx-auto mt-4 block max-w-xl">
             <Card
               glowTone="cyan"
               className={cn(
                 "rounded-[26px] border-dashed px-6 py-6 text-center md:min-h-[132px]",
-                isDayMode
-                  ? "border-[#111827]/10 bg-[#ffffff]/90"
-                  : "border-white/10 bg-[#10131C]/72",
+                isDayMode ? "border-[#111827]/10 bg-[#ffffff]/90" : "border-white/10 bg-[#10131C]/72",
               )}
             >
               <div className="flex flex-col items-center justify-center gap-3">

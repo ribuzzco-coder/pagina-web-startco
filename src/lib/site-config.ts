@@ -22,9 +22,9 @@
     { label: "Inicio", href: "/" },
     { label: "Servicios", href: "/services" },
     { label: "Sobre RiBuzz", href: "/about" },
-    { label: "Contacto", href: "/contacto" },
+    { label: "Landings", href: "/landings" },
     { label: "NFC", href: "/tarjetas-nfc" },
-    { label: "Solicitar diagnóstico", href: "/diagnostico" },
+    { label: "Diagnóstico", href: "/diagnostico" },
   ],
 } as const;
 

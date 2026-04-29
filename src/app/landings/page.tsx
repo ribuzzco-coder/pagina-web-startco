@@ -1,10 +1,8 @@
 import { LandingCarousel } from "@/components/sections/landing-carousel";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { HeroGalaxy } from "@/components/ui/hero-galaxy";
 import { createPageMetadata } from "@/lib/metadata";
-import { SITE_CONFIG } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
   title: "Landings",
@@ -12,26 +10,6 @@ export const metadata = createPageMetadata({
     "Acceso privado a landings RiBuzz para explorar ideas de p\u00e1ginas, biolinks y experiencias digitales a la medida.",
   path: "/landings",
 });
-
-function KeyIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-7 w-7 text-[#ffb3f7] drop-shadow-[0_0_20px_rgba(230,37,255,0.5)]"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="7.5" cy="14.5" r="3.5" />
-      <path d="M10.2 12 20 2.2" />
-      <path d="m15.4 6.8 1.8 1.8" />
-      <path d="m13.2 9 1.8 1.8" />
-    </svg>
-  );
-}
 
 export default function LandingsPage() {
   return (
@@ -44,13 +22,6 @@ export default function LandingsPage() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(230,37,255,0.14),transparent_26%),radial-gradient(circle_at_86%_20%,rgba(15,239,253,0.08),transparent_24%),radial-gradient(circle_at_50%_100%,rgba(255,77,109,0.14),transparent_36%)]" />
 
           <div className="relative z-10">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#E625FF]/32 bg-[#E625FF]/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_0_30px_rgba(230,37,255,0.22)]">
-              <KeyIcon />
-            </div>
-
-            <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#FF9EF2]">
-              Acceso reservado
-            </p>
             <h1 className="mt-4 text-4xl font-semibold tracking-tight text-[#F5F7FA] sm:text-5xl">
               Landings RiBuzz
             </h1>
@@ -74,12 +45,6 @@ export default function LandingsPage() {
                   Una experiencia visual con orden, presencia y rutas directas para contacto, contenido o venta.
                 </p>
               </div>
-            </div>
-
-            <div className="mt-8 flex justify-center">
-              <Button href={SITE_CONFIG.whatsappUrl} size="lg">
-                Pide la tuya por WhatsApp
-              </Button>
             </div>
 
             <LandingCarousel />
