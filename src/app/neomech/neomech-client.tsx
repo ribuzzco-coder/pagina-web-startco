@@ -128,23 +128,6 @@ function SocialIcon({ name }: { name: "instagram" | "whatsapp" | "email" }) {
   );
 }
 
-function ToolIcon() {
-  return (
-    <svg
-      viewBox="0 0 120 92"
-      className="h-16 w-16"
-      fill="#59D7FF"
-      aria-hidden="true"
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M76 0c4.4 0 8 3.6 8 8v6.3c3.82 1.04 7.36 2.5 10.55 4.38l4.45-4.45c3.12-3.12 8.19-3.12 11.31 0l5.66 5.66c3.12 3.12 3.12 8.19 0 11.31l-4.45 4.45A35.92 35.92 0 0 1 116 46.2h6.29c4.42 0 8 3.59 8 8v8c0 4.42-3.58 8-8 8H116a35.86 35.86 0 0 1-4.48 10.54l4.45 4.45c3.12 3.13 3.12 8.2 0 11.32l-5.66 5.65c-3.12 3.13-8.19 3.13-11.31 0l-4.45-4.45A35.84 35.84 0 0 1 84 102.09V108c0 4.4-3.6 8-8 8h-8c-4.4 0-8-3.6-8-8v-5.91a35.84 35.84 0 0 1-10.55-4.38L45 102.16c-3.12 3.13-8.19 3.13-11.31 0l-5.66-5.65c-3.12-3.12-3.12-8.2 0-11.32l4.45-4.45A35.86 35.86 0 0 1 28 70.2h-6.29c-4.42 0-8-3.58-8-8v-4.06a25.34 25.34 0 0 0 10.98-4.86 18.8 18.8 0 0 0-.69-5.08H17.7c-4.42 0-8-3.58-8-8v-6c0-4.41 3.58-8 8-8H24c.72-2.7 1.77-5.28 3.14-7.69l-4.43-4.44a8 8 0 0 1 0-11.31l4.25-4.24a8 8 0 0 1 11.31 0l4.44 4.44A25.98 25.98 0 0 1 50 4.06V0c0-4.4 3.6-8 8-8h6c4.42 0 8 3.6 8 8v4.06c2.72.73 5.3 1.78 7.7 3.15L84.14 2.8A7.98 7.98 0 0 1 89.8 0H76Zm-4 25.1c-14.86 0-26.9 12.05-26.9 26.9 0 14.86 12.04 26.9 26.9 26.9s26.9-12.04 26.9-26.9c0-14.85-12.04-26.9-26.9-26.9ZM44.7 22.8c-10.38 0-18.8 8.42-18.8 18.8s8.42 18.8 18.8 18.8 18.8-8.42 18.8-18.8-8.42-18.8-18.8-18.8Z"
-      />
-    </svg>
-  );
-}
-
 export default function NeoMechClient() {
   const [selectedCaseIndex, setSelectedCaseIndex] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -304,7 +287,13 @@ export default function NeoMechClient() {
                 </div>
                 {card.withToolIcon ? (
                   <div className="mt-5 flex justify-center text-[#B9FAFF]">
-                    <ToolIcon />
+                    <Image
+                      src="/images/neomech-gear.webp"
+                      alt="Engranajes"
+                      width={88}
+                      height={88}
+                      className="h-20 w-20 object-contain"
+                    />
                   </div>
                 ) : null}
               </Card>
