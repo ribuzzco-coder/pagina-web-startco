@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
 
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -47,6 +49,41 @@ const detailCards = [
   },
 ] as const;
 
+const caseStudies = [
+  {
+    title: "Caso de éxito 01",
+    label: "Exhibición para joyería",
+    image: "/images/neomech-case-1.png",
+    challenge: "La joyería tenía problemas de organización en su vitrina.",
+    solution:
+      "Diseñamos estructuras personalizadas para organizar y destacar cada producto.",
+    process: "Diseño → Prototipo → Producción",
+    results: [
+      "Mayor percepción de valor del producto",
+      "Mejor organización visual",
+      "Mejor experiencia del cliente",
+    ],
+    closing: "",
+  },
+  {
+    title: "Caso de éxito 02",
+    label: "Experiencia física + conexión digital",
+    image: "/images/neomech-case-2.png",
+    challenge:
+      "Las marcas regalan muestras, pero no logran mantener el contacto con el cliente.",
+    solution:
+      "Diseñamos un producto que combina experiencia física y conexión digital: mini perfume (decant 3ml), diseño tipo llavero con identidad de marca, charms personalizados y tarjeta con tecnología NFC integrada.",
+    process: "Diseño → Prototipo → Producción",
+    results: [
+      "Genera recordación de marca",
+      "Aumenta la interacción con clientes",
+      "Convierte tráfico físico en digital",
+    ],
+    closing:
+      "El cliente prueba el producto, escanea el NFC y queda conectado directamente con la marca.",
+  },
+] as const;
+
 function SocialIcon({ name }: { name: "instagram" | "whatsapp" | "email" }) {
   if (name === "instagram") {
     return (
@@ -90,6 +127,34 @@ function SocialIcon({ name }: { name: "instagram" | "whatsapp" | "email" }) {
 }
 
 export default function NeoMechClient() {
+  const [selectedCaseIndex, setSelectedCaseIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (selectedCaseIndex === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedCaseIndex(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [selectedCaseIndex]);
+
+  const selectedCase =
+    selectedCaseIndex === null ? null : (caseStudies[selectedCaseIndex] ?? null);
+
   return (
     <section className="relative cv-auto -mt-[76px] min-h-screen overflow-hidden">
       <div className="fixed inset-0 z-0">
@@ -98,7 +163,7 @@ export default function NeoMechClient() {
         <StartcoGalaxy className="opacity-75 [mask-image:linear-gradient(180deg,rgba(0,0,0,0.94),rgba(0,0,0,0.72))]" />
       </div>
 
-      <Container className="relative z-10 flex min-h-screen max-w-3xl flex-col items-center justify-center py-20 sm:py-28">
+      <Container className="relative z-10 flex min-h-screen max-w-4xl flex-col items-center justify-center py-20 sm:py-28">
         <div className="relative w-full overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(14,18,26,0.8),rgba(8,11,18,0.7))] px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[14px] sm:rounded-[36px] sm:px-10 sm:py-10">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(103,241,255,0.4),transparent)]" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(103,241,255,0.12),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.06),transparent_22%)]" />
@@ -221,8 +286,151 @@ export default function NeoMechClient() {
               </Card>
             ))}
           </div>
+
+          <div className="relative mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-2">
+            {caseStudies.map((caseStudy, index) => (
+              <button
+                key={caseStudy.title}
+                type="button"
+                onClick={() => setSelectedCaseIndex(index)}
+                className="group text-left"
+                aria-label={`Abrir ${caseStudy.title}`}
+              >
+                <Card
+                  glowTone="cyan"
+                  className="overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,23,34,0.96),rgba(10,14,22,0.98))] transition-[border-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[2px] hover:border-[#8DF7FF]/30 hover:shadow-[0_18px_42px_rgba(0,0,0,0.28)]"
+                >
+                  <div className="relative aspect-[1.18/1] overflow-hidden">
+                    <Image
+                      src={caseStudy.image}
+                      alt={caseStudy.label}
+                      fill
+                      sizes="(max-width: 767px) 92vw, 34vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(5,8,14,0.06)_42%,rgba(5,8,14,0.82)_100%)]" />
+                    <div className="absolute inset-x-0 bottom-0 px-5 pb-5 pt-12 text-center">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A9F5FF]">
+                        {caseStudy.title}
+                      </p>
+                      <p className="mt-2 text-base font-semibold text-white sm:text-lg">
+                        {caseStudy.label}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              </button>
+            ))}
+          </div>
         </div>
       </Container>
+
+      {mounted && selectedCase
+        ? createPortal(
+            <div
+              className="fixed inset-0 z-[140] flex items-center justify-center bg-[rgba(2,5,10,0.78)] px-4 py-6 backdrop-blur-[10px]"
+              role="dialog"
+              aria-modal="true"
+              aria-label={selectedCase.title}
+              onClick={() => setSelectedCaseIndex(null)}
+            >
+              <button
+                type="button"
+                className="absolute inset-0"
+                aria-label={`Cerrar ${selectedCase.title}`}
+              />
+              <div
+                className="relative z-10 w-full max-w-3xl overflow-hidden rounded-[30px] border border-white/12 bg-[linear-gradient(180deg,rgba(10,14,22,0.98),rgba(6,9,15,0.98))] shadow-[0_28px_80px_rgba(0,0,0,0.45)]"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  onClick={() => setSelectedCaseIndex(null)}
+                  className="absolute inset-0 z-0"
+                  aria-label={`Cerrar ${selectedCase.title}`}
+                />
+                <div className="relative z-10 grid md:grid-cols-[1.02fr_0.98fr]">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedCaseIndex(null)}
+                    className="relative min-h-[18rem] bg-black/30"
+                    aria-label={`Cerrar ${selectedCase.title}`}
+                  >
+                    <Image
+                      src={selectedCase.image}
+                      alt={selectedCase.label}
+                      fill
+                      sizes="(max-width: 767px) 100vw, 48vw"
+                      className="object-cover"
+                      priority
+                    />
+                  </button>
+
+                  <div className="relative px-6 py-6 text-center sm:px-8 sm:py-8">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#A9F5FF]">
+                      {selectedCase.title}
+                    </p>
+                    <h3 className="mt-2 text-2xl font-semibold text-white sm:text-[2rem]">
+                      {selectedCase.label}
+                    </h3>
+
+                    <div className="mt-6 space-y-5">
+                      <div className="rounded-[22px] border border-white/8 bg-white/[0.03] px-4 py-4">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A9F5FF]">
+                          El reto
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-[#D8E4EE] sm:text-[0.98rem]">
+                          {selectedCase.challenge}
+                        </p>
+                      </div>
+
+                      <div className="rounded-[22px] border border-white/8 bg-white/[0.03] px-4 py-4">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A9F5FF]">
+                          Lo que hicimos
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-[#D8E4EE] sm:text-[0.98rem]">
+                          {selectedCase.solution}
+                        </p>
+                      </div>
+
+                      <div className="rounded-[22px] border border-white/8 bg-white/[0.03] px-4 py-4">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A9F5FF]">
+                          Cómo lo logramos
+                        </p>
+                        <p className="mt-2 text-sm font-medium leading-relaxed text-white sm:text-[0.98rem]">
+                          {selectedCase.process}
+                        </p>
+                      </div>
+
+                      <div className="rounded-[22px] border border-white/8 bg-white/[0.03] px-4 py-4">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A9F5FF]">
+                          Resultado
+                        </p>
+                        <div className="mt-3 space-y-2">
+                          {selectedCase.results.map((result) => (
+                            <p
+                              key={result}
+                              className="text-sm leading-relaxed text-[#D8E4EE] sm:text-[0.98rem]"
+                            >
+                              {result}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+
+                      {selectedCase.closing ? (
+                        <p className="text-sm leading-relaxed text-[#D8E4EE] sm:text-[0.98rem]">
+                          {selectedCase.closing}
+                        </p>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </section>
   );
 }
