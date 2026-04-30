@@ -55,7 +55,7 @@ const caseStudies = [
   {
     title: "Caso de éxito 01",
     label: "Exhibición para joyería",
-    image: "/images/neomech-case-1.png",
+    image: "/images/neomech-case-2.png",
     challenge: "La joyería tenía problemas de organización en su vitrina.",
     solution:
       "Diseñamos estructuras personalizadas para organizar y destacar cada producto.",
@@ -70,7 +70,7 @@ const caseStudies = [
   {
     title: "Caso de éxito 02",
     label: "Experiencia física + conexión digital",
-    image: "/images/neomech-case-2.png",
+    image: "/images/neomech-case-1.png",
     challenge:
       "Las marcas regalan muestras, pero no logran mantener el contacto con el cliente.",
     solution:
