@@ -290,9 +290,9 @@ export default function NeoMechClient() {
                     <Image
                       src="/images/neomech-gear.webp"
                       alt="Engranajes"
-                      width={88}
-                      height={88}
-                      className="h-20 w-20 object-contain"
+                      width={120}
+                      height={120}
+                      className="h-24 w-24 object-contain brightness-0 invert"
                     />
                   </div>
                 ) : null}
