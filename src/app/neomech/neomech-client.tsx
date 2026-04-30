@@ -54,21 +54,6 @@ const detailCards = [
 const caseStudies = [
   {
     title: "Caso de éxito 01",
-    label: "Exhibición para joyería",
-    image: "/images/neomech-case-2.png",
-    challenge: "La joyería tenía problemas de organización en su vitrina.",
-    solution:
-      "Diseñamos estructuras personalizadas para organizar y destacar cada producto.",
-    process: "Diseño → Prototipo → Producción",
-    results: [
-      "Mayor percepción de valor del producto",
-      "Mejor organización visual",
-      "Mejor experiencia del cliente",
-    ],
-    closing: "",
-  },
-  {
-    title: "Caso de éxito 02",
     label: "Experiencia física + conexión digital",
     image: "/images/neomech-case-1.png",
     challenge:
@@ -83,6 +68,21 @@ const caseStudies = [
     ],
     closing:
       "El cliente prueba el producto, escanea el NFC y queda conectado directamente con la marca.",
+  },
+  {
+    title: "Caso de éxito 02",
+    label: "Exhibición para joyería",
+    image: "/images/neomech-case-2.png",
+    challenge: "La joyería tenía problemas de organización en su vitrina.",
+    solution:
+      "Diseñamos estructuras personalizadas para organizar y destacar cada producto.",
+    process: "Diseño → Prototipo → Producción",
+    results: [
+      "Mayor percepción de valor del producto",
+      "Mejor organización visual",
+      "Mejor experiencia del cliente",
+    ],
+    closing: "",
   },
 ] as const;
 
