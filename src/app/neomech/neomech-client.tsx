@@ -132,17 +132,18 @@ function ToolIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-9 w-9"
+      className="h-12 w-12"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.9"
+      strokeWidth="1.7"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M14.7 6.3a4.5 4.5 0 0 0 5.98 5.98l-9.12 9.12a2.12 2.12 0 1 1-3-3l9.14-9.1Z" />
-      <path d="m15.7 7.4.9-.9" />
-      <path d="m6.8 16.3-.9.9" />
+      <path d="M12.9 5.2a4.2 4.2 0 0 1 5.9 5.9l-2.28 2.28-5.9-5.9 2.2-2.28Z" />
+      <path d="m9.95 8.33 5.72 5.72" />
+      <path d="m8.5 9.8-4.9 4.9a2.24 2.24 0 0 0 3.17 3.16l4.9-4.89" />
+      <path d="m13.95 6.6 3.45 3.45" />
     </svg>
   );
 }
@@ -382,13 +383,18 @@ export default function NeoMechClient() {
                     className="relative flex min-h-[22rem] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.08),transparent_38%),linear-gradient(180deg,rgba(7,10,16,0.98),rgba(3,6,10,0.98))] px-5 py-5 sm:min-h-[28rem] sm:px-7 sm:py-7"
                     aria-label={`Cerrar ${selectedCase.title}`}
                   >
-                    <div className="relative h-full min-h-[18rem] w-full sm:min-h-[24rem]">
+                    <div className="relative h-full min-h-[20rem] w-full sm:min-h-[26rem]">
                       <Image
                         src={selectedCase.image}
                         alt={selectedCase.label}
                         fill
                         sizes="(max-width: 767px) 100vw, 48vw"
-                        className="object-contain"
+                        className={cn(
+                          "object-contain",
+                          selectedCaseIndex === 0
+                            ? "scale-[1.12] sm:scale-[1.16]"
+                            : "scale-[1.02] sm:scale-[1.04]",
+                        )}
                         priority
                       />
                     </div>
