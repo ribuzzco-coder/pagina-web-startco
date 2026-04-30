@@ -37,6 +37,7 @@ const detailCards = [
       "¿Tienes una idea pero no sabes cómo hacerla real? La diseñamos, validamos y producimos.",
       "¿Necesitas algo que no existe en el mercado? Lo fabricamos a medida.",
     ],
+    withToolIcon: false,
   },
   {
     title: "Cómo trabajamos",
