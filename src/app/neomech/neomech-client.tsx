@@ -46,6 +46,7 @@ const detailCards = [
       "Prototipamos",
       "Producimos",
     ],
+    withToolIcon: true,
   },
 ] as const;
 
@@ -122,6 +123,25 @@ function SocialIcon({ name }: { name: "instagram" | "whatsapp" | "email" }) {
     <svg viewBox="0 0 24 24" className="h-7 w-7 fill-current" aria-hidden="true">
       <path d="M20.52 3.48A11.8 11.8 0 0 0 12.06 0C5.56 0 .27 5.28.27 11.79c0 2.08.54 4.1 1.57 5.88L0 24l6.52-1.71a11.78 11.78 0 0 0 5.54 1.41h.01c6.5 0 11.79-5.29 11.79-11.79 0-3.15-1.22-6.1-3.34-8.43Zm-8.46 18.2h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.87 1.01 1.04-3.77-.23-.39a9.8 9.8 0 0 1-1.5-5.15c0-5.43 4.42-9.85 9.87-9.85 2.63 0 5.1 1.02 6.96 2.88a9.8 9.8 0 0 1 2.88 6.97c0 5.44-4.42 9.86-9.84 9.89Z" />
       <path d="M17.56 14.34c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.76.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.46a8.93 8.93 0 0 1-1.66-2.06c-.17-.3-.02-.45.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.21-.24-.59-.49-.5-.67-.5h-.57c-.2 0-.52.08-.8.37-.27.3-1.05 1.03-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.1 3.2 5.09 4.48.71.31 1.27.5 1.7.64.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z" />
+    </svg>
+  );
+}
+
+function ToolIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-9 w-9"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M14.7 6.3a4.5 4.5 0 0 0 5.98 5.98l-9.12 9.12a2.12 2.12 0 1 1-3-3l9.14-9.1Z" />
+      <path d="m15.7 7.4.9-.9" />
+      <path d="m6.8 16.3-.9.9" />
     </svg>
   );
 }
@@ -283,6 +303,11 @@ export default function NeoMechClient() {
                     </p>
                   ))}
                 </div>
+                {card.withToolIcon ? (
+                  <div className="mt-5 flex justify-center text-[#B9FAFF]">
+                    <ToolIcon />
+                  </div>
+                ) : null}
               </Card>
             ))}
           </div>
@@ -353,17 +378,19 @@ export default function NeoMechClient() {
                   <button
                     type="button"
                     onClick={() => setSelectedCaseIndex(null)}
-                    className="relative min-h-[18rem] bg-black/30"
+                    className="relative flex min-h-[22rem] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.08),transparent_38%),linear-gradient(180deg,rgba(7,10,16,0.98),rgba(3,6,10,0.98))] px-5 py-5 sm:min-h-[28rem] sm:px-7 sm:py-7"
                     aria-label={`Cerrar ${selectedCase.title}`}
                   >
-                    <Image
-                      src={selectedCase.image}
-                      alt={selectedCase.label}
-                      fill
-                      sizes="(max-width: 767px) 100vw, 48vw"
-                      className="object-cover"
-                      priority
-                    />
+                    <div className="relative h-full min-h-[18rem] w-full sm:min-h-[24rem]">
+                      <Image
+                        src={selectedCase.image}
+                        alt={selectedCase.label}
+                        fill
+                        sizes="(max-width: 767px) 100vw, 48vw"
+                        className="object-contain"
+                        priority
+                      />
+                    </div>
                   </button>
 
                   <div className="relative px-6 py-6 text-center sm:px-8 sm:py-8">
