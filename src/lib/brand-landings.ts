@@ -53,6 +53,16 @@ export type BrandLandingConfig = {
   cardBorder: string;
   noteBackground: string;
   noteBorder: string;
+  logoShape?: "rounded" | "circle";
+  actionStyle?: "soft" | "solid" | "outline";
+  socialIconColor?: string;
+  actionTextColor?: string;
+  actionMutedColor?: string;
+  inactiveActionTextColor?: string;
+  inactiveActionMutedColor?: string;
+  inquiryHref?: string;
+  inquiryLabel?: string;
+  inquiryText?: string;
   socials: BrandSocial[];
   actions: BrandAction[];
   infoCards: Array<{ title: string; body: string }>;
@@ -92,6 +102,8 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(22,58,116,0.1)",
     noteBackground: "rgba(255,255,255,0.88)",
     noteBorder: "rgba(22,58,116,0.12)",
+    logoShape: "circle",
+    actionStyle: "solid",
     socials: [
       { kind: "website", label: "Sitio web", href: "https://aurabotanika.com/" },
       { kind: "email", label: "Email", href: "mailto:hello@aurabotanika.com" },
@@ -140,6 +152,7 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(123,85,56,0.12)",
     noteBackground: "rgba(255,252,248,0.9)",
     noteBorder: "rgba(123,85,56,0.12)",
+    actionStyle: "solid",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "facebook", label: "Facebook" },
@@ -188,6 +201,8 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(24,24,24,0.08)",
     noteBackground: "rgba(255,255,255,0.9)",
     noteBorder: "rgba(24,24,24,0.1)",
+    logoShape: "circle",
+    actionStyle: "outline",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "facebook", label: "Facebook" },
@@ -237,6 +252,7 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(197,123,58,0.12)",
     noteBackground: "rgba(255,252,247,0.9)",
     noteBorder: "rgba(197,123,58,0.12)",
+    actionStyle: "outline",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "catalog", label: "Colecciones" },
@@ -284,6 +300,7 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(17,17,17,0.08)",
     noteBackground: "rgba(255,255,255,0.92)",
     noteBorder: "rgba(17,17,17,0.08)",
+    actionStyle: "outline",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "catalog", label: "Esencias" },
@@ -331,6 +348,7 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(215,134,170,0.12)",
     noteBackground: "rgba(255,255,255,0.9)",
     noteBorder: "rgba(215,134,170,0.12)",
+    actionStyle: "soft",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "catalog", label: "Lencería" },
@@ -352,7 +370,7 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     tagline:
       "En INNATA recorremos el mundo buscando piedras únicas, materiales místicos y legendarios cargados de historias secretas, poderes y encantos.",
     shareUrl: "https://ribuzz.com/innata",
-    logoSrc: "/images/brand-landings/innata.svg",
+    logoSrc: "/images/brand-landings/innata.png",
     logoAlt: "Logo INNATA",
     logoWidth: 240,
     logoHeight: 150,
@@ -379,6 +397,7 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(33,86,121,0.12)",
     noteBackground: "rgba(255,255,255,0.9)",
     noteBorder: "rgba(33,86,121,0.12)",
+    actionStyle: "solid",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "catalog", label: "Catálogos" },
@@ -426,6 +445,7 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(245,107,36,0.12)",
     noteBackground: "rgba(255,255,255,0.9)",
     noteBorder: "rgba(74,167,255,0.14)",
+    actionStyle: "solid",
     socials: [
       { kind: "website", label: "Sitio web" },
       { kind: "instagram", label: "Instagram" },
@@ -474,6 +494,7 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(120,182,165,0.12)",
     noteBackground: "rgba(255,255,255,0.9)",
     noteBorder: "rgba(120,182,165,0.12)",
+    actionStyle: "soft",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "catalog", label: "Catálogo" },
@@ -521,6 +542,8 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(184,138,78,0.12)",
     noteBackground: "rgba(255,255,255,0.9)",
     noteBorder: "rgba(184,138,78,0.12)",
+    logoShape: "circle",
+    actionStyle: "outline",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "catalog", label: "Catálogo" },
@@ -568,6 +591,8 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(139,107,83,0.12)",
     noteBackground: "rgba(255,255,255,0.9)",
     noteBorder: "rgba(139,107,83,0.12)",
+    logoShape: "circle",
+    actionStyle: "solid",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "shop", label: "Pedidos" },
@@ -615,6 +640,9 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(255,255,255,0.12)",
     noteBackground: "rgba(33,18,41,0.84)",
     noteBorder: "rgba(255,255,255,0.12)",
+    logoShape: "circle",
+    actionStyle: "solid",
+    socialIconColor: "#FFFFFF",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "tiktok", label: "TikTok" },
@@ -662,6 +690,8 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(51,51,51,0.1)",
     noteBackground: "rgba(255,255,255,0.9)",
     noteBorder: "rgba(51,51,51,0.08)",
+    logoShape: "circle",
+    actionStyle: "outline",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "shop", label: "Comprar" },
@@ -709,6 +739,8 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(139,110,77,0.12)",
     noteBackground: "rgba(255,255,255,0.9)",
     noteBorder: "rgba(139,110,77,0.12)",
+    logoShape: "circle",
+    actionStyle: "outline",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "catalog", label: "Rituales" },
@@ -757,6 +789,8 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     cardBorder: "rgba(122,95,55,0.12)",
     noteBackground: "rgba(255,255,255,0.9)",
     noteBorder: "rgba(122,95,55,0.12)",
+    logoShape: "circle",
+    actionStyle: "soft",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "catalog", label: "Colección de siropes" },

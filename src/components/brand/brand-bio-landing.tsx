@@ -4,8 +4,9 @@ import Image from "next/image";
 
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import type { BrandAction, BrandLandingConfig, BrandSocial } from "@/lib/brand-landings";
+import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
-import type { BrandLandingConfig, BrandAction, BrandSocial } from "@/lib/brand-landings";
 
 function WebsiteIcon() {
   return (
@@ -196,22 +197,30 @@ function ActionTile({
   action,
   accent,
   accentSoft,
+  iconColor,
   textColor,
   mutedColor,
+  inactiveTextColor,
+  inactiveMutedColor,
   activeBg,
   activeBorder,
   inactiveBg,
   inactiveBorder,
+  activeShadow,
 }: {
   action: BrandAction;
   accent: string;
   accentSoft: string;
+  iconColor: string;
   textColor: string;
   mutedColor: string;
+  inactiveTextColor: string;
+  inactiveMutedColor: string;
   activeBg: string;
   activeBorder: string;
   inactiveBg: string;
   inactiveBorder: string;
+  activeShadow: string;
 }) {
   const body = (
     <Card
@@ -220,9 +229,7 @@ function ActionTile({
       style={{
         background: action.href ? activeBg : inactiveBg,
         borderColor: action.href ? activeBorder : inactiveBorder,
-        boxShadow: action.href
-          ? `0 18px 42px ${accentSoft}18, 0 0 0 1px ${accentSoft}10`
-          : `0 12px 28px rgba(0,0,0,0.08)`,
+        boxShadow: action.href ? activeShadow : `0 12px 28px rgba(0,0,0,0.08)`,
         opacity: action.href ? 1 : 0.84,
       }}
     >
@@ -234,13 +241,13 @@ function ActionTile({
       />
       <div className="relative flex min-h-[58px] items-center justify-center text-center">
         <div className="relative z-10 min-w-0">
-          <div className="mb-2 flex justify-center" style={{ color: accent }}>
+          <div className="mb-2 flex justify-center" style={{ color: action.href ? iconColor : accent }}>
             {iconFor(action.kind)}
           </div>
-          <p className="text-base font-semibold" style={{ color: textColor }}>
+          <p className="text-base font-semibold" style={{ color: action.href ? textColor : inactiveTextColor }}>
             {action.title}
           </p>
-          <p className="mt-1 text-sm" style={{ color: mutedColor }}>
+          <p className="mt-1 text-sm" style={{ color: action.href ? mutedColor : inactiveMutedColor }}>
             {action.description}
           </p>
           {!action.href ? (
@@ -278,6 +285,47 @@ function ActionTile({
 
 export function BrandBioLanding({ config }: { config: BrandLandingConfig }) {
   const fontClass = `[font-family:${config.fontVar}]`;
+  const actionStyle = config.actionStyle ?? "soft";
+  const socialIconColor = config.socialIconColor ?? config.accent;
+  const logoShape = config.logoShape ?? "rounded";
+  const inquiryHref = config.inquiryHref ?? SITE_CONFIG.whatsappUrl;
+  const inquiryLabel = config.inquiryLabel ?? "Escríbenos";
+  const inquiryText = config.inquiryText ?? "Llevemos esta landing a una versión más potente para tu marca.";
+  const actionTextColor = config.actionTextColor ?? (actionStyle === "solid" ? "#FFFFFF" : config.textColor);
+  const actionMutedColor =
+    config.actionMutedColor ?? (actionStyle === "solid" ? "rgba(255,255,255,0.84)" : config.mutedColor);
+  const actionIconColor = actionStyle === "solid" ? "#FFFFFF" : config.accent;
+  const inactiveActionTextColor = config.inactiveActionTextColor ?? config.textColor;
+  const inactiveActionMutedColor = config.inactiveActionMutedColor ?? config.mutedColor;
+
+  const activeBackground =
+    actionStyle === "solid"
+      ? `linear-gradient(135deg, ${config.accent}, ${config.accentSoft})`
+      : actionStyle === "outline"
+        ? "linear-gradient(180deg,rgba(255,255,255,0.88),rgba(255,255,255,0.78))"
+        : config.actionBackground;
+  const activeBorder =
+    actionStyle === "solid" ? `${config.accent}66` : actionStyle === "outline" ? `${config.accent}40` : config.actionBorder;
+  const activeShadow =
+    actionStyle === "solid"
+      ? `0 20px 48px ${config.accentSoft}30, inset 0 1px 0 rgba(255,255,255,0.24)`
+      : actionStyle === "outline"
+        ? `0 18px 36px ${config.accentSoft}12, inset 0 0 0 1px ${config.accentSoft}14`
+        : `0 18px 42px ${config.accentSoft}18, 0 0 0 1px ${config.accentSoft}10`;
+  const inactiveBackground =
+    actionStyle === "solid"
+      ? "linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.08))"
+      : actionStyle === "outline"
+        ? "linear-gradient(180deg,rgba(255,255,255,0.84),rgba(255,255,255,0.72))"
+        : config.inactiveActionBackground;
+  const logoFrameClass =
+    logoShape === "circle"
+      ? "h-[9.5rem] w-[9.5rem] rounded-full p-4 sm:h-[10.75rem] sm:w-[10.75rem]"
+      : "rounded-[28px] px-5 py-4";
+  const logoImageClass =
+    logoShape === "circle"
+      ? "h-auto max-h-[6.75rem] w-auto object-contain sm:max-h-[7.75rem]"
+      : "h-auto max-h-28 w-auto object-contain sm:max-h-32";
 
   return (
     <section className="relative cv-auto -mt-[76px] min-h-screen overflow-hidden">
@@ -294,12 +342,16 @@ export function BrandBioLanding({ config }: { config: BrandLandingConfig }) {
 
       <Container className="relative z-10 flex min-h-screen max-w-3xl flex-col items-center justify-center py-24 sm:py-32">
         <div
-          className="relative w-full overflow-hidden rounded-[34px] border px-5 py-7 shadow-[0_28px_80px_rgba(0,0,0,0.18)] backdrop-blur-[16px] sm:rounded-[38px] sm:px-10 sm:py-10"
+          className="relative w-full overflow-hidden rounded-[34px] border px-5 py-6 shadow-[0_28px_80px_rgba(0,0,0,0.18)] backdrop-blur-[16px] sm:rounded-[38px] sm:px-10 sm:py-9"
           style={{
             background: config.shellBackground,
             borderColor: config.shellBorder,
           }}
         >
+          <div
+            className="pointer-events-none absolute inset-[14px] rounded-[28px] border opacity-80 sm:inset-[18px] sm:rounded-[30px]"
+            style={{ borderColor: `${config.accent}16` }}
+          />
           <div
             className="pointer-events-none absolute inset-x-0 top-0 h-px"
             style={{ background: `linear-gradient(90deg, transparent, ${config.accentSoft}55, transparent)` }}
@@ -324,6 +376,7 @@ export function BrandBioLanding({ config }: { config: BrandLandingConfig }) {
                     });
                     return;
                   }
+
                   await navigator.clipboard.writeText(config.shareUrl);
                 } catch {
                   // noop
@@ -351,10 +404,17 @@ export function BrandBioLanding({ config }: { config: BrandLandingConfig }) {
 
           <div className="relative flex flex-col items-center text-center">
             <div
-              className="flex items-center justify-center overflow-hidden rounded-[28px] border px-5 py-4 shadow-[0_18px_40px_rgba(0,0,0,0.1)]"
+              className={cn(
+                "flex items-center justify-center overflow-hidden border shadow-[0_18px_40px_rgba(0,0,0,0.1)]",
+                logoFrameClass,
+              )}
               style={{
                 background: config.logoBackground,
                 borderColor: config.logoBorder,
+                boxShadow:
+                  logoShape === "circle"
+                    ? `0 24px 52px ${config.accentSoft}20, inset 0 1px 0 rgba(255,255,255,0.5)`
+                    : `0 18px 40px rgba(0,0,0,0.1)`,
               }}
             >
               <Image
@@ -362,31 +422,25 @@ export function BrandBioLanding({ config }: { config: BrandLandingConfig }) {
                 alt={config.logoAlt}
                 width={config.logoWidth}
                 height={config.logoHeight}
-                className="h-auto max-h-28 w-auto object-contain sm:max-h-32"
+                className={logoImageClass}
                 priority
               />
             </div>
 
-            <h1
-              className={cn("mt-6 text-4xl font-semibold tracking-tight sm:text-5xl", fontClass)}
-              style={{ color: config.textColor }}
-            >
+            <h1 className={cn("mt-6 text-4xl font-semibold tracking-tight sm:text-5xl", fontClass)} style={{ color: config.textColor }}>
               {config.title}
             </h1>
 
-            <p
-              className={cn("mt-4 max-w-xl text-sm leading-relaxed sm:text-base", fontClass)}
-              style={{ color: config.mutedColor }}
-            >
+            <p className={cn("mt-4 max-w-xl text-sm leading-relaxed sm:text-base", fontClass)} style={{ color: config.mutedColor }}>
               {config.tagline}
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               {config.socials.map((social) => (
                 <SocialBubble
                   key={social.label}
                   social={social}
-                  iconColor={config.accent}
+                  iconColor={socialIconColor}
                   bubbleBg={config.bubbleBackground}
                   bubbleBorder={config.bubbleBorder}
                   bubbleShadow={config.bubbleShadow}
@@ -395,24 +449,28 @@ export function BrandBioLanding({ config }: { config: BrandLandingConfig }) {
             </div>
           </div>
 
-          <div className="relative mx-auto mt-10 grid max-w-xl gap-4">
+          <div className="relative mx-auto mt-8 grid max-w-xl gap-4">
             {config.actions.map((action) => (
               <ActionTile
                 key={action.title}
                 action={action}
                 accent={config.accent}
                 accentSoft={config.accentSoft}
-                textColor={config.textColor}
-                mutedColor={config.mutedColor}
-                activeBg={config.actionBackground}
-                activeBorder={config.actionBorder}
-                inactiveBg={config.inactiveActionBackground}
+                iconColor={actionIconColor}
+                textColor={actionTextColor}
+                mutedColor={actionMutedColor}
+                inactiveTextColor={inactiveActionTextColor}
+                inactiveMutedColor={inactiveActionMutedColor}
+                activeBg={activeBackground}
+                activeBorder={activeBorder}
+                inactiveBg={inactiveBackground}
                 inactiveBorder={config.inactiveActionBorder}
+                activeShadow={activeShadow}
               />
             ))}
           </div>
 
-          <div className="relative mx-auto mt-8 grid max-w-xl gap-4 md:grid-cols-2">
+          <div className="relative mx-auto mt-6 grid max-w-xl gap-4 md:grid-cols-2">
             {config.infoCards.map((card) => (
               <Card
                 key={card.title}
@@ -424,10 +482,7 @@ export function BrandBioLanding({ config }: { config: BrandLandingConfig }) {
                   boxShadow: `0 18px 38px rgba(0,0,0,0.08)`,
                 }}
               >
-                <p
-                  className={cn("text-[11px] font-semibold uppercase tracking-[0.16em]", fontClass)}
-                  style={{ color: config.accent }}
-                >
+                <p className={cn("text-[11px] font-semibold uppercase tracking-[0.16em]", fontClass)} style={{ color: config.accent }}>
                   {card.title}
                 </p>
                 <p className={cn("mt-4 text-sm leading-relaxed sm:text-base", fontClass)} style={{ color: config.mutedColor }}>
@@ -454,6 +509,36 @@ export function BrandBioLanding({ config }: { config: BrandLandingConfig }) {
               </p>
             </Card>
           ) : null}
+
+          <a
+            href={inquiryHref}
+            target={inquiryHref.startsWith("/") || inquiryHref.startsWith("mailto:") ? undefined : "_blank"}
+            rel={inquiryHref.startsWith("/") || inquiryHref.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+            className="group relative mx-auto mt-4 block max-w-xl"
+          >
+            <Card
+              interactiveGlow={false}
+              className="overflow-hidden rounded-[26px] px-6 py-5 text-center transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-[1px]"
+              style={{
+                background: `linear-gradient(135deg, ${config.accent}0F, ${config.secondarySoft}12)`,
+                borderColor: `${config.accent}22`,
+                boxShadow: `0 18px 36px ${config.accentSoft}12`,
+              }}
+            >
+              <div
+                className="pointer-events-none absolute inset-y-0 right-0 w-24 opacity-80 transition-transform duration-300 group-hover:translate-x-1"
+                style={{
+                  background: `linear-gradient(90deg, transparent, ${config.accentSoft}22)`,
+                }}
+              />
+              <p className={cn("text-sm font-semibold uppercase tracking-[0.16em]", fontClass)} style={{ color: config.accent }}>
+                {inquiryLabel}
+              </p>
+              <p className={cn("mt-2 text-sm leading-relaxed sm:text-[15px]", fontClass)} style={{ color: config.textColor }}>
+                {inquiryText}
+              </p>
+            </Card>
+          </a>
         </div>
       </Container>
     </section>
