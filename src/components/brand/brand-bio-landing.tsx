@@ -320,11 +320,11 @@ export function BrandBioLanding({ config }: { config: BrandLandingConfig }) {
         : config.inactiveActionBackground;
   const logoFrameClass =
     logoShape === "circle"
-      ? "h-[9.5rem] w-[9.5rem] rounded-full p-4 sm:h-[10.75rem] sm:w-[10.75rem]"
+      ? "h-[9.5rem] w-[9.5rem] rounded-full p-0 sm:h-[10.75rem] sm:w-[10.75rem]"
       : "rounded-[28px] px-5 py-4";
   const logoImageClass =
     logoShape === "circle"
-      ? "h-auto max-h-[6.75rem] w-auto object-contain sm:max-h-[7.75rem]"
+      ? "h-full w-full object-cover"
       : "h-auto max-h-28 w-auto object-contain sm:max-h-32";
 
   return (
@@ -413,7 +413,7 @@ export function BrandBioLanding({ config }: { config: BrandLandingConfig }) {
                 borderColor: config.logoBorder,
                 boxShadow:
                   logoShape === "circle"
-                    ? `0 24px 52px ${config.accentSoft}20, inset 0 1px 0 rgba(255,255,255,0.5)`
+                    ? `0 24px 52px ${config.accentSoft}20, inset 0 1px 0 rgba(255,255,255,0.5), 0 0 0 10px rgba(255,255,255,0.28)`
                     : `0 18px 40px rgba(0,0,0,0.1)`,
               }}
             >
