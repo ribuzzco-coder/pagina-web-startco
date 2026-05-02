@@ -20,9 +20,20 @@ export default function VianaGirlPage() {
     <BoutiqueGalleryPreview
       brand={brandName}
       handle="@viana_artesanal"
+      previewLabel="Preview biolink"
+      previewHeading="Un Linktree bonito, mas alineado con la identidad de Viana Girl."
       tagline="Calzado artesanal hecho a mano desde Colombia para mujeres que aman lo natural, femenino y especial."
       summary="La maqueta ahora prioriza el comportamiento de un biolink: una presencia compacta, mobile-first y aspiracional, donde la marca, la foto hero y los botones son el centro de la experiencia."
       typography="Playfair Display en titulares para reforzar elegancia editorial y Assistant en la interfaz para que los botones, subtitulos y textos se sientan ligeros y faciles de escanear."
+      directionCopy="Paleta crema, arena, dorado suave y cafe cacao para sostener una sensacion artesanal, femenina y premium sin verse recargada."
+      introBadge="Edicion preview"
+      introCardCopy="Biolink calido, femenino y artesanal."
+      instagramTitle="Referencia visual del perfil"
+      instagramCopy="La referencia de Instagram sale del bloque principal para que el biolink se sienta mas limpio y la presencia de marca tenga una lectura mas directa."
+      locationTitle="Bucaramanga, Colombia"
+      locationCopy="Viana Girl comunica una raiz artesanal hecha en Colombia. Este bloque deja visible la ubicacion de referencia de la marca dentro del biolink, con un cierre mas humano y mas cercano."
+      locationLabel="Cra 6 #31-22 piso 1"
+      locationMapSrc="https://www.google.com/maps?q=Bucaramanga%20Colombia&output=embed"
       logoSrc="/images/vianagirl-logo.webp"
       instagramPreviewSrc="/images/vianagirl-instagram.png"
       backgroundImages={[
