@@ -1,7 +1,27 @@
-import { BrandLandingPage, createBrandLandingMetadata } from "@/lib/brand-landing-page";
+import { BrandBioLanding } from "@/components/brand/brand-bio-landing";
+import { EyraGalleryExtension } from "@/components/brand/eyra-gallery-extension";
+import { getBrandLandingConfig } from "@/lib/brand-landing-page";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata = createBrandLandingMetadata("eyra");
+const config = getBrandLandingConfig("eyra");
+
+export const metadata = createPageMetadata({
+  title: "Eyra Organico",
+  description: config?.tagline ?? "Cuidado capilar organico.",
+  path: "/eyra",
+});
 
 export default function EyraPage() {
-  return <BrandLandingPage slug="eyra" />;
+  if (!config) {
+    return null;
+  }
+
+  return (
+    <>
+      <div id="top">
+        <BrandBioLanding config={config} />
+      </div>
+      <EyraGalleryExtension />
+    </>
+  );
 }

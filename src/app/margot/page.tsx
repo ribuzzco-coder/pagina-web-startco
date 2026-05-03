@@ -1,7 +1,27 @@
-import { BrandLandingPage, createBrandLandingMetadata } from "@/lib/brand-landing-page";
+import { BrandBioLanding } from "@/components/brand/brand-bio-landing";
+import { MargotGalleryExtension } from "@/components/brand/margot-gallery-extension";
+import { getBrandLandingConfig } from "@/lib/brand-landing-page";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata = createBrandLandingMetadata("margot");
+const config = getBrandLandingConfig("margot");
+
+export const metadata = createPageMetadata({
+  title: "Margot",
+  description: config?.tagline ?? "Tus tejidos favoritos.",
+  path: "/margot",
+});
 
 export default function MargotPage() {
-  return <BrandLandingPage slug="margot" />;
+  if (!config) {
+    return null;
+  }
+
+  return (
+    <>
+      <div id="top">
+        <BrandBioLanding config={config} />
+      </div>
+      <MargotGalleryExtension />
+    </>
+  );
 }

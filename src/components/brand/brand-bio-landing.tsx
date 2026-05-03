@@ -331,6 +331,15 @@ export function BrandBioLanding({ config }: { config: BrandLandingConfig }) {
     <section className="relative cv-auto -mt-[76px] min-h-screen overflow-hidden">
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0" style={{ background: config.background }} />
+        {config.backgroundImageSrc ? (
+          <div
+            className="absolute inset-0 bg-cover bg-no-repeat"
+            style={{
+              backgroundImage: `url(${config.backgroundImageSrc})`,
+              backgroundPosition: config.backgroundImagePosition ?? "center",
+            }}
+          />
+        ) : null}
         <div className="absolute inset-0" style={{ background: config.overlay }} />
         <div
           className="absolute inset-0 opacity-70"
