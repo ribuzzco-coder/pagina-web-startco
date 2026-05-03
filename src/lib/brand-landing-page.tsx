@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { BrandBioLanding } from "@/components/brand/brand-bio-landing";
-import { brandLandings } from "@/lib/brand-landings";
+import { BrandInteractiveEditorialLanding } from "@/components/brand/brand-interactive-editorial-landing";
+import { brandLandings, isInteractiveEditorialLanding } from "@/lib/brand-landings";
 import { createPageMetadata } from "@/lib/metadata";
 
 export function getBrandLandingConfig(slug: string) {
@@ -31,6 +32,10 @@ export function BrandLandingPage({ slug }: { slug: string }) {
 
   if (!config) {
     notFound();
+  }
+
+  if (isInteractiveEditorialLanding(config)) {
+    return <BrandInteractiveEditorialLanding config={config} />;
   }
 
   return <BrandBioLanding config={config} />;

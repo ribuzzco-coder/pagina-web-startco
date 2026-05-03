@@ -1,3 +1,5 @@
+import { SITE_CONFIG } from "@/lib/site-config";
+
 export type BrandSocialKind =
   | "website"
   | "instagram"
@@ -6,7 +8,8 @@ export type BrandSocialKind =
   | "pinterest"
   | "email"
   | "catalog"
-  | "shop";
+  | "shop"
+  | "whatsapp";
 
 export type BrandSocial = {
   kind: BrandSocialKind;
@@ -21,7 +24,7 @@ export type BrandAction = {
   href?: string;
 };
 
-export type BrandLandingConfig = {
+export type BrandBaseLandingConfig = {
   slug: string;
   title: string;
   tagline: string;
@@ -68,6 +71,84 @@ export type BrandLandingConfig = {
   infoCards: Array<{ title: string; body: string }>;
   noteCard?: { title: string; body: string };
 };
+
+export type BrandHeroConfig = {
+  eyebrow: string;
+  headline: string;
+  body: string;
+  imageSrc: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel: string;
+  secondaryHref: string;
+};
+
+export type BrandEditorialIntro = {
+  eyebrow: string;
+  title: string;
+  body: string;
+};
+
+export type BrandStorySection = {
+  eyebrow: string;
+  title: string;
+  body: string;
+  imageSrc: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  layout?: "image-right" | "image-left" | "brand-pause";
+  note?: string;
+};
+
+export type BrandHighlight = {
+  eyebrow: string;
+  title: string;
+  preview: string;
+  body: string;
+  tags: string[];
+};
+
+export type BrandFloatingAction = {
+  kind: BrandSocialKind | "link";
+  label: string;
+  href?: string;
+};
+
+export type BrandClosingCta = {
+  eyebrow: string;
+  title: string;
+  body: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+};
+
+export type BrandDefaultLandingConfig = BrandBaseLandingConfig & {
+  variant?: "default";
+};
+
+export type BrandInteractiveEditorialLandingConfig = BrandBaseLandingConfig & {
+  variant: "interactive-editorial";
+  hero: BrandHeroConfig;
+  editorialIntro: BrandEditorialIntro;
+  storySections: BrandStorySection[];
+  collectionHighlights: BrandHighlight[];
+  floatingActions: BrandFloatingAction[];
+  closingCta: BrandClosingCta;
+};
+
+export type BrandLandingConfig = BrandDefaultLandingConfig | BrandInteractiveEditorialLandingConfig;
+
+export function isInteractiveEditorialLanding(
+  config: BrandLandingConfig,
+): config is BrandInteractiveEditorialLandingConfig {
+  return config.variant === "interactive-editorial";
+}
 
 export const brandLandings: Record<string, BrandLandingConfig> = {
   aurabotanikaversion2: {
@@ -365,18 +446,18 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     ],
   },
   innata: {
+    variant: "interactive-editorial",
     slug: "innata",
     title: "INNATA",
-    tagline:
-      "En INNATA recorremos el mundo buscando piedras únicas, materiales místicos y legendarios cargados de historias secretas, poderes y encantos.",
+    tagline: "Piedras únicas, símbolos silenciosos y joyas que acompañan.",
     shareUrl: "https://ribuzz.com/innata",
     logoSrc: "/images/brand-landings/innata.png",
     logoAlt: "Logo INNATA",
     logoWidth: 240,
     logoHeight: 150,
     fontVar: "var(--font-open-sans)",
-    background: "linear-gradient(180deg,#FFFFFF,#F1F4F7 52%,#FFFFFF)",
-    overlay: "linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.08))",
+    background: "linear-gradient(180deg,#F8FBFD,#EDF3F8 46%,#F8FBFD)",
+    overlay: "linear-gradient(180deg,rgba(255,255,255,0.2),rgba(255,255,255,0.08))",
     shellBackground: "linear-gradient(180deg,rgba(255,255,255,0.96),rgba(244,246,249,0.94))",
     shellBorder: "rgba(33,86,121,0.12)",
     logoBackground: "linear-gradient(180deg,#ffffff,#f5f7fa)",
@@ -398,6 +479,9 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
     noteBackground: "rgba(255,255,255,0.9)",
     noteBorder: "rgba(33,86,121,0.12)",
     actionStyle: "solid",
+    inquiryHref: SITE_CONFIG.whatsappUrl,
+    inquiryLabel: "Escríbenos",
+    inquiryText: "Conversemos sobre una pieza, una colección o la siguiente capa digital de la marca.",
     socials: [
       { kind: "instagram", label: "Instagram" },
       { kind: "catalog", label: "Catálogos" },
@@ -412,6 +496,85 @@ export const brandLandings: Record<string, BrandLandingConfig> = {
       { title: "Mística", body: "La composición respira blanco, gris claro y azul oscuro para sentirse espiritual, limpia y contemporánea." },
       { title: "Curaduría", body: "Ideal para conectar catálogo, colecciones y piezas con narrativa alrededor de materiales únicos." },
     ],
+    hero: {
+      eyebrow: "Joyas con significado",
+      headline: "Piedras que guardan historia y se convierten en gesto cotidiano.",
+      body: "INNATA reúne materiales únicos, símbolos discretos y una sensibilidad curatorial que transforma cada pieza en una presencia íntima, limpia y profundamente personal.",
+      imageSrc: "/images/brand-landings/innata/hero-ring.jpg",
+      imageAlt: "Anillo plateado con piedra iridiscente sobre la mano",
+      imageWidth: 1079,
+      imageHeight: 1347,
+      primaryLabel: "Descubrir la esencia",
+      primaryHref: "#editorial-intro",
+      secondaryLabel: "Escríbenos",
+      secondaryHref: SITE_CONFIG.whatsappUrl,
+    },
+    editorialIntro: {
+      eyebrow: "Editorial Intro",
+      title: "Una marca que se lee como un pequeño ritual.",
+      body: "En INNATA cada piedra se elige por su rareza, su energía y la historia que trae consigo. La landing no busca verse como un ecommerce tradicional, sino como una experiencia serena para observar, sentir y acercarse a la marca desde una estética limpia, contemporánea y simbólica.",
+    },
+    storySections: [
+      {
+        eyebrow: "Piedras con historia",
+        title: "Materiales únicos, símbolos discretos y una elegancia que no necesita exceso.",
+        body: "Las piezas de INNATA sugieren una relación más íntima con la joya: formas delicadas, presencias sutiles y detalles que acompañan la vida diaria con una carga emocional silenciosa. La lectura visual debe sentirse suave, mineral y atenta al detalle.",
+        imageSrc: "/images/brand-landings/innata/story-rings.jpg",
+        imageAlt: "Anillos dorados y perlas delicadas sobre la mano",
+        imageWidth: 1080,
+        imageHeight: 1440,
+        layout: "image-right",
+        note: "Una sensibilidad curada para piezas que parecen pequeñas talismanes.",
+      },
+      {
+        eyebrow: "Sello visual",
+        title: "Una pausa gráfica que afirma la identidad.",
+        body: "El signo de INNATA funciona como un respiro dentro del recorrido. Introduce orden, continuidad y una sensación editorial que ayuda a que la marca no se sienta solo como producto, sino como universo propio.",
+        imageSrc: "/images/brand-landings/innata/brand-mark.jpg",
+        imageAlt: "Marca gráfica de INNATA sobre fondo azul",
+        imageWidth: 1080,
+        imageHeight: 1080,
+        layout: "brand-pause",
+        note: "Azul profundo, blanco limpio y una geometría silenciosa para sostener la atmósfera.",
+      },
+    ],
+    collectionHighlights: [
+      {
+        eyebrow: "Piedras",
+        title: "Piedras",
+        preview: "Minerales elegidos por su carácter, brillo y rareza.",
+        body: "El corazón de la marca está en la selección de piedras con presencia propia. No aparecen como simple ornamento, sino como pequeños focos de luz, textura y sentido dentro de piezas minimalistas.",
+        tags: ["Opalo", "Textura", "Luz"],
+      },
+      {
+        eyebrow: "Significado",
+        title: "Significado",
+        preview: "Joyas que se acercan al gesto íntimo y al objeto emocional.",
+        body: "Cada pieza puede leerse como un símbolo cercano: algo que acompaña, protege o recuerda. La landing debe reforzar esa lectura con microcopy emocional y una interacción sutil, nunca invasiva.",
+        tags: ["Ritual", "Simbolo", "Intimo"],
+      },
+      {
+        eyebrow: "Curaduría",
+        title: "Curaduría",
+        preview: "Una composición limpia que prioriza respiración y detalle.",
+        body: "La propuesta visual deja espacio para que cada joya respire. La curaduría se expresa en el ritmo del scroll, el uso de blancos fríos, acentos azules y una estructura que se siente editorial antes que comercial.",
+        tags: ["Editorial", "Calma", "Presencia"],
+      },
+    ],
+    floatingActions: [
+      { kind: "instagram", label: "Instagram" },
+      { kind: "catalog", label: "Catálogo" },
+      { kind: "whatsapp", label: "WhatsApp", href: SITE_CONFIG.whatsappUrl },
+    ],
+    closingCta: {
+      eyebrow: "Cierre íntimo",
+      title: "Descubre el universo de la marca o conversemos sobre la pieza adecuada.",
+      body: "Esta primera versión está pensada para posicionar visualmente a INNATA con un tono más editorial y sensible. Cuando entren más imágenes o enlaces activos, la misma base puede crecer hacia colecciones, catálogo o narrativa ampliada.",
+      primaryLabel: "Escríbenos",
+      primaryHref: SITE_CONFIG.whatsappUrl,
+      secondaryLabel: "Volver a los highlights",
+      secondaryHref: "#highlights",
+    },
   },
   conga: {
     slug: "conga",
