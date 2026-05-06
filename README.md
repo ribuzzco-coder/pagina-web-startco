@@ -11,7 +11,7 @@ La base backend ya queda preparada para produccion ligera sobre Supabase:
 - migraciones SQL reproducibles
 - capas `repository/service`
 - rutas API publicas y admin-ready
-- RLS, rate limiting, honeypot y Turnstile opcional
+- RLS, rate limiting compartido, honeypot y proteccion anti-spam
 
 ## Variables de entorno requeridas
 
@@ -22,7 +22,9 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
-INTERNAL_ADMIN_API_KEY=replace-with-a-long-random-admin-token
+SENSITIVE_FIELD_ENCRYPTION_KEY=replace-with-a-base64-32-byte-key
+INTERNAL_HEALTHCHECK_TOKEN=replace-with-a-long-random-health-token
+TRUSTED_IP_HEADER=x-vercel-forwarded-for
 ```
 
 Opcionales:
@@ -36,13 +38,21 @@ CTA_TRACK_RATE_LIMIT_MAX=60
 DIAGNOSTIC_DUPLICATE_WINDOW_HOURS=24
 ```
 
+Notas:
+
+- `SENSITIVE_FIELD_ENCRYPTION_KEY` debe ser una clave de 32 bytes codificada en base64. Se usa para cifrar `email`, `whatsapp` y `contexto` antes de persistirlos.
+- `INTERNAL_HEALTHCHECK_TOKEN` protege `GET /api/health` en produccion.
+- `TRUSTED_IP_HEADER` debe apuntar al header real de tu proxy o plataforma. El valor por defecto esta pensado para Vercel.
+- Si vas a habilitar los endpoints publicos de captura en produccion, configura Turnstile. El backend ahora falla cerrado cuando esa proteccion no esta disponible en produccion.
+
 ## Supabase Setup
 
 1. Crea un proyecto en Supabase.
 2. Toma `Project URL`, `anon key` y `service role key`.
-3. Ejecuta la migracion SQL ubicada en `supabase/migrations/20260408193000_backend_foundation.sql`.
+3. Ejecuta las migraciones SQL ubicadas en `supabase/migrations/`.
 4. Crea perfiles internos en `auth.users` y luego inserta sus filas en `public.admin_profiles`.
-5. Guarda `INTERNAL_ADMIN_API_KEY` como secreto de servidor. Esta llave sirve para rutas admin mientras no exista UI interna autenticada.
+5. Usa sesion autenticada de Supabase para consumir rutas admin. Ya no existe bypass por llave compartida para `api/admin/*`.
+6. Configura `INTERNAL_HEALTHCHECK_TOKEN` en tu entorno de despliegue si quieres monitorear `GET /api/health`.
 
 ## Como correr migraciones
 
@@ -58,12 +68,18 @@ Si todavia no usas la CLI, puedes ejecutar la migracion SQL directamente en el S
 
 Publicos:
 
-- `POST /api/diagnostic-request`
+- `POST /api/diagnostic-request` reservado; actualmente responde deshabilitado en este sitio
 - `POST /api/track-cta`
+- `GET /diagnostico` mantiene el diagnostico visible dentro del sitio mediante un embed temporal de Google Forms.
+
+Interno:
+
 - `GET /api/health`
 
-Admin / internal:
+Admin autenticado:
 
+- `GET /admin/login`
+- `GET /admin/solicitudes`
 - `GET /api/admin/diagnostic-requests`
 - `PATCH /api/admin/diagnostic-requests/[id]`
 
@@ -73,8 +89,12 @@ Admin / internal:
 - El cliente browser solo usa `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
 - Las tablas sensibles tienen RLS activado.
 - No hay acceso publico directo a tablas de leads.
-- Las rutas publicas validan con Zod, soportan honeypot y pueden validar Turnstile.
-- Hay rate limiting en memoria listo para reemplazarse por Redis/Upstash si mas adelante hace falta distribucion real.
+- Las rutas publicas validan con Zod, soportan honeypot y exigen proteccion anti-spam en produccion.
+- Los campos sensibles del diagnostico se cifran antes de guardarse y se descifran solo al salir por DTOs administrativos autorizados.
+- Las rutas admin dependen de sesion real y respetan RLS; no usan una llave maestra compartida.
+- El rate limiting publico se comparte via Supabase para no depender de memoria local.
+- Las respuestas admin salen con DTOs acotados para evitar exponer hashes internos de deduplicacion.
+- Se agrega una CSP base y un header de IP confiable configurable por entorno.
 
 ## Desarrollo
 

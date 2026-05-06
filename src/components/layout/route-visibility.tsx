@@ -59,6 +59,7 @@ export function RouteVisibility({
     "/diusatti",
     "/verbenaversion2",
     "/pelletierversion2",
+    "/admin",
   ],
 }: RouteVisibilityProps) {
   const pathname = usePathname();

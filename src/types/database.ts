@@ -159,9 +159,49 @@ export type Database = {
         };
         Relationships: [];
       };
+      rate_limit_buckets: {
+        Row: {
+          count: number;
+          created_at: string;
+          identifier_hash: string;
+          scope: string;
+          updated_at: string;
+          window_start: string;
+        };
+        Insert: {
+          count?: number;
+          created_at?: string;
+          identifier_hash: string;
+          scope: string;
+          updated_at?: string;
+          window_start: string;
+        };
+        Update: {
+          count?: number;
+          created_at?: string;
+          identifier_hash?: string;
+          scope?: string;
+          updated_at?: string;
+          window_start?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: {
+      check_rate_limit: {
+        Args: {
+          p_identifier_hash: string;
+          p_limit: number;
+          p_scope: string;
+          p_window_ms: number;
+        };
+        Returns: {
+          allowed: boolean;
+          remaining: number;
+          reset_at: string;
+        }[];
+      };
       is_active_admin: {
         Args: {
           user_id?: string | null;

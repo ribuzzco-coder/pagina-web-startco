@@ -5,15 +5,16 @@ import { trackCtaSchema } from "@/lib/schemas/track-cta";
 import { applyRateLimit } from "@/lib/security/rate-limit";
 import { getClientIp } from "@/lib/security/request";
 import { verifyTurnstileToken } from "@/lib/security/turnstile";
-import { createBackendServices } from "@/services/bootstrap";
+import { createPublicBackendServices } from "@/services/bootstrap";
 import { sha256 } from "@/lib/utils/crypto";
 import { toJsonValue } from "@/lib/utils/json";
 
 export async function POST(request: Request) {
   try {
     const ip = getClientIp(request);
-    applyRateLimit({
-      key: `track-cta:${ip}`,
+    await applyRateLimit({
+      scope: "track-cta",
+      identifier: ip,
       limit: env.CTA_TRACK_RATE_LIMIT_MAX,
       windowMs: env.RATE_LIMIT_WINDOW_MS,
     });
@@ -32,7 +33,7 @@ export async function POST(request: Request) {
 
     await verifyTurnstileToken(parsed.data.turnstileToken, ip);
 
-    const { leadEventsService } = createBackendServices();
+    const { leadEventsService } = createPublicBackendServices();
     await leadEventsService.recordCtaClicked({
       diagnosticRequestId: parsed.data.diagnosticRequestId ?? null,
       metadata: {

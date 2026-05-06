@@ -6,8 +6,10 @@ import {
   normalizeDiagnosticInput,
   normalizeInternalNotes,
 } from "@/lib/security/request";
+import { encryptDiagnosticFields } from "@/lib/security/sensitive-fields";
 import { sha256 } from "@/lib/utils/crypto";
 import { DiagnosticRequestRepository } from "@/repositories/diagnostic-request-repository";
+import type { AdminActor } from "@/services/admin-access-service";
 import { AuditLogService } from "@/services/audit-log-service";
 import { LeadEventsService } from "@/services/lead-events-service";
 import type { DiagnosticRequestRow } from "@/types/database";
@@ -28,12 +30,6 @@ type CreateDiagnosticRequestInput = {
   userAgent?: string | null;
   referrer?: string | null;
   honeypot?: string | null;
-};
-
-type AdminActor = {
-  actorId: string | null;
-  actorEmail: string | null;
-  authStrategy: "internal_api_key" | "supabase_auth";
 };
 
 type UpdateDiagnosticRequestInput = {
@@ -84,17 +80,23 @@ export class DiagnosticRequestService {
       };
     }
 
+    const encryptedFields = encryptDiagnosticFields({
+      email: normalized.email,
+      whatsapp: normalized.whatsapp,
+      contexto: normalized.contexto,
+    });
+
     const created = await this.repository.create({
       nombre: normalized.nombre,
       empresa: normalized.empresa,
       cargo: normalized.cargo,
-      whatsapp: normalized.whatsapp,
-      email: normalized.email,
+      whatsapp: encryptedFields.whatsapp,
+      email: encryptedFields.email,
       sector: normalized.sector,
       ya_esta_vendiendo: normalized.yaEstaVendiendo,
       reto_principal: normalized.retoPrincipal,
       tamano_equipo: normalized.tamanoEquipo,
-      contexto: normalized.contexto,
+      contexto: encryptedFields.contexto,
       source: normalized.source,
       submission_hash: submissionHash,
     });

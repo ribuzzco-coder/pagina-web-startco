@@ -7,6 +7,32 @@ const optionalNonEmptyString = z.preprocess(
   (value) => (value === "" ? undefined : value),
   z.string().min(1).optional(),
 );
+const encryptionKeySchema = z
+  .string()
+  .min(24)
+  .superRefine((value, ctx) => {
+    try {
+      const decoded = Buffer.from(value, "base64");
+
+      if (decoded.length !== 32) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "SENSITIVE_FIELD_ENCRYPTION_KEY debe ser una cadena base64 de 32 bytes.",
+        });
+      }
+    } catch {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "SENSITIVE_FIELD_ENCRYPTION_KEY debe ser una cadena base64 valida.",
+      });
+    }
+  });
+const trustedIpHeaderSchema = z.enum([
+  "x-vercel-forwarded-for",
+  "cf-connecting-ip",
+  "x-real-ip",
+  "x-forwarded-for",
+]);
 
 const envSchema = z
   .object({
@@ -16,8 +42,10 @@ const envSchema = z
     NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(20),
     NEXT_PUBLIC_TURNSTILE_SITE_KEY: optionalNonEmptyString,
     SUPABASE_SERVICE_ROLE_KEY: z.string().min(20),
-    INTERNAL_ADMIN_API_KEY: z.string().min(32),
+    SENSITIVE_FIELD_ENCRYPTION_KEY: encryptionKeySchema,
+    INTERNAL_HEALTHCHECK_TOKEN: optionalNonEmptyString,
     TURNSTILE_SECRET_KEY: optionalNonEmptyString,
+    TRUSTED_IP_HEADER: trustedIpHeaderSchema.default("x-vercel-forwarded-for"),
     RATE_LIMIT_WINDOW_MS: z.coerce.number().int().positive().default(60_000),
     RATE_LIMIT_MAX_PUBLIC_REQUESTS: z.coerce.number().int().positive().default(10),
     CTA_TRACK_RATE_LIMIT_MAX: z.coerce.number().int().positive().default(60),
@@ -43,8 +71,10 @@ export const env = envSchema.parse({
   NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   NEXT_PUBLIC_TURNSTILE_SITE_KEY: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
   SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
-  INTERNAL_ADMIN_API_KEY: process.env.INTERNAL_ADMIN_API_KEY,
+  SENSITIVE_FIELD_ENCRYPTION_KEY: process.env.SENSITIVE_FIELD_ENCRYPTION_KEY,
+  INTERNAL_HEALTHCHECK_TOKEN: process.env.INTERNAL_HEALTHCHECK_TOKEN,
   TURNSTILE_SECRET_KEY: process.env.TURNSTILE_SECRET_KEY,
+  TRUSTED_IP_HEADER: process.env.TRUSTED_IP_HEADER,
   RATE_LIMIT_WINDOW_MS: process.env.RATE_LIMIT_WINDOW_MS,
   RATE_LIMIT_MAX_PUBLIC_REQUESTS: process.env.RATE_LIMIT_MAX_PUBLIC_REQUESTS,
   CTA_TRACK_RATE_LIMIT_MAX: process.env.CTA_TRACK_RATE_LIMIT_MAX,

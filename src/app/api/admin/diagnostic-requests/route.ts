@@ -1,12 +1,13 @@
 import { apiError, apiOk, handleRouteError } from "@/lib/api/response";
+import { toAdminDiagnosticRequestListDto } from "@/lib/dto/admin-diagnostic-request";
 import { getZodFieldErrors } from "@/lib/api/validation";
 import { adminDiagnosticRequestListQuerySchema } from "@/lib/schemas/admin-diagnostic-request";
 import { requireAdminAccess } from "@/services/admin-access-service";
-import { createBackendServices } from "@/services/bootstrap";
+import { createAdminBackendServices } from "@/services/bootstrap";
 
 export async function GET(request: Request) {
   try {
-    const actor = await requireAdminAccess(request);
+    const actor = await requireAdminAccess();
     const query = Object.fromEntries(new URL(request.url).searchParams.entries());
     const parsed = adminDiagnosticRequestListQuerySchema.safeParse(query);
 
@@ -19,10 +20,10 @@ export async function GET(request: Request) {
       );
     }
 
-    const { diagnosticRequestService } = createBackendServices();
+    const { diagnosticRequestService } = await createAdminBackendServices();
     const result = await diagnosticRequestService.list(parsed.data);
 
-    return apiOk(result, undefined, {
+    return apiOk(toAdminDiagnosticRequestListDto(result), undefined, {
       actorRole: actor.role,
     });
   } catch (error) {

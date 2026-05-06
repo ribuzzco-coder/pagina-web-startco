@@ -1,17 +1,20 @@
+import type { SupabaseClient } from "@supabase/supabase-js";
+
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { AuditLogRepository } from "@/repositories/audit-log-repository";
 import { DiagnosticRequestRepository } from "@/repositories/diagnostic-request-repository";
 import { LeadEventRepository } from "@/repositories/lead-event-repository";
 import { AuditLogService } from "@/services/audit-log-service";
 import { DiagnosticRequestService } from "@/services/diagnostic-request-service";
 import { LeadEventsService } from "@/services/lead-events-service";
+import type { Database } from "@/types/database";
 
-export function createBackendServices() {
-  const adminClient = createSupabaseAdminClient();
-  const leadEventsService = new LeadEventsService(new LeadEventRepository(adminClient));
-  const auditLogService = new AuditLogService(new AuditLogRepository(adminClient));
+function createBackendServicesForClient(client: SupabaseClient<Database>) {
+  const leadEventsService = new LeadEventsService(new LeadEventRepository(client));
+  const auditLogService = new AuditLogService(new AuditLogRepository(client));
   const diagnosticRequestService = new DiagnosticRequestService(
-    new DiagnosticRequestRepository(adminClient),
+    new DiagnosticRequestRepository(client),
     leadEventsService,
     auditLogService,
   );
@@ -21,5 +24,13 @@ export function createBackendServices() {
     diagnosticRequestService,
     leadEventsService,
   };
+}
+
+export function createPublicBackendServices() {
+  return createBackendServicesForClient(createSupabaseAdminClient());
+}
+
+export async function createAdminBackendServices() {
+  return createBackendServicesForClient(await createSupabaseServerClient());
 }
 

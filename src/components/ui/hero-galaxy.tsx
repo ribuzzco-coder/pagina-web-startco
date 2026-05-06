@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -21,31 +21,50 @@ type GalaxyPoint = {
   twinkleDelay: number;
 };
 
+const LAYER_SEEDS = {
+  far: 0x1f2d3c4b,
+  mid: 0x5a6b7c8d,
+  near: 0x10293847,
+} as const;
+
 function createLayerPoints(count: number, layer: "far" | "mid" | "near"): GalaxyPoint[] {
   const layerScale =
     layer === "far" ? { min: 0.8, max: 3.2, opacity: 0.24 } :
     layer === "mid" ? { min: 1.2, max: 5.4, opacity: 0.4 } :
     { min: 1.8, max: 8.8, opacity: 0.56 };
+  const random = createSeededRandom(LAYER_SEEDS[layer]);
 
   return Array.from({ length: count }, (_, index) => ({
     id: `${layer}-${index}`,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    size: layerScale.min + Math.random() * (layerScale.max - layerScale.min),
-    opacity: layerScale.opacity + Math.random() * 0.36,
-    driftX: -22 + Math.random() * 44,
-    driftY: -18 + Math.random() * 36,
-    twinkleDuration: 4.5 + Math.random() * 7,
-    twinkleDelay: Math.random() * 6,
+    left: random() * 100,
+    top: random() * 100,
+    size: layerScale.min + random() * (layerScale.max - layerScale.min),
+    opacity: layerScale.opacity + random() * 0.36,
+    driftX: -22 + random() * 44,
+    driftY: -18 + random() * 36,
+    twinkleDuration: 4.5 + random() * 7,
+    twinkleDelay: random() * 6,
   }));
 }
 
+function createSeededRandom(seed: number) {
+  let state = seed >>> 0;
+
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let mixed = Math.imul(state ^ (state >>> 15), 1 | state);
+    mixed ^= mixed + Math.imul(mixed ^ (mixed >>> 7), 61 | mixed);
+
+    return ((mixed ^ (mixed >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const FAR_POINTS = createLayerPoints(160, "far");
+const MID_POINTS = createLayerPoints(120, "mid");
+const NEAR_POINTS = createLayerPoints(82, "near");
+
 export function HeroGalaxy({ className }: HeroGalaxyProps) {
   const shellRef = useRef<HTMLDivElement>(null);
-
-  const farPoints = useMemo(() => createLayerPoints(160, "far"), []);
-  const midPoints = useMemo(() => createLayerPoints(120, "mid"), []);
-  const nearPoints = useMemo(() => createLayerPoints(82, "near"), []);
 
   useEffect(() => {
     if (!shellRef.current) {
@@ -118,9 +137,9 @@ export function HeroGalaxy({ className }: HeroGalaxyProps) {
       aria-hidden="true"
     >
       <div className="hero-galaxy__scene">
-        {renderLayer(farPoints, "hero-galaxy__layer hero-galaxy__layer--far")}
-        {renderLayer(midPoints, "hero-galaxy__layer hero-galaxy__layer--mid")}
-        {renderLayer(nearPoints, "hero-galaxy__layer hero-galaxy__layer--near")}
+        {renderLayer(FAR_POINTS, "hero-galaxy__layer hero-galaxy__layer--far")}
+        {renderLayer(MID_POINTS, "hero-galaxy__layer hero-galaxy__layer--mid")}
+        {renderLayer(NEAR_POINTS, "hero-galaxy__layer hero-galaxy__layer--near")}
       </div>
     </div>
   );

@@ -1,30 +1,15 @@
-import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { env } from "@/lib/env";
 import { ApiError } from "@/lib/api/errors";
 import { AdminProfileRepository } from "@/repositories/admin-profile-repository";
 
 export type AdminActor = {
-  actorId: string | null;
-  actorEmail: string | null;
-  authStrategy: "internal_api_key" | "supabase_auth";
-  role: "system" | "owner" | "admin" | "reviewer";
+  actorId: string;
+  actorEmail: string;
+  authStrategy: "supabase_auth";
+  role: "owner" | "admin" | "reviewer";
 };
 
-export async function requireAdminAccess(request: Request): Promise<AdminActor> {
-  const bearerToken = request.headers.get("authorization")?.replace(/^Bearer\s+/i, "").trim();
-  const headerToken = request.headers.get("x-admin-api-key")?.trim();
-  const providedToken = bearerToken || headerToken;
-
-  if (providedToken && providedToken === env.INTERNAL_ADMIN_API_KEY) {
-    return {
-      actorId: null,
-      actorEmail: null,
-      authStrategy: "internal_api_key",
-      role: "system",
-    };
-  }
-
+export async function requireAdminAccess(): Promise<AdminActor> {
   const supabase = await createSupabaseServerClient();
   const {
     data: { user },
@@ -42,7 +27,7 @@ export async function requireAdminAccess(request: Request): Promise<AdminActor> 
     throw new ApiError(401, "UNAUTHORIZED", "No autorizado.");
   }
 
-  const adminRepository = new AdminProfileRepository(createSupabaseAdminClient());
+  const adminRepository = new AdminProfileRepository(supabase);
   const adminProfile = await adminRepository.findActiveById(user.id);
 
   if (!adminProfile) {

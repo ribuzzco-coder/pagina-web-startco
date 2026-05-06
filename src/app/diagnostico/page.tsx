@@ -1,8 +1,7 @@
-﻿import { CTASection } from "@/components/sections/cta-section";
+import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { Container } from "@/components/ui/container";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -10,102 +9,148 @@ import { contactFaqs, diagnosisExpectations } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 
-export const metadata = createPageMetadata({
-  title: "Solicitar diagnóstico",
-  description:
-    "Solicita un diagnóstico con RiBuzz para evaluar fit, leer tu sistema comercial y definir el siguiente paso correcto.",
-  path: "/diagnostico",
-});
-
 const embeddedDiagnosisFormUrl = SITE_CONFIG.diagnosisFormUrl.includes("?")
   ? `${SITE_CONFIG.diagnosisFormUrl}&embedded=true`
   : `${SITE_CONFIG.diagnosisFormUrl}?embedded=true`;
+
+export const metadata = createPageMetadata({
+  title: "Solicitar diagnóstico",
+  description:
+    "Completa el diagnostico de RiBuzz desde esta pagina. Por ahora la captura se procesa temporalmente en Google Forms mientras la plataforma dedicada termina su desarrollo.",
+  path: "/diagnostico",
+});
 
 export default function ContactPage() {
   return (
     <>
       <section className="pb-8 pt-14 sm:pb-12 sm:pt-20">
-        <Container className="grid max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div>
+        <Container className="max-w-6xl">
+          <div className="max-w-4xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
               Solicitar diagnóstico
             </p>
             <h1 className="mt-6 max-w-4xl font-sans text-4xl font-semibold leading-tight text-[#F5F7FA] sm:text-5xl">
-              Cuéntanos cómo buscas crecer y encontremos el mejor camino para tu negocio juntos.
+              Cuéntanos cómo está hoy tu operación y encontremos el mejor siguiente paso.
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#98A0B3] sm:text-lg">
-              El diagnóstico te ayuda a encontrar valor, rumbo e ideas accionables
-              para entender mejor tu negocio y decidir qué camino tiene más sentido
-              seguir.
+              El diagnóstico sigue activo dentro de esta página. Mientras terminamos la plataforma
+              dedicada, las respuestas se capturan temporalmente en Google Forms.
             </p>
           </div>
 
-          <div className="relative overflow-hidden rounded-[28px] border border-[#ff9cff]/35 bg-[linear-gradient(145deg,rgba(230,37,255,0.28),rgba(110,18,146,0.2))] px-6 py-4 shadow-[0_18px_50px_rgba(230,37,255,0.24),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[18px] sm:px-7 sm:py-5">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(255,125,247,0.22),transparent_42%)]" />
-            <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.62),transparent)]" />
-            <div className="relative text-center">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
-                Encuentra cómo crecer
-              </p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-[2rem]">
-                Aquí mismo, sin costo.
-              </h2>
-              <div className="mt-2.5 flex justify-center">
-                <a
-                  href="#diagnostico-form"
-                  aria-label="Ir al diagnóstico"
-                  className="inline-flex items-center justify-center py-1 text-white transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:translate-y-0.5"
-                >
-                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-9 w-9" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M7 10.5 12 16l5-5.5" />
-                  </svg>
-                </a>
+          <Card
+            interactiveGlow={false}
+            className="mt-8 overflow-hidden rounded-[32px] border-white/10 bg-[linear-gradient(180deg,rgba(19,21,31,0.98),rgba(10,11,18,1))] px-6 py-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_30px_90px_rgba(0,0,0,0.42)] sm:px-8 sm:py-7"
+          >
+            <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+                  Diagnóstico activo
+                </p>
+                <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#F5F7FA] sm:text-[2rem]">
+                  Completa el formulario aquí mismo.
+                </h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+                  Mantuvimos el formulario dentro del sitio para que el recorrido siga siendo claro
+                  y continuo, mientras la captura temporal todavía se procesa en Google Forms.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3 lg:items-end">
+                <Button href="#diagnostico-form" size="lg" className="w-full lg:w-auto lg:min-w-[260px]">
+                  Ir al formulario
+                </Button>
+                <p className="max-w-sm text-sm leading-relaxed text-[#98A0B3] lg:text-right">
+                  Si en tu dispositivo el embed no carga bien o prefieres más espacio, también
+                  puedes abrirlo en una pestaña aparte.
+                </p>
               </div>
             </div>
-          </div>
+          </Card>
         </Container>
       </section>
 
-      <section className="cv-auto pb-16 sm:pb-20">
-        <ContainerScroll className="mx-auto max-w-[980px] px-5 sm:px-8" contentClassName="mx-auto mt-4 w-full max-w-[860px] sm:mt-6">
-          <div className="mx-auto w-full max-w-[860px] overflow-hidden rounded-[32px]">
-            <Card interactiveGlow={false} id="diagnostico-form" className="relative overflow-hidden rounded-[32px] border-[#ff7cf4]/24 bg-[linear-gradient(180deg,rgba(20,22,31,0.98),rgba(11,11,16,0.99))] p-0 shadow-[0_0_0_1px_rgba(230,37,255,0.12),0_28px_90px_rgba(230,37,255,0.22),0_36px_120px_rgba(0,0,0,0.42)]">
-              <div className="pointer-events-none absolute inset-x-10 -top-6 h-18 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.3),transparent_72%)] blur-2xl" />
-              <div className="pointer-events-none absolute -left-12 top-24 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.16),transparent_68%)] blur-3xl" />
-              <div className="pointer-events-none absolute -right-14 bottom-20 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgba(15,239,253,0.14),transparent_70%)] blur-3xl" />
-              <div className="flex items-center justify-between border-b border-white/8 px-4 py-4 sm:px-5">
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                    Diagnóstico RiBuzz
-                  </p>
-                  <p className="mt-1 text-xs text-[#98A0B3] sm:text-sm">
-                    Completa el formulario aquí mismo o ábrelo aparte si prefieres.
-                  </p>
+      <section className="cv-auto pb-16 sm:pb-20" id="diagnostico-form">
+        <Container className="max-w-6xl">
+          <Card
+            interactiveGlow={false}
+            className="overflow-hidden rounded-[32px] border-[#ff7cf4]/24 bg-[linear-gradient(180deg,rgba(20,22,31,0.98),rgba(11,11,16,0.99))] p-0 shadow-[0_0_0_1px_rgba(230,37,255,0.12),0_28px_90px_rgba(230,37,255,0.22),0_36px_120px_rgba(0,0,0,0.42)]"
+          >
+            <div className="border-b border-white/8 px-5 py-5 sm:px-7">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+                Formulario temporal
+              </p>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#F5F7FA] sm:text-[2rem]">
+                Envíanos tu diagnóstico desde aquí.
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+                Este formulario está embebido para mantener la experiencia dentro del sitio, aunque
+                la captura actual se procesa en Google Forms mientras construimos la plataforma
+                propia.
+              </p>
+            </div>
+
+            <div className="grid gap-5 px-4 py-5 sm:px-6 sm:py-6">
+              <div className="grid gap-4 lg:grid-cols-[1fr_1fr_0.9fr]">
+                <div className="rounded-[22px] border border-white/8 bg-white/[0.03] p-4 text-sm text-[#98A0B3]">
+                  <p className="font-semibold text-[#F5F7FA]">Qué evaluamos</p>
+                  <ul className="mt-3 space-y-3 leading-relaxed text-[#C7CBD6]">
+                    <li>Si el cuello de botella está en captación, conversión, seguimiento o estructura.</li>
+                    <li>Qué tan dependiente es hoy tu operación del fundador o de decisiones improvisadas.</li>
+                    <li>Qué siguiente paso tiene más sentido antes de invertir más tiempo o dinero.</li>
+                  </ul>
                 </div>
 
-                <Button
-                  href={SITE_CONFIG.diagnosisFormUrl}
-                  size="md"
-                  variant="secondary"
-                  external
-                  className="shrink-0"
-                >
-                  Pantalla completa
-                </Button>
+                <div className="rounded-[22px] border border-white/8 bg-white/[0.03] p-4 text-sm text-[#98A0B3]">
+                  <p className="font-semibold text-[#F5F7FA]">Cómo manejamos esta etapa</p>
+                  <div className="mt-3 grid gap-3 leading-relaxed text-[#C7CBD6]">
+                    <p>El diagnóstico vive dentro de esta página, pero por ahora las respuestas viajan a Google Forms.</p>
+                    <p>No estamos usando todavía este backend público para guardar solicitudes de diagnóstico.</p>
+                    <p>Cuando la plataforma dedicada esté lista, podremos migrar ese flujo sin perder esta entrada principal.</p>
+                  </div>
+                </div>
+
+                <div className="rounded-[22px] border border-white/8 bg-white/[0.03] p-4 text-sm text-[#98A0B3]">
+                  <p className="font-semibold text-[#F5F7FA]">Nota de operación</p>
+                  <p className="mt-3 leading-relaxed">
+                    Si ves limitaciones de carga o prefieres más espacio, puedes abrir el mismo
+                    formulario en una pestaña nueva y continuar allí.
+                  </p>
+                  <div className="mt-4 flex flex-col gap-3">
+                    <Button
+                      href={SITE_CONFIG.diagnosisFormUrl}
+                      external
+                      size="lg"
+                      className="w-full"
+                    >
+                      Abrir formulario aparte
+                    </Button>
+                    <Button
+                      href={SITE_CONFIG.whatsappUrl}
+                      external
+                      variant="secondary"
+                      size="lg"
+                      className="w-full"
+                    >
+                      Resolver dudas por WhatsApp
+                    </Button>
+                  </div>
+                </div>
               </div>
 
-              <div className="relative overflow-hidden rounded-b-[32px]">
-                <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.06),transparent_22%),radial-gradient(circle_at_bottom_right,rgba(230,37,255,0.08),transparent_28%),radial-gradient(circle_at_78%_26%,rgba(15,239,253,0.06),transparent_24%)]" />
+              <div className="diagnosis-form-embed">
+                <div className="diagnosis-form-embed__badge">Modo nocturno experimental</div>
                 <iframe
+                  title="Formulario de diagnóstico de RiBuzz"
                   src={embeddedDiagnosisFormUrl}
-                  title="Formulario de diagnóstico RiBuzz"
-                  className="h-[760px] w-full rounded-b-[32px] bg-white invert-[0.92] hue-rotate-180 brightness-105 contrast-105 sm:h-[1020px] lg:h-[1120px]"
+                  className="diagnosis-form-embed__frame min-h-[980px] w-full rounded-[24px] border border-white/8 bg-[#0D1018]"
                   loading="lazy"
                 />
+                <div className="diagnosis-form-embed__shader" aria-hidden="true" />
               </div>
-            </Card>
-          </div>
-        </ContainerScroll>
+            </div>
+          </Card>
+        </Container>
       </section>
 
       <SectionDivider />
@@ -176,7 +221,3 @@ export default function ContactPage() {
     </>
   );
 }
-
-
-
-

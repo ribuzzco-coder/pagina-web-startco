@@ -108,6 +108,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
+      suppressHydrationWarning
       className={`${spaceGrotesk.variable} ${saira.variable} ${zenDots.variable} ${openSans.variable} ${lato.variable} ${barlow.variable} ${jost.variable} ${playfair.variable} ${assistant.variable} h-full`}
     >
       <body className="min-h-full bg-ribuzz-bg text-ribuzz-textPrimary antialiased">

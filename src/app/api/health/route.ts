@@ -1,10 +1,12 @@
 import { apiError, apiOk, handleRouteError } from "@/lib/api/response";
+import { requireHealthcheckAccess } from "@/lib/security/internal-access";
 import { getHealthStatus } from "@/services/health-service";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    requireHealthcheckAccess(request);
     const health = await getHealthStatus();
 
     if (!health.ok) {

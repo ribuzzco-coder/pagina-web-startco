@@ -125,6 +125,65 @@ textarea,
   background: linear-gradient(180deg, rgba(29, 33, 48, 0.88), rgba(24, 26, 36, 0.92));
 }
 
+.diagnosis-form-embed {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(230, 37, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(13, 16, 24, 0.98), rgba(8, 10, 15, 1));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.diagnosis-form-embed__badge {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(8, 10, 16, 0.72);
+  color: #f5f7fa;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.45rem 0.8rem;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.diagnosis-form-embed__frame {
+  position: relative;
+  z-index: 1;
+  display: block;
+  filter:
+    invert(0.94)
+    hue-rotate(180deg)
+    saturate(0.82)
+    contrast(0.92)
+    brightness(0.92);
+  transform: scale(1.01);
+  transform-origin: center top;
+}
+
+.diagnosis-form-embed__shader {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 50% 14%, rgba(230, 37, 255, 0.14), transparent 28%),
+    radial-gradient(circle at 86% 78%, rgba(15, 239, 253, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(4, 7, 15, 0.08), rgba(4, 7, 15, 0.24)),
+    linear-gradient(135deg, rgba(230, 37, 255, 0.06), rgba(91, 22, 230, 0.06));
+  mix-blend-mode: screen;
+}
+
 .glow-card {
   --glow-x: 50%;
   --glow-y: 50%;

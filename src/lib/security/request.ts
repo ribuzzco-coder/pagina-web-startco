@@ -1,14 +1,30 @@
+import "server-only";
+
+import { isIP } from "node:net";
+
+import { env } from "@/lib/env";
 import { normalizeEmail, normalizeNullableString, normalizeWhitespace } from "@/lib/utils/strings";
 import { sha256 } from "@/lib/utils/crypto";
 
 export function getClientIp(request: Request) {
-  const forwardedFor = request.headers.get("x-forwarded-for");
+  const trustedHeaderValue = request.headers.get(env.TRUSTED_IP_HEADER);
+  const trustedIp = getIpFromHeaderValue(trustedHeaderValue);
 
-  if (forwardedFor) {
-    return forwardedFor.split(",")[0]?.trim() || "unknown";
+  if (trustedIp) {
+    return trustedIp;
   }
 
-  return request.headers.get("x-real-ip")?.trim() || "unknown";
+  if (env.NODE_ENV === "development") {
+    for (const headerName of ["x-forwarded-for", "x-real-ip", "cf-connecting-ip"]) {
+      const fallbackIp = getIpFromHeaderValue(request.headers.get(headerName));
+
+      if (fallbackIp) {
+        return fallbackIp;
+      }
+    }
+  }
+
+  return "unknown";
 }
 
 export function buildDiagnosticSubmissionHash(input: {
@@ -55,5 +71,37 @@ export function normalizeDiagnosticInput(input: {
 
 export function normalizeInternalNotes(value?: string | null) {
   return normalizeNullableString(value);
+}
+
+function getIpFromHeaderValue(value?: string | null) {
+  if (!value) {
+    return null;
+  }
+
+  for (const part of value.split(",")) {
+    const normalized = normalizeIpCandidate(part);
+
+    if (normalized) {
+      return normalized;
+    }
+  }
+
+  return null;
+}
+
+function normalizeIpCandidate(value: string) {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return null;
+  }
+
+  const withoutIpv6Brackets = trimmed.replace(/^\[([^[\]]+)\](?::\d+)?$/, "$1");
+  const withoutIpv4Port = withoutIpv6Brackets.replace(
+    /^(\d{1,3}(?:\.\d{1,3}){3}):\d+$/,
+    "$1",
+  );
+
+  return isIP(withoutIpv4Port) ? withoutIpv4Port : null;
 }
 

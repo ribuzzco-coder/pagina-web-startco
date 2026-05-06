@@ -14,6 +14,14 @@ export function isTurnstileEnabled() {
 
 export async function verifyTurnstileToken(token?: string | null, remoteIp?: string | null) {
   if (!isTurnstileEnabled()) {
+    if (env.NODE_ENV === "production") {
+      throw new ApiError(
+        503,
+        "FORM_PROTECTION_UNAVAILABLE",
+        "El formulario no esta disponible temporalmente.",
+      );
+    }
+
     return;
   }
 

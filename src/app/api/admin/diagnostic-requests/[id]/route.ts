@@ -1,8 +1,9 @@
 import { apiError, apiOk, handleRouteError } from "@/lib/api/response";
+import { toAdminDiagnosticRequestDto } from "@/lib/dto/admin-diagnostic-request";
 import { getZodFieldErrors, readJsonBody } from "@/lib/api/validation";
 import { updateDiagnosticRequestSchema } from "@/lib/schemas/admin-diagnostic-request";
 import { requireAdminAccess } from "@/services/admin-access-service";
-import { createBackendServices } from "@/services/bootstrap";
+import { createAdminBackendServices } from "@/services/bootstrap";
 
 type RouteContext = {
   params: Promise<{
@@ -12,7 +13,7 @@ type RouteContext = {
 
 export async function PATCH(request: Request, context: RouteContext) {
   try {
-    const actor = await requireAdminAccess(request);
+    const actor = await requireAdminAccess();
     const { id } = await context.params;
     const body = await readJsonBody<unknown>(request);
     const parsed = updateDiagnosticRequestSchema.safeParse(body);
@@ -26,7 +27,7 @@ export async function PATCH(request: Request, context: RouteContext) {
       );
     }
 
-    const { diagnosticRequestService } = createBackendServices();
+    const { diagnosticRequestService } = await createAdminBackendServices();
     const updated = await diagnosticRequestService.update({
       id,
       status: parsed.data.status,
@@ -34,7 +35,7 @@ export async function PATCH(request: Request, context: RouteContext) {
       actor,
     });
 
-    return apiOk(updated);
+    return apiOk(toAdminDiagnosticRequestDto(updated));
   } catch (error) {
     if (error instanceof SyntaxError) {
       return apiError(400, "INVALID_JSON", "El cuerpo enviado no es JSON valido.");
