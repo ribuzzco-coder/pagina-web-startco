@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Assistant, Barlow, Jost, Lato, Open_Sans, Playfair_Display, Saira, Space_Grotesk, Zen_Dots } from "next/font/google";
 
 import { FloatingWhatsAppButton } from "@/components/layout/floating-whatsapp-button";
 import { Footer } from "@/components/layout/footer";
@@ -9,66 +8,6 @@ import { RouteVisibility } from "@/components/layout/route-visibility";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 import "./globals.css";
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const saira = Saira({
-  variable: "--font-saira",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const zenDots = Zen_Dots({
-  variable: "--font-zen-dots",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
-
-const openSans = Open_Sans({
-  variable: "--font-open-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const lato = Lato({
-  variable: "--font-lato",
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  display: "swap",
-});
-
-const barlow = Barlow({
-  variable: "--font-barlow",
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
-  display: "swap",
-});
-
-const jost = Jost({
-  variable: "--font-jost",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
-  display: "swap",
-});
-
-const assistant = Assistant({
-  variable: "--font-assistant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -109,7 +48,7 @@ export default function RootLayout({
     <html
       lang="es"
       suppressHydrationWarning
-      className={`${spaceGrotesk.variable} ${saira.variable} ${zenDots.variable} ${openSans.variable} ${lato.variable} ${barlow.variable} ${jost.variable} ${playfair.variable} ${assistant.variable} h-full`}
+      className="h-full"
     >
       <body className="min-h-full bg-ribuzz-bg text-ribuzz-textPrimary antialiased">
         <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
