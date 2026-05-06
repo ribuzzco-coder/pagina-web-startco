@@ -214,10 +214,7 @@ export default function FiammataPage() {
 
       <section className="fiammata-collections" id="colecciones">
         <div className="fiammata-section-card">
-          <h2>Descubre nuestras colecciones</h2>
-          <p className="fiammata-section-card__intro">
-            Cada categoría abre una selección visual de producto y te lleva directo a la colección completa.
-          </p>
+          <h2>Nuestras colecciones</h2>
           <FiammataCollectionGrid collections={collections} />
         </div>
       </section>
