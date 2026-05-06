@@ -3211,6 +3211,9 @@ textarea,
   display: grid;
   gap: 0.85rem;
   width: 100%;
+  padding: 0;
+  background: transparent;
+  border: 0;
   text-align: center;
   transition: transform 240ms ease;
 }
@@ -3231,6 +3234,7 @@ textarea,
   position: absolute;
   inset: 0;
   margin: auto;
+  display: block;
   width: min(100%, 16.8rem);
   height: 100%;
   overflow: hidden;
@@ -3259,6 +3263,8 @@ textarea,
 }
 
 .fiammata-collection-stack__image {
+  position: absolute;
+  inset: 0;
   object-fit: cover;
 }
 
@@ -3565,7 +3571,6 @@ textarea,
   .fiammata-collection-lightbox__frame {
     min-height: 12.4rem;
   }
-}
 }
 
 @keyframes hotel-gallery-fade {
