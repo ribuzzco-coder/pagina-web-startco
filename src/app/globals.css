@@ -2936,10 +2936,636 @@ textarea,
     grid-template-columns: 1fr;
   }
 
-  .hotel-caribbean-feature-card {
-    min-height: 11.9rem;
-    padding: 1.2rem 1.15rem 1.35rem;
+.hotel-caribbean-feature-card {
+      min-height: 11.9rem;
+      padding: 1.2rem 1.15rem 1.35rem;
+}
+
+.fiammata-page {
+  --fiammata-plum: #5c2260;
+  --fiammata-plum-deep: #341238;
+  --fiammata-gold: #c9a27a;
+  --fiammata-gold-soft: #e7d0bb;
+  --fiammata-cream: rgba(255, 249, 244, 0.9);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 246, 0.16) 0%, rgba(255, 250, 246, 0.06) 52%, rgba(255, 250, 246, 0.14) 100%);
+  color: #fff8f3;
+}
+
+.fiammata-page .hotel-caribe-hero-gallery__image {
+  background-position: center 24%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(18px) saturate(1.08);
+  transform: scale(1.1);
+}
+
+.fiammata-page .hotel-caribe-hero-gallery__image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(34, 9, 36, 0.3), rgba(92, 34, 96, 0.26) 36%, rgba(255, 247, 242, 0.18) 100%),
+    radial-gradient(circle at 20% 18%, rgba(201, 162, 122, 0.28), transparent 22rem),
+    radial-gradient(circle at 76% 22%, rgba(143, 73, 148, 0.24), transparent 20rem),
+    radial-gradient(circle at 50% 100%, rgba(255, 241, 230, 0.18), transparent 28rem);
+}
+
+.fiammata-hero,
+.fiammata-collections,
+.fiammata-highlights,
+.fiammata-contact {
+  position: relative;
+  z-index: 2;
+  padding-inline: 1rem;
+}
+
+.fiammata-shell {
+  width: min(100%, 29rem);
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  padding-top: 2.5rem;
+}
+
+.fiammata-identity-card,
+.fiammata-section-card,
+.fiammata-contact-card,
+.fiammata-actions,
+.fiammata-map__label {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 30px;
+  background:
+    linear-gradient(135deg, rgba(255, 250, 246, 0.42), rgba(250, 236, 228, 0.16)),
+    rgba(39, 14, 42, 0.22);
+  box-shadow:
+    0 28px 80px rgba(23, 7, 27, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(16px);
+}
+
+.fiammata-identity-card {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  padding: 1.4rem 1.15rem 1.25rem;
+}
+
+.fiammata-logo-card {
+  display: grid;
+  width: min(100%, 11rem);
+  height: clamp(9.8rem, 33vw, 11rem);
+  place-items: center;
+}
+
+.fiammata-brand-mark {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  padding: 0.25rem;
+}
+
+.fiammata-brand-mark__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 28px;
+  background: rgba(255, 252, 249, 0.96);
+  box-shadow:
+    0 18px 40px rgba(49, 17, 51, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.fiammata-identity-card h1,
+.fiammata-section-card h2,
+.fiammata-contact-card h2,
+.fiammata-footer-name,
+.fiammata-actions span,
+.fiammata-map__label span {
+  font-family: var(--font-assistant), var(--font-open-sans), sans-serif;
+}
+
+.fiammata-identity-card h1 {
+  margin: 0.72rem auto 0;
+  font-size: clamp(2.25rem, 6vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--fiammata-plum);
+}
+
+.fiammata-tagline-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.62rem;
+  padding: 0.65rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 162, 122, 0.34);
+  background: rgba(255, 248, 242, 0.78);
+  color: #7d6040;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.fiammata-socials,
+.fiammata-footer-socials {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.fiammata-socials {
+  margin-top: 1.05rem;
+}
+
+.fiammata-socials a,
+.fiammata-footer-socials a {
+  display: grid;
+  width: 3.35rem;
+  height: 3.35rem;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 162, 122, 0.24);
+  background:
+    linear-gradient(135deg, rgba(255, 252, 248, 0.94), rgba(245, 228, 214, 0.44));
+  color: var(--fiammata-plum);
+  box-shadow: 0 12px 28px rgba(38, 14, 41, 0.08);
+  transition:
+    transform 240ms ease,
+    border-color 240ms ease,
+    background-color 240ms ease,
+    box-shadow 240ms ease;
+}
+
+.fiammata-socials a:hover,
+.fiammata-footer-socials a:hover {
+  transform: translateY(-1px) scale(1.03);
+  border-color: rgba(201, 162, 122, 0.48);
+  box-shadow: 0 14px 32px rgba(38, 14, 41, 0.12);
+}
+
+.fiammata-socials svg,
+.fiammata-footer-socials svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.fiammata-actions {
+  display: grid;
+  gap: 0.82rem;
+  padding: 0.9rem;
+}
+
+.fiammata-action-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.72rem;
+  min-height: 3.9rem;
+  padding: 0.95rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 162, 122, 0.28);
+  background:
+    linear-gradient(135deg, rgba(255, 252, 248, 0.94), rgba(246, 232, 219, 0.5));
+  color: var(--fiammata-plum);
+  box-shadow: 0 14px 30px rgba(36, 13, 39, 0.08);
+  transition:
+    transform 240ms ease,
+    border-color 240ms ease,
+    background-color 240ms ease,
+    box-shadow 240ms ease;
+}
+
+.fiammata-action-link span {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.fiammata-action-link svg {
+  flex: 0 0 auto;
+  color: var(--fiammata-plum);
+}
+
+.fiammata-action-link:hover {
+  transform: translateY(-1px) scale(1.01);
+  border-color: rgba(201, 162, 122, 0.52);
+  box-shadow: 0 18px 36px rgba(36, 13, 39, 0.12);
+}
+
+.fiammata-action-link--wa {
+  background:
+    linear-gradient(120deg, rgba(255, 250, 244, 0.3), transparent 44%),
+    linear-gradient(135deg, rgba(92, 34, 96, 0.94), rgba(201, 162, 122, 0.9));
+  color: #fffaf6;
+}
+
+.fiammata-action-link--wa svg {
+  color: #fffaf6;
+}
+
+.fiammata-section-card {
+  width: min(100%, 29rem);
+  margin-inline: auto;
+  padding: 1.2rem 1rem 1.1rem;
+}
+
+.fiammata-section-card h2 {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.8rem, 4.3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--fiammata-plum);
+}
+
+.fiammata-section-card__intro {
+  margin: 0.55rem auto 0;
+  max-width: 24rem;
+  text-align: center;
+  color: rgba(74, 49, 77, 0.78);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.fiammata-collections {
+  padding-top: 1.15rem;
+}
+
+.fiammata-collection-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.15rem;
+}
+
+.fiammata-collection-card {
+  position: relative;
+}
+
+.fiammata-collection-trigger {
+  display: grid;
+  gap: 0.85rem;
+  width: 100%;
+  text-align: center;
+  transition: transform 240ms ease;
+}
+
+.fiammata-collection-trigger:hover {
+  transform: translateY(-1px);
+}
+
+.fiammata-collection-stack {
+  position: relative;
+  height: 15rem;
+  display: grid;
+  place-items: center;
+}
+
+.fiammata-collection-stack__back,
+.fiammata-collection-stack__front {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: min(100%, 16.8rem);
+  height: 100%;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  box-shadow: 0 16px 38px rgba(43, 16, 46, 0.14);
+}
+
+.fiammata-collection-stack__back {
+  width: min(100%, 15rem);
+  height: 13.2rem;
+  opacity: 0.95;
+}
+
+.fiammata-collection-stack__back--one {
+  transform: translate(1.3rem, -0.55rem) rotate(6deg);
+}
+
+.fiammata-collection-stack__back--two {
+  transform: translate(-1.3rem, -0.35rem) rotate(-6deg);
+}
+
+.fiammata-collection-stack__front {
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.fiammata-collection-stack__image {
+  object-fit: cover;
+}
+
+.fiammata-collection-copy p {
+  margin: 0;
+  font-size: 1.14rem;
+  font-weight: 800;
+  color: var(--fiammata-plum);
+}
+
+.fiammata-collection-copy span {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(114, 75, 117, 0.84);
+}
+
+.fiammata-collection-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+  background: rgba(14, 6, 15, 0.76);
+  backdrop-filter: blur(16px);
+}
+
+.fiammata-collection-lightbox__panel {
+  width: min(100%, 56rem);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(180deg, rgba(31, 10, 34, 0.96), rgba(17, 7, 19, 0.94));
+  padding: 1rem;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+}
+
+.fiammata-collection-lightbox__gallery {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.fiammata-collection-lightbox__frame {
+  position: relative;
+  width: 100%;
+  min-height: 16rem;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.fiammata-collection-lightbox__image {
+  object-fit: contain;
+}
+
+.fiammata-collection-lightbox__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.fiammata-collection-lightbox__eyebrow {
+  margin: 0;
+  color: rgba(201, 162, 122, 0.8);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.fiammata-collection-lightbox__meta h3 {
+  margin: 0.28rem 0 0;
+  font-family: var(--font-assistant), var(--font-open-sans), sans-serif;
+  color: #fff8f2;
+  font-size: 1.48rem;
+  font-weight: 800;
+}
+
+.fiammata-collection-lightbox__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 11rem;
+  min-height: 3.15rem;
+  padding: 0.9rem 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--fiammata-plum), var(--fiammata-gold));
+  color: #fff9f5;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  box-shadow: 0 16px 34px rgba(92, 34, 96, 0.24);
+}
+
+.fiammata-highlights {
+  padding-top: 1rem;
+}
+
+.fiammata-section-card--dark {
+  background:
+    linear-gradient(180deg, rgba(48, 17, 52, 0.9), rgba(31, 10, 34, 0.94)),
+    rgba(25, 10, 27, 0.72);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.fiammata-section-card--dark h2 {
+  color: #fff7f1;
+}
+
+.fiammata-highlight-list {
+  display: grid;
+  gap: 0.72rem;
+  margin-top: 1rem;
+}
+
+.fiammata-highlight-list div {
+  display: grid;
+  grid-template-columns: 2.45rem 1fr;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.fiammata-highlight-list svg {
+  color: var(--fiammata-gold);
+}
+
+.fiammata-highlight-list span {
+  color: rgba(255, 246, 237, 0.88);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.fiammata-contact {
+  padding-top: 1rem;
+  padding-bottom: 2.5rem;
+}
+
+.fiammata-map {
+  position: relative;
+  width: min(100%, 29rem);
+  height: 18rem;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 22px 54px rgba(25, 9, 28, 0.12);
+}
+
+.fiammata-map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.fiammata-map__label {
+  position: absolute;
+  right: 0.95rem;
+  bottom: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.85rem;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  color: var(--fiammata-plum);
+  background: rgba(255, 250, 246, 0.86);
+}
+
+.fiammata-contact-card {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.95rem;
+  width: min(100%, 29rem);
+  margin: 1rem auto 0;
+  padding: 1rem;
+}
+
+.fiammata-contact-logo {
+  display: grid;
+  height: 6.35rem;
+}
+
+.fiammata-contact-card h2 {
+  margin: 0;
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--fiammata-plum);
+}
+
+.fiammata-contact-card p {
+  margin: 0.18rem 0 0;
+  color: rgba(74, 49, 77, 0.82);
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.fiammata-footer-socials {
+  margin-top: 1rem;
+}
+
+.fiammata-footer-socials__wa svg,
+.fiammata-floating-wa svg {
+  color: #fffaf6;
+}
+
+.fiammata-ribuzz-mark {
+  filter: brightness(0) saturate(100%);
+  opacity: 0.94;
+}
+
+.fiammata-footer-name {
+  margin-top: 0.72rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--fiammata-plum);
+}
+
+.fiammata-floating-wa {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 3.85rem;
+  height: 3.85rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--fiammata-plum), var(--fiammata-gold));
+  color: #fffaf6;
+  box-shadow: 0 20px 40px rgba(92, 34, 96, 0.24);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.fiammata-floating-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 48px rgba(92, 34, 96, 0.28);
+}
+
+@media (min-width: 768px) {
+  .fiammata-shell,
+  .fiammata-section-card,
+  .fiammata-map,
+  .fiammata-contact-card {
+    width: min(100%, 33rem);
   }
+
+  .fiammata-collection-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fiammata-collection-lightbox__gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .fiammata-collection-lightbox__frame {
+    min-height: 23rem;
+  }
+
+  .fiammata-collection-lightbox__meta {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .fiammata-page .hotel-caribe-hero-gallery__image {
+    background-position: center 22%;
+    filter: blur(10px) saturate(1.04);
+    transform: scale(1.04);
+  }
+
+  .fiammata-logo-card {
+    width: min(100%, 9.7rem);
+    height: 9.4rem;
+  }
+
+  .fiammata-collection-stack {
+    height: 13.8rem;
+  }
+
+  .fiammata-collection-stack__back,
+  .fiammata-collection-stack__front {
+    width: min(100%, 14.8rem);
+  }
+
+  .fiammata-collection-stack__back {
+    width: min(100%, 13.4rem);
+    height: 12rem;
+  }
+
+  .fiammata-collection-lightbox__frame {
+    min-height: 12.4rem;
+  }
+}
 }
 
 @keyframes hotel-gallery-fade {
