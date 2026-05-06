@@ -2936,9 +2936,10 @@ textarea,
     grid-template-columns: 1fr;
   }
 
-.hotel-caribbean-feature-card {
+  .hotel-caribbean-feature-card {
       min-height: 11.9rem;
       padding: 1.2rem 1.15rem 1.35rem;
+  }
 }
 
 .fiammata-page {
