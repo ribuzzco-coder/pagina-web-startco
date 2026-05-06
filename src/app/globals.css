@@ -2949,7 +2949,7 @@ textarea,
   --fiammata-gold-soft: #e7d0bb;
   --fiammata-cream: rgba(255, 249, 244, 0.9);
   background:
-    linear-gradient(180deg, rgba(255, 250, 246, 0.16) 0%, rgba(255, 250, 246, 0.06) 52%, rgba(255, 250, 246, 0.14) 100%);
+    linear-gradient(180deg, rgba(255, 252, 248, 0.28) 0%, rgba(255, 252, 248, 0.16) 52%, rgba(255, 252, 248, 0.22) 100%);
   color: #fff8f3;
 }
 
@@ -2957,7 +2957,7 @@ textarea,
   background-position: center 24%;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: blur(18px) saturate(1.08);
+  filter: blur(16px) saturate(1.12) brightness(1.08);
   transform: scale(1.1);
 }
 
@@ -2966,10 +2966,10 @@ textarea,
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(34, 9, 36, 0.3), rgba(92, 34, 96, 0.26) 36%, rgba(255, 247, 242, 0.18) 100%),
-    radial-gradient(circle at 20% 18%, rgba(201, 162, 122, 0.28), transparent 22rem),
-    radial-gradient(circle at 76% 22%, rgba(143, 73, 148, 0.24), transparent 20rem),
-    radial-gradient(circle at 50% 100%, rgba(255, 241, 230, 0.18), transparent 28rem);
+    linear-gradient(180deg, rgba(68, 28, 72, 0.18), rgba(110, 54, 114, 0.14) 34%, rgba(255, 250, 245, 0.24) 100%),
+    radial-gradient(circle at 20% 18%, rgba(201, 162, 122, 0.24), transparent 22rem),
+    radial-gradient(circle at 76% 22%, rgba(143, 73, 148, 0.16), transparent 20rem),
+    radial-gradient(circle at 50% 100%, rgba(255, 245, 236, 0.22), transparent 28rem);
 }
 
 .fiammata-hero,
@@ -3225,7 +3225,7 @@ textarea,
 
 .fiammata-collection-stack {
   position: relative;
-  height: 15rem;
+  height: 13.2rem;
   display: grid;
   place-items: center;
 }
@@ -3236,7 +3236,7 @@ textarea,
   inset: 0;
   margin: auto;
   display: block;
-  width: min(100%, 16.8rem);
+  width: min(100%, 14.6rem);
   height: 100%;
   overflow: hidden;
   border-radius: 28px;
@@ -3245,8 +3245,8 @@ textarea,
 }
 
 .fiammata-collection-stack__back {
-  width: min(100%, 15rem);
-  height: 13.2rem;
+  width: min(100%, 13rem);
+  height: 11.45rem;
   opacity: 0.95;
 }
 
@@ -3271,19 +3271,25 @@ textarea,
 
 .fiammata-collection-copy p {
   margin: 0;
-  font-size: 1.14rem;
+  font-size: 1.06rem;
   font-weight: 800;
   color: var(--fiammata-plum);
 }
 
 .fiammata-collection-copy span {
-  display: inline-block;
-  margin-top: 0.3rem;
-  font-size: 0.82rem;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.4rem;
+  padding: 0.38rem 0.72rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(92, 34, 96, 0.92), rgba(201, 162, 122, 0.88));
+  color: #fffdfa;
+  font-size: 0.84rem;
+  font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(114, 75, 117, 0.84);
+  box-shadow: 0 10px 24px rgba(92, 34, 96, 0.14);
 }
 
 .fiammata-collection-lightbox {
@@ -3302,9 +3308,9 @@ textarea,
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background:
-    linear-gradient(180deg, rgba(31, 10, 34, 0.96), rgba(17, 7, 19, 0.94));
+    linear-gradient(180deg, rgba(255, 250, 246, 0.98), rgba(247, 237, 227, 0.96));
   padding: 1rem;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 28px 80px rgba(33, 13, 35, 0.22);
 }
 
 .fiammata-collection-lightbox__gallery {
@@ -3319,11 +3325,11 @@ textarea,
   overflow: hidden;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 252, 247, 0.86);
 }
 
 .fiammata-collection-lightbox__image {
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .fiammata-collection-lightbox__meta {
@@ -3338,7 +3344,7 @@ textarea,
 
 .fiammata-collection-lightbox__eyebrow {
   margin: 0;
-  color: rgba(201, 162, 122, 0.8);
+  color: rgba(120, 87, 51, 0.82);
   font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.18em;
@@ -3348,7 +3354,7 @@ textarea,
 .fiammata-collection-lightbox__meta h3 {
   margin: 0.28rem 0 0;
   font-family: var(--font-assistant), var(--font-open-sans), sans-serif;
-  color: #fff8f2;
+  color: var(--fiammata-plum);
   font-size: 1.48rem;
   font-weight: 800;
 }
@@ -3368,46 +3374,8 @@ textarea,
   box-shadow: 0 16px 34px rgba(92, 34, 96, 0.24);
 }
 
-.fiammata-highlights {
-  padding-top: 1rem;
-}
-
-.fiammata-section-card--dark {
-  background:
-    linear-gradient(180deg, rgba(48, 17, 52, 0.9), rgba(31, 10, 34, 0.94)),
-    rgba(25, 10, 27, 0.72);
-  border-color: rgba(255, 255, 255, 0.14);
-}
-
-.fiammata-section-card--dark h2 {
-  color: #fff7f1;
-}
-
-.fiammata-highlight-list {
-  display: grid;
-  gap: 0.72rem;
-  margin-top: 1rem;
-}
-
-.fiammata-highlight-list div {
-  display: grid;
-  grid-template-columns: 2.45rem 1fr;
-  gap: 0.25rem;
-  align-items: center;
-}
-
-.fiammata-highlight-list svg {
-  color: var(--fiammata-gold);
-}
-
-.fiammata-highlight-list span {
-  color: rgba(255, 246, 237, 0.88);
-  font-size: 0.98rem;
-  line-height: 1.45;
-}
-
 .fiammata-contact {
-  padding-top: 1rem;
+  padding-top: 1.1rem;
   padding-bottom: 2.5rem;
 }
 
@@ -3447,28 +3415,33 @@ textarea,
 
 .fiammata-contact-card {
   display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 0.95rem;
+  grid-template-columns: 7.2rem 1fr;
+  gap: 1rem;
   width: min(100%, 29rem);
   margin: 1rem auto 0;
-  padding: 1rem;
+  padding: 1.15rem;
 }
 
 .fiammata-contact-logo {
   display: grid;
-  height: 6.35rem;
+  height: 7.6rem;
+  align-self: center;
 }
 
 .fiammata-contact-card h2 {
   margin: 0;
   font-size: 1.22rem;
   font-weight: 800;
-  color: var(--fiammata-plum);
+  color: #fffdf9;
+}
+
+.fiammata-contact-copy {
+  align-self: center;
 }
 
 .fiammata-contact-card p {
   margin: 0.18rem 0 0;
-  color: rgba(74, 49, 77, 0.82);
+  color: rgba(255, 249, 244, 0.88);
   font-size: 0.98rem;
   font-weight: 700;
   line-height: 1.45;
@@ -3546,7 +3519,7 @@ textarea,
 @media (max-width: 767px) {
   .fiammata-page .hotel-caribe-hero-gallery__image {
     background-position: center 22%;
-    filter: blur(10px) saturate(1.04);
+    filter: blur(10px) saturate(1.08) brightness(1.06);
     transform: scale(1.04);
   }
 
@@ -3556,21 +3529,31 @@ textarea,
   }
 
   .fiammata-collection-stack {
-    height: 13.8rem;
+    height: 12.2rem;
   }
 
   .fiammata-collection-stack__back,
   .fiammata-collection-stack__front {
-    width: min(100%, 14.8rem);
+    width: min(100%, 13.5rem);
   }
 
   .fiammata-collection-stack__back {
-    width: min(100%, 13.4rem);
-    height: 12rem;
+    width: min(100%, 12rem);
+    height: 10.5rem;
   }
 
   .fiammata-collection-lightbox__frame {
     min-height: 12.4rem;
+  }
+
+  .fiammata-contact-card {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .fiammata-contact-logo {
+    height: 6.8rem;
   }
 }
 

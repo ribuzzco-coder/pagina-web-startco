@@ -64,15 +64,6 @@ const collections = [
   },
 ] as const;
 
-const highlights = [
-  { label: "Joyería artesanal colombiana", icon: "spark" },
-  { label: "Showroom en Medellín", icon: "pin" },
-  { label: "Compra online", icon: "web" },
-  { label: "Pulseras, dijes, aretes y collares", icon: "gem" },
-  { label: "Atención por WhatsApp", icon: "wa" },
-  { label: "Mall Complex de los Balsos", icon: "building" },
-] as const;
-
 const logoSrc = "/images/fiammata/logo.avif";
 
 export const metadata = createPageMetadata({
@@ -164,33 +155,6 @@ function Icon({ name }: { name: string }) {
           <circle cx="12" cy="10" r="3" />
         </svg>
       );
-    case "building":
-      return (
-        <svg {...commonProps}>
-          <path d="M6 21V3h12v18" />
-          <path d="M9 7h1" />
-          <path d="M14 7h1" />
-          <path d="M9 11h1" />
-          <path d="M14 11h1" />
-          <path d="M9 15h1" />
-          <path d="M14 15h1" />
-        </svg>
-      );
-    case "gem":
-      return (
-        <svg {...commonProps}>
-          <path d="m6 7 3-3h6l3 3-6 13Z" />
-          <path d="M3 7h18" />
-          <path d="m9 4 3 3 3-3" />
-        </svg>
-      );
-    case "spark":
-      return (
-        <svg {...commonProps}>
-          <path d="m12 3 1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6Z" />
-          <path d="M5 17h.01M19 17h.01M7.5 20.5h.01M16.5 20.5h.01" />
-        </svg>
-      );
     default:
       return null;
   }
@@ -258,20 +222,6 @@ export default function FiammataPage() {
         </div>
       </section>
 
-      <section className="fiammata-highlights">
-        <div className="fiammata-section-card fiammata-section-card--dark">
-          <h2>Además encuentras:</h2>
-          <div className="fiammata-highlight-list">
-            {highlights.map((item) => (
-              <div key={item.label}>
-                <Icon name={item.icon} />
-                <span>{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="fiammata-contact" id="contacto">
         <div className="fiammata-map" id="ubicacion">
           <iframe
@@ -295,8 +245,8 @@ export default function FiammataPage() {
           <div className="fiammata-contact-logo">
             <FiammataBrandMark />
           </div>
-          <div>
-            <h2>Contáctanos:</h2>
+          <div className="fiammata-contact-copy">
+            <h2>Contáctanos</h2>
             <p>WhatsApp: +57 300 785 1587</p>
             <p>Mall Complex de los Balsos</p>
             <p>Carrera 25 #12 Sur 59</p>
