@@ -22,6 +22,7 @@ export function FiammataCollectionGrid({
   const [activeIndices, setActiveIndices] = useState<number[]>(
     () => collections.map(() => 0),
   );
+  const [animatedCollection, setAnimatedCollection] = useState(0);
 
   useEffect(() => {
     setMounted(true);
@@ -29,7 +30,17 @@ export function FiammataCollectionGrid({
 
   useEffect(() => {
     const interval = window.setInterval(() => {
-      setActiveIndices((current) => current.map((value) => (value + 1) % 3));
+      setAnimatedCollection((currentCollection) => {
+        const nextCollection = (currentCollection + 1) % collections.length;
+
+        setActiveIndices((current) =>
+          current.map((value, index) =>
+            index === currentCollection ? (value + 1) % 3 : value,
+          ),
+        );
+
+        return nextCollection;
+      });
     }, 2600);
 
     return () => window.clearInterval(interval);
@@ -76,7 +87,7 @@ export function FiammataCollectionGrid({
                   return (
                     <div
                       key={`${collection.name}-${imageIndex}`}
-                      className={slotClassName}
+                      className={`${slotClassName}${index === animatedCollection ? " fiammata-collection-stack__card--active" : ""}`}
                     >
                       <Image
                         src={collection.images[imageIndex]}

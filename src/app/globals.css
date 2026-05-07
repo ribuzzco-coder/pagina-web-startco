@@ -3243,31 +3243,48 @@ textarea,
   border: 1px solid rgba(255, 255, 255, 0.48);
   box-shadow: 0 16px 38px rgba(43, 16, 46, 0.14);
   transition:
-    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 520ms ease,
-    box-shadow 520ms ease,
-    filter 520ms ease;
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 720ms ease,
+    box-shadow 720ms ease,
+    filter 720ms ease;
 }
 
 .fiammata-collection-stack__back {
   width: min(100%, 12.15rem);
   height: 10.55rem;
-  opacity: 0.84;
-  filter: saturate(0.94);
+  opacity: 0.88;
+  filter: saturate(0.96);
 }
 
 .fiammata-collection-stack__back--one {
-  transform: translate(1.1rem, -0.45rem) rotate(5deg);
+  transform: translate(0.95rem, -0.32rem) rotate(4deg);
 }
 
 .fiammata-collection-stack__back--two {
-  transform: translate(-1.1rem, -0.2rem) rotate(-5deg);
+  transform: translate(-0.95rem, -0.1rem) rotate(-4deg);
 }
 
 .fiammata-collection-stack__front {
   z-index: 2;
   background: rgba(255, 255, 255, 0.24);
   box-shadow: 0 20px 42px rgba(43, 16, 46, 0.18);
+}
+
+.fiammata-collection-stack__card--active {
+  filter: saturate(1.04);
+}
+
+.fiammata-collection-stack__front.fiammata-collection-stack__card--active {
+  transform: translateY(-0.08rem);
+  box-shadow: 0 22px 46px rgba(43, 16, 46, 0.2);
+}
+
+.fiammata-collection-stack__back--one.fiammata-collection-stack__card--active {
+  transform: translate(0.82rem, -0.38rem) rotate(3.4deg);
+}
+
+.fiammata-collection-stack__back--two.fiammata-collection-stack__card--active {
+  transform: translate(-0.82rem, -0.16rem) rotate(-3.4deg);
 }
 
 .fiammata-collection-stack__image {
