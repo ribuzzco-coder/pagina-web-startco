@@ -1,4 +1,15 @@
 import type { Metadata } from "next";
+import {
+  Assistant,
+  Barlow,
+  Jost,
+  Lato,
+  Open_Sans,
+  Playfair_Display,
+  Saira,
+  Space_Grotesk,
+  Zen_Dots,
+} from "next/font/google";
 
 import { FloatingWhatsAppButton } from "@/components/layout/floating-whatsapp-button";
 import { Footer } from "@/components/layout/footer";
@@ -8,6 +19,75 @@ import { RouteVisibility } from "@/components/layout/route-visibility";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 import "./globals.css";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const saira = Saira({
+  subsets: ["latin"],
+  variable: "--font-saira",
+  display: "swap",
+});
+
+const zenDots = Zen_Dots({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-zen-dots",
+  display: "swap",
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-open-sans",
+  display: "swap",
+});
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-lato",
+  display: "swap",
+});
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-barlow",
+  display: "swap",
+});
+
+const jost = Jost({
+  subsets: ["latin"],
+  variable: "--font-jost",
+  display: "swap",
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
+const assistant = Assistant({
+  subsets: ["latin"],
+  variable: "--font-assistant",
+  display: "swap",
+});
+
+const fontVariables = [
+  spaceGrotesk.variable,
+  saira.variable,
+  zenDots.variable,
+  openSans.variable,
+  lato.variable,
+  barlow.variable,
+  jost.variable,
+  playfairDisplay.variable,
+  assistant.variable,
+].join(" ");
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -48,7 +128,7 @@ export default function RootLayout({
     <html
       lang="es"
       suppressHydrationWarning
-      className="h-full"
+      className={`h-full ${fontVariables}`}
     >
       <body className="min-h-full bg-ribuzz-bg text-ribuzz-textPrimary antialiased">
         <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
