@@ -20,8 +20,8 @@ const heroImages = [
 ] as const;
 
 const quickLinks = [
-  { label: "Contáctanos", icon: "wa", href: fiammataLinks.whatsapp },
   { label: "Página web", icon: "web", href: fiammataLinks.website },
+  { label: "Contáctanos", icon: "wa", href: fiammataLinks.whatsapp },
   { label: "Cómo llegar", icon: "pin", href: fiammataLinks.maps },
 ] as const;
 

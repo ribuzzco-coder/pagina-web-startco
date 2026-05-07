@@ -19,9 +19,20 @@ export function FiammataCollectionGrid({
 }: FiammataCollectionGridProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [activeIndices, setActiveIndices] = useState<number[]>(
+    () => collections.map(() => 0),
+  );
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveIndices((current) => current.map((value) => (value + 1) % 3));
+    }, 2600);
+
+    return () => window.clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -52,33 +63,31 @@ export function FiammataCollectionGrid({
               aria-label={`Ver colección ${collection.name}`}
             >
               <div className="fiammata-collection-stack">
-                <div className="fiammata-collection-stack__back fiammata-collection-stack__back--one">
-                  <Image
-                    src={collection.images[1]}
-                    alt=""
-                    fill
-                    sizes="(max-width: 767px) 56vw, 220px"
-                    className="fiammata-collection-stack__image"
-                  />
-                </div>
-                <div className="fiammata-collection-stack__back fiammata-collection-stack__back--two">
-                  <Image
-                    src={collection.images[2]}
-                    alt=""
-                    fill
-                    sizes="(max-width: 767px) 56vw, 220px"
-                    className="fiammata-collection-stack__image"
-                  />
-                </div>
-                <div className="fiammata-collection-stack__front">
-                  <Image
-                    src={collection.images[0]}
-                    alt={collection.name}
-                    fill
-                    sizes="(max-width: 767px) 68vw, 280px"
-                    className="fiammata-collection-stack__image"
-                  />
-                </div>
+                {[0, 1, 2].map((imageIndex) => {
+                  const activeIndex = activeIndices[index] ?? 0;
+                  const offset = (imageIndex - activeIndex + 3) % 3;
+                  const slotClassName =
+                    offset === 0
+                      ? "fiammata-collection-stack__front"
+                      : offset === 1
+                        ? "fiammata-collection-stack__back fiammata-collection-stack__back--one"
+                        : "fiammata-collection-stack__back fiammata-collection-stack__back--two";
+
+                  return (
+                    <div
+                      key={`${collection.name}-${imageIndex}`}
+                      className={slotClassName}
+                    >
+                      <Image
+                        src={collection.images[imageIndex]}
+                        alt={offset === 0 ? collection.name : ""}
+                        fill
+                        sizes={offset === 0 ? "(max-width: 767px) 68vw, 280px" : "(max-width: 767px) 56vw, 220px"}
+                        className="fiammata-collection-stack__image"
+                      />
+                    </div>
+                  );
+                })}
               </div>
               <div className="fiammata-collection-copy">
                 <p>{collection.name}</p>
