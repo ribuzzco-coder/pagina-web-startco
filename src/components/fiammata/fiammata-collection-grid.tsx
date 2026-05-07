@@ -22,18 +22,44 @@ export function FiammataCollectionGrid({
   const [activeIndices, setActiveIndices] = useState<number[]>(
     () => collections.map(() => 0),
   );
+  const [popKey, setPopKey] = useState<number[]>(
+    () => collections.map(() => 0),
+  );
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveIndices((current) => current.map((value) => (value + 1) % 3));
-    }, 2600);
+    const timers = collections.map((_, collectionIndex) => {
+      let timeoutId: number;
 
-    return () => window.clearInterval(interval);
-  }, []);
+      const schedule = () => {
+        const nextDelay = 1800 + Math.round(Math.random() * 2400);
+        timeoutId = window.setTimeout(() => {
+          setActiveIndices((current) =>
+            current.map((value, index) =>
+              index === collectionIndex ? (value + 1) % 3 : value,
+            ),
+          );
+          setPopKey((current) =>
+            current.map((value, index) =>
+              index === collectionIndex ? value + 1 : value,
+            ),
+          );
+          schedule();
+        }, nextDelay);
+      };
+
+      schedule();
+
+      return () => window.clearTimeout(timeoutId);
+    });
+
+    return () => {
+      timers.forEach((clearTimer) => clearTimer());
+    };
+  }, [collections]);
 
   useEffect(() => {
     if (selectedIndex === null) return;
@@ -76,7 +102,8 @@ export function FiammataCollectionGrid({
                   return (
                     <div
                       key={`${collection.name}-${imageIndex}`}
-                      className={slotClassName}
+                      className={`${slotClassName}${offset === 0 ? " fiammata-collection-stack__front--popping" : ""}`}
+                      data-pop-seq={offset === 0 ? popKey[index] ?? 0 : undefined}
                     >
                       <Image
                         src={collection.images[imageIndex]}

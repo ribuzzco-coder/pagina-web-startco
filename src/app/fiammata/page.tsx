@@ -198,7 +198,7 @@ export default function FiammataPage() {
                 key={link.label}
                 href={link.href}
                 className={
-                  link.icon === "wa"
+                  link.icon === "web"
                     ? "fiammata-action-link fiammata-action-link--wa"
                     : "fiammata-action-link"
                 }
