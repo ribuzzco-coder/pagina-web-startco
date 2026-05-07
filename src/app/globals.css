@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Barlow:wght@400;500;600;700&family=Jost:wght@400;500;600;700&family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Saira:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Zen+Dots&display=swap");
 @import "tailwindcss";
 
 @theme inline {
@@ -18,15 +19,15 @@
 }
 
 :root {
-  --font-space-grotesk: "Segoe UI", "Trebuchet MS", "Helvetica Neue", Arial;
-  --font-saira: "Arial Narrow", "Segoe UI", "Helvetica Neue", Arial;
-  --font-zen-dots: Impact, Haettenschweiler, "Arial Black", sans-serif;
-  --font-open-sans: "Segoe UI", "Helvetica Neue", Arial;
-  --font-lato: "Helvetica Neue", Arial, sans-serif;
-  --font-barlow: "Segoe UI", "Arial Narrow", "Helvetica Neue", Arial;
-  --font-jost: "Century Gothic", "Segoe UI", "Helvetica Neue", Arial;
-  --font-playfair: Georgia, "Times New Roman", serif;
-  --font-assistant: "Trebuchet MS", "Segoe UI", "Helvetica Neue", Arial;
+  --font-space-grotesk: "Space Grotesk", "Trebuchet MS", "Helvetica Neue", Arial, sans-serif;
+  --font-saira: "Saira", "Arial Narrow", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-zen-dots: "Zen Dots", Impact, Haettenschweiler, "Arial Black", sans-serif;
+  --font-open-sans: "Open Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-lato: "Lato", "Helvetica Neue", Arial, sans-serif;
+  --font-barlow: "Barlow", "Segoe UI", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-jost: "Jost", "Century Gothic", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-playfair: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-assistant: "Assistant", "Trebuchet MS", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 html {
