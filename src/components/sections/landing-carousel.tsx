@@ -33,6 +33,12 @@ const landingPreviews: LandingPreview[] = [
     kind: "startco",
   },
   {
+    title: "Fiammata",
+    status: "Tu Dise\u00f1o",
+    href: "/fiammata",
+    kind: "business",
+  },
+  {
     title: "Hotel Caribe Plaza",
     status: "Tu Dise\u00f1o",
     href: "/hotelcaribeplaza",
@@ -170,6 +176,11 @@ function PreviewContent({ item }: { item: LandingPreview }) {
         <HotelImagePreview
           src="/images/landing-previews/xori-space.png"
           alt="Vista previa XORI SPACE"
+        />
+      ) : item.title === "Fiammata" ? (
+        <HotelImagePreview
+          src="/images/landing-previews/fiammata.png"
+          alt="Vista previa Fiammata"
         />
       ) : item.kind === "startco" ? (
         <StartcoPreview />
