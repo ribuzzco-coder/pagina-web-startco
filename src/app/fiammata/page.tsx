@@ -21,8 +21,12 @@ const heroImages = [
 
 const quickLinks = [
   { label: "Página web", icon: "web", href: fiammataLinks.website },
-  { label: "Contáctanos", icon: "wa", href: fiammataLinks.whatsapp },
-  { label: "Cómo llegar", icon: "pin", href: fiammataLinks.maps },
+  { label: "Asesoría WhatsApp", icon: "wa", href: fiammataLinks.whatsapp },
+  {
+    label: "Punto de venta Medellín, Mall Complex Los Balsos",
+    icon: "pin",
+    href: fiammataLinks.maps,
+  },
 ] as const;
 
 const collections = [
@@ -171,7 +175,6 @@ export default function FiammataPage() {
             <div className="fiammata-logo-card">
               <FiammataBrandMark />
             </div>
-            <h1>Medellín</h1>
             <p className="fiammata-tagline-pill">Joyería Artesanal Colombiana</p>
 
             <div className="fiammata-socials" aria-label="Redes sociales">
@@ -247,7 +250,7 @@ export default function FiammataPage() {
             <p>WhatsApp: +57 300 785 1587</p>
             <p>Mall Complex de los Balsos</p>
             <p>Carrera 25 #12 Sur 59</p>
-            <p>Sótano 2 · Local 9813</p>
+            <p>Local 107 - Primer piso</p>
           </div>
         </div>
 
