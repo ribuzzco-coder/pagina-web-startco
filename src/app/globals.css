@@ -44,6 +44,52 @@ body {
   user-select: none;
 }
 
+body,
+button,
+input,
+textarea,
+select,
+option {
+  font-family: inherit;
+}
+
+.font-sans {
+  font-family: var(--font-saira), sans-serif !important;
+}
+
+.font-heading {
+  font-family: var(--font-space-grotesk), sans-serif !important;
+  letter-spacing: -0.02em;
+}
+
+.font-zen-dots {
+  font-family: var(--font-zen-dots), sans-serif !important;
+}
+
+.font-open-sans {
+  font-family: var(--font-open-sans), sans-serif !important;
+}
+
+.font-lato {
+  font-family: var(--font-lato), sans-serif !important;
+}
+
+.font-barlow {
+  font-family: var(--font-barlow), sans-serif !important;
+}
+
+.font-jost {
+  font-family: var(--font-jost), sans-serif !important;
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), serif !important;
+}
+
+.font-assistant {
+  font-family: var(--font-assistant), sans-serif !important;
+}
+
 body * {
   cursor: default;
   user-select: none;
@@ -126,11 +172,6 @@ textarea,
 ::selection {
   background: rgba(230, 37, 255, 0.24);
   color: #f5f7fa;
-}
-
-.font-heading {
-  font-family: var(--font-space-grotesk), sans-serif;
-  letter-spacing: -0.02em;
 }
 
 .surface-panel {
