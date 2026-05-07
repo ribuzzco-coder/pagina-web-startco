@@ -3242,29 +3242,32 @@ textarea,
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.48);
   box-shadow: 0 16px 38px rgba(43, 16, 46, 0.14);
+  transition:
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 520ms ease,
+    box-shadow 520ms ease,
+    filter 520ms ease;
 }
 
 .fiammata-collection-stack__back {
   width: min(100%, 12.15rem);
   height: 10.55rem;
-  opacity: 0.95;
+  opacity: 0.84;
+  filter: saturate(0.94);
 }
 
 .fiammata-collection-stack__back--one {
-  transform: translate(1.3rem, -0.55rem) rotate(6deg);
+  transform: translate(1.1rem, -0.45rem) rotate(5deg);
 }
 
 .fiammata-collection-stack__back--two {
-  transform: translate(-1.3rem, -0.35rem) rotate(-6deg);
+  transform: translate(-1.1rem, -0.2rem) rotate(-5deg);
 }
 
 .fiammata-collection-stack__front {
   z-index: 2;
   background: rgba(255, 255, 255, 0.24);
-}
-
-.fiammata-collection-stack__front--popping {
-  animation: fiammata-card-pop 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 20px 42px rgba(43, 16, 46, 0.18);
 }
 
 .fiammata-collection-stack__image {
@@ -3560,20 +3563,6 @@ textarea,
 
   .fiammata-contact-logo {
     height: 6.8rem;
-  }
-}
-
-@keyframes fiammata-card-pop {
-  0% {
-    transform: scale(0.975);
-  }
-
-  45% {
-    transform: scale(1.028);
-  }
-
-  100% {
-    transform: scale(1);
   }
 }
 
