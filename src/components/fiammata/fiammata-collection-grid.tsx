@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { createPortal } from "react-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { TouchEvent } from "react";
 
 type FiammataCollection = {
   name: string;
@@ -14,37 +15,31 @@ type FiammataCollectionGridProps = {
   collections: readonly FiammataCollection[];
 };
 
+const SWIPE_THRESHOLD = 36;
+
+function ArrowIcon({ direction }: { direction: "left" | "right" }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="fiammata-collection-arrow__icon">
+      <path
+        d={direction === "left" ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7"}
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2.2"
+      />
+    </svg>
+  );
+}
+
 export function FiammataCollectionGrid({
   collections,
 }: FiammataCollectionGridProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
   const [activeIndices, setActiveIndices] = useState<number[]>(
     () => collections.map(() => 0),
   );
-  const [animatedCollection, setAnimatedCollection] = useState(0);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setAnimatedCollection((currentCollection) => {
-        const nextCollection = (currentCollection + 1) % collections.length;
-
-        setActiveIndices((current) =>
-          current.map((value, index) =>
-            index === currentCollection ? (value + 1) % 3 : value,
-          ),
-        );
-
-        return nextCollection;
-      });
-    }, 2600);
-
-    return () => window.clearInterval(interval);
-  }, [collections]);
+  const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
     if (selectedIndex === null) return;
@@ -62,54 +57,111 @@ export function FiammataCollectionGrid({
   const selectedCollection =
     selectedIndex === null ? null : (collections[selectedIndex] ?? null);
 
+  const rotateCollection = (collectionIndex: number, direction: 1 | -1) => {
+    setActiveIndices((current) =>
+      current.map((value, index) => {
+        if (index !== collectionIndex) return value;
+
+        return (value + direction + 3) % 3;
+      }),
+    );
+  };
+
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const handleTouchEnd =
+    (collectionIndex: number) => (event: TouchEvent<HTMLDivElement>) => {
+      const startX = touchStartX.current;
+      const endX = event.changedTouches[0]?.clientX ?? null;
+
+      touchStartX.current = null;
+
+      if (startX === null || endX === null) return;
+
+      const deltaX = endX - startX;
+      if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
+
+      rotateCollection(collectionIndex, deltaX < 0 ? 1 : -1);
+    };
+
   return (
     <>
       <div className="fiammata-collection-grid">
         {collections.map((collection, index) => (
           <article key={collection.name} className="fiammata-collection-card">
-            <button
-              type="button"
-              className="fiammata-collection-trigger"
-              onClick={() => setSelectedIndex(index)}
-              aria-label={`Ver colección ${collection.name}`}
-            >
-              <div className="fiammata-collection-stack">
-                {[0, 1, 2].map((imageIndex) => {
-                  const activeIndex = activeIndices[index] ?? 0;
-                  const offset = (imageIndex - activeIndex + 3) % 3;
-                  const slotClassName =
-                    offset === 0
-                      ? "fiammata-collection-stack__front"
-                      : offset === 1
-                        ? "fiammata-collection-stack__back fiammata-collection-stack__back--one"
-                        : "fiammata-collection-stack__back fiammata-collection-stack__back--two";
+            <div className="fiammata-collection-stack-shell">
+              <button
+                type="button"
+                className="fiammata-collection-arrow fiammata-collection-arrow--left"
+                onClick={() => rotateCollection(index, -1)}
+                aria-label={`Ver imagen anterior de ${collection.name}`}
+              >
+                <ArrowIcon direction="left" />
+              </button>
 
-                  return (
-                    <div
-                      key={`${collection.name}-${imageIndex}`}
-                      className={`${slotClassName}${index === animatedCollection ? " fiammata-collection-stack__card--active" : ""}`}
-                    >
-                      <Image
-                        src={collection.images[imageIndex]}
-                        alt={offset === 0 ? collection.name : ""}
-                        fill
-                        sizes={offset === 0 ? "(max-width: 767px) 68vw, 280px" : "(max-width: 767px) 56vw, 220px"}
-                        className="fiammata-collection-stack__image"
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="fiammata-collection-copy">
-                <p>{collection.name}</p>
-                <span>Ver colección</span>
-              </div>
-            </button>
+              <button
+                type="button"
+                className="fiammata-collection-trigger"
+                onClick={() => setSelectedIndex(index)}
+                aria-label={`Ver coleccion ${collection.name}`}
+              >
+                <div
+                  className="fiammata-collection-stack"
+                  onTouchStart={handleTouchStart}
+                  onTouchEnd={handleTouchEnd(index)}
+                >
+                  {[0, 1, 2].map((imageIndex) => {
+                    const activeIndex = activeIndices[index] ?? 0;
+                    const offset = (imageIndex - activeIndex + 3) % 3;
+                    const slotClassName =
+                      offset === 0
+                        ? "fiammata-collection-stack__front"
+                        : offset === 1
+                          ? "fiammata-collection-stack__back fiammata-collection-stack__back--one"
+                          : "fiammata-collection-stack__back fiammata-collection-stack__back--two";
+
+                    return (
+                      <div
+                        key={`${collection.name}-${imageIndex}`}
+                        className={slotClassName}
+                      >
+                        <Image
+                          src={collection.images[imageIndex]}
+                          alt={offset === 0 ? collection.name : ""}
+                          fill
+                          sizes={
+                            offset === 0
+                              ? "(max-width: 767px) 68vw, 280px"
+                              : "(max-width: 767px) 56vw, 220px"
+                          }
+                          className="fiammata-collection-stack__image"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="fiammata-collection-copy">
+                  <p>{collection.name}</p>
+                  <span>Ver coleccion</span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                className="fiammata-collection-arrow fiammata-collection-arrow--right"
+                onClick={() => rotateCollection(index, 1)}
+                aria-label={`Ver imagen siguiente de ${collection.name}`}
+              >
+                <ArrowIcon direction="right" />
+              </button>
+            </div>
           </article>
         ))}
       </div>
 
-      {mounted && selectedCollection
+      {typeof document !== "undefined" && selectedCollection
         ? createPortal(
             <div
               className="fiammata-collection-lightbox"
@@ -122,11 +174,23 @@ export function FiammataCollectionGrid({
                 className="fiammata-collection-lightbox__panel"
                 onClick={(event) => event.stopPropagation()}
               >
+                <button
+                  type="button"
+                  className="fiammata-collection-lightbox__close"
+                  onClick={() => setSelectedIndex(null)}
+                  aria-label={`Cerrar coleccion ${selectedCollection.name}`}
+                >
+                  x
+                </button>
+
                 <div className="fiammata-collection-lightbox__gallery">
                   {selectedCollection.images.map((image, imageIndex) => (
-                    <div
+                    <a
                       key={`${selectedCollection.name}-${imageIndex}`}
                       className="fiammata-collection-lightbox__frame"
+                      href={selectedCollection.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <Image
                         src={image}
@@ -136,13 +200,13 @@ export function FiammataCollectionGrid({
                         className="fiammata-collection-lightbox__image"
                         priority={imageIndex === 0}
                       />
-                    </div>
+                    </a>
                   ))}
                 </div>
 
                 <div className="fiammata-collection-lightbox__meta">
                   <div>
-                    <p className="fiammata-collection-lightbox__eyebrow">Colección destacada</p>
+                    <p className="fiammata-collection-lightbox__eyebrow">Coleccion destacada</p>
                     <h3>{selectedCollection.name}</h3>
                   </div>
                   <a
@@ -151,7 +215,7 @@ export function FiammataCollectionGrid({
                     rel="noopener noreferrer"
                     className="fiammata-collection-lightbox__cta"
                   >
-                    Ver más
+                    Ver mas
                   </a>
                 </div>
               </div>

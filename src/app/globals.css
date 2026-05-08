@@ -3112,6 +3112,8 @@ textarea,
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.16em;
+  line-height: 1.45;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -3178,6 +3180,7 @@ textarea,
     linear-gradient(135deg, rgba(255, 252, 248, 0.94), rgba(246, 232, 219, 0.5));
   color: var(--fiammata-plum);
   box-shadow: 0 14px 30px rgba(36, 13, 39, 0.08);
+  cursor: pointer;
   transition:
     transform 240ms ease,
     border-color 240ms ease,
@@ -3186,9 +3189,16 @@ textarea,
 }
 
 .fiammata-action-link span {
+  display: block;
   font-size: 1rem;
   font-weight: 800;
   letter-spacing: 0.03em;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.fiammata-action-link span span {
+  display: inline;
 }
 
 .fiammata-action-link svg {
@@ -3250,6 +3260,12 @@ textarea,
   position: relative;
 }
 
+.fiammata-collection-stack-shell {
+  position: relative;
+  display: grid;
+  align-items: center;
+}
+
 .fiammata-collection-trigger {
   display: grid;
   gap: 0.85rem;
@@ -3257,12 +3273,52 @@ textarea,
   padding: 0;
   background: transparent;
   border: 0;
+  cursor: pointer;
   text-align: center;
   transition: transform 240ms ease;
 }
 
 .fiammata-collection-trigger:hover {
   transform: translateY(-1px);
+}
+
+.fiammata-collection-arrow {
+  position: absolute;
+  top: 5.1rem;
+  z-index: 4;
+  display: grid;
+  width: 2.7rem;
+  height: 2.7rem;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--fiammata-plum);
+  cursor: pointer;
+  transition:
+    transform 240ms ease,
+    opacity 240ms ease,
+    color 240ms ease;
+}
+
+.fiammata-collection-arrow:hover {
+  transform: translateY(-1px) scale(1.06);
+  opacity: 0.78;
+  color: #7b587d;
+}
+
+.fiammata-collection-arrow--left {
+  left: 0;
+}
+
+.fiammata-collection-arrow--right {
+  right: 0;
+}
+
+.fiammata-collection-arrow__icon {
+  width: 1.55rem;
+  height: 1.55rem;
 }
 
 .fiammata-collection-stack {
@@ -3333,6 +3389,7 @@ textarea,
   position: absolute;
   inset: 0;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .fiammata-collection-copy p {
@@ -3357,6 +3414,7 @@ textarea,
   letter-spacing: 0.14em;
   text-transform: uppercase;
   box-shadow: 0 10px 24px rgba(92, 34, 96, 0.14);
+  cursor: pointer;
 }
 
 .fiammata-collection-lightbox {
@@ -3366,18 +3424,47 @@ textarea,
   display: grid;
   place-items: center;
   padding: 1.2rem;
+  overflow-y: auto;
   background: rgba(14, 6, 15, 0.76);
   backdrop-filter: blur(16px);
 }
 
 .fiammata-collection-lightbox__panel {
+  position: relative;
   width: min(100%, 56rem);
+  max-height: min(100%, 48rem);
+  overflow-y: auto;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background:
     linear-gradient(180deg, rgba(255, 250, 246, 0.98), rgba(247, 237, 227, 0.96));
   padding: 1rem;
   box-shadow: 0 28px 80px rgba(33, 13, 35, 0.22);
+}
+
+.fiammata-collection-lightbox__close {
+  position: sticky;
+  top: 0.35rem;
+  margin-left: auto;
+  z-index: 3;
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
+  border: 1px solid rgba(92, 34, 96, 0.28);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(92, 34, 96, 0.96), rgba(154, 105, 140, 0.92));
+  color: #fff9f4;
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow: 0 12px 26px rgba(43, 16, 46, 0.24);
+  cursor: pointer;
+}
+
+.fiammata-collection-lightbox__close:hover {
+  transform: scale(1.05);
 }
 
 .fiammata-collection-lightbox__gallery {
@@ -3387,16 +3474,19 @@ textarea,
 
 .fiammata-collection-lightbox__frame {
   position: relative;
+  display: block;
   width: 100%;
   min-height: 16rem;
   overflow: hidden;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 252, 247, 0.86);
+  cursor: pointer;
 }
 
 .fiammata-collection-lightbox__image {
   object-fit: cover;
+  cursor: pointer;
 }
 
 .fiammata-collection-lightbox__meta {
@@ -3440,6 +3530,7 @@ textarea,
   font-weight: 800;
   letter-spacing: 0.05em;
   box-shadow: 0 16px 34px rgba(92, 34, 96, 0.24);
+  cursor: pointer;
 }
 
 .fiammata-contact {
@@ -3479,6 +3570,7 @@ textarea,
   border-radius: 999px;
   color: var(--fiammata-plum);
   background: rgba(255, 250, 246, 0.86);
+  cursor: pointer;
 }
 
 .fiammata-contact-card {
@@ -3488,6 +3580,11 @@ textarea,
   width: min(100%, 29rem);
   margin: 1rem auto 0;
   padding: 1.15rem;
+  background:
+    linear-gradient(145deg, rgba(99, 45, 97, 0.92), rgba(63, 24, 67, 0.96)),
+    rgba(255, 245, 236, 0.12);
+  border: 1px solid rgba(255, 233, 214, 0.2);
+  box-shadow: 0 24px 52px rgba(25, 9, 28, 0.26);
 }
 
 .fiammata-contact-logo {
@@ -3509,7 +3606,7 @@ textarea,
 
 .fiammata-contact-card p {
   margin: 0.18rem 0 0;
-  color: rgba(255, 249, 244, 0.88);
+  color: rgba(255, 249, 244, 0.96);
   font-size: 0.98rem;
   font-weight: 700;
   line-height: 1.45;
@@ -3519,8 +3616,7 @@ textarea,
   margin-top: 1rem;
 }
 
-.fiammata-footer-socials__wa svg,
-.fiammata-floating-wa svg {
+.fiammata-footer-socials__wa svg {
   color: #fffaf6;
 }
 
@@ -3535,27 +3631,6 @@ textarea,
   font-size: 1rem;
   font-weight: 800;
   color: var(--fiammata-plum);
-}
-
-.fiammata-floating-wa {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 40;
-  display: grid;
-  place-items: center;
-  width: 3.85rem;
-  height: 3.85rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--fiammata-plum), var(--fiammata-gold));
-  color: #fffaf6;
-  box-shadow: 0 20px 40px rgba(92, 34, 96, 0.24);
-  transition: transform 240ms ease, box-shadow 240ms ease;
-}
-
-.fiammata-floating-wa:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 24px 48px rgba(92, 34, 96, 0.28);
 }
 
 @media (min-width: 768px) {
@@ -3596,6 +3671,15 @@ textarea,
     height: 9.4rem;
   }
 
+  .fiammata-action-link {
+    min-height: 4.5rem;
+    padding-inline: 1rem;
+  }
+
+  .fiammata-collection-stack-shell {
+    padding-inline: 1.8rem;
+  }
+
   .fiammata-collection-stack {
     height: 11.35rem;
   }
@@ -3608,6 +3692,25 @@ textarea,
   .fiammata-collection-stack__back {
     width: min(100%, 11.15rem);
     height: 9.8rem;
+  }
+
+  .fiammata-collection-arrow {
+    top: 4.6rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .fiammata-collection-lightbox {
+    padding: 0.85rem;
+    align-items: start;
+  }
+
+  .fiammata-collection-lightbox__panel {
+    width: min(100%, 28rem);
+    max-height: calc(100dvh - 1.7rem);
+    margin-inline: auto;
+    padding: 0.85rem;
+    border-radius: 24px;
   }
 
   .fiammata-collection-lightbox__frame {

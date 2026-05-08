@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { FiammataCollectionGrid } from "@/components/fiammata/fiammata-collection-grid";
 import { HotelCaribeHeroGallery } from "@/components/hotel/hotel-caribe-hero-gallery";
@@ -20,10 +21,10 @@ const heroImages = [
 ] as const;
 
 const quickLinks = [
-  { label: "Página web", icon: "web", href: fiammataLinks.website },
-  { label: "Asesoría WhatsApp", icon: "wa", href: fiammataLinks.whatsapp },
+  { label: "Pagina web", icon: "web", href: fiammataLinks.website },
+  { label: "Asesoria WhatsApp", icon: "wa", href: fiammataLinks.whatsapp },
   {
-    label: "Punto de venta Medellín, Mall Complex Los Balsos",
+    label: "Punto de venta Medellin,\nMall Complex",
     icon: "pin",
     href: fiammataLinks.maps,
   },
@@ -73,7 +74,7 @@ const logoSrc = "/images/fiammata/logo.avif";
 export const metadata = createPageMetadata({
   title: "Fiammata",
   description:
-    "Landing activa para Fiammata. Joyería artesanal colombiana con colecciones destacadas y contacto directo.",
+    "Landing activa para Fiammata. Joyeria artesanal colombiana con colecciones destacadas y contacto directo.",
   path: "/fiammata",
 });
 
@@ -175,7 +176,11 @@ export default function FiammataPage() {
             <div className="fiammata-logo-card">
               <FiammataBrandMark />
             </div>
-            <p className="fiammata-tagline-pill">Joyería Artesanal Colombiana</p>
+            <p className="fiammata-tagline-pill">
+              Joyeria Artesanal
+              <br />
+              Colombiana
+            </p>
 
             <div className="fiammata-socials" aria-label="Redes sociales">
               <a
@@ -208,7 +213,14 @@ export default function FiammataPage() {
                 {...externalProps(link.href)}
               >
                 <Icon name={link.icon} />
-                <span>{link.label}</span>
+                <span>
+                  {link.label.split("\n").map((part, index) => (
+                    <span key={`${link.label}-${index}`}>
+                      {index > 0 ? <br /> : null}
+                      {part}
+                    </span>
+                  ))}
+                </span>
               </a>
             ))}
           </div>
@@ -225,7 +237,7 @@ export default function FiammataPage() {
       <section className="fiammata-contact" id="contacto">
         <div className="fiammata-map" id="ubicacion">
           <iframe
-            title="Ubicación Fiammata"
+            title="Ubicacion Fiammata"
             src="https://www.google.com/maps?q=Mall%20Complex%20de%20los%20Balsos%20Medellin&output=embed"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -233,11 +245,11 @@ export default function FiammataPage() {
           <a
             className="fiammata-map__label"
             href={fiammataLinks.maps}
-            aria-label="Abrir ubicación en Google Maps"
+            aria-label="Abrir ubicacion en Google Maps"
             {...externalProps(fiammataLinks.maps)}
           >
             <Icon name="pin" />
-            <span>Ver ubicación real</span>
+            <span>Ver ubicacion real</span>
           </a>
         </div>
 
@@ -246,7 +258,7 @@ export default function FiammataPage() {
             <FiammataBrandMark />
           </div>
           <div className="fiammata-contact-copy">
-            <h2>Contáctanos</h2>
+            <h2>Contactanos</h2>
             <p>WhatsApp: +57 300 785 1587</p>
             <p>Mall Complex de los Balsos</p>
             <p>Carrera 25 #12 Sur 59</p>
@@ -277,7 +289,7 @@ export default function FiammataPage() {
           >
             <Icon name="facebook" />
           </a>
-          <a href="/" aria-label="Ir a la página principal de RiBuzz">
+          <Link href="/" aria-label="Ir a la pagina principal de RiBuzz">
             <Image
               src={SITE_CONFIG.logoMark}
               alt="RiBuzz"
@@ -285,19 +297,10 @@ export default function FiammataPage() {
               height={30}
               className="fiammata-ribuzz-mark h-7 w-7 object-contain"
             />
-          </a>
+          </Link>
         </div>
         <p className="fiammata-footer-name">Fiammata</p>
       </section>
-
-      <a
-        className="fiammata-floating-wa"
-        href={fiammataLinks.whatsapp}
-        aria-label="Escribir por WhatsApp a Fiammata"
-        {...externalProps(fiammataLinks.whatsapp)}
-      >
-        <Icon name="wa" />
-      </a>
     </main>
   );
 }
