@@ -23,6 +23,7 @@ export function RouteVisibility({
     "/medecomco",
     "/biondaymora",
     "/fiammata",
+    "/dianamarulanda",
     "/petalia",
     "/cocobycamilag",
     "/brus",

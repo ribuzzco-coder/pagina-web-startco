@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Barlow:wght@400;500;600;700&family=Jost:wght@400;500;600;700&family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Saira:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Zen+Dots&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Barlow:wght@400;500;600;700&family=Jost:wght@400;500;600;700&family=Lato:wght@400;700;900&family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Saira:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Zen+Dots&display=swap");
 @import "tailwindcss";
 
 @theme inline {
@@ -28,6 +28,7 @@
   --font-jost: "Jost", "Century Gothic", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-playfair: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-assistant: "Assistant", "Trebuchet MS", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-montserrat: "Montserrat", "Helvetica Neue", Arial, sans-serif;
 }
 
 html {
@@ -89,6 +90,10 @@ option {
 
 .font-assistant {
   font-family: var(--font-assistant), sans-serif !important;
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat), sans-serif !important;
 }
 
 body * {
@@ -4418,7 +4423,280 @@ textarea,
     margin-top: 0.42rem;
   }
 
-  .landing-preview__hotel-room-grid span {
+.landing-preview__hotel-room-grid span {
     height: 1.3rem;
+  }
+}
+
+.diana-page {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 14%, rgba(249, 204, 18, 0.12), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%);
+  color: #0d3866;
+}
+
+.diana-page__planet {
+  pointer-events: none;
+  position: fixed;
+  z-index: 0;
+  opacity: 0.18;
+  filter: saturate(1.05);
+}
+
+.diana-page__planet--top {
+  top: -10rem;
+  right: -9rem;
+  height: 34rem;
+  width: 34rem;
+}
+
+.diana-page__planet--bottom {
+  bottom: -13rem;
+  left: -10rem;
+  height: 38rem;
+  width: 38rem;
+  transform: rotate(12deg);
+}
+
+.diana-shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100dvh;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.2rem;
+}
+
+.diana-card {
+  width: min(100%, 35rem);
+  overflow: hidden;
+  border: 1px solid rgba(13, 56, 102, 0.12);
+  border-radius: 2rem;
+  background: #0d3866;
+  box-shadow:
+    0 28px 70px rgba(13, 56, 102, 0.14),
+    0 8px 22px rgba(13, 56, 102, 0.1);
+}
+
+.diana-card__hero {
+  position: relative;
+  min-height: 22rem;
+  overflow: hidden;
+  border-bottom-left-radius: 2.2rem;
+  border-bottom-right-radius: 2.2rem;
+}
+
+.diana-card__hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(13, 56, 102, 0.08) 0%, rgba(13, 56, 102, 0.18) 34%, rgba(13, 56, 102, 0.78) 100%);
+}
+
+.diana-card__logo {
+  position: absolute;
+  top: 1.4rem;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  height: 6.6rem;
+  width: 6.6rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid rgba(249, 204, 18, 0.75);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 14px 32px rgba(9, 26, 45, 0.24),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  transform: translateX(-50%);
+}
+
+.diana-card__identity {
+  position: absolute;
+  inset-inline: 1.5rem;
+  bottom: 1.6rem;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
+
+.diana-card__identity h1 {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.03;
+  letter-spacing: -0.04em;
+}
+
+.diana-card__identity p {
+  margin-top: 0.45rem;
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(249, 204, 18, 0.98);
+}
+
+.diana-card__body {
+  margin-top: -1.3rem;
+  border-top-left-radius: 2.1rem;
+  border-top-right-radius: 2.1rem;
+  background: #ffffff;
+  padding: 1.6rem 1.25rem 1.25rem;
+}
+
+.diana-contact-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.diana-contact-item {
+  display: grid;
+  grid-template-columns: 3.35rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.95rem;
+  border: 1px solid rgba(13, 56, 102, 0.08);
+  border-radius: 1.35rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(247, 249, 252, 1));
+  padding: 0.95rem 1rem;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.diana-contact-item:hover {
+  transform: translateY(-1px);
+  border-color: rgba(13, 56, 102, 0.18);
+  box-shadow: 0 14px 28px rgba(13, 56, 102, 0.08);
+}
+
+.diana-contact-item__icon {
+  display: inline-flex;
+  height: 3.35rem;
+  width: 3.35rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(13, 56, 102, 0.1);
+  color: #0d3866;
+}
+
+.diana-contact-item__copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.diana-contact-item__copy strong {
+  overflow-wrap: anywhere;
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #0d3866;
+}
+
+.diana-contact-item__copy small {
+  margin-top: 0.18rem;
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(13, 56, 102, 0.56);
+}
+
+.diana-card__actions {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.diana-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 0;
+  border-radius: 1.15rem;
+  background: #f9cc12;
+  color: #0d3866;
+  padding: 0.95rem 1rem;
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.98rem;
+  font-weight: 800;
+  box-shadow: 0 14px 28px rgba(249, 204, 18, 0.22);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    filter 220ms ease;
+}
+
+.diana-action-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(249, 204, 18, 0.28);
+  filter: saturate(1.05);
+}
+
+.diana-action-button__icon,
+.diana-action-button svg {
+  height: 1.2rem;
+  width: 1.2rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .diana-shell {
+    padding: 1.5rem 0.85rem 2rem;
+  }
+
+  .diana-page__planet--top {
+    top: -7rem;
+    right: -9rem;
+    height: 24rem;
+    width: 24rem;
+  }
+
+  .diana-page__planet--bottom {
+    bottom: -9rem;
+    left: -8rem;
+    height: 26rem;
+    width: 26rem;
+  }
+
+  .diana-card {
+    border-radius: 1.7rem;
+  }
+
+  .diana-card__hero {
+    min-height: 19rem;
+  }
+
+  .diana-card__logo {
+    top: 1.1rem;
+    height: 5.5rem;
+    width: 5.5rem;
+    border-radius: 1.2rem;
+  }
+
+  .diana-card__body {
+    margin-top: -1rem;
+    padding: 1.2rem 1rem 1rem;
+  }
+
+  .diana-contact-item {
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: 0.8rem;
+    padding: 0.82rem 0.9rem;
+  }
+
+  .diana-contact-item__icon {
+    height: 3rem;
+    width: 3rem;
   }
 }

@@ -4,6 +4,7 @@ import {
   Barlow,
   Jost,
   Lato,
+  Montserrat,
   Open_Sans,
   Playfair_Display,
   Saira,
@@ -77,6 +78,12 @@ const assistant = Assistant({
   display: "swap",
 });
 
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
 const fontVariables = [
   spaceGrotesk.variable,
   saira.variable,
@@ -87,6 +94,7 @@ const fontVariables = [
   jost.variable,
   playfairDisplay.variable,
   assistant.variable,
+  montserrat.variable,
 ].join(" ");
 
 export const metadata: Metadata = {
