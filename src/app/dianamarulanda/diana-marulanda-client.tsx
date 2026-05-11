@@ -152,7 +152,7 @@ export default function DianaMarulandaClient() {
               alt="Diana Marulanda"
               fill
               priority
-              className="object-cover object-center"
+              className="object-cover [object-position:center_28%]"
             />
             <div className="diana-card__hero-shade" />
 

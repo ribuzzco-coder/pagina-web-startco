@@ -4483,7 +4483,7 @@ textarea,
 
 .diana-card__hero {
   position: relative;
-  min-height: 36rem;
+  min-height: 39rem;
   overflow: hidden;
   border-bottom-left-radius: 1.05rem;
   border-bottom-right-radius: 1.05rem;
@@ -4670,7 +4670,7 @@ textarea,
   }
 
   .diana-card__hero {
-    min-height: 30.5rem;
+    min-height: 33rem;
   }
 
   .diana-card__body {
