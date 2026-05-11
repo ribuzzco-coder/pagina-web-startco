@@ -152,20 +152,9 @@ export default function DianaMarulandaClient() {
               alt="Diana Marulanda"
               fill
               priority
-              className="object-cover"
+              className="object-cover object-top"
             />
             <div className="diana-card__hero-shade" />
-
-            <div className="diana-card__logo">
-              <Image
-                src="/images/diana/logo.jpeg"
-                alt="WECOMEX"
-                width={176}
-                height={176}
-                className="h-full w-full object-contain"
-                priority
-              />
-            </div>
 
             <div className="diana-card__identity">
               <h1>Diana Marulanda</h1>
@@ -174,6 +163,17 @@ export default function DianaMarulandaClient() {
           </div>
 
           <div className="diana-card__body">
+            <div className="diana-card__body-logo">
+              <Image
+                src="/images/diana/logo.jpeg"
+                alt="WECOMEX"
+                width={280}
+                height={120}
+                className="h-full w-full object-contain"
+                priority
+              />
+            </div>
+
             <div className="diana-contact-list">
               {contactItems.map((item) => (
                 <a

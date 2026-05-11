@@ -4483,7 +4483,7 @@ textarea,
 
 .diana-card__hero {
   position: relative;
-  min-height: 22rem;
+  min-height: 25.5rem;
   overflow: hidden;
   border-bottom-left-radius: 2.2rem;
   border-bottom-right-radius: 2.2rem;
@@ -4496,24 +4496,22 @@ textarea,
     linear-gradient(180deg, rgba(13, 56, 102, 0.08) 0%, rgba(13, 56, 102, 0.18) 34%, rgba(13, 56, 102, 0.78) 100%);
 }
 
-.diana-card__logo {
-  position: absolute;
-  top: 1.4rem;
-  left: 50%;
-  z-index: 2;
+.diana-card__body {
+  position: relative;
+  z-index: 3;
+  margin-top: -2.15rem;
+  border-top-left-radius: 2.1rem;
+  border-top-right-radius: 2.1rem;
+  background: #ffffff;
+  padding: 1.35rem 1.25rem 1.25rem;
+}
+
+.diana-card__body-logo {
   display: flex;
-  height: 6.6rem;
-  width: 6.6rem;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  border: 2px solid rgba(249, 204, 18, 0.75);
-  border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow:
-    0 14px 32px rgba(9, 26, 45, 0.24),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.7);
-  transform: translateX(-50%);
+  width: min(100%, 14rem);
+  margin: 0 auto 1rem;
 }
 
 .diana-card__identity {
@@ -4540,14 +4538,6 @@ textarea,
   font-weight: 700;
   letter-spacing: 0.04em;
   color: rgba(249, 204, 18, 0.98);
-}
-
-.diana-card__body {
-  margin-top: -1.3rem;
-  border-top-left-radius: 2.1rem;
-  border-top-right-radius: 2.1rem;
-  background: #ffffff;
-  padding: 1.6rem 1.25rem 1.25rem;
 }
 
 .diana-contact-list {
@@ -4674,18 +4664,11 @@ textarea,
   }
 
   .diana-card__hero {
-    min-height: 19rem;
-  }
-
-  .diana-card__logo {
-    top: 1.1rem;
-    height: 5.5rem;
-    width: 5.5rem;
-    border-radius: 1.2rem;
+    min-height: 22rem;
   }
 
   .diana-card__body {
-    margin-top: -1rem;
+    margin-top: -1.75rem;
     padding: 1.2rem 1rem 1rem;
   }
 
