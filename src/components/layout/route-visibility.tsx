@@ -24,6 +24,8 @@ export function RouteVisibility({
     "/biondaymora",
     "/fiammata",
     "/dianamarulanda",
+    "/claudiaherrera",
+    "/julianaarango",
     "/petalia",
     "/cocobycamilag",
     "/brus",
