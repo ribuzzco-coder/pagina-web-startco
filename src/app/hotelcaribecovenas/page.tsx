@@ -11,6 +11,7 @@ const covenasLinks = {
   reserve:
     "https://direct-book.com/properties/HOTELCARIBECOVENASDirect?locale=es&_gads_gcid=731761819&_gads_gclabel=4ZV2CPGWq7MBEJuZ99wC&_gha_gcid=100233201&_gha_phid=b2f9aade-9230-45ab-a07b-6290de554a12&_src=DemandPlus&abw=2&booking_source=organic&campaign_id=&cdow=Monday&checkInDate=2026-04-26&checkOutDate=2026-04-27&country=CO&currency=COP&device=desktop&los=1&meta=Google&tsd=default&utm_source=GoogleHotelAds&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&items[0][rateId]=834681&trackPage=yes",
   website: "https://hotelcaribecovenas.com/",
+  review: "https://g.page/r/CUOktc-Ou3fxEBM/review",
   maps:
     "https://www.google.com/maps?ll=9.402976,-75.679051&z=17&t=m&hl=es-US&gl=US&mapclient=embed&q=9%C2%B024%2710.7%22N+75%C2%B040%2744.6%22W+9.402976,+-75.679051&safe=strict",
   phone: "tel:3014273411",
@@ -29,7 +30,7 @@ const quickLinks = [
   { label: "Contáctanos", icon: "wa", href: covenasLinks.whatsapp },
   { label: "Haz tu reserva", icon: "calendar", href: covenasLinks.reserve },
   { label: "Página Web", icon: "web", href: covenasLinks.website },
-  { label: "Califícanos", icon: "star", href: covenasLinks.maps },
+  { label: "Califícanos", icon: "star", href: covenasLinks.review },
   { label: "Recepción", icon: "phone", href: covenasLinks.phone },
   { label: "Cómo llegar", icon: "pin", href: covenasLinks.maps },
 ] as const;
