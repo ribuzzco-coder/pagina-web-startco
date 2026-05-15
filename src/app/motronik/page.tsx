@@ -68,18 +68,39 @@ const bodegaCards = {
 
 const sellerContacts = [
   {
-    label: "Numero 1",
-    phone: "301 405 5162",
-    href: motronikLinks.whatsapp,
-  },
-  {
-    label: "Numero 2",
-    phone: "Por confirmar",
+    sector: "Sector 1",
+    city: "Ciudad por confirmar",
+    phone: "01",
     href: undefined,
   },
   {
-    label: "Numero 3",
-    phone: "Por confirmar",
+    sector: "Sector 2",
+    city: "Ciudad por confirmar",
+    phone: "20",
+    href: undefined,
+  },
+  {
+    sector: "Sector 3",
+    city: "Ciudad por confirmar",
+    phone: "19",
+    href: undefined,
+  },
+  {
+    sector: "Sector 4",
+    city: "Ciudad por confirmar",
+    phone: "23",
+    href: undefined,
+  },
+  {
+    sector: "Sector 5",
+    city: "Ciudad por confirmar",
+    phone: "24",
+    href: undefined,
+  },
+  {
+    sector: "Sector 6",
+    city: "Ciudad por confirmar",
+    phone: "26",
     href: undefined,
   },
 ] as const;
@@ -299,54 +320,6 @@ export default function MotronikPage() {
             </Card>
           </div>
 
-          <div className="relative mx-auto mt-4 max-w-xl">
-            <div>
-              <Card
-                glowTone="pink"
-                className="rounded-[24px] border border-[#ff5c48]/26 bg-[linear-gradient(180deg,rgba(35,16,18,0.96),rgba(18,10,12,0.98))] px-5 py-5 text-center transition duration-300 hover:-translate-y-[1px]"
-              >
-                <span className="motronik-neon-edge" />
-                <div className="relative z-10">
-                  <p className="text-base font-semibold text-[#F5F7FA]">
-                    Vendedores por sectores
-                  </p>
-                  <p className="mt-1 text-sm text-[#A8AFBE]">
-                    Por ahora los organizamos por numero. Luego los ajustamos por locacion.
-                  </p>
-                  <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                    {sellerContacts.map((seller) => {
-                      const content = (
-                        <div className="relative h-full rounded-[18px] border border-white/10 bg-white/[0.04] px-3 py-4">
-                          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#A8AFBE]">
-                            {seller.label}
-                          </p>
-                          <p className="mt-2 text-sm font-semibold text-[#F5F7FA]">
-                            {seller.phone}
-                          </p>
-                        </div>
-                      );
-
-                      if (!seller.href) {
-                        return <div key={seller.label}>{content}</div>;
-                      }
-
-                      return (
-                        <a
-                          key={seller.label}
-                          href={seller.href}
-                          className="block transition hover:-translate-y-0.5"
-                          {...externalProps(seller.href)}
-                        >
-                          {content}
-                        </a>
-                      );
-                    })}
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </div>
-
           <div className="relative mx-auto mt-4 grid max-w-xl gap-4 sm:grid-cols-2">
             {catalogButtons.map((link) => (
               <CatalogButton key={link.title} {...link} />
@@ -425,6 +398,56 @@ export default function MotronikPage() {
                       {bodegaCards.survey.confirmation}
                     </p>
                   </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          <div className="relative mx-auto mt-4 max-w-xl">
+            <Card
+              glowTone="pink"
+              className="rounded-[24px] border border-[#ff5c48]/26 bg-[linear-gradient(180deg,rgba(35,16,18,0.96),rgba(18,10,12,0.98))] px-5 py-5 text-center"
+            >
+              <span className="motronik-neon-edge" />
+              <div className="relative z-10">
+                <p className="text-base font-semibold text-[#F5F7FA]">
+                  Vendedores por sectores
+                </p>
+                <p className="mt-1 text-sm text-[#A8AFBE]">
+                  Dejamos 6 sectores listos. Ahora cargamos numeros y luego
+                  ajustamos la ciudad.
+                </p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {sellerContacts.map((seller) => {
+                    const content = (
+                      <div className="relative h-full rounded-[18px] border border-white/10 bg-white/[0.04] px-3 py-4">
+                        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#A8AFBE]">
+                          {seller.sector}
+                        </p>
+                        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#25B8FF]">
+                          {seller.city}
+                        </p>
+                        <p className="mt-2 text-sm font-semibold text-[#F5F7FA]">
+                          {seller.phone}
+                        </p>
+                      </div>
+                    );
+
+                    if (!seller.href) {
+                      return <div key={seller.sector}>{content}</div>;
+                    }
+
+                    return (
+                      <a
+                        key={seller.sector}
+                        href={seller.href}
+                        className="block transition hover:-translate-y-0.5"
+                        {...externalProps(seller.href)}
+                      >
+                        {content}
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </Card>
