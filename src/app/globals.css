@@ -2874,6 +2874,12 @@ textarea,
   height: 100%;
 }
 
+@media (min-width: 1024px) {
+  .motronik-roulette-stage {
+    width: min(43vw, 34rem, 62vh);
+  }
+}
+
 .motronik-pill {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;

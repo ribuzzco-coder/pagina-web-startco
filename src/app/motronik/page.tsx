@@ -9,10 +9,9 @@ const motronikLogo = "/images/motronik/logo.webp";
 
 const motronikLinks = {
   survey: "https://forms.gle/rTSZZ9vYs7nm9DDt7",
-  instagram: "https://www.instagram.com/motronikmedellin/",
+  instagram: "https://www.instagram.com/motronik_col/",
   whatsapp:
     "https://api.whatsapp.com/send/?phone=573014055162&text=Hola%2C+quiero+m%C3%A1s+informaci%C3%B3n+sobre+Motronik&type=phone_number&app_absent=0",
-  website: "https://motronikcol.com/",
   facebook: "https://www.facebook.com/motronikmedellin/",
   maps:
     "https://www.google.com/maps/search/?api=1&query=Cra.%2056A%20%23%2055-30%204to%20piso%2C%20La%20Candelaria%2C%20Medell%C3%ADn%2C%20Antioquia",
@@ -54,7 +53,7 @@ const supportCards = {
 
 const bodegaCards = {
   company: {
-    title: "Motronik para Bodega",
+    title: "Importadora Motronik",
     description:
       "Somos un punto especializado en accesorios, lujos y repuestos para moto. Desde Bodega atendemos compras rapidas, asesoria de producto y solicitudes comerciales para clientes y aliados.",
   },
@@ -66,6 +65,24 @@ const bodegaCards = {
     confirmation: "Link listo para QR y celular",
   },
 } as const;
+
+const sellerContacts = [
+  {
+    label: "Numero 1",
+    phone: "301 405 5162",
+    href: motronikLinks.whatsapp,
+  },
+  {
+    label: "Numero 2",
+    phone: "Por confirmar",
+    href: undefined,
+  },
+  {
+    label: "Numero 3",
+    phone: "Por confirmar",
+    href: undefined,
+  },
+] as const;
 
 const ashSparks = [
   { left: "6%", top: "14%", delay: "0s", duration: "9s", size: "10px" },
@@ -283,24 +300,51 @@ export default function MotronikPage() {
           </div>
 
           <div className="relative mx-auto mt-4 max-w-xl">
-            <a
-              href={motronikLinks.website}
-              className="motronik-site-link block w-full"
-              {...externalProps(motronikLinks.website)}
-            >
+            <div>
               <Card
                 glowTone="pink"
                 className="rounded-[24px] border border-[#ff5c48]/26 bg-[linear-gradient(180deg,rgba(35,16,18,0.96),rgba(18,10,12,0.98))] px-5 py-5 text-center transition duration-300 hover:-translate-y-[1px]"
               >
                 <span className="motronik-neon-edge" />
                 <div className="relative z-10">
-                  <p className="text-base font-semibold text-[#F5F7FA]">Sitio web</p>
-                  <p className="mt-1 text-sm text-[#A8AFBE]">
-                    Conoce la página principal de Motronik
+                  <p className="text-base font-semibold text-[#F5F7FA]">
+                    Vendedores por sectores
                   </p>
+                  <p className="mt-1 text-sm text-[#A8AFBE]">
+                    Por ahora los organizamos por numero. Luego los ajustamos por locacion.
+                  </p>
+                  <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                    {sellerContacts.map((seller) => {
+                      const content = (
+                        <div className="relative h-full rounded-[18px] border border-white/10 bg-white/[0.04] px-3 py-4">
+                          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#A8AFBE]">
+                            {seller.label}
+                          </p>
+                          <p className="mt-2 text-sm font-semibold text-[#F5F7FA]">
+                            {seller.phone}
+                          </p>
+                        </div>
+                      );
+
+                      if (!seller.href) {
+                        return <div key={seller.label}>{content}</div>;
+                      }
+
+                      return (
+                        <a
+                          key={seller.label}
+                          href={seller.href}
+                          className="block transition hover:-translate-y-0.5"
+                          {...externalProps(seller.href)}
+                        >
+                          {content}
+                        </a>
+                      );
+                    })}
+                  </div>
                 </div>
               </Card>
-            </a>
+            </div>
           </div>
 
           <div className="relative mx-auto mt-4 grid max-w-xl gap-4 sm:grid-cols-2">

@@ -238,8 +238,8 @@ export function MotronikRouletteClient() {
         </div>
       </div>
 
-      <section className="relative mx-auto grid min-h-screen w-full max-w-[88rem] items-center gap-7 px-4 py-8 sm:px-6 lg:grid-cols-[0.68fr_1.32fr] lg:px-8">
-        <div className="motronik-shell relative overflow-hidden rounded-[24px] border border-white/10 px-5 py-7 text-center shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:px-8 sm:py-9 lg:text-left">
+      <section className="relative mx-auto grid min-h-[calc(100vh-76px)] w-full max-w-[88rem] items-center gap-5 px-4 py-5 sm:px-6 lg:grid-cols-[0.58fr_1.42fr] lg:px-8 lg:py-4">
+        <div className="motronik-shell relative overflow-hidden rounded-[24px] border border-white/10 px-5 py-6 text-center shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:px-7 sm:py-7 lg:text-left">
           <div className="motronik-shell__flare" />
           <div className="relative flex flex-col items-center lg:items-start">
             <div className="flex items-center gap-4">
@@ -257,22 +257,24 @@ export function MotronikRouletteClient() {
                 <p className="text-xs font-black uppercase tracking-[0.26em] text-[#25B8FF]">
                   Activacion Motronik
                 </p>
-                <h1 className="mt-1 text-3xl font-black uppercase leading-none tracking-[0.04em] sm:text-5xl [font-family:var(--font-zen-dots)]">
-                  Ruleta Motronik
-                </h1>
               </div>
             </div>
 
-            <p className="mt-6 max-w-xl text-base font-semibold leading-relaxed text-[#E9EEF7] sm:text-lg">
+            <h1 className="mt-5 w-full text-4xl font-black uppercase leading-[0.96] tracking-[0.02em] text-[#F5F7FA] sm:text-5xl lg:text-[2.75rem] xl:text-[3.25rem]">
+              <span className="block">Ruleta</span>
+              <span className="block text-[#FF7A63]">Motronik</span>
+            </h1>
+
+            <p className="mt-4 max-w-xl text-base font-semibold leading-relaxed text-[#E9EEF7]">
               Gira una vez y presenta el resultado al equipo Motronik para
               validar tu premio o beneficio.
             </p>
 
-            <div className="mt-6 grid w-full max-w-xl grid-cols-2 gap-3 lg:grid-cols-1 xl:grid-cols-2">
+            <div className="mt-4 grid w-full max-w-xl grid-cols-2 gap-3 lg:grid-cols-1 xl:grid-cols-2">
               {prizeSummary.map(([value, label]) => (
                 <div
                   key={label}
-                  className="motronik-card relative overflow-hidden rounded-[16px] border px-4 py-4 text-center"
+                  className="motronik-card relative overflow-hidden rounded-[16px] border px-4 py-3 text-center"
                 >
                   <span className="motronik-neon-edge" />
                   <p className="relative text-2xl font-black text-white">{value}</p>
@@ -283,14 +285,10 @@ export function MotronikRouletteClient() {
               ))}
             </div>
 
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-[#AEB8C8]">
-              La validacion es manual. El codigo en pantalla confirma el giro
-              con el operador.
-            </p>
           </div>
         </div>
 
-        <div className="motronik-shell relative mx-auto flex w-full max-w-4xl flex-col items-center overflow-hidden rounded-[24px] border border-white/10 px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:px-8 sm:py-9">
+        <div className="motronik-shell relative mx-auto flex w-full max-w-5xl flex-col items-center gap-5 overflow-hidden rounded-[24px] border border-white/10 px-5 py-6 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:px-7 sm:py-7 lg:flex-row lg:justify-center lg:gap-7">
           <div className="motronik-shell__flare" />
           <div className="motronik-roulette-stage relative">
             <div className="absolute left-1/2 top-[-0.55rem] z-20 h-0 w-0 -translate-x-1/2 border-x-[20px] border-t-[34px] border-x-transparent border-t-[#F5F7FA] drop-shadow-[0_8px_12px_rgba(0,0,0,0.42)]" />
@@ -339,19 +337,20 @@ export function MotronikRouletteClient() {
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={spinWheel}
-            disabled={isSpinning}
-            className="mt-7 min-h-16 w-full max-w-sm rounded-full border border-[#ff4d38]/45 bg-[linear-gradient(180deg,rgba(255,77,56,0.2),rgba(127,23,21,0.28))] px-8 py-4 text-lg font-black uppercase tracking-[0.12em] text-[#FFD6D0] shadow-[0_18px_42px_rgba(255,77,56,0.18)] transition hover:-translate-y-0.5 hover:border-[#25B8FF]/50 hover:shadow-[0_24px_52px_rgba(255,77,56,0.26)] active:translate-y-0 disabled:cursor-wait disabled:opacity-70"
-          >
-            {isSpinning ? "Girando..." : result ? "Girar de nuevo" : "Girar ruleta"}
-          </button>
+          <div className="relative z-10 flex w-full max-w-sm flex-col items-center lg:max-w-[20rem]">
+            <button
+              type="button"
+              onClick={spinWheel}
+              disabled={isSpinning}
+              className="min-h-14 w-full rounded-full border border-[#ff4d38]/45 bg-[linear-gradient(180deg,rgba(255,77,56,0.2),rgba(127,23,21,0.28))] px-7 py-3 text-base font-black uppercase tracking-[0.12em] text-[#FFD6D0] shadow-[0_18px_42px_rgba(255,77,56,0.18)] transition hover:-translate-y-0.5 hover:border-[#25B8FF]/50 hover:shadow-[0_24px_52px_rgba(255,77,56,0.26)] active:translate-y-0 disabled:cursor-wait disabled:opacity-70"
+            >
+              {isSpinning ? "Girando..." : result ? "Girar de nuevo" : "Girar ruleta"}
+            </button>
 
-          <div
-            className={`mt-5 min-h-[12rem] w-full rounded-[22px] border px-5 py-5 text-center backdrop-blur ${result ? getResultTone(result.prizeType) : "border-white/10 bg-white/[0.04] text-[#DCE5F2]"}`}
-            aria-live="polite"
-          >
+            <div
+              className={`mt-4 min-h-[11rem] w-full rounded-[22px] border px-5 py-5 text-center backdrop-blur ${result ? getResultTone(result.prizeType) : "border-white/10 bg-white/[0.04] text-[#DCE5F2]"}`}
+              aria-live="polite"
+            >
             {result ? (
               <>
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-current/80">
@@ -384,6 +383,7 @@ export function MotronikRouletteClient() {
                 </p>
               </div>
             )}
+            </div>
           </div>
         </div>
       </section>
