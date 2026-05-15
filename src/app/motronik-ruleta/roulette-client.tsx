@@ -292,9 +292,9 @@ export function MotronikRouletteClient() {
 
         <div className="motronik-shell relative mx-auto flex w-full max-w-4xl flex-col items-center overflow-hidden rounded-[24px] border border-white/10 px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:px-8 sm:py-9">
           <div className="motronik-shell__flare" />
-          <div className="relative w-full max-w-[min(84vw,39rem)]">
+          <div className="motronik-roulette-stage relative">
             <div className="absolute left-1/2 top-[-0.55rem] z-20 h-0 w-0 -translate-x-1/2 border-x-[20px] border-t-[34px] border-x-transparent border-t-[#F5F7FA] drop-shadow-[0_8px_12px_rgba(0,0,0,0.42)]" />
-            <div className="relative aspect-square rounded-full border-[10px] border-[#F5F7FA] bg-[#0C0F15] p-3 shadow-[0_28px_80px_rgba(0,0,0,0.48),0_0_44px_rgba(255,77,56,0.14),0_0_54px_rgba(37,184,255,0.1),inset_0_0_0_1px_rgba(255,255,255,0.22)] sm:border-[14px] sm:p-4">
+            <div className="motronik-roulette-frame relative rounded-full border-[10px] border-[#F5F7FA] bg-[#0C0F15] p-3 shadow-[0_28px_80px_rgba(0,0,0,0.48),0_0_44px_rgba(255,77,56,0.14),0_0_54px_rgba(37,184,255,0.1),inset_0_0_0_1px_rgba(255,255,255,0.22)] sm:border-[14px] sm:p-4">
               <div className="absolute inset-[-1.2rem] rounded-full border border-[#25B8FF]/20" />
               <div className="absolute inset-[-0.45rem] rounded-full border border-white/10" />
               <div
