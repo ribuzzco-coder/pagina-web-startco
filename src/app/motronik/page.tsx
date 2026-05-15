@@ -8,14 +8,14 @@ import { cn } from "@/lib/utils";
 const motronikLogo = "/images/motronik/logo.webp";
 
 const motronikLinks = {
+  survey: "https://forms.gle/rTSZZ9vYs7nm9DDt7",
   instagram: "https://www.instagram.com/motronikmedellin/",
   whatsapp:
-    "https://api.whatsapp.com/send/?phone=573014055073&text=Hola%2C+quiero+m%C3%A1s+informaci%C3%B3n+sobre+este+producto&type=phone_number&app_absent=0",
+    "https://api.whatsapp.com/send/?phone=573014055162&text=Hola%2C+quiero+m%C3%A1s+informaci%C3%B3n+sobre+Motronik&type=phone_number&app_absent=0",
   website: "https://motronikcol.com/",
-  market: "https://www.mercadolibre.com.ar/tienda/motronik-repuestos",
   facebook: "https://www.facebook.com/motronikmedellin/",
   maps:
-    "https://www.google.com/maps/search/motronik/@6.2571674,-75.5709437,13z?entry=s&sa=X&ved=1t%3A199789",
+    "https://www.google.com/maps/search/?api=1&query=Cra.%2056A%20%23%2055-30%204to%20piso%2C%20La%20Candelaria%2C%20Medell%C3%ADn%2C%20Antioquia",
 } as const;
 
 const catalogButtons = [
@@ -31,30 +31,39 @@ const catalogButtons = [
     href: undefined,
     featured: true,
   },
-  {
-    title: "Mercado Libre",
-    description: "Catálogo activo",
-    href: motronikLinks.market,
-    featured: false,
-  },
 ] as const;
 
 const supportCards = {
   map: {
-    title: "Cómo llegar",
+    title: "Ubicacion",
   },
   special: {
-    title: "Solución especial",
+    title: "Encuesta de Bodega",
     description:
-      "Este bloque queda reservado para la ruleta o una dinámica especial de la marca.",
-    primaryAction: "Próximamente",
-    secondaryAction: "En desarrollo",
+      "Boton visible para abrir la encuesta/promocion desde QR y celular.",
+    primaryAction: "Abrir encuesta",
+    secondaryAction: "Link listo",
   },
   cta: {
-    title: "Hablemos de tu moto",
+    title: "Hablemos desde Bodega",
     description:
-      "Mientras terminamos de cargar catálogos y materiales, puedes escribirnos y te guiamos directo por WhatsApp.",
-    action: "Cotiza por WhatsApp",
+      "Para cotizaciones, disponibilidad de referencias o contacto comercial, escribe al WhatsApp principal de Motronik.",
+    action: "Contactar por WhatsApp",
+  },
+} as const;
+
+const bodegaCards = {
+  company: {
+    title: "Motronik para Bodega",
+    description:
+      "Somos un punto especializado en accesorios, lujos y repuestos para moto. Desde Bodega atendemos compras rapidas, asesoria de producto y solicitudes comerciales para clientes y aliados.",
+  },
+  survey: {
+    title: "Encuesta de Bodega",
+    description:
+      "Responde la encuesta desde el QR o tu celular.",
+    action: "Abrir encuesta",
+    confirmation: "Link listo para QR y celular",
   },
 } as const;
 
@@ -79,7 +88,7 @@ const smokeClouds = [
 export const metadata = createPageMetadata({
   title: "Motronik",
   description:
-    "Landing inicial de Motronik con catálogo, contacto rápido y ubicación.",
+    "Landing de Motronik para Bodega con catalogo, encuesta, contacto rapido y ubicacion.",
   path: "/motronik",
 });
 
@@ -229,8 +238,9 @@ export default function MotronikPage() {
             </h1>
 
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#D0D4DE] sm:text-base">
-              En Motronik ofrecemos accesorios, lujos y repuestos de alta
-              calidad para mejorar el rendimiento y la estética de tu moto.
+              Bodega Motronik conecta accesorios, lujos y repuestos de alta
+              calidad con atencion rapida para mejorar el rendimiento y la
+              estetica de tu moto.
             </p>
 
             <div className="mt-5 flex items-center justify-center gap-3">
@@ -262,6 +272,17 @@ export default function MotronikPage() {
           </div>
 
           <div className="relative mx-auto mt-10 max-w-xl">
+            <Card className="motronik-card rounded-[26px] px-6 py-6 text-center">
+              <p className="text-base font-semibold text-[#F5F7FA]">
+                {bodegaCards.company.title}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-[#A8AFBE]">
+                {bodegaCards.company.description}
+              </p>
+            </Card>
+          </div>
+
+          <div className="relative mx-auto mt-4 max-w-xl">
             <a
               href={motronikLinks.website}
               className="motronik-site-link block w-full"
@@ -282,7 +303,7 @@ export default function MotronikPage() {
             </a>
           </div>
 
-          <div className="relative mx-auto mt-4 grid max-w-xl gap-4 sm:grid-cols-3">
+          <div className="relative mx-auto mt-4 grid max-w-xl gap-4 sm:grid-cols-2">
             {catalogButtons.map((link) => (
               <CatalogButton key={link.title} {...link} />
             ))}
@@ -297,12 +318,16 @@ export default function MotronikPage() {
                 <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
                   {supportCards.map.title}
                 </p>
+                <p className="mt-2 text-sm leading-relaxed text-[#A8AFBE]">
+                  Cra. 56A # 55-30 4to piso, La Candelaria, Medellin,
+                  Antioquia.
+                </p>
               </div>
 
               <div className="motronik-map-embed relative z-10 mt-5 overflow-hidden rounded-[20px] border border-white/10 bg-black/20 shadow-[0_18px_34px_rgba(0,0,0,0.18)]">
                 <iframe
                   title="Mapa Motronik"
-                  src="https://www.google.com/maps?q=motronik%20medellin&output=embed"
+                  src="https://www.google.com/maps?q=Cra.%2056A%20%23%2055-30%204to%20piso%2C%20La%20Candelaria%2C%20Medell%C3%ADn%2C%20Antioquia&output=embed"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="motronik-map-embed__frame h-[270px] w-full border-0 sm:h-[320px]"
@@ -325,10 +350,10 @@ export default function MotronikPage() {
               <div className="relative flex flex-1 flex-col items-center justify-between gap-6">
                 <div>
                   <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
-                    {supportCards.special.title}
+                    {bodegaCards.survey.title}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                    {supportCards.special.description}
+                    {bodegaCards.survey.description}
                   </p>
                 </div>
 
@@ -344,23 +369,17 @@ export default function MotronikPage() {
                     />
                   </div>
 
-                  <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
-                    <button
-                      type="button"
-                      disabled
-                      aria-disabled="true"
-                      className="motronik-pill motronik-pill--red cursor-default"
+                  <div className="grid w-full grid-cols-1 gap-2">
+                    <a
+                      href={motronikLinks.survey}
+                      className="motronik-pill motronik-pill--red inline-flex min-h-12 items-center justify-center text-center uppercase tracking-[0.1em] transition hover:-translate-y-0.5"
+                      {...externalProps(motronikLinks.survey)}
                     >
-                      {supportCards.special.primaryAction}
-                    </button>
-                    <button
-                      type="button"
-                      disabled
-                      aria-disabled="true"
-                      className="motronik-pill cursor-default"
-                    >
-                      {supportCards.special.secondaryAction}
-                    </button>
+                      {bodegaCards.survey.action}
+                    </a>
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#A8AFBE]">
+                      {bodegaCards.survey.confirmation}
+                    </p>
                   </div>
                 </div>
               </div>

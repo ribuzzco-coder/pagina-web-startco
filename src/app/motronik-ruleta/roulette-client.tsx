@@ -20,7 +20,6 @@ type SpinResult = WheelSegment & {
 };
 
 const motronikLogo = "/images/motronik/logo.webp";
-const motronikElement = "/images/motronik/element-cutout.png";
 
 const ashSparks = [
   { left: "6%", top: "14%", delay: "0s", duration: "9s", size: "10px" },
@@ -47,8 +46,8 @@ const wheelSegments: WheelSegment[] = [
     shortLabel: "Sigue",
     prizeType: "none",
     isWinner: false,
-    color: "#101722",
-    textColor: "#F7FAFF",
+    color: "#0B0D12",
+    textColor: "#F8FAFC",
   },
   {
     internalCode: "FREE_PRODUCT_1",
@@ -56,7 +55,7 @@ const wheelSegments: WheelSegment[] = [
     shortLabel: "Gratis",
     prizeType: "free-product",
     isWinner: true,
-    color: "#F24A2F",
+    color: "#9F2119",
     textColor: "#FFFFFF",
   },
   {
@@ -65,7 +64,7 @@ const wheelSegments: WheelSegment[] = [
     shortLabel: "Otra vez",
     prizeType: "none",
     isWinner: false,
-    color: "#182236",
+    color: "#171B24",
     textColor: "#F7FAFF",
   },
   {
@@ -74,8 +73,8 @@ const wheelSegments: WheelSegment[] = [
     shortLabel: "5%",
     prizeType: "discount",
     isWinner: true,
-    color: "#FFC83D",
-    textColor: "#17110A",
+    color: "#25B8FF",
+    textColor: "#06121C",
   },
   {
     internalCode: "SURPRISE_GIFT_1",
@@ -83,8 +82,8 @@ const wheelSegments: WheelSegment[] = [
     shortLabel: "Regalo",
     prizeType: "surprise",
     isWinner: true,
-    color: "#18B892",
-    textColor: "#031B17",
+    color: "#153B54",
+    textColor: "#F3FAFF",
   },
   {
     internalCode: "NO_PRIZE_3",
@@ -92,7 +91,7 @@ const wheelSegments: WheelSegment[] = [
     shortLabel: "Sigue",
     prizeType: "none",
     isWinner: false,
-    color: "#0C111B",
+    color: "#111318",
     textColor: "#F7FAFF",
   },
   {
@@ -101,7 +100,7 @@ const wheelSegments: WheelSegment[] = [
     shortLabel: "Gratis",
     prizeType: "free-product",
     isWinner: true,
-    color: "#D93327",
+    color: "#7F1715",
     textColor: "#FFFFFF",
   },
   {
@@ -110,7 +109,7 @@ const wheelSegments: WheelSegment[] = [
     shortLabel: "Otra vez",
     prizeType: "none",
     isWinner: false,
-    color: "#202B3F",
+    color: "#222733",
     textColor: "#F7FAFF",
   },
   {
@@ -119,8 +118,8 @@ const wheelSegments: WheelSegment[] = [
     shortLabel: "5%",
     prizeType: "discount",
     isWinner: true,
-    color: "#F6A91D",
-    textColor: "#17110A",
+    color: "#1C98D8",
+    textColor: "#F7FBFF",
   },
   {
     internalCode: "SURPRISE_GIFT_2",
@@ -128,12 +127,19 @@ const wheelSegments: WheelSegment[] = [
     shortLabel: "Regalo",
     prizeType: "surprise",
     isWinner: true,
-    color: "#0EA47E",
+    color: "#0E2C42",
     textColor: "#FFFFFF",
   },
 ];
 
 const segmentAngle = 360 / wheelSegments.length;
+
+const prizeSummary = [
+  ["40%", "Sin premio"],
+  ["20%", "Producto gratis"],
+  ["20%", "5% descuento"],
+  ["20%", "Regalo sorpresa"],
+] as const;
 
 function createValidationCode() {
   return `MR-${Math.floor(1000 + Math.random() * 9000)}`;
@@ -145,14 +151,14 @@ function getResultTone(prizeType: PrizeType) {
   }
 
   if (prizeType === "discount") {
-    return "border-[#FFC83D]/50 bg-[#FFC83D]/12 text-[#FFE7A3]";
+    return "border-[#25B8FF]/50 bg-[#25B8FF]/12 text-[#BFEAFF]";
   }
 
   if (prizeType === "surprise") {
-    return "border-[#20D6A8]/50 bg-[#20D6A8]/12 text-[#BCFFF0]";
+    return "border-[#25B8FF]/35 bg-[#153B54]/24 text-[#D8F4FF]";
   }
 
-  return "border-[#FF624A]/55 bg-[#FF624A]/12 text-[#FFD3CA]";
+  return "border-[#C43B2F]/55 bg-[#9F2119]/16 text-[#FFD3CA]";
 }
 
 export function MotronikRouletteClient() {
@@ -232,89 +238,73 @@ export function MotronikRouletteClient() {
         </div>
       </div>
 
-      <section className="relative mx-auto grid min-h-screen w-full max-w-7xl items-center gap-8 px-4 py-7 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
-        <div className="motronik-shell relative overflow-hidden rounded-[32px] border border-white/10 px-5 py-7 text-center shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:rounded-[36px] sm:px-8 sm:py-9 lg:text-left">
+      <section className="relative mx-auto grid min-h-screen w-full max-w-[88rem] items-center gap-7 px-4 py-8 sm:px-6 lg:grid-cols-[0.68fr_1.32fr] lg:px-8">
+        <div className="motronik-shell relative overflow-hidden rounded-[24px] border border-white/10 px-5 py-7 text-center shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:px-8 sm:py-9 lg:text-left">
           <div className="motronik-shell__flare" />
           <div className="relative flex flex-col items-center lg:items-start">
-          <div className="flex items-center gap-3">
-            <span className="motronik-logo-ring grid h-20 w-20 place-items-center rounded-full border shadow-[0_18px_40px_rgba(0,0,0,0.32)] sm:h-24 sm:w-24">
-              <Image
-                src={motronikLogo}
-                alt="Motronik"
-                width={78}
-                height={78}
-                priority
-                className="h-16 w-16 object-contain sm:h-20 sm:w-20"
-              />
-            </span>
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.26em] text-[#FF7A63]">
-                Activacion feria
-              </p>
-              <h1 className="mt-1 text-3xl font-black uppercase leading-none tracking-[0.04em] sm:text-5xl [font-family:var(--font-zen-dots)]">
-                Motronik Ruleta
-              </h1>
-            </div>
-          </div>
-
-          <p className="mt-6 max-w-xl text-lg font-semibold leading-relaxed text-[#E9EEF7] sm:text-xl">
-            Gira una vez, descubre tu resultado y validalo con el equipo del
-            stand para reclamar tu premio.
-          </p>
-
-          <div className="mt-6 grid w-full max-w-xl grid-cols-2 gap-3 sm:grid-cols-4">
-            {[
-              ["40%", "Sin premio"],
-              ["20%", "Producto gratis"],
-              ["20%", "5% descuento"],
-              ["20%", "Regalo sorpresa"],
-            ].map(([value, label]) => (
-              <div
-                key={label}
-                className="motronik-card relative overflow-hidden rounded-[18px] border px-3 py-3 text-center"
-              >
-                <span className="motronik-neon-edge" />
-                <p className="relative text-xl font-black text-white">{value}</p>
-                <p className="mt-1 text-xs font-bold uppercase tracking-[0.08em] text-[#AEB8C8]">
-                  {label}
+            <div className="flex items-center gap-4">
+              <span className="motronik-logo-ring grid h-20 w-20 shrink-0 place-items-center rounded-full border shadow-[0_18px_40px_rgba(0,0,0,0.32)] sm:h-24 sm:w-24">
+                <Image
+                  src={motronikLogo}
+                  alt="Motronik"
+                  width={78}
+                  height={78}
+                  priority
+                  className="h-16 w-16 object-contain sm:h-20 sm:w-20"
+                />
+              </span>
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.26em] text-[#25B8FF]">
+                  Activacion Motronik
                 </p>
+                <h1 className="mt-1 text-3xl font-black uppercase leading-none tracking-[0.04em] sm:text-5xl [font-family:var(--font-zen-dots)]">
+                  Ruleta Motronik
+                </h1>
               </div>
-            ))}
-          </div>
+            </div>
 
-          <div className="motronik-card motronik-card--special relative mt-7 hidden w-full max-w-md overflow-hidden rounded-[26px] border p-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)] lg:block">
-            <Image
-              src={motronikElement}
-              alt=""
-              width={460}
-              height={260}
-              className="absolute -bottom-12 -right-12 h-44 w-44 object-contain opacity-30"
-            />
-            <p className="relative text-sm font-bold uppercase tracking-[0.18em] text-[#FFC83D]">
-              Validacion manual
+            <p className="mt-6 max-w-xl text-base font-semibold leading-relaxed text-[#E9EEF7] sm:text-lg">
+              Gira una vez y presenta el resultado al equipo Motronik para
+              validar tu premio o beneficio.
             </p>
-            <p className="relative mt-2 text-sm leading-relaxed text-[#D7DFEA]">
-              La pagina solo muestra el resultado y el codigo. La compra,
-              entrega y redencion se confirman directamente con el operador.
+
+            <div className="mt-6 grid w-full max-w-xl grid-cols-2 gap-3 lg:grid-cols-1 xl:grid-cols-2">
+              {prizeSummary.map(([value, label]) => (
+                <div
+                  key={label}
+                  className="motronik-card relative overflow-hidden rounded-[16px] border px-4 py-4 text-center"
+                >
+                  <span className="motronik-neon-edge" />
+                  <p className="relative text-2xl font-black text-white">{value}</p>
+                  <p className="mt-1 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#AEB8C8]">
+                    {label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-6 max-w-md text-sm leading-relaxed text-[#AEB8C8]">
+              La validacion es manual. El codigo en pantalla confirma el giro
+              con el operador.
             </p>
-          </div>
           </div>
         </div>
 
-        <div className="motronik-shell relative mx-auto flex w-full max-w-2xl flex-col items-center overflow-hidden rounded-[32px] border border-white/10 px-4 py-6 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:rounded-[36px] sm:px-7 sm:py-8">
+        <div className="motronik-shell relative mx-auto flex w-full max-w-4xl flex-col items-center overflow-hidden rounded-[24px] border border-white/10 px-5 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.34)] backdrop-blur-[12px] sm:px-8 sm:py-9">
           <div className="motronik-shell__flare" />
-          <div className="relative w-full max-w-[min(88vw,34rem)]">
-            <div className="absolute left-1/2 top-[-0.45rem] z-20 h-0 w-0 -translate-x-1/2 border-x-[22px] border-t-[34px] border-x-transparent border-t-[#FFFFFF] drop-shadow-[0_8px_12px_rgba(0,0,0,0.35)]" />
-            <div className="relative aspect-square rounded-full border-[10px] border-[#ECEFF4] bg-[#111827] p-3 shadow-[0_28px_80px_rgba(0,0,0,0.45),inset_0_0_0_1px_rgba(0,0,0,0.35)] sm:border-[14px] sm:p-4">
-              <div className="absolute inset-[-1.35rem] rounded-full border border-[#F24A2F]/24" />
+          <div className="relative w-full max-w-[min(84vw,39rem)]">
+            <div className="absolute left-1/2 top-[-0.55rem] z-20 h-0 w-0 -translate-x-1/2 border-x-[20px] border-t-[34px] border-x-transparent border-t-[#F5F7FA] drop-shadow-[0_8px_12px_rgba(0,0,0,0.42)]" />
+            <div className="relative aspect-square rounded-full border-[10px] border-[#F5F7FA] bg-[#0C0F15] p-3 shadow-[0_28px_80px_rgba(0,0,0,0.48),0_0_44px_rgba(255,77,56,0.14),0_0_54px_rgba(37,184,255,0.1),inset_0_0_0_1px_rgba(255,255,255,0.22)] sm:border-[14px] sm:p-4">
+              <div className="absolute inset-[-1.2rem] rounded-full border border-[#25B8FF]/20" />
+              <div className="absolute inset-[-0.45rem] rounded-full border border-white/10" />
               <div
-                className="relative h-full w-full rounded-full shadow-[inset_0_0_0_7px_rgba(255,255,255,0.18),inset_0_0_46px_rgba(0,0,0,0.35)] transition-transform duration-[4300ms] ease-[cubic-bezier(0.12,0.74,0.12,1)]"
+                className="relative h-full w-full rounded-full shadow-[inset_0_0_0_8px_rgba(255,255,255,0.14),inset_0_0_46px_rgba(0,0,0,0.42)] transition-transform duration-[4300ms] ease-[cubic-bezier(0.12,0.74,0.12,1)]"
                 style={{
                   background: `conic-gradient(from -90deg, ${wheelGradient})`,
                   transform: `rotate(${rotation}deg)`,
                 }}
               >
-                <div className="absolute inset-0 rounded-full bg-[repeating-conic-gradient(from_-90deg,rgba(255,255,255,0.18)_0deg,rgba(255,255,255,0.18)_1deg,transparent_1deg,transparent_36deg)]" />
+                <div className="absolute inset-0 rounded-full bg-[repeating-conic-gradient(from_-90deg,rgba(255,255,255,0.2)_0deg,rgba(255,255,255,0.2)_1deg,transparent_1deg,transparent_36deg)]" />
                 {wheelSegments.map((segment, index) => {
                   const angle = index * segmentAngle + segmentAngle / 2 - 90;
 
@@ -327,21 +317,22 @@ export function MotronikRouletteClient() {
                         color: segment.textColor,
                       }}
                     >
-                      <span className="max-w-[5.4rem] text-[0.56rem] font-black uppercase leading-[1.08] tracking-[0.04em] drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] sm:max-w-[6.8rem] sm:text-[0.72rem]">
-                        {segment.label}
+                      <span className="max-w-[5.2rem] text-[0.58rem] font-black uppercase leading-[1.08] tracking-[0.05em] drop-shadow-[0_1px_2px_rgba(0,0,0,0.62)] sm:max-w-[6.4rem] sm:text-[0.72rem]">
+                        {segment.shortLabel}
                       </span>
                     </div>
                   );
                 })}
               </div>
 
-              <div className="absolute left-1/2 top-1/2 z-10 grid h-28 w-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-[7px] border-white bg-[#090B10] shadow-[0_16px_42px_rgba(0,0,0,0.42)] sm:h-36 sm:w-36">
+              <div className="absolute left-1/2 top-1/2 z-10 grid h-28 w-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-[7px] border-[#ff4d38]/70 bg-[linear-gradient(180deg,#FFFFFF,#EEF3F8)] shadow-[0_16px_42px_rgba(0,0,0,0.46),0_0_24px_rgba(255,77,56,0.2),0_0_34px_rgba(37,184,255,0.12)] sm:h-36 sm:w-36">
+                <div className="absolute inset-2 rounded-full border border-[#101722]/10" />
                 <Image
                   src={motronikLogo}
                   alt="Logo Motronik"
                   width={94}
                   height={94}
-                  className="h-20 w-20 object-contain sm:h-24 sm:w-24"
+                  className="relative h-20 w-20 object-contain drop-shadow-[0_8px_18px_rgba(0,0,0,0.22)] sm:h-24 sm:w-24"
                   priority
                 />
               </div>
@@ -352,13 +343,13 @@ export function MotronikRouletteClient() {
             type="button"
             onClick={spinWheel}
             disabled={isSpinning}
-            className="motronik-pill motronik-pill--red mt-7 min-h-16 w-full max-w-sm rounded-full px-8 py-4 text-lg font-black uppercase tracking-[0.1em] shadow-[0_18px_42px_rgba(255,77,56,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_52px_rgba(255,77,56,0.32)] active:translate-y-0 disabled:cursor-wait disabled:opacity-70"
+            className="mt-7 min-h-16 w-full max-w-sm rounded-full border border-[#ff4d38]/45 bg-[linear-gradient(180deg,rgba(255,77,56,0.2),rgba(127,23,21,0.28))] px-8 py-4 text-lg font-black uppercase tracking-[0.12em] text-[#FFD6D0] shadow-[0_18px_42px_rgba(255,77,56,0.18)] transition hover:-translate-y-0.5 hover:border-[#25B8FF]/50 hover:shadow-[0_24px_52px_rgba(255,77,56,0.26)] active:translate-y-0 disabled:cursor-wait disabled:opacity-70"
           >
             {isSpinning ? "Girando..." : result ? "Girar de nuevo" : "Girar ruleta"}
           </button>
 
           <div
-            className={`mt-5 min-h-[12rem] w-full rounded-lg border px-5 py-5 text-center backdrop-blur ${result ? getResultTone(result.prizeType) : "border-white/10 bg-white/[0.04] text-[#DCE5F2]"}`}
+            className={`mt-5 min-h-[12rem] w-full rounded-[22px] border px-5 py-5 text-center backdrop-blur ${result ? getResultTone(result.prizeType) : "border-white/10 bg-white/[0.04] text-[#DCE5F2]"}`}
             aria-live="polite"
           >
             {result ? (
@@ -366,15 +357,15 @@ export function MotronikRouletteClient() {
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-current/80">
                   Resultado
                 </p>
-                <h2 className="mt-2 text-3xl font-black uppercase leading-tight sm:text-4xl">
+                <h2 className="mt-2 text-3xl font-black uppercase leading-tight tracking-[0.02em] sm:text-4xl">
                   {result.label}
                 </h2>
-                <p className="mx-auto mt-3 max-w-md text-base font-semibold leading-relaxed text-white">
+                <p className="mx-auto mt-3 max-w-md text-sm font-semibold leading-relaxed text-white sm:text-base">
                   {result.isWinner
-                    ? "Reclama tu premio en el stand. Valida este resultado con el equipo."
-                    : "Muestra este resultado al operador. El equipo validara si aplica un nuevo intento."}
+                    ? "Presenta este resultado al equipo para reclamar tu beneficio."
+                    : "Muestra este resultado al operador para validar el giro."}
                 </p>
-                <div className="mx-auto mt-4 w-full max-w-xs rounded-lg border border-white/18 bg-black/28 px-4 py-3">
+                <div className="mx-auto mt-4 w-full max-w-xs rounded-[18px] border border-white/18 bg-black/28 px-4 py-3">
                   <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-white/62">
                     Codigo de validacion
                   </p>
@@ -385,12 +376,11 @@ export function MotronikRouletteClient() {
               </>
             ) : (
               <div className="flex h-full min-h-[9rem] flex-col items-center justify-center">
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#FFC83D]">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#25B8FF]">
                   Un giro por validacion
                 </p>
-                <p className="mt-3 max-w-md text-base font-semibold leading-relaxed">
+                <p className="mt-3 max-w-md text-sm font-semibold leading-relaxed sm:text-base">
                   Presiona el boton cuando el operador indique que puedes jugar.
-                  El resultado quedara visible en pantalla.
                 </p>
               </div>
             )}
