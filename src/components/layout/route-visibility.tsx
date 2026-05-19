@@ -59,6 +59,7 @@ export function RouteVisibility({
     "/almaboreal",
     "/desayunosfelices",
     "/margot",
+    "/kynd",
     "/diusatti",
     "/verbenaversion2",
     "/pelletierversion2",
