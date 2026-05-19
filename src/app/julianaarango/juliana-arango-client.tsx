@@ -5,8 +5,8 @@ import Image from "next/image";
 import { ShareButton } from "@/components/ui/share-button";
 
 const PAGE_URL = "https://ribuzz.com/julianaarango";
-const phoneDisplay = "310 390 6130";
-const phoneRaw = "573103906130";
+const phoneDisplay = "+1 (918) 3092019";
+const phoneRaw = "19183092019";
 const websiteLabel = "www.wecomexintl.com";
 const websiteHref = "https://www.wecomexintl.com";
 const email = "sales@wecomexintl.com";
