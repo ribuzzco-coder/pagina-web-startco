@@ -123,7 +123,7 @@ function ArrowIcon() {
 
 export function KyndFashionBiolink() {
   return (
-    <section className="min-h-screen bg-[#f7f0df] text-[#1d1a13] [font-family:var(--font-assistant)]">
+    <section className="-mt-[76px] min-h-screen bg-[#f7f0df] text-[#1d1a13] [font-family:var(--font-assistant)]">
       <div className="mx-auto min-h-screen w-full max-w-[480px] bg-[#f8f2e7] shadow-[0_24px_80px_rgba(46,39,26,0.12)]">
         <div className="relative">
           <div className="relative overflow-hidden bg-[#e8dfcd] px-4 pb-5 pt-4">
