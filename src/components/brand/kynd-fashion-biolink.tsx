@@ -154,6 +154,15 @@ export function KyndFashionBiolink() {
                   priority
                   className="object-cover object-[56%_50%]"
                 />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(29,26,19,0.06)_0%,rgba(29,26,19,0.12)_48%,rgba(29,26,19,0.62)_100%)]" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h1 className="text-[3.8rem] font-black uppercase leading-[0.8] tracking-[0.02em]">
+                    KYND
+                  </h1>
+                  <p className="mt-4 max-w-[16rem] text-2xl font-semibold leading-[1.02]">
+                    {campaign.headline}
+                  </p>
+                </div>
               </div>
 
               <div className="relative min-h-48 overflow-hidden bg-[#d8cda8]">
