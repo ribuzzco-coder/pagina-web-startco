@@ -2682,6 +2682,11 @@ textarea,
     0 16px 34px rgba(0, 0, 0, 0.26);
 }
 
+.motronik-page a[href],
+.motronik-page button:not(:disabled) {
+  cursor: pointer;
+}
+
 .motronik-page__background {
   position: fixed;
   inset: 0;
