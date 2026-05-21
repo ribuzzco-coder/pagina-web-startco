@@ -2683,8 +2683,10 @@ textarea,
 }
 
 .motronik-page a[href],
-.motronik-page button:not(:disabled) {
-  cursor: pointer;
+.motronik-page a[href] *,
+.motronik-page button:not(:disabled),
+.motronik-page button:not(:disabled) * {
+  cursor: pointer !important;
 }
 
 .motronik-page__background {
