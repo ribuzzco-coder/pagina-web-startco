@@ -6,6 +6,8 @@ import { createPageMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
 const motronikLogo = "/images/motronik/logo.webp";
+const motronikCatalogUrl =
+  "https://drive.google.com/drive/folders/16Bl7Y4_rGf0RUCQTOQu8nYV4o1mfTAeb";
 
 const motronikLinks = {
   survey: "https://forms.gle/rTSZZ9vYs7nm9DDt7",
@@ -20,14 +22,14 @@ const motronikLinks = {
 const catalogButtons = [
   {
     title: "Accesorios",
-    description: "PDF próximamente",
-    href: undefined,
+    description: "Ver catalogo",
+    href: motronikCatalogUrl,
     featured: false,
   },
   {
     title: "Repuestos",
-    description: "PDF próximamente",
-    href: undefined,
+    description: "Ver catalogo",
+    href: motronikCatalogUrl,
     featured: true,
   },
 ] as const;
