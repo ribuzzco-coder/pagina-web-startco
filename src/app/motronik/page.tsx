@@ -96,8 +96,8 @@ const sellerContacts = [
   },
   {
     code: "26",
-    phone: "320 707 3884",
-    href: "https://api.whatsapp.com/send/?phone=573207073884&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
+    phone: "301 405 5161",
+    href: "https://api.whatsapp.com/send/?phone=573014055161&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
 ] as const;
 
@@ -417,9 +417,12 @@ export default function MotronikPage() {
                     const content = (
                       <div className="relative h-full rounded-[18px] border border-white/10 bg-white/[0.04] px-3 py-4">
                         <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#A8AFBE]">
-                          Vendedor N° {seller.code}
+                          Vendedor
                         </p>
-                        <p className="mt-2 text-sm font-semibold text-[#F5F7FA]">
+                        <p className="mt-2 text-2xl font-semibold text-[#F5F7FA]">
+                          {seller.code}
+                        </p>
+                        <p className="mt-2 text-sm font-semibold text-[#A8AFBE]">
                           {seller.phone}
                         </p>
                       </div>
@@ -429,7 +432,7 @@ export default function MotronikPage() {
                       <a
                         key={seller.code}
                         href={seller.href}
-                        className="block transition hover:-translate-y-0.5"
+                        className="block cursor-pointer transition hover:-translate-y-0.5"
                         {...externalProps(seller.href)}
                       >
                         {content}
