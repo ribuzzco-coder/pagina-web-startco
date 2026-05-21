@@ -11,8 +11,6 @@ const campaign = {
   eyebrow: "Elevated everyday wear",
   headline: "One of a kind pieces that feel kind to your body",
   body: "Conoce nuestro ultimo drop HOME ALONE. Made to be worn like no one is watching.",
-  manifesto:
-    "Un drop para vestirte sin demostrar nada. Solo sentirse natural, suave y tuyo.",
   ctaLabel: "Shop Home Alone",
   ctaHref: links.website,
   heroImage: "/images/brand-landings/kynd/web/home-alone-hero.jpg",
@@ -21,29 +19,6 @@ const campaign = {
 };
 
 const moodNotes = ["Soft structure", "Bare comfort", "Quiet confidence"] as const;
-
-const visualStory = [
-  {
-    label: "The room",
-    image: "/images/brand-landings/kynd/web/home-alone-hero.jpg",
-    position: "object-[56%_50%]",
-  },
-  {
-    label: "The line",
-    image: "/images/brand-landings/kynd/web/category-dresses.png",
-    position: "object-[48%_46%]",
-  },
-  {
-    label: "The body",
-    image: "/images/brand-landings/kynd/web/bianca-butter-alt.jpg",
-    position: "object-[50%_24%]",
-  },
-  {
-    label: "The ease",
-    image: "/images/brand-landings/kynd/cream-look.jpg",
-    position: "object-[50%_18%]",
-  },
-] as const;
 
 const primaryLinks = [
   {
@@ -128,7 +103,7 @@ export function KyndFashionBiolink() {
         <div className="relative">
           <div className="relative overflow-hidden bg-[#e8dfcd] px-4 pb-5 pt-4">
             <div className="absolute inset-0 bg-[linear-gradient(135deg,#fbf6ea_0%,#e6dcc8_44%,#c9b17f_100%)]" />
-            <div className="relative grid min-h-[68svh] grid-cols-[0.72fr_1fr] grid-rows-[auto_1fr_auto] gap-3">
+            <div className="relative grid min-h-[68svh] grid-cols-[0.72fr_1fr] grid-rows-[auto_1fr] gap-3">
               <div className="col-span-2 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <span className="text-[0.66rem] font-bold uppercase tracking-[0.24em] text-[#6b5a18]">
@@ -163,35 +138,22 @@ export function KyndFashionBiolink() {
                     {campaign.headline}
                   </p>
                 </div>
-              </div>
-
-              <div className="relative min-h-48 overflow-hidden bg-[#d8cda8]">
-                <Image
-                  src={campaign.detailImage}
-                  alt="Detalle editorial de prenda KYND"
-                  fill
-                  sizes="180px"
-                  className="object-cover object-[48%_46%]"
-                />
-              </div>
-
-              <div className="flex flex-col justify-between bg-[#fbf7ed] p-4">
-                <div>
-                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#7b681e]">
-                    {campaign.eyebrow}
-                  </p>
-                  <p className="mt-3 text-[1.12rem] font-semibold leading-[1.08]">
-                    A private world, made wearable.
-                  </p>
-                </div>
                 <a
                   href={campaign.ctaHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 inline-flex items-center justify-between bg-[#1d1a13] px-4 py-3 text-sm font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#2b2517]"
+                  className="absolute bottom-5 right-4 z-10 w-[46%] min-w-[9.75rem] bg-[#6b5a18]/92 px-4 py-3 text-white shadow-[0_18px_38px_rgba(29,26,19,0.22)] backdrop-blur-[2px] transition hover:bg-[#5b4c14]"
                 >
-                  Shop
-                  <ArrowIcon />
+                  <span className="block text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white/82">
+                    {campaign.eyebrow}
+                  </span>
+                  <span className="mt-2 block text-sm font-medium leading-5">
+                    {campaign.body}
+                  </span>
+                  <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em]">
+                    Shop now
+                    <ArrowIcon />
+                  </span>
                 </a>
               </div>
             </div>
@@ -208,30 +170,7 @@ export function KyndFashionBiolink() {
           </div>
 
           <div className="px-5 py-6">
-            <p className="max-w-[19rem] text-[1.18rem] font-semibold leading-[1.12] text-[#1d1a13]">
-              {campaign.manifesto}
-            </p>
-            <div className="mt-5 grid grid-cols-4 gap-2">
-              {visualStory.map((item, index) => (
-                <div
-                  key={item.label}
-                  className={index === 0 ? "relative col-span-2 row-span-2 min-h-44 overflow-hidden bg-[#d8cda8]" : "relative min-h-[5.25rem] overflow-hidden bg-[#d8cda8]"}
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.label}
-                    fill
-                    sizes={index === 0 ? "220px" : "110px"}
-                    className={`object-cover ${item.position}`}
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,rgba(29,26,19,0.5)_100%)]" />
-                  <p className="absolute bottom-2 left-2 text-[0.58rem] font-bold uppercase tracking-[0.16em] text-white">
-                    {item.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-5 grid gap-2">
+            <div className="grid gap-2">
               {primaryLinks.map((item) => (
                 <a
                   key={item.label}
@@ -321,46 +260,6 @@ export function KyndFashionBiolink() {
               </a>
             ))}
           </div>
-        </section>
-
-        <section className="border-t border-[#ded3b7] px-5 py-6">
-          <div className="grid grid-cols-[1fr_0.74fr] gap-2">
-            <div className="relative min-h-72 overflow-hidden bg-[#d8cda8]">
-              <Image
-                src="/images/brand-landings/kynd/web/category-bottoms.png"
-                alt="Verona Pant en campana Home Alone"
-                fill
-                sizes="280px"
-                className="object-cover object-[50%_34%]"
-              />
-            </div>
-            <div className="grid gap-2">
-              <div className="relative min-h-[8.75rem] overflow-hidden bg-[#d8cda8]">
-                <Image
-                  src="/images/brand-landings/kynd/web/category-dresses.png"
-                  alt="Detalle de textura y amarre Home Alone"
-                  fill
-                  sizes="160px"
-                  className="object-cover object-[48%_44%]"
-                />
-              </div>
-              <div className="relative min-h-[8.75rem] overflow-hidden bg-[#d8cda8]">
-                <Image
-                  src="/images/brand-landings/kynd/web/bianca-butter-alt.jpg"
-                  alt="Bianca Bodysuit en campana Home Alone"
-                  fill
-                  sizes="160px"
-                  className="object-cover object-[50%_30%]"
-                />
-              </div>
-            </div>
-          </div>
-          <p className="mt-4 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#7b681e]">
-            Visual diary
-          </p>
-          <h2 className="mt-2 max-w-[18rem] text-2xl font-bold leading-[1.02]">
-            La sensacion antes que la explicacion.
-          </h2>
         </section>
 
         <section className="grid grid-cols-[0.88fr_1.12fr] border-t border-[#ded3b7]">
