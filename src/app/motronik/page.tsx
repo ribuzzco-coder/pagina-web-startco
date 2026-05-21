@@ -70,40 +70,34 @@ const bodegaCards = {
 
 const sellerContacts = [
   {
-    sector: "Sector 1",
-    city: "Ciudad por confirmar",
-    phone: "01",
-    href: undefined,
+    code: "01",
+    phone: "301 405 5162",
+    href: "https://api.whatsapp.com/send/?phone=573014055162&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
   {
-    sector: "Sector 2",
-    city: "Ciudad por confirmar",
-    phone: "20",
-    href: undefined,
+    code: "20",
+    phone: "301 405 5094",
+    href: "https://api.whatsapp.com/send/?phone=573014055094&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
   {
-    sector: "Sector 3",
-    city: "Ciudad por confirmar",
-    phone: "19",
-    href: undefined,
+    code: "19",
+    phone: "320 458 5833",
+    href: "https://api.whatsapp.com/send/?phone=573204585833&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
   {
-    sector: "Sector 4",
-    city: "Ciudad por confirmar",
-    phone: "23",
-    href: undefined,
+    code: "23",
+    phone: "301 405 5073",
+    href: "https://api.whatsapp.com/send/?phone=573014055073&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
   {
-    sector: "Sector 5",
-    city: "Ciudad por confirmar",
-    phone: "24",
-    href: undefined,
+    code: "24",
+    phone: "322 433 4288",
+    href: "https://api.whatsapp.com/send/?phone=573224334288&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
   {
-    sector: "Sector 6",
-    city: "Ciudad por confirmar",
-    phone: "26",
-    href: undefined,
+    code: "26",
+    phone: "320 707 3884",
+    href: "https://api.whatsapp.com/send/?phone=573207073884&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
 ] as const;
 
@@ -413,21 +407,17 @@ export default function MotronikPage() {
               <span className="motronik-neon-edge" />
               <div className="relative z-10">
                 <p className="text-base font-semibold text-[#F5F7FA]">
-                  Vendedores por sectores
+                  Celulares comerciales
                 </p>
                 <p className="mt-1 text-sm text-[#A8AFBE]">
-                  Dejamos 6 sectores listos. Ahora cargamos numeros y luego
-                  ajustamos la ciudad.
+                  Selecciona el numero del vendedor para escribir por WhatsApp.
                 </p>
                 <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {sellerContacts.map((seller) => {
                     const content = (
                       <div className="relative h-full rounded-[18px] border border-white/10 bg-white/[0.04] px-3 py-4">
                         <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#A8AFBE]">
-                          {seller.sector}
-                        </p>
-                        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#25B8FF]">
-                          {seller.city}
+                          Vendedor N° {seller.code}
                         </p>
                         <p className="mt-2 text-sm font-semibold text-[#F5F7FA]">
                           {seller.phone}
@@ -435,13 +425,9 @@ export default function MotronikPage() {
                       </div>
                     );
 
-                    if (!seller.href) {
-                      return <div key={seller.sector}>{content}</div>;
-                    }
-
                     return (
                       <a
-                        key={seller.sector}
+                        key={seller.code}
                         href={seller.href}
                         className="block transition hover:-translate-y-0.5"
                         {...externalProps(seller.href)}
