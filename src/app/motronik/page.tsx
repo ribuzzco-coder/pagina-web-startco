@@ -72,32 +72,51 @@ const sellerContacts = [
   {
     code: "01",
     phone: "301 405 5162",
+    zones: "General",
     href: "https://api.whatsapp.com/send/?phone=573014055162&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
   {
-    code: "20",
+    code: "20 / 29",
     phone: "301 405 5094",
+    zones: "Santanderes, Caqueta, Putumayo, Tolima, Huila, Boyaca",
     href: "https://api.whatsapp.com/send/?phone=573014055094&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
   {
-    code: "19",
+    code: "19 / 28",
     phone: "320 458 5833",
+    zones: "Cucuta, Venezuela, Norte de Santander, Bogota",
     href: "https://api.whatsapp.com/send/?phone=573204585833&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
   {
     code: "23",
     phone: "301 405 5073",
+    zones:
+      "Costa caribe, Cordoba, Sucre, Bolivar, Barranquilla, Santa Marta, La Guajira, Valledupar",
     href: "https://api.whatsapp.com/send/?phone=573014055073&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
   {
     code: "24",
     phone: "322 433 4288",
+    zones: "Cali, Risaralda, Eje cafetero, norte del Valle, Cauca, Narino",
     href: "https://api.whatsapp.com/send/?phone=573224334288&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
   },
   {
     code: "26",
     phone: "301 405 5161",
+    zones: "Medellin y area metropolitana",
     href: "https://api.whatsapp.com/send/?phone=573014055161&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
+  },
+  {
+    code: "13 / 25",
+    phone: "",
+    zones: "Choco, San Andres, Bajo Cauca, Segovia, Remedios, Vegachi",
+    href: "",
+  },
+  {
+    code: "10",
+    phone: "",
+    zones: "Sebastian Garcia",
+    href: "",
   },
 ] as const;
 
@@ -410,23 +429,36 @@ export default function MotronikPage() {
                   Celulares comerciales
                 </p>
                 <p className="mt-1 text-sm text-[#A8AFBE]">
-                  Selecciona el numero del vendedor para escribir por WhatsApp.
+                  Consulta el numero del vendedor y su zona asignada.
                 </p>
-                <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
                   {sellerContacts.map((seller) => {
                     const content = (
                       <div className="relative h-full rounded-[18px] border border-white/10 bg-white/[0.04] px-3 py-4">
                         <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#A8AFBE]">
-                          Vendedor
+                          {seller.code.includes("/") ? "Vendedores" : "Vendedor"}
                         </p>
                         <p className="mt-2 text-2xl font-semibold text-[#F5F7FA]">
                           {seller.code}
                         </p>
-                        <p className="mt-2 text-sm font-semibold text-[#A8AFBE]">
-                          {seller.phone}
+                        {seller.phone ? (
+                          <p className="mt-2 text-sm font-semibold text-[#A8AFBE]">
+                            {seller.phone}
+                          </p>
+                        ) : null}
+                        <p className="mt-3 text-xs font-medium leading-relaxed text-[#C4CAD6]">
+                          {seller.zones}
                         </p>
                       </div>
                     );
+
+                    if (!seller.href) {
+                      return (
+                        <div key={seller.code} className="block">
+                          {content}
+                        </div>
+                      );
+                    }
 
                     return (
                       <a
