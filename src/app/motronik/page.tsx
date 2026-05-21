@@ -13,7 +13,7 @@ const motronikLinks = {
   survey: "https://forms.gle/rTSZZ9vYs7nm9DDt7",
   instagram: "https://www.instagram.com/motronik_col/",
   whatsapp:
-    "https://api.whatsapp.com/send/?phone=573014055162&text=Hola%2C+quiero+m%C3%A1s+informaci%C3%B3n+sobre+Motronik&type=phone_number&app_absent=0",
+    "https://api.whatsapp.com/send/?phone=573014055162&text=%C2%A1Hola!+Bienvenido%2Fa+a+Motronik.+Te+compartimos+nuestro+link+de+cat%C3%A1logos+para+que+explores+accesorios+y+repuestos%3A+https%3A%2F%2Fdrive.google.com%2Fdrive%2Ffolders%2F16Bl7Y4_rGf0RUCQTOQu8nYV4o1mfTAeb+%F0%9F%8F%8D%EF%B8%8F&type=phone_number&app_absent=0",
   facebook: "https://www.facebook.com/motronikmedellin/",
   maps:
     "https://www.google.com/maps/search/?api=1&query=Cra.%2056A%20%23%2055-30%204to%20piso%2C%20La%20Candelaria%2C%20Medell%C3%ADn%2C%20Antioquia",
