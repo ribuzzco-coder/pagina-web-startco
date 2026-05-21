@@ -209,54 +209,46 @@ export function KyndFashionBiolink() {
           </div>
         </div>
 
-        <section className="border-t border-[#ded3b7] px-5 py-6">
+        <section className="border-t border-[#ded3b7] px-5 py-7">
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#7b681e]">
                 The edit
               </p>
-              <h2 className="mt-2 text-2xl font-bold leading-none">Home Alone</h2>
+              <h2 className="mt-2 text-2xl font-bold leading-none">Shop Home Alone</h2>
             </div>
             <a
               href={links.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-bold uppercase tracking-[0.16em] text-[#6b5a18] underline underline-offset-4"
+              className="text-xs font-bold uppercase tracking-[0.16em] text-[#6b5a18]"
             >
-              Ver todo
+              View all
             </a>
           </div>
 
-          <div className="mt-4 grid gap-3">
+          <div className="mt-5 grid grid-cols-2 gap-x-3 gap-y-6">
             {featuredProducts.map((product) => (
               <a
                 key={product.name}
                 href={product.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group grid grid-cols-[0.82fr_1fr] overflow-hidden bg-[#fbf7ed]"
+                className="group block"
               >
-                <div className="relative min-h-44 overflow-hidden bg-[#e6dcc8]">
+                <div className="relative aspect-[3/4] overflow-hidden bg-[#e6dcc8]">
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
-                    sizes="210px"
+                    sizes="220px"
                     className={`object-cover transition duration-500 group-hover:scale-[1.03] ${product.position}`}
                   />
                 </div>
-                <div className="flex flex-col justify-between border border-l-0 border-[#ded3b7] p-4">
-                  <div>
-                    <p className="mt-3 text-lg font-bold uppercase leading-5 tracking-[0.08em]">
-                      {product.name}
-                    </p>
-                    <p className="mt-2 text-sm text-[#6f664f]">{product.price}</p>
-                  </div>
-                  <span className="mt-5 inline-flex items-center justify-between text-xs font-bold uppercase tracking-[0.16em] text-[#6b5a18]">
-                    Shop
-                    <ArrowIcon />
-                  </span>
-                </div>
+                <p className="mt-3 text-[0.72rem] font-bold uppercase leading-4 tracking-[0.1em] text-[#1d1a13]">
+                  {product.name}
+                </p>
+                <p className="mt-1 text-xs text-[#6f664f]">{product.price}</p>
               </a>
             ))}
           </div>
