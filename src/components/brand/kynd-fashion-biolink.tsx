@@ -142,18 +142,10 @@ export function KyndFashionBiolink() {
                   href={campaign.ctaHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute bottom-5 right-4 z-10 w-[46%] min-w-[9.75rem] bg-[#6b5a18]/92 px-4 py-3 text-white shadow-[0_18px_38px_rgba(29,26,19,0.22)] backdrop-blur-[2px] transition hover:bg-[#5b4c14]"
+                  className="absolute bottom-5 right-4 z-10 inline-flex items-center gap-2 border border-white/72 bg-transparent px-4 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white/10"
                 >
-                  <span className="block text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white/82">
-                    {campaign.eyebrow}
-                  </span>
-                  <span className="mt-2 block text-sm font-medium leading-5">
-                    {campaign.body}
-                  </span>
-                  <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em]">
-                    Shop now
-                    <ArrowIcon />
-                  </span>
+                  Shop now
+                  <ArrowIcon />
                 </a>
               </div>
             </div>
