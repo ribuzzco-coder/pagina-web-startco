@@ -19,6 +19,11 @@ const motronikLinks = {
     "https://www.google.com/maps/search/?api=1&query=Cra.%2056A%20%23%2055-30%204to%20piso%2C%20La%20Candelaria%2C%20Medell%C3%ADn%2C%20Antioquia",
 } as const;
 
+const sellerWhatsappLink = (phone: string, code: string) =>
+  `https://api.whatsapp.com/send/?phone=${phone}&text=Hola%2C+vengo+desde+la+landing+de+Motronik+y+quiero+contactar+al+vendedor+${encodeURIComponent(
+    code,
+  )}&type=phone_number&app_absent=0`;
+
 const catalogButtons = [
   {
     title: "Accesorios",
@@ -71,52 +76,102 @@ const bodegaCards = {
 const sellerContacts = [
   {
     code: "01",
-    phone: "301 405 5162",
     zones: "General",
-    href: "https://api.whatsapp.com/send/?phone=573014055162&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
+    sellers: [
+      {
+        code: "01",
+        phone: "301 533 6955",
+        href: sellerWhatsappLink("573015336955", "01"),
+      },
+    ],
   },
   {
     code: "20 / 29",
-    phone: "301 405 5094",
     zones: "Santanderes, Caqueta, Putumayo, Tolima, Huila, Boyaca",
-    href: "https://api.whatsapp.com/send/?phone=573014055094&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
+    sellers: [
+      {
+        code: "20",
+        phone: "300 348 0244",
+        href: sellerWhatsappLink("573003480244", "20"),
+      },
+      {
+        code: "29",
+        phone: "300 631 6195",
+        href: sellerWhatsappLink("573006316195", "29"),
+      },
+    ],
   },
   {
     code: "19 / 28",
-    phone: "320 458 5833",
     zones: "Cucuta, Venezuela, Norte de Santander, Bogota",
-    href: "https://api.whatsapp.com/send/?phone=573204585833&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
+    sellers: [
+      {
+        code: "19",
+        phone: "320 458 5833",
+        href: sellerWhatsappLink("573204585833", "19"),
+      },
+      {
+        code: "28",
+        phone: "301 405 5101",
+        href: sellerWhatsappLink("573014055101", "28"),
+      },
+    ],
   },
   {
     code: "23",
-    phone: "301 405 5073",
     zones:
       "Costa caribe, Cordoba, Sucre, Bolivar, Barranquilla, Santa Marta, La Guajira, Valledupar",
-    href: "https://api.whatsapp.com/send/?phone=573014055073&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
+    sellers: [
+      {
+        code: "23",
+        phone: "318 309 7528",
+        href: sellerWhatsappLink("573183097528", "23"),
+      },
+    ],
   },
   {
     code: "24",
-    phone: "322 433 4288",
     zones: "Cali, Risaralda, Eje cafetero, norte del Valle, Cauca, Narino",
-    href: "https://api.whatsapp.com/send/?phone=573224334288&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
+    sellers: [
+      {
+        code: "24",
+        phone: "322 433 4288",
+        href: sellerWhatsappLink("573224334288", "24"),
+      },
+    ],
   },
   {
     code: "26",
-    phone: "301 405 5161",
     zones: "Medellin y area metropolitana",
-    href: "https://api.whatsapp.com/send/?phone=573014055161&text=Hola%2C+vengo+desde+la+landing+de+Motronik&type=phone_number&app_absent=0",
+    sellers: [
+      {
+        code: "26",
+        phone: "320 707 3884",
+        href: sellerWhatsappLink("573207073884", "26"),
+      },
+    ],
   },
   {
     code: "13 / 25",
-    phone: "",
     zones: "Choco, San Andres, Bajo Cauca, Segovia, Remedios, Vegachi",
-    href: "",
+    sellers: [
+      {
+        code: "13",
+        phone: "311 379 0725",
+        href: sellerWhatsappLink("573113790725", "13"),
+      },
+    ],
   },
   {
     code: "10",
-    phone: "",
     zones: "Sebastian Garcia",
-    href: "",
+    sellers: [
+      {
+        code: "10",
+        phone: "304 363 5819",
+        href: sellerWhatsappLink("573043635819", "10"),
+      },
+    ],
   },
 ] as const;
 
@@ -432,45 +487,35 @@ export default function MotronikPage() {
                   Consulta el numero del vendedor y su zona asignada.
                 </p>
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                  {sellerContacts.map((seller) => {
-                    const content = (
-                      <div className="relative h-full rounded-[18px] border border-white/10 bg-white/[0.04] px-3 py-4">
-                        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#A8AFBE]">
-                          {seller.code.includes("/") ? "Vendedores" : "Vendedor"}
-                        </p>
-                        <p className="mt-2 text-2xl font-semibold text-[#F5F7FA]">
-                          {seller.code}
-                        </p>
-                        {seller.phone ? (
-                          <p className="mt-2 text-sm font-semibold text-[#A8AFBE]">
-                            {seller.phone}
-                          </p>
-                        ) : null}
-                        <p className="mt-3 text-xs font-medium leading-relaxed text-[#C4CAD6]">
-                          {seller.zones}
-                        </p>
+                  {sellerContacts.map((seller) => (
+                    <div
+                      key={seller.code}
+                      className="relative h-full rounded-[18px] border border-white/10 bg-white/[0.04] px-3 py-4"
+                    >
+                      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#A8AFBE]">
+                        {seller.sellers.length > 1 ? "Vendedores" : "Vendedor"}
+                      </p>
+                      <p className="mt-2 text-2xl font-semibold text-[#F5F7FA]">
+                        {seller.code}
+                      </p>
+                      <p className="mt-3 text-xs font-medium leading-relaxed text-[#C4CAD6]">
+                        {seller.zones}
+                      </p>
+                      <div className="mt-4 grid gap-2">
+                        {seller.sellers.map((contact) => (
+                          <a
+                            key={contact.code}
+                            href={contact.href}
+                            className="flex items-center justify-between gap-3 rounded-full border border-white/10 bg-black/20 px-3 py-2 text-left text-xs font-semibold text-[#F5F7FA] transition hover:-translate-y-0.5 hover:border-[#25B8FF]/40 hover:bg-white/[0.07]"
+                            {...externalProps(contact.href)}
+                          >
+                            <span>{contact.code}</span>
+                            <span>{contact.phone}</span>
+                          </a>
+                        ))}
                       </div>
-                    );
-
-                    if (!seller.href) {
-                      return (
-                        <div key={seller.code} className="block">
-                          {content}
-                        </div>
-                      );
-                    }
-
-                    return (
-                      <a
-                        key={seller.code}
-                        href={seller.href}
-                        className="block cursor-pointer transition hover:-translate-y-0.5"
-                        {...externalProps(seller.href)}
-                      >
-                        {content}
-                      </a>
-                    );
-                  })}
+                    </div>
+                  ))}
                 </div>
               </div>
             </Card>
