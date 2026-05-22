@@ -6,6 +6,8 @@ const links = {
   whatsapp: "https://wa.me/573142336780",
 };
 
+const kyndLogo = "/images/brand-landings/kynd/kynd-logo-original.png";
+
 const campaign = {
   name: "Home Alone",
   eyebrow: "Elevated everyday wear",
@@ -112,11 +114,11 @@ export function KyndFashionBiolink() {
                   <span className="h-px w-10 bg-[#6b5a18]/40" />
                 </div>
                 <Image
-                  src="/images/brand-landings/kynd/logo.jpg"
+                  src={kyndLogo}
                   alt="KYND"
-                  width={44}
-                  height={44}
-                  className="h-11 w-11 rounded-full border border-[#6b5a18]/20 object-cover"
+                  width={220}
+                  height={56}
+                  className="h-auto w-16 object-contain"
                 />
               </div>
 
@@ -131,9 +133,14 @@ export function KyndFashionBiolink() {
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(29,26,19,0.06)_0%,rgba(29,26,19,0.12)_48%,rgba(29,26,19,0.62)_100%)]" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h1 className="[font-family:var(--font-kynd-display)] text-[3.8rem] font-black uppercase leading-[0.8] tracking-[0.02em]">
-                    KYND
-                  </h1>
+                  <Image
+                    src={kyndLogo}
+                    alt="KYND"
+                    width={520}
+                    height={134}
+                    priority
+                    className="h-auto w-[12.25rem] max-w-[72%] object-contain brightness-[1.55] saturate-[0.9] drop-shadow-[0_2px_12px_rgba(0,0,0,0.28)]"
+                  />
                   <p className="mt-4 max-w-[16rem] text-2xl font-semibold leading-[1.02]">
                     {campaign.headline}
                   </p>
