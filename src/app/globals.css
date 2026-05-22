@@ -29,6 +29,8 @@
   --font-playfair: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-assistant: "Assistant", "Trebuchet MS", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-montserrat: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --font-kynd-display: "Boldstorm", "Arial Black", var(--font-montserrat), sans-serif;
+  --font-kynd-text: "Antikor Text", var(--font-assistant), "Segoe UI", sans-serif;
 }
 
 html {

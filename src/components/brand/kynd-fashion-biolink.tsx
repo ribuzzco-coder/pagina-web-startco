@@ -98,7 +98,7 @@ function ArrowIcon() {
 
 export function KyndFashionBiolink() {
   return (
-    <section className="-mt-[76px] min-h-screen bg-[#f7f0df] text-[#1d1a13] [font-family:var(--font-assistant)]">
+    <section className="-mt-[76px] min-h-screen bg-[#f7f0df] text-[#1d1a13] [font-family:var(--font-kynd-text)]">
       <div className="mx-auto min-h-screen w-full max-w-[480px] bg-[#f8f2e7] shadow-[0_24px_80px_rgba(46,39,26,0.12)]">
         <div className="relative">
           <div className="relative overflow-hidden bg-[#e8dfcd] px-4 pb-5 pt-4">
@@ -106,7 +106,7 @@ export function KyndFashionBiolink() {
             <div className="relative grid min-h-[68svh] grid-cols-[0.72fr_1fr] grid-rows-[auto_1fr] gap-3">
               <div className="col-span-2 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="text-[0.66rem] font-bold uppercase tracking-[0.24em] text-[#6b5a18]">
+                  <span className="[font-family:var(--font-kynd-display)] text-[0.66rem] font-bold uppercase tracking-[0.24em] text-[#6b5a18]">
                     01 / {campaign.name}
                   </span>
                   <span className="h-px w-10 bg-[#6b5a18]/40" />
@@ -131,7 +131,7 @@ export function KyndFashionBiolink() {
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(29,26,19,0.06)_0%,rgba(29,26,19,0.12)_48%,rgba(29,26,19,0.62)_100%)]" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h1 className="text-[3.8rem] font-black uppercase leading-[0.8] tracking-[0.02em]">
+                  <h1 className="[font-family:var(--font-kynd-display)] text-[3.8rem] font-black uppercase leading-[0.8] tracking-[0.02em]">
                     KYND
                   </h1>
                   <p className="mt-4 max-w-[16rem] text-2xl font-semibold leading-[1.02]">
@@ -142,7 +142,7 @@ export function KyndFashionBiolink() {
                   href={campaign.ctaHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-1.5 border border-white/70 bg-transparent px-3 py-2 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"
+                  className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-1.5 border border-white/70 bg-transparent px-3 py-2 [font-family:var(--font-kynd-display)] text-[0.62rem] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"
                 >
                   Shop now
                   <ArrowIcon />
@@ -154,7 +154,7 @@ export function KyndFashionBiolink() {
           <div className="grid grid-cols-3 border-y border-[#ded3b7]">
             {moodNotes.map((note) => (
               <div key={note} className="border-r border-[#ded3b7] px-3 py-4 last:border-r-0">
-                <p className="text-[0.66rem] font-bold uppercase leading-4 tracking-[0.16em] text-[#6b5a18]">
+                <p className="[font-family:var(--font-kynd-display)] text-[0.66rem] font-bold uppercase leading-4 tracking-[0.16em] text-[#6b5a18]">
                   {note}
                 </p>
               </div>
@@ -181,10 +181,10 @@ export function KyndFashionBiolink() {
                   <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(29,26,19,0.78),rgba(29,26,19,0.16))]" />
                   <div className="absolute inset-0 flex items-end justify-between gap-4 p-4 text-white">
                     <span>
-                      <span className="block text-[0.64rem] font-bold uppercase tracking-[0.22em] text-white/70">
+                      <span className="block [font-family:var(--font-kynd-display)] text-[0.64rem] font-bold uppercase tracking-[0.22em] text-white/70">
                         {item.index}
                       </span>
-                      <span className="mt-2 block text-base font-bold uppercase tracking-[0.14em]">
+                      <span className="mt-2 block [font-family:var(--font-kynd-display)] text-base font-bold uppercase tracking-[0.14em]">
                         {item.label}
                       </span>
                       <span className="mt-1 block text-xs leading-4 text-white/72">
@@ -204,16 +204,16 @@ export function KyndFashionBiolink() {
         <section className="border-t border-[#ded3b7] px-5 py-7">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#7b681e]">
+              <p className="[font-family:var(--font-kynd-display)] text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#7b681e]">
                 The edit
               </p>
-              <h2 className="mt-2 text-2xl font-bold leading-none">Shop Home Alone</h2>
+              <h2 className="mt-2 [font-family:var(--font-kynd-display)] text-2xl font-bold leading-none">Shop Home Alone</h2>
             </div>
             <a
               href={links.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-bold uppercase tracking-[0.16em] text-[#6b5a18]"
+              className="[font-family:var(--font-kynd-display)] text-xs font-bold uppercase tracking-[0.16em] text-[#6b5a18]"
             >
               View all
             </a>
@@ -237,7 +237,7 @@ export function KyndFashionBiolink() {
                     className={`object-cover transition duration-500 group-hover:scale-[1.03] ${product.position}`}
                   />
                 </div>
-                <p className="mt-3 text-[0.72rem] font-bold uppercase leading-4 tracking-[0.1em] text-[#1d1a13]">
+                <p className="mt-3 [font-family:var(--font-kynd-display)] text-[0.72rem] font-bold uppercase leading-4 tracking-[0.1em] text-[#1d1a13]">
                   {product.name}
                 </p>
                 <p className="mt-1 text-xs text-[#6f664f]">{product.price}</p>
@@ -257,10 +257,10 @@ export function KyndFashionBiolink() {
             />
           </div>
           <div className="flex flex-col justify-center px-5 py-6">
-            <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#7b681e]">
+            <p className="[font-family:var(--font-kynd-display)] text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#7b681e]">
               Our Story
             </p>
-            <h2 className="mt-3 text-xl font-bold leading-tight">
+            <h2 className="mt-3 [font-family:var(--font-kynd-display)] text-xl font-bold leading-tight">
               Designed with feeling. Worn with purpose.
             </h2>
             <p className="mt-4 text-sm leading-6 text-[#5f5743]">
@@ -270,17 +270,17 @@ export function KyndFashionBiolink() {
         </section>
 
         <section className="border-t border-[#ded3b7] px-5 py-6 text-center">
-          <p className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#7b681e]">
+          <p className="[font-family:var(--font-kynd-display)] text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#7b681e]">
             Need help?
           </p>
-          <h2 className="mt-3 text-2xl font-bold leading-tight">
+          <h2 className="mt-3 [font-family:var(--font-kynd-display)] text-2xl font-bold leading-tight">
             Dudas de talla o disponibilidad?
           </h2>
           <a
             href={links.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex w-full items-center justify-center rounded-none border border-[#1d1a13] bg-transparent px-5 py-4 text-sm font-bold uppercase tracking-[0.16em] text-[#1d1a13] transition hover:bg-[#1d1a13] hover:text-white"
+            className="mt-5 inline-flex w-full items-center justify-center rounded-none border border-[#1d1a13] bg-transparent px-5 py-4 [font-family:var(--font-kynd-display)] text-sm font-bold uppercase tracking-[0.16em] text-[#1d1a13] transition hover:bg-[#1d1a13] hover:text-white"
           >
             Escribenos por WhatsApp
           </a>
