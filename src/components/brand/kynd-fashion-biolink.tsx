@@ -142,7 +142,7 @@ export function KyndFashionBiolink() {
                   href={campaign.ctaHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute bottom-5 right-4 z-10 inline-flex items-center gap-2 border border-white/72 bg-transparent px-4 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white/10"
+                  className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-1.5 border border-white/70 bg-transparent px-3 py-2 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"
                 >
                   Shop now
                   <ArrowIcon />
