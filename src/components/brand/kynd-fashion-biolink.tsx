@@ -51,32 +51,25 @@ const primaryLinks = [
 
 const featuredProducts = [
   {
+    name: "Blaire Vest - Sand",
+    price: "$195.000",
+    href: "https://wearkynd.com/products/blaire-vest-sand",
+    image: "/images/brand-landings/kynd/web/blaire-vest-sand-client.jpg",
+    position: "object-[50%_20%]",
+  },
+  {
     name: "Blaire Set - Sand",
     price: "$360.000",
     href: "https://wearkynd.com/products/blaire-set-sand",
-    image: "/images/brand-landings/kynd/web/blaire-set-sand.jpg",
-    position: "object-[50%_20%]",
+    image: "/images/brand-landings/kynd/web/blaire-set-sand-client.jpg",
+    position: "object-[50%_50%]",
   },
   {
     name: "Bianca Bodysuit - Butter Yellow",
     price: "$185.000",
     href: "https://wearkynd.com/products/bianca-bodysuit-butter-yellow",
-    image: "/images/brand-landings/kynd/web/bianca-butter.jpg",
-    position: "object-[50%_18%]",
-  },
-  {
-    name: "Verona Pant",
-    price: "$230.000",
-    href: "https://wearkynd.com/products/verona-pant",
-    image: "/images/brand-landings/kynd/web/category-bottoms.png",
-    position: "object-[50%_32%]",
-  },
-  {
-    name: "Blaire Vest - Sand",
-    price: "$195.000",
-    href: "https://wearkynd.com/products/blaire-vest-sand",
-    image: "/images/brand-landings/kynd/web/blaire-vest-sand.jpg",
-    position: "object-[50%_20%]",
+    image: "/images/brand-landings/kynd/web/bianca-bodysuit-butter-yellow-client.jpg",
+    position: "object-[50%_24%]",
   },
 ] as const;
 
