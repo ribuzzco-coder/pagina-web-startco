@@ -71,6 +71,13 @@ const featuredProducts = [
     image: "/images/brand-landings/kynd/web/bianca-bodysuit-butter-yellow-client.jpg",
     position: "object-[50%_24%]",
   },
+  {
+    name: "Verona Pant",
+    price: "$230.000",
+    href: "https://wearkynd.com/products/verona-pant",
+    image: "/images/brand-landings/kynd/web/verona-pant.jpg",
+    position: "object-[50%_18%]",
+  },
 ] as const;
 
 function ArrowIcon() {
