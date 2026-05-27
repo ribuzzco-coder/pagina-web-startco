@@ -8,6 +8,7 @@ import { SITE_CONFIG } from "@/lib/site-config";
 const hotelLinks = {
   whatsapp: "https://wa.me/573225428091",
   website: "https://hotelcaribeplazabarranquilla.com/",
+  review: "https://g.page/r/CbttgpaKpxjsEBM/review",
   maps: "https://maps.app.goo.gl/onTRgTaQ8tQNdtzi8",
   facebook: "https://www.facebook.com/hotelcaribeplazaba?_rdc=1&_rdr#",
   instagram: "https://www.instagram.com/hotelcaribeplazaba/",
@@ -19,7 +20,7 @@ const quickLinks = [
   { label: "Cont\u00e1ctanos", icon: "wa", href: hotelLinks.whatsapp },
   { label: "Haz tu reserva", icon: "calendar", href: hotelLinks.whatsapp },
   { label: "P\u00e1gina Web", icon: "web", href: hotelLinks.website },
-  { label: "Calif\u00edcanos", icon: "star", href: hotelLinks.maps },
+  { label: "Calif\u00edcanos", icon: "star", href: hotelLinks.review },
   { label: "Recepci\u00f3n", icon: "phone", href: hotelLinks.whatsapp },
   { label: "C\u00f3mo llegar", icon: "pin", href: hotelLinks.maps },
 ] as const;
