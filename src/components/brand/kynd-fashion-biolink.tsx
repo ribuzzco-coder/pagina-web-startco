@@ -51,13 +51,6 @@ const primaryLinks = [
 
 const featuredProducts = [
   {
-    name: "Blaire Vest - Sand",
-    price: "$195.000",
-    href: "https://wearkynd.com/products/blaire-vest-sand",
-    image: "/images/brand-landings/kynd/web/blaire-vest-sand-client.jpg",
-    position: "object-[50%_20%]",
-  },
-  {
     name: "Blaire Set - Sand",
     price: "$360.000",
     href: "https://wearkynd.com/products/blaire-set-sand",
@@ -75,8 +68,15 @@ const featuredProducts = [
     name: "Verona Pant",
     price: "$230.000",
     href: "https://wearkynd.com/products/verona-pant",
-    image: "/images/brand-landings/kynd/web/verona-pant.jpg",
-    position: "object-[50%_18%]",
+    image: "/images/brand-landings/kynd/web/verona-pant-client.jpg",
+    position: "object-[50%_50%]",
+  },
+  {
+    name: "Blaire Vest - Sand",
+    price: "$195.000",
+    href: "https://wearkynd.com/products/blaire-vest-sand",
+    image: "/images/brand-landings/kynd/web/blaire-vest-sand-client.jpg",
+    position: "object-[50%_20%]",
   },
 ] as const;
 
@@ -141,19 +141,19 @@ export function KyndFashionBiolink() {
                     priority
                     className="h-auto w-[12.25rem] max-w-[72%] object-contain brightness-[1.55] saturate-[0.9] drop-shadow-[0_2px_12px_rgba(0,0,0,0.28)]"
                   />
-                  <p className="mt-4 max-w-[16rem] text-2xl font-semibold leading-[1.02]">
+                  <p className="mt-4 max-w-[17rem] text-2xl font-semibold leading-[1.02]">
                     {campaign.headline}
                   </p>
+                  <a
+                    href={campaign.ctaHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 border border-white/70 bg-transparent px-3 py-2 [font-family:var(--font-kynd-display)] text-[0.62rem] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"
+                  >
+                    Shop now
+                    <ArrowIcon />
+                  </a>
                 </div>
-                <a
-                  href={campaign.ctaHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-1.5 border border-white/70 bg-transparent px-3 py-2 [font-family:var(--font-kynd-display)] text-[0.62rem] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"
-                >
-                  Shop now
-                  <ArrowIcon />
-                </a>
               </div>
             </div>
           </div>
