@@ -5,8 +5,10 @@ import Image from "next/image";
 import { ShareButton } from "@/components/ui/share-button";
 
 const PAGE_URL = "https://ribuzz.com/julianaarango";
-const phoneDisplay = "+1 (918) 3092019";
-const phoneRaw = "19183092019";
+const internationalPhoneDisplay = "+1 (918) 3092019";
+const internationalPhoneRaw = "19183092019";
+const nationalPhoneDisplay = "310 390 6130";
+const nationalPhoneRaw = "573103906130";
 const websiteLabel = "www.wecomexintl.com";
 const websiteHref = "https://www.wecomexintl.com";
 const email = "sales@wecomexintl.com";
@@ -15,9 +17,15 @@ const instagramHref = "https://www.instagram.com/wecomexintl/";
 
 const contactItems = [
   {
-    title: phoneDisplay,
-    subtitle: "Número de teléfono",
-    href: `tel:+${phoneRaw}`,
+    title: internationalPhoneDisplay,
+    subtitle: "Celular internacional",
+    href: `tel:+${internationalPhoneRaw}`,
+    icon: "phone",
+  },
+  {
+    title: nationalPhoneDisplay,
+    subtitle: "Celular nacional",
+    href: `tel:+${nationalPhoneRaw}`,
     icon: "phone",
   },
   {
@@ -102,7 +110,8 @@ function buildVCard() {
     "FN:Juliana Arango",
     "TITLE:Estratega comercial",
     "ORG:WECOMEX INTL",
-    `TEL;TYPE=CELL:+${phoneRaw}`,
+    `TEL;TYPE=CELL:+${internationalPhoneRaw}`,
+    `TEL;TYPE=CELL:+${nationalPhoneRaw}`,
     `EMAIL;TYPE=INTERNET:${email}`,
     `URL:${websiteHref}`,
     `URL;TYPE=INSTAGRAM:${instagramHref}`,
