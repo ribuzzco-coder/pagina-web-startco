@@ -14,7 +14,7 @@ const covenasLinks = {
   review: "https://g.page/r/CUOktc-Ou3fxEBM/review",
   maps:
     "https://www.google.com/maps?ll=9.402976,-75.679051&z=17&t=m&hl=es-US&gl=US&mapclient=embed&q=9%C2%B024%2710.7%22N+75%C2%B040%2744.6%22W+9.402976,+-75.679051&safe=strict",
-  phone: "tel:3014273411",
+  phone: "tel:3015692181",
   facebook: "https://www.facebook.com/hotelcaribecovenas",
   instagram: "https://www.instagram.com/hotelcaribecovenas/",
 } as const;
@@ -310,7 +310,7 @@ export default function HotelCaribeCovenasPage() {
           <div>
             <h2>Contáctanos:</h2>
             <p>Reservas: +57 320 939 7701</p>
-            <p>Recepción: +57 301 427 3411</p>
+            <p>Recepción: +57 301 569 2181</p>
             <p>hotelcaribecovenas@gmail.com</p>
           </div>
         </div>
