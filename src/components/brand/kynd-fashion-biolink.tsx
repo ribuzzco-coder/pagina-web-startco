@@ -24,19 +24,19 @@ const moodNotes = ["Soft structure", "Bare comfort", "Quiet confidence"] as cons
 
 const primaryLinks = [
   {
-    label: "Shop / Pagina web",
-    caption: "New in and Home Alone",
-    href: links.website,
-    image: "/images/brand-landings/kynd/web/category-bottoms.png",
-    position: "object-[50%_34%]",
-    index: "01",
-  },
-  {
     label: "Instagram",
     caption: "Visual diary",
     href: links.instagram,
     image: "/images/brand-landings/kynd/web/home-alone-hero.jpg",
     position: "object-[56%_50%]",
+    index: "01",
+  },
+  {
+    label: "Shop / Pagina web",
+    caption: "New in and Home Alone",
+    href: links.website,
+    image: "/images/brand-landings/kynd/web/category-bottoms.png",
+    position: "object-[50%_34%]",
     index: "02",
   },
   {
