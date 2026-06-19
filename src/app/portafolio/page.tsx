@@ -43,6 +43,7 @@ function Slide({
   message,
   children,
   className = "",
+  fullWidth = false,
 }: {
   number: string;
   eyebrow: string;
@@ -50,6 +51,7 @@ function Slide({
   message?: string;
   children: ReactNode;
   className?: string;
+  fullWidth?: boolean;
 }) {
   return (
     <section className={`py-8 sm:py-10 ${className}`}>
@@ -61,13 +63,23 @@ function Slide({
               {number}/14
             </span>
           </div>
-          <div className="grid gap-8 xl:grid-cols-[0.92fr_1.08fr] xl:items-center">
-            <div>
-              <h2 className={titleClass}>{title}</h2>
-              {message ? <p className={`${textClass} mt-5`}>{message}</p> : null}
+          {fullWidth ? (
+            <>
+              <div>
+                <h2 className={titleClass}>{title}</h2>
+                {message ? <p className={`${textClass} mt-5`}>{message}</p> : null}
+              </div>
+              <div className="mt-8 min-w-0">{children}</div>
+            </>
+          ) : (
+            <div className="grid gap-8 xl:grid-cols-[0.92fr_1.08fr] xl:items-center">
+              <div>
+                <h2 className={titleClass}>{title}</h2>
+                {message ? <p className={`${textClass} mt-5`}>{message}</p> : null}
+              </div>
+              <div className="min-w-0">{children}</div>
             </div>
-            <div className="min-w-0">{children}</div>
-          </div>
+          )}
         </div>
       </Container>
     </section>
@@ -499,8 +511,9 @@ export default function PortfolioPage() {
         title="RiBuzz ya está operando con casos reales."
         message="Validación en servicios, educación digital, construcción, B2B y eventos."
         className="pt-0"
+        fullWidth
       >
-        <div className="grid gap-3 lg:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {portfolioCases.map((item) => (
             <div
               key={item.name}
