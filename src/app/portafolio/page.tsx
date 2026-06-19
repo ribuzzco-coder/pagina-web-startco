@@ -1,465 +1,545 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import Image from "next/image";
+import type { ReactNode } from "react";
+
 import { Container } from "@/components/ui/container";
-import { PlaybookGallery } from "@/components/portfolio/playbook-gallery";
-import { SectionDivider } from "@/components/ui/section-divider";
-import { SectionTitle } from "@/components/ui/section-title";
 import { createPageMetadata } from "@/lib/metadata";
 import {
+  portfolioAskItems,
+  portfolioBusinessModel,
   portfolioCases,
-  portfolioClosingReasons,
-  portfolioClosingSteps,
-  portfolioEntryModel,
-  portfolioGrowthLayers,
-  portfolioMarketingServices,
-  portfolioModelSteps,
-  portfolioOperationalProof,
+  portfolioIcebergRoot,
+  portfolioIcebergVisible,
+  portfolioImplementationAreas,
+  portfolioMarketGap,
+  portfolioMarketNeeds,
+  portfolioOperatingRoute,
   portfolioProblemSymptoms,
-  portfolioSystemFlow,
-  portfolioTechnologyServices,
+  portfolioSystemBlocks,
+  portfolioThesisFlow,
+  portfolioVisionSteps,
 } from "@/lib/portfolio-content";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Portafolio Comercial RiBuzz",
+  title: "Pitch Deck RiBuzz",
   description:
-    "RiBuzz diseña el sistema comercial, implementa marketing y tecnología, y acompaña la ejecución para que una empresa crezca con más claridad, control y consistencia.",
+    "RiBuzz es el sistema de crecimiento comercial para empresas que ya venden, pero no crecen con estructura.",
   path: "/portafolio",
 });
 
-function Checklist({
-  items,
-  tone = "purple",
-}: {
-  items: readonly string[];
-  tone?: "purple" | "cyan";
-}) {
-  const accentClass = tone === "purple" ? "bg-[#E625FF]" : "bg-[#0FEFFD]";
-  const surfaceClass =
-    tone === "purple"
-      ? "border-[#E625FF]/14 bg-[#120C18]/72"
-      : "border-[#0FEFFD]/14 bg-[#0C1518]/72";
+const slideEyebrow =
+  "text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#5B16E6]";
+const slideTitle =
+  "max-w-4xl font-heading text-3xl font-semibold leading-[1.02] text-[#101322] sm:text-5xl";
+const slideText = "max-w-3xl text-base leading-relaxed text-[#4B5567] sm:text-lg";
+const panel =
+  "border border-[#DCE2EE] bg-white shadow-[0_24px_70px_rgba(20,28,45,0.08)]";
 
+function Slide({
+  number,
+  eyebrow,
+  title,
+  message,
+  children,
+  className = "",
+}: {
+  number: string;
+  eyebrow: string;
+  title: string;
+  message?: string;
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <ul className="space-y-3">
-      {items.map((item) => (
-        <li
-          key={item}
-          className={`flex gap-3 rounded-2xl border px-4 py-3 text-sm leading-relaxed text-[#C7CBD6] sm:text-base ${surfaceClass}`}
-        >
-          <span className={`mt-2 h-2 w-2 shrink-0 rounded-full ${accentClass}`} />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
+    <section className={`py-10 sm:py-14 ${className}`}>
+      <Container>
+        <div className={`${panel} overflow-hidden rounded-[28px] p-6 sm:p-9 lg:p-11`}>
+          <div className="mb-8 flex items-center justify-between gap-4">
+            <p className={slideEyebrow}>{eyebrow}</p>
+            <span className="rounded-full border border-[#DCE2EE] bg-[#F7F9FC] px-3 py-1 text-xs font-bold text-[#697386]">
+              {number}/14
+            </span>
+          </div>
+          <div className="grid gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
+            <div>
+              <h2 className={slideTitle}>{title}</h2>
+              {message ? <p className={`${slideText} mt-5`}>{message}</p> : null}
+            </div>
+            {children}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function Tag({ children, active = false }: { children: ReactNode; active?: boolean }) {
+  return (
+    <span
+      className={`inline-flex rounded-full border px-3 py-1.5 text-sm font-semibold ${
+        active
+          ? "border-[#B8F13A] bg-[#EFFFBA] text-[#263500]"
+          : "border-[#DCE2EE] bg-[#F7F9FC] text-[#344054]"
+      }`}
+    >
+      {children}
+    </span>
+  );
+}
+
+function MiniNode({ label, index }: { label: string; index: number }) {
+  return (
+    <div className="relative rounded-2xl border border-[#DCE2EE] bg-white p-4 shadow-[0_14px_34px_rgba(20,28,45,0.07)]">
+      <span className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#111827] text-xs font-bold text-white">
+        {index + 1}
+      </span>
+      <p className="text-sm font-semibold leading-snug text-[#101322]">{label}</p>
+    </div>
   );
 }
 
 export default function PortfolioPage() {
   return (
-    <>
-      <section className="relative overflow-hidden pb-16 pt-16 sm:pb-20 sm:pt-20">
+    <main className="min-h-screen bg-[#F4F7FB] text-[#101322]">
+      <section className="relative overflow-hidden bg-[#08111F] py-16 text-white sm:py-20">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 top-0 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-[#E625FF]/10 blur-3xl" />
-          <div className="absolute right-[-10%] top-[16%] h-[26rem] w-[26rem] rounded-full bg-[#0FEFFD]/8 blur-3xl" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),transparent_30%),linear-gradient(180deg,rgba(11,11,16,0.06),rgba(11,11,16,0.4)_56%,rgba(11,11,16,0.85))]" />
+          <div className="absolute left-[-12%] top-[-22%] h-[26rem] w-[26rem] rounded-full bg-[#5B16E6]/32 blur-3xl" />
+          <div className="absolute right-[-8%] top-[14%] h-[24rem] w-[24rem] rounded-full bg-[#0FEFFD]/20 blur-3xl" />
+          <div className="absolute bottom-[-20%] left-[36%] h-[22rem] w-[22rem] rounded-full bg-[#B8F13A]/12 blur-3xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:48px_48px] opacity-20" />
         </div>
 
         <Container className="relative">
-          <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
-              <h1 className="max-w-4xl font-heading text-[2rem] font-semibold leading-[0.95] tracking-[-0.04em] text-[#F5F7FA] sm:text-[2.8rem] xl:text-[3.9rem]">
-                Muchas empresas no fracasan por falta de esfuerzo. Fracasan por
-                falta de sistema.
-              </h1>
-              <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#C7CBD6] sm:text-lg">
-                RiBuzz nació para corregir eso. Diseñamos el sistema comercial,
-                implementamos marketing y tecnología, y acompañamos la ejecución
-                para que una empresa deje de vender por intuición y empiece a
-                crecer con más claridad, más control y más consistencia.
+              <div className="mb-10 inline-flex rounded-2xl border border-white/12 bg-white px-4 py-3">
+                <Image
+                  src="/ribuzz-wordmark.png"
+                  alt="RiBuzz"
+                  width={180}
+                  height={48}
+                  priority
+                  className="h-9 w-auto object-contain"
+                />
+              </div>
+              <p className="text-[0.7rem] font-bold uppercase tracking-[0.24em] text-[#B8F13A]">
+                Pitch deck comercial
               </p>
-
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button href={SITE_CONFIG.diagnosisPath} size="lg">
-                  Solicitar diagnóstico
-                </Button>
-                <Button
-                  href={SITE_CONFIG.whatsappUrl}
-                  variant="secondary"
-                  size="lg"
-                  external
+              <h1 className="mt-4 max-w-4xl font-heading text-4xl font-semibold leading-[0.98] sm:text-6xl">
+                El sistema de crecimiento comercial para empresas que ya venden,
+                pero no crecen con estructura.
+              </h1>
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#C9D4E6] sm:text-lg">
+                RiBuzz ayuda a diagnosticar, diseñar, implementar y acompañar
+                sistemas comerciales para convertir esfuerzo operativo en ventas
+                más claras, medibles y sostenibles.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={SITE_CONFIG.diagnosisPath}
+                  className="inline-flex h-12 items-center justify-center rounded-full bg-[#B8F13A] px-6 text-sm font-bold text-[#172100] transition hover:bg-[#CCFF52]"
                 >
-                  Escribir por WhatsApp
-                </Button>
+                  Solicitar diagnóstico
+                </a>
+                <a
+                  href={SITE_CONFIG.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/16 bg-white/8 px-6 text-sm font-bold text-white transition hover:bg-white/14"
+                >
+                  Hablar con RiBuzz
+                </a>
               </div>
             </div>
 
-            <div className="grid gap-4">
-              {portfolioSystemFlow.map((item, index) => (
-                <Card
-                  key={item.title}
-                  glowTone={index % 2 === 0 ? "purple" : "cyan"}
-                  className="rounded-[24px] px-5 py-5"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#0FEFFD]/18 bg-[#0C1518] text-sm font-semibold text-[#A6FAFF]">
-                      0{index + 1}
-                    </span>
-                    <h2 className="text-xl font-semibold text-[#F5F7FA]">
-                      {item.title}
-                    </h2>
+            <div className="relative min-h-[24rem] overflow-hidden rounded-[32px] border border-white/12 bg-white/[0.06] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.28)]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,rgba(15,239,253,0.18),transparent_32%)]" />
+              <div className="relative grid h-full place-items-center">
+                <div className="relative h-80 w-80 max-w-full">
+                  <div className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#B8F13A]/60 bg-[#B8F13A]/12 p-5 text-center text-sm font-bold text-[#EFFFBA]">
+                    Sistema comercial
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                    {item.description}
-                  </p>
-                </Card>
+                  {portfolioSystemBlocks.map((item, index) => {
+                    const positions = [
+                      "left-1/2 top-0 -translate-x-1/2",
+                      "right-0 top-1/3",
+                      "right-8 bottom-0",
+                      "left-8 bottom-0",
+                      "left-0 top-1/3",
+                    ];
+
+                    return (
+                      <div
+                        key={item}
+                        className={`absolute ${positions[index]} rounded-2xl border border-white/14 bg-[#101B2E] px-4 py-3 text-center text-xs font-bold text-white shadow-[0_18px_40px_rgba(0,0,0,0.24)]`}
+                      >
+                        {item}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <Slide
+        number="02"
+        eyebrow="Tesis"
+        title="El problema no es emprender. El problema es sostener y escalar."
+        message="Miles de empresas nacen, venden algo y sobreviven un tiempo, pero muchas no construyen un sistema comercial que convierta esfuerzo en ingresos sostenibles."
+      >
+        <div className="grid gap-3">
+          {portfolioThesisFlow.map((item, index) => (
+            <div key={item} className="flex items-center gap-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#111827] text-xs font-bold text-white">
+                {index + 1}
+              </span>
+              <div className="h-px flex-1 bg-[#DCE2EE]" />
+              <p className="min-w-36 rounded-2xl border border-[#DCE2EE] bg-[#F7F9FC] px-4 py-3 text-sm font-bold text-[#101322]">
+                {item}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Slide>
+
+      <Slide
+        number="03"
+        eyebrow="Contexto de mercado"
+        title="El país está construido sobre empresas pequeñas."
+        message="La mayoría no tiene equipos internos robustos de estrategia, marketing, ventas, tecnología y seguimiento. Aun así compite en mercados cada vez más digitales y exigentes."
+        className="pt-0"
+      >
+        <div className="rounded-[26px] border border-[#DCE2EE] bg-[#F7F9FC] p-5">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-3xl bg-[#101322] p-5 text-white">
+              <p className="text-5xl font-bold">1,56M</p>
+              <p className="mt-2 text-sm text-[#C9D4E6]">
+                empresas formales activas en Colombia.
+              </p>
+            </div>
+            <div className="rounded-3xl bg-[#EFFFBA] p-5 text-[#263500]">
+              <p className="text-5xl font-bold">94,2%</p>
+              <p className="mt-2 text-sm">
+                del tejido empresarial corresponde a microempresas.
+              </p>
+            </div>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {portfolioMarketNeeds.map((item) => (
+              <Tag key={item}>{item}</Tag>
+            ))}
+          </div>
+        </div>
+      </Slide>
+
+      <Slide
+        number="04"
+        eyebrow="Problema de supervivencia"
+        title="Crear empresa no es el problema. Sobrevivir sí."
+        message="La fragilidad empresarial no se explica por una sola causa, pero aparece con fuerza cuando faltan clientes, conversión, seguimiento y claridad comercial."
+        className="pt-0"
+      >
+        <div className="rounded-[28px] bg-[#101322] p-6 text-white">
+          <div className="grid gap-4 sm:grid-cols-[0.7fr_1.3fr] sm:items-end">
+            <div>
+              <p className="font-heading text-7xl font-semibold text-[#B8F13A]">
+                33,5%
+              </p>
+              <p className="mt-2 text-sm font-semibold text-[#C9D4E6]">
+                seguía activa cinco años después.
+              </p>
+            </div>
+            <div>
+              <div className="h-10 overflow-hidden rounded-full bg-white/10">
+                <div className="h-full w-[33.5%] rounded-full bg-[#B8F13A]" />
+              </div>
+              <div className="mt-3 h-10 overflow-hidden rounded-full bg-white/10">
+                <div className="h-full w-[66.5%] rounded-full bg-[#5B16E6]" />
+              </div>
+              <p className="mt-3 text-sm text-[#C9D4E6]">
+                66,5% no sobrevivió al quinto año.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Slide>
+
+      <Slide
+        number="05"
+        eyebrow="Síntomas"
+        title="Cuando no hay sistema, el negocio se vuelve reactivo."
+        message="El desorden comercial se siente en ventas, caja, decisiones y operación diaria."
+        className="pt-0"
+      >
+        <div className="grid gap-3 sm:grid-cols-2">
+          {portfolioProblemSymptoms.map((item) => (
+            <div
+              key={item}
+              className="rounded-2xl border border-[#DCE2EE] bg-[#F7F9FC] p-4 text-sm font-semibold text-[#344054]"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      </Slide>
+
+      <Slide
+        number="06"
+        eyebrow="Causa profunda"
+        title="El síntoma parece financiero. La raíz suele ser comercial y operativa."
+        message="Más publicaciones, una web o un CRM no corrigen el sistema si la oferta, el proceso, el seguimiento y los datos siguen desconectados."
+        className="pt-0"
+      >
+        <div className="rounded-[28px] border border-[#DCE2EE] bg-[#F7F9FC] p-5">
+          <div className="mx-auto max-w-md">
+            <div className="rounded-t-[40px] bg-[#5B16E6] px-6 py-5 text-white">
+              {portfolioIcebergVisible.map((item) => (
+                <p key={item} className="text-sm font-semibold">
+                  {item}
+                </p>
               ))}
             </div>
-          </div>
-        </Container>
-      </section>
-
-      <SectionDivider />
-
-      <section className="section-soft cv-auto py-16 sm:py-20">
-        <Container>
-          <SectionTitle
-            eyebrow="Página 2 · El problema que resolvemos"
-            title="Muchas empresas no se rompen porque no trabajen, sino porque operan con un sistema comercial débil, incompleto o desordenado."
-            description="En Colombia, 66,5 % de las empresas no logra sobrevivir más de cinco años. RiBuzz nace leyendo esa realidad desde una tesis concreta: el esfuerzo no se convierte en ingresos sostenibles cuando el sistema comercial está roto."
-          />
-
-          <div className="mt-10 grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-            <Card className="rounded-[28px] p-6 sm:p-7">
-              <p className="text-base leading-relaxed text-[#C7CBD6] sm:text-lg">
-                Cuando eso pasa, aparecen síntomas muy repetidos. No hablamos de
-                hacer marketing porque sí ni de meter tecnología por moda.
-                Hablamos de ordenar el proceso completo que conecta oferta,
-                mensaje, canal, seguimiento y ejecución.
-              </p>
-              <p className="mt-5 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                Por eso RiBuzz no entra a resolver una tarea aislada. Entra a
-                intervenir lo que está roto en el sistema comercial para que el
-                esfuerzo del negocio sí pueda convertirse en ingresos más
-                sostenibles.
-              </p>
-            </Card>
-
-            <Card className="rounded-[28px] p-6 sm:p-7" glowTone="cyan">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A6FAFF]">
-                Síntomas repetidos
-              </p>
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#F5F7FA]">
-                Así se ve un sistema comercial débil.
-              </h3>
-              <div className="mt-6">
-                <Checklist items={portfolioProblemSymptoms} tone="cyan" />
-              </div>
-            </Card>
-          </div>
-        </Container>
-      </section>
-
-      <section className="cv-auto py-16 sm:py-20">
-        <Container>
-          <SectionTitle
-            eyebrow="Página 3 · Qué es RiBuzz y qué hace"
-            title="RiBuzz es un sistema de crecimiento comercial para empresas que necesitan dejar de crecer a ciegas."
-            description="Ayudamos a una empresa a ordenar cómo atrae clientes, cómo convierte oportunidades, cómo hace seguimiento y cómo sostiene ingresos. Lo hacemos a través de diagnóstico, diseño del sistema comercial, implementación de soluciones y acompañamiento como growth partner."
-          />
-
-          <div className="mt-10 grid gap-6 xl:grid-cols-3">
-            {portfolioGrowthLayers.map((item, index) => (
-              <Card
-                key={item.title}
-                glowTone={index % 2 === 0 ? "purple" : "cyan"}
-                className="rounded-[28px] p-6 sm:p-7"
-              >
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                  Capa 0{index + 1}
-                </p>
-                <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#F5F7FA]">
-                  {item.title}
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                  {item.description}
-                </p>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <SectionDivider />
-
-      <section className="section-soft cv-auto py-16 sm:py-20">
-        <Container>
-          <SectionTitle
-            eyebrow="Página 4 · Cómo trabajamos"
-            title="Nuestro modelo sigue una secuencia clara: claridad, estructura, implementación y crecimiento acompañado."
-            description="Todo parte del diagnóstico. No proponemos antes de entender. No ejecutamos por ejecutar."
-          />
-
-          <div className="mt-10 grid gap-5 lg:grid-cols-4">
-            {portfolioModelSteps.map((item, index) => (
-              <Card
-                key={item.title}
-                glowTone={index % 2 === 0 ? "purple" : "cyan"}
-                className="rounded-[24px] p-6"
-              >
-                <p className="font-heading text-[2rem] font-semibold leading-none text-[#F5F7FA]">
-                  0{index + 1}
-                </p>
-                <h3 className="mt-4 text-xl font-semibold text-[#F5F7FA]">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                  {item.description}
-                </p>
-              </Card>
-            ))}
-
-            <Card className="rounded-[28px] p-6 sm:p-7 lg:col-span-2 lg:h-full">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                Entrada natural al modelo
-              </p>
-              <h3 className="mt-3 text-3xl font-semibold tracking-tight text-[#F5F7FA]">
-                {portfolioEntryModel.price}
-              </h3>
-              <p className="mt-2 text-sm uppercase tracking-[0.12em] text-[#A6FAFF]">
-                {portfolioEntryModel.title}
-              </p>
-              <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                {portfolioEntryModel.description}
-              </p>
-            </Card>
-
-            <Card className="rounded-[28px] p-6 sm:p-7 lg:col-span-2 lg:h-full" glowTone="cyan">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A6FAFF]">
-                Continuidad del modelo
-              </p>
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#F5F7FA]">
-                Implementación puntual o acompañamiento variable.
-              </h3>
-              <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                {portfolioEntryModel.continuity}
-              </p>
-            </Card>
-          </div>
-        </Container>
-      </section>
-
-      <section className="cv-auto py-16 sm:py-20">
-        <Container>
-          <SectionTitle
-            eyebrow="Página 5 · Qué también ejecuta RiBuzz"
-            title="RiBuzz sí presta servicios de marketing y tecnología, pero dentro de una lógica de sistema."
-            description="Eso evita que el cliente vea a RiBuzz solo como consultoría. RiBuzz diseña, pero también implementa."
-          />
-
-          <div className="mt-10 grid gap-6 xl:grid-cols-2">
-            <Card className="rounded-[28px] p-6 sm:p-7">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                Marketing
-              </p>
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#F5F7FA]">
-                Activos orientados a conversión y venta.
-              </h3>
-              <div className="mt-6">
-                <Checklist items={portfolioMarketingServices} />
-              </div>
-            </Card>
-
-            <Card className="rounded-[28px] p-6 sm:p-7" glowTone="cyan">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A6FAFF]">
-                Tecnología
-              </p>
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#F5F7FA]">
-                Infraestructura ligera o robusta según el flujo.
-              </h3>
-              <div className="mt-6">
-                <Checklist items={portfolioTechnologyServices} tone="cyan" />
-              </div>
-            </Card>
-          </div>
-
-          <Card className="mt-6 rounded-[28px] p-6 sm:p-7">
-            <p className="text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
-              RiBuzz no reemplaza la función comercial interna del negocio.
-              Diseña el sistema, implementa herramientas y acompaña la operación,
-              pero no entra a sustituir producto, agencia ni equipo comercial
-              donde ya existe una estructura que debe integrarse y no duplicarse.
-            </p>
-          </Card>
-        </Container>
-      </section>
-
-      <SectionDivider />
-
-      <section className="section-soft cv-auto py-16 sm:py-20">
-        <Container>
-          <SectionTitle
-            eyebrow="Página 6 · Evidencia y casos ejecutados"
-            title="RiBuzz no parte de una hipótesis pura. Ya registra validación comercial activa con clientes cerrados y casos reales."
-            description="Eso valida intervención en servicios, educación digital, construcción, B2B y activaciones comerciales con captura de datos."
-          />
-
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {portfolioCases.map((item, index) => (
-              <Card
-                key={item.name}
-                glowTone={index % 2 === 0 ? "purple" : "cyan"}
-                className={`rounded-[28px] p-6 sm:p-7 ${
-                  index === portfolioCases.length - 1
-                    ? "md:col-span-2 md:mx-auto md:max-w-[42rem]"
-                    : ""
-                }`}
-              >
-                <div className="flex flex-wrap gap-2">
-                  <span className="rounded-full border border-[#E625FF]/18 bg-[#170F1C] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#F6C6FF]">
-                    {item.sector}
-                  </span>
-                  <span className="rounded-full border border-[#0FEFFD]/18 bg-[#0C1518] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#A6FAFF]">
-                    {item.status}
-                  </span>
-                </div>
-                <h3 className="mt-4 text-2xl font-semibold tracking-tight text-[#F5F7FA]">
-                  {item.name}
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
-                  {item.description}
-                </p>
-              </Card>
-            ))}
-          </div>
-
-          <div className="mt-8 flex items-center gap-4">
-            <div className="h-px flex-1 bg-white/10" />
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">
-              Flujo operativo
-            </p>
-            <div className="h-px flex-1 bg-white/10" />
-          </div>
-
-          <Card className="mt-6 rounded-[28px] p-6 sm:mx-auto sm:max-w-[46rem] sm:p-7" glowTone="cyan">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A6FAFF]">
-              Prueba de concepto operativa
-            </p>
-            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#F5F7FA]">
-              {portfolioOperationalProof.title}
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-              {portfolioOperationalProof.description}
-            </p>
-
-            <PlaybookGallery />
-          </Card>
-        </Container>
-      </section>
-
-      <SectionDivider />
-
-      <section className="cv-auto py-16 sm:py-20">
-        <Container>
-          <SectionTitle
-            eyebrow="Página 7 · Por qué RiBuzz y cómo entrar"
-            title="RiBuzz no vende una consultoría que termina en un PDF. Trabaja sobre el sistema completo."
-            description="Esa es la diferencia frente a quienes se quedan solo en estrategia, solo en piezas o solo en herramientas."
-          />
-
-          <div className="mt-10 grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-            <Card className="rounded-[28px] p-6 sm:p-7">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                Por qué RiBuzz
-              </p>
-              <div className="mt-5">
-                <Checklist items={portfolioClosingReasons} />
-              </div>
-            </Card>
-
-            <Card className="rounded-[28px] p-6 sm:p-7" glowTone="cyan">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A6FAFF]">
-                Cómo entrar
-              </p>
-              <h3 className="mt-3 text-3xl font-semibold tracking-tight text-[#F5F7FA]">
-                {portfolioEntryModel.price}
-              </h3>
-              <p className="mt-2 text-sm uppercase tracking-[0.12em] text-[#A6FAFF]">
-                Primera fase de diagnóstico y diseño del sistema comercial
-              </p>
-              <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                Desde ahí, el negocio decide si continúa con implementación
-                puntual, acompañamiento o una combinación de ambos.
-              </p>
-              <p className="mt-4 text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
-                Esa fue también la lógica aterrizada en la propuesta de Selah: un
-                piloto de diseño del motor de adquisición de oferta, sin
-                reemplazar el frente actual de demanda ni el equipo existente.
-              </p>
-            </Card>
-          </div>
-
-          <div className="relative mt-8 overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(21,24,36,0.96),rgba(14,16,24,0.92))] px-6 py-10 text-center sm:px-10 sm:py-14">
-            <div
-              className="pointer-events-none absolute left-[-4%] top-6 h-28 w-28 rounded-full bg-[#E625FF]/18 blur-3xl"
-              style={{ animation: "float 7s ease-in-out infinite" }}
-            />
-            <div
-              className="pointer-events-none absolute right-[4%] top-10 h-24 w-24 rounded-full bg-[#0FEFFD]/14 blur-3xl"
-              style={{ animation: "float 8.5s ease-in-out infinite", animationDelay: "0.8s" }}
-            />
-            <div
-              className="pointer-events-none absolute bottom-[-1.5rem] left-1/2 h-36 w-36 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.16),rgba(15,239,253,0.08)_45%,transparent_72%)] blur-2xl"
-              style={{ animation: "float 9s ease-in-out infinite", animationDelay: "1.2s" }}
-            />
-            <div className="mx-auto max-w-3xl">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                Siguiente paso
-              </p>
-              <h2 className="mt-4 font-heading text-[2rem] font-semibold leading-[1.02] tracking-[-0.04em] text-[#F5F7FA] sm:text-[3rem]">
-                Si quieres, vemos tu sistema comercial y te mostramos por dónde empezar.
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#98A0B3] sm:text-lg">
-                Podemos revisar tu contexto, detectar el cuello de botella y enseñarte
-                cómo se vería un flujo más claro para adquisición, seguimiento y venta.
-              </p>
-
-              <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                {portfolioClosingSteps.map((item, index) => (
-                  <div
-                    key={item}
-                    className={`rounded-2xl border px-4 py-4 text-base leading-relaxed sm:text-lg ${
-                      index === 1
-                        ? "border-[#0FEFFD]/18 bg-[#0C1518]/70 text-[#A6FAFF]"
-                        : "border-white/10 bg-white/[0.03] text-[#C7CBD6]"
-                    }`}
-                    style={{
-                      animation: "reward-reveal 680ms cubic-bezier(0.22, 1, 0.36, 1) both",
-                      animationDelay: `${index * 120}ms`,
-                    }}
-                  >
+            <div className="mx-auto h-px w-full bg-[#AAB4C6]" />
+            <div className="rounded-b-[44px] bg-[#101322] px-6 py-6 text-[#C9D4E6]">
+              <div className="grid gap-2 sm:grid-cols-2">
+                {portfolioIcebergRoot.map((item) => (
+                  <p key={item} className="text-sm font-semibold">
                     {item}
-                  </div>
+                  </p>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </Slide>
 
-              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Button href={SITE_CONFIG.diagnosisPath} size="lg">
-                  Solicitar revisión del sistema
-                </Button>
-                <Button
-                  href={SITE_CONFIG.whatsappUrl}
-                  variant="secondary"
-                  size="lg"
-                  external
-                >
-                  Pedir ejemplo por WhatsApp
-                </Button>
+      <Slide
+        number="07"
+        eyebrow="Vacío del mercado"
+        title="El mercado ofrece piezas. Las empresas necesitan sistema."
+        message="RiBuzz no entra como catálogo de servicios. Entra como una arquitectura de decisión y ejecución comercial."
+        className="pt-0"
+      >
+        <div className="overflow-hidden rounded-[26px] border border-[#DCE2EE]">
+          {portfolioMarketGap.map((item) => (
+            <div
+              key={item.actor}
+              className={`grid gap-3 border-b border-[#DCE2EE] p-4 last:border-b-0 sm:grid-cols-[8rem_1fr] ${
+                item.featured ? "bg-[#EFFFBA]" : "bg-white"
+              }`}
+            >
+              <p className="font-bold text-[#101322]">{item.actor}</p>
+              <p className="text-sm leading-relaxed text-[#4B5567]">{item.limit}</p>
+            </div>
+          ))}
+        </div>
+      </Slide>
+
+      <Slide
+        number="08"
+        eyebrow="Solución"
+        title="RiBuzz convierte el crecimiento comercial en un sistema."
+        message="Diagnosticamos el negocio, diseñamos el sistema comercial, implementamos los activos necesarios y acompañamos la ejecución."
+        className="pt-0"
+      >
+        <div className="grid gap-3 sm:grid-cols-5">
+          {portfolioSystemBlocks.map((item, index) => (
+            <MiniNode key={item} label={item} index={index} />
+          ))}
+        </div>
+      </Slide>
+
+      <Slide
+        number="09"
+        eyebrow="Cómo funciona"
+        title="Una ruta guiada desde claridad hasta crecimiento."
+        message="RiBuzz ordena prioridades y ejecuta lo que el negocio realmente necesita, en el orden correcto."
+        className="pt-0"
+      >
+        <div className="grid gap-3">
+          {portfolioOperatingRoute.map((item, index) => (
+            <div
+              key={item}
+              className="grid items-center gap-3 rounded-2xl border border-[#DCE2EE] bg-[#F7F9FC] p-3 sm:grid-cols-[3rem_1fr]"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0B1220] text-xs font-bold text-white">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <p className="text-sm font-bold text-[#101322]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </Slide>
+
+      <Slide
+        number="10"
+        eyebrow="Implementación"
+        title="Del diagnóstico a activos comerciales concretos."
+        message="RiBuzz sí implementa marketing y tecnología, pero dentro de una lógica de sistema, no como piezas sueltas."
+        className="pt-0"
+      >
+        <div className="grid gap-4 sm:grid-cols-2">
+          {portfolioImplementationAreas.map((area) => (
+            <div key={area.title} className="rounded-3xl border border-[#DCE2EE] bg-[#F7F9FC] p-5">
+              <h3 className="text-lg font-bold text-[#101322]">{area.title}</h3>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {area.items.map((item) => (
+                  <Tag key={item}>{item}</Tag>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Slide>
+
+      <Slide
+        number="11"
+        eyebrow="Modelo de negocio"
+        title="Una relación que puede crecer con el cliente."
+        message="La entrada natural es el diseño del sistema comercial. Desde ahí, la continuidad puede avanzar hacia implementación o acompañamiento como growth partner."
+        className="pt-0"
+      >
+        <div className="grid gap-4">
+          {portfolioBusinessModel.map((item, index) => (
+            <div
+              key={item.title}
+              className="rounded-3xl border border-[#DCE2EE] bg-white p-5 shadow-[0_12px_30px_rgba(20,28,45,0.06)]"
+            >
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#5B16E6]">
+                Nivel {index + 1}
+              </p>
+              <h3 className="mt-2 text-xl font-bold text-[#101322]">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[#4B5567]">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Slide>
+
+      <Slide
+        number="12"
+        eyebrow="Validación actual"
+        title="RiBuzz ya está operando con casos reales."
+        message="La validación actual cruza servicios, educación digital, construcción, B2B y activaciones comerciales con captura de datos."
+        className="pt-0"
+      >
+        <div className="grid gap-3">
+          {portfolioCases.map((item) => (
+            <div
+              key={item.name}
+              className="rounded-2xl border border-[#DCE2EE] bg-[#F7F9FC] p-4"
+            >
+              <div className="flex flex-wrap items-center gap-2">
+                <h3 className="text-base font-bold text-[#101322]">{item.name}</h3>
+                <Tag active>{item.status}</Tag>
+              </div>
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-[#5B16E6]">
+                {item.sector}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-[#4B5567]">
+                <strong>Problema:</strong> {item.problem}{" "}
+                <strong>Intervención:</strong> {item.intervention}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Slide>
+
+      <Slide
+        number="13"
+        eyebrow="Escalabilidad"
+        title="El servicio de hoy puede convertirse en infraestructura mañana."
+        message="RiBuzz está construyendo un sistema repetible: diagnóstico asistido por IA, mapa comercial, ejecución gestionada y red de aliados validados."
+        className="pt-0"
+      >
+        <div className="grid gap-4 sm:grid-cols-2">
+          {portfolioVisionSteps.map((item, index) => (
+            <div
+              key={item.title}
+              className={`rounded-3xl p-5 ${
+                index === portfolioVisionSteps.length - 1
+                  ? "bg-[#101322] text-white"
+                  : "border border-[#DCE2EE] bg-[#F7F9FC] text-[#101322]"
+              }`}
+            >
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#5B16E6]">
+                {item.title}
+              </p>
+              <p
+                className={`mt-3 text-lg font-bold ${
+                  index === portfolioVisionSteps.length - 1 ? "text-white" : "text-[#101322]"
+                }`}
+              >
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Slide>
+
+      <section className="pb-16 pt-0 sm:pb-20">
+        <Container>
+          <div className="overflow-hidden rounded-[32px] bg-[#08111F] p-6 text-white shadow-[0_30px_90px_rgba(20,28,45,0.18)] sm:p-10 lg:p-12">
+            <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+              <div>
+                <div className="mb-8 inline-flex rounded-2xl border border-white/12 bg-white px-4 py-3">
+                  <Image
+                    src="/ribuzz-wordmark.png"
+                    alt="RiBuzz"
+                    width={160}
+                    height={44}
+                    className="h-8 w-auto object-contain"
+                  />
+                </div>
+                <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B8F13A]">
+                  14/14 · Cierre
+                </p>
+                <h2 className="mt-4 max-w-4xl font-heading text-3xl font-semibold leading-[1.02] sm:text-5xl">
+                  RiBuzz existe para que las empresas dejen de vender a ciegas.
+                </h2>
+                <p className="mt-5 max-w-3xl text-base leading-relaxed text-[#C9D4E6] sm:text-lg">
+                  No construimos campañas sueltas. Construimos sistemas comerciales
+                  para que las empresas sepan qué hacer, en qué orden, con quién
+                  ejecutarlo y cómo medir si está funcionando.
+                </p>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href={SITE_CONFIG.diagnosisPath}
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-[#B8F13A] px-6 text-sm font-bold text-[#172100] transition hover:bg-[#CCFF52]"
+                  >
+                    Abrir conversación estratégica
+                  </a>
+                  <a
+                    href={SITE_CONFIG.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-12 items-center justify-center rounded-full border border-white/16 bg-white/8 px-6 text-sm font-bold text-white transition hover:bg-white/14"
+                  >
+                    Escribir por WhatsApp
+                  </a>
+                </div>
+              </div>
+
+              <div className="rounded-[28px] border border-white/12 bg-white/[0.06] p-5">
+                <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-[#B8F13A]">
+                  Buscamos
+                </p>
+                <div className="grid gap-3">
+                  {portfolioAskItems.map((item) => (
+                    <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-sm font-semibold text-[#EEF4FF]">
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </Container>
       </section>
-    </>
+    </main>
   );
 }
