@@ -90,11 +90,13 @@ function Tag({ children, active = false }: { children: ReactNode; active?: boole
 
 function MiniNode({ label, index }: { label: string; index: number }) {
   return (
-    <div className="min-h-[8.5rem] rounded-[20px] border border-white/10 bg-white/[0.045] p-4">
+    <div className="min-h-[8rem] rounded-[20px] border border-white/10 bg-white/[0.045] p-4">
       <span className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E625FF]/28 bg-[#170F1C] text-xs font-bold text-[#F6C6FF]">
         {index + 1}
       </span>
-      <p className="text-base font-semibold leading-snug text-[#F5F7FA]">{label}</p>
+      <p className="break-words text-sm font-semibold leading-snug text-[#F5F7FA] [overflow-wrap:anywhere] sm:text-base">
+        {label}
+      </p>
     </div>
   );
 }
@@ -412,7 +414,7 @@ export default function PortfolioPage() {
         message="Claridad, estructura, implementación y continuidad."
         className="pt-0"
       >
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {portfolioSystemBlocks.map((item, index) => (
             <MiniNode key={item} label={item} index={index} />
           ))}
