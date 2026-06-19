@@ -230,13 +230,14 @@ export default function PortfolioPage() {
         title="El problema no es emprender. El problema es sostener y escalar."
         message="Primeras ventas no bastan si el sistema comercial no existe."
       >
-        <div className="grid gap-3 sm:grid-cols-5">
+        <div className="relative grid gap-3 lg:grid-cols-5">
+          <div className="pointer-events-none absolute left-8 right-8 top-[2.05rem] hidden h-px bg-[linear-gradient(90deg,rgba(15,239,253,0),rgba(15,239,253,0.5),rgba(230,37,255,0.5),rgba(230,37,255,0))] lg:block" />
           {portfolioThesisFlow.map((item, index) => (
             <div
               key={item}
-              className="relative min-h-[8rem] rounded-[20px] border border-white/10 bg-white/[0.045] p-4"
+              className="relative rounded-[20px] border border-white/10 bg-[#0B0D14]/72 p-4 text-center"
             >
-              <span className="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#0C1518] text-xs font-bold text-[#A6FAFF]">
+              <span className="mx-auto mb-4 flex h-9 w-9 items-center justify-center rounded-full border border-[#0FEFFD]/20 bg-[#0C1518] text-xs font-bold text-[#A6FAFF] shadow-[0_0_24px_rgba(15,239,253,0.12)]">
                 {index + 1}
               </span>
               <p className="text-sm font-bold leading-snug text-[#F5F7FA]">{item}</p>
@@ -499,7 +500,7 @@ export default function PortfolioPage() {
         message="Validación en servicios, educación digital, construcción, B2B y eventos."
         className="pt-0"
       >
-        <div className="grid gap-3">
+        <div className="grid gap-3 lg:grid-cols-2">
           {portfolioCases.map((item) => (
             <div
               key={item.name}
@@ -512,20 +513,20 @@ export default function PortfolioPage() {
               <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-[#E7B0EE]">
                 {item.sector}
               </p>
-              <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-[16px] border border-[#E625FF]/16 bg-[#170F1C]/54 p-3">
-                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#E7B0EE]">
+              <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                <div className="rounded-[14px] border border-[#E625FF]/16 bg-[#170F1C]/54 p-2.5">
+                  <p className="text-[0.58rem] font-bold uppercase tracking-[0.14em] text-[#E7B0EE]">
                     Problema
                   </p>
-                  <p className="mt-2 text-sm font-semibold leading-snug text-[#F5F7FA]">
+                  <p className="mt-1.5 text-xs font-semibold leading-snug text-[#F5F7FA]">
                     {item.problem}
                   </p>
                 </div>
-                <div className="rounded-[16px] border border-[#0FEFFD]/16 bg-[#0C1518]/54 p-3">
-                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#A6FAFF]">
+                <div className="rounded-[14px] border border-[#0FEFFD]/16 bg-[#0C1518]/54 p-2.5">
+                  <p className="text-[0.58rem] font-bold uppercase tracking-[0.14em] text-[#A6FAFF]">
                     Intervención
                   </p>
-                  <p className="mt-2 text-sm font-semibold leading-snug text-[#F5F7FA]">
+                  <p className="mt-1.5 text-xs font-semibold leading-snug text-[#F5F7FA]">
                     {item.intervention}
                   </p>
                 </div>
