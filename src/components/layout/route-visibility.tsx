@@ -64,6 +64,7 @@ export function RouteVisibility({
     "/diusatti",
     "/verbenaversion2",
     "/pelletierversion2",
+    "/portafolio",
     "/admin",
   ],
 }: RouteVisibilityProps) {

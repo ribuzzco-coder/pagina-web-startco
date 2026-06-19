@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { Container } from "@/components/ui/container";
@@ -27,13 +28,13 @@ export const metadata = createPageMetadata({
   path: "/portafolio",
 });
 
-const slideEyebrow =
-  "text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#5B16E6]";
-const slideTitle =
-  "max-w-4xl font-heading text-3xl font-semibold leading-[1.02] text-[#101322] sm:text-5xl";
-const slideText = "max-w-3xl text-base leading-relaxed text-[#4B5567] sm:text-lg";
-const panel =
-  "border border-[#DCE2EE] bg-white shadow-[0_24px_70px_rgba(20,28,45,0.08)]";
+const eyebrowClass =
+  "text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#E7B0EE]";
+const titleClass =
+  "max-w-4xl font-heading text-[2rem] font-semibold leading-[1.02] tracking-[-0.035em] text-[#F5F7FA] sm:text-[3rem] lg:text-[3.35rem]";
+const textClass = "max-w-2xl text-sm font-medium leading-relaxed text-[#B8C0D4] sm:text-base";
+const darkPanel =
+  "border border-white/10 bg-[linear-gradient(180deg,rgba(25,27,39,0.92),rgba(13,15,23,0.96))] shadow-[0_24px_70px_rgba(0,0,0,0.32)]";
 
 function Slide({
   number,
@@ -51,21 +52,21 @@ function Slide({
   className?: string;
 }) {
   return (
-    <section className={`py-10 sm:py-14 ${className}`}>
-      <Container>
-        <div className={`${panel} overflow-hidden rounded-[28px] p-6 sm:p-9 lg:p-11`}>
-          <div className="mb-8 flex items-center justify-between gap-4">
-            <p className={slideEyebrow}>{eyebrow}</p>
-            <span className="rounded-full border border-[#DCE2EE] bg-[#F7F9FC] px-3 py-1 text-xs font-bold text-[#697386]">
+    <section className={`py-8 sm:py-10 ${className}`}>
+      <Container className="max-w-[19.5rem] px-0 sm:max-w-6xl sm:px-8 lg:px-10">
+        <div className={`${darkPanel} overflow-hidden rounded-[26px] p-5 sm:p-8 lg:p-10`}>
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
+            <p className={eyebrowClass}>{eyebrow}</p>
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-bold text-[#98A0B3]">
               {number}/14
             </span>
           </div>
-          <div className="grid gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
+          <div className="grid gap-8 xl:grid-cols-[0.92fr_1.08fr] xl:items-center">
             <div>
-              <h2 className={slideTitle}>{title}</h2>
-              {message ? <p className={`${slideText} mt-5`}>{message}</p> : null}
+              <h2 className={titleClass}>{title}</h2>
+              {message ? <p className={`${textClass} mt-5`}>{message}</p> : null}
             </div>
-            {children}
+            <div className="min-w-0">{children}</div>
           </div>
         </div>
       </Container>
@@ -76,10 +77,10 @@ function Slide({
 function Tag({ children, active = false }: { children: ReactNode; active?: boolean }) {
   return (
     <span
-      className={`inline-flex rounded-full border px-3 py-1.5 text-sm font-semibold ${
+      className={`inline-flex min-h-9 items-center rounded-full border px-3 py-1.5 text-sm font-semibold leading-tight ${
         active
-          ? "border-[#B8F13A] bg-[#EFFFBA] text-[#263500]"
-          : "border-[#DCE2EE] bg-[#F7F9FC] text-[#344054]"
+          ? "border-[#0FEFFD]/24 bg-[#0C1518] text-[#A6FAFF]"
+          : "border-white/10 bg-white/[0.045] text-[#C7CBD6]"
       }`}
     >
       {children}
@@ -89,30 +90,62 @@ function Tag({ children, active = false }: { children: ReactNode; active?: boole
 
 function MiniNode({ label, index }: { label: string; index: number }) {
   return (
-    <div className="relative rounded-2xl border border-[#DCE2EE] bg-white p-4 shadow-[0_14px_34px_rgba(20,28,45,0.07)]">
-      <span className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#111827] text-xs font-bold text-white">
+    <div className="min-h-[8.5rem] rounded-[20px] border border-white/10 bg-white/[0.045] p-4">
+      <span className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E625FF]/28 bg-[#170F1C] text-xs font-bold text-[#F6C6FF]">
         {index + 1}
       </span>
-      <p className="text-sm font-semibold leading-snug text-[#101322]">{label}</p>
+      <p className="text-base font-semibold leading-snug text-[#F5F7FA]">{label}</p>
     </div>
+  );
+}
+
+function CtaLink({
+  href,
+  children,
+  secondary = false,
+  external = false,
+}: {
+  href: string;
+  children: ReactNode;
+  secondary?: boolean;
+  external?: boolean;
+}) {
+  const className = `inline-flex h-12 w-full items-center justify-center rounded-full px-6 text-sm font-bold transition sm:w-auto sm:text-base ${
+    secondary
+      ? "border border-white/12 bg-white/[0.04] text-[#F5F7FA] hover:border-[#0FEFFD]/30 hover:bg-white/[0.08]"
+      : "border border-[#E625FF]/55 bg-[linear-gradient(135deg,#E625FF,#B11CD4)] text-white shadow-[0_10px_26px_rgba(230,37,255,0.24)] hover:border-[#f5a2ff]/80"
+  }`;
+
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
   );
 }
 
 export default function PortfolioPage() {
   return (
-    <main className="min-h-screen bg-[#F4F7FB] text-[#101322]">
-      <section className="relative overflow-hidden bg-[#08111F] py-16 text-white sm:py-20">
+    <main className="-mt-[76px] min-h-screen overflow-hidden bg-[#050509] text-[#F5F7FA]">
+      <section className="relative overflow-hidden pb-12 pt-16 sm:pb-16 sm:pt-20">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-[-12%] top-[-22%] h-[26rem] w-[26rem] rounded-full bg-[#5B16E6]/32 blur-3xl" />
-          <div className="absolute right-[-8%] top-[14%] h-[24rem] w-[24rem] rounded-full bg-[#0FEFFD]/20 blur-3xl" />
-          <div className="absolute bottom-[-20%] left-[36%] h-[22rem] w-[22rem] rounded-full bg-[#B8F13A]/12 blur-3xl" />
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:48px_48px] opacity-20" />
+          <div className="absolute left-1/2 top-[-12rem] h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-[#E625FF]/14 blur-3xl" />
+          <div className="absolute right-[-12%] top-[18%] h-[26rem] w-[26rem] rounded-full bg-[#0FEFFD]/10 blur-3xl" />
+          <div className="absolute left-[-10%] bottom-[-18%] h-[24rem] w-[24rem] rounded-full bg-[#5B16E6]/12 blur-3xl" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.05),transparent_32%),linear-gradient(180deg,rgba(5,5,9,0),#050509_86%)]" />
         </div>
 
-        <Container className="relative">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div>
-              <div className="mb-10 inline-flex rounded-2xl border border-white/12 bg-white px-4 py-3">
+        <Container className="relative max-w-[19.5rem] px-0 sm:max-w-6xl sm:px-8 lg:px-10">
+          <div className="grid min-w-0 gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div className="min-w-0">
+              <div className="mb-9 inline-flex rounded-[18px] border border-white/10 bg-white/[0.04] px-4 py-3">
                 <Image
                   src="/ribuzz-wordmark.png"
                   alt="RiBuzz"
@@ -122,56 +155,61 @@ export default function PortfolioPage() {
                   className="h-9 w-auto object-contain"
                 />
               </div>
-              <p className="text-[0.7rem] font-bold uppercase tracking-[0.24em] text-[#B8F13A]">
+              <p className="text-[0.7rem] font-bold uppercase tracking-[0.24em] text-[#A6FAFF]">
                 Pitch deck comercial
               </p>
-              <h1 className="mt-4 max-w-4xl font-heading text-4xl font-semibold leading-[0.98] sm:text-6xl">
+              <h1 className="mt-4 max-w-4xl break-words font-heading text-[1.52rem] font-semibold leading-[1.12] text-[#F5F7FA] sm:text-[3.4rem] sm:leading-[1.02] sm:tracking-[-0.04em] lg:text-[3.85rem]">
                 El sistema de crecimiento comercial para empresas que ya venden,
                 pero no crecen con estructura.
               </h1>
-              <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#C9D4E6] sm:text-lg">
+              <p className="mt-6 max-w-3xl break-words text-[0.82rem] leading-relaxed text-[#C7CBD6] sm:text-lg">
                 RiBuzz ayuda a diagnosticar, diseñar, implementar y acompañar
                 sistemas comerciales para convertir esfuerzo operativo en ventas
                 más claras, medibles y sostenibles.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={SITE_CONFIG.diagnosisPath}
-                  className="inline-flex h-12 items-center justify-center rounded-full bg-[#B8F13A] px-6 text-sm font-bold text-[#172100] transition hover:bg-[#CCFF52]"
-                >
-                  Solicitar diagnóstico
-                </a>
-                <a
-                  href={SITE_CONFIG.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/16 bg-white/8 px-6 text-sm font-bold text-white transition hover:bg-white/14"
-                >
+                <CtaLink href={SITE_CONFIG.diagnosisPath}>Solicitar diagnóstico</CtaLink>
+                <CtaLink href={SITE_CONFIG.whatsappUrl} secondary external>
                   Hablar con RiBuzz
-                </a>
+                </CtaLink>
               </div>
             </div>
 
-            <div className="relative min-h-[24rem] overflow-hidden rounded-[32px] border border-white/12 bg-white/[0.06] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.28)]">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,rgba(15,239,253,0.18),transparent_32%)]" />
-              <div className="relative grid h-full place-items-center">
-                <div className="relative h-80 w-80 max-w-full">
-                  <div className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#B8F13A]/60 bg-[#B8F13A]/12 p-5 text-center text-sm font-bold text-[#EFFFBA]">
+            <div className={`${darkPanel} relative min-w-0 overflow-hidden rounded-[28px] p-5 sm:min-h-[27rem] sm:p-7`}>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_34%,rgba(230,37,255,0.18),transparent_34%),radial-gradient(circle_at_78%_64%,rgba(15,239,253,0.11),transparent_28%)]" />
+              <div className="relative grid gap-3 sm:hidden">
+                <div className="rounded-[18px] border border-[#E625FF]/28 bg-[#170F1C]/80 p-4 text-center text-base font-bold text-[#F6C6FF]">
+                  Sistema comercial
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {portfolioSystemBlocks.map((item) => (
+                    <div
+                      key={item}
+                      className="min-h-[4.6rem] rounded-[16px] border border-white/10 bg-[#0B0D14]/84 p-3 text-sm font-bold leading-tight text-[#F5F7FA]"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="relative hidden h-full min-h-[24rem] place-items-center sm:grid">
+                <div className="relative h-[22rem] w-full max-w-[28rem]">
+                  <div className="absolute left-1/2 top-1/2 grid h-32 w-32 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#E625FF]/36 bg-[#170F1C]/88 p-5 text-center text-sm font-bold leading-tight text-[#F6C6FF] shadow-[0_0_38px_rgba(230,37,255,0.24)]">
                     Sistema comercial
                   </div>
                   {portfolioSystemBlocks.map((item, index) => {
                     const positions = [
                       "left-1/2 top-0 -translate-x-1/2",
-                      "right-0 top-1/3",
-                      "right-8 bottom-0",
-                      "left-8 bottom-0",
-                      "left-0 top-1/3",
+                      "right-0 top-[32%]",
+                      "right-[10%] bottom-0",
+                      "left-[10%] bottom-0",
+                      "left-0 top-[32%]",
                     ];
 
                     return (
                       <div
                         key={item}
-                        className={`absolute ${positions[index]} rounded-2xl border border-white/14 bg-[#101B2E] px-4 py-3 text-center text-xs font-bold text-white shadow-[0_18px_40px_rgba(0,0,0,0.24)]`}
+                        className={`absolute ${positions[index]} w-32 rounded-[18px] border border-white/12 bg-[#0B0D14]/88 px-3 py-3 text-center text-xs font-bold leading-tight text-[#F5F7FA] shadow-[0_18px_44px_rgba(0,0,0,0.32)]`}
                       >
                         {item}
                       </div>
@@ -188,18 +226,18 @@ export default function PortfolioPage() {
         number="02"
         eyebrow="Tesis"
         title="El problema no es emprender. El problema es sostener y escalar."
-        message="Miles de empresas nacen, venden algo y sobreviven un tiempo, pero muchas no construyen un sistema comercial que convierta esfuerzo en ingresos sostenibles."
+        message="Primeras ventas no bastan si el sistema comercial no existe."
       >
-        <div className="grid gap-3">
+        <div className="grid gap-3 sm:grid-cols-5">
           {portfolioThesisFlow.map((item, index) => (
-            <div key={item} className="flex items-center gap-3">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#111827] text-xs font-bold text-white">
+            <div
+              key={item}
+              className="relative min-h-[8rem] rounded-[20px] border border-white/10 bg-white/[0.045] p-4"
+            >
+              <span className="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#0C1518] text-xs font-bold text-[#A6FAFF]">
                 {index + 1}
               </span>
-              <div className="h-px flex-1 bg-[#DCE2EE]" />
-              <p className="min-w-36 rounded-2xl border border-[#DCE2EE] bg-[#F7F9FC] px-4 py-3 text-sm font-bold text-[#101322]">
-                {item}
-              </p>
+              <p className="text-sm font-bold leading-snug text-[#F5F7FA]">{item}</p>
             </div>
           ))}
         </div>
@@ -209,25 +247,29 @@ export default function PortfolioPage() {
         number="03"
         eyebrow="Contexto de mercado"
         title="El país está construido sobre empresas pequeñas."
-        message="La mayoría no tiene equipos internos robustos de estrategia, marketing, ventas, tecnología y seguimiento. Aun así compite en mercados cada vez más digitales y exigentes."
+        message="Equipos pequeños compiten con exigencias digitales cada vez más altas."
         className="pt-0"
       >
-        <div className="rounded-[26px] border border-[#DCE2EE] bg-[#F7F9FC] p-5">
+        <div className="grid gap-4">
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-3xl bg-[#101322] p-5 text-white">
-              <p className="text-5xl font-bold">1,56M</p>
-              <p className="mt-2 text-sm text-[#C9D4E6]">
+            <div className="rounded-[22px] border border-[#E625FF]/18 bg-[#170F1C]/72 p-5">
+              <p className="font-heading text-[3.5rem] font-semibold leading-none text-[#F6C6FF]">
+                1,56M
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-[#C7CBD6]">
                 empresas formales activas en Colombia.
               </p>
             </div>
-            <div className="rounded-3xl bg-[#EFFFBA] p-5 text-[#263500]">
-              <p className="text-5xl font-bold">94,2%</p>
-              <p className="mt-2 text-sm">
+            <div className="rounded-[22px] border border-[#0FEFFD]/18 bg-[#0C1518]/72 p-5">
+              <p className="font-heading text-[3.5rem] font-semibold leading-none text-[#A6FAFF]">
+                94,2%
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-[#C7CBD6]">
                 del tejido empresarial corresponde a microempresas.
               </p>
             </div>
           </div>
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             {portfolioMarketNeeds.map((item) => (
               <Tag key={item}>{item}</Tag>
             ))}
@@ -239,29 +281,40 @@ export default function PortfolioPage() {
         number="04"
         eyebrow="Problema de supervivencia"
         title="Crear empresa no es el problema. Sobrevivir sí."
-        message="La fragilidad empresarial no se explica por una sola causa, pero aparece con fuerza cuando faltan clientes, conversión, seguimiento y claridad comercial."
+        message="El quinto año revela si hay sistema o solo esfuerzo."
         className="pt-0"
       >
-        <div className="rounded-[28px] bg-[#101322] p-6 text-white">
-          <div className="grid gap-4 sm:grid-cols-[0.7fr_1.3fr] sm:items-end">
+        <div className="rounded-[24px] border border-white/10 bg-[#0B0D14] p-5 sm:p-6">
+          <div className="grid gap-6 md:grid-cols-[0.8fr_1.2fr] md:items-end">
             <div>
-              <p className="font-heading text-7xl font-semibold text-[#B8F13A]">
+              <p className="font-heading text-[4.8rem] font-semibold leading-none text-[#0FEFFD]">
                 33,5%
               </p>
-              <p className="mt-2 text-sm font-semibold text-[#C9D4E6]">
+              <p className="mt-3 text-base font-semibold leading-relaxed text-[#C7CBD6]">
                 seguía activa cinco años después.
               </p>
             </div>
             <div>
-              <div className="h-10 overflow-hidden rounded-full bg-white/10">
-                <div className="h-full w-[33.5%] rounded-full bg-[#B8F13A]" />
+              <div className="space-y-3">
+                <div>
+                  <div className="mb-2 flex justify-between text-xs font-bold uppercase tracking-[0.12em] text-[#98A0B3]">
+                    <span>Sobreviven</span>
+                    <span>33,5%</span>
+                  </div>
+                  <div className="h-9 overflow-hidden rounded-full bg-white/8">
+                    <div className="h-full w-[33.5%] rounded-full bg-[#0FEFFD]" />
+                  </div>
+                </div>
+                <div>
+                  <div className="mb-2 flex justify-between text-xs font-bold uppercase tracking-[0.12em] text-[#98A0B3]">
+                    <span>No sobreviven</span>
+                    <span>66,5%</span>
+                  </div>
+                  <div className="h-9 overflow-hidden rounded-full bg-white/8">
+                    <div className="h-full w-[66.5%] rounded-full bg-[#E625FF]" />
+                  </div>
+                </div>
               </div>
-              <div className="mt-3 h-10 overflow-hidden rounded-full bg-white/10">
-                <div className="h-full w-[66.5%] rounded-full bg-[#5B16E6]" />
-              </div>
-              <p className="mt-3 text-sm text-[#C9D4E6]">
-                66,5% no sobrevivió al quinto año.
-              </p>
             </div>
           </div>
         </div>
@@ -271,14 +324,14 @@ export default function PortfolioPage() {
         number="05"
         eyebrow="Síntomas"
         title="Cuando no hay sistema, el negocio se vuelve reactivo."
-        message="El desorden comercial se siente en ventas, caja, decisiones y operación diaria."
+        message="Lo comercial se rompe antes de que el número final lo muestre."
         className="pt-0"
       >
         <div className="grid gap-3 sm:grid-cols-2">
           {portfolioProblemSymptoms.map((item) => (
             <div
               key={item}
-              className="rounded-2xl border border-[#DCE2EE] bg-[#F7F9FC] p-4 text-sm font-semibold text-[#344054]"
+              className="min-h-[4.6rem] rounded-[18px] border border-white/10 bg-white/[0.045] p-4 text-base font-semibold leading-snug text-[#F5F7FA]"
             >
               {item}
             </div>
@@ -290,27 +343,33 @@ export default function PortfolioPage() {
         number="06"
         eyebrow="Causa profunda"
         title="El síntoma parece financiero. La raíz suele ser comercial y operativa."
-        message="Más publicaciones, una web o un CRM no corrigen el sistema si la oferta, el proceso, el seguimiento y los datos siguen desconectados."
+        message="Las herramientas no corrigen un flujo roto."
         className="pt-0"
       >
-        <div className="rounded-[28px] border border-[#DCE2EE] bg-[#F7F9FC] p-5">
-          <div className="mx-auto max-w-md">
-            <div className="rounded-t-[40px] bg-[#5B16E6] px-6 py-5 text-white">
+        <div className="mx-auto max-w-xl rounded-[24px] border border-white/10 bg-[#0B0D14] p-5">
+          <div className="rounded-t-[28px] border border-[#E625FF]/20 bg-[#170F1C] px-6 py-5 text-[#F6C6FF]">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#E7B0EE]">
+              Lo visible
+            </p>
+            <div className="grid gap-2 sm:grid-cols-3">
               {portfolioIcebergVisible.map((item) => (
-                <p key={item} className="text-sm font-semibold">
+                <p key={item} className="text-sm font-bold leading-tight">
                   {item}
                 </p>
               ))}
             </div>
-            <div className="mx-auto h-px w-full bg-[#AAB4C6]" />
-            <div className="rounded-b-[44px] bg-[#101322] px-6 py-6 text-[#C9D4E6]">
-              <div className="grid gap-2 sm:grid-cols-2">
-                {portfolioIcebergRoot.map((item) => (
-                  <p key={item} className="text-sm font-semibold">
-                    {item}
-                  </p>
-                ))}
-              </div>
+          </div>
+          <div className="mx-auto h-4 w-px bg-white/18" />
+          <div className="rounded-b-[28px] border border-[#0FEFFD]/18 bg-[#0C1518] px-6 py-6 text-[#A6FAFF]">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#A6FAFF]">
+              Lo que rompe el sistema
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {portfolioIcebergRoot.map((item) => (
+                <p key={item} className="rounded-full bg-white/[0.045] px-3 py-2 text-sm font-bold">
+                  {item}
+                </p>
+              ))}
             </div>
           </div>
         </div>
@@ -320,19 +379,27 @@ export default function PortfolioPage() {
         number="07"
         eyebrow="Vacío del mercado"
         title="El mercado ofrece piezas. Las empresas necesitan sistema."
-        message="RiBuzz no entra como catálogo de servicios. Entra como una arquitectura de decisión y ejecución comercial."
+        message="RiBuzz integra diagnóstico, decisión y ejecución."
         className="pt-0"
       >
-        <div className="overflow-hidden rounded-[26px] border border-[#DCE2EE]">
+        <div className="grid gap-3">
           {portfolioMarketGap.map((item) => (
             <div
               key={item.actor}
-              className={`grid gap-3 border-b border-[#DCE2EE] p-4 last:border-b-0 sm:grid-cols-[8rem_1fr] ${
-                item.featured ? "bg-[#EFFFBA]" : "bg-white"
+              className={`grid gap-3 rounded-[18px] border p-4 sm:grid-cols-[8rem_1fr] ${
+                item.featured
+                  ? "border-[#0FEFFD]/26 bg-[#0C1518]"
+                  : "border-white/10 bg-white/[0.045]"
               }`}
             >
-              <p className="font-bold text-[#101322]">{item.actor}</p>
-              <p className="text-sm leading-relaxed text-[#4B5567]">{item.limit}</p>
+              <p
+                className={`font-bold ${
+                  item.featured ? "text-[#A6FAFF]" : "text-[#F5F7FA]"
+                }`}
+              >
+                {item.actor}
+              </p>
+              <p className="text-sm leading-relaxed text-[#C7CBD6]">{item.limit}</p>
             </div>
           ))}
         </div>
@@ -342,10 +409,10 @@ export default function PortfolioPage() {
         number="08"
         eyebrow="Solución"
         title="RiBuzz convierte el crecimiento comercial en un sistema."
-        message="Diagnosticamos el negocio, diseñamos el sistema comercial, implementamos los activos necesarios y acompañamos la ejecución."
+        message="Claridad, estructura, implementación y continuidad."
         className="pt-0"
       >
-        <div className="grid gap-3 sm:grid-cols-5">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {portfolioSystemBlocks.map((item, index) => (
             <MiniNode key={item} label={item} index={index} />
           ))}
@@ -356,19 +423,19 @@ export default function PortfolioPage() {
         number="09"
         eyebrow="Cómo funciona"
         title="Una ruta guiada desde claridad hasta crecimiento."
-        message="RiBuzz ordena prioridades y ejecuta lo que el negocio realmente necesita, en el orden correcto."
+        message="Primero entendemos. Luego priorizamos. Después ejecutamos."
         className="pt-0"
       >
-        <div className="grid gap-3">
+        <div className="grid gap-3 sm:grid-cols-2">
           {portfolioOperatingRoute.map((item, index) => (
             <div
               key={item}
-              className="grid items-center gap-3 rounded-2xl border border-[#DCE2EE] bg-[#F7F9FC] p-3 sm:grid-cols-[3rem_1fr]"
+              className="grid min-h-[5.25rem] grid-cols-[3rem_1fr] items-center gap-3 rounded-[18px] border border-white/10 bg-white/[0.045] p-3"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0B1220] text-xs font-bold text-white">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E625FF]/24 bg-[#170F1C] text-xs font-bold text-[#F6C6FF]">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <p className="text-sm font-bold text-[#101322]">{item}</p>
+              <p className="text-sm font-bold leading-snug text-[#F5F7FA]">{item}</p>
             </div>
           ))}
         </div>
@@ -378,13 +445,16 @@ export default function PortfolioPage() {
         number="10"
         eyebrow="Implementación"
         title="Del diagnóstico a activos comerciales concretos."
-        message="RiBuzz sí implementa marketing y tecnología, pero dentro de una lógica de sistema, no como piezas sueltas."
+        message="Marketing y tecnología al servicio del flujo."
         className="pt-0"
       >
         <div className="grid gap-4 sm:grid-cols-2">
           {portfolioImplementationAreas.map((area) => (
-            <div key={area.title} className="rounded-3xl border border-[#DCE2EE] bg-[#F7F9FC] p-5">
-              <h3 className="text-lg font-bold text-[#101322]">{area.title}</h3>
+            <div
+              key={area.title}
+              className="rounded-[22px] border border-white/10 bg-white/[0.045] p-5"
+            >
+              <h3 className="text-xl font-bold text-[#F5F7FA]">{area.title}</h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {area.items.map((item) => (
                   <Tag key={item}>{item}</Tag>
@@ -399,20 +469,20 @@ export default function PortfolioPage() {
         number="11"
         eyebrow="Modelo de negocio"
         title="Una relación que puede crecer con el cliente."
-        message="La entrada natural es el diseño del sistema comercial. Desde ahí, la continuidad puede avanzar hacia implementación o acompañamiento como growth partner."
+        message="Diseño, implementación y acompañamiento."
         className="pt-0"
       >
         <div className="grid gap-4">
           {portfolioBusinessModel.map((item, index) => (
             <div
               key={item.title}
-              className="rounded-3xl border border-[#DCE2EE] bg-white p-5 shadow-[0_12px_30px_rgba(20,28,45,0.06)]"
+              className="rounded-[22px] border border-white/10 bg-white/[0.045] p-5"
             >
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#5B16E6]">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#A6FAFF]">
                 Nivel {index + 1}
               </p>
-              <h3 className="mt-2 text-xl font-bold text-[#101322]">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#4B5567]">
+              <h3 className="mt-2 text-xl font-bold text-[#F5F7FA]">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[#C7CBD6]">
                 {item.description}
               </p>
             </div>
@@ -424,26 +494,40 @@ export default function PortfolioPage() {
         number="12"
         eyebrow="Validación actual"
         title="RiBuzz ya está operando con casos reales."
-        message="La validación actual cruza servicios, educación digital, construcción, B2B y activaciones comerciales con captura de datos."
+        message="Validación en servicios, educación digital, construcción, B2B y eventos."
         className="pt-0"
       >
         <div className="grid gap-3">
           {portfolioCases.map((item) => (
             <div
               key={item.name}
-              className="rounded-2xl border border-[#DCE2EE] bg-[#F7F9FC] p-4"
+              className="rounded-[20px] border border-white/10 bg-white/[0.045] p-4"
             >
               <div className="flex flex-wrap items-center gap-2">
-                <h3 className="text-base font-bold text-[#101322]">{item.name}</h3>
+                <h3 className="text-lg font-bold text-[#F5F7FA]">{item.name}</h3>
                 <Tag active>{item.status}</Tag>
               </div>
-              <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-[#5B16E6]">
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-[#E7B0EE]">
                 {item.sector}
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-[#4B5567]">
-                <strong>Problema:</strong> {item.problem}{" "}
-                <strong>Intervención:</strong> {item.intervention}
-              </p>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-[16px] border border-[#E625FF]/16 bg-[#170F1C]/54 p-3">
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#E7B0EE]">
+                    Problema
+                  </p>
+                  <p className="mt-2 text-sm font-semibold leading-snug text-[#F5F7FA]">
+                    {item.problem}
+                  </p>
+                </div>
+                <div className="rounded-[16px] border border-[#0FEFFD]/16 bg-[#0C1518]/54 p-3">
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#A6FAFF]">
+                    Intervención
+                  </p>
+                  <p className="mt-2 text-sm font-semibold leading-snug text-[#F5F7FA]">
+                    {item.intervention}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -453,27 +537,23 @@ export default function PortfolioPage() {
         number="13"
         eyebrow="Escalabilidad"
         title="El servicio de hoy puede convertirse en infraestructura mañana."
-        message="RiBuzz está construyendo un sistema repetible: diagnóstico asistido por IA, mapa comercial, ejecución gestionada y red de aliados validados."
+        message="Un sistema repetible para diagnosticar, ordenar y ejecutar."
         className="pt-0"
       >
         <div className="grid gap-4 sm:grid-cols-2">
           {portfolioVisionSteps.map((item, index) => (
             <div
               key={item.title}
-              className={`rounded-3xl p-5 ${
+              className={`min-h-[8rem] rounded-[22px] border p-5 ${
                 index === portfolioVisionSteps.length - 1
-                  ? "bg-[#101322] text-white"
-                  : "border border-[#DCE2EE] bg-[#F7F9FC] text-[#101322]"
+                  ? "border-[#E625FF]/24 bg-[#170F1C]"
+                  : "border-white/10 bg-white/[0.045]"
               }`}
             >
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#5B16E6]">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#A6FAFF]">
                 {item.title}
               </p>
-              <p
-                className={`mt-3 text-lg font-bold ${
-                  index === portfolioVisionSteps.length - 1 ? "text-white" : "text-[#101322]"
-                }`}
-              >
+              <p className="mt-3 text-xl font-bold leading-tight text-[#F5F7FA]">
                 {item.description}
               </p>
             </div>
@@ -482,11 +562,15 @@ export default function PortfolioPage() {
       </Slide>
 
       <section className="pb-16 pt-0 sm:pb-20">
-        <Container>
-          <div className="overflow-hidden rounded-[32px] bg-[#08111F] p-6 text-white shadow-[0_30px_90px_rgba(20,28,45,0.18)] sm:p-10 lg:p-12">
-            <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <Container className="max-w-[19.5rem] px-0 sm:max-w-6xl sm:px-8 lg:px-10">
+          <div className={`${darkPanel} relative overflow-hidden rounded-[28px] p-6 sm:p-10 lg:p-12`}>
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute left-[-6%] top-[-16%] h-44 w-44 rounded-full bg-[#E625FF]/18 blur-3xl" />
+              <div className="absolute bottom-[-18%] right-[4%] h-52 w-52 rounded-full bg-[#0FEFFD]/12 blur-3xl" />
+            </div>
+            <div className="relative grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
               <div>
-                <div className="mb-8 inline-flex rounded-2xl border border-white/12 bg-white px-4 py-3">
+                <div className="mb-8 inline-flex rounded-[18px] border border-white/10 bg-white/[0.04] px-4 py-3">
                   <Image
                     src="/ribuzz-wordmark.png"
                     alt="RiBuzz"
@@ -495,42 +579,37 @@ export default function PortfolioPage() {
                     className="h-8 w-auto object-contain"
                   />
                 </div>
-                <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#B8F13A]">
+                <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#A6FAFF]">
                   14/14 · Cierre
                 </p>
-                <h2 className="mt-4 max-w-4xl font-heading text-3xl font-semibold leading-[1.02] sm:text-5xl">
+                <h2 className="mt-4 max-w-4xl font-heading text-[2rem] font-semibold leading-[1.02] tracking-[-0.035em] text-[#F5F7FA] sm:text-[3rem]">
                   RiBuzz existe para que las empresas dejen de vender a ciegas.
                 </h2>
-                <p className="mt-5 max-w-3xl text-base leading-relaxed text-[#C9D4E6] sm:text-lg">
+                <p className="mt-5 max-w-3xl text-base leading-relaxed text-[#C7CBD6] sm:text-lg">
                   No construimos campañas sueltas. Construimos sistemas comerciales
                   para que las empresas sepan qué hacer, en qué orden, con quién
                   ejecutarlo y cómo medir si está funcionando.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href={SITE_CONFIG.diagnosisPath}
-                    className="inline-flex h-12 items-center justify-center rounded-full bg-[#B8F13A] px-6 text-sm font-bold text-[#172100] transition hover:bg-[#CCFF52]"
-                  >
+                  <CtaLink href={SITE_CONFIG.diagnosisPath}>
                     Abrir conversación estratégica
-                  </a>
-                  <a
-                    href={SITE_CONFIG.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-12 items-center justify-center rounded-full border border-white/16 bg-white/8 px-6 text-sm font-bold text-white transition hover:bg-white/14"
-                  >
+                  </CtaLink>
+                  <CtaLink href={SITE_CONFIG.whatsappUrl} secondary external>
                     Escribir por WhatsApp
-                  </a>
+                  </CtaLink>
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-white/12 bg-white/[0.06] p-5">
-                <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-[#B8F13A]">
+              <div className="rounded-[24px] border border-white/10 bg-white/[0.045] p-5">
+                <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-[#E7B0EE]">
                   Buscamos
                 </p>
                 <div className="grid gap-3">
                   {portfolioAskItems.map((item) => (
-                    <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-sm font-semibold text-[#EEF4FF]">
+                    <div
+                      key={item}
+                      className="rounded-[18px] border border-white/10 bg-[#0B0D14]/72 p-4 text-sm font-semibold leading-snug text-[#F5F7FA]"
+                    >
                       {item}
                     </div>
                   ))}
