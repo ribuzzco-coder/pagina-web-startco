@@ -2,7 +2,6 @@ import { apiError, apiOk, handleRouteError } from "@/lib/api/response";
 import { getZodFieldErrors, readJsonBody } from "@/lib/api/validation";
 import { env } from "@/lib/env";
 import { giftLeadSchema } from "@/lib/schemas/gift-lead";
-import { applyRateLimit } from "@/lib/security/rate-limit";
 import { getClientIp } from "@/lib/security/request";
 
 const BRAND_LABELS = {
@@ -10,15 +9,55 @@ const BRAND_LABELS = {
   biondaymora: "Bionda y Mora",
 } as const;
 
+type RateLimitEntry = {
+  count: number;
+  resetAt: number;
+};
+
+const giftLeadRateLimitStore =
+  globalThis.__ribuzzGiftLeadRateLimitStore ?? new Map<string, RateLimitEntry>();
+
+if (!globalThis.__ribuzzGiftLeadRateLimitStore) {
+  globalThis.__ribuzzGiftLeadRateLimitStore = giftLeadRateLimitStore;
+}
+
+declare global {
+  var __ribuzzGiftLeadRateLimitStore: Map<string, RateLimitEntry> | undefined;
+}
+
+function isRateLimited(identifier: string) {
+  const now = Date.now();
+  const key = identifier.trim() || "unknown";
+  const current = giftLeadRateLimitStore.get(key);
+
+  if (!current || current.resetAt <= now) {
+    giftLeadRateLimitStore.set(key, {
+      count: 1,
+      resetAt: now + env.RATE_LIMIT_WINDOW_MS,
+    });
+    return false;
+  }
+
+  if (current.count >= env.RATE_LIMIT_MAX_PUBLIC_REQUESTS) {
+    return true;
+  }
+
+  current.count += 1;
+  giftLeadRateLimitStore.set(key, current);
+  return false;
+}
+
 export async function POST(request: Request) {
   try {
     const ip = getClientIp(request);
-    await applyRateLimit({
-      scope: "gift-leads",
-      identifier: ip,
-      limit: env.RATE_LIMIT_MAX_PUBLIC_REQUESTS,
-      windowMs: env.RATE_LIMIT_WINDOW_MS,
-    });
+
+    if (isRateLimited(ip)) {
+      return apiError(
+        429,
+        "RATE_LIMITED",
+        "Se alcanzo el limite temporal de solicitudes. Intenta de nuevo en unos minutos.",
+      );
+    }
 
     const body = await readJsonBody<unknown>(request);
     const parsed = giftLeadSchema.safeParse(body);
