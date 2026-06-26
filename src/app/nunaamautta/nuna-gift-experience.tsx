@@ -38,7 +38,7 @@ const EMPTY_FORM: FormData = {
 const PRIZES: Prize[] = [
   {
     id: "discount-10",
-    label: "10% en prendas seleccionadas",
+    label: "10% en referencias seleccionadas",
     wheelLabel: "10%",
     codePrefix: "NUNA10",
     color: "#2f211a",
@@ -46,17 +46,17 @@ const PRIZES: Prize[] = [
   },
   {
     id: "discount-15",
-    label: "15% en prendas seleccionadas",
+    label: "15% en referencias seleccionadas",
     wheelLabel: "15%",
     codePrefix: "NUNA15",
     color: "#bf9078",
     textColor: "#21130d",
   },
   {
-    id: "discount-5",
-    label: "5% en prendas seleccionadas",
-    wheelLabel: "5%",
-    codePrefix: "NUNA5",
+    id: "discount-20",
+    label: "20% en referencias seleccionadas",
+    wheelLabel: "20%",
+    codePrefix: "NUNA20",
     color: "#d7ddc9",
     textColor: "#2f211a",
   },
@@ -197,7 +197,7 @@ export function NunaGiftExperience({
           </h2>
           <p>
             Completa tus datos, gira una sola vez y presenta el código en
-            Instagram para validar tu descuento. Válido en prendas seleccionadas
+            Instagram para validar tu descuento. Válido en referencias seleccionadas
             de la colección actual.
           </p>
 
@@ -208,7 +208,7 @@ export function NunaGiftExperience({
           </div>
 
           <p className={styles.disclaimer}>
-            * Descuentos aplicables únicamente en prendas seleccionadas.
+            * Descuentos aplicables únicamente en referencias seleccionadas.
             No acumulable con otras promociones.
           </p>
         </div>
