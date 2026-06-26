@@ -21,10 +21,10 @@ const heroImages = [
 ] as const;
 
 const quickLinks = [
-  { label: "Comprar coleccion Conecta", icon: "bag", href: nunaLinks.shop },
-  { label: "Asesoria WhatsApp", icon: "wa", href: nunaLinks.whatsapp },
+  { label: "Comprar colección Nómada", icon: "bag", href: nunaLinks.shop },
+  { label: "Asesoría WhatsApp", icon: "wa", href: nunaLinks.whatsapp },
   { label: "Reclama tu regalo", icon: "gift", href: "/nunaamautta/regalo" },
-  { label: "Pagina web", icon: "web", href: nunaLinks.website },
+  { label: "Página web", icon: "web", href: nunaLinks.website },
 ] as const;
 
 const collections = [
@@ -71,7 +71,7 @@ const logoSrc = "/images/nunaamautta/logo.png";
 export const metadata = createPageMetadata({
   title: "Nuna Amautta",
   description:
-    "Biolink de Nuna Amautta. Espiritu Sabio, moda consciente y coleccion Conecta con compra directa y asesoria por WhatsApp.",
+    "Biolink de Nuna Amautta. Espíritu Sabio, moda consciente y colección Nómada con compra directa y asesoría por WhatsApp.",
   path: "/nunaamautta",
 });
 
@@ -176,7 +176,7 @@ export default function NunaAmauttaPage() {
               <NunaBrandMark />
             </div>
             <p className="fiammata-tagline-pill">
-              Espiritu Sabio
+              Espíritu Sabio
               <br />
               Moda consciente
             </p>
@@ -233,9 +233,9 @@ export default function NunaAmauttaPage() {
 
       <section className="fiammata-collections" id="colecciones">
         <div className="fiammata-section-card">
-          <h2>Coleccion Conecta</h2>
+          <h2>Colección Nómada</h2>
           <p className="fiammata-section-card__intro">
-            Prendas con energia organica, siluetas suaves y accesorios pensados
+            Prendas con energía orgánica, siluetas suaves y accesorios pensados
             para vestir desde el autocuidado.
           </p>
           <FiammataCollectionGrid collections={collections} />
@@ -250,8 +250,8 @@ export default function NunaAmauttaPage() {
           <div className="fiammata-contact-copy">
             <h2>Conecta con Nuna</h2>
             <p>WhatsApp: +57 302 241 5996</p>
-            <p>Coleccion Conecta disponible en tienda online.</p>
-            <p>Sentimientos que salen del corazon.</p>
+            <p>Colección Nómada disponible en tienda online.</p>
+            <p>Sentimientos que salen del corazón.</p>
           </div>
         </div>
 
@@ -273,12 +273,12 @@ export default function NunaAmauttaPage() {
           </a>
           <a
             href={nunaLinks.website}
-            aria-label="Pagina web"
+            aria-label="Página web"
             {...externalProps(nunaLinks.website)}
           >
             <Icon name="web" />
           </a>
-          <Link href="/" aria-label="Ir a la pagina principal de RiBuzz">
+          <Link href="/" aria-label="Ir a la página principal de RiBuzz">
             <Image
               src={SITE_CONFIG.logoMark}
               alt="RiBuzz"

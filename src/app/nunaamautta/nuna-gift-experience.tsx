@@ -77,19 +77,19 @@ function validateForm(form: FormData) {
   const birthdayTime = Date.parse(`${form.birthday}T00:00:00`);
 
   if (form.name.trim().length < 2) {
-    errors.name = "Cuentanos tu nombre.";
+    errors.name = "Cuéntanos tu nombre.";
   }
 
   if (!emailPattern.test(form.email.trim())) {
-    errors.email = "Ingresa un correo valido.";
+    errors.email = "Ingresa un correo válido.";
   }
 
   if (phoneDigits.length < 7 || phoneDigits.length > 15) {
-    errors.phone = "Ingresa un celular valido.";
+    errors.phone = "Ingresa un celular válido.";
   }
 
   if (!form.birthday || Number.isNaN(birthdayTime)) {
-    errors.birthday = "Selecciona tu cumpleanos.";
+    errors.birthday = "Selecciona tu cumpleaños.";
   } else if (birthdayTime > Date.now()) {
     errors.birthday = "La fecha no puede ser futura.";
   }
@@ -187,7 +187,7 @@ export function NunaGiftExperience({
       setStep("wheel");
     } catch {
       setSubmitError(
-        "No pudimos guardar tus datos. Revisa tu conexion e intenta de nuevo.",
+        "No pudimos guardar tus datos. Revisa tu conexión e intenta de nuevo.",
       );
     } finally {
       setIsSubmittingLead(false);
@@ -233,8 +233,8 @@ export function NunaGiftExperience({
           </h2>
           <p>
             Completa tus datos, gira una sola vez y presenta el código en
-            Instagram para validar tu descuento. Válido en referencias seleccionadas
-            de la colección actual.
+            Instagram para validar tu descuento. Válido en referencias
+            seleccionadas de la colección Nómada.
           </p>
 
           <div className={styles.prizes} aria-label="Premios disponibles">
@@ -273,7 +273,7 @@ export function NunaGiftExperience({
                   name="name"
                   value={form.name}
                   onChange={(event) => updateField("name", event.target.value)}
-                  placeholder="Como te llamas?"
+                  placeholder="¿Cómo te llamas?"
                   autoComplete="name"
                   aria-invalid={Boolean(errors.name)}
                   aria-describedby={errors.name ? "nuna-name-error" : undefined}
@@ -322,7 +322,7 @@ export function NunaGiftExperience({
               </label>
 
               <label className={styles.field}>
-                <span>Cumpleanos</span>
+                <span>Cumpleaños</span>
                 <input
                   type="date"
                   name="birthday"
