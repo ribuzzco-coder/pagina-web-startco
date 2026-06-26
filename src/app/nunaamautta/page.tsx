@@ -23,6 +23,7 @@ const heroImages = [
 const quickLinks = [
   { label: "Comprar coleccion Conecta", icon: "bag", href: nunaLinks.shop },
   { label: "Asesoria WhatsApp", icon: "wa", href: nunaLinks.whatsapp },
+  { label: "Reclama tu regalo", icon: "gift", href: "/nunaamautta/regalo" },
   { label: "Pagina web", icon: "web", href: nunaLinks.website },
 ] as const;
 
@@ -148,6 +149,16 @@ function Icon({ name }: { name: string }) {
           <path d="M9.5 13h5" />
         </svg>
       );
+    case "gift":
+      return (
+        <svg {...commonProps}>
+          <path d="M4 11h16v9H4z" />
+          <path d="M4 7h16v4H4z" />
+          <path d="M12 7v13" />
+          <path d="M12 7H8.5A2.5 2.5 0 1 1 11 4.5V7Z" />
+          <path d="M12 7h3.5A2.5 2.5 0 1 0 13 4.5V7Z" />
+        </svg>
+      );
     default:
       return null;
   }
@@ -189,21 +200,33 @@ export default function NunaAmauttaPage() {
           </div>
 
           <div className="fiammata-actions">
-            {quickLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className={
-                  link.icon === "bag"
-                    ? "fiammata-action-link fiammata-action-link--wa"
-                    : "fiammata-action-link"
-                }
-                {...externalProps(link.href)}
-              >
-                <Icon name={link.icon} />
-                <span>{link.label}</span>
-              </a>
-            ))}
+            {quickLinks.map((link) => {
+              const className =
+                link.icon === "bag"
+                  ? "fiammata-action-link fiammata-action-link--wa"
+                  : "fiammata-action-link";
+
+              if (link.href.startsWith("/")) {
+                return (
+                  <Link key={link.label} href={link.href} className={className}>
+                    <Icon name={link.icon} />
+                    <span>{link.label}</span>
+                  </Link>
+                );
+              }
+
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className={className}
+                  {...externalProps(link.href)}
+                >
+                  <Icon name={link.icon} />
+                  <span>{link.label}</span>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
