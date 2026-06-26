@@ -101,6 +101,15 @@
   color: #2f211a;
 }
 
+.disclaimer {
+  max-width: 520px;
+  margin-top: 14px;
+  color: rgba(47, 33, 26, 0.52);
+  font-size: 0.66rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
 .panel {
   border: 1px solid rgba(98, 67, 50, 0.16);
   border-radius: 24px;

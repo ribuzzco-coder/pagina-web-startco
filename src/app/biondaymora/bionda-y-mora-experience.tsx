@@ -19,6 +19,7 @@ type Prize = {
   label: string;
   wheelLabel: string;
   codePrefix: string;
+  chance: number;
   color: string;
   textColor: string;
   strokeColor: string;
@@ -41,6 +42,7 @@ const PRIZES: Prize[] = [
     label: "5% de descuento",
     wheelLabel: "5%",
     codePrefix: "BYM5",
+    chance: 10,
     color: "#552D21",
     textColor: "#FFF8EC",
     strokeColor: "#2B1711",
@@ -52,6 +54,7 @@ const PRIZES: Prize[] = [
     label: "10% de descuento",
     wheelLabel: "10%",
     codePrefix: "BYM10",
+    chance: 60,
     color: "#F5E8D4",
     textColor: "#4A281E",
     strokeColor: "#FFF8EC",
@@ -63,6 +66,7 @@ const PRIZES: Prize[] = [
     label: "15% de descuento",
     wheelLabel: "15%",
     codePrefix: "BYM15",
+    chance: 20,
     color: "#A95C3F",
     textColor: "#FFF8EC",
     strokeColor: "#5A2D21",
@@ -74,6 +78,7 @@ const PRIZES: Prize[] = [
     label: "Pañoleta gratis",
     wheelLabel: "Pañoleta",
     codePrefix: "BYMP",
+    chance: 10,
     color: "#E1A957",
     textColor: "#3D211B",
     strokeColor: "#FCEFD9",
@@ -84,6 +89,7 @@ const PRIZES: Prize[] = [
 
 const SEGMENT_ANGLE = 360 / PRIZES.length;
 const WHEEL_LABEL_RADIUS = 31;
+const TOTAL_CHANCE = PRIZES.reduce((total, prize) => total + prize.chance, 0);
 
 function validateForm(form: FormData) {
   const errors: FormErrors = {};
@@ -107,6 +113,21 @@ function validateForm(form: FormData) {
 
 function createValidationCode(prefix: string) {
   return `${prefix}-${Math.floor(1000 + Math.random() * 9000)}`;
+}
+
+function selectPrizeByChance() {
+  const threshold = Math.random() * TOTAL_CHANCE;
+  let cumulativeChance = 0;
+
+  for (const prize of PRIZES) {
+    cumulativeChance += prize.chance;
+
+    if (threshold < cumulativeChance) {
+      return prize;
+    }
+  }
+
+  return PRIZES[PRIZES.length - 1];
 }
 
 function InstagramIcon() {
@@ -173,8 +194,8 @@ export function BiondaYMoraExperience() {
   function spinWheel() {
     if (isSpinning || result) return;
 
-    const selectedIndex = Math.floor(Math.random() * PRIZES.length);
-    const selectedPrize = PRIZES[selectedIndex];
+    const selectedPrize = selectPrizeByChance();
+    const selectedIndex = PRIZES.findIndex((prize) => prize.id === selectedPrize.id);
     const selectedCenter = selectedIndex * SEGMENT_ANGLE + SEGMENT_ANGLE / 2;
     const currentNormalized = ((rotation % 360) + 360) % 360;
     const targetNormalized = (360 - selectedCenter) % 360;
@@ -339,19 +360,20 @@ export function BiondaYMoraExperience() {
               <span>Hay un premio esperándote.</span>
             </h1>
             <p>
-              Todos los premios tienen la misma oportunidad. Toca el botón y
-              deja que la suerte elija por ti.
+              Cada premio tiene una oportunidad definida. Toca el botón y deja
+              que la suerte elija por ti.
             </p>
 
             <div className={styles.prizeList} aria-label="Premios disponibles">
-              {["5% dto.", "10% dto.", "15% dto.", "Pañoleta gratis"].map(
-                (prize, index) => (
-                  <div key={prize}>
-                    <span>0{index + 1}</span>
-                    <p>{prize}</p>
-                  </div>
-                ),
-              )}
+              {PRIZES.map((prize, index) => (
+                <div key={prize.id}>
+                  <span>0{index + 1}</span>
+                  <p>
+                    {prize.id === "scarf" ? "Regalo" : `${prize.wheelLabel} dto.`} ·{" "}
+                    {prize.chance}%
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -422,7 +444,10 @@ export function BiondaYMoraExperience() {
                   <SparkIcon />
                   {isSpinning ? "Girando..." : "Girar la ruleta"}
                 </button>
-                <p>Un giro por persona · 25% de oportunidad por premio</p>
+                <p>
+                  Un giro por persona · 5%: 10% · 10%: 60% · 15%: 20% ·
+                  Regalo: 10%
+                </p>
               </div>
             ) : (
               <div className={styles.resultCard} aria-live="polite">
