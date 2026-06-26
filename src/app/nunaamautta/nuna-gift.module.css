@@ -3,9 +3,9 @@
   z-index: 2;
   min-height: 100dvh;
   background:
-    radial-gradient(circle at 10% 8%, rgba(126, 139, 114, 0.2), transparent 24rem),
-    radial-gradient(circle at 88% 14%, rgba(191, 144, 120, 0.22), transparent 20rem),
-    linear-gradient(135deg, #fffaf3 0%, #f1e5d9 48%, #d9c6b2 100%);
+    radial-gradient(circle at 10% 8%, rgba(174, 127, 101, 0.14), transparent 24rem),
+    radial-gradient(circle at 88% 14%, rgba(141, 98, 67, 0.16), transparent 20rem),
+    linear-gradient(135deg, #f9f2e6 0%, #f0e4d2 48%, #e8d6be 100%);
   color: #2f211a;
   padding: clamp(32px, 6vw, 78px) clamp(18px, 5vw, 72px);
 }
@@ -24,7 +24,7 @@
 }
 
 .eyebrow {
-  color: #6d4835;
+  color: #8b5e3c;
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.2em;
@@ -102,15 +102,13 @@
 }
 
 .panel {
-  border: 1px solid rgba(98, 67, 50, 0.28);
+  border: 1px solid rgba(98, 67, 50, 0.16);
   border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(255, 250, 243, 0.94), rgba(238, 227, 214, 0.9)),
-    var(--fiammata-cream);
+  background: linear-gradient(180deg, #fdf8f1 0%, #f5eadb 100%);
   padding: clamp(22px, 4vw, 38px);
   box-shadow:
-    0 24px 56px rgba(47, 33, 26, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    0 20px 52px rgba(47, 33, 26, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .formHeader {
