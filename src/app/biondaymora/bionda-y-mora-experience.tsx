@@ -68,7 +68,7 @@ const PRIZES: Prize[] = [
     label: "15% de descuento",
     wheelLabel: "15%",
     codePrefix: "BYM15",
-    chance: 20,
+    chance: 25,
     color: "#A95C3F",
     textColor: "#FFF8EC",
     strokeColor: "#5A2D21",
@@ -80,7 +80,7 @@ const PRIZES: Prize[] = [
     label: "Pañoleta gratis",
     wheelLabel: "Pañoleta",
     codePrefix: "BYMP",
-    chance: 10,
+    chance: 5,
     color: "#E1A957",
     textColor: "#3D211B",
     strokeColor: "#FCEFD9",
@@ -527,8 +527,8 @@ export function BiondaYMoraExperience() {
                   {isSpinning ? "Girando..." : "Girar la ruleta"}
                 </button>
                 <p>
-                  Un giro por persona · 5%: 10% · 10%: 60% · 15%: 20% ·
-                  Regalo: 10%
+                  Un giro por persona · 5%: 10% · 10%: 60% · 15%: 25% ·
+                  Regalo: 5%
                 </p>
               </div>
             ) : (
@@ -541,7 +541,7 @@ export function BiondaYMoraExperience() {
                 </p>
                 <strong>{result.validationCode}</strong>
                 <a
-                  href="https://www.instagram.com/biondaymora/"
+                  href="https://www.instagram.com/biondaymora.col/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.instagramButton}
