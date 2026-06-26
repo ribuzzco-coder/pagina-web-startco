@@ -334,6 +334,12 @@
   transform: translateY(-2px);
 }
 
+.primaryButton:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
 .primaryButton svg {
   width: 20px;
   fill: none;
@@ -348,6 +354,19 @@
   color: rgba(116, 83, 68, 0.72);
   font-size: 0.72rem;
   line-height: 1.5;
+  text-align: center;
+}
+
+.submitError {
+  margin: -4px 0 0;
+  border: 1px solid rgba(163, 59, 45, 0.24);
+  border-radius: 12px;
+  background: rgba(163, 59, 45, 0.08);
+  padding: 10px 12px;
+  color: #7a2d23;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.45;
   text-align: center;
 }
 

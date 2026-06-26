@@ -233,6 +233,12 @@
   transform: translateY(-2px);
 }
 
+.primaryButton:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
 .primaryButton svg,
 .spinButton svg {
   width: 20px;
@@ -248,6 +254,19 @@
   color: #5a4033;
   font-size: 0.72rem;
   line-height: 1.5;
+  text-align: center;
+}
+
+.submitError {
+  margin: -4px 0 0;
+  border: 1px solid rgba(157, 63, 47, 0.22);
+  border-radius: 12px;
+  background: rgba(157, 63, 47, 0.08);
+  padding: 10px 12px;
+  color: #783025;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.45;
   text-align: center;
 }
 

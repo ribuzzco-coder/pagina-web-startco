@@ -10,6 +10,7 @@ type FormData = {
   name: string;
   email: string;
   phone: string;
+  birthday: string;
 };
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
@@ -34,6 +35,7 @@ const EMPTY_FORM: FormData = {
   name: "",
   email: "",
   phone: "",
+  birthday: "",
 };
 
 const PRIZES: Prize[] = [
@@ -95,6 +97,7 @@ function validateForm(form: FormData) {
   const errors: FormErrors = {};
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneDigits = form.phone.replace(/\D/g, "");
+  const birthdayTime = Date.parse(`${form.birthday}T00:00:00`);
 
   if (form.name.trim().length < 2) {
     errors.name = "Cuéntanos tu nombre.";
@@ -108,7 +111,18 @@ function validateForm(form: FormData) {
     errors.phone = "Ingresa un celular válido.";
   }
 
+  if (!form.birthday || Number.isNaN(birthdayTime)) {
+    errors.birthday = "Selecciona tu cumpleanos.";
+  } else if (birthdayTime > Date.now()) {
+    errors.birthday = "La fecha no puede ser futura.";
+  }
+
   return errors;
+}
+
+function getTodayInputValue() {
+  const now = new Date();
+  return now.toISOString().slice(0, 10);
 }
 
 function createValidationCode(prefix: string) {
@@ -162,6 +176,8 @@ export function BiondaYMoraExperience() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [rotation, setRotation] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
+  const [isSubmittingLead, setIsSubmittingLead] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [result, setResult] = useState<PrizeResult | null>(null);
 
   const wheelGradient = useMemo(
@@ -177,9 +193,31 @@ export function BiondaYMoraExperience() {
   function updateField(field: keyof FormData, value: string) {
     setForm((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
+    setSubmitError(null);
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function saveLead() {
+    const response = await fetch("/api/gift-leads", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        brand: "biondaymora",
+        name: form.name.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim(),
+        birthday: form.birthday,
+        sourcePath: window.location.pathname,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Gift lead could not be saved.");
+    }
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextErrors = validateForm(form);
 
@@ -188,7 +226,19 @@ export function BiondaYMoraExperience() {
       return;
     }
 
-    setStep("wheel");
+    setIsSubmittingLead(true);
+    setSubmitError(null);
+
+    try {
+      await saveLead();
+      setStep("wheel");
+    } catch {
+      setSubmitError(
+        "No pudimos guardar tus datos. Revisa tu conexion e intenta de nuevo.",
+      );
+    } finally {
+      setIsSubmittingLead(false);
+    }
   }
 
   function spinWheel() {
@@ -222,6 +272,8 @@ export function BiondaYMoraExperience() {
     setRotation(0);
     setResult(null);
     setIsSpinning(false);
+    setIsSubmittingLead(false);
+    setSubmitError(null);
   }
 
   return (
@@ -338,10 +390,40 @@ export function BiondaYMoraExperience() {
                   {errors.phone && <small id="phone-error">{errors.phone}</small>}
                 </label>
 
-                <button className={styles.primaryButton} type="submit">
-                  <span>Ir a la ruleta</span>
+                <label className={styles.field}>
+                  <span>Cumpleanos</span>
+                  <input
+                    type="date"
+                    name="birthday"
+                    value={form.birthday}
+                    max={getTodayInputValue()}
+                    onChange={(event) =>
+                      updateField("birthday", event.target.value)
+                    }
+                    autoComplete="bday"
+                    aria-invalid={Boolean(errors.birthday)}
+                    aria-describedby={
+                      errors.birthday ? "birthday-error" : undefined
+                    }
+                  />
+                  {errors.birthday && (
+                    <small id="birthday-error">{errors.birthday}</small>
+                  )}
+                </label>
+
+                <button
+                  className={styles.primaryButton}
+                  type="submit"
+                  disabled={isSubmittingLead}
+                >
+                  <span>{isSubmittingLead ? "Guardando..." : "Ir a la ruleta"}</span>
                   <ArrowIcon />
                 </button>
+                {submitError && (
+                  <p className={styles.submitError} role="alert">
+                    {submitError}
+                  </p>
+                )}
               </form>
 
               <p className={styles.privacy}>

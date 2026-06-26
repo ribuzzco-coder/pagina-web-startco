@@ -50,6 +50,7 @@ const envSchema = z
     RATE_LIMIT_MAX_PUBLIC_REQUESTS: z.coerce.number().int().positive().default(10),
     CTA_TRACK_RATE_LIMIT_MAX: z.coerce.number().int().positive().default(60),
     DIAGNOSTIC_DUPLICATE_WINDOW_HOURS: z.coerce.number().int().positive().default(24),
+    GOOGLE_SHEETS_WEBHOOK_URL: optionalUrl,
   })
   .superRefine((values, ctx) => {
     const hasTurnstileSecret = Boolean(values.TURNSTILE_SECRET_KEY);
@@ -84,6 +85,7 @@ function readRawEnv() {
     RATE_LIMIT_MAX_PUBLIC_REQUESTS: process.env.RATE_LIMIT_MAX_PUBLIC_REQUESTS,
     CTA_TRACK_RATE_LIMIT_MAX: process.env.CTA_TRACK_RATE_LIMIT_MAX,
     DIAGNOSTIC_DUPLICATE_WINDOW_HOURS: process.env.DIAGNOSTIC_DUPLICATE_WINDOW_HOURS,
+    GOOGLE_SHEETS_WEBHOOK_URL: process.env.GOOGLE_SHEETS_WEBHOOK_URL,
   };
 }
 
