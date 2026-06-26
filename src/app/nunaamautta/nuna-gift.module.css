@@ -311,30 +311,33 @@
 .wheelLabel {
   position: absolute;
   z-index: 2;
-  display: grid;
-  place-items: center;
+  width: clamp(3.4rem, 7vw, 4.6rem);
+  height: clamp(3.4rem, 7vw, 4.6rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(255, 250, 243, 0.26);
+  box-shadow: inset 0 0 0 1px rgba(255, 250, 243, 0.2);
 }
 
 .wheelLabel span {
-  display: grid;
-  min-width: clamp(3.4rem, 7vw, 4.8rem);
-  min-height: clamp(3.4rem, 7vw, 4.8rem);
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(255, 250, 243, 0.28);
-  max-width: 5.6rem;
-  padding: 0.35rem;
-  font-size: clamp(0.86rem, 2vw, 1.18rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: clamp(0.9rem, 2vw, 1.18rem);
   font-weight: 950;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   line-height: 1;
   text-align: center;
-  box-shadow: inset 0 0 0 1px rgba(255, 250, 243, 0.22);
   text-shadow:
     0 1px 1px rgba(255, 250, 243, 0.68),
     0 0 8px rgba(255, 250, 243, 0.28);
-  transition: transform 4200ms cubic-bezier(0.12, 0.72, 0.08, 1);
+  /* Sin transition: contra-rotación instantánea evita desfase visual */
+  transition: none;
 }
 
 .wheelCenter {
@@ -495,11 +498,13 @@
     border-left-width: 15px;
   }
 
+  .wheelLabel {
+    width: 3rem;
+    height: 3rem;
+  }
+
   .wheelLabel span {
-    min-width: 3rem;
-    min-height: 3rem;
-    max-width: 4rem;
-    font-size: 0.72rem;
+    font-size: 0.76rem;
   }
 
   .wheelCenter {
@@ -511,7 +516,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .wheel,
-  .wheelLabel span,
   .primaryButton,
   .spinButton,
   .resultCard {

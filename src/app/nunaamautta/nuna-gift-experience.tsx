@@ -63,7 +63,7 @@ const PRIZES: Prize[] = [
 ];
 
 const SEGMENT_ANGLE = 360 / PRIZES.length;
-const WHEEL_LABEL_RADIUS = 28;
+const WHEEL_LABEL_RADIUS = 34;
 
 function getTodayInputValue() {
   const now = new Date();
