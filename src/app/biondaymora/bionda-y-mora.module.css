@@ -619,8 +619,42 @@
   letter-spacing: 0.12em;
 }
 
-.resultCard button {
-  margin-top: 15px;
+.instagramButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 18px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color: #fff;
+  padding: 14px 22px;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(131, 58, 180, 0.28);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.instagramButton:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.instagramButton svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.restartButton {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
   border: 0;
   background: transparent;
   color: var(--terracotta);
@@ -630,6 +664,7 @@
   text-decoration: underline;
   text-underline-offset: 4px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .footer {

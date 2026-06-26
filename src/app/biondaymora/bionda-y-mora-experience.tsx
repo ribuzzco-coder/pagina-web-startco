@@ -109,6 +109,16 @@ function createValidationCode(prefix: string) {
   return `${prefix}-${Math.floor(1000 + Math.random() * 9000)}`;
 }
 
+function InstagramIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4" y="4" width="16" height="16" rx="5" />
+      <circle cx="12" cy="12" r="3.2" />
+      <path d="M16.8 7.2h.01" />
+    </svg>
+  );
+}
+
 function ArrowIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -423,8 +433,17 @@ export function BiondaYMoraExperience() {
                   para reclamar tu premio.
                 </p>
                 <strong>{result.validationCode}</strong>
-                <button type="button" onClick={restartExperience}>
-                  Finalizar
+                <a
+                  href="https://www.instagram.com/biondaymora/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.instagramButton}
+                >
+                  <InstagramIcon />
+                  Reclamar en Instagram
+                </a>
+                <button type="button" onClick={restartExperience} className={styles.restartButton}>
+                  Jugar de nuevo
                 </button>
               </div>
             )}
