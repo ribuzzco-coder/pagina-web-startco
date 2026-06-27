@@ -68,7 +68,7 @@ const PRIZES: Prize[] = [
     label: "15% de descuento",
     wheelLabel: "15%",
     codePrefix: "BYM15",
-    chance: 25,
+    chance: 20,
     color: "#A95C3F",
     textColor: "#FFF8EC",
     strokeColor: "#5A2D21",
@@ -80,7 +80,7 @@ const PRIZES: Prize[] = [
     label: "Pañoleta gratis",
     wheelLabel: "Pañoleta",
     codePrefix: "BYMP",
-    chance: 5,
+    chance: 10,
     color: "#E1A957",
     textColor: "#3D211B",
     strokeColor: "#FCEFD9",
@@ -527,8 +527,8 @@ export function BiondaYMoraExperience() {
                   {isSpinning ? "Girando..." : "Girar la ruleta"}
                 </button>
                 <p>
-                  Un giro por persona · 5%: 10% · 10%: 60% · 15%: 25% ·
-                  Regalo: 5%
+                  Un giro por persona · 5%: 10% · 10%: 60% · 15%: 20% ·
+                  Regalo: 10%
                 </p>
               </div>
             ) : (
