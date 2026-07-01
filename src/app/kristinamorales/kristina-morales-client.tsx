@@ -141,93 +141,122 @@ export default function KristinaMoralesClient() {
   };
 
   return (
-    <main className="-mt-[76px] min-h-[100dvh] overflow-hidden bg-[#edf7f8] text-white">
-      <section className="relative flex min-h-[100dvh] items-start justify-center px-4 py-5 sm:items-center sm:py-16">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-[#062f52]" />
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-3 bg-[#8ad7cf]" />
-        <div className="pointer-events-none absolute right-3 top-0 h-full w-3 bg-[#c77a23]" />
+    <main className="-mt-[76px] min-h-[100dvh] overflow-hidden bg-[#052f51] text-white">
+      <section className="flex min-h-[100dvh] items-start justify-center px-4 pb-6 pt-8 sm:items-center sm:py-12">
+        <article className="grid w-full max-w-[24rem] gap-4">
+          <div className="relative min-h-[37.5rem] overflow-hidden rounded-[1.15rem] bg-[#07385f] px-8 pb-10 pt-8 shadow-[0_28px_70px_rgba(0,0,0,0.28)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(10,29,52,0.38),transparent_34%),linear-gradient(145deg,#07426c_0%,#052d4e_50%,#071d36_100%)]" />
+            <svg
+              className="absolute inset-x-0 bottom-0 h-28 w-full"
+              viewBox="0 0 384 120"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M0 82C92 43 218 36 384 56V120H0V82Z"
+                fill="#c87b24"
+              />
+              <path
+                d="M0 100C102 68 236 62 384 78V120H0V100Z"
+                fill="#8bd9d2"
+              />
+            </svg>
 
-        <article className="relative z-10 w-full max-w-[26rem] overflow-hidden rounded-[1.2rem] bg-[#07385f] shadow-[0_26px_70px_rgba(4,31,54,0.28)]">
-          <div className="h-2 bg-[#c77a23]" />
-
-          <div className="grid gap-6 px-6 py-7 sm:px-7">
-            <div className="grid justify-items-center gap-4 text-center">
-              <div className="relative h-48 w-48 overflow-hidden rounded-full border-[7px] border-white bg-white shadow-[0_18px_42px_rgba(0,0,0,0.22)] sm:h-52 sm:w-52">
-                <Image
-                  src="/images/kristina/photo.png"
-                  alt="Kristina Morales"
-                  fill
-                  sizes="(max-width: 640px) 12rem, 13rem"
-                  priority
-                  className="object-cover [object-position:center_18%]"
-                />
+            <div className="relative z-10 grid justify-items-center text-center">
+              <div className="relative h-32 w-32 overflow-hidden rounded-full bg-white p-1.5 shadow-[0_14px_34px_rgba(0,0,0,0.22)]">
+                <div className="relative h-full w-full overflow-hidden rounded-full bg-white">
+                  <Image
+                    src="/images/kristina/photo.png"
+                    alt="Kristina Morales"
+                    fill
+                    sizes="8rem"
+                    priority
+                    className="object-cover [object-position:center_18%]"
+                  />
+                </div>
               </div>
 
-              <Image
-                src="/images/kristina/comviajes-logo.png"
-                alt="COMVIAJES - Compania de Viajes Mayorista"
-                width={266}
-                height={125}
-                className="h-auto w-52"
-                priority
-              />
-            </div>
+              <div className="mt-6 h-px w-full bg-white/34" />
 
-            <div className="border-y border-white/12 py-5 text-center">
-              <h1 className="font-[var(--font-montserrat)] text-[clamp(2.35rem,10vw,3.15rem)] font-black leading-[0.96] tracking-normal">
+              <h1 className="mt-2 font-[var(--font-montserrat)] text-[1.55rem] font-black leading-none tracking-normal">
                 Kristina Morales
               </h1>
-              <p className="mt-2 font-[var(--font-montserrat)] text-sm font-bold text-[#8ad7cf]">
+              <p className="mt-1 font-[var(--font-montserrat)] text-sm font-medium text-[#8bd9d2]">
                 Agente de viajes
               </p>
-              <p className="mt-4 font-[var(--font-montserrat)] text-[0.7rem] font-semibold leading-relaxed text-white/64">
-                Compania de Viajes Mayorista · NIT 901300294-4 · RNT 81199
-              </p>
-            </div>
 
-            <div className="grid gap-3">
-              {contactItems.map((item) => (
+              <div className="mt-4 h-px w-full border-t border-dashed border-white/35" />
+
+              <div className="flex min-h-36 w-full flex-col items-center justify-center pb-1 pt-2">
+                <div className="flex w-full justify-center">
+                  <Image
+                    src="/images/kristina/comviajes-logo.png"
+                    alt="COMVIAJES - Compania de Viajes Mayorista"
+                    width={266}
+                    height={125}
+                    className="h-auto w-56"
+                    priority
+                  />
+                </div>
+                <p className="-mt-2 font-[var(--font-montserrat)] text-[0.69rem] font-semibold leading-tight text-white/84">
+                  NIT 901300294-4
+                  <br />
+                  RNT 81199
+                </p>
+              </div>
+
+              <div className="mb-4 h-px w-full border-t border-dashed border-white/35" />
+
+              <div className="grid w-full gap-2 font-[var(--font-montserrat)] text-sm font-black leading-tight">
                 <a
-                  key={item.title}
-                  href={item.href}
-                  className="flex items-center gap-3 rounded-[0.55rem] bg-white px-3.5 py-3 text-[#07385f] shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition hover:-translate-y-0.5"
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  href={`https://wa.me/${phoneRaw}`}
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[0.7rem] border border-white/18 bg-white/10 px-3 text-white shadow-[0_10px_22px_rgba(0,0,0,0.1)] backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/16"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#edf7f8] text-[#0d6f78]">
-                    <Icon name={item.icon} />
-                  </span>
-                  <span className="flex min-w-0 flex-col">
-                    <strong className="[overflow-wrap:anywhere] font-[var(--font-montserrat)] text-[0.82rem] font-bold leading-tight tracking-normal sm:text-base">
-                      {item.title}
-                    </strong>
-                    <small className="mt-1 font-[var(--font-montserrat)] text-xs font-bold text-[#0d6f78]/70">
-                      {item.subtitle}
-                    </small>
-                  </span>
+                  <Icon name="phone" />
+                  <span className="[overflow-wrap:anywhere]">{phoneDisplay}</span>
                 </a>
-              ))}
-            </div>
+                <a
+                  href={`mailto:${email}`}
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[0.7rem] border border-white/18 bg-white/10 px-3 text-white shadow-[0_10px_22px_rgba(0,0,0,0.1)] backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/16"
+                >
+                  <Icon name="mail" />
+                  <span className="[overflow-wrap:anywhere]">{email}</span>
+                </a>
+                <a
+                  href={instagramHref}
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[0.7rem] border border-white/18 bg-white/10 px-3 text-white shadow-[0_10px_22px_rgba(0,0,0,0.1)] backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/16"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name="instagram" />
+                  <span className="[overflow-wrap:anywhere]">{instagramLabel}</span>
+                </a>
+              </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                type="button"
-                className="inline-flex items-center justify-center gap-2 rounded-[0.55rem] bg-[#c77a23] px-4 py-3 font-[var(--font-montserrat)] text-sm font-black text-white shadow-[0_16px_30px_rgba(199,122,35,0.2)] transition hover:-translate-y-0.5"
-                onClick={handleAddContact}
-              >
-                <Icon name="addContact" />
-                <span>Agregar</span>
-              </button>
-
-              <button
-                type="button"
-                className="inline-flex items-center justify-center gap-2 rounded-[0.55rem] bg-[#8ad7cf] px-4 py-3 font-[var(--font-montserrat)] text-sm font-black text-[#052a49] shadow-[0_16px_30px_rgba(138,215,207,0.2)] transition hover:-translate-y-0.5"
-                onClick={handleShare}
-              >
-                <Icon name="share" />
-                <span>{copied ? "Copiado" : "Compartir"}</span>
-              </button>
+              <div className="mt-7 h-14 w-full" aria-hidden="true" />
             </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              type="button"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[0.8rem] bg-[#c87b24] px-3 font-[var(--font-montserrat)] text-sm font-black text-white shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition hover:-translate-y-0.5"
+              onClick={handleAddContact}
+            >
+              <Icon name="addContact" />
+              <span>Agregar</span>
+            </button>
+
+            <button
+              type="button"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[0.8rem] bg-[#8bd9d2] px-3 font-[var(--font-montserrat)] text-sm font-black text-[#052f51] shadow-[0_14px_30px_rgba(0,0,0,0.16)] transition hover:-translate-y-0.5"
+              onClick={handleShare}
+            >
+              <Icon name="share" />
+              <span>{copied ? "Copiado" : "Compartir"}</span>
+            </button>
           </div>
         </article>
       </section>
