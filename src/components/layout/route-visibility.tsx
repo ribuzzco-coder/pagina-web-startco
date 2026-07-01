@@ -27,6 +27,7 @@ export function RouteVisibility({
     "/dianamarulanda",
     "/claudiaherrera",
     "/julianaarango",
+    "/cristinamorales",
     "/petalia",
     "/cocobycamilag",
     "/brus",
