@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const PAGE_URL = "https://ribuzz.com/cristinamorales";
+const PAGE_URL = "https://ribuzz.com/kristinamorales";
 const phoneDisplay = "+57 311 319 2410";
 const phoneRaw = "573113192410";
 const email = "kristimove@gmail.com";
@@ -96,7 +96,7 @@ function buildVCard() {
   return [
     "BEGIN:VCARD",
     "VERSION:3.0",
-    "FN:Cristina Morales",
+    "FN:Kristina Morales",
     "TITLE:Agente de viajes",
     "ORG:COMVIAJES",
     `TEL;TYPE=CELL:+${phoneRaw}`,
@@ -106,7 +106,7 @@ function buildVCard() {
   ].join("\n");
 }
 
-export default function CristinaMoralesClient() {
+export default function KristinaMoralesClient() {
   const [copied, setCopied] = useState(false);
 
   const handleAddContact = () => {
@@ -114,7 +114,7 @@ export default function CristinaMoralesClient() {
     const objectUrl = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = objectUrl;
-    link.download = "cristina-morales.vcf";
+    link.download = "kristina-morales.vcf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -125,8 +125,8 @@ export default function CristinaMoralesClient() {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: "Cristina Morales",
-          text: "Conoce la tarjeta digital Comviajes de Cristina Morales",
+          title: "Kristina Morales",
+          text: "Conoce la tarjeta digital Comviajes de Kristina Morales",
           url: PAGE_URL,
         });
         return;
@@ -154,8 +154,8 @@ export default function CristinaMoralesClient() {
             <div className="grid justify-items-center gap-4 text-center">
               <div className="relative h-48 w-48 overflow-hidden rounded-full border-[7px] border-white bg-white shadow-[0_18px_42px_rgba(0,0,0,0.22)] sm:h-52 sm:w-52">
                 <Image
-                  src="/images/cristina/photo.png"
-                  alt="Cristina Morales"
+                  src="/images/kristina/photo.png"
+                  alt="Kristina Morales"
                   fill
                   sizes="(max-width: 640px) 12rem, 13rem"
                   priority
@@ -164,7 +164,7 @@ export default function CristinaMoralesClient() {
               </div>
 
               <Image
-                src="/images/cristina/comviajes-logo.png"
+                src="/images/kristina/comviajes-logo.png"
                 alt="COMVIAJES - Compania de Viajes Mayorista"
                 width={266}
                 height={125}
@@ -175,7 +175,7 @@ export default function CristinaMoralesClient() {
 
             <div className="border-y border-white/12 py-5 text-center">
               <h1 className="font-[var(--font-montserrat)] text-[clamp(2.35rem,10vw,3.15rem)] font-black leading-[0.96] tracking-normal">
-                Cristina Morales
+                Kristina Morales
               </h1>
               <p className="mt-2 font-[var(--font-montserrat)] text-sm font-bold text-[#8ad7cf]">
                 Agente de viajes
