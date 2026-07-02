@@ -141,8 +141,8 @@ export default function KristinaMoralesClient() {
   };
 
   return (
-    <main className="-mt-[76px] min-h-[100dvh] overflow-hidden bg-[#052f51] text-white">
-      <section className="flex min-h-[100dvh] items-start justify-center px-4 pb-6 pt-8 sm:items-center sm:py-12">
+    <main className="-mt-[76px] h-[100dvh] overflow-hidden overscroll-none bg-[#052f51] text-white">
+      <section className="flex h-full items-start justify-center overflow-hidden px-4 pb-6 pt-8 sm:items-center sm:py-12">
         <article className="grid w-full max-w-[24rem] gap-4">
           <div className="relative min-h-[37.5rem] overflow-hidden rounded-[1.15rem] bg-[#07385f] px-8 pb-10 pt-8 shadow-[0_28px_70px_rgba(0,0,0,0.28)]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(10,29,52,0.38),transparent_34%),linear-gradient(145deg,#07426c_0%,#052d4e_50%,#071d36_100%)]" />
