@@ -92,6 +92,9 @@ export async function POST(request: Request) {
       referrer: request.headers.get("referer") ?? "",
     };
 
+    // Google Apps Script devuelve 302 redirect después de procesar el POST.
+    // Seguir el redirect convierte el POST en GET (405). Se usa redirect:"manual"
+    // y se trata 302 como éxito — el script ya ejecutó antes de redirigir.
     const response = await fetch(env.GOOGLE_SHEETS_WEBHOOK_URL, {
       method: "POST",
       headers: {
@@ -99,9 +102,12 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify(payload),
       cache: "no-store",
+      redirect: "manual",
     });
 
-    if (!response.ok) {
+    const accepted = response.status === 200 || response.status === 302;
+
+    if (!accepted) {
       return apiError(
         502,
         "GOOGLE_SHEETS_REQUEST_FAILED",
