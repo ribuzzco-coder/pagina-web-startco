@@ -16,7 +16,7 @@ const shootBase = "/images/nunaamautta/nov-2025";
 
 const campaign = {
   name: "Nómada",
-  headline: "Prendas conscientes para vestir desde el espíritu",
+  headline: "Un universo de arte slow fashion que nace para hacerte brillar",
   body: "Siluetas orgánicas, tejidos suaves y piezas pensadas para moverse contigo.",
   ctaLabel: "Comprar colección",
   ctaHref: links.shop,
