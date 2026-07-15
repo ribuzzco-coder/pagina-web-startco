@@ -15,16 +15,16 @@ const logoSrc = "/images/nunaamautta/logo.png";
 const shootBase = "/images/nunaamautta/nov-2025";
 
 const campaign = {
-  name: "Nomada",
-  headline: "Prendas conscientes para vestir desde el espiritu",
-  body: "Siluetas organicas, tejidos suaves y piezas pensadas para moverse contigo.",
-  ctaLabel: "Comprar coleccion",
+  name: "Nómada",
+  headline: "Prendas conscientes para vestir desde el espíritu",
+  body: "Siluetas orgánicas, tejidos suaves y piezas pensadas para moverse contigo.",
+  ctaLabel: "Comprar colección",
   ctaHref: links.shop,
   heroImage: `${shootBase}/nuna-nov-2025-3.jpg`,
   storyImage: `${shootBase}/nuna-nov-2025-60.jpg`,
 };
 
-const moodNotes = ["Espiritu sabio", "Tejidos suaves", "Energia organica"] as const;
+const moodNotes = ["Espíritu sabio", "Tejidos suaves", "Energía orgánica"] as const;
 
 const primaryLinks = [
   {
@@ -37,7 +37,7 @@ const primaryLinks = [
   },
   {
     label: "Tienda online",
-    caption: "Coleccion Nomada",
+    caption: "Colección Nómada",
     href: links.shop,
     image: `${shootBase}/nuna-nov-2025-1.jpg`,
     position: "object-[50%_34%]",
@@ -63,15 +63,15 @@ const primaryLinks = [
 
 const featuredProducts = [
   {
-    name: "Look tejido crema",
-    category: "Seleccion photoshoot",
+    name: "Look en tejido crema",
+    category: "Selección editorial",
     href: links.shop,
     image: `${shootBase}/nuna-nov-2025-1.jpg`,
     position: "object-[50%_28%]",
   },
   {
-    name: "Top red arena",
-    category: "Textura Nomada",
+    name: "Top de red arena",
+    category: "Textura Nómada",
     href: links.shop,
     image: `${shootBase}/nuna-nov-2025-59.jpg`,
     position: "object-[50%_30%]",
@@ -84,7 +84,7 @@ const featuredProducts = [
     position: "object-[50%_34%]",
   },
   {
-    name: "Set capucha rosa",
+    name: "Set con capucha rosa",
     category: "Prenda ritual",
     href: links.shop,
     image: `${shootBase}/nuna-nov-2025-13.jpg`,
@@ -95,7 +95,7 @@ const featuredProducts = [
 export const metadata = createPageMetadata({
   title: "Nuna Amautta",
   description:
-    "Biolink editorial de Nuna Amautta. Espiritu Sabio, moda consciente y coleccion Nomada con compra directa y asesoria por WhatsApp.",
+    "Biolink editorial de Nuna Amautta. Espíritu Sabio, moda consciente y colección Nómada con compra directa y asesoría por WhatsApp.",
   path: "/nunaamautta",
 });
 
@@ -197,7 +197,7 @@ export default function NunaAmauttaPage() {
               <div className="relative col-span-2 min-h-[24.5rem] overflow-hidden bg-[#d9c7a6]">
                 <Image
                   src={campaign.heroImage}
-                  alt="Campana Nomada de Nuna Amautta"
+                  alt="Campaña Nómada de Nuna Amautta"
                   fill
                   sizes="480px"
                   priority
@@ -251,10 +251,10 @@ export default function NunaAmauttaPage() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="[font-family:var(--font-montserrat)] text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#876d35]">
-                The edit
+                La edición
               </p>
               <h2 className="mt-2 [font-family:var(--font-montserrat)] text-2xl font-bold leading-none">
-                Shop Nomada
+                Shop Nómada
               </h2>
             </div>
             <a
@@ -306,23 +306,23 @@ export default function NunaAmauttaPage() {
           </div>
           <div className="flex flex-col justify-center px-5 py-6">
             <p className="[font-family:var(--font-montserrat)] text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#876d35]">
-              Espiritu Sabio
+              Espíritu Sabio
             </p>
             <h2 className="mt-3 [font-family:var(--font-montserrat)] text-xl font-bold leading-tight">
-              Disenado para sentirse organico, libre y presente.
+              Diseñado para sentirse orgánico, libre y presente.
             </h2>
             <p className="mt-4 text-sm leading-6 text-[#66553b]">
-              Nuna Amautta traduce la calma del tejido y la energia de lo hecho con intencion en prendas para habitar el cuerpo con suavidad.
+              Nuna Amautta traduce la calma del tejido y la energía de lo hecho con intención en prendas para habitar el cuerpo con suavidad.
             </p>
           </div>
         </section>
 
         <section className="border-t border-[#dccbab] px-5 py-6 text-center">
           <p className="[font-family:var(--font-montserrat)] text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#876d35]">
-            Necesitas ayuda?
+            ¿Necesitas ayuda?
           </p>
           <h2 className="mt-3 [font-family:var(--font-montserrat)] text-2xl font-bold leading-tight">
-            Te acompanamos con tallas, disponibilidad y compra.
+            Te acompañamos con tallas, disponibilidad y compra.
           </h2>
           <a
             href={links.whatsapp}
@@ -330,7 +330,7 @@ export default function NunaAmauttaPage() {
             rel="noopener noreferrer"
             className="mt-5 inline-flex w-full items-center justify-center rounded-none border border-[#231b12] bg-transparent px-5 py-4 [font-family:var(--font-montserrat)] text-sm font-bold uppercase tracking-[0.16em] text-[#231b12] transition hover:bg-[#231b12] hover:text-white"
           >
-            Escribenos por WhatsApp
+            Escríbenos por WhatsApp
           </a>
         </section>
       </div>

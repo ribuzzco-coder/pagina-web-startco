@@ -80,19 +80,19 @@ function validateForm(form: FormData) {
   const birthdayTime = Date.parse(`${form.birthday}T00:00:00`);
 
   if (form.name.trim().length < 2) {
-    errors.name = "Cuentanos tu nombre.";
+    errors.name = "Cuéntanos tu nombre.";
   }
 
   if (!emailPattern.test(form.email.trim())) {
-    errors.email = "Ingresa un correo valido.";
+    errors.email = "Ingresa un correo válido.";
   }
 
   if (phoneDigits.length < 7 || phoneDigits.length > 15) {
-    errors.phone = "Ingresa un celular valido.";
+    errors.phone = "Ingresa un celular válido.";
   }
 
   if (!form.birthday || Number.isNaN(birthdayTime)) {
-    errors.birthday = "Selecciona tu cumpleanos.";
+    errors.birthday = "Selecciona tu cumpleaños.";
   } else if (birthdayTime > Date.now()) {
     errors.birthday = "La fecha no puede ser futura.";
   }
@@ -190,7 +190,7 @@ export function NunaGiftExperience({
       setStep("wheel");
     } catch {
       setSubmitError(
-        "No pudimos guardar tus datos. Revisa tu conexion e intenta de nuevo.",
+        "No pudimos guardar tus datos. Revisa tu conexión e intenta de nuevo.",
       );
     } finally {
       setIsSubmittingLead(false);
@@ -266,7 +266,7 @@ export function NunaGiftExperience({
               <span>y gira la ruleta.</span>
             </h1>
             <p>
-              Completa tus datos, recibe un codigo y presentalo en Instagram
+              Completa tus datos, recibe un código y preséntalo en Instagram
               para validar tu descuento.
             </p>
           </div>
@@ -302,7 +302,7 @@ export function NunaGiftExperience({
                   name="name"
                   value={form.name}
                   onChange={(event) => updateField("name", event.target.value)}
-                  placeholder="Como te llamas?"
+                  placeholder="¿Cómo te llamas?"
                   autoComplete="name"
                   aria-invalid={Boolean(errors.name)}
                   aria-describedby={errors.name ? "nuna-name-error" : undefined}
@@ -351,7 +351,7 @@ export function NunaGiftExperience({
               </label>
 
               <label className={styles.field}>
-                <span>Cumpleanos</span>
+                <span>Cumpleaños</span>
                 <input
                   type="date"
                   name="birthday"
@@ -388,7 +388,7 @@ export function NunaGiftExperience({
 
             <p className={styles.privacy}>
               Al continuar aceptas el tratamiento de tus datos para esta
-              actividad promocional. Descuento valido en referencias
+              actividad promocional. Descuento válido en referencias
               seleccionadas. No acumulable con otras promociones.
             </p>
           </div>
@@ -465,7 +465,7 @@ export function NunaGiftExperience({
               </div>
             ) : (
               <div className={styles.resultCard} aria-live="polite">
-                <p>Felicidades</p>
+                <p>¡Felicidades!</p>
                 <h3>{result.label}</h3>
                 <span>{result.validationCode}</span>
                 <button type="button" onClick={claimPrize}>
