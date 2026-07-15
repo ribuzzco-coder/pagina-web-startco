@@ -49,10 +49,10 @@ export function NfcClientGallery({ items }: NfcClientGalleryProps) {
                   <p className="text-[10px] uppercase tracking-[0.18em] text-[#98A0B3]">
                     Cliente 0{index + 1}
                   </p>
-                  <p className="mt-2 text-lg font-semibold tracking-tight text-[#F5F7FA]">
+                  <p className="mt-2 text-lg font-semibold tracking-tight text-[#E4DFF7]">
                     {item.brand}
                   </p>
-                  <p className="mt-1 text-sm leading-relaxed text-[#C7CBD6]">{item.role}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-[#CEC6E0]">{item.role}</p>
                 </div>
               </div>
             ))}

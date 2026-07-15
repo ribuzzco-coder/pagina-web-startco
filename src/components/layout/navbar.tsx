@@ -111,7 +111,7 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color,backdrop-filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
         isHeroTop
           ? "border-b border-transparent bg-transparent backdrop-blur-0"
-          : "border-b border-white/8 bg-[#0B0B10]/92 backdrop-blur-sm",
+          : "border-b border-white/8 bg-[#08041E]/92 backdrop-blur-sm",
         isHidden ? "-translate-y-full" : "translate-y-0",
       )}
     >
@@ -140,7 +140,7 @@ export function Navbar() {
           <span
             aria-hidden="true"
             className={cn(
-              "pointer-events-none absolute inset-y-1 left-0 border border-white/58 bg-[radial-gradient(circle_at_28%_26%,rgba(255,255,255,0.98),rgba(255,255,255,0.93)_42%,rgba(249,238,252,0.88)_72%,rgba(255,255,255,0.82)_100%)] shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_0_14px_rgba(230,37,255,0.14),0_0_24px_rgba(230,37,255,0.1)] blur-[0.08px] transition-[transform,width,opacity,border-radius,box-shadow,filter] duration-[920ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "pointer-events-none absolute inset-y-1 left-0 border border-white/58 bg-[radial-gradient(circle_at_28%_26%,rgba(255,255,255,0.98),rgba(255,255,255,0.93)_42%,rgba(249,238,252,0.88)_72%,rgba(255,255,255,0.82)_100%)] shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_0_14px_rgba(105,57,226,0.14),0_0_24px_rgba(105,57,226,0.1)] blur-[0.08px] transition-[transform,width,opacity,border-radius,box-shadow,filter] duration-[920ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
               isBubbleMorphing && "nav-blob-morphing",
             )}
             style={{
@@ -167,11 +167,11 @@ export function Navbar() {
                   "relative z-10 rounded-full border px-4 py-2 text-sm font-medium tracking-[0.01em] transition-[color,border-color,box-shadow,background-color,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
                   isActive
                     ? isDiagnosisLink
-                      ? "border-[#E625FF]/65 bg-[linear-gradient(135deg,#E625FF,#B11CD4)] text-white shadow-[0_0_0_1px_rgba(230,37,255,0.18),0_0_24px_rgba(230,37,255,0.32)]"
-                      : "border-transparent bg-transparent text-[#7A1A8A]"
+                      ? "border-[#6939E2]/65 bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-white shadow-[0_0_0_1px_rgba(105,57,226,0.18),0_0_24px_rgba(105,57,226,0.32)]"
+                      : "border-transparent bg-transparent text-[#4E06BA]"
                     : isDiagnosisLink
-                      ? "border-[#E625FF]/65 bg-[linear-gradient(135deg,#E625FF,#B11CD4)] text-white shadow-[0_0_0_1px_rgba(230,37,255,0.18),0_0_24px_rgba(230,37,255,0.32)] hover:border-[#f5a2ff]/80 hover:bg-[linear-gradient(135deg,#f03dff,#bf28df)] hover:text-white hover:shadow-[0_0_0_1px_rgba(230,37,255,0.24),0_0_28px_rgba(230,37,255,0.4)]"
-                      : "border-transparent text-[#98A0B3] hover:border-[#E625FF]/55 hover:bg-[#1A1320] hover:text-[#F5F7FA] hover:shadow-[0_0_0_1px_rgba(230,37,255,0.24),0_0_24px_rgba(230,37,255,0.28)]",
+                      ? "border-[#6939E2]/65 bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-white shadow-[0_0_0_1px_rgba(105,57,226,0.18),0_0_24px_rgba(105,57,226,0.32)] hover:border-[#785fdd]/80 hover:bg-[linear-gradient(135deg,#6939e2,#4e06ba)] hover:text-white hover:shadow-[0_0_0_1px_rgba(105,57,226,0.24),0_0_28px_rgba(105,57,226,0.4)]"
+                      : "border-transparent text-[#98A0B3] hover:border-[#6939E2]/55 hover:bg-[#1A1320] hover:text-[#E4DFF7] hover:shadow-[0_0_0_1px_rgba(105,57,226,0.24),0_0_24px_rgba(105,57,226,0.28)]",
                 )}
               >
                 {link.label}
@@ -206,7 +206,7 @@ export function Navbar() {
         <button
           type="button"
           aria-label="Abrir menu"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-[#F5F7FA] transition hover:border-white/18 lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-[#E4DFF7] transition hover:border-white/18 lg:hidden"
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <span className="text-lg leading-none">{isOpen ? "x" : "="}</span>

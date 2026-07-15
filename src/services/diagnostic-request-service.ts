@@ -1,5 +1,6 @@
 import { env } from "@/lib/env";
 import { ApiError } from "@/lib/api/errors";
+import { syncDiagnosticRequestToSheets } from "@/lib/integrations/diagnostic-sheets-sync";
 import { logger } from "@/lib/logger";
 import {
   buildDiagnosticSubmissionHash,
@@ -7,6 +8,13 @@ import {
   normalizeInternalNotes,
 } from "@/lib/security/request";
 import { encryptDiagnosticFields } from "@/lib/security/sensitive-fields";
+import {
+  scoreDiagnosticRequest,
+  type Autoridad,
+  type Presupuesto,
+  type ProcesoActual,
+  type Urgencia,
+} from "@/lib/scoring/diagnostic-routing";
 import { sha256 } from "@/lib/utils/crypto";
 import { DiagnosticRequestRepository } from "@/repositories/diagnostic-request-repository";
 import type { AdminActor } from "@/services/admin-access-service";
@@ -21,11 +29,18 @@ type CreateDiagnosticRequestInput = {
   whatsapp?: string | null;
   email: string;
   sector: string;
-  yaEstaVendiendo: boolean;
-  retoPrincipal: string;
+  queVende: string;
+  aQuienVende: string;
+  procesoActual: ProcesoActual;
+  queFrena: string;
+  metaConcreta?: string | null;
+  presupuesto: Presupuesto;
+  urgencia: Urgencia;
+  autoridad: Autoridad;
   tamanoEquipo?: string | null;
   contexto?: string | null;
   source?: string | null;
+  dataConsent: boolean;
   requestIp: string;
   userAgent?: string | null;
   referrer?: string | null;
@@ -55,7 +70,14 @@ export class DiagnosticRequestService {
     const submissionHash = buildDiagnosticSubmissionHash({
       empresa: normalized.empresa,
       email: normalized.email,
-      retoPrincipal: normalized.retoPrincipal,
+      queFrena: normalized.queFrena,
+    });
+
+    const { fitScore, routingTier } = scoreDiagnosticRequest({
+      procesoActual: normalized.procesoActual as ProcesoActual,
+      presupuesto: normalized.presupuesto as Presupuesto,
+      urgencia: normalized.urgencia as Urgencia,
+      autoridad: normalized.autoridad as Autoridad,
     });
 
     const duplicate = await this.repository.findRecentDuplicate(
@@ -93,12 +115,21 @@ export class DiagnosticRequestService {
       whatsapp: encryptedFields.whatsapp,
       email: encryptedFields.email,
       sector: normalized.sector,
-      ya_esta_vendiendo: normalized.yaEstaVendiendo,
-      reto_principal: normalized.retoPrincipal,
+      que_vende: normalized.queVende,
+      a_quien_vende: normalized.aQuienVende,
+      proceso_actual: normalized.procesoActual,
+      que_frena: normalized.queFrena,
+      meta_concreta: normalized.metaConcreta,
+      presupuesto: normalized.presupuesto,
+      urgencia: normalized.urgencia,
+      autoridad: normalized.autoridad,
+      fit_score: fitScore,
+      routing_tier: routingTier,
       tamano_equipo: normalized.tamanoEquipo,
       contexto: encryptedFields.contexto,
       source: normalized.source,
       submission_hash: submissionHash,
+      data_consent_at: input.dataConsent ? new Date().toISOString() : null,
     });
 
     await this.leadEventsService.recordDiagnosticCreated(created.id, {
@@ -110,6 +141,33 @@ export class DiagnosticRequestService {
 
     logger.info("diagnostic_request.created", "Diagnostic request created", {
       diagnosticRequestId: created.id,
+      source: created.source,
+    });
+
+    // Se espera (no fire-and-forget) porque en entornos serverless la funcion
+    // puede terminar el proceso antes de que una promesa "colgada" se resuelva.
+    // syncDiagnosticRequestToSheets nunca lanza — un fallo de Sheets no afecta
+    // la respuesta de la API.
+    await syncDiagnosticRequestToSheets({
+      id: created.id,
+      nombre: normalized.nombre,
+      empresa: normalized.empresa,
+      cargo: normalized.cargo,
+      email: normalized.email,
+      whatsapp: normalized.whatsapp,
+      sector: normalized.sector,
+      queVende: normalized.queVende,
+      aQuienVende: normalized.aQuienVende,
+      procesoActual: normalized.procesoActual,
+      queFrena: normalized.queFrena,
+      metaConcreta: normalized.metaConcreta,
+      presupuesto: normalized.presupuesto,
+      urgencia: normalized.urgencia,
+      autoridad: normalized.autoridad,
+      tamanoEquipo: normalized.tamanoEquipo,
+      contexto: normalized.contexto,
+      fitScore,
+      routingTier,
       source: created.source,
     });
 
@@ -209,4 +267,3 @@ export class DiagnosticRequestService {
     return updated;
   }
 }
-

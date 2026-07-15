@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 // RiBuzz brand colors
-const COLORS = ["#E625FF", "#0FEFFD", "#B16EFF", "#ffffff"];
+const COLORS = ["#6939E2", "#785FDD", "#785FDD", "#ffffff"];
 
 function pickColor(ix: number, iy: number, density: number): string {
   const t = (ix + iy) / (density * 2);

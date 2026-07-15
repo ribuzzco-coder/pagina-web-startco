@@ -1,80 +1,67 @@
 import { CTASection } from "@/components/sections/cta-section";
-import { ServiceCard } from "@/components/sections/service-card";
+import { FAQAccordion } from "@/components/sections/faq-accordion";
+import { PhaseTabs } from "@/components/sections/phase-tabs";
 import { ServicesSystemHero } from "@/components/sections/services-system-hero";
-import { Card } from "@/components/ui/card";
+import { StageTabs } from "@/components/sections/stage-tabs";
+import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
 import { Container } from "@/components/ui/container";
+import { NumberedCard } from "@/components/ui/numbered-card";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
-import { differentiators, fullServices, serviceEffects } from "@/lib/content";
+import {
+  differentiators,
+  howWeWorkFaqs,
+  methodologySteps,
+  offerPackages,
+  trustSignals,
+} from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { BoxVisual } from "@/components/ui/gift-box-visual";
 
 export const metadata = createPageMetadata({
-  title: "Servicios",
+  title: "Cómo trabajamos",
   description:
-    "RiBuzz organiza su trabajo en tres capas: diseno del sistema comercial, implementacion de soluciones y acompanamiento como Growth Partner.",
+    "RiBuzz adapta su oferta a la etapa de tu empresa: estrategia, ejecución comercial, tecnología y adquisición pagada, con retainer mensual y fee por cumplimiento de hitos.",
   path: "/services",
 });
 
 export default function ServicesPage() {
   return (
     <>
+      {/* Atención: hook + promesa para quien todavía no conoce a RiBuzz */}
       <ServicesSystemHero
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
-        secondaryCtaHref="/methodology"
+        secondaryCtaHref="#como-lo-hacemos"
       />
 
-      <section className="cv-auto pb-16 sm:pb-22">
+      {/* Confianza: prueba antes de pedir nada */}
+      <section className="cv-auto pb-16 sm:pb-20">
         <Container>
           <SectionTitle
-            eyebrow="Capas de trabajo"
-            title="Cada capa responde a un momento distinto del negocio"
-            description="La secuencia cambia segun el contexto, pero la logica es la misma: no ejecutar sin lectura del problema y no disenar algo que luego no pueda operar."
+            eyebrow="Prueba, no promesas"
+            title="Esto ya está pasando con clientes reales"
+            description="No partimos de cero: ya hay trabajo activo, resultados medibles y contextos distintos donde el sistema se ha puesto a prueba."
           />
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {fullServices.map((service) => (
-              <ServiceCard
-                key={service.title}
-                layer={service.layer}
-                title={service.title}
-                summary={service.summary}
-                idealClient={service.idealClient}
-                expectedResult={service.expectedResult}
-                deliverables={service.deliverables}
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {trustSignals.map((item, index) => (
+              <NumberedCard
+                key={item.title}
+                index={index + 1}
+                title={item.title}
+                description={item.description}
               />
             ))}
           </div>
         </Container>
       </section>
 
+      <TestimonialShuffle />
+
       <SectionDivider />
 
-      <section className="cv-auto py-16 sm:py-20">
-        <Container>
-          <SectionTitle
-            align="left"
-            eyebrow="Que genera cada capa"
-            title="Claridad, capacidad operativa y sostenibilidad"
-            description="El valor no esta solo en hacer cosas. Esta en instalar una logica comercial que el negocio pueda usar y mejorar."
-          />
-
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {serviceEffects.map((item) => (
-              <Card key={item.title} className="rounded-[24px] p-6">
-                <h3 className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                  {item.description}
-                </p>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
+      {/* Confianza: contraste directo con la categoría "agencia" */}
       <section className="section-soft cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
@@ -85,24 +72,93 @@ export default function ServicesPage() {
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {differentiators.map((item) => (
-              <Card key={item} className="rounded-[24px] p-6">
-                <p className="text-sm leading-relaxed text-[#98A0B3] sm:text-base">{item}</p>
-              </Card>
+            {differentiators.map((item, index) => (
+              <NumberedCard key={item} index={index + 1} description={item} />
             ))}
           </div>
         </Container>
       </section>
 
+      <SectionDivider />
+
+      {/* Interés: cómo funciona por dentro, en suficiente detalle para generar deseo informado */}
+      <section className="cv-auto py-16 sm:py-20" id="como-lo-hacemos">
+        <Container>
+          <SectionTitle
+            align="left"
+            eyebrow="Cómo lo hacemos"
+            title="Cuatro fases, siempre en el mismo orden"
+            description="No se ejecuta sin diagnóstico y no se diseña algo que luego no pueda operar. Así se recorre cada proyecto, sin importar la etapa en la que entres."
+          />
+
+          <div className="mt-10">
+            <PhaseTabs steps={methodologySteps} />
+          </div>
+        </Container>
+      </section>
+
+      <SectionDivider />
+
+      {/* Decisión: ahora sí, la oferta concreta */}
+      <section className="cv-auto pb-16 sm:pb-20">
+        <Container>
+          <SectionTitle
+            eyebrow="¿En qué etapa está tu empresa?"
+            title="Un paquete por etapa, no una cotización distinta cada vez"
+            description="Encuentra el que corresponde al momento de tu empresa. Cada uno tiene alcance fijo y se cobra con retainer mensual — el precio exacto se define en la llamada de introducción."
+          />
+
+          <div className="mt-10">
+            <StageTabs
+              packages={offerPackages}
+              ctaHref={SITE_CONFIG.diagnosisPath}
+              ctaLabel="Agenda tu llamada de introducción"
+            />
+          </div>
+        </Container>
+      </section>
+
+      <section className="cv-auto py-16 sm:py-20">
+        <Container>
+          <SectionTitle
+            align="left"
+            eyebrow="Modelo de inversión"
+            title="No cobramos por publicar, cobramos por mover el número que te importa"
+            description="Cada paquete se cobra con un retainer mensual fijo, que cubre la capacidad instalada. A partir de la etapa de Incubación, se suma un fee por cumplimiento de hitos de negocio — definidos contigo antes de empezar, nunca a mitad de camino."
+          />
+        </Container>
+      </section>
+
+      <SectionDivider />
+
+      {/* Manejo de objeciones justo antes del cierre */}
+      <section className="cv-auto py-16 sm:py-20">
+        <Container>
+          <SectionTitle
+            eyebrow="Antes de agendar"
+            title="Preguntas frecuentes sobre cómo trabajamos"
+            description="Las respuestas más directas a lo que normalmente se pregunta antes de la llamada."
+          />
+
+          <div className="mt-8 max-w-4xl">
+            <FAQAccordion items={howWeWorkFaqs} />
+          </div>
+        </Container>
+      </section>
+
+      {/* Acción: el cierre real del embudo */}
       <CTASection
         actionsAtBottom
-        eyebrow="Recursos gratuitos"
-        title="Empieza a transformar tu operación hoy mismo"
-        description="Reclama tu regalo y accede a recursos gratuitos que te ayudarán a estructurar tu sistema comercial."
-        primaryLabel="Haz click aquí"
-        primaryHref="/regalos"
+        eyebrow="Siguiente paso"
+        title="Cuéntanos tu momento y agenda tu llamada de introducción"
+        description="Es una conversación corta, sin costo, para confirmar si hay fit real antes de proponer cualquier paquete. Si prefieres explorar primero, reclama uno de nuestros recursos gratuitos."
+        primaryLabel="Agenda tu llamada de introducción"
+        primaryHref={SITE_CONFIG.diagnosisPath}
+        primaryVariant="shimmer"
+        secondaryLabel="Reclama tu regalo"
+        secondaryHref="/regalos"
         rightElement={
-          <div className="opacity-80 drop-shadow-[0_0_15px_rgba(230,37,255,0.15)]">
+          <div className="opacity-80 drop-shadow-[0_0_15px_rgba(105,57,226,0.15)]">
             <BoxVisual isUnlocked={false} className="scale-90" />
           </div>
         }

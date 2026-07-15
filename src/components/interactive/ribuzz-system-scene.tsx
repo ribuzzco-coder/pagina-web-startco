@@ -131,7 +131,7 @@ export function RibuzzSystemScene({ className }: RibuzzSystemSceneProps) {
               width={473}
               height={797}
               priority
-              className="h-auto w-[190px] drop-shadow-[0_18px_52px_rgba(230,37,255,0.16)] sm:w-[240px] lg:w-[290px]"
+              className="h-auto w-[190px] drop-shadow-[0_18px_52px_rgba(105,57,226,0.16)] sm:w-[240px] lg:w-[290px]"
             />
           </div>
 

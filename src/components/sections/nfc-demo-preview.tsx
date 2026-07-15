@@ -23,9 +23,9 @@ export function NfcDemoPreview({ items, inquiryHref }: NfcDemoPreviewProps) {
             {items.map((item) => (
               <div
                 key={item}
-                className="flex items-center gap-3 rounded-full border border-white/8 bg-white/[0.03] px-4 py-3 text-sm text-[#C7CBD6]"
+                className="flex items-center gap-3 rounded-full border border-white/8 bg-white/[0.03] px-4 py-3 text-sm text-[#CEC6E0]"
               >
-                <span className="h-2 w-2 rounded-full bg-[#0FEFFD]" />
+                <span className="h-2 w-2 rounded-full bg-[#785FDD]" />
                 <span>{item}</span>
               </div>
             ))}
@@ -45,25 +45,25 @@ export function NfcDemoPreview({ items, inquiryHref }: NfcDemoPreviewProps) {
           <div className="mx-auto max-w-[360px] rounded-[34px] border border-white/10 bg-[linear-gradient(180deg,#0D1017,#171A28)] p-4 shadow-[0_24px_48px_rgba(0,0,0,0.34)]">
             <div className="rounded-[28px] border border-white/8 bg-white/[0.035] p-5">
               <div className="flex items-center gap-4">
-                <div className="h-16 w-16 rounded-[22px] bg-[linear-gradient(135deg,#E625FF,#0FEFFD)]" />
+                <div className="h-16 w-16 rounded-[22px] bg-[linear-gradient(135deg,#6939E2,#785FDD)]" />
                 <div>
-                  <p className="text-lg font-semibold text-[#F5F7FA]">RiBuzz Studio</p>
+                  <p className="text-lg font-semibold text-[#E4DFF7]">RiBuzz Studio</p>
                   <p className="text-sm text-[#98A0B3]">Tarjeta NFC para vender mejor</p>
                 </div>
               </div>
 
               <div className="mt-6 grid gap-3">
                 <div className="rounded-[18px] border border-white/8 bg-white/[0.04] px-4 py-3">
-                  <p className="text-[11px] uppercase tracking-[0.16em] text-[#E7B0EE]">
+                  <p className="text-[11px] uppercase tracking-[0.16em] text-[#CEC6E0]">
                     CTA principal
                   </p>
-                  <p className="mt-2 text-sm font-semibold text-[#F5F7FA]">Hablar por WhatsApp</p>
+                  <p className="mt-2 text-sm font-semibold text-[#E4DFF7]">Hablar por WhatsApp</p>
                 </div>
                 <div className="rounded-[18px] border border-white/8 bg-white/[0.04] px-4 py-3">
-                  <p className="text-[11px] uppercase tracking-[0.16em] text-[#B8EAF0]">
+                  <p className="text-[11px] uppercase tracking-[0.16em] text-[#CEC6E0]">
                     CTA secundaria
                   </p>
-                  <p className="mt-2 text-sm font-semibold text-[#F5F7FA]">
+                  <p className="mt-2 text-sm font-semibold text-[#E4DFF7]">
                     Guardar contacto y ver portafolio
                   </p>
                 </div>
@@ -71,7 +71,7 @@ export function NfcDemoPreview({ items, inquiryHref }: NfcDemoPreviewProps) {
                   <p className="text-[11px] uppercase tracking-[0.16em] text-[#98A0B3]">
                     Enlaces activos
                   </p>
-                  <p className="mt-2 text-sm text-[#F5F7FA]">
+                  <p className="mt-2 text-sm text-[#E4DFF7]">
                     Sitio web, Instagram, menú, agenda o catálogo
                   </p>
                 </div>

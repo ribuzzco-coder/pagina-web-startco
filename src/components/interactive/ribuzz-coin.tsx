@@ -86,7 +86,7 @@ export function RibuzzCoin({
     <div className={cn("relative mx-auto flex h-[430px] w-full max-w-[620px] items-center justify-center sm:h-[620px]", className)}>
       <motion.div
         aria-hidden="true"
-        className="absolute inset-x-[14%] bottom-10 h-18 rounded-full bg-[radial-gradient(circle,rgba(11,239,253,0.12),rgba(230,37,255,0.08)_46%,transparent_72%)] blur-2xl"
+        className="absolute inset-x-[14%] bottom-10 h-18 rounded-full bg-[radial-gradient(circle,rgba(120,95,221,0.12),rgba(105,57,226,0.08)_46%,transparent_72%)] blur-2xl"
         style={{ scale: haloScale }}
       />
 
@@ -98,7 +98,7 @@ export function RibuzzCoin({
 
       <motion.div
         aria-hidden="true"
-        className="absolute h-[310px] w-[310px] rounded-full border border-[#0feffd]/18 sm:h-[420px] sm:w-[420px]"
+        className="absolute h-[310px] w-[310px] rounded-full border border-[#785fdd]/18 sm:h-[420px] sm:w-[420px]"
         style={{
           opacity: ringOpacity,
           rotateZ: useTransform(pointerX, [-0.5, 0.5], [-18, 18]),
@@ -134,15 +134,15 @@ export function RibuzzCoin({
               transformStyle: "preserve-3d",
             }}
           >
-            <div className="absolute inset-[4.5%] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(230,37,255,0.26),rgba(18,20,35,0.96)_54%,rgba(7,9,16,1)_78%)] shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_34px_90px_rgba(0,0,0,0.52),0_0_65px_rgba(230,37,255,0.16)]" />
-            <div className="absolute inset-[7.5%] rounded-full border border-white/8 bg-[linear-gradient(145deg,rgba(255,255,255,0.16),rgba(255,255,255,0.02)_26%,rgba(255,255,255,0.02)_70%,rgba(230,37,255,0.08))]" />
+            <div className="absolute inset-[4.5%] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(105,57,226,0.26),rgba(18,20,35,0.96)_54%,rgba(7,9,16,1)_78%)] shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_34px_90px_rgba(0,0,0,0.52),0_0_65px_rgba(105,57,226,0.16)]" />
+            <div className="absolute inset-[7.5%] rounded-full border border-white/8 bg-[linear-gradient(145deg,rgba(255,255,255,0.16),rgba(255,255,255,0.02)_26%,rgba(255,255,255,0.02)_70%,rgba(105,57,226,0.08))]" />
             <motion.div
               className="absolute inset-[8.5%] rounded-full"
               style={{ background: glareBackground }}
             />
-            <div className="absolute inset-[11%] rounded-full border border-[#0feffd]/16" />
-            <div className="absolute inset-[13.5%] rounded-full border border-[#e625ff]/18 shadow-[0_0_40px_rgba(230,37,255,0.18)]" />
-            <div className="absolute inset-[9.5%] rounded-full bg-[radial-gradient(circle_at_30%_24%,rgba(255,255,255,0.16),transparent_24%),radial-gradient(circle_at_68%_72%,rgba(15,239,253,0.1),transparent_28%)]" />
+            <div className="absolute inset-[11%] rounded-full border border-[#785fdd]/16" />
+            <div className="absolute inset-[13.5%] rounded-full border border-[#6939e2]/18 shadow-[0_0_40px_rgba(105,57,226,0.18)]" />
+            <div className="absolute inset-[9.5%] rounded-full bg-[radial-gradient(circle_at_30%_24%,rgba(255,255,255,0.16),transparent_24%),radial-gradient(circle_at_68%_72%,rgba(120,95,221,0.1),transparent_28%)]" />
 
             <motion.div
               aria-hidden="true"
@@ -152,10 +152,10 @@ export function RibuzzCoin({
                 rotateZ: useTransform(pointerX, [-0.5, 0.5], [-8, 8]),
               }}
             >
-              <div className="absolute left-[20%] top-[42%] h-px w-[60%] bg-[linear-gradient(90deg,transparent,rgba(177,110,255,0.22),transparent)]" />
-              <div className="absolute left-[32%] top-[24%] h-[52%] w-px bg-[linear-gradient(180deg,transparent,rgba(15,239,253,0.2),transparent)]" />
-              <div className="absolute left-[22%] top-[28%] h-2 w-2 rounded-full bg-[#0feffd]/35 shadow-[0_0_10px_rgba(15,239,253,0.25)]" />
-              <div className="absolute right-[24%] top-[34%] h-2 w-2 rounded-full bg-[#e625ff]/35 shadow-[0_0_10px_rgba(230,37,255,0.25)]" />
+              <div className="absolute left-[20%] top-[42%] h-px w-[60%] bg-[linear-gradient(90deg,transparent,rgba(120,95,221,0.22),transparent)]" />
+              <div className="absolute left-[32%] top-[24%] h-[52%] w-px bg-[linear-gradient(180deg,transparent,rgba(120,95,221,0.2),transparent)]" />
+              <div className="absolute left-[22%] top-[28%] h-2 w-2 rounded-full bg-[#785fdd]/35 shadow-[0_0_10px_rgba(120,95,221,0.25)]" />
+              <div className="absolute right-[24%] top-[34%] h-2 w-2 rounded-full bg-[#6939e2]/35 shadow-[0_0_10px_rgba(105,57,226,0.25)]" />
               <div className="absolute bottom-[24%] left-[46%] h-2 w-2 rounded-full bg-white/24 shadow-[0_0_8px_rgba(255,255,255,0.18)]" />
             </motion.div>
 
@@ -166,20 +166,20 @@ export function RibuzzCoin({
                 x: coinDepth,
               }}
             >
-              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_34%_28%,rgba(255,255,255,0.14),transparent_26%),radial-gradient(circle_at_50%_100%,rgba(230,37,255,0.12),transparent_30%)]" />
+              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_34%_28%,rgba(255,255,255,0.14),transparent_26%),radial-gradient(circle_at_50%_100%,rgba(105,57,226,0.12),transparent_30%)]" />
               <Image
                 src={logoSrc}
                 alt={logoAlt}
                 width={300}
                 height={300}
                 priority
-                className="relative h-[82%] w-[82%] object-contain drop-shadow-[0_0_18px_rgba(230,37,255,0.28)]"
+                className="relative h-[82%] w-[82%] object-contain drop-shadow-[0_0_18px_rgba(105,57,226,0.28)]"
               />
             </motion.div>
 
             <motion.div
               aria-hidden="true"
-              className="absolute inset-[2.5%] rounded-full border border-[#b16eff]/14"
+              className="absolute inset-[2.5%] rounded-full border border-[#785fdd]/14"
               style={{
                 opacity: ringOpacity,
                 rotateZ: useTransform(pointerX, [-0.5, 0.5], [-26, 26]),

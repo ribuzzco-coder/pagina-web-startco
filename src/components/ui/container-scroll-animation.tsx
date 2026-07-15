@@ -63,10 +63,10 @@ export function ContainerScroll({
     return {
       transform: `translate3d(0, ${translateY}px, 0)`,
       boxShadow: `
-        0 0 0 1px rgba(230, 37, 255, ${outlineGlow}),
-        0 0 22px rgba(230, 37, 255, ${magentaGlow}),
-        0 0 42px rgba(15, 239, 253, ${cyanGlow}),
-        0 18px 42px rgba(0, 0, 0, 0.3)
+        0 0 0 1px rgba(105,57,226,${outlineGlow}),
+        0 0 22px rgba(105,57,226,${magentaGlow}),
+        0 0 42px rgba(120,95,221,${cyanGlow}),
+        0 18px 42px rgba(0,0,0,0.3)
       `,
     } satisfies CSSProperties;
   }, [progress]);

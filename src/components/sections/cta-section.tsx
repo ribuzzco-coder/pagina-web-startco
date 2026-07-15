@@ -9,6 +9,7 @@ type CTASectionProps = {
   primaryLabel: ReactNode;
   primaryHref: string;
   primaryExternal?: boolean;
+  primaryVariant?: "primary" | "shimmer";
   secondaryLabel?: ReactNode;
   secondaryHref?: string;
   secondaryExternal?: boolean;
@@ -28,6 +29,7 @@ export function CTASection({
   primaryLabel,
   primaryHref,
   primaryExternal,
+  primaryVariant = "primary",
   secondaryLabel,
   secondaryHref,
   secondaryExternal,
@@ -44,7 +46,7 @@ export function CTASection({
     <section className={cn("py-20 sm:py-24", className)}>
       <Container>
         <div className="cv-auto relative overflow-hidden rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(29,33,48,0.9),rgba(24,26,36,0.84))] p-8 shadow-[0_10px_28px_rgba(0,0,0,0.18)] sm:p-10">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(230,37,255,0.32),transparent)]" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(105,57,226,0.32),transparent)]" />
 
           <div className={cn(
             "relative flex flex-col gap-6",
@@ -53,10 +55,10 @@ export function CTASection({
             contentClassName
           )}>
             <div className={cn("flex-1 max-w-2xl", centered && "mx-auto")}>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
                 {eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#F5F7FA] sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#E4DFF7] sm:text-4xl">
                 {title}
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#98A0B3] sm:text-lg">
@@ -65,7 +67,7 @@ export function CTASection({
 
               {actionsAtBottom && (
                 <div className={cn("mt-8 flex flex-col gap-3 sm:flex-row", actionsClassName)}>
-                  <Button href={primaryHref} size="lg" external={primaryExternal}>
+                  <Button href={primaryHref} size="lg" variant={primaryVariant} external={primaryExternal}>
                     {primaryLabel}
                   </Button>
                   {secondaryLabel && secondaryHref ? (
@@ -87,7 +89,7 @@ export function CTASection({
                 {accentIcon ? (
                   <div className="flex items-center justify-center">{accentIcon}</div>
                 ) : null}
-                <Button href={primaryHref} size="lg" external={primaryExternal}>
+                <Button href={primaryHref} size="lg" variant={primaryVariant} external={primaryExternal}>
                   {primaryLabel}
                 </Button>
                 {secondaryLabel && secondaryHref ? (

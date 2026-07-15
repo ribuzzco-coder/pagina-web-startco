@@ -24,10 +24,10 @@ export function NfcUseCases({ items }: NfcUseCasesProps) {
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
           {items.map((item, index) => (
             <Card key={item.title} className="rounded-[26px] p-6">
-              <div className="grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-white/[0.04] text-sm font-semibold text-[#F5F7FA]">
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-sm font-semibold text-white shadow-[0_0_14px_rgba(105,57,226,0.32)]">
                 0{index + 1}
               </div>
-              <h3 className="mt-5 text-lg font-semibold tracking-tight text-[#F5F7FA]">
+              <h3 className="mt-5 text-lg font-semibold tracking-tight text-[#E4DFF7]">
                 {item.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-[#98A0B3]">

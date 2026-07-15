@@ -14,10 +14,10 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
           open={index === 0}
         >
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left">
-            <span className="text-sm font-semibold text-[#F5F7FA] sm:text-base">
+            <span className="text-sm font-semibold text-[#E4DFF7] sm:text-base">
               {item.question}
             </span>
-            <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 text-sm text-[#98A0B3] transition-transform group-open:rotate-45 group-open:border-[#E625FF]/24 group-open:text-[#E7B0EE]">
+            <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 text-sm text-[#98A0B3] transition-transform group-open:rotate-45 group-open:border-[#6939E2]/24 group-open:text-[#CEC6E0]">
               +
             </span>
           </summary>

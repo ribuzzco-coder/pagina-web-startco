@@ -40,11 +40,11 @@ export function NfcProductDisplay({
                       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">
                         Variacion 0{index + 1}
                       </p>
-                      <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#F5F7FA]">
+                      <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#E4DFF7]">
                         {variant.name}
                       </h3>
                     </div>
-                    <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.16em] text-[#C7CBD6]">
+                    <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.16em] text-[#CEC6E0]">
                       NFC Ready
                     </div>
                   </div>
@@ -55,18 +55,18 @@ export function NfcProductDisplay({
 
                   <div className="mt-5 grid gap-3 border-t border-white/8 pt-5 sm:grid-cols-2">
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
                         Material
                       </p>
-                      <p className="mt-2 text-sm leading-relaxed text-[#C7CBD6]">
+                      <p className="mt-2 text-sm leading-relaxed text-[#CEC6E0]">
                         {variant.material}
                       </p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#B8EAF0]">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
                         Personalizacion
                       </p>
-                      <p className="mt-2 text-sm leading-relaxed text-[#C7CBD6]">
+                      <p className="mt-2 text-sm leading-relaxed text-[#CEC6E0]">
                         {variant.customization}
                       </p>
                     </div>
@@ -76,17 +76,17 @@ export function NfcProductDisplay({
             </div>
 
             <Card className="relative overflow-hidden rounded-[30px] p-6 sm:p-8">
-              <div className="pointer-events-none absolute right-0 top-0 h-36 w-36 rounded-full bg-[#E625FF]/18 blur-3xl" />
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+              <div className="pointer-events-none absolute right-0 top-0 h-36 w-36 rounded-full bg-[#6939E2]/18 blur-3xl" />
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
                 Mockup de producto
               </p>
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#F5F7FA]">
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7]">
                 Logo, color y presencia de marca desde el primer contacto
               </h3>
               <div className="mt-6 grid gap-4 sm:grid-cols-3">
                 <div className="aspect-[0.65] rounded-[24px] border border-white/10 bg-[linear-gradient(150deg,#202438,#131621)] p-4 shadow-[0_16px_32px_rgba(0,0,0,0.3)]" />
-                <div className="aspect-[0.65] rounded-[24px] border border-[#E625FF]/18 bg-[linear-gradient(150deg,#28152F,#131621)] p-4 shadow-[0_16px_32px_rgba(0,0,0,0.3)]" />
-                <div className="aspect-[0.65] rounded-[24px] border border-[#0FEFFD]/18 bg-[linear-gradient(150deg,#132833,#131621)] p-4 shadow-[0_16px_32px_rgba(0,0,0,0.3)]" />
+                <div className="aspect-[0.65] rounded-[24px] border border-[#6939E2]/18 bg-[linear-gradient(150deg,#28152F,#131621)] p-4 shadow-[0_16px_32px_rgba(0,0,0,0.3)]" />
+                <div className="aspect-[0.65] rounded-[24px] border border-[#785FDD]/18 bg-[linear-gradient(150deg,#132833,#131621)] p-4 shadow-[0_16px_32px_rgba(0,0,0,0.3)]" />
               </div>
               <p className="mt-6 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
                 Si ya sabes el estilo que quieres, podemos orientarte hacia una version

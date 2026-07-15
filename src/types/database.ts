@@ -68,67 +68,100 @@ export type Database = {
       };
       diagnostic_requests: {
         Row: {
+          a_quien_vende: string | null;
+          autoridad: string | null;
           cargo: string | null;
           contexto: string | null;
           created_at: string;
+          data_consent_at: string | null;
           email: string;
           empresa: string;
+          fit_score: number;
           id: string;
           internal_notes: string | null;
+          meta_concreta: string | null;
           nombre: string;
-          reto_principal: string;
+          presupuesto: string | null;
+          proceso_actual: string | null;
+          que_frena: string | null;
+          que_vende: string | null;
+          reto_principal: string | null;
           reviewed_at: string | null;
           reviewed_by: string | null;
+          routing_tier: Database["public"]["Enums"]["diagnostic_routing_tier"];
           sector: string;
           source: string;
           status: Database["public"]["Enums"]["diagnostic_request_status"];
           submission_hash: string;
           tamano_equipo: string | null;
           updated_at: string;
+          urgencia: string | null;
           whatsapp: string | null;
-          ya_esta_vendiendo: boolean;
+          ya_esta_vendiendo: boolean | null;
         };
         Insert: {
+          a_quien_vende?: string | null;
+          autoridad?: string | null;
           cargo?: string | null;
           contexto?: string | null;
           created_at?: string;
+          data_consent_at?: string | null;
           email: string;
           empresa: string;
+          fit_score?: number;
           id?: string;
           internal_notes?: string | null;
+          meta_concreta?: string | null;
           nombre: string;
-          reto_principal: string;
+          presupuesto?: string | null;
+          proceso_actual?: string | null;
+          que_frena?: string | null;
+          que_vende?: string | null;
+          reto_principal?: string | null;
           reviewed_at?: string | null;
           reviewed_by?: string | null;
+          routing_tier?: Database["public"]["Enums"]["diagnostic_routing_tier"];
           sector: string;
           source?: string;
           status?: Database["public"]["Enums"]["diagnostic_request_status"];
           submission_hash: string;
           tamano_equipo?: string | null;
           updated_at?: string;
+          urgencia?: string | null;
           whatsapp?: string | null;
-          ya_esta_vendiendo: boolean;
+          ya_esta_vendiendo?: boolean | null;
         };
         Update: {
+          a_quien_vende?: string | null;
+          autoridad?: string | null;
           cargo?: string | null;
           contexto?: string | null;
           created_at?: string;
+          data_consent_at?: string | null;
           email?: string;
           empresa?: string;
+          fit_score?: number;
           id?: string;
           internal_notes?: string | null;
+          meta_concreta?: string | null;
           nombre?: string;
-          reto_principal?: string;
+          presupuesto?: string | null;
+          proceso_actual?: string | null;
+          que_frena?: string | null;
+          que_vende?: string | null;
+          reto_principal?: string | null;
           reviewed_at?: string | null;
           reviewed_by?: string | null;
+          routing_tier?: Database["public"]["Enums"]["diagnostic_routing_tier"];
           sector?: string;
           source?: string;
           status?: Database["public"]["Enums"]["diagnostic_request_status"];
           submission_hash?: string;
           tamano_equipo?: string | null;
           updated_at?: string;
+          urgencia?: string | null;
           whatsapp?: string | null;
-          ya_esta_vendiendo?: boolean;
+          ya_esta_vendiendo?: boolean | null;
         };
         Relationships: [];
       };
@@ -222,6 +255,7 @@ export type Database = {
         | "qualified"
         | "unqualified"
         | "archived";
+      diagnostic_routing_tier: "llamada" | "regalos" | "newsletter";
       lead_event_type:
         | "diagnostic_request_created"
         | "duplicate_detected"
@@ -248,4 +282,3 @@ export type DiagnosticRequestUpdate = TableUpdate<"diagnostic_requests">;
 export type LeadEventInsert = TableInsert<"lead_events">;
 export type AdminProfileRow = TableRow<"admin_profiles">;
 export type AuditLogInsert = TableInsert<"audit_logs">;
-

@@ -23,11 +23,11 @@ export function SectionTitle({
     <div className={cn(isCentered && "text-center", className)} {...props}>
       <div>
         {eyebrow ? (
-          <p className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-[#E7B0EE] uppercase">
+          <p className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-[#CEC6E0] uppercase">
             {eyebrow}
           </p>
         ) : null}
-        <h2 className="text-3xl font-semibold leading-tight tracking-tight text-[#F5F7FA] sm:text-4xl">
+        <h2 className="text-3xl font-semibold leading-tight tracking-tight text-[#E4DFF7] sm:text-4xl">
           {title}
         </h2>
         {description ? (

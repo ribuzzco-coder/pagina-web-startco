@@ -1,10 +1,10 @@
-export type Service = {
-  layer: string;
+export type OfferPackage = {
+  stage: string;
   title: string;
-  summary: string;
-  idealClient: string;
-  expectedResult: string;
-  deliverables: string[];
+  forWhom: string;
+  includes: string[];
+  billing: string;
+  note?: string;
 };
 
 export type Step = {
@@ -24,210 +24,98 @@ export type ContentBlock = {
   description: string;
 };
 
-export type BeforeAfterItem = {
-  beforeTitle: string;
-  beforeDescription: string;
-  afterTitle: string;
-  afterDescription: string;
-};
-
-export const homePainPoints = [
-  {
-    title: "Esfuerzos comerciales dispersos",
-    description:
-      "Marketing, herramientas y seguimiento avanzan de forma aislada, sin una lógica unificada que mantenga predecible el ciclo.",
-  },
-  {
-    title: "Fricción al convertir y seguir",
-    description:
-      "Se logran conversaciones o interés inicial, pero se enfrían rápido por falta de orden, respuesta rápida y estructura de seguimiento.",
-  },
-  {
-    title: "Dependencia estricta del fundador",
-    description:
-      "El criterio, el impulso comercial y casi todos los cierres pesados de venta siguen recayendo absolutamente en una sola persona.",
-  },
-  {
-    title: "Estancamiento invisible a ciegas",
-    description:
-      "Existe un cuello de botella evidente que afecta la caja y el crecimiento, pero no hay claridad precisa sobre dónde o urgente qué priorizar.",
-  },
+export const homeProblemKeywords = [
+  "Clientes esporádicos",
+  "Cada venta, un caso aparte",
+  "Todo depende de una persona",
+  "Ingresos que suben y bajan",
 ] as const;
 
-export const homePainTransitions: BeforeAfterItem[] = [
-  {
-    beforeTitle: "Esfuerzos comerciales dispersos",
-    beforeDescription:
-      "Marketing, herramientas y seguimiento avanzan por separado, sin una lógica compartida que haga predecible el proceso.",
-    afterTitle: "Frentes conectados bajo una sola lógica",
-    afterDescription:
-      "Captación, conversión y seguimiento operan con prioridades claras, mensajes alineados y un sistema que ya no se contradice internamente.",
-  },
-  {
-    beforeTitle: "Fricción al convertir y seguir",
-    beforeDescription:
-      "Se generan conversaciones, pero se enfrían rápido porque no hay respuesta, ritmo comercial ni próximos pasos bien definidos.",
-    afterTitle: "Conversión con ritmo y seguimiento real",
-    afterDescription:
-      "Cada oportunidad entra a una secuencia más clara, con respuesta oportuna, puntos de control y continuidad hasta el cierre.",
-  },
-  {
-    beforeTitle: "Dependencia estricta del fundador",
-    beforeDescription:
-      "El criterio comercial, el impulso de venta y los cierres más importantes siguen descansando casi por completo en una sola persona.",
-    afterTitle: "Ejecución compartida, no concentrada",
-    afterDescription:
-      "El sistema ordena roles, decisiones y pasos críticos para que el equipo pueda ejecutar con más autonomía y menos cuello de botella.",
-  },
-  {
-    beforeTitle: "Estancamiento sin claridad operativa",
-    beforeDescription:
-      "La caja se frena y el crecimiento pierde fuerza, pero todavía no es evidente qué parte del sistema está frenando el avance.",
-    afterTitle: "Claridad sobre dónde intervenir primero",
-    afterDescription:
-      "El cuello de botella se vuelve visible, las prioridades se ordenan y el crecimiento deja de depender de intuición o urgencia.",
-  },
-] as const;
-
-export const solutionSequence = [
-  {
-    title: "Entendemos primero",
-    description:
-      "Leemos negocio, oferta, proceso comercial, equipo y contexto antes de recomendar cualquier acción.",
-  },
-  {
-    title: "Diagnosticamos el sistema",
-    description:
-      "Identificamos si el problema está en captación, conversión, seguimiento o en la estructura comercial completa.",
-  },
-  {
-    title: "Diseñamos la estructura",
-    description:
-      "Ordenamos prioridades, mensajes, etapas comerciales, soportes de conversión y hoja de ruta.",
-  },
-  {
-    title: "Implementamos lo necesario",
-    description:
-      "Activamos herramientas, activos y automatizaciones cuando hacen operable lo que ya fue definido.",
-  },
-  {
-    title: "Acompañamos la ejecución",
-    description:
-      "Revisamos avances, ajustamos decisiones y ayudamos a sostener el aprendizaje comercial.",
-  },
-] as const;
+export const homeProblemSynthesis =
+  "No son problemas sueltos: pasan porque falta un sistema que conecte cómo consigues clientes, cómo les vendes y cómo les das seguimiento.";
 
 export const fitChecklist = [
-  "Empresas que ya están operando y ya venden o ya han intentado vender.",
+  "Empresas en etapa temprana o en transformación, con un problema comercial identificado — ya vendiendo o construyendo su primera oferta.",
   "Negocios que sienten fricción en su crecimiento y no quieren seguir en ensayo y error.",
   "Equipos abiertos a cuestionar su forma de operar y a ordenar mejor su sistema comercial.",
   "Clientes con disposición a ejecutar y a participar en las decisiones importantes.",
-  "Empresas que entienden qué el problema no siempre es hacer mas, sino estructurar mejor.",
+  "Empresas que entienden que el problema no siempre es hacer más, sino estructurar mejor.",
 ] as const;
 
 export const nonFitChecklist = [
-  "Negocios qué aún no validan su oferta o todavía no tienen base comercial mínima.",
+  "Negocios sin ningún problema identificado ni intención real de resolverlo — solo curiosidad.",
   "Empresas que solo quieren más marketing sin revisar el sistema de fondo.",
   "Clientes que esperan magia, promesas vacías o resultados sin involucrarse.",
   "Equipos que no quieren ejecutar ni ajustar su forma de vender.",
   "Negocios que buscan delegar por completo la venta a un tercero.",
 ] as const;
 
-export const servicePreview = [
+export const offerPackages: OfferPackage[] = [
   {
-    title: "Diseño del flujo y sistema comercial",
-    description:
-      "Leemos el negocio, ubicamos el cuello de botella y estructuramos captación, conversión y seguimiento.",
-    idealClient:
-      "Para empresas que necesitan claridad antes de mover más recursos.",
-    expectedResult:
-      "Dirección, prioridades y una estructura comercial con criterio.",
-  },
-  {
-    title: "Implementación de soluciones y activos comerciales",
-    description:
-      "Convertimos la estructura en operación real mediante activos, herramientas y soportes de conversión.",
-    idealClient:
-      "Para equipos que ya saben qué deben ordenar, pero necesitan bajarlo a ejecución.",
-    expectedResult:
-      "Capacidad operativa real para ejecutar mejor el sistema comercial.",
-  },
-  {
-    title: "Growth Partner",
-    description:
-      "Acompañamos tareas, decisiones y ajustes para sostener la ejecución y aprender sobre la marcha.",
-    idealClient:
-      "Para empresas que no quieren qué el sistema se quede en un documento.",
-    expectedResult:
-      "Sostenibilidad, mejora continua y menos improvisacion comercial.",
-  },
-] as const;
-
-export const fullServices: Service[] = [
-  {
-    layer: "Capa 01",
-    title: "Diseño del flujo y sistema comercial",
-    summary:
-      "Es la capa dónde entendemos el negocio, detectamos el cuello de botella comercial y estructuramos cómo debe funcionar captación, conversión y seguimiento.",
-    idealClient:
-      "Empresas que ya están en movimiento, pero necesitan claridad, lectura del problema y prioridades antes de ejecutar.",
-    expectedResult:
-      "Genera claridad y estructura para dejar de operar con esfuerzos comerciales dispersos.",
-    deliverables: [
-      "Diagnóstico y lectura del problema comercial",
-      "Priorización de oportunidades y cuellos de botella",
-      "Estructuración de oferta, mensajes y etapas comerciales",
-      "Hoja de ruta accionable para lo que sigue",
+    stage: "Ideación",
+    title: "Fundamentos",
+    forWhom:
+      "Tienes un problema identificado pero tu oferta todavía no está validada.",
+    includes: [
+      "Estudio del Arte: mercado, competencia y contexto real del problema",
+      "Hipótesis de valor estructurada",
+      "Documentos de apoyo para tomar la siguiente decisión con criterio",
     ],
+    billing: "Retainer mensual bajo, dedicado solo a Estrategia.",
+    note: "Tarifa de lanzamiento desde $500.000 COP/mes — cupos limitados mientras validamos el sistema con los primeros clientes.",
   },
   {
-    layer: "Capa 02",
-    title: "Implementación de soluciones y activos comerciales",
-    summary:
-      "Es la capa dónde la estructura deja de ser teoría y se traduce en landing pages, automatizaciones, activos digitales, soportes de conversión, seguimiento y herramientas.",
-    idealClient:
-      "Empresas que ya tienen dirección clara y necesitan convertirla en una operación comercial útil, visible y ejecutable.",
-    expectedResult:
-      "Genera capacidad operativa real para que el sistema comercial funcione en la práctica.",
-    deliverables: [
-      "Landing pages y activos de conversión alineados al proceso",
-      "Automatizaciones y herramientas conectadas a la operación",
-      "Soportes de seguimiento y puntos de control comercial",
-      "Implementación guiada de lo que fue diseñado",
+    stage: "Pre-Incubación",
+    title: "Validación",
+    forWhom:
+      "Tu MVP está en construcción o recién lanzado y estás probando con los primeros pilotos.",
+    includes: [
+      "Estrategia de entrada a mercado y estructura de oferta",
+      "Apoyo en pitch si estás buscando capital",
+      "Orientación financiera básica para sostener la validación",
     ],
+    billing: "Retainer mensual de Estrategia, con más horas dedicadas que Fundamentos.",
+    note: "Tarifa de lanzamiento desde $2.500.000 COP/mes — cupos limitados mientras validamos el sistema con los primeros clientes.",
   },
   {
-    layer: "Capa 03",
-    title: "Acompañamiento estratégico y operativo como Growth Partner",
-    summary:
-      "Es la capa dónde RiBuzz acompaña la ejecución para revisar avances, ajustar decisiones y sostener el aprendizaje del sistema comercial.",
-    idealClient:
-      "Empresas que entienden qué crecer no depende solo de tener una estructura, sino de usarla bien, sostenerla y mejorarla con criterio.",
-    expectedResult:
-      "Genera sostenibilidad, mejora continua y más consistencia en la ejecución comercial.",
-    deliverables: [
-      "Seguimiento a tareas y compromisos críticos",
-      "Reuniones estratégicas y revisión de avances",
-      "Ajustes sobre mensajes, prioridades y operación",
-      "Soporte continuo para sostener la ejecución y aprender",
+    stage: "Incubación",
+    title: "Tracción",
+    forWhom:
+      "Ya tienes oferta validada y primeros clientes reales, y necesitas estructura para sostener el crecimiento.",
+    includes: [
+      "Estrategia continua",
+      "Un activo de conversión inicial (landing, automatización o integración)",
+      "Ejecución comercial básica para empezar a sistematizar la captación",
     ],
+    billing: "Retainer mensual + proyecto de tecnología facturado según alcance.",
+    note: "Tarifa de lanzamiento desde $4.000.000 COP/mes (incluye $1.000.000 de presupuesto de pauta) — cupos limitados mientras validamos el sistema con los primeros clientes.",
+  },
+  {
+    stage: "Consolidación",
+    title: "Sistema",
+    forWhom:
+      "Ya vendes con consistencia y necesitas que estrategia, ejecución comercial, tecnología y adquisición pagada operen como un solo sistema.",
+    includes: [
+      "Estrategia",
+      "Ejecución comercial continua",
+      "Tecnología aplicada",
+      "Adquisición pagada, con SOPs documentados",
+    ],
+    billing: "Retainer mensual + posible fee por cumplimiento de hitos de negocio, esquema que se termina de definir contigo antes de empezar.",
+    note: "Cupos limitados por trimestre — es nuestro paquete de mayor dedicación.",
+  },
+  {
+    stage: "Escalamiento",
+    title: "Expansión",
+    forWhom:
+      "El sistema ya funciona y buscas un nuevo mercado, canal o línea de negocio.",
+    includes: [
+      "Extensión del Sistema ya activo",
+      "Proyecto de expansión con alcance definido (nuevo mercado, canal o línea de negocio)",
+    ],
+    billing: "Retainer de Sistema existente + posible fee por hitos de expansión, a definir según alcance.",
   },
 ];
-
-export const serviceEffects = [
-  {
-    title: "Diseño",
-    description: "Genera claridad y estructura antes de invertir más esfuerzo en ejecución.",
-  },
-  {
-    title: "Implementación",
-    description: "Genera capacidad operativa real para activar el sistema comercial.",
-  },
-  {
-    title: "Growth Partner",
-    description: "Genera sostenibilidad, mejora continua y más consistencia en el tiempo.",
-  },
-] as const;
 
 export const methodologySteps: Step[] = [
   {
@@ -279,34 +167,11 @@ export const differentiators = [
   "Construimos capacidad instalada en tu empresa, reduciendo la dependencia absoluta de los fundadores en el proceso de venta.",
 ] as const;
 
-export const methodologyBenefits = [
-  {
-    title: "Evita ejecutar a ciegas",
-    description:
-      "El diagnóstico hace visible el problema real antes de invertir tiempo y presupuesto dónde no corresponde.",
-  },
-  {
-    title: "Reduce improvisacion",
-    description:
-      "Cada fase ordena prioridades y baja la dependencia de decisiones impulsivas o aisladas.",
-  },
-  {
-    title: "Conecta claridad con operación",
-    description:
-      "Lo que se entiende se traduce en estructura, herramientas y una forma concreta de ejecutar.",
-  },
-  {
-    title: "Permite crecer con más consistencia",
-    description:
-      "El sistema gana continuidad, aprendizaje y mejores decisiones a medida qué se usa y se ajusta.",
-  },
-] as const;
-
 export const trustSignals = [
   {
-    title: "4 clientes cerrados confirmados",
+    title: "10 clientes atendidos, 4 recurrentes",
     description:
-      "RiBuzz ya cuenta con validacion comercial activa y trabajo real con clientes en marcha.",
+      "RiBuzz ya cuenta con validación comercial activa: trabajo real con clientes en marcha, y 4 de ellos han vuelto a contratarnos.",
   },
   {
     title: "Experiencia en contextos distintos",
@@ -377,7 +242,7 @@ export const aboutPosture = [
 export const corePrinciples = [
   "Todo parte del diagnóstico.",
   "No se ejecuta sin claridad.",
-  "El crecimiento debe sostenerse en estructura and no solo en intensidad.",
+  "El crecimiento debe sostenerse en estructura y no solo en intensidad.",
   "La tecnología es un habilitador, no un adorno.",
   "Toda intervención debe traducirse en mejores decisiones, mejores procesos y más capacidad de ejecución.",
 ] as const;
@@ -402,92 +267,95 @@ export const diagnosisExpectations = [
 
 export const contactFaqs: FAQ[] = [
   {
-    question: "RiBuzz es una agencia de marketing?",
+    question: "¿RiBuzz es una agencia de marketing?",
     answer:
       "No. El marketing puede ser parte de la solución, pero RiBuzz interviene el sistema comercial completo del negocio y no solo ejecuta piezas o campañas.",
   },
   {
-    question: "Esto es consultoría o sí hay ejecución?",
+    question: "¿Esto es consultoría o sí hay ejecución?",
     answer:
-      "Hay criterio and hay ejecución. Primero se entiende el problema, después se diseña la estructura and luego se pone en marcha y acompaña cuando hace sentido.",
+      "Hay criterio y hay ejecución. Primero se entiende el problema, después se diseña la estructura y luego se pone en marcha y se acompaña cuando hace sentido.",
   },
   {
-    question: "Esto funciona si apenas estoy empezando?",
+    question: "¿Qué pasa si no sé exactamente cuál es mi problema?",
     answer:
-      "No es el momento ideal si aún no has validado oferta o mercado. RiBuzz está pensado para empresas que ya están operando o ya han intentado vender.",
+      "Es normal. La llamada de introducción existe justamente para detectar si el cuello de botella está en adquisición, conversión, seguimiento o estructura comercial.",
   },
   {
-    question: "Qué pasa si no se exactamente cual es mi problema?",
+    question: "¿Qué pasa después de la llamada de introducción?",
     answer:
-      "Es normal. El diagnóstico existe justamente para detectar si el cuello de botella está en adquisición, conversión, seguimiento o estructura comercial.",
+      "Se evalúa si hay fit y qué paquete tiene sentido activar. Puede recomendarse avanzar, ajustar el foco o incluso no continuar si no hay impacto posible.",
   },
   {
-    question: "Qué pasa después del diagnóstico?",
+    question: "¿Qué hace que RiBuzz sea diferente?",
     answer:
-      "Se evalua si hay fit and qué capa tiene sentido activar. Puede recomendarse avanzar, ajustar el foco o incluso no continuar si no hay impacto posible.",
+      "RiBuzz no empieza ejecutando, no vende servicios sueltos y no deja la solución en teoría. Entiende, prioriza, estructura, implementa y acompaña.",
   },
   {
-    question: "Tengo qué contratar todos los servicios?",
+    question: "¿Qué tipo de empresas no deberían trabajar con RiBuzz?",
     answer:
-      "No. RiBuzz trabaja por capas. Puedes empezar por diagnóstico and avanzar solo a la etapa qué de verdad corresponda a tu momento.",
+      "Negocios que solo quieren más marketing sin revisar el sistema de fondo, clientes que esperan magia o resultados sin involucrarse, y equipos que no quieren ejecutar ni ajustar su forma de vender.",
   },
   {
-    question: "En cuanto tiempo voy a ver resultados?",
+    question: "¿Esto aplica para cualquier industria?",
     answer:
-      "Puede haber quick wins tempranos en claridad, enfoqué and decisiones, pero el valor real está en construir un sistema qué sostenga resultados mejor en el tiempo.",
+      "No depende tanto de la industria como del problema. RiBuzz ya ha trabajado en servicios, educación, construcción y contextos B2B con una misma lógica comercial.",
   },
   {
-    question: "Qué hace qué RiBuzz sea diferente?",
+    question: "¿Qué pasa si ya he trabajado con agencias o freelancers?",
     answer:
-      "RiBuzz no empieza ejecutando, no vende servicios sueltos and no deja la solución en teoría. Entiende, prioriza, estructura, implementa and acompaña.",
+      "Es común. Muchas empresas llegan después de invertir en marketing o desarrollo sin resultados consistentes. RiBuzz ayuda a entender por qué pasó y cómo reordenarlo mejor.",
   },
   {
-    question: "Qué tipo de empresas no deberian trabajar con RiBuzz?",
+    question: "¿Qué tan involucrado tengo que estar?",
     answer:
-      "No es para negocios sin oferta validada, clientes que solo quieren más marketing, equipos que no quieren ejecutar o empresas que esperan magia.",
+      "Bastante. Esto no funciona si delegas todo y te desconectas. Se necesita participación, decisiones y disposición real a ejecutar.",
   },
   {
-    question: "Necesito tener un equipo para trabajar con ustedes?",
+    question: "¿Cómo sé si este es el momento correcto para trabajar con RiBuzz?",
     answer:
-      "No necesariamente. Muchas empresas llegan con equipos pequenos o con alta dependencia del fundador. Parte del trabajo es reducir esa dependencia.",
+      "Si ya estás vendiendo o intentándolo, sientes fricción, dependes demasiado del fundador y no tienes claro qué priorizar, probablemente sí es el momento correcto.",
   },
   {
-    question: "Esto aplica para cualquier industria?",
+    question: "¿RiBuzz vende por mi empresa o ejecuta las ventas?",
     answer:
-      "No depende tanto de la industria cómo del problema. RiBuzz ya ha trabajado en servicios, educación, construcción and contextos B2B con una misma lógica comercial.",
+      "No. RiBuzz no reemplaza tu equipo comercial ni vende por ti. Diseña el sistema, implementa soportes y ayuda a estructurar mejor cómo debe vender el negocio.",
+  },
+];
+
+export const howWeWorkFaqs: FAQ[] = [
+  {
+    question: "¿Necesito ya estar vendiendo para trabajar con RiBuzz?",
+    answer:
+      "No necesariamente. Si tu empresa está en etapa de Ideación o Validación, hay un paquete de Estrategia pensado para ese momento. El sistema completo (Sistema o Expansión) sí asume que ya vendes con cierta consistencia.",
   },
   {
-    question: "Qué pasa si ya he trabajado con agencias o freelancers?",
+    question: "¿La llamada de introducción tiene costo?",
     answer:
-      "Es comun. Muchas empresas llegan después de invertir en marketing o desarrollo sin resultados consistentes. RiBuzz ayuda a entender por qué paso and cómo reordenarlo mejor.",
+      "No. Es una conversación corta para entender tu momento y confirmar si hay fit real antes de proponer cualquier paquete.",
   },
   {
-    question: "Qué tan involucrado tengo qué estar?",
+    question: "¿Cómo funciona el fee por cumplimiento de hitos?",
     answer:
-      "Bastante. Esto no funciona si delegas todo and te desconectas. Se necesita participación, decisiones and disposición real a ejecutar.",
+      "Es un componente que todavía estamos terminando de formalizar. A partir de la etapa de Incubación buscamos atar una parte del pago a una métrica de negocio acordada contigo (como leads calificados o tasa de conversión), sin que el retainer mensual dependa de eso — es la base fija, el hito sería adicional. El esquema exacto se define caso por caso en la llamada de introducción.",
   },
   {
-    question: "Cómo se si este es el momento correcto para trabajar con RiBuzz?",
+    question: "¿Tengo que contratar el paquete completo desde el inicio?",
     answer:
-      "Si ya estas vendiendo o intentandolo, sientes fricción, dependes demasiado del fundador and no tienes claro qué priorizar, probablemente si es el momento correcto.",
-  },
-  {
-    question: "RiBuzz vende por mi empresa o ejecuta las ventas?",
-    answer:
-      "No. RiBuzz no reemplaza tu equipo comercial ni vende por ti. Diseña el sistema, implementa soportes and ayuda a estructurar mejor cómo debe vender el negocio.",
+      "No. Empiezas en el paquete que corresponde a tu etapa actual y avanzas cuando el negocio lo pida, no antes.",
   },
 ];
 
 export const homeFaqs: FAQ[] = [
   {
-    question: "¿Cuánto dura el diagnóstico y qué información necesito?",
+    question: "¿Cómo se agenda la llamada de introducción?",
     answer:
-      "El diagnóstico inicial se realiza en menos de 10 minutos a través de un formulario estructurado. Solo necesitas información básica sobre tu oferta, clientes y proceso de ventas. A partir de ahí te damos una lectura inicial y, si hay fit, programamos sesiones más profundas.",
+      "Completas una aplicación breve (unos 5-7 minutos) y agendas directamente en el calendario, sin ida y vuelta de correos. Es gratuita, y esas preguntas son justamente las que nos permiten confirmar si hay fit real antes de proponer cualquier paquete.",
   },
   {
     question: "¿Cuál es el costo de trabajar con RiBuzz?",
     answer:
-      "No hay tarifas fijas. El precio depende de la complejidad de tu negocio y de la capa de intervención necesaria (diseño, implementación o acompañamiento). Solo después del diagnóstico y de validar que hay ajuste, presentamos una propuesta económica.",
+      "Cada paquete se cobra con un retainer mensual fijo. A partir de la etapa de Incubación buscamos sumar un posible fee por cumplimiento de hitos de negocio — el esquema todavía se está formalizando y se termina de definir contigo antes de empezar. El monto exacto se confirma en la llamada de introducción, según la etapa de tu empresa.",
   },
   {
     question: "¿Qué tipo de empresas pueden trabajar con RiBuzz?",
@@ -500,7 +368,7 @@ export const homeFaqs: FAQ[] = [
       "No es indispensable, pero sí necesitas estar dispuesto a participar. Si ya tienes equipo, lo fortalecemos para que gane autonomía. Si no, ayudamos a definir roles y buscar aliados adecuados.",
   },
   {
-    question: "¿Cómo se protegen mis datos durante el diagnóstico y el proceso?",
+    question: "¿Cómo se protegen mis datos durante el proceso?",
     answer:
       "Toda la información que compartes se utiliza exclusivamente para entender tu sistema comercial. Firmamos acuerdos de confidencialidad cuando es necesario y nunca divulgamos datos a terceros sin tu aprobación.",
   },
@@ -513,11 +381,6 @@ export const homeFaqs: FAQ[] = [
     question: "¿Qué resultados puedo esperar y en cuánto tiempo?",
     answer:
       "Los resultados dependen de la fase en la que entres y de tu compromiso. Normalmente, la fase de diseño se completa en 2–4 semanas, la implementación en 4–8 semanas y el acompañamiento dura lo que necesites. Los efectos visibles suelen aparecer a partir de la implementación, cuando el sistema empieza a operar.",
-  },
-  {
-    question: "¿Qué pasa si después del diagnóstico no hay fit?",
-    answer:
-      "Si identificamos que tu negocio aún no está listo o que no hay una oportunidad real de mejora, te lo decimos de manera directa. Preferimos no iniciar un proyecto si no podemos aportar valor.",
   },
   {
     question: "¿RiBuzz solo trabaja con empresas en Medellín?",

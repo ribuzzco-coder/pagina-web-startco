@@ -4,27 +4,11 @@ export function FloatingWhatsAppButton() {
   return (
     <div className="fixed bottom-4 right-4 z-40 flex items-center gap-3 sm:bottom-6 sm:right-6">
       <a
-        href={SITE_CONFIG.instagramUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Abrir Instagram"
-        className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#E625FF]/24 bg-[#151722] text-white shadow-[0_10px_24px_rgba(0,0,0,0.24)] transition hover:border-[#E625FF]/48 hover:bg-[#181B28] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E625FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B10]"
-      >
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 24 24"
-          className="h-6 w-6 fill-current"
-        >
-          <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 6.85A5.15 5.15 0 1 1 6.85 12 5.16 5.16 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 15.35 12 3.35 3.35 0 0 0 12 8.65Z" />
-        </svg>
-      </a>
-
-      <a
         href={SITE_CONFIG.whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Escribir por WhatsApp"
-        className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#25D366]/22 bg-[#151722] text-white shadow-[0_10px_24px_rgba(0,0,0,0.24)] transition hover:border-[#25D366]/45 hover:bg-[#181B28] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B10]"
+        className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#25D366]/22 bg-[#151722] text-white shadow-[0_10px_24px_rgba(0,0,0,0.24)] transition hover:border-[#25D366]/45 hover:bg-[#181B28] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08041E]"
       >
         <svg
           aria-hidden="true"

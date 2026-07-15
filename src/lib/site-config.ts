@@ -1,33 +1,26 @@
-﻿export const SITE_CONFIG = {
+export const SITE_CONFIG = {
   name: "RiBuzz",
   shortName: "RiBuzz",
-  url: "https://ribuzz.vercel.app",
+  url: "https://ribuzz.com",
   diagnosisPath: "/diagnostico",
-  diagnosisFormUrl:
-    "https://docs.google.com/forms/d/e/1FAIpQLSedUNuJeyesXwKhUzx80Mnh9RzblT5h_AGAyJ6TB2CW0SbJwA/viewform?usp=header",
   description:
     "Sistema complementario para el crecimiento empresarial.",
   logoPlaceholder: "/ribuzz-wordmark.png",
   logoMark: "/ribuzz-mark.png",
-  ogImagePlaceholder: "/og-ribuzz-placeholder.svg",
+  ogImagePlaceholder: "/opengraph-image",
   contactEmail: "ribuzzco@gmail.com",
   whatsappUrl: "https://wa.me/573332541346",
   instagramUrl: "https://www.instagram.com/ribuzzco/",
   giftsPath: "/regalos",
-  diagnosisCtaLabel: "Solicita tu diagnóstico gratuito",
-  diagnosisCtaShortLabel: "Diagnóstico gratuito",
+  bookingUrl: "https://cal.com/ribuzz-xsmxx7/diagnostico",
+  diagnosisCtaLabel: "Agenda tu llamada de introducción",
+  diagnosisCtaShortLabel: "Agenda tu llamada",
   diagnosisSupportCopy:
-    "Te toma menos de 10 minutos y recibes una lectura inicial de tu sistema comercial. Primero revisamos si hay fit real antes de proponer cualquier intervención.",
+    "Completa una aplicación breve (unos 5-7 minutos) y agenda directamente en el calendario. Esas preguntas son justamente las que nos permiten revisar si hay fit real antes de proponer cualquier paquete.",
   navLinks: [
     { label: "Inicio", href: "/" },
-    { label: "Servicios", href: "/services" },
+    { label: "Cómo trabajamos", href: "/services" },
     { label: "Sobre RiBuzz", href: "/about" },
-    { label: "Landings", href: "/landings" },
-    { label: "NFC", href: "/tarjetas-nfc" },
-    { label: "Diagnóstico", href: "/diagnostico" },
+    { label: "Agenda tu llamada", href: "/diagnostico" },
   ],
 } as const;
-
-
-
-

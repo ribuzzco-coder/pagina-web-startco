@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { PillBadge } from "@/components/ui/pill-badge";
 import { cn } from "@/lib/utils";
 
 type PageHeroProps = {
@@ -35,13 +36,11 @@ export function PageHero({
     <section className="pb-18 pt-16 sm:pb-24 sm:pt-24">
       <Container className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
         <div>
-          <p className="text-[11px] font-semibold tracking-[0.16em] text-[#E7B0EE] uppercase">
-            {eyebrow}
-          </p>
+          <PillBadge>{eyebrow}</PillBadge>
           <h1
             className={cn(
               titleClassName ??
-                "mt-6 max-w-4xl font-heading text-4xl leading-tight text-[#F5F7FA] sm:text-5xl",
+                "mt-6 max-w-4xl font-heading text-4xl leading-tight text-[#E4DFF7] sm:text-5xl",
             )}
           >
             {title}
@@ -71,11 +70,11 @@ export function PageHero({
 
         {asideTitle && asideText ? (
           <div className="relative overflow-hidden rounded-[28px] border border-white/8 bg-white/[0.035] p-7 shadow-[0_10px_24px_rgba(0,0,0,0.16)] sm:p-8">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(230,37,255,0.34),transparent)]" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(105,57,226,0.34),transparent)]" />
             <p className="text-[11px] font-semibold tracking-[0.16em] text-[#98A0B3] uppercase">
               Referencia ejecutiva
             </p>
-            <h2 className="mt-4 text-2xl font-semibold tracking-tight text-[#F5F7FA] sm:text-3xl">
+            <h2 className="mt-4 text-2xl font-semibold tracking-tight text-[#E4DFF7] sm:text-3xl">
               {asideTitle}
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">

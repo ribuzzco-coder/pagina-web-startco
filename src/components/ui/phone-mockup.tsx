@@ -24,11 +24,11 @@ export const PhoneMockup = React.forwardRef<HTMLDivElement, PhoneMockupProps>(
           </div>
 
           {/* GSAP Target: Phone Pulse Scan Wave */}
-          <div className="nfc-scan-wave pointer-events-none absolute left-1/2 top-[18%] z-10 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#0FEFFD]/40 bg-[#0FEFFD]/10 opacity-0" />
+          <div className="nfc-scan-wave pointer-events-none absolute left-1/2 top-[18%] z-10 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#785FDD]/40 bg-[#785FDD]/10 opacity-0" />
 
           {/* Inner UI (Profile Card) */}
           <div className="nfc-profile-ui pointer-events-none absolute inset-0 z-10 flex flex-col items-center px-5 pt-20 opacity-0">
-            <div className="nfc-ui-avatar relative overflow-hidden h-20 w-20 rounded-full bg-gradient-to-tr from-[#E625FF] to-[#0FEFFD] p-[2px] shadow-[0_0_24px_rgba(230,37,255,0.4)]">
+            <div className="nfc-ui-avatar relative overflow-hidden h-20 w-20 rounded-full bg-gradient-to-tr from-[#6939E2] to-[#785FDD] p-[2px] shadow-[0_0_24px_rgba(105,57,226,0.4)]">
               <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-[#121622] p-0.5">
                 <div className="relative h-full w-full overflow-hidden rounded-full bg-[#1A2030]">
                   <Image 
@@ -41,7 +41,7 @@ export const PhoneMockup = React.forwardRef<HTMLDivElement, PhoneMockupProps>(
               </div>
             </div>
 
-            <h3 className="nfc-ui-name mt-4 text-xl font-bold tracking-tight text-[#F5F7FA]">RiBuzz</h3>
+            <h3 className="nfc-ui-name mt-4 text-xl font-bold tracking-tight text-[#E4DFF7]">RiBuzz</h3>
             <p className="nfc-ui-role mb-8 mt-1 text-center text-xs text-[#98A0B3]">Sistema de Crecimiento Comercial.</p>
 
             <div className="w-full space-y-3">

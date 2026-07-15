@@ -8,7 +8,7 @@ const playbookImages = [
     src: "/images/portfolio/neomech-playbook-home.png",
     alt: "Vista general del playbook comercial de Neomech con meta mensual, indicadores y posicionamiento.",
     title: "Vista general",
-    accent: "text-[#E7B0EE]",
+    accent: "text-[#CEC6E0]",
     width: 1900,
     height: 925,
   },
@@ -16,7 +16,7 @@ const playbookImages = [
     src: "/images/portfolio/neomech-playbook-flow.png",
     alt: "Vista del scoring de fit y el flujo comercial del playbook de Neomech.",
     title: "ICP y flujo",
-    accent: "text-[#A6FAFF]",
+    accent: "text-[#CEC6E0]",
     width: 1919,
     height: 927,
   },
@@ -65,7 +65,7 @@ export function PlaybookGallery() {
             onClick={() => setActiveIndex(index === activeIndex ? null : index)}
             className={`group overflow-hidden rounded-[24px] border bg-white/[0.03] text-left transition-transform duration-300 hover:-translate-y-1 ${
               index === activeIndex
-                ? "border-[#0FEFFD]/24 shadow-[0_0_0_1px_rgba(15,239,253,0.14)]"
+                ? "border-[#785FDD]/24 shadow-[0_0_0_1px_rgba(120,95,221,0.14)]"
                 : "border-white/10"
             }`}
           >
@@ -73,7 +73,7 @@ export function PlaybookGallery() {
               <p className={`text-[11px] font-semibold uppercase tracking-[0.12em] ${image.accent}`}>
                 {image.title}
               </p>
-              <span className="text-[11px] uppercase tracking-[0.12em] text-[#98A0B3] transition-colors duration-300 group-hover:text-[#F5F7FA]">
+              <span className="text-[11px] uppercase tracking-[0.12em] text-[#98A0B3] transition-colors duration-300 group-hover:text-[#E4DFF7]">
                 {index === activeIndex ? "Clic para cerrar" : "Clic para ampliar"}
               </span>
             </div>
@@ -96,18 +96,18 @@ export function PlaybookGallery() {
           className="mt-5 overflow-hidden rounded-[26px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,17,25,0.98),rgba(10,12,18,0.94))] shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
         >
           <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 sm:px-5">
-            <p className="text-sm font-semibold text-[#F5F7FA]">
+            <p className="text-sm font-semibold text-[#E4DFF7]">
               {activeImage.title}
             </p>
             <button
               type="button"
               onClick={() => setActiveIndex(null)}
-              className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.12em] text-[#98A0B3] transition-colors duration-300 hover:text-[#F5F7FA]"
+              className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.12em] text-[#98A0B3] transition-colors duration-300 hover:text-[#E4DFF7]"
             >
               Cerrar
             </button>
           </div>
-          <div className="overflow-auto bg-[#07090F] p-3 sm:p-4">
+          <div className="overflow-auto bg-[#08041E] p-3 sm:p-4">
             <Image
               src={activeImage.src}
               alt={activeImage.alt}

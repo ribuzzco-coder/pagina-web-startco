@@ -36,11 +36,11 @@ export function GiftBadge({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "flex items-center justify-center rounded-full border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_10px_22px_rgba(0,0,0,0.18),0_0_24px_rgba(230,37,255,0.16)] backdrop-blur-sm",
+        "flex items-center justify-center rounded-full border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_10px_22px_rgba(0,0,0,0.18),0_0_24px_rgba(105,57,226,0.16)] backdrop-blur-sm",
         className,
       )}
     >
-      <GiftIcon className="h-6 w-6 text-[#f3d6ff]" />
+      <GiftIcon className="h-6 w-6 text-[#e4dff7]" />
     </div>
   );
 }
@@ -98,10 +98,10 @@ export function BoxVisual({ isUnlocked, className }: BoxVisualProps) {
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
-      <div className="absolute inset-x-4 top-8 h-[148px] rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.4),rgba(147,89,255,0.18)_42%,transparent_78%)] blur-[44px]" />
-      <div className="absolute inset-x-10 bottom-2 h-7 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.3),rgba(115,74,255,0.12)_55%,transparent_80%)] blur-xl" />
+      <div className="absolute inset-x-4 top-8 h-[148px] rounded-full bg-[radial-gradient(circle,rgba(105,57,226,0.4),rgba(147,89,255,0.18)_42%,transparent_78%)] blur-[44px]" />
+      <div className="absolute inset-x-10 bottom-2 h-7 rounded-full bg-[radial-gradient(circle,rgba(105,57,226,0.3),rgba(115,74,255,0.12)_55%,transparent_80%)] blur-xl" />
 
-      <div className="absolute left-1/2 top-[122px] z-[6] h-10 w-10 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.34),transparent_70%)] blur-lg" />
+      <div className="absolute left-1/2 top-[122px] z-[6] h-10 w-10 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(105,57,226,0.34),transparent_70%)] blur-lg" />
 
       <motion.div
         className="relative h-full w-full overflow-hidden [transform-style:preserve-3d]"
@@ -122,7 +122,7 @@ export function BoxVisual({ isUnlocked, className }: BoxVisualProps) {
               transition={{ duration: 0.62, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             >
               <motion.span
-                className="block h-[94px] w-[66px] rotate-[-8deg] overflow-hidden rounded-[14px] border border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_18px_rgba(15,239,253,0.1)]"
+                className="block h-[94px] w-[66px] rotate-[-8deg] overflow-hidden rounded-[14px] border border-[#785FDD]/18 bg-[linear-gradient(180deg,rgba(18,24,36,0.98),rgba(8,12,20,0.98))] shadow-[0_0_18px_rgba(120,95,221,0.1)]"
                 initial={false}
                 animate={isUnlocked ? { y: 0, rotateZ: -8 } : { y: 20, rotateZ: -4 }}
                 transition={{ duration: 0.62, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -136,7 +136,7 @@ export function BoxVisual({ isUnlocked, className }: BoxVisualProps) {
                 />
               </motion.span>
               <motion.span
-                className="block h-[100px] w-[70px] rotate-[6deg] overflow-hidden rounded-[14px] border border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_18px_rgba(230,37,255,0.12)]"
+                className="block h-[100px] w-[70px] rotate-[6deg] overflow-hidden rounded-[14px] border border-[#6939E2]/18 bg-[linear-gradient(180deg,rgba(31,20,39,0.98),rgba(14,10,19,0.98))] shadow-[0_0_18px_rgba(105,57,226,0.12)]"
                 initial={false}
                 animate={isUnlocked ? { y: -6, rotateZ: 6 } : { y: 22, rotateZ: 3 }}
                 transition={{ duration: 0.68, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
@@ -155,7 +155,7 @@ export function BoxVisual({ isUnlocked, className }: BoxVisualProps) {
           <div className="absolute -right-[14px] top-[12px] h-[98px] w-[22px] rounded-r-[18px] bg-[linear-gradient(180deg,rgba(37,33,63,0.98),rgba(18,15,31,1))] [transform:rotateY(72deg)]" />
           <div className="absolute -left-[12px] top-[18px] h-[90px] w-[18px] rounded-l-[16px] bg-[linear-gradient(180deg,rgba(126,122,177,0.52),rgba(40,34,68,0.95))] [transform:rotateY(-70deg)]" />
           <div className="absolute -bottom-[10px] left-[16px] right-[16px] h-[20px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(22,18,36,1),rgba(10,8,18,1))] [transform:rotateX(-72deg)]" />
-          <div className="absolute inset-x-[34px] bottom-[18px] h-[42px] rounded-full bg-[radial-gradient(circle,rgba(182,95,255,0.26),rgba(230,37,255,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(10px)]" />
+          <div className="absolute inset-x-[34px] bottom-[18px] h-[42px] rounded-full bg-[radial-gradient(circle,rgba(182,95,255,0.26),rgba(105,57,226,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(10px)]" />
           <GiftBadge className="absolute left-1/2 top-[42px] z-[14] h-12 w-12 -translate-x-1/2 [transform:translateZ(22px)]" />
         </div>
 

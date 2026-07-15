@@ -30,13 +30,13 @@ export function getClientIp(request: Request) {
 export function buildDiagnosticSubmissionHash(input: {
   empresa: string;
   email: string;
-  retoPrincipal: string;
+  queFrena: string;
 }) {
   return sha256(
     [
       normalizeWhitespace(input.empresa).toLowerCase(),
       normalizeEmail(input.email),
-      normalizeWhitespace(input.retoPrincipal).toLowerCase(),
+      normalizeWhitespace(input.queFrena).toLowerCase(),
     ].join("::"),
   );
 }
@@ -48,8 +48,14 @@ export function normalizeDiagnosticInput(input: {
   whatsapp?: string | null;
   email: string;
   sector: string;
-  yaEstaVendiendo: boolean;
-  retoPrincipal: string;
+  queVende: string;
+  aQuienVende: string;
+  procesoActual: string;
+  queFrena: string;
+  metaConcreta?: string | null;
+  presupuesto: string;
+  urgencia: string;
+  autoridad: string;
   tamanoEquipo?: string | null;
   contexto?: string | null;
   source?: string | null;
@@ -61,8 +67,14 @@ export function normalizeDiagnosticInput(input: {
     whatsapp: normalizeNullableString(input.whatsapp),
     email: normalizeEmail(input.email),
     sector: normalizeWhitespace(input.sector),
-    yaEstaVendiendo: Boolean(input.yaEstaVendiendo),
-    retoPrincipal: normalizeWhitespace(input.retoPrincipal),
+    queVende: normalizeWhitespace(input.queVende),
+    aQuienVende: normalizeWhitespace(input.aQuienVende),
+    procesoActual: input.procesoActual,
+    queFrena: normalizeWhitespace(input.queFrena),
+    metaConcreta: normalizeNullableString(input.metaConcreta),
+    presupuesto: input.presupuesto,
+    urgencia: input.urgencia,
+    autoridad: input.autoridad,
     tamanoEquipo: normalizeNullableString(input.tamanoEquipo),
     contexto: normalizeNullableString(input.contexto),
     source: normalizeNullableString(input.source) ?? "website",
@@ -104,4 +116,3 @@ function normalizeIpCandidate(value: string) {
 
   return isIP(withoutIpv4Port) ? withoutIpv4Port : null;
 }
-

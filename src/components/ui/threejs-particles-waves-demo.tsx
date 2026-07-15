@@ -8,10 +8,10 @@ export function ThreejsParticlesWavesDemo() {
     <Card className="relative overflow-hidden rounded-[32px] p-0">
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28 bg-[linear-gradient(180deg,rgba(11,11,16,0.92),rgba(11,11,16,0))]" />
       <div className="relative z-10 px-6 pb-0 pt-6 sm:px-8 sm:pt-8">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
           Prueba visual interna
         </p>
-        <h3 className="mt-3 max-w-2xl text-2xl font-semibold tracking-tight text-[#F5F7FA] sm:text-3xl">
+        <h3 className="mt-3 max-w-2xl text-2xl font-semibold tracking-tight text-[#E4DFF7] sm:text-3xl">
           Waves Three.js para evaluar atmósfera, profundidad y movimiento en inicio
         </h3>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">

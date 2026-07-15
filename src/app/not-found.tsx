@@ -7,10 +7,10 @@ export default function NotFound() {
     <section className="flex min-h-[60vh] items-center py-16 sm:py-24">
       <Container>
         <Card className="mx-auto max-w-3xl rounded-[28px] p-8 text-center sm:p-12">
-          <p className="text-[11px] font-semibold tracking-[0.16em] text-[#E7B0EE] uppercase">
+          <p className="text-[11px] font-semibold tracking-[0.16em] text-[#CEC6E0] uppercase">
             Error 404
           </p>
-          <h1 className="mt-5 font-heading text-4xl leading-tight text-[#F5F7FA] sm:text-5xl">
+          <h1 className="mt-5 font-heading text-4xl leading-tight text-[#E4DFF7] sm:text-5xl">
             Esta pagina no esta disponible
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#98A0B3] sm:text-lg">

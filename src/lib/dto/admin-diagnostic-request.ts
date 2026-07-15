@@ -13,8 +13,16 @@ export type AdminDiagnosticRequestDto = {
   whatsapp: string | null;
   email: string;
   sector: string;
-  yaEstaVendiendo: boolean;
-  retoPrincipal: string;
+  queVende: string | null;
+  aQuienVende: string | null;
+  procesoActual: string | null;
+  queFrena: string | null;
+  metaConcreta: string | null;
+  presupuesto: string | null;
+  urgencia: string | null;
+  autoridad: string | null;
+  fitScore: number;
+  routingTier: DiagnosticRequestRow["routing_tier"];
   tamanoEquipo: string | null;
   contexto: string | null;
   source: string;
@@ -43,8 +51,16 @@ export function toAdminDiagnosticRequestDto(
     whatsapp: decryptedFields.whatsapp,
     email: decryptedFields.email,
     sector: row.sector,
-    yaEstaVendiendo: row.ya_esta_vendiendo,
-    retoPrincipal: row.reto_principal,
+    queVende: row.que_vende,
+    aQuienVende: row.a_quien_vende,
+    procesoActual: row.proceso_actual,
+    queFrena: row.que_frena,
+    metaConcreta: row.meta_concreta,
+    presupuesto: row.presupuesto,
+    urgencia: row.urgencia,
+    autoridad: row.autoridad,
+    fitScore: row.fit_score,
+    routingTier: row.routing_tier,
     tamanoEquipo: row.tamano_equipo,
     contexto: decryptedFields.contexto,
     source: row.source,

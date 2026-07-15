@@ -2,20 +2,25 @@ import Image from "next/image";
 
 import { NetworkFeatureSection } from "@/components/sections/network-feature-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
+import { FitChecklist } from "@/components/sections/fit-checklist";
 import { StepCard } from "@/components/sections/step-card";
 import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
-import { BeforeAfterWipeCard } from "@/components/ui/before-after-wipe-card";
 import { BrandShaderBackground } from "@/components/ui/brand-shader-background";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { HeroMarkButton } from "@/components/ui/hero-mark-button";
+import { NumberedCard } from "@/components/ui/numbered-card";
+import { PillBadge } from "@/components/ui/pill-badge";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
 import {
-  differentiators,
+  fitChecklist,
   homeFaqs,
+  homeProblemKeywords,
+  homeProblemSynthesis,
   methodologySteps,
+  nonFitChecklist,
+  trustSignals,
 } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
@@ -26,55 +31,16 @@ export const metadata = createPageMetadata({
   path: "/",
 });
 
-const homePainTransitions = [
-  {
-    beforeTitle: "Esfuerzos dispersos",
-    beforeDescription:
-      "Ventas, marketing, tecnología y seguimiento avanzan por separado, sin un sistema que los conecte.",
-    afterTitle: "Procesos conectados",
-    afterDescription:
-      "Las áreas trabajan bajo una misma lógica, con prioridades claras y una operación más coherente.",
-  },
-  {
-    beforeTitle: "Fricción al convertir y fidelizar",
-    beforeDescription:
-      "El proceso pierde fuerza por falta de continuidad, seguimiento y una experiencia comercial integrada.",
-    afterTitle: "Flujo continuo con seguimiento real",
-    afterDescription:
-      "Cada oportunidad avanza con ritmo, puntos de control y una lógica de seguimiento sostenida.",
-  },
-  {
-    beforeTitle: "Dependencia total del fundador",
-    beforeDescription:
-      "La venta y las decisiones clave dependen casi por completo de una sola persona.",
-    afterTitle: "Ejecución compartida y autónoma",
-    afterDescription:
-      "El equipo puede operar con más claridad, autonomía y menos cuello de botella en la ejecución.",
-  },
-  {
-    beforeTitle: "Estancamiento sin claridad",
-    beforeDescription:
-      "El crecimiento se frena y no hay visibilidad real sobre qué priorizar o cómo intervenir.",
-    afterTitle: "Prioridades visibles y decisiones con criterio",
-    afterDescription:
-      "El sistema hace visible dónde intervenir primero y permite decidir con más claridad.",
-  },
-] as const;
-
-
-
-
-
 export default function HomePage() {
   return (
     <>
+      {/* Atención */}
       <section
         id="home-hero"
         className="relative -mt-[76px] flex min-h-[100dvh] items-center justify-center overflow-hidden bg-[#05050A]"
       >
         <BrandShaderBackground className="z-0 opacity-75" />
-        <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.035),transparent_16%),radial-gradient(circle_at_18%_28%,rgba(15,239,253,0.08),transparent_24%),radial-gradient(circle_at_80%_52%,rgba(230,37,255,0.1),transparent_30%),linear-gradient(180deg,rgba(5,5,10,0.18)_0%,rgba(5,5,10,0.04)_34%,rgba(5,5,10,0.16)_72%,rgba(5,5,10,0.56)_100%)]" />
-
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.035),transparent_16%),radial-gradient(circle_at_18%_28%,rgba(120,95,221,0.08),transparent_24%),radial-gradient(circle_at_80%_52%,rgba(105,57,226,0.1),transparent_30%),linear-gradient(180deg,rgba(5,5,10,0.18)_0%,rgba(5,5,10,0.04)_34%,rgba(5,5,10,0.16)_72%,rgba(5,5,10,0.56)_100%)]" />
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <Container className="hero-no-select text-center">
             <div className="mx-auto max-w-[58rem]">
@@ -90,22 +56,25 @@ export default function HomePage() {
                 <HeroMarkButton src={SITE_CONFIG.logoMark} alt="Símbolo RiBuzz" />
               </div>
 
-              <h1 className="mx-auto mt-6 max-w-3xl font-sans text-[1.9rem] font-bold leading-[1.08] text-[#F5F7FA] sm:text-[2.45rem] xl:text-[3rem]">
-                Sistema para hacer crecer tu empresa
+              <div className="mt-6 flex justify-center">
+                <PillBadge>Sistema de crecimiento RiBuzz</PillBadge>
+              </div>
+              <h1 className="mx-auto mt-4 max-w-3xl font-heading text-[1.9rem] font-bold leading-[1.08] text-[#E4DFF7] sm:text-[2.45rem] xl:text-[3rem]">
+                Sistema para <span className="text-[#8b6ff0]">hacer crecer</span> tu empresa
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] sm:text-[1rem]">
-                Capta más clientes, vende con estructura y crece con consistencia. Integramos diagnóstico, diseño y ejecución en un solo sistema.
+                Capta más clientes, vende con estructura y crece con consistencia. Integramos estrategia, ejecución comercial y tecnología en un solo sistema.
               </p>
 
               <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Button href={SITE_CONFIG.diagnosisPath} size="lg">
-                  Realiza tu diagnóstico gratuito
+                <Button href={SITE_CONFIG.diagnosisPath} size="lg" variant="shimmer">
+                  Agenda tu llamada de introducción
                 </Button>
                 <Button
                   href="/regalos"
                   variant="secondary"
                   size="lg"
-                  className="shadow-[0_0_0_1px_rgba(230,37,255,0.1),0_0_18px_rgba(230,37,255,0.16)]"
+                  className="shadow-[0_0_0_1px_rgba(105,57,226,0.1),0_0_18px_rgba(105,57,226,0.16)]"
                 >
                   Reclama tu regalo
                 </Button>
@@ -115,37 +84,85 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Problema */}
       <section className="section-soft cv-auto py-16 sm:py-20" id="problemas">
         <Container>
           <SectionTitle
             eyebrow="Por qué tu empresa se estanca"
-            title="El problema es no tener un sistema alineado y sostenible"
-            description="Muchas empresas que ya venden se frenan porque su sistema comercial es débil. Sin una estructura de ventas, marketing, tecnología y seguimiento se hacen por separado; esto genera fricción, estancamiento y dependencia del fundador."
+            title="El problema: no tienes un sistema, tienes piezas sueltas"
+            description="Ventas, marketing, tecnología y seguimiento funcionan cada uno por su lado, sin nada que los conecte. Por eso, aunque ya vendes, el crecimiento no es constante."
           />
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
-            {homePainTransitions.map((item) => (
-              <BeforeAfterWipeCard
-                key={item.beforeTitle}
-                beforeTitle={item.beforeTitle}
-                beforeDescription={item.beforeDescription}
-                afterTitle={item.afterTitle}
-                afterDescription={item.afterDescription}
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            {homeProblemKeywords.map((keyword) => (
+              <span
+                key={keyword}
+                className="inline-flex items-center rounded-full border border-[#6939E2]/24 bg-[#6939E2]/8 px-4 py-2 text-sm font-medium text-[#CEC6E0] sm:text-base"
+              >
+                {keyword}
+              </span>
+            ))}
+          </div>
+
+          <p className="mx-auto mt-6 max-w-xl text-center text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+            {homeProblemSynthesis}
+          </p>
+        </Container>
+      </section>
+
+      <SectionDivider />
+
+      {/* Confianza: prueba antes de pedir nada */}
+      <section className="cv-auto pb-16 sm:pb-20">
+        <Container>
+          <SectionTitle
+            eyebrow="Prueba, no promesas"
+            title="Esto ya está pasando con clientes reales"
+            description="No partimos de cero: ya hay trabajo activo, resultados medibles y contextos distintos donde el sistema se ha puesto a prueba."
+          />
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {trustSignals.map((item, index) => (
+              <NumberedCard
+                key={item.title}
+                index={index + 1}
+                title={item.title}
+                description={item.description}
               />
             ))}
           </div>
         </Container>
       </section>
 
+      <TestimonialShuffle />
+
       <SectionDivider />
 
+      {/* Filtro: para quién es / no es, antes de pedir el CTA */}
+      <section className="cv-auto py-16 sm:py-20" id="para-quien">
+        <Container>
+          <SectionTitle
+            eyebrow="Antes de seguir"
+            title="Para quién es esto, y para quién no"
+            description="Ser directos aquí nos ahorra tiempo a los dos. Si no hay fit, preferimos decirlo antes que después."
+          />
+
+          <div className="mt-10">
+            <FitChecklist fitItems={fitChecklist} nonFitItems={nonFitChecklist} />
+          </div>
+        </Container>
+      </section>
+
+      <SectionDivider />
+
+      {/* Interés: teaser de metodología, enlaza a la página completa */}
       <section className="cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
             align="left"
             eyebrow="Cómo lo hacemos"
-            title="Sin diagnóstico no hay resultado."
-            description="Nuestro método de cuatro pasos garantiza que cada decisión se base en datos y no en suposiciones:"
+            title="Sin diagnóstico no hay resultado"
+            description="Nuestro método de cuatro fases evita decisiones a ciegas: cada paso parte de lo que encontramos en el diagnóstico, no de suposiciones."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-4">
@@ -163,8 +180,8 @@ export default function HomePage() {
           </div>
 
           <div className="mt-9 flex justify-center">
-            <Button href="/methodology" variant="secondary" size="lg">
-              Ver metodología completa
+            <Button href="/services" variant="secondary" size="lg">
+              Ver cómo trabajamos
             </Button>
           </div>
         </Container>
@@ -172,60 +189,27 @@ export default function HomePage() {
 
       <SectionDivider />
 
+      {/* Modelo de inversión: teaser corto, el detalle vive en /services */}
       <section className="section-soft cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
             align="left"
-            eyebrow="Diferencial"
-            title="Descubre cómo activar tu crecimiento"
-            description="No somos una agencia más, somos la pieza que une estrategia y ejecución para que tu sistema comercial deje de ser una carga y se convierta en tu mayor ventaja competitiva."
+            eyebrow="Modelo de inversión"
+            title="No cobramos por publicar, cobramos por mover el número que te importa"
+            description="Cada paquete se cobra con un retainer mensual fijo, que cubre la capacidad instalada. A partir de la etapa de Incubación, se suma un fee por cumplimiento de hitos de negocio — definidos contigo antes de empezar, nunca a mitad de camino."
           />
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {differentiators.map((item) => (
-              <Card key={item} className="rounded-[24px] p-6 lg:p-8">
-                <p className="text-sm leading-relaxed text-[#98A0B3] sm:text-base">{item}</p>
-              </Card>
-            ))}
+          <div className="mt-8">
+            <Button href="/services" variant="secondary" size="lg">
+              Ver paquetes por etapa
+            </Button>
           </div>
         </Container>
       </section>
 
       <SectionDivider />
 
-      <section className="cv-auto py-16 sm:py-20" id="para-quien">
-        <Container>
-          <Card className="flex flex-col overflow-hidden rounded-[28px] lg:flex-row">
-            <div className="flex-1 border-b border-white/8 p-7 sm:p-8 lg:border-b-0 lg:border-r lg:p-10">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                Para quien sí es
-              </p>
-              <h2 className="mt-4 text-2xl font-semibold tracking-tight text-[#F5F7FA] lg:text-3xl">
-                A quién sirve
-              </h2>
-              <p className="mt-6 border-t border-white/8 pt-6 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                RiBuzz ayuda a empresas que ya venden en Medellín o Colombia y desean poner orden y estructura a su crecimiento. Está pensado para negocios con fricción en su crecimiento que quieren dejar de improvisar y están dispuestos a participar en el proceso.
-              </p>
-            </div>
-
-            <div className="flex-1 p-7 sm:p-8 lg:p-10">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                Para quien no es
-              </p>
-              <h2 className="mt-4 text-2xl font-semibold tracking-tight text-[#F5F7FA] lg:text-3xl">
-                A quién no sirve
-              </h2>
-              <p className="mt-6 border-t border-white/8 pt-6 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-                No está dirigido a negocios que aún no han validado su oferta, que solo buscan marketing sin revisar su estructura, que esperan resultados sin involucrarse o que quieren delegar completamente la venta.
-              </p>
-            </div>
-          </Card>
-        </Container>
-      </section>
-
       <NetworkFeatureSection />
-
-      <TestimonialShuffle />
 
       <section className="cv-auto py-16 sm:py-20">
         <Container>
@@ -240,8 +224,8 @@ export default function HomePage() {
           </div>
 
           <div className="mt-7 flex">
-            <Button href="/diagnostico" variant="secondary">
-              Ver contacto y FAQ completa
+            <Button href={SITE_CONFIG.diagnosisPath} variant="secondary">
+              Agenda tu llamada de introducción
             </Button>
           </div>
         </Container>
@@ -250,30 +234,32 @@ export default function HomePage() {
       <section className="py-16 sm:py-20">
         <Container>
           <div className="cv-auto relative overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(21,24,36,0.96),rgba(14,16,24,0.92))] p-8 text-center shadow-[0_16px_48px_rgba(0,0,0,0.24)] sm:p-12 lg:p-16">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(15,239,253,0.4),transparent)]" />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(15,239,253,0.06),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.04),transparent_40%)]" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(120,95,221,0.4),transparent)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(120,95,221,0.06),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(105,57,226,0.04),transparent_40%)]" />
 
             <div className="relative mx-auto max-w-2xl">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
-                Información de valor / Newsletter
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
+                Antes de irte
               </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#F5F7FA] sm:text-4xl">
-                ¿No estás listo para ejecutar?
-                <br />
-                Suscríbete y recibe análisis sobre diseño de sistemas comerciales, conversión, seguimiento y casos reales de crecimiento.
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#E4DFF7] sm:text-4xl">
+                ¿Listo para avanzar? Agenda tu llamada de introducción.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#98A0B3] sm:text-lg">
-                Sin spam, solo contenido útil.
+                Agenda una llamada de introducción de 20 minutos para revisar si hay fit real, o
+                empieza por algo más liviano y reclama tu regalo.
               </p>
 
-              <div className="mx-auto mt-10 flex justify-center">
+              <div className="mx-auto mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button
-                  href="https://forms.monday.com/forms/3cbb05c0c156282155e6fa80b5922cb1?r=use1"
+                  href={SITE_CONFIG.diagnosisPath}
                   size="lg"
-                  external
-                  className="shadow-[0_0_24px_rgba(230,37,255,0.2)]"
+                  variant="shimmer"
+                  className="shadow-[0_0_24px_rgba(105,57,226,0.2)]"
                 >
-                  Unirme a la lista
+                  Agenda tu llamada de introducción
+                </Button>
+                <Button href={SITE_CONFIG.giftsPath} size="lg" variant="secondary">
+                  Reclama tu regalo
                 </Button>
               </div>
             </div>

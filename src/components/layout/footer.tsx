@@ -23,7 +23,7 @@ export function Footer() {
             marcas que quieren crecer con m&aacute;s claridad, presencia y herramientas
             &uacute;tiles.
           </p>
-          <p className="mt-4 text-sm text-[#C7CBD6]">
+          <p className="mt-4 text-sm text-[#CEC6E0]">
             Contacto: {SITE_CONFIG.contactEmail}
           </p>
           <Button
@@ -33,11 +33,30 @@ export function Footer() {
           >
             {SITE_CONFIG.diagnosisCtaLabel}
           </Button>
+          <p className="mt-5 text-xs leading-relaxed text-[#5A6072]">
+            También ofrecemos{" "}
+            <Link href="/landings" className="underline decoration-white/20 underline-offset-2 hover:text-[#98A0B3]">
+              landings a medida
+            </Link>{" "}
+            y{" "}
+            <Link href="/tarjetas-nfc" className="underline decoration-white/20 underline-offset-2 hover:text-[#98A0B3]">
+              tarjetas NFC
+            </Link>
+            .
+          </p>
+          <p className="mt-3 text-xs text-[#5A6072]">
+            <Link
+              href="/politica-de-privacidad"
+              className="underline decoration-white/20 underline-offset-2 hover:text-[#98A0B3]"
+            >
+              Política de tratamiento de datos personales
+            </Link>
+          </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:justify-self-end">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#E7B0EE]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#CEC6E0]">
               Navegaci&oacute;n
             </p>
             <div className="mt-3 space-y-2">
@@ -45,7 +64,7 @@ export function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block text-sm text-[#98A0B3] transition-colors hover:text-[#F5F7FA]"
+                  className="block text-sm text-[#98A0B3] transition-colors hover:text-[#E4DFF7]"
                 >
                   {link.label}
                 </Link>
@@ -54,7 +73,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#E7B0EE]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#CEC6E0]">
               Acciones
             </p>
             <div className="mt-3 space-y-2">
@@ -62,7 +81,7 @@ export function Footer() {
                 href={SITE_CONFIG.diagnosisPath}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-sm text-[#98A0B3] transition-colors hover:text-[#F5F7FA]"
+                className="block text-sm text-[#98A0B3] transition-colors hover:text-[#E4DFF7]"
               >
                 {SITE_CONFIG.diagnosisCtaLabel}
               </a>
@@ -70,7 +89,7 @@ export function Footer() {
                 href={SITE_CONFIG.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-sm text-[#98A0B3] transition-colors hover:text-[#F5F7FA]"
+                className="block text-sm text-[#98A0B3] transition-colors hover:text-[#E4DFF7]"
               >
                 Escribir por WhatsApp
               </a>

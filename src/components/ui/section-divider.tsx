@@ -9,7 +9,7 @@ export function SectionDivider({ className }: SectionDividerProps) {
     <div
       aria-hidden
       className={cn(
-        "mx-auto my-6 h-px w-full max-w-6xl bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.03),rgba(230,37,255,0.18),rgba(255,255,255,0.03),transparent)]",
+        "mx-auto my-6 h-px w-full max-w-6xl bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.03),rgba(105,57,226,0.18),rgba(255,255,255,0.03),transparent)]",
         className,
       )}
     />

@@ -53,8 +53,8 @@ export function ThreejsParticlesWaves({
   const presets = useMemo(
     () => [
       { particles: "#ffffff", background: "#090b14" },
-      { particles: "#E625FF", background: "#0B0B10" },
-      { particles: "#0FEFFD", background: "#111827" },
+      { particles: "#6939E2", background: "#08041E" },
+      { particles: "#785FDD", background: "#111827" },
       { particles: "#FFD93D", background: "#16213E" },
       { particles: "#A8E6CF", background: "#2C3E50" },
     ],
@@ -360,10 +360,10 @@ export function ThreejsParticlesWaves({
         </div>
       ) : null}
 
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_10%_15%,rgba(230,37,255,0.16),transparent_20%),radial-gradient(circle_at_85%_18%,rgba(15,239,253,0.14),transparent_22%)]" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_10%_15%,rgba(105,57,226,0.16),transparent_20%),radial-gradient(circle_at_85%_18%,rgba(120,95,221,0.14),transparent_22%)]" />
 
       {showHint ? (
-        <div className="pointer-events-none absolute left-4 top-4 z-10 rounded-full border border-white/10 bg-black/35 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-[#C7CBD6] backdrop-blur-sm">
+        <div className="pointer-events-none absolute left-4 top-4 z-10 rounded-full border border-white/10 bg-black/35 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-[#CEC6E0] backdrop-blur-sm">
           Mueve el cursor para cambiar la cámara
         </div>
       ) : null}
@@ -371,7 +371,7 @@ export function ThreejsParticlesWaves({
       {showControls ? (
         <div className="absolute right-4 top-4 z-10 w-56 rounded-[20px] border border-white/10 bg-black/70 p-4 text-white backdrop-blur-md">
           <div className="mb-3">
-            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C7CBD6]">
+            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
               Densidad
             </label>
             <input
@@ -385,7 +385,7 @@ export function ThreejsParticlesWaves({
           </div>
 
           <div className="mb-3">
-            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C7CBD6]">
+            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
               Velocidad
             </label>
             <input
@@ -400,7 +400,7 @@ export function ThreejsParticlesWaves({
           </div>
 
           <div className="mb-3">
-            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C7CBD6]">
+            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
               Altura
             </label>
             <input
@@ -414,7 +414,7 @@ export function ThreejsParticlesWaves({
           </div>
 
           <div className="mb-3">
-            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C7CBD6]">
+            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
               Espaciado
             </label>
             <input
@@ -428,7 +428,7 @@ export function ThreejsParticlesWaves({
           </div>
 
           <div className="mb-3 grid grid-cols-2 gap-3">
-            <label className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C7CBD6]">
+            <label className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
               Partículas
               <input
                 type="color"
@@ -437,7 +437,7 @@ export function ThreejsParticlesWaves({
                 className="mt-2 h-8 w-full cursor-pointer rounded border-none bg-transparent"
               />
             </label>
-            <label className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C7CBD6]">
+            <label className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
               Fondo
               <input
                 type="color"

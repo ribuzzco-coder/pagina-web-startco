@@ -11,9 +11,9 @@ import { SITE_CONFIG } from "@/lib/site-config";
 export function NetworkFeatureSection({
   eyebrow = "Próximo paso",
   title = "Descubre dónde se está rompiendo tu crecimiento.",
-  description = "Te toma menos de 10 minutos. Recibes una verdadera oportunidad de mejora.",
-  primaryButtonLabel = "Solicitar diagnóstico",
-  secondaryButtonLabel = "Ver servicios",
+  description = "Completa un formulario corto y agenda directamente en el calendario. Sin costo, y sirve para confirmar si hay una oportunidad real de mejora.",
+  primaryButtonLabel = "Agenda tu llamada de introducción",
+  secondaryButtonLabel = "Ver cómo trabajamos",
   secondaryButtonHref = "/services",
 }: {
   eyebrow?: string;
@@ -161,8 +161,8 @@ export function NetworkFeatureSection({
   return (
     <section className="relative overflow-hidden py-16 sm:py-24">
       <Container>
-        <div className="relative overflow-hidden rounded-[32px] border border-white/8 bg-[#0B0B10] shadow-[0_24px_80px_rgba(0,0,0,0.4)] lg:rounded-[48px]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.03),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.03),transparent_40%)]" />
+        <div className="relative overflow-hidden rounded-[32px] border border-white/8 bg-[#08041E] shadow-[0_24px_80px_rgba(0,0,0,0.4)] lg:rounded-[48px]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.03),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(105,57,226,0.03),transparent_40%)]" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
           <div className="relative flex flex-col items-center lg:flex-row">
@@ -173,17 +173,17 @@ export function NetworkFeatureSection({
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="z-10 w-full p-8 sm:p-12 lg:w-1/2 lg:p-16"
             >
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
                 {eyebrow}
               </p>
-              <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-[#F5F7FA] sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-[#E4DFF7] sm:text-4xl">
                 {title}
               </h2>
               <p className="mt-6 max-w-lg text-base leading-relaxed text-[#98A0B3] sm:text-lg">
                 {description}
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
-                <Button href={SITE_CONFIG.diagnosisPath} variant="primary" size="lg">
+                <Button href={SITE_CONFIG.diagnosisPath} variant="shimmer" size="lg">
                   {primaryButtonLabel}
                 </Button>
                 <Button href={secondaryButtonHref} variant="secondary" size="lg">
@@ -194,7 +194,7 @@ export function NetworkFeatureSection({
 
             <div className="relative h-[350px] w-full overflow-hidden sm:h-[450px] lg:h-auto lg:grow lg:self-stretch">
               <div ref={canvasRef} className="h-full w-full" />
-              <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-32 bg-gradient-to-r from-[#0B0B10] to-transparent lg:block" />
+              <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-32 bg-gradient-to-r from-[#08041E] to-transparent lg:block" />
             </div>
           </div>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />

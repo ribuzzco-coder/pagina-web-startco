@@ -51,8 +51,8 @@ export const AnimatedShaderBackground = () => {
           vec3 finalColor = vec3(0.0);
           
           // RiBuzz Identity Colors
-          vec3 cyan = vec3(0.06, 0.94, 0.99);    // #0FEFFD
-          vec3 magenta = vec3(0.90, 0.15, 1.00); // #E625FF
+          vec3 cyan = vec3(0.06, 0.94, 0.99);    // #785FDD
+          vec3 magenta = vec3(0.90, 0.15, 1.00); // #6939E2
           
           // Render shooting stars
           for(float i = 0.0; i < 12.0; i++) {

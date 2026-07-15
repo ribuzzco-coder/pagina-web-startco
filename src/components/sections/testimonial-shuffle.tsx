@@ -11,23 +11,23 @@ const testimonials = [
   {
     id: 1,
     quote:
-      "La intervenci\u00f3n de RiBuzz nos dio claridad sobre las prioridades de nuestra operaci\u00f3n comercial. Pasamos de reaccionar a estructurar un flujo de ventas que nuestro equipo ahora ejecuta con autonom\u00eda.",
+      "La intervención de RiBuzz nos dio claridad sobre las prioridades de nuestra operación comercial. Nos acompañaron en la gestión del negocio y en diseñar el proceso de adquisición de clientes que hoy ejecutamos con autonomía.",
     author: "Neomech",
-    role: "Empresa B2B en Medell\u00edn",
+    role: "Emprendimiento en construcción · Medellín",
   },
   {
     id: 2,
     quote:
-      "RiBuzz identific\u00f3 el cuello de botella en la conversi\u00f3n y nos ayud\u00f3 a resolverlo con herramientas y estrategias de adquisici\u00f3n. En dos meses llegamos a mejorar un 50% las ventas.",
+      "RiBuzz identificó el cuello de botella en la conversión y lo resolvió con ajustes a la landing page y una estrategia de contenido en Instagram enfocada en convertir visitas en clientes.",
     author: "Facial Fitness",
-    role: "Empresa B2C Digital",
+    role: "Cursos digitales · persona natural",
   },
   {
     id: 3,
     quote:
-      "Con RiBuzz redujimos la fricci\u00f3n en nuestro flujo de adquisici\u00f3n logramos transmitir una mejor experiencia al usuario. Se implement\u00f3 el proceso comercial con una mejor adquisici\u00f3n.",
-    author: "Terratravel",
-    role: "Empresas B2B Digital",
+      "Con RiBuzz rediseñamos nuestras landing pages y sumamos tarjetas NFC para conectar mejor la experiencia física y digital de nuestros huéspedes.",
+    author: "TerraTravel",
+    role: "Turismo · landing pages y tarjetas NFC",
   },
 ] as const;
 
@@ -112,11 +112,11 @@ export function TestimonialShuffle() {
       <Container className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
         <div className="max-w-xl">
           <PillBadge>Testimonios</PillBadge>
-          <h2 className="mt-6 max-w-lg font-heading text-3xl leading-tight text-[#F5F7FA] sm:text-4xl">
+          <h2 className="mt-6 max-w-lg font-heading text-3xl leading-tight text-[#E4DFF7] sm:text-4xl">
             Experiencias de empresas que ordenaron su crecimiento con RiBuzz.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-            Arrastra o haz clic en las tarjetas para ver m&aacute;s testimonios de nuestros clientes.
+            Arrastra o haz clic en las tarjetas para ver más testimonios de nuestros clientes.
           </p>
         </div>
 
@@ -125,7 +125,7 @@ export function TestimonialShuffle() {
           onPointerEnter={() => setIsInteracting(true)}
           onPointerLeave={() => setIsInteracting(false)}
         >
-          <div className="pointer-events-none absolute inset-x-10 bottom-2 h-18 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.18),transparent_68%)] blur-2xl" />
+          <div className="pointer-events-none absolute inset-x-10 bottom-2 h-18 rounded-full bg-[radial-gradient(circle,rgba(105,57,226,0.18),transparent_68%)] blur-2xl" />
           {testimonials.map((testimonial, index) => {
             const position = positions[index];
             const isFront = position === "front";
@@ -167,25 +167,25 @@ export function TestimonialShuffle() {
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E7B0EE]">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#CEC6E0]">
                       Testimonio
                     </p>
                     {isFront ? (
                       <div className="flex items-center gap-1.5">
-                        <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#E7B0EE]/40" />
+                        <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#CEC6E0]/40" />
                         <span className="text-[10px] uppercase tracking-widest text-[#98A0B3]/60">
                           Desliza
                         </span>
                       </div>
                     ) : null}
                   </div>
-                  <p className="mt-5 text-[1rem] leading-relaxed text-[#F5F7FA] sm:mt-6 sm:text-[1.15rem]">
+                  <p className="mt-5 text-[1rem] leading-relaxed text-[#E4DFF7] sm:mt-6 sm:text-[1.15rem]">
                     &quot;{testimonial.quote}&quot;
                   </p>
                 </div>
 
                 <div className="mt-6 border-t border-white/8 pt-4 text-left sm:mt-8 sm:pt-5">
-                  <p className="text-sm font-semibold text-[#F5F7FA]">{testimonial.author}</p>
+                  <p className="text-sm font-semibold text-[#E4DFF7]">{testimonial.author}</p>
                   <p className="mt-1 text-sm text-[#98A0B3]">{testimonial.role}</p>
                 </div>
               </motion.article>

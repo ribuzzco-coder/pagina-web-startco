@@ -20,11 +20,11 @@ export function ServiceCard({
   return (
     <Card className="h-full rounded-[26px]">
       {layer ? (
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
           {layer}
         </p>
       ) : null}
-      <h3 className="text-xl font-semibold leading-tight tracking-tight text-[#F5F7FA]">
+      <h3 className="text-xl font-semibold leading-tight tracking-tight text-[#E4DFF7]">
         {title}
       </h3>
       <div className="mt-5 space-y-5">
@@ -34,7 +34,7 @@ export function ServiceCard({
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">
             Para quien es
           </p>
-          <p className="mt-2 text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
+          <p className="mt-2 text-sm leading-relaxed text-[#CEC6E0] sm:text-base">
             {idealClient}
           </p>
         </div>
@@ -43,7 +43,7 @@ export function ServiceCard({
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">
             Resultado que genera
           </p>
-          <p className="mt-2 text-sm leading-relaxed text-[#C7CBD6] sm:text-base">
+          <p className="mt-2 text-sm leading-relaxed text-[#CEC6E0] sm:text-base">
             {expectedResult}
           </p>
         </div>
@@ -57,7 +57,7 @@ export function ServiceCard({
           <ul className="mt-4 space-y-2 text-sm text-[#98A0B3]">
             {deliverables.map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E625FF]" />
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6939E2]" />
                 <span>{item}</span>
               </li>
             ))}

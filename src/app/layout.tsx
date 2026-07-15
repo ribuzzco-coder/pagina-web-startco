@@ -7,6 +7,7 @@ import {
   Montserrat,
   Open_Sans,
   Playfair_Display,
+  Roboto,
   Saira,
   Space_Grotesk,
   Zen_Dots,
@@ -14,6 +15,7 @@ import {
 
 import { FloatingWhatsAppButton } from "@/components/layout/floating-whatsapp-button";
 import { Footer } from "@/components/layout/footer";
+import { GoogleAnalytics } from "@/components/layout/google-analytics";
 import { IntroLoader } from "@/components/layout/intro-loader";
 import { Navbar } from "@/components/layout/navbar";
 import { RouteVisibility } from "@/components/layout/route-visibility";
@@ -30,6 +32,13 @@ const spaceGrotesk = Space_Grotesk({
 const saira = Saira({
   subsets: ["latin"],
   variable: "--font-saira",
+  display: "swap",
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700", "900"],
+  variable: "--font-roboto",
   display: "swap",
 });
 
@@ -87,6 +96,7 @@ const montserrat = Montserrat({
 const fontVariables = [
   spaceGrotesk.variable,
   saira.variable,
+  roboto.variable,
   zenDots.variable,
   openSans.variable,
   lato.variable,
@@ -139,8 +149,9 @@ export default function RootLayout({
       className={`h-full ${fontVariables}`}
     >
       <body className="min-h-full bg-ribuzz-bg text-ribuzz-textPrimary antialiased">
+        <GoogleAnalytics />
         <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(15,239,253,0.05),transparent_22%),radial-gradient(circle_at_82%_16%,rgba(230,37,255,0.06),transparent_30%),linear-gradient(180deg,#0B0B10_0%,#101119_52%,#0C0D13_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(120,95,221,0.05),transparent_22%),radial-gradient(circle_at_82%_16%,rgba(105,57,226,0.06),transparent_30%),linear-gradient(180deg,#08041E_0%,#150B33_52%,#0F0729_100%)]" />
           <div className="absolute inset-0 hidden opacity-[0.08] [background:linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] [background-size:72px_72px] md:block" />
         </div>
 

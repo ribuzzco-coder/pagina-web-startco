@@ -13,20 +13,12 @@ import { cn } from "@/lib/utils";
 
 const primaryLinks = [
   {
-    title: "Hacer diagnóstico",
-    description: "Completar lectura inicial del sistema comercial",
+    title: "Agenda tu llamada",
+    description: "Aplicación breve + agenda directo en el calendario",
     href: SITE_CONFIG.diagnosisPath,
-    accent: "from-[#0FEFFD]/20 via-[#0FEFFD]/10 to-transparent",
+    accent: "from-[#785FDD]/20 via-[#785FDD]/10 to-transparent",
     glowTone: "purple",
     featured: true,
-  },
-  {
-    title: "Agenda reunión",
-    description: "Reservar una llamada con RiBuzz",
-    href: "https://calendly.com/ribuzzco/conexion-ribuzz",
-    accent: "from-[#0FEFFD]/22 via-[#E625FF]/14 to-transparent",
-    glowTone: "purple",
-    featured: false,
   },
   {
     title: "Crea tu landing",
@@ -135,7 +127,7 @@ export default function ContactoClient() {
             "absolute inset-0 transition-[background,opacity] duration-500",
             isDayMode
               ? "bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.7),transparent_26%),linear-gradient(180deg,#ffffff,#f5f5fb_44%,#f3f4f8)]"
-              : "bg-[radial-gradient(circle_at_50%_0%,rgba(230,37,255,0.12),transparent_34%),linear-gradient(180deg,#0b0b10,#101420_46%,#0b0b10)]",
+              : "bg-[radial-gradient(circle_at_50%_0%,rgba(105,57,226,0.12),transparent_34%),linear-gradient(180deg,#08041e,#101420_46%,#08041e)]",
           )}
         />
         <StartcoGalaxy
@@ -157,7 +149,7 @@ export default function ContactoClient() {
               "pointer-events-none absolute inset-x-0 top-0 h-px transition-opacity duration-500",
               isDayMode
                 ? "bg-[linear-gradient(90deg,transparent,rgba(17,24,39,0.12),transparent)]"
-                : "bg-[linear-gradient(90deg,transparent,rgba(230,37,255,0.4),transparent)]",
+                : "bg-[linear-gradient(90deg,transparent,rgba(105,57,226,0.4),transparent)]",
             )}
           />
           <div
@@ -165,7 +157,7 @@ export default function ContactoClient() {
               "pointer-events-none absolute inset-0 transition-opacity duration-500",
               isDayMode
                 ? "bg-[radial-gradient(circle_at_50%_0%,rgba(17,24,39,0.05),transparent_32%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.55),transparent_28%)]"
-                : "bg-[radial-gradient(circle_at_50%_0%,rgba(230,37,255,0.1),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.08),transparent_26%)]",
+                : "bg-[radial-gradient(circle_at_50%_0%,rgba(105,57,226,0.1),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(120,95,221,0.08),transparent_26%)]",
             )}
           />
 
@@ -180,7 +172,7 @@ export default function ContactoClient() {
               "absolute right-4 top-4 z-20 inline-flex h-[3.35rem] w-[3.35rem] items-center justify-center rounded-full border shadow-[0_10px_24px_rgba(0,0,0,0.2)] backdrop-blur-[12px] transition-[transform,border-color,background-color,box-shadow,color,filter] duration-300 hover:-translate-y-[1px] hover:scale-[1.06] active:scale-[0.97] sm:right-6 sm:top-6 sm:h-14 sm:w-14",
               isDayMode
                 ? "border-[#111827]/14 bg-[#111827]/8 text-[#111827] hover:border-[#111827]/24 hover:bg-[#111827]/12 hover:[filter:drop-shadow(0_0_14px_rgba(17,24,39,0.16))]"
-                : "border-white/14 bg-white/8 text-white hover:border-[#ffb7f8]/34 hover:bg-white/14 hover:text-[#ffd7fb] hover:[filter:drop-shadow(0_0_18px_rgba(230,37,255,0.54))] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_0_30px_rgba(230,37,255,0.28)]",
+                : "border-white/14 bg-white/8 text-white hover:border-[#cec6e0]/34 hover:bg-white/14 hover:text-[#ffd7fb] hover:[filter:drop-shadow(0_0_18px_rgba(105,57,226,0.54))] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_0_30px_rgba(105,57,226,0.28)]",
             )}
           />
 
@@ -209,7 +201,7 @@ export default function ContactoClient() {
             <h1
               className={cn(
                 "mt-6 text-4xl font-normal tracking-tight sm:text-5xl [font-family:var(--font-zen-dots)] transition-colors duration-500",
-                isDayMode ? "text-[#111827]" : "text-[#F5F7FA]",
+                isDayMode ? "text-[#111827]" : "text-[#E4DFF7]",
               )}
             >
               RiBuzz
@@ -218,7 +210,7 @@ export default function ContactoClient() {
             <p
               className={cn(
                 "mt-4 max-w-xl text-sm leading-relaxed transition-colors duration-500 sm:text-base",
-                isDayMode ? "text-[#4B5563]" : "text-[#C7CBD6]",
+                isDayMode ? "text-[#4B5563]" : "text-[#CEC6E0]",
               )}
             >
               Diseñamos soluciones comerciales, visuales y digitales para marcas que quieren
@@ -226,22 +218,6 @@ export default function ContactoClient() {
             </p>
 
             <div className="mt-5 flex items-center justify-center gap-5">
-              <a
-                href={SITE_CONFIG.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className={cn(
-                  "inline-flex h-[4.6rem] w-[4.6rem] items-center justify-center rounded-full border shadow-[0_10px_24px_rgba(0,0,0,0.12)] backdrop-blur-[10px] transition-[transform,color,filter,border-color,background-color,box-shadow] duration-300 hover:-translate-y-[1px] hover:scale-[1.06] active:scale-[0.97]",
-                  isDayMode
-                    ? "border-[#111827]/10 bg-[#111827]/6 text-[#111827] hover:border-[#FF4FD9]/24 hover:bg-[#111827]/8 hover:text-[#FF4FD9] hover:[filter:drop-shadow(0_0_20px_rgba(255,79,217,0.36))]"
-                    : "border-white/12 bg-white/6 text-white hover:border-[#FF7AE6]/28 hover:bg-white/10 hover:text-[#FF7AE6] hover:[filter:drop-shadow(0_0_18px_rgba(255,122,230,0.52))] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_0_20px_rgba(255,122,230,0.12)]",
-                )}
-              >
-                <div className="scale-[1.26]">
-                  <SocialIcon name="instagram" />
-                </div>
-              </a>
               <a
                 href={SITE_CONFIG.whatsappUrl}
                 target="_blank"
@@ -272,13 +248,13 @@ export default function ContactoClient() {
                   : "hover:bg-[#171B2A] hover:shadow-[0_18px_36px_rgba(0,0,0,0.22)]",
                 !isDayMode &&
                   (link.featured
-                    ? "border-[#E625FF]/40 bg-[linear-gradient(180deg,rgba(32,22,40,0.96),rgba(20,18,30,0.98))] shadow-[0_0_0_1px_rgba(230,37,255,0.12),0_0_26px_rgba(230,37,255,0.18)] hover:border-[#ff8bf7]/52 hover:shadow-[0_0_0_1px_rgba(230,37,255,0.18),0_0_32px_rgba(230,37,255,0.24)]"
+                    ? "border-[#6939E2]/40 bg-[linear-gradient(180deg,rgba(32,22,40,0.96),rgba(20,18,30,0.98))] shadow-[0_0_0_1px_rgba(105,57,226,0.12),0_0_26px_rgba(105,57,226,0.18)] hover:border-[#785fdd]/52 hover:shadow-[0_0_0_1px_rgba(105,57,226,0.18),0_0_32px_rgba(105,57,226,0.24)]"
                     : link.title === "Crea tu landing"
                       ? "border-[#FF9A3D]/28 bg-[linear-gradient(180deg,rgba(38,24,16,0.96),rgba(24,18,15,0.98))] shadow-[0_0_0_1px_rgba(255,154,61,0.08),0_0_24px_rgba(255,122,24,0.14)] hover:border-[#FFB866]/42 hover:shadow-[0_0_0_1px_rgba(255,154,61,0.14),0_0_30px_rgba(255,122,24,0.2)]"
                       : "border-white/10 bg-[#141724] hover:border-white/18"),
                 isDayMode &&
                   (link.featured
-                    ? "border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(255,240,251,0.96),rgba(255,255,255,0.98))] shadow-[0_10px_24px_rgba(230,37,255,0.08)] hover:border-[#E625FF]/28"
+                    ? "border-[#6939E2]/18 bg-[linear-gradient(180deg,rgba(255,240,251,0.96),rgba(255,255,255,0.98))] shadow-[0_10px_24px_rgba(105,57,226,0.08)] hover:border-[#6939E2]/28"
                     : link.title === "Crea tu landing"
                       ? "border-[#FF9A3D]/18 bg-[linear-gradient(180deg,rgba(255,247,240,0.98),rgba(255,255,255,0.98))] shadow-[0_10px_24px_rgba(255,154,61,0.08)] hover:border-[#FF9A3D]/28"
                       : ""),
@@ -294,7 +270,7 @@ export default function ContactoClient() {
                   />
                   <div className="relative flex min-h-[58px] items-center justify-center text-center">
                     <div className="relative z-10 min-w-0">
-                      <p className="text-base font-semibold text-[#F5F7FA]">{link.title}</p>
+                      <p className="text-base font-semibold text-[#E4DFF7]">{link.title}</p>
                       <p className="mt-1 text-sm text-[#C9D1E2]">{link.description}</p>
                     </div>
                   </div>
@@ -335,7 +311,7 @@ export default function ContactoClient() {
                   "group relative h-full min-h-[280px] overflow-hidden rounded-[28px] px-5 py-6 text-center transition-[border-color,box-shadow,transform,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px] sm:px-6",
                   isDayMode
                     ? "border-[#111827]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,248,252,0.98))] hover:border-[#111827]/16 hover:shadow-[0_18px_38px_rgba(17,24,39,0.08)]"
-                    : "border-[#E625FF]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] hover:border-[#ff8bf7]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]",
+                    : "border-[#6939E2]/18 bg-[linear-gradient(180deg,rgba(18,21,32,0.98),rgba(14,16,24,0.98))] hover:border-[#785fdd]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]",
                 )}
               >
                 <div
@@ -343,11 +319,11 @@ export default function ContactoClient() {
                     "pointer-events-none absolute inset-0",
                     isDayMode
                       ? "bg-[radial-gradient(circle_at_80%_80%,rgba(17,24,39,0.04),transparent_34%)]"
-                      : "bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(230,37,255,0.08),transparent_34%)]",
+                      : "bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(105,57,226,0.08),transparent_34%)]",
                   )}
                 />
                 <div className="relative z-10 mx-auto max-w-[78%]">
-                  <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
+                  <p className="text-xl font-semibold tracking-tight text-[#E4DFF7]">
                     {supportCards.nfc.title}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-[#C9D1E2] sm:text-base">
@@ -365,7 +341,7 @@ export default function ContactoClient() {
                       "h-auto w-full object-contain",
                       isDayMode
                         ? "drop-shadow-[0_0_18px_rgba(17,24,39,0.08)]"
-                        : "drop-shadow-[0_0_34px_rgba(230,37,255,0.24)]",
+                        : "drop-shadow-[0_0_34px_rgba(105,57,226,0.24)]",
                     )}
                   />
                 </div>
@@ -379,7 +355,7 @@ export default function ContactoClient() {
                   "group relative flex h-full min-h-[280px] flex-col rounded-[28px] px-6 py-6 text-center transition-[border-color,box-shadow,transform,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[1px]",
                   isDayMode
                     ? "border-[#111827]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,248,252,0.98))] hover:border-[#111827]/16 hover:shadow-[0_18px_38px_rgba(17,24,39,0.08)]"
-                    : "border-[#0FEFFD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] hover:border-[#0FEFFD]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]",
+                    : "border-[#785FDD]/18 bg-[linear-gradient(180deg,rgba(17,23,34,0.96),rgba(11,16,24,0.96))] hover:border-[#785FDD]/36 hover:shadow-[0_18px_38px_rgba(0,0,0,0.24)]",
                 )}
               >
                 <div
@@ -387,7 +363,7 @@ export default function ContactoClient() {
                     "pointer-events-none absolute inset-0",
                     isDayMode
                       ? "bg-[radial-gradient(circle_at_80%_20%,rgba(17,24,39,0.05),transparent_26%)]"
-                      : "bg-[radial-gradient(circle_at_80%_20%,rgba(15,239,253,0.12),transparent_26%)]",
+                      : "bg-[radial-gradient(circle_at_80%_20%,rgba(120,95,221,0.12),transparent_26%)]",
                   )}
                 />
                 <div className="relative flex flex-1 flex-col items-center justify-center gap-5">
@@ -395,7 +371,7 @@ export default function ContactoClient() {
                     <div
                       className={cn(
                         "absolute inset-0 rounded-full blur-xl transition-opacity duration-300 group-hover:opacity-100",
-                        isDayMode ? "bg-[#111827]/10" : "bg-[#0FEFFD]/20",
+                        isDayMode ? "bg-[#111827]/10" : "bg-[#785FDD]/20",
                       )}
                     />
                     <Image
@@ -408,7 +384,7 @@ export default function ContactoClient() {
                   </div>
 
                   <div>
-                    <p className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
+                    <p className="text-xl font-semibold tracking-tight text-[#E4DFF7]">
                       {supportCards.neoMech.title}
                     </p>
                     <p className="mt-3 text-sm leading-relaxed text-[#C9D1E2] sm:text-base">
@@ -429,10 +405,10 @@ export default function ContactoClient() {
               )}
             >
               <div className="flex flex-col items-center justify-center gap-3">
-                <p className="text-base font-semibold text-[#F5F7FA]">
+                <p className="text-base font-semibold text-[#E4DFF7]">
                   {supportCards.gifts.title}
                 </p>
-                <span className="rounded-full border border-[#ff4d6d]/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#FF9EB0]">
+                <span className="rounded-full border border-[#6939E2]/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#CEC6E0]">
                   Ver regalos
                 </span>
               </div>

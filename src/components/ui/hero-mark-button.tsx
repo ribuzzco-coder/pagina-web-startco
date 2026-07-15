@@ -82,14 +82,14 @@ export function HeroMarkButton({ src, alt }: HeroMarkButtonProps) {
         onClick={handleClick}
         className="hero-mark-button relative flex h-24 w-24 items-center justify-center rounded-full sm:h-28 sm:w-28 xl:h-32 xl:w-32"
       >
-        <div className="absolute inset-0 rounded-full bg-[#E625FF]/18 blur-2xl" />
+        <div className="absolute inset-0 rounded-full bg-[#6939E2]/18 blur-2xl" />
         <Image
           src={src}
           alt={alt}
           width={280}
           height={280}
           priority
-          className="relative h-full w-full object-contain drop-shadow-[0_0_32px_rgba(230,37,255,0.58)]"
+          className="relative h-full w-full object-contain drop-shadow-[0_0_32px_rgba(105,57,226,0.58)]"
         />
       </button>
     </>

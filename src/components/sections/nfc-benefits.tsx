@@ -21,10 +21,10 @@ function BenefitGroup({
 }) {
   return (
     <Card className="rounded-[28px] p-7 sm:p-8">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
         {eyebrow}
       </p>
-      <h3 className="mt-4 text-2xl font-semibold tracking-tight text-[#F5F7FA]">{title}</h3>
+      <h3 className="mt-4 text-2xl font-semibold tracking-tight text-[#E4DFF7]">{title}</h3>
       <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#98A0B3] sm:text-base">
         {items.map((item) => (
           <li key={item} className="flex items-start gap-3">
@@ -54,13 +54,13 @@ export function NfcBenefits({ functional, business }: NfcBenefitsProps) {
               eyebrow="Funcional"
               title="Menos fricción, más facilidad para compartir"
               items={functional}
-              accentClass="bg-[#0FEFFD]"
+              accentClass="bg-[#785FDD]"
             />
             <BenefitGroup
               eyebrow="Negocio"
               title="Más conversión desde cada reunión, visita o evento"
               items={business}
-              accentClass="bg-[#E625FF]"
+              accentClass="bg-[#6939E2]"
             />
           </div>
         </Container>

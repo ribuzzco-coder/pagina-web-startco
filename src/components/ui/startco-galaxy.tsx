@@ -18,7 +18,7 @@ function ShootingStars() {
   const [stars, setStars] = useState<ShootingStarData[]>([]);
 
   useEffect(() => {
-    const brandColors = ["#0FEFFD", "#E625FF", "#F5F7FA"]; // Cyan, Magenta, White
+    const brandColors = ["#785FDD", "#6939E2", "#E4DFF7"]; // Cyan, Magenta, White
     
     // Initial batch
     const createStar = () => ({

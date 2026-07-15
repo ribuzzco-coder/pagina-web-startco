@@ -32,21 +32,21 @@ export function NfcPricing({ plans, inquiryHref }: NfcPricingProps) {
             {plans.map((plan, index) => (
               <Card
                 key={plan.name}
-                className={index === 1 ? "rounded-[30px] border-[#E625FF]/30 p-7 sm:p-8" : "rounded-[30px] p-7 sm:p-8"}
+                className={index === 1 ? "rounded-[30px] border-[#6939E2]/30 p-7 sm:p-8" : "rounded-[30px] p-7 sm:p-8"}
               >
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">
                   {plan.name}
                 </p>
-                <h3 className="mt-3 text-3xl font-semibold tracking-tight text-[#F5F7FA]">
+                <h3 className="mt-3 text-3xl font-semibold tracking-tight text-[#E4DFF7]">
                   {plan.price}
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
                   {plan.description}
                 </p>
-                <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#C7CBD6]">
+                <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#CEC6E0]">
                   {plan.points.map((point) => (
                     <li key={point} className="flex items-start gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E625FF]" />
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6939E2]" />
                       <span>{point}</span>
                     </li>
                   ))}

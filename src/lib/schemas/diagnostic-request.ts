@@ -1,8 +1,9 @@
 import { z } from "zod";
 
-const booleanish = z
-  .union([z.boolean(), z.literal("true"), z.literal("false"), z.literal("1"), z.literal("0")])
-  .transform((value) => value === true || value === "true" || value === "1");
+const procesoActualEnum = z.enum(["aun_validando", "funciona_informal", "consistente"]);
+const presupuestoEnum = z.enum(["definido", "aproximado", "explorando"]);
+const urgenciaEnum = z.enum(["ya", "proximo_mes", "tres_meses", "explorando"]);
+const autoridadEnum = z.enum(["yo_decido", "en_conjunto", "no_decido"]);
 
 export const diagnosticRequestSchema = z.object({
   nombre: z.string().trim().min(2).max(120),
@@ -11,13 +12,24 @@ export const diagnosticRequestSchema = z.object({
   whatsapp: z.string().trim().min(7).max(40).optional().nullable(),
   email: z.string().trim().email().max(160),
   sector: z.string().trim().min(2).max(120),
-  yaEstaVendiendo: booleanish,
-  retoPrincipal: z.string().trim().min(10).max(600),
+  queVende: z.string().trim().min(2).max(200),
+  aQuienVende: z.string().trim().min(2).max(200),
+  procesoActual: procesoActualEnum,
+  queFrena: z.string().trim().min(2).max(600),
+  metaConcreta: z.string().trim().max(600).optional().nullable(),
+  presupuesto: presupuestoEnum,
+  urgencia: urgenciaEnum,
+  autoridad: autoridadEnum,
   tamanoEquipo: z.string().trim().max(80).optional().nullable(),
   contexto: z.string().trim().max(3000).optional().nullable(),
   source: z.string().trim().min(2).max(80).optional(),
   turnstileToken: z.string().trim().optional().nullable(),
   website: z.string().trim().max(0).optional(),
+  dataConsent: z
+    .boolean()
+    .refine((value) => value === true, {
+      message: "Debes aceptar el tratamiento de datos personales para continuar.",
+    }),
 });
 
 export type DiagnosticRequestInput = z.infer<typeof diagnosticRequestSchema>;

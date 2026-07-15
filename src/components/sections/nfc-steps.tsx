@@ -26,12 +26,12 @@ export function NfcSteps({ steps }: NfcStepsProps) {
           {steps.map((step, index) => (
             <Card key={step.title} className="relative rounded-[28px] p-6 sm:p-7">
               <div className="mb-5 flex items-center gap-4">
-                <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#E625FF]/30 bg-[#E625FF]/10 text-lg font-semibold text-[#F5F7FA]">
+                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-lg font-semibold text-white shadow-[0_0_14px_rgba(105,57,226,0.32)]">
                   {index + 1}
                 </div>
-                <div className="h-px flex-1 bg-[linear-gradient(90deg,rgba(230,37,255,0.36),transparent)]" />
+                <div className="h-px flex-1 bg-[linear-gradient(90deg,rgba(105,57,226,0.36),transparent)]" />
               </div>
-              <h3 className="text-xl font-semibold tracking-tight text-[#F5F7FA]">
+              <h3 className="text-xl font-semibold tracking-tight text-[#E4DFF7]">
                 {step.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">

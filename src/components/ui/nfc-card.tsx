@@ -73,12 +73,12 @@ export function NFCCard({
       aria-label={isTouchDevice ? "Voltear tarjeta NFC" : "Vista previa de tarjeta NFC"}
       aria-pressed={isTouchDevice ? isFlipped : undefined}
       className={cn(
-        "group relative block w-full max-w-[420px] cursor-pointer rounded-[28px] bg-transparent text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E625FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B10]",
+        "group relative block w-full max-w-[420px] cursor-pointer rounded-[28px] bg-transparent text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6939E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08041E]",
         className,
       )}
       style={{ perspective: "1800px" }}
     >
-      <div className="pointer-events-none absolute inset-[-8%] -z-10 rounded-[36px] bg-[radial-gradient(circle_at_30%_10%,rgba(230,37,255,0.36),transparent_30%),radial-gradient(circle_at_80%_75%,rgba(15,239,253,0.24),transparent_28%)] blur-2xl transition duration-700 group-hover:scale-105" />
+      <div className="pointer-events-none absolute inset-[-8%] -z-10 rounded-[36px] bg-[radial-gradient(circle_at_30%_10%,rgba(105,57,226,0.36),transparent_30%),radial-gradient(circle_at_80%_75%,rgba(120,95,221,0.24),transparent_28%)] blur-2xl transition duration-700 group-hover:scale-105" />
 
       <div
         className={cn(
@@ -117,7 +117,7 @@ export function NFCCard({
       {showFooter ? (
         <div className="mt-4 flex items-center justify-between gap-4 px-1 text-xs uppercase tracking-[0.16em] text-[#98A0B3]">
           <span>{isTouchDevice ? "Toca para voltear" : "Pasa el cursor para voltear"}</span>
-          <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[#C7CBD6]">
+          <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[#CEC6E0]">
             NFC showcase
           </span>
         </div>

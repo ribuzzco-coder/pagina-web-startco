@@ -14,16 +14,16 @@ type CardProps = HTMLAttributes<HTMLDivElement> & {
 
 const glowToneVars: Record<GlowTone, CSSProperties> = {
   purple: {
-    "--glow-hue-start": "284",
-    "--glow-hue-end": "196",
+    "--glow-hue-start": "258",
+    "--glow-hue-end": "248",
   } as CSSProperties,
   cyan: {
-    "--glow-hue-start": "191",
-    "--glow-hue-end": "284",
+    "--glow-hue-start": "266",
+    "--glow-hue-end": "252",
   } as CSSProperties,
   green: {
-    "--glow-hue-start": "142",
-    "--glow-hue-end": "185",
+    "--glow-hue-start": "250",
+    "--glow-hue-end": "242",
   } as CSSProperties,
   pink: {
     "--glow-hue-start": "313",

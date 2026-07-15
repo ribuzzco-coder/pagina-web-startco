@@ -27,6 +27,43 @@ const STATUS_OPTIONS: Array<AdminDiagnosticRequestDto["status"]> = [
 const textareaClassName =
   "w-full rounded-[18px] border border-white/10 bg-[#0D1018] px-4 py-3 text-sm text-[#F5F7FA] outline-none transition-[border-color,box-shadow,background-color] duration-200 placeholder:text-[#70788D] focus:border-[#E625FF]/45 focus:bg-[#111522] focus:shadow-[0_0_0_1px_rgba(230,37,255,0.16),0_0_24px_rgba(230,37,255,0.12)]";
 
+const ROUTING_TIER_LABEL: Record<AdminDiagnosticRequestDto["routingTier"], string> = {
+  llamada: "Agendar llamada",
+  regalos: "Regalos",
+  newsletter: "Newsletter",
+};
+
+const ROUTING_TIER_CLASSNAME: Record<AdminDiagnosticRequestDto["routingTier"], string> = {
+  llamada: "border-[#5CE6A6]/30 bg-[#5CE6A6]/10 text-[#c8f7de]",
+  regalos: "border-[#E7B0EE]/30 bg-[#E7B0EE]/10 text-[#f4dcf8]",
+  newsletter: "border-white/10 bg-white/[0.03] text-[#98A0B3]",
+};
+
+const PROCESO_ACTUAL_LABEL: Record<string, string> = {
+  aun_validando: "Aún validando",
+  funciona_informal: "Funciona, pero informal",
+  consistente: "Consistente",
+};
+
+const PRESUPUESTO_LABEL: Record<string, string> = {
+  definido: "Definido",
+  aproximado: "Idea aproximada",
+  explorando: "Explorando",
+};
+
+const URGENCIA_LABEL: Record<string, string> = {
+  ya: "Lo antes posible",
+  proximo_mes: "Próximo mes",
+  tres_meses: "Próximos 3 meses",
+  explorando: "Solo explorando",
+};
+
+const AUTORIDAD_LABEL: Record<string, string> = {
+  yo_decido: "Decide solo/a",
+  en_conjunto: "Decide en conjunto",
+  no_decido: "No es quien decide",
+};
+
 export function AdminRequestsClient({
   actor,
   initialItems,
@@ -132,6 +169,11 @@ export function AdminRequestsClient({
                   <span className="rounded-full border border-[#E625FF]/24 bg-[#E625FF]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#ffc9ff]">
                     {item.status}
                   </span>
+                  <span
+                    className={`rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] ${ROUTING_TIER_CLASSNAME[item.routingTier]}`}
+                  >
+                    {ROUTING_TIER_LABEL[item.routingTier]} · {item.fitScore}/3
+                  </span>
                   <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#98A0B3]">
                     {new Date(item.createdAt).toLocaleString("es-CO")}
                   </span>
@@ -155,21 +197,51 @@ export function AdminRequestsClient({
                     label="Equipo"
                     value={item.tamanoEquipo || "Sin especificar"}
                   />
+                  <Info label="Qué vende" value={item.queVende || "Sin especificar"} />
+                  <Info label="A quién le vende" value={item.aQuienVende || "Sin especificar"} />
                   <Info
-                    label="Ya está vendiendo"
-                    value={item.yaEstaVendiendo ? "Sí" : "No"}
+                    label="Proceso actual"
+                    value={
+                      (item.procesoActual && PROCESO_ACTUAL_LABEL[item.procesoActual]) ||
+                      "Sin especificar"
+                    }
+                  />
+                  <Info
+                    label="Presupuesto"
+                    value={
+                      (item.presupuesto && PRESUPUESTO_LABEL[item.presupuesto]) || "Sin especificar"
+                    }
+                  />
+                  <Info
+                    label="Urgencia"
+                    value={(item.urgencia && URGENCIA_LABEL[item.urgencia]) || "Sin especificar"}
+                  />
+                  <Info
+                    label="Autoridad"
+                    value={(item.autoridad && AUTORIDAD_LABEL[item.autoridad]) || "Sin especificar"}
                   />
                   <Info label="Fuente" value={item.source} />
                 </dl>
 
                 <div className="rounded-[22px] border border-white/8 bg-[#0D1018]/80 p-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#E7B0EE]">
-                    Reto principal
+                    Qué lo frena
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-[#C7CBD6]">
-                    {item.retoPrincipal}
+                    {item.queFrena || "Sin especificar"}
                   </p>
                 </div>
+
+                {item.metaConcreta ? (
+                  <div className="rounded-[22px] border border-white/8 bg-[#0D1018]/80 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#E7B0EE]">
+                      Meta concreta
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-[#C7CBD6]">
+                      {item.metaConcreta}
+                    </p>
+                  </div>
+                ) : null}
 
                 {item.contexto ? (
                   <div className="rounded-[22px] border border-white/8 bg-[#0D1018]/80 p-4">

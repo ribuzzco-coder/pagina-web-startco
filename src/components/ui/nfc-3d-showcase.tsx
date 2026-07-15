@@ -178,8 +178,8 @@ export function Nfc3dShowcase() {
       )}
     >
       {/* Background glow that follows mouse */}
-      <div className="nfc-3d-scene-glow pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#E625FF]/10 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-[#0FEFFD]/10 blur-[120px]" />
+      <div className="nfc-3d-scene-glow pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6939E2]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-[#785FDD]/10 blur-[120px]" />
 
       {/* Main 3D Container */}
       <div className="nfc-phone-container relative z-10 [transform-style:preserve-3d]">

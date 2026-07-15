@@ -27,14 +27,14 @@ const docs: RewardDoc[] = [
   {
     title: "Hagamos una oferta que nos lleve al espacio",
     description:
-      "Una gu\u00eda para estructurar una oferta con m\u00e1s claridad, intenci\u00f3n y direcci\u00f3n comercial.",
+      "Una guía para estructurar una oferta con más claridad, intención y dirección comercial.",
     href: "/hagamos-una-oferta-que-nos-lleve.pdf",
     cover: "/regalo-oferta-portada.png",
   },
   {
-    title: "Un im\u00e1n para tu oferta y el valor de compartirlo",
+    title: "Un imán para tu oferta y el valor de compartirlo",
     description:
-      "Un recurso breve para entender c\u00f3mo volver tu propuesta m\u00e1s atractiva y memorable.",
+      "Un recurso breve para entender cómo volver tu propuesta más atractiva y memorable.",
     href: "/un-iman-para-tu-oferta.pdf",
     cover: "/regalo-iman-portada.png",
   },
@@ -124,16 +124,16 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
     <div className="mt-8 flex justify-center">
       <div
         ref={trackRef}
-        className="relative h-[74px] w-full max-w-[430px] touch-pan-y rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(18,22,34,0.94),rgba(12,14,20,0.98))] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_0_28px_rgba(230,37,255,0.08)]"
+        className="relative h-[74px] w-full max-w-[430px] touch-pan-y rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(18,22,34,0.94),rgba(12,14,20,0.98))] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_0_28px_rgba(105,57,226,0.08)]"
         onPointerDown={(event) => {
           startDrag(event.clientX);
         }}
       >
         <div
-          className="pointer-events-none absolute inset-y-2 left-2 rounded-full bg-[linear-gradient(90deg,rgba(230,37,255,0.34),rgba(15,239,253,0.2))] transition-[width] duration-200 ease-out"
+          className="pointer-events-none absolute inset-y-2 left-2 rounded-full bg-[linear-gradient(90deg,rgba(105,57,226,0.34),rgba(120,95,221,0.2))] transition-[width] duration-200 ease-out"
           style={{ width: fillWidth }}
         />
-        <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_24%_50%,rgba(230,37,255,0.14),transparent_26%),radial-gradient(circle_at_75%_50%,rgba(15,239,253,0.1),transparent_26%)]" />
+        <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_24%_50%,rgba(105,57,226,0.14),transparent_26%),radial-gradient(circle_at_75%_50%,rgba(120,95,221,0.1),transparent_26%)]" />
         <div className="relative flex h-full items-center justify-center px-16 text-center">
           <span className="text-sm font-semibold uppercase tracking-[0.16em] text-[#D5DBE7] sm:text-[15px]">
             Desliza para abrir
@@ -143,7 +143,7 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
           type="button"
           aria-label="Deslizar para desbloquear"
           className={cn(
-            "absolute top-2 flex h-[58px] w-[58px] items-center justify-center rounded-full border border-white/18 bg-[linear-gradient(135deg,#FAFAFA,#EDE8F9)] text-[#7A1A8A] shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_12px_24px_rgba(0,0,0,0.22),0_0_16px_rgba(230,37,255,0.16)] transition-[transform,left] duration-200 ease-out",
+            "absolute top-2 flex h-[58px] w-[58px] items-center justify-center rounded-full border border-white/18 bg-[linear-gradient(135deg,#FAFAFA,#EDE8F9)] text-[#4E06BA] shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_12px_24px_rgba(0,0,0,0.22),0_0_16px_rgba(105,57,226,0.16)] transition-[transform,left] duration-200 ease-out",
             dragging && "scale-[1.02]",
           )}
           style={{ left: handleOffset }}
@@ -176,10 +176,10 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
         </div>
 
         <div className="min-w-0 flex-1">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E7B0EE]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
             Documento desbloqueado
           </p>
-          <h3 className="mt-2 text-lg font-semibold tracking-tight text-[#F5F7FA] sm:text-xl">
+          <h3 className="mt-2 text-lg font-semibold tracking-tight text-[#E4DFF7] sm:text-xl">
             {doc.title}
           </h3>
         </div>
@@ -228,10 +228,10 @@ function GalacticBurst() {
         const travelY = 220 + (index % 5) * 34;
         const color =
           index % 3 === 0
-            ? "rgba(230,37,255,0.95)"
+            ? "rgba(105,57,226,0.95)"
             : index % 3 === 1
-              ? "rgba(15,239,253,0.92)"
-              : "rgba(255,111,168,0.92)";
+              ? "rgba(120,95,221,0.92)"
+              : "rgba(78,6,186,0.92)";
 
         return {
           id: index,
@@ -251,7 +251,7 @@ function GalacticBurst() {
   return (
     <>
       <div className="pointer-events-none fixed inset-0 z-[120] overflow-hidden">
-        <div className="absolute left-1/2 top-1/2 h-[50rem] w-[50rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,37,255,0.28),rgba(255,111,168,0.16)_30%,transparent_74%)] blur-[72px] animate-[reward-bloom_1200ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
+        <div className="absolute left-1/2 top-1/2 h-[50rem] w-[50rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(105,57,226,0.28),rgba(120,95,221,0.16)_30%,transparent_74%)] blur-[72px] animate-[reward-bloom_1200ms_cubic-bezier(0.16,1,0.3,1)_forwards]" />
         {comets.map((comet) => (
           <span
             key={comet.id}
@@ -289,17 +289,17 @@ export function RewardVault() {
   return (
     <div className="relative mx-auto max-w-4xl">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#FF9EB0]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
           Regalos RiBuzz
         </p>
-        <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[#F5F7FA] sm:text-5xl">
-          Te traemos valor que nos habr&iacute;a gustado saber antes.
+        <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[#E4DFF7] sm:text-5xl">
+          Te traemos valor que nos habría gustado saber antes.
         </h1>
       </div>
 
       <div className="relative mx-auto mt-10 max-w-2xl">
-        <Card className="relative overflow-hidden rounded-[32px] border-[#ff4d6d]/20 bg-[linear-gradient(180deg,rgba(22,16,30,0.96),rgba(11,11,16,0.99))] p-8 shadow-[0_0_0_1px_rgba(255,77,109,0.12),0_0_36px_rgba(255,77,109,0.16),0_28px_70px_rgba(0,0,0,0.32)] sm:p-10">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_18%,rgba(255,111,168,0.12),transparent_22%),radial-gradient(circle_at_78%_22%,rgba(15,239,253,0.12),transparent_24%),radial-gradient(circle_at_50%_100%,rgba(230,37,255,0.12),transparent_32%)]" />
+        <Card className="relative overflow-hidden rounded-[32px] border-[#6939E2]/20 bg-[linear-gradient(180deg,rgba(19,2,89,0.5),rgba(8,4,30,0.98))] p-8 shadow-[0_0_0_1px_rgba(105,57,226,0.12),0_0_36px_rgba(105,57,226,0.16),0_28px_70px_rgba(0,0,0,0.32)] sm:p-10">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_18%,rgba(120,95,221,0.12),transparent_22%),radial-gradient(circle_at_78%_22%,rgba(120,95,221,0.12),transparent_24%),radial-gradient(circle_at_50%_100%,rgba(105,57,226,0.12),transparent_32%)]" />
           {isUnlocked ? <GalacticBurst /> : null}
 
           <div className="relative z-10">
@@ -322,25 +322,36 @@ export function RewardVault() {
         <Card className="rounded-[28px] border-white/10 bg-[linear-gradient(180deg,rgba(18,21,32,0.92),rgba(12,14,20,0.96))] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_18px_44px_rgba(0,0,0,0.2)]">
           <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
             <div className="max-w-xl">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7EF6FF]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
                 Siguiente paso
               </p>
-              <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#F5F7FA]">
-                Si quieres aterrizar estas ideas, cont&aacute;ctanos por WhatsApp.
+              <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#E4DFF7]">
+                Si quieres ir más allá, agenda tu llamada de introducción.
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
-                Podemos revisar tu caso por WhatsApp y ver si tiene sentido llevarlo a una
-                siguiente reuni&oacute;n.
+                Es gratuita y sirve para confirmar si hay fit real antes de proponer cualquier
+                paquete. ¿Tienes una pregunta puntual antes? Escríbenos por WhatsApp.
               </p>
             </div>
 
-            <Button
-              href={SITE_CONFIG.whatsappUrl}
-              size="md"
-              className="min-w-[180px] shadow-[0_0_0_1px_rgba(230,37,255,0.16),0_0_24px_rgba(230,37,255,0.18)]"
-            >
-              Cont&aacute;ctanos por WhatsApp
-            </Button>
+            <div className="flex flex-col items-center gap-3 sm:items-end">
+              <Button
+                href={SITE_CONFIG.diagnosisPath}
+                size="md"
+                variant="shimmer"
+                className="min-w-[180px] shadow-[0_0_0_1px_rgba(105,57,226,0.16),0_0_24px_rgba(105,57,226,0.18)]"
+              >
+                Agenda tu llamada
+              </Button>
+              <a
+                href={SITE_CONFIG.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-[#98A0B3] underline decoration-white/20 underline-offset-2 hover:text-[#E4DFF7]"
+              >
+                O escríbenos por WhatsApp
+              </a>
+            </div>
           </div>
         </Card>
       </div>
