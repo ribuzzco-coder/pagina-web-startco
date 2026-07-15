@@ -17,7 +17,7 @@ export const metadata = createPageMetadata({
 
 export default function NunaAmauttaGiftPage() {
   return (
-    <main className="fiammata-page nunaamautta-page -mt-[76px] min-h-[100dvh]">
+    <main className="-mt-[76px] min-h-[100dvh]">
       <NunaGiftExperience instagramUrl={nunaLinks.instagram} logoSrc={logoSrc} />
     </main>
   );

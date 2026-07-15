@@ -41,29 +41,32 @@ const PRIZES: Prize[] = [
     label: "10% en referencias seleccionadas",
     wheelLabel: "10%",
     codePrefix: "NUNA10",
-    color: "#2f211a",
-    textColor: "#fffaf3",
+    color: "#2b2118",
+    textColor: "#fff7e8",
   },
   {
     id: "discount-15",
     label: "15% en referencias seleccionadas",
     wheelLabel: "15%",
     codePrefix: "NUNA15",
-    color: "#bf9078",
-    textColor: "#21130d",
+    color: "#a06a35",
+    textColor: "#fff7e8",
   },
   {
     id: "discount-20",
     label: "20% en referencias seleccionadas",
     wheelLabel: "20%",
     codePrefix: "NUNA20",
-    color: "#d7ddc9",
-    textColor: "#2f211a",
+    color: "#e8d6b5",
+    textColor: "#2b2118",
   },
 ];
 
 const SEGMENT_ANGLE = 360 / PRIZES.length;
 const WHEEL_LABEL_RADIUS = 34;
+const shootBase = "/images/nunaamautta/nov-2025";
+const heroImage = `${shootBase}/nuna-nov-2025-22.jpg`;
+const panelImage = `${shootBase}/nuna-nov-2025-46.jpg`;
 
 function getTodayInputValue() {
   const now = new Date();
@@ -77,19 +80,19 @@ function validateForm(form: FormData) {
   const birthdayTime = Date.parse(`${form.birthday}T00:00:00`);
 
   if (form.name.trim().length < 2) {
-    errors.name = "Cuéntanos tu nombre.";
+    errors.name = "Cuentanos tu nombre.";
   }
 
   if (!emailPattern.test(form.email.trim())) {
-    errors.email = "Ingresa un correo válido.";
+    errors.email = "Ingresa un correo valido.";
   }
 
   if (phoneDigits.length < 7 || phoneDigits.length > 15) {
-    errors.phone = "Ingresa un celular válido.";
+    errors.phone = "Ingresa un celular valido.";
   }
 
   if (!form.birthday || Number.isNaN(birthdayTime)) {
-    errors.birthday = "Selecciona tu cumpleaños.";
+    errors.birthday = "Selecciona tu cumpleanos.";
   } else if (birthdayTime > Date.now()) {
     errors.birthday = "La fecha no puede ser futura.";
   }
@@ -187,7 +190,7 @@ export function NunaGiftExperience({
       setStep("wheel");
     } catch {
       setSubmitError(
-        "No pudimos guardar tus datos. Revisa tu conexión e intenta de nuevo.",
+        "No pudimos guardar tus datos. Revisa tu conexion e intenta de nuevo.",
       );
     } finally {
       setIsSubmittingLead(false);
@@ -224,44 +227,70 @@ export function NunaGiftExperience({
 
   return (
     <section className={styles.section} id="reclama-tu-regalo">
-      <div className={styles.shell}>
-        <div className={styles.copy}>
-          <p className={styles.eyebrow}>Regalo Nuna Amautta</p>
-          <h2>
-            Reclama tu regalo
-            <span>y deja que la ruleta elija tu descuento.</span>
-          </h2>
-          <p>
-            Completa tus datos, gira una sola vez y presenta el código en
-            Instagram para validar tu descuento. Válido en referencias
-            seleccionadas de la colección Nómada.
-          </p>
-
-          <div className={styles.prizes} aria-label="Premios disponibles">
-            {PRIZES.map((prize) => (
-              <span key={prize.id}>{prize.label}</span>
-            ))}
+      <div className={styles.phone}>
+        <header className={styles.topbar}>
+          <div className={styles.kicker}>
+            <span>02 / Regalo</span>
+            <i aria-hidden="true" />
           </div>
+          <Image
+            src={logoSrc}
+            alt="Nuna Amautta"
+            width={136}
+            height={88}
+            priority
+            className={styles.topLogo}
+          />
+        </header>
 
-          <p className={styles.disclaimer}>
-            * Descuentos aplicables únicamente en referencias seleccionadas.
-            No acumulable con otras promociones.
-          </p>
+        <div className={styles.hero}>
+          <Image
+            src={heroImage}
+            alt="Editorial Nuna Amautta para reclamar regalo"
+            fill
+            priority
+            sizes="480px"
+            className={styles.heroImage}
+          />
+          <div className={styles.heroShade} />
+          <div className={styles.heroCopy}>
+            <Image
+              src={logoSrc}
+              alt="Nuna Amautta"
+              width={240}
+              height={154}
+              className={styles.heroLogo}
+            />
+            <h1>
+              Reclama tu regalo
+              <span>y gira la ruleta.</span>
+            </h1>
+            <p>
+              Completa tus datos, recibe un codigo y presentalo en Instagram
+              para validar tu descuento.
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.prizes} aria-label="Premios disponibles">
+          {PRIZES.map((prize) => (
+            <span key={prize.id}>{prize.label}</span>
+          ))}
         </div>
 
         {step === "form" ? (
           <div className={styles.panel}>
-            <div className={styles.formHeader}>
+            <div className={styles.panelMedia}>
               <Image
-                src={logoSrc}
-                alt="Nuna Amautta"
-                width={88}
-                height={56}
-                className={styles.logo}
+                src={panelImage}
+                alt="Detalle de styling Nuna Amautta"
+                fill
+                sizes="440px"
+                className={styles.panelImage}
               />
               <div>
                 <p>Antes de girar</p>
-                <h3>Queremos conocerte</h3>
+                <h2>Queremos conocerte</h2>
               </div>
             </div>
 
@@ -273,7 +302,7 @@ export function NunaGiftExperience({
                   name="name"
                   value={form.name}
                   onChange={(event) => updateField("name", event.target.value)}
-                  placeholder="¿Cómo te llamas?"
+                  placeholder="Como te llamas?"
                   autoComplete="name"
                   aria-invalid={Boolean(errors.name)}
                   aria-describedby={errors.name ? "nuna-name-error" : undefined}
@@ -322,7 +351,7 @@ export function NunaGiftExperience({
               </label>
 
               <label className={styles.field}>
-                <span>Cumpleaños</span>
+                <span>Cumpleanos</span>
                 <input
                   type="date"
                   name="birthday"
@@ -359,15 +388,16 @@ export function NunaGiftExperience({
 
             <p className={styles.privacy}>
               Al continuar aceptas el tratamiento de tus datos para esta
-              actividad promocional.
+              actividad promocional. Descuento valido en referencias
+              seleccionadas. No acumulable con otras promociones.
             </p>
           </div>
         ) : (
           <div className={`${styles.panel} ${styles.wheelPanel}`}>
             <p className={styles.eyebrow}>Tu giro ganador</p>
-            <h3 className={styles.wheelTitle}>
+            <h2 className={styles.wheelTitle}>
               Hola, {form.name.trim().split(/\s+/)[0]}. Todos ganan.
-            </h3>
+            </h2>
 
             <div className={styles.wheelWrap}>
               <div className={styles.pointer} aria-hidden="true" />
