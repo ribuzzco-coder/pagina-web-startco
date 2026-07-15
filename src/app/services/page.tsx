@@ -1,6 +1,6 @@
 import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
-import { PhaseTabs } from "@/components/sections/phase-tabs";
+import { PhaseStack } from "@/components/sections/phase-stack";
 import { ServicesSystemHero } from "@/components/sections/services-system-hero";
 import { StageTabs } from "@/components/sections/stage-tabs";
 import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
@@ -11,9 +11,9 @@ import { SectionTitle } from "@/components/ui/section-title";
 import {
   differentiators,
   howWeWorkFaqs,
+  investmentModel,
   methodologySteps,
   offerPackages,
-  trustSignals,
 } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
@@ -34,32 +34,6 @@ export default function ServicesPage() {
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
         secondaryCtaHref="#como-lo-hacemos"
       />
-
-      {/* Confianza: prueba antes de pedir nada */}
-      <section className="cv-auto pb-16 sm:pb-20">
-        <Container>
-          <SectionTitle
-            eyebrow="Prueba, no promesas"
-            title="Esto ya está pasando con clientes reales"
-            description="No partimos de cero: ya hay trabajo activo, resultados medibles y contextos distintos donde el sistema se ha puesto a prueba."
-          />
-
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {trustSignals.map((item, index) => (
-              <NumberedCard
-                key={item.title}
-                index={index + 1}
-                title={item.title}
-                description={item.description}
-              />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <TestimonialShuffle />
-
-      <SectionDivider />
 
       {/* Confianza: contraste directo con la categoría "agencia" */}
       <section className="section-soft cv-auto py-16 sm:py-20">
@@ -82,19 +56,19 @@ export default function ServicesPage() {
       <SectionDivider />
 
       {/* Interés: cómo funciona por dentro, en suficiente detalle para generar deseo informado */}
-      <section className="cv-auto py-16 sm:py-20" id="como-lo-hacemos">
+      <section className="py-16 sm:py-20" id="como-lo-hacemos">
         <Container>
           <SectionTitle
             align="left"
             eyebrow="Cómo lo hacemos"
             title="Cuatro fases, siempre en el mismo orden"
-            description="No se ejecuta sin diagnóstico y no se diseña algo que luego no pueda operar. Así se recorre cada proyecto, sin importar la etapa en la que entres."
+            description="No se ejecuta sin diagnóstico y no se diseña algo que luego no pueda operar. Desliza para recorrer cada fase, en el orden en que la aplicamos siempre."
           />
-
-          <div className="mt-10">
-            <PhaseTabs steps={methodologySteps} />
-          </div>
         </Container>
+
+        <div className="mt-10">
+          <PhaseStack steps={methodologySteps} />
+        </div>
       </section>
 
       <SectionDivider />
@@ -118,7 +92,7 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <section className="cv-auto py-16 sm:py-20">
+      <section className="section-soft cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
             align="left"
@@ -126,8 +100,23 @@ export default function ServicesPage() {
             title="No cobramos por publicar, cobramos por mover el número que te importa"
             description="Cada paquete se cobra con un retainer mensual fijo, que cubre la capacidad instalada. A partir de la etapa de Incubación, se suma un fee por cumplimiento de hitos de negocio — definidos contigo antes de empezar, nunca a mitad de camino."
           />
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {investmentModel.map((item, index) => (
+              <NumberedCard
+                key={item.title}
+                index={index + 1}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
+          </div>
         </Container>
       </section>
+
+      <SectionDivider />
+
+      <TestimonialShuffle />
 
       <SectionDivider />
 

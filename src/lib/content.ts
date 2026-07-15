@@ -121,7 +121,7 @@ export const methodologySteps: Step[] = [
   {
     title: "Diagnóstico",
     description:
-      "Es la entrada ideal. Recoge información, identifica dónde se rompe el proceso comercial y hace visibles las prioridades reales del negocio.",
+      "Revisamos tráfico, conversión, mensajes y seguimiento actual, y hablamos con tu equipo para ubicar dónde se pierden clientes: en la llegada, en la oferta, en el cierre o en el seguimiento posterior.",
     points: [
       "Buscamos entender qué está frenando la adquisición de clientes, la conversión, el seguimiento o el flujo de caja.",
       "No buscamos llenar formularios por llenar, sino identificar oportunidades reales.",
@@ -131,7 +131,7 @@ export const methodologySteps: Step[] = [
   {
     title: "Diseño",
     description:
-      "Traduce el diagnóstico en una estructura concreta para pasar de la lectura a la ejecución.",
+      "Definimos el embudo comercial completo: qué mensaje va en cada etapa, qué canal lo entrega, qué se mide en el camino y en qué orden se ejecuta cada cambio.",
     points: [
       "Definición del flujo comercial, las prioridades y los mensajes estratégicos.",
       "Establecimiento de puntos de seguimiento y criterios de acción claros.",
@@ -141,7 +141,7 @@ export const methodologySteps: Step[] = [
   {
     title: "Implementación",
     description:
-      "Activa herramientas, activos y soluciones para poner en marcha lo que ya fue diseñado.",
+      "Construimos landing pages, automatizaciones de WhatsApp o email, integración de CRM y la estructura de contenido orgánico y pago que el embudo diseñado necesita para operar.",
     points: [
       "Landing pages, automatizaciones y configuración de CRM según se necesite.",
       "Despliegue de estructura de conversión y activos digitales operativos.",
@@ -151,7 +151,7 @@ export const methodologySteps: Step[] = [
   {
     title: "Acompañamiento",
     description:
-      "Revisa, ajusta y acompaña la ejecución para que el sistema no quede en papel.",
+      "Revisamos resultados en una cadencia fija, ajustamos mensajes, canales y prioridades según los datos reales, y sostenemos el sistema para que no se apague cuando termina la implementación.",
     points: [
       "Seguimiento de hitos, revisión de avances y ajuste de decisiones en tiempo real.",
       "Apoyo continuo bajo una lógica de growth partner para sostener la mejora.",
@@ -159,6 +159,24 @@ export const methodologySteps: Step[] = [
     outcome: "Entrega seguimiento, ajuste y continuidad para crecer con más consistencia.",
   },
 ];
+
+export const investmentModel = [
+  {
+    title: "Retainer mensual fijo",
+    description:
+      "Cubre la capacidad instalada: equipo, horas y ejecución continua de tu paquete. Es la base de todos los paquetes, desde Ideación hasta Expansión, y no depende del resultado del mes.",
+  },
+  {
+    title: "Fee por cumplimiento de hitos",
+    description:
+      "A partir de la etapa de Incubación, sumamos un componente atado a una métrica de negocio acordada contigo (leads calificados, tasa de conversión, ventas cerradas). Se define caso por caso antes de empezar, nunca a mitad de camino.",
+  },
+  {
+    title: "Presupuesto de pauta, cuando aplica",
+    description:
+      "En paquetes que incluyen adquisición pagada, el presupuesto de pauta se factura aparte y de forma transparente: no se mezcla con el fee de servicio ni se le suma un sobrecosto oculto.",
+  },
+] as const;
 
 export const differentiators = [
   "No somos una agencia de marketing reactiva. Somos un partner que diseña e interviene tu sistema comercial con criterio profesional.",
@@ -169,19 +187,19 @@ export const differentiators = [
 
 export const trustSignals = [
   {
-    title: "10 clientes atendidos, 4 recurrentes",
+    title: "Biondaymora: web y pipeline rediseñados para convertir",
     description:
-      "RiBuzz ya cuenta con validación comercial activa: trabajo real con clientes en marcha, y 4 de ellos han vuelto a contratarnos.",
+      "Identificamos que su página web y su pipeline de ventas digital no estaban pensados para conversión. Rediseñamos el sitio, el email marketing y la estructura del contenido orgánico y pago.",
   },
   {
-    title: "Experiencia en contextos distintos",
+    title: "Me Inspiras: dejar de invertir tiempo en quien no iba a pagar",
     description:
-      "Se han intervenido casos en turismo, infoproductos, construcción, migración de datos y escenarios B2B.",
+      "El pipeline comercial no medía el WTP real de los prospectos, así que se gastaba tiempo en personas que nunca iban a comprar. Ajustamos el proceso para filtrar por disposición real de pago.",
   },
   {
-    title: "Experiencia aplicada, no solo conceptual",
+    title: "Kynd, Nunaamautta y Fiammata: identidad de marca en todo el proceso",
     description:
-      "Hay trabajo previo en optimización comercial digital, adquisición de clientes, diseño de procesos y activos comerciales.",
+      "Creamos activos digitales (landings) que acompañan la identidad visual de cada marca y la mantienen consistente en todo el recorrido comercial del cliente.",
   },
 ] as const;
 
@@ -189,62 +207,54 @@ export const aboutOrigin = [
   {
     title: "El patrón que se repite",
     description:
-      "En Colombia, 66,5 % de las empresas no sobrevive más de cinco años. Muchas terminan cayendo por baja rentabilidad, problemas financieros, falta de clientes o debilidad en su capacidad de vender.",
+      "Vimos la misma historia una y otra vez: empresas con buen producto que no lograban sostenerse. En Colombia, 66,5 % no sobrevive más de cinco años, y casi siempre la causa de fondo es la misma — no tienen cómo vender con consistencia.",
   },
   {
     title: "Lo que eso provoca",
     description:
-      "Sin un sistema comercial claro, se atraen clientes de forma inestable, se hace un seguimiento débil y se depende totalmente del fundador, resultando en un crecimiento frágil y caja débil.",
+      "Sin un sistema claro, cada venta se siente como un caso aparte. El seguimiento se pierde, todo depende de una sola persona, y el negocio crece a ratos: bien un mes, mal al siguiente.",
   },
   {
-    title: "Por qué existe RiBuzz",
+    title: "Por qué existimos",
     description:
-      "RiBuzz existe para intervenir este vacío con una lógica guiada y estructurada. No vende piezas sueltas; diseña, implementa y acompaña el sistema que convierte esfuerzo en ingresos sostenibles.",
+      "Por eso existe RiBuzz: para construir contigo el sistema que te falta. No vendemos piezas sueltas — diagnosticamos, diseñamos, implementamos y te acompañamos hasta que crecer deje de depender de la suerte.",
   },
 ] as const;
 
-export const aboutVisión = [
+export const aboutMissionVision = [
+  {
+    title: "Misión",
+    description:
+      "Ayudarte a crear y mejorar tu sistema comercial para que crezca de forma sostenible, mejorando los indicadores que más le importan a tu negocio — no solo optimizando piezas sueltas.",
+  },
   {
     title: "Visión",
     description:
-      "Ayudar a que más empresas operen con sistemas comerciales más claros, sostenibles y menos dependientes del fundador, convirtiéndose en el referente en Colombia antes de 2030.",
-  },
-  {
-    title: "Lo que buscamos cambiar",
-    description:
-      "Queremos que el crecimiento deje de depender de urgencias, ensayo y error o intensidad desordenada, y se convierta en una capacidad real, predecible y estructurada del negocio.",
+      "Para 2030, ser el sistema de crecimiento comercial de referencia en Colombia: la razón por la que más empresas en crecimiento o transformación logran modelos comerciales sostenibles, medibles y escalables.",
   },
 ] as const;
 
-export const aboutPosture = [
+export const aboutTraits = [
   {
-    title: "Profesional",
+    title: "Directos",
     description:
-      "Pensamos desde el negocio, no desde piezas aisladas, modas o tareas sueltas.",
+      "Nombramos el problema como es, sin rodeos ni palabras bonitas que no dicen nada.",
   },
   {
-    title: "Directa",
+    title: "Transparentes",
     description:
-      "Nombramos el problema como es y priorizamos sin rodeos lo que realmente mueve el sistema.",
+      "Cada decisión que tomamos contigo se justifica con datos y contexto — nunca con promesas vacías.",
   },
   {
-    title: "Exigente",
+    title: "Exigentes, contigo y con nosotros",
     description:
-      "No trabajamos bien con clientes que quieren resultados sin revisar su operación ni ejecutar con disciplina.",
+      "El crecimiento se construye entre los dos: nosotros diagnosticamos, estructuramos y acompañamos; tú participas, decides y ejecutas lo que te corresponde.",
   },
   {
-    title: "Orientada a ejecución",
+    title: "Obsesionados con el impacto real",
     description:
-      "La claridad tiene valor cuando se convierte en mejores decisiones, mejores procesos y más capacidad operativa.",
+      "No medimos el trabajo en tareas hechas, sino en mejores decisiones, más ventas y más capacidad de crecer.",
   },
-] as const;
-
-export const corePrinciples = [
-  "Todo parte del diagnóstico.",
-  "No se ejecuta sin claridad.",
-  "El crecimiento debe sostenerse en estructura y no solo en intensidad.",
-  "La tecnología es un habilitador, no un adorno.",
-  "Toda intervención debe traducirse en mejores decisiones, mejores procesos y más capacidad de ejecución.",
 ] as const;
 
 export const diagnosisExpectations = [

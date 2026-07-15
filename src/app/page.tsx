@@ -3,13 +3,11 @@ import Image from "next/image";
 import { NetworkFeatureSection } from "@/components/sections/network-feature-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { FitChecklist } from "@/components/sections/fit-checklist";
-import { StepCard } from "@/components/sections/step-card";
 import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
 import { BrandShaderBackground } from "@/components/ui/brand-shader-background";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { HeroMarkButton } from "@/components/ui/hero-mark-button";
-import { NumberedCard } from "@/components/ui/numbered-card";
 import { PillBadge } from "@/components/ui/pill-badge";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -20,7 +18,6 @@ import {
   homeProblemSynthesis,
   methodologySteps,
   nonFitChecklist,
-  trustSignals,
 } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
@@ -88,6 +85,7 @@ export default function HomePage() {
       <section className="section-soft cv-auto py-16 sm:py-20" id="problemas">
         <Container>
           <SectionTitle
+            align="center"
             eyebrow="Por qué tu empresa se estanca"
             title="El problema: no tienes un sistema, tienes piezas sueltas"
             description="Ventas, marketing, tecnología y seguimiento funcionan cada uno por su lado, sin nada que los conecte. Por eso, aunque ya vendes, el crecimiento no es constante."
@@ -112,36 +110,11 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      {/* Confianza: prueba antes de pedir nada */}
-      <section className="cv-auto pb-16 sm:pb-20">
-        <Container>
-          <SectionTitle
-            eyebrow="Prueba, no promesas"
-            title="Esto ya está pasando con clientes reales"
-            description="No partimos de cero: ya hay trabajo activo, resultados medibles y contextos distintos donde el sistema se ha puesto a prueba."
-          />
-
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {trustSignals.map((item, index) => (
-              <NumberedCard
-                key={item.title}
-                index={index + 1}
-                title={item.title}
-                description={item.description}
-              />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <TestimonialShuffle />
-
-      <SectionDivider />
-
       {/* Filtro: para quién es / no es, antes de pedir el CTA */}
       <section className="cv-auto py-16 sm:py-20" id="para-quien">
         <Container>
           <SectionTitle
+            align="center"
             eyebrow="Antes de seguir"
             title="Para quién es esto, y para quién no"
             description="Ser directos aquí nos ahorra tiempo a los dos. Si no hay fit, preferimos decirlo antes que después."
@@ -159,23 +132,23 @@ export default function HomePage() {
       <section className="cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
-            align="left"
+            align="center"
             eyebrow="Cómo lo hacemos"
             title="Sin diagnóstico no hay resultado"
             description="Nuestro método de cuatro fases evita decisiones a ciegas: cada paso parte de lo que encontramos en el diagnóstico, no de suposiciones."
           />
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-4">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             {methodologySteps.map((step, index) => (
-              <StepCard
+              <span
                 key={step.title}
-                index={index + 1}
-                title={step.title}
-                description={step.description}
-                points={step.points}
-                outcome={step.outcome}
-                hidePoints
-              />
+                className="inline-flex items-center gap-2 rounded-full border border-[#6939E2]/24 bg-[#6939E2]/8 px-4 py-2 text-sm font-medium text-[#CEC6E0] sm:text-base"
+              >
+                <span className="text-xs font-semibold tabular-nums text-[#8b6ff0]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                {step.title}
+              </span>
             ))}
           </div>
 
@@ -193,13 +166,13 @@ export default function HomePage() {
       <section className="section-soft cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
-            align="left"
+            align="center"
             eyebrow="Modelo de inversión"
             title="No cobramos por publicar, cobramos por mover el número que te importa"
             description="Cada paquete se cobra con un retainer mensual fijo, que cubre la capacidad instalada. A partir de la etapa de Incubación, se suma un fee por cumplimiento de hitos de negocio — definidos contigo antes de empezar, nunca a mitad de camino."
           />
 
-          <div className="mt-8">
+          <div className="mt-8 flex justify-center">
             <Button href="/services" variant="secondary" size="lg">
               Ver paquetes por etapa
             </Button>
@@ -209,11 +182,16 @@ export default function HomePage() {
 
       <SectionDivider />
 
+      <TestimonialShuffle />
+
+      <SectionDivider />
+
       <NetworkFeatureSection />
 
       <section className="cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
+            align="center"
             eyebrow="FAQ rápido"
             title="Preguntas frecuentes antes de avanzar"
             description="Respuestas breves antes de tomar decisiones sobre tu sistema."
@@ -223,7 +201,7 @@ export default function HomePage() {
             <FAQAccordion items={homeFaqs} />
           </div>
 
-          <div className="mt-7 flex">
+          <div className="mt-7 flex justify-center">
             <Button href={SITE_CONFIG.diagnosisPath} variant="secondary">
               Agenda tu llamada de introducción
             </Button>
