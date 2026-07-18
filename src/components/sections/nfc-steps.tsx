@@ -31,10 +31,10 @@ export function NfcSteps({ steps }: NfcStepsProps) {
                 </div>
                 <div className="h-px flex-1 bg-[linear-gradient(90deg,rgba(105,57,226,0.36),transparent)]" />
               </div>
-              <h3 className="text-xl font-semibold tracking-tight text-[#E4DFF7]">
+              <h3 className="text-xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
                 {step.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+              <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
                 {step.description}
               </p>
             </Card>

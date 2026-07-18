@@ -43,8 +43,8 @@ export default function TarjetasNfcPage() {
       <NfcPricing plans={nfcPricingPlans} inquiryHref={nfcWhatsappUrl} />
       <NfcFaq items={nfcFaqItems} />
       <CTASection
-        title="Haz que cada reunión, visita o evento termine en un contacto accionable."
-        description="Solicita tu tarjeta NFC o escríbenos por WhatsApp para definir la versión que mejor encaja con tu marca y objetivo comercial."
+        title="Haz que cada reunión, visita o evento tenga un siguiente paso."
+        description="Solicita tu tarjeta NFC o escríbenos por WhatsApp para definir la versión que mejor encaja con tu marca, tus enlaces y tu flujo de seguimiento."
         primaryLabel="Solicitar tarjeta"
         primaryHref={nfcWhatsappUrl}
         primaryExternal

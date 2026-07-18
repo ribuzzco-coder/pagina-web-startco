@@ -40,7 +40,7 @@ export function NfcProductDisplay({
                       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">
                         Variacion 0{index + 1}
                       </p>
-                      <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#E4DFF7]">
+                      <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
                         {variant.name}
                       </h3>
                     </div>
@@ -49,7 +49,7 @@ export function NfcProductDisplay({
                     </div>
                   </div>
 
-                  <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+                  <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
                     {variant.summary}
                   </p>
 
@@ -58,7 +58,7 @@ export function NfcProductDisplay({
                       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
                         Material
                       </p>
-                      <p className="mt-2 text-sm leading-relaxed text-[#CEC6E0]">
+                      <p className="mt-2 text-sm leading-relaxed text-[#CEC6E0] [text-wrap:pretty]">
                         {variant.material}
                       </p>
                     </div>
@@ -66,7 +66,7 @@ export function NfcProductDisplay({
                       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
                         Personalizacion
                       </p>
-                      <p className="mt-2 text-sm leading-relaxed text-[#CEC6E0]">
+                      <p className="mt-2 text-sm leading-relaxed text-[#CEC6E0] [text-wrap:pretty]">
                         {variant.customization}
                       </p>
                     </div>
@@ -80,7 +80,7 @@ export function NfcProductDisplay({
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
                 Mockup de producto
               </p>
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7]">
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
                 Logo, color y presencia de marca desde el primer contacto
               </h3>
               <div className="mt-6 grid gap-4 sm:grid-cols-3">
@@ -88,7 +88,7 @@ export function NfcProductDisplay({
                 <div className="aspect-[0.65] rounded-[24px] border border-[#6939E2]/18 bg-[linear-gradient(150deg,#28152F,#131621)] p-4 shadow-[0_16px_32px_rgba(0,0,0,0.3)]" />
                 <div className="aspect-[0.65] rounded-[24px] border border-[#785FDD]/18 bg-[linear-gradient(150deg,#132833,#131621)] p-4 shadow-[0_16px_32px_rgba(0,0,0,0.3)]" />
               </div>
-              <p className="mt-6 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+              <p className="mt-6 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
                 Si ya sabes el estilo que quieres, podemos orientarte hacia una version
                 mas simple, mas ejecutiva o mas custom segun tu objetivo comercial.
               </p>

@@ -37,13 +37,13 @@ export function NfcPricing({ plans, inquiryHref }: NfcPricingProps) {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">
                   {plan.name}
                 </p>
-                <h3 className="mt-3 text-3xl font-semibold tracking-tight text-[#E4DFF7]">
+                <h3 className="mt-3 text-3xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
                   {plan.price}
                 </h3>
-                <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+                <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
                   {plan.description}
                 </p>
-                <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#CEC6E0]">
+                <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#CEC6E0] [text-wrap:pretty]">
                   {plan.points.map((point) => (
                     <li key={point} className="flex items-start gap-3">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6939E2]" />
@@ -58,7 +58,7 @@ export function NfcPricing({ plans, inquiryHref }: NfcPricingProps) {
             ))}
           </div>
 
-          <p className="mt-8 max-w-3xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+          <p className="mt-8 max-w-3xl text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
             Para pedidos de más de 10 unidades, la cotización se define internamente
             porque ya entra en un esquema de producción al por mayor.
           </p>

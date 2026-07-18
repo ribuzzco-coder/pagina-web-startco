@@ -11,10 +11,10 @@ export function ThreejsParticlesWavesDemo() {
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
           Prueba visual interna
         </p>
-        <h3 className="mt-3 max-w-2xl text-2xl font-semibold tracking-tight text-[#E4DFF7] sm:text-3xl">
+        <h3 className="mt-3 max-w-2xl text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance] sm:text-3xl">
           Waves Three.js para evaluar atmósfera, profundidad y movimiento en inicio
         </h3>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
           Esta versión se dejó para probar en Docker cómo se siente una superficie
           animada en la home sin tocar todavía la experiencia final del sitio.
         </p>

@@ -27,10 +27,10 @@ export const nfcFunctionalBenefits = [
 ] as const;
 
 export const nfcBusinessBenefits = [
-  "Más contactos = más ventas",
+  "Más contactos accionables",
   "Diferenciación inmediata",
   "Imagen profesional",
-  "No pierdes leads",
+  "Menos conversaciones perdidas",
 ] as const;
 
 export const nfcUseCases = [

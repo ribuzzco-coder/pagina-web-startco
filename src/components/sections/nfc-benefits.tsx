@@ -21,11 +21,11 @@ function BenefitGroup({
 }) {
   return (
     <Card className="rounded-[28px] p-7 sm:p-8">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0] [text-wrap:balance]">
         {eyebrow}
       </p>
-      <h3 className="mt-4 text-2xl font-semibold tracking-tight text-[#E4DFF7]">{title}</h3>
-      <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#98A0B3] sm:text-base">
+      <h3 className="mt-4 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">{title}</h3>
+      <ul className="mt-6 space-y-3 border-t border-white/8 pt-6 text-sm text-[#98A0B3] [text-wrap:pretty] sm:text-base">
         {items.map((item) => (
           <li key={item} className="flex items-start gap-3">
             <span className={`mt-2 h-2 w-2 shrink-0 rounded-full ${accentClass}`} />
@@ -46,7 +46,7 @@ export function NfcBenefits({ functional, business }: NfcBenefitsProps) {
           <SectionTitle
             eyebrow="Beneficios"
             title="No se trata solo de una tarjeta bonita. Se trata de no perder oportunidades."
-            description="La landing prioriza beneficios claros para que el usuario entienda rápido por qué esto le ayuda a vender mejor."
+            description="La tarjeta no reemplaza tu sistema comercial: mejora la captura para que cada conversación tenga una ruta clara de seguimiento."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -58,7 +58,7 @@ export function NfcBenefits({ functional, business }: NfcBenefitsProps) {
             />
             <BenefitGroup
               eyebrow="Negocio"
-              title="Más conversión desde cada reunión, visita o evento"
+              title="Más contactos accionables desde cada reunión, visita o evento"
               items={business}
               accentClass="bg-[#6939E2]"
             />

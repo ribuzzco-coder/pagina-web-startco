@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 type CTASectionProps = {
-  title: string;
-  description: string;
+  title: ReactNode;
+  description: ReactNode;
   primaryLabel: ReactNode;
   primaryHref: string;
   primaryExternal?: boolean;
@@ -55,13 +55,13 @@ export function CTASection({
             contentClassName
           )}>
             <div className={cn("flex-1 max-w-2xl", centered && "mx-auto")}>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0] [text-wrap:balance]">
                 {eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#E4DFF7] sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#E4DFF7] [text-wrap:balance] sm:text-4xl">
                 {title}
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#98A0B3] sm:text-lg">
+              <p className="mt-4 text-base leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-lg">
                 {description}
               </p>
 
@@ -106,7 +106,7 @@ export function CTASection({
             )}
 
             {rightElement && (
-              <div className="flex-none hidden lg:block">
+              <div className="hidden min-h-[14rem] flex-none items-center justify-center lg:flex lg:w-[20rem]">
                 {rightElement}
               </div>
             )}

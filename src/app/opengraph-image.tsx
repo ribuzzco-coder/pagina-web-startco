@@ -78,7 +78,7 @@ export default async function OpengraphImage() {
             color: "#98A0B3",
           }}
         >
-          Estrategia, ejecución comercial y tecnología en un solo sistema para crecer con estructura.
+          Oferta, mensaje, activos, seguimiento y tecnología conectados para vender con menos improvisación.
         </div>
       </div>
     ),

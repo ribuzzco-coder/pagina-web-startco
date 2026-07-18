@@ -62,7 +62,7 @@ export default function PrivacyPolicyPage() {
         <h2 className={sectionHeadingClassName}>3. Finalidad del tratamiento</h2>
         <p className={paragraphClassName}>Usamos tus datos personales para:</p>
         <ul className={listClassName}>
-          <li>Evaluar si existe fit real entre tu empresa y los servicios de RiBuzz.</li>
+          <li>Evaluar si existe encaje real entre tu empresa y los servicios de RiBuzz.</li>
           <li>Contactarte por correo o WhatsApp para coordinar la llamada de introducción.</li>
           <li>Agendar y confirmar reuniones a través de nuestra herramienta de calendario.</li>
           <li>Prevenir fraude, spam y uso indebido de nuestros formularios.</li>

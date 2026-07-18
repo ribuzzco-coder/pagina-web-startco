@@ -19,9 +19,7 @@ export function Footer() {
             className="h-11 w-auto object-contain opacity-95 sm:h-12"
           />
           <p className="mt-4 max-w-md text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-            Dise&ntilde;amos soluciones comerciales, visuales y tecnol&oacute;gicas para
-            marcas que quieren crecer con m&aacute;s claridad, presencia y herramientas
-            &uacute;tiles.
+            Sistema de crecimiento comercial para mejorar las ventas y la estructura de tu empresa.
           </p>
           <p className="mt-4 text-sm text-[#CEC6E0]">
             Contacto: {SITE_CONFIG.contactEmail}
@@ -34,9 +32,9 @@ export function Footer() {
             {SITE_CONFIG.diagnosisCtaLabel}
           </Button>
           <p className="mt-5 text-xs leading-relaxed text-[#5A6072]">
-            También ofrecemos{" "}
+            Recursos y soluciones puntuales:{" "}
             <Link href="/landings" className="underline decoration-white/20 underline-offset-2 hover:text-[#98A0B3]">
-              landings a medida
+              landings
             </Link>{" "}
             y{" "}
             <Link href="/tarjetas-nfc" className="underline decoration-white/20 underline-offset-2 hover:text-[#98A0B3]">

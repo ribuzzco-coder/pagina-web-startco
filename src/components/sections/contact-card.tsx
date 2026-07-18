@@ -18,10 +18,10 @@ export function ContactCard({
 }: ContactCardProps) {
   return (
     <Card className="h-full rounded-[26px] p-6 sm:p-7">
-      <h3 className="text-xl font-semibold leading-tight tracking-tight text-[#E4DFF7]">
+      <h3 className="text-xl font-semibold leading-tight tracking-tight text-[#E4DFF7] [text-wrap:balance]">
         {title}
       </h3>
-      <p className="mt-4 text-sm leading-relaxed text-[#CEC6E0] sm:text-base">
+      <p className="mt-4 text-sm leading-relaxed text-[#CEC6E0] [text-wrap:pretty] sm:text-base">
         {description}
       </p>
       <Button href={ctaHref} className="mt-6" variant="secondary" external={external}>

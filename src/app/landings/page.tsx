@@ -1,8 +1,10 @@
 import { LandingCarousel } from "@/components/sections/landing-carousel";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { HeroGalaxy } from "@/components/ui/hero-galaxy";
 import { createPageMetadata } from "@/lib/metadata";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
   title: "Landings",
@@ -23,26 +25,30 @@ export default function LandingsPage() {
 
           <div className="relative z-10">
             <h1 className="mt-4 text-4xl font-semibold tracking-tight text-[#E4DFF7] sm:text-5xl">
-              Landings RiBuzz
+              Landings que convierten visitas en conversaciones
             </h1>
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+              Diseñamos experiencias digitales con una acción clara: contacto, reserva, compra,
+              lead o validación. No son páginas bonitas aisladas; son activos de conversión.
+            </p>
 
             <div className="mx-auto mt-7 grid max-w-4xl gap-3 text-center md:grid-cols-3">
               <div className="rounded-[24px] border border-white/10 bg-white/[0.035] p-5">
-                <p className="text-sm font-semibold text-[#E4DFF7]">Biolinks con intenci&oacute;n</p>
+                <p className="text-sm font-semibold text-[#E4DFF7]">Rutas de decisi&oacute;n</p>
                 <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
-                  No son solo botones: son una primera experiencia de marca para quien llega desde redes, eventos o contactos.
+                  No son solo botones: cada bloque debe llevar al usuario a una acci&oacute;n concreta.
                 </p>
               </div>
               <div className="rounded-[24px] border border-white/10 bg-white/[0.035] p-5">
-                <p className="text-sm font-semibold text-[#E4DFF7]">A tu medida</p>
+                <p className="text-sm font-semibold text-[#E4DFF7]">Alineadas a tu oferta</p>
                 <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
-                  Dise&ntilde;amos una p&aacute;gina de todo tu gusto, personalizada, clara y alineada a lo que quieres proyectar.
+                  La estructura parte de lo que vendes, a qui&eacute;n se lo vendes y qu&eacute; objeci&oacute;n debe resolver.
                 </p>
               </div>
               <div className="rounded-[24px] border border-white/10 bg-white/[0.035] p-5">
-                <p className="text-sm font-semibold text-[#E4DFF7]">Cool y funcional</p>
+                <p className="text-sm font-semibold text-[#E4DFF7]">Conectadas al seguimiento</p>
                 <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
-                  Una experiencia visual con orden, presencia y rutas directas para contacto, contenido o venta.
+                  Pueden alimentar WhatsApp, agenda, formularios o el flujo comercial que ya tengas.
                 </p>
               </div>
             </div>
@@ -52,6 +58,14 @@ export default function LandingsPage() {
             <p className="mt-8 text-xs font-semibold uppercase tracking-[0.16em] text-[#7f8798]">
               Ejemplos previos
             </p>
+            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button href={SITE_CONFIG.whatsappUrl} external size="lg" variant="shimmer">
+                Quiero una landing
+              </Button>
+              <Button href={SITE_CONFIG.diagnosisPath} size="lg" variant="secondary">
+                Revisar primero el sistema
+              </Button>
+            </div>
           </div>
         </Card>
       </Container>

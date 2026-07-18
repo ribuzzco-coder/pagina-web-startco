@@ -38,6 +38,13 @@ const labelClassName = "text-[13px] font-medium text-[#CEC6E0]";
 
 type RoutingTier = "llamada" | "regalos" | "newsletter";
 
+type NonEmpty<T> = Exclude<T, "">;
+type ChoiceOption<T extends string> = {
+  value: T;
+  title: string;
+  description: string;
+};
+
 type FormState = {
   nombre: string;
   empresa: string;
@@ -58,6 +65,83 @@ type FormState = {
   dataConsent: boolean;
   website: string; // honeypot
 };
+
+const processOptions: readonly ChoiceOption<NonEmpty<FormState["procesoActual"]>>[] = [
+  {
+    value: "aun_validando",
+    title: "Estoy validando",
+    description: "Hay oferta o idea, pero todavía falta confirmar respuesta del mercado.",
+  },
+  {
+    value: "funciona_informal",
+    title: "Vende, pero no con sistema",
+    description: "Hay clientes, pero la venta depende de impulso, memoria o urgencia.",
+  },
+  {
+    value: "consistente",
+    title: "Ya hay proceso",
+    description: "Existe venta repetible y ahora hace falta escalar con más estructura.",
+  },
+] as const;
+
+const investmentOptions: readonly ChoiceOption<NonEmpty<FormState["presupuesto"]>>[] = [
+  {
+    value: "definido",
+    title: "Sí, definida",
+    description: "Ya hay capacidad para iniciar si el alcance tiene sentido.",
+  },
+  {
+    value: "aproximado",
+    title: "Hay un rango",
+    description: "Existe una idea de inversión, pero falta aterrizarla al alcance.",
+  },
+  {
+    value: "explorando",
+    title: "Estamos explorando",
+    description: "Primero necesitan claridad antes de definir inversión.",
+  },
+] as const;
+
+const urgencyOptions: readonly ChoiceOption<NonEmpty<FormState["urgencia"]>>[] = [
+  {
+    value: "ya",
+    title: "Ahora",
+    description: "Hay urgencia y disposición para mover esto pronto.",
+  },
+  {
+    value: "proximo_mes",
+    title: "Próximo mes",
+    description: "Quieren preparar el terreno y empezar con orden.",
+  },
+  {
+    value: "tres_meses",
+    title: "Próximos 3 meses",
+    description: "Hay intención, pero todavía se está organizando la prioridad.",
+  },
+  {
+    value: "explorando",
+    title: "Solo explorando",
+    description: "Buscan entender si esta ruta tiene sentido para más adelante.",
+  },
+] as const;
+
+const authorityOptions: readonly ChoiceOption<NonEmpty<FormState["autoridad"]>>[] = [
+  {
+    value: "yo_decido",
+    title: "Sí, decido",
+    description: "Puedes aprobar el avance si la propuesta responde al objetivo.",
+  },
+  {
+    value: "en_conjunto",
+    title: "Decidimos en equipo",
+    description: "Participas y necesitas validar con socio, dirección o equipo.",
+  },
+  {
+    value: "no_decido",
+    title: "No decido",
+    description: "Estás explorando para llevar contexto a quien toma la decisión.",
+  },
+] as const;
 
 const initialState: FormState = {
   nombre: "",
@@ -83,18 +167,18 @@ const initialState: FormState = {
 const STEPS = [
   {
     id: "contacto",
-    title: "Cuéntanos de ti",
-    description: "Lo básico para contactarte y ubicar tu negocio.",
+    title: "Primero ubicamos el negocio",
+    description: "Datos mínimos para entender quién consulta y desde qué contexto llega.",
   },
   {
     id: "negocio",
-    title: "Tu negocio hoy",
-    description: "Qué vendes, a quién, y en qué momento está tu proceso comercial.",
+    title: "Luego entendemos el sistema actual",
+    description: "Qué vendes, a quién, cómo está funcionando y dónde se está frenando el avance.",
   },
   {
     id: "decision",
-    title: "Presupuesto y decisión",
-    description: "Las últimas 3 preguntas — con esto definimos el siguiente paso.",
+    title: "Finalmente definimos la ruta",
+    description: "Confirmamos urgencia, capacidad de decisión y siguiente paso correcto.",
   },
 ] as const;
 
@@ -117,6 +201,70 @@ function StepProgress({ step }: { step: number }) {
       <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
         Paso {step + 1} de {STEPS.length}
       </p>
+    </div>
+  );
+}
+
+function ChoiceCards<T extends string>({
+  name,
+  value,
+  options,
+  onChange,
+  columns = "sm:grid-cols-3",
+}: {
+  name: string;
+  value: T | "";
+  options: readonly ChoiceOption<T>[];
+  onChange: (value: T) => void;
+  columns?: string;
+}) {
+  return (
+    <div className={cn("grid gap-3", columns)}>
+      {options.map((option) => {
+        const selected = value === option.value;
+
+        return (
+          <label
+            key={option.value}
+            className={cn(
+              "group cursor-pointer rounded-2xl border p-4 transition duration-200",
+              "bg-white/[0.025] hover:-translate-y-0.5 hover:border-[#8b6ff0]/40 hover:bg-[#6939E2]/8",
+              selected
+                ? "border-[#8b6ff0]/70 bg-[#6939E2]/14 shadow-[0_0_26px_rgba(105,57,226,0.18)]"
+                : "border-white/10",
+            )}
+          >
+            <input
+              type="radio"
+              name={name}
+              value={option.value}
+              checked={selected}
+              required
+              onChange={() => onChange(option.value)}
+              className="sr-only"
+            />
+            <span className="flex items-start gap-3">
+              <span
+                className={cn(
+                  "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[10px] font-bold transition",
+                  selected
+                    ? "border-[#8b6ff0] bg-[#6939E2] text-white"
+                    : "border-white/18 text-transparent group-hover:border-[#8b6ff0]/60",
+                )}
+                aria-hidden="true"
+              >
+                ✓
+              </span>
+              <span>
+                <span className="block text-sm font-semibold text-[#E4DFF7]">{option.title}</span>
+                <span className="mt-1 block text-xs leading-relaxed text-[#98A0B3]">
+                  {option.description}
+                </span>
+              </span>
+            </span>
+          </label>
+        );
+      })}
     </div>
   );
 }
@@ -337,12 +485,12 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
           Paso 2 de 2
         </p>
-        <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7]">
-          Elige el horario que mejor te funcione
+        <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
+          Agenda la llamada de introducción
         </h3>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-          Ya recibimos tu información. Ahora agenda directamente en el calendario — la llamada
-          queda confirmada al instante, sin ida y vuelta de correos.
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
+          Ya recibimos tu información. Agenda directamente en el calendario y llegamos con contexto
+          para hablar de etapa, bloqueo y alcance.
         </p>
         <div
           ref={bookingContainerRef}
@@ -358,12 +506,12 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
           Gracias por contarnos tu momento
         </p>
-        <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7]">
-          Antes de agendar, esto te puede servir ahora mismo
+        <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
+          Tu siguiente paso es ordenar la base
         </h3>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-          Con lo que nos compartiste, todavía hay terreno por preparar antes de una llamada. Te
-          dejamos recursos gratuitos para avanzar ya — cuando estés listo, aquí seguimos.
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
+          Con lo que nos compartiste, primero conviene aclarar oferta, cliente y siguiente decisión.
+          Te dejamos recursos para avanzar antes de invertir en un proceso más amplio.
         </p>
         <Button href={SITE_CONFIG.giftsPath} size="lg" className="mt-6 w-full sm:w-auto">
           Ver recursos gratuitos
@@ -378,12 +526,12 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
           Gracias por contarnos tu momento
         </p>
-        <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7]">
-          Guarda esto para cuando estés listo
+        <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
+          Tu ruta actual es madurar la decisión
         </h3>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-          Por ahora no parece el momento para una llamada. Súmate a nuestra lista para recibir
-          contenido útil y avisarte cuando tenga sentido retomar la conversación.
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
+          En este momento conviene seguir recibiendo criterio, ejemplos y recursos. Retoma la
+          conversación cuando la prioridad, la urgencia o la capacidad de ejecución estén más claras.
         </p>
         <Button href={NEWSLETTER_URL} size="lg" className="mt-6 w-full sm:w-auto">
           Sumarme a la lista
@@ -398,10 +546,10 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
   return (
     <Card className="rounded-[28px] p-6 sm:p-8">
       <StepProgress step={step} />
-      <h3 className="text-2xl font-semibold tracking-tight text-[#E4DFF7]">
+      <h3 className="text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
         {currentStep.title}
       </h3>
-      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
         {currentStep.description}
       </p>
 
@@ -426,6 +574,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                 required
                 minLength={2}
                 maxLength={120}
+                placeholder="Tu nombre y apellido"
                 className={inputClassName}
                 value={form.nombre}
                 onChange={(event) => updateField("nombre", event.target.value)}
@@ -440,6 +589,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                 required
                 minLength={2}
                 maxLength={160}
+                placeholder="Nombre de la marca o empresa"
                 className={inputClassName}
                 value={form.empresa}
                 onChange={(event) => updateField("empresa", event.target.value)}
@@ -454,6 +604,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                 type="email"
                 required
                 maxLength={160}
+                placeholder="correo@empresa.com"
                 className={inputClassName}
                 value={form.email}
                 onChange={(event) => updateField("email", event.target.value)}
@@ -465,6 +616,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
               <label className={labelClassName} htmlFor="whatsapp">WhatsApp (opcional)</label>
               <input
                 id="whatsapp"
+                placeholder="+57 300 000 0000"
                 className={inputClassName}
                 value={form.whatsapp}
                 onChange={(event) => updateField("whatsapp", event.target.value)}
@@ -478,6 +630,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                 required
                 minLength={2}
                 maxLength={120}
+                placeholder="Ej: salud, moda, B2B, educación..."
                 className={inputClassName}
                 value={form.sector}
                 onChange={(event) => updateField("sector", event.target.value)}
@@ -489,6 +642,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
               <label className={labelClassName} htmlFor="tamanoEquipo">Tamaño de equipo (opcional)</label>
               <input
                 id="tamanoEquipo"
+                placeholder="Ej: 3 personas, 10 personas..."
                 className={inputClassName}
                 value={form.tamanoEquipo}
                 onChange={(event) => updateField("tamanoEquipo", event.target.value)}
@@ -507,6 +661,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                   required
                   minLength={2}
                   maxLength={200}
+                  placeholder="Ej: servicios, cursos, producto físico, software..."
                   className={inputClassName}
                   value={form.queVende}
                   onChange={(event) => updateField("queVende", event.target.value)}
@@ -521,6 +676,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                   required
                   minLength={2}
                   maxLength={200}
+                  placeholder="Ej: empresas, emprendedores, pacientes, consumidores finales..."
                   className={inputClassName}
                   value={form.aQuienVende}
                   onChange={(event) => updateField("aQuienVende", event.target.value)}
@@ -530,29 +686,24 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label className={labelClassName} htmlFor="procesoActual">¿Cuál frase describe mejor tu proceso comercial hoy? *</label>
-              <select
-                id="procesoActual"
-                required
-                className={inputClassName}
+              <p className={labelClassName}>¿Cuál frase describe mejor tu proceso comercial hoy? *</p>
+              <ChoiceCards
+                name="procesoActual"
                 value={form.procesoActual}
-                onChange={(event) => updateField("procesoActual", event.target.value as FormState["procesoActual"])}
-              >
-                <option value="" disabled>Selecciona una opción</option>
-                <option value="aun_validando">Aún estamos validando si esto funciona</option>
-                <option value="funciona_informal">Ya funciona, pero de forma informal</option>
-                <option value="consistente">Tenemos un proceso consistente y repetible</option>
-              </select>
+                options={processOptions}
+                onChange={(selected) => updateField("procesoActual", selected)}
+              />
             </div>
 
             <div className="grid gap-2">
-              <label className={labelClassName} htmlFor="queFrena">¿Qué crees que más está frenando tu avance ahora? *</label>
+              <label className={labelClassName} htmlFor="queFrena">¿Qué está frenando más el avance ahora? *</label>
               <textarea
                 id="queFrena"
                 required
                 minLength={2}
                 maxLength={600}
                 rows={3}
+                placeholder="Ej: invertimos en pauta y no responde, dependemos del fundador, no sabemos qué automatizar..."
                 className={inputClassName}
                 value={form.queFrena}
                 onChange={(event) => updateField("queFrena", event.target.value)}
@@ -561,10 +712,11 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label className={labelClassName} htmlFor="metaConcreta">¿Tienes una meta concreta para los próximos 3 meses? (opcional)</label>
+              <label className={labelClassName} htmlFor="metaConcreta">¿Qué meta quieren mover en los próximos 3 meses? (opcional)</label>
               <input
                 id="metaConcreta"
                 maxLength={600}
+                placeholder="Ej: vender más sin depender de referidos, aumentar conversión, ordenar seguimiento..."
                 className={inputClassName}
                 value={form.metaConcreta}
                 onChange={(event) => updateField("metaConcreta", event.target.value)}
@@ -575,54 +727,36 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
 
         {step === 2 ? (
           <>
-            <div className="grid gap-5 sm:grid-cols-3">
+            <div className="grid gap-5">
               <div className="grid gap-2">
-                <label className={labelClassName} htmlFor="presupuesto">¿Tienen presupuesto definido para invertir en esto? *</label>
-                <select
-                  id="presupuesto"
-                  required
-                  className={inputClassName}
+                <p className={labelClassName}>¿Tienen una inversión definida para trabajar esto? *</p>
+                <ChoiceCards
+                  name="presupuesto"
                   value={form.presupuesto}
-                  onChange={(event) => updateField("presupuesto", event.target.value as FormState["presupuesto"])}
-                >
-                  <option value="" disabled>Selecciona una opción</option>
-                  <option value="definido">Sí, definido</option>
-                  <option value="aproximado">Tenemos una idea aproximada</option>
-                  <option value="explorando">Aún no, estamos explorando</option>
-                </select>
+                  options={investmentOptions}
+                  onChange={(selected) => updateField("presupuesto", selected)}
+                />
               </div>
 
               <div className="grid gap-2">
-                <label className={labelClassName} htmlFor="urgencia">¿Cuándo les gustaría empezar? *</label>
-                <select
-                  id="urgencia"
-                  required
-                  className={inputClassName}
+                <p className={labelClassName}>¿Cuándo les gustaría empezar? *</p>
+                <ChoiceCards
+                  name="urgencia"
                   value={form.urgencia}
-                  onChange={(event) => updateField("urgencia", event.target.value as FormState["urgencia"])}
-                >
-                  <option value="" disabled>Selecciona una opción</option>
-                  <option value="ya">Lo antes posible</option>
-                  <option value="proximo_mes">En el próximo mes</option>
-                  <option value="tres_meses">En los próximos 3 meses</option>
-                  <option value="explorando">Solo estoy explorando opciones</option>
-                </select>
+                  options={urgencyOptions}
+                  onChange={(selected) => updateField("urgencia", selected)}
+                  columns="sm:grid-cols-2 lg:grid-cols-4"
+                />
               </div>
 
               <div className="grid gap-2">
-                <label className={labelClassName} htmlFor="autoridad">¿Tomas tú la decisión de contratar? *</label>
-                <select
-                  id="autoridad"
-                  required
-                  className={inputClassName}
+                <p className={labelClassName}>¿Participas en la decisión de contratar? *</p>
+                <ChoiceCards
+                  name="autoridad"
                   value={form.autoridad}
-                  onChange={(event) => updateField("autoridad", event.target.value as FormState["autoridad"])}
-                >
-                  <option value="" disabled>Selecciona una opción</option>
-                  <option value="yo_decido">Sí, yo decido</option>
-                  <option value="en_conjunto">Decido en conjunto con socio o equipo</option>
-                  <option value="no_decido">No, no soy quien decide</option>
-                </select>
+                  options={authorityOptions}
+                  onChange={(selected) => updateField("autoridad", selected)}
+                />
               </div>
             </div>
 
@@ -630,6 +764,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
               <label className={labelClassName} htmlFor="contexto">Contexto adicional (opcional)</label>
               <input
                 id="contexto"
+                placeholder="Algo importante que debamos saber antes de clasificar tu ruta"
                 className={inputClassName}
                 value={form.contexto}
                 onChange={(event) => updateField("contexto", event.target.value)}
@@ -645,7 +780,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                 onChange={(event) => updateField("dataConsent", event.target.checked)}
                 className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 bg-white/[0.03] accent-[#6939E2]"
               />
-              <label htmlFor="dataConsent" className="text-xs leading-relaxed text-[#98A0B3] sm:text-sm">
+              <label htmlFor="dataConsent" className="text-xs leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-sm">
                 Acepto que RiBuzz trate mis datos personales para contactarme y evaluar esta
                 solicitud, según la{" "}
                 <Link

@@ -35,14 +35,14 @@ export function OfferPackageCard({
         </p>
       </div>
 
-      <h3 className="mt-4 text-xl font-semibold tracking-tight text-[#E4DFF7]">{title}</h3>
-      <p className="mt-3 text-sm leading-relaxed text-[#CEC6E0] sm:text-base">{forWhom}</p>
+      <h3 className="mt-4 text-xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">{title}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-[#CEC6E0] [text-wrap:pretty] sm:text-base">{forWhom}</p>
 
       <div className="mt-6 border-t border-white/8 pt-5">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">
           Incluye
         </p>
-        <ul className="mt-4 space-y-2 text-sm text-[#98A0B3]">
+        <ul className="mt-4 space-y-2 text-sm text-[#98A0B3] [text-wrap:pretty]">
           {includes.map((item) => (
             <li key={item} className="flex items-start gap-2">
               <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6939E2]" />
@@ -52,10 +52,10 @@ export function OfferPackageCard({
         </ul>
       </div>
 
-      <p className="mt-6 text-sm leading-relaxed text-[#98A0B3]">{billing}</p>
+      <p className="mt-6 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty]">{billing}</p>
 
       {note ? (
-        <p className="mt-4 rounded-2xl border border-[#6939E2]/24 bg-[#6939E2]/8 px-4 py-3 text-xs leading-relaxed text-[#CEC6E0]">
+        <p className="mt-4 rounded-2xl border border-[#6939E2]/24 bg-[#6939E2]/8 px-4 py-3 text-xs leading-relaxed text-[#CEC6E0] [text-wrap:pretty]">
           {note}
         </p>
       ) : null}

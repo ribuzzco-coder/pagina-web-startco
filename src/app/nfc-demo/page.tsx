@@ -18,10 +18,10 @@ export default function NfcDemoPage() {
           <div className="flex justify-center">
             <PillBadge>Demo NFC</PillBadge>
           </div>
-          <h1 className="mt-4 font-heading text-4xl leading-tight text-[#E4DFF7] sm:text-5xl">
+          <h1 className="mt-4 font-heading text-4xl leading-tight text-[#E4DFF7] [text-wrap:balance] sm:text-5xl">
             Tarjeta NFC con flip 3D y arte real de RiBuzz
           </h1>
-          <p className="mt-4 text-base leading-relaxed text-[#98A0B3] sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-lg">
             Frente y reverso reales, animacion suave y una presentacion pensada para
             sentirse como un showcase de producto premium.
           </p>

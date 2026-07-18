@@ -98,23 +98,28 @@ export function BoxVisual({ isUnlocked, className }: BoxVisualProps) {
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
-      <div className="absolute inset-x-4 top-8 h-[148px] rounded-full bg-[radial-gradient(circle,rgba(105,57,226,0.4),rgba(147,89,255,0.18)_42%,transparent_78%)] blur-[44px]" />
-      <div className="absolute inset-x-10 bottom-2 h-7 rounded-full bg-[radial-gradient(circle,rgba(105,57,226,0.3),rgba(115,74,255,0.12)_55%,transparent_80%)] blur-xl" />
+      <div className="absolute inset-x-2 top-6 h-[162px] rounded-full bg-[radial-gradient(circle,rgba(105,57,226,0.38),rgba(147,89,255,0.16)_42%,transparent_78%)] blur-[46px]" />
+      <div className="absolute inset-x-12 bottom-3 h-8 rounded-full bg-[radial-gradient(circle,rgba(105,57,226,0.32),rgba(115,74,255,0.12)_55%,transparent_82%)] blur-xl" />
 
-      <div className="absolute left-1/2 top-[122px] z-[6] h-10 w-10 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(105,57,226,0.34),transparent_70%)] blur-lg" />
+      <div className="absolute left-1/2 top-[118px] z-[6] h-12 w-12 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(105,57,226,0.34),transparent_70%)] blur-lg" />
 
       <motion.div
         className="relative h-full w-full overflow-hidden [transform-style:preserve-3d]"
         style={{ rotateX, rotateY }}
       >
-        <div className="absolute inset-x-[24px] bottom-[34px] z-[3] h-[126px] [transform-style:preserve-3d]">
-          <div className="absolute inset-0 rounded-[36px] border border-[#a27df0]/38 bg-[linear-gradient(180deg,rgba(74,78,122,0.82),rgba(42,34,68,0.88)_38%,rgba(27,20,47,0.96))] shadow-[0_34px_84px_rgba(0,0,0,0.4),0_0_54px_rgba(165,96,255,0.14)] [transform:translateZ(0px)] backdrop-blur-xl" />
-          <div className="absolute inset-[8px] rounded-[28px] border border-white/12 bg-[linear-gradient(145deg,rgba(255,255,255,0.22),rgba(255,255,255,0.05)_24%,rgba(255,255,255,0.03)_64%,rgba(0,0,0,0.16))] [transform:translateZ(8px)]" />
+        <div className="absolute inset-x-[28px] bottom-[52px] z-[3] h-[132px] [transform-style:preserve-3d]">
+          <div className="absolute inset-0 rounded-[24px] border border-[#a27df0]/34 bg-[linear-gradient(180deg,rgba(67,69,116,0.9),rgba(39,31,70,0.95)_42%,rgba(20,16,37,0.98))] shadow-[0_34px_84px_rgba(0,0,0,0.42),0_0_54px_rgba(165,96,255,0.14)] [transform:translateZ(0px)] backdrop-blur-xl" />
+          <div className="absolute -right-[16px] top-[14px] h-[104px] w-[24px] rounded-r-[18px] bg-[linear-gradient(180deg,rgba(52,47,88,0.95),rgba(18,15,32,1))] [transform:rotateY(66deg)]" />
+          <div className="absolute -left-[14px] top-[18px] h-[96px] w-[20px] rounded-l-[16px] bg-[linear-gradient(180deg,rgba(124,121,177,0.42),rgba(36,31,64,0.95))] [transform:rotateY(-66deg)]" />
+          <div className="absolute -bottom-[12px] left-[18px] right-[18px] h-[24px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(22,18,36,1),rgba(10,8,18,1))] [transform:rotateX(-70deg)]" />
+          <div className="absolute inset-[8px] rounded-[18px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.18),rgba(255,255,255,0.04)_30%,rgba(255,255,255,0.03)_64%,rgba(0,0,0,0.18))] [transform:translateZ(8px)]" />
+          <div className="absolute left-1/2 top-[7px] bottom-[7px] z-[10] w-[30px] -translate-x-1/2 rounded-[14px] bg-[linear-gradient(180deg,rgba(155,118,255,0.38),rgba(105,57,226,0.18)_48%,rgba(49,28,96,0.42))] shadow-[inset_1px_0_rgba(255,255,255,0.14),inset_-1px_0_rgba(0,0,0,0.22)] [transform:translateZ(18px)]" />
+          <div className="absolute inset-x-[9px] top-[48px] z-[9] h-[28px] rounded-[14px] bg-[linear-gradient(90deg,rgba(80,52,151,0.28),rgba(164,121,255,0.34)_50%,rgba(80,52,151,0.28))] shadow-[inset_0_1px_rgba(255,255,255,0.14)] [transform:translateZ(16px)]" />
           <motion.div
-            className="absolute inset-[10px] rounded-[26px]"
-            style={{ background: glareBackground, translateZ: 12 }}
+            className="absolute inset-[10px] rounded-[18px]"
+            style={{ background: glareBackground, translateZ: 20 }}
           />
-          <div className="absolute inset-x-[22px] top-[-34px] z-[4] h-[138px] overflow-visible [transform:translateZ(11px)]">
+          <div className="absolute inset-x-[22px] top-[-36px] z-[4] h-[138px] overflow-visible [transform:translateZ(11px)]">
             <motion.div
               className="pointer-events-none absolute left-1/2 top-[10px] flex -translate-x-1/2 items-end gap-3"
               initial={false}
@@ -151,30 +156,9 @@ export function BoxVisual({ isUnlocked, className }: BoxVisualProps) {
               </motion.span>
             </motion.div>
           </div>
-          <div className="absolute inset-x-[10px] bottom-[10px] z-[12] h-[70px] rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(93,90,149,0.2),rgba(45,34,76,0.42)_20%,rgba(29,21,50,0.92))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_-12px_26px_rgba(0,0,0,0.12)] [transform:translateZ(18px)]" />
-          <div className="absolute -right-[14px] top-[12px] h-[98px] w-[22px] rounded-r-[18px] bg-[linear-gradient(180deg,rgba(37,33,63,0.98),rgba(18,15,31,1))] [transform:rotateY(72deg)]" />
-          <div className="absolute -left-[12px] top-[18px] h-[90px] w-[18px] rounded-l-[16px] bg-[linear-gradient(180deg,rgba(126,122,177,0.52),rgba(40,34,68,0.95))] [transform:rotateY(-70deg)]" />
-          <div className="absolute -bottom-[10px] left-[16px] right-[16px] h-[20px] rounded-b-[18px] bg-[linear-gradient(180deg,rgba(22,18,36,1),rgba(10,8,18,1))] [transform:rotateX(-72deg)]" />
-          <div className="absolute inset-x-[34px] bottom-[18px] h-[42px] rounded-full bg-[radial-gradient(circle,rgba(182,95,255,0.26),rgba(105,57,226,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(10px)]" />
-          <GiftBadge className="absolute left-1/2 top-[42px] z-[14] h-12 w-12 -translate-x-1/2 [transform:translateZ(22px)]" />
+          <div className="absolute inset-x-[30px] bottom-[18px] h-[42px] rounded-full bg-[radial-gradient(circle,rgba(182,95,255,0.26),rgba(105,57,226,0.08)_58%,transparent_82%)] blur-xl [transform:translateZ(10px)]" />
+          <GiftBadge className="absolute left-1/2 top-[38px] z-[14] h-12 w-12 -translate-x-1/2 [transform:translateZ(28px)]" />
         </div>
-
-        <motion.div
-          className="absolute inset-x-[4px] top-[28px] z-[8] h-[82px] origin-bottom [transform-style:preserve-3d]"
-          animate={
-            isUnlocked
-              ? { y: -58, rotateZ: -9, rotateX: 20, opacity: 0 }
-              : { y: 0, rotateZ: 0, rotateX: 8, opacity: 1 }
-          }
-          transition={{ duration: 0.88, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="absolute inset-0 rounded-[30px] border border-[#a78ff1]/42 bg-[linear-gradient(180deg,rgba(98,102,156,0.84),rgba(49,36,78,0.96))] shadow-[0_24px_46px_rgba(0,0,0,0.28),0_0_36px_rgba(181,103,255,0.12)] [transform:translateZ(8px)] backdrop-blur-xl" />
-          <div className="absolute inset-[8px] rounded-[24px] border border-white/12 bg-[linear-gradient(145deg,rgba(255,255,255,0.2),rgba(255,255,255,0.03)_30%,rgba(255,255,255,0.04)_70%,rgba(0,0,0,0.12))]" />
-          <motion.div
-            className="absolute inset-[10px] rounded-[22px]"
-            style={{ background: glareBackground }}
-          />
-        </motion.div>
 
       </motion.div>
     </motion.div>

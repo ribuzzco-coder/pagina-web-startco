@@ -16,10 +16,10 @@ export function NumberedCard({ index, title, description, className }: NumberedC
           {String(index).padStart(2, "0")}
         </span>
         {title ? (
-          <h3 className="text-lg font-semibold tracking-tight text-[#E4DFF7]">{title}</h3>
+          <h3 className="text-lg font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">{title}</h3>
         ) : null}
       </div>
-      <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] sm:text-base">{description}</p>
+      <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">{description}</p>
     </Card>
   );
 }

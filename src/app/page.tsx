@@ -1,8 +1,9 @@
 import Image from "next/image";
 
-import { NetworkFeatureSection } from "@/components/sections/network-feature-section";
+import { DifferentiatorSystem } from "@/components/sections/differentiator-system";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { FitChecklist } from "@/components/sections/fit-checklist";
+import { PhaseStepper } from "@/components/sections/phase-stepper";
 import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
 import { BrandShaderBackground } from "@/components/ui/brand-shader-background";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,7 @@ import { PillBadge } from "@/components/ui/pill-badge";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
 import {
+  differentiatorPillars,
   fitChecklist,
   homeFaqs,
   homeProblemKeywords,
@@ -56,24 +58,32 @@ export default function HomePage() {
               <div className="mt-6 flex justify-center">
                 <PillBadge>Sistema de crecimiento RiBuzz</PillBadge>
               </div>
-              <h1 className="mx-auto mt-4 max-w-3xl font-heading text-[1.9rem] font-bold leading-[1.08] text-[#E4DFF7] sm:text-[2.45rem] xl:text-[3rem]">
-                Sistema para <span className="text-[#8b6ff0]">hacer crecer</span> tu empresa
+              <h1 className="mx-auto mt-4 max-w-3xl font-heading text-[1.9rem] font-bold leading-[1.08] text-[#E4DFF7] [text-wrap:balance] sm:text-[2.45rem] xl:text-[3rem]">
+                ¿Ya pagaste para vender más y <span className="text-[#8b6ff0]">nada cambió?</span>
+                <br />
+                No eres el único.
               </h1>
-              <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] sm:text-[1rem]">
-                Capta más clientes, vende con estructura y crece con consistencia. Integramos estrategia, ejecución comercial y tecnología en un solo sistema.
+              <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] [text-wrap:pretty] sm:text-[1rem]">
+                Revisamos oferta, mensaje, canales, seguimiento y tecnología para encontrar dónde
+                se rompe tu crecimiento y construir el flujo que lo sostiene.
               </p>
 
-              <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Button href={SITE_CONFIG.diagnosisPath} size="lg" variant="shimmer">
-                  Agenda tu llamada de introducción
+              <div className="mt-7 flex flex-col items-center justify-center gap-2.5 sm:flex-row">
+                <Button
+                  href={SITE_CONFIG.diagnosisPath}
+                  size="md"
+                  variant="primary"
+                  className="shadow-[0_0_14px_rgba(105,57,226,0.22)]"
+                >
+                  Completa la aplicación
                 </Button>
                 <Button
-                  href="/regalos"
+                  href="#sistema-comercial"
                   variant="secondary"
-                  size="lg"
-                  className="shadow-[0_0_0_1px_rgba(105,57,226,0.1),0_0_18px_rgba(105,57,226,0.16)]"
+                  size="md"
+                  className="bg-white/[0.025] shadow-none"
                 >
-                  Reclama tu regalo
+                  Ver cómo funciona
                 </Button>
               </div>
             </div>
@@ -87,22 +97,28 @@ export default function HomePage() {
           <SectionTitle
             align="center"
             eyebrow="Por qué tu empresa se estanca"
-            title="El problema: no tienes un sistema, tienes piezas sueltas"
-            description="Ventas, marketing, tecnología y seguimiento funcionan cada uno por su lado, sin nada que los conecte. Por eso, aunque ya vendes, el crecimiento no es constante."
+            title={
+              <>
+                El problema:
+                <br />
+                no tienes un sistema, tienes piezas sueltas
+              </>
+            }
+            description="Cuando estrategia, comunicación, tecnología y operación funcionan por separado, crecer se vuelve una suma de intentos. El negocio se mueve, pero no siempre avanza con claridad."
           />
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             {homeProblemKeywords.map((keyword) => (
               <span
-                key={keyword}
-                className="inline-flex items-center rounded-full border border-[#6939E2]/24 bg-[#6939E2]/8 px-4 py-2 text-sm font-medium text-[#CEC6E0] sm:text-base"
+                key={keyword.title}
+                className="inline-flex items-center whitespace-nowrap rounded-full border border-[#6939E2]/24 bg-[#6939E2]/8 px-4 py-2 text-sm font-medium text-[#CEC6E0] sm:text-base"
               >
-                {keyword}
+                {keyword.title}
               </span>
             ))}
           </div>
 
-          <p className="mx-auto mt-6 max-w-xl text-center text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+          <p className="mx-auto mt-6 max-w-xl text-center text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
             {homeProblemSynthesis}
           </p>
         </Container>
@@ -110,18 +126,17 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      {/* Filtro: para quién es / no es, antes de pedir el CTA */}
-      <section className="cv-auto py-16 sm:py-20" id="para-quien">
+      <section className="cv-auto py-16 sm:py-20" id="sistema-comercial">
         <Container>
           <SectionTitle
             align="center"
-            eyebrow="Antes de seguir"
-            title="Para quién es esto, y para quién no"
-            description="Ser directos aquí nos ahorra tiempo a los dos. Si no hay fit, preferimos decirlo antes que después."
+            eyebrow="Qué entendemos por sistema"
+            title="Integramos estrategia, comunicación y tecnología en una sola operación"
+            description="Conectamos lo que vendes, cómo lo comunicas y cómo lo operas para que el crecimiento no dependa de improvisación."
           />
 
           <div className="mt-10">
-            <FitChecklist fitItems={fitChecklist} nonFitItems={nonFitChecklist} />
+            <DifferentiatorSystem pillars={differentiatorPillars} />
           </div>
         </Container>
       </section>
@@ -138,43 +153,46 @@ export default function HomePage() {
             description="Nuestro método de cuatro fases evita decisiones a ciegas: cada paso parte de lo que encontramos en el diagnóstico, no de suposiciones."
           />
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            {methodologySteps.map((step, index) => (
-              <span
-                key={step.title}
-                className="inline-flex items-center gap-2 rounded-full border border-[#6939E2]/24 bg-[#6939E2]/8 px-4 py-2 text-sm font-medium text-[#CEC6E0] sm:text-base"
-              >
-                <span className="text-xs font-semibold tabular-nums text-[#8b6ff0]">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                {step.title}
-              </span>
-            ))}
+          <div className="mt-10">
+            <PhaseStepper steps={methodologySteps} />
           </div>
 
-          <div className="mt-9 flex justify-center">
-            <Button href="/services" variant="secondary" size="lg">
-              Ver cómo trabajamos
-            </Button>
+        </Container>
+      </section>
+
+      <SectionDivider />
+
+      {/* Filtro: para quién es / no es, antes de pedir el CTA */}
+      <section className="cv-auto py-16 sm:py-20" id="para-quien">
+        <Container>
+          <SectionTitle
+            align="center"
+            eyebrow="Antes de seguir"
+            title="Para quién es esto, y para quién no"
+            description="RiBuzz trabaja mejor cuando ya existe una oferta, una operación o una intención real de crecer. Este filtro aclara si necesitas sistema, no solo otra pieza suelta."
+          />
+
+          <div className="mt-10">
+            <FitChecklist fitItems={fitChecklist} nonFitItems={nonFitChecklist} />
           </div>
         </Container>
       </section>
 
       <SectionDivider />
 
-      {/* Modelo de inversión: teaser corto, el detalle vive en /services */}
+      {/* Modelo de oferta: teaser corto, el detalle vive en /services */}
       <section className="section-soft cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
             align="center"
-            eyebrow="Modelo de inversión"
-            title="No cobramos por publicar, cobramos por mover el número que te importa"
-            description="Cada paquete se cobra con un retainer mensual fijo, que cubre la capacidad instalada. A partir de la etapa de Incubación, se suma un fee por cumplimiento de hitos de negocio — definidos contigo antes de empezar, nunca a mitad de camino."
+            eyebrow="Modelo de oferta"
+            title="Cada empresa necesita una propuesta ajustada a su momento"
+            description="La oferta se define según contexto, objetivos y tareas reales. El sistema puede combinar estrategia, activos, tecnología, adquisición y seguimiento, con una forma de pago alineada al alcance."
           />
 
           <div className="mt-8 flex justify-center">
             <Button href="/services" variant="secondary" size="lg">
-              Ver paquetes por etapa
+              Ver cómo se estructura
             </Button>
           </div>
         </Container>
@@ -186,26 +204,19 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <NetworkFeatureSection />
-
       <section className="cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
             align="center"
             eyebrow="FAQ rápido"
             title="Preguntas frecuentes antes de avanzar"
-            description="Respuestas breves antes de tomar decisiones sobre tu sistema."
+            description="Respuestas directas sobre oferta, alcance, riesgo, tiempos y forma de trabajo antes de tomar una decisión."
           />
 
           <div className="mt-8 w-full">
             <FAQAccordion items={homeFaqs} />
           </div>
 
-          <div className="mt-7 flex justify-center">
-            <Button href={SITE_CONFIG.diagnosisPath} variant="secondary">
-              Agenda tu llamada de introducción
-            </Button>
-          </div>
         </Container>
       </section>
 
@@ -219,12 +230,12 @@ export default function HomePage() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
                 Antes de irte
               </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#E4DFF7] sm:text-4xl">
-                ¿Listo para avanzar? Agenda tu llamada de introducción.
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance] sm:text-4xl">
+                ¿Listo para avanzar? Completa la aplicación.
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#98A0B3] sm:text-lg">
-                Agenda una llamada de introducción de 20 minutos para revisar si hay fit real, o
-                empieza por algo más liviano y reclama tu regalo.
+              <p className="mt-4 text-base leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-lg">
+                Son 5-7 minutos. La aplicación clasifica tu ruta y abre el siguiente paso correcto:
+                llamada, preparación con recursos o seguimiento por contenido.
               </p>
 
               <div className="mx-auto mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -234,10 +245,7 @@ export default function HomePage() {
                   variant="shimmer"
                   className="shadow-[0_0_24px_rgba(105,57,226,0.2)]"
                 >
-                  Agenda tu llamada de introducción
-                </Button>
-                <Button href={SITE_CONFIG.giftsPath} size="lg" variant="secondary">
-                  Reclama tu regalo
+                  Completa la aplicación
                 </Button>
               </div>
             </div>

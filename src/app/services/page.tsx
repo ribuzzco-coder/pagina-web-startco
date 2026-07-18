@@ -1,19 +1,26 @@
 import { CTASection } from "@/components/sections/cta-section";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
-import { PhaseStack } from "@/components/sections/phase-stack";
+import { OfferPaymentModel } from "@/components/sections/offer-payment-model";
+import { PhaseStepper } from "@/components/sections/phase-stepper";
 import { ServicesSystemHero } from "@/components/sections/services-system-hero";
 import { StageTabs } from "@/components/sections/stage-tabs";
 import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
 import { Container } from "@/components/ui/container";
-import { NumberedCard } from "@/components/ui/numbered-card";
+import { InfoGrid } from "@/components/ui/info-grid";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
 import {
-  differentiators,
-  howWeWorkFaqs,
-  investmentModel,
+  homeFaqs,
   methodologySteps,
+  offerLogicIntro,
+  offerLogicStageNote,
+  offerLogicTracks,
   offerPackages,
+  paymentModelParts,
+  punctualSolutionAreas,
+  punctualSolutionModels,
+  punctualSolutionsCaveat,
+  punctualSolutionsIntro,
 } from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
@@ -22,7 +29,7 @@ import { BoxVisual } from "@/components/ui/gift-box-visual";
 export const metadata = createPageMetadata({
   title: "Cómo trabajamos",
   description:
-    "RiBuzz adapta su oferta a la etapa de tu empresa: estrategia, ejecución comercial, tecnología y adquisición pagada, con retainer mensual y fee por cumplimiento de hitos.",
+    "RiBuzz adapta su oferta al contexto, etapa, objetivos y tareas que necesita cada marca para mover su sistema comercial.",
   path: "/services",
 });
 
@@ -32,84 +39,135 @@ export default function ServicesPage() {
       {/* Atención: hook + promesa para quien todavía no conoce a RiBuzz */}
       <ServicesSystemHero
         primaryCtaHref={SITE_CONFIG.diagnosisPath}
-        secondaryCtaHref="#como-lo-hacemos"
+        secondaryCtaHref="#etapas"
       />
 
-      {/* Confianza: contraste directo con la categoría "agencia" */}
-      <section className="section-soft cv-auto py-16 sm:py-20">
+      {/* Decisión temprana: primero aclaramos qué compra el usuario según su etapa */}
+      <section className="cv-auto py-16 sm:py-20" id="etapas">
         <Container>
           <SectionTitle
-            align="left"
-            eyebrow="Diferencial"
-            title="Descubre cómo activar tu crecimiento"
-            description="No somos una agencia más, somos la pieza que une estrategia y ejecución para que tu sistema comercial deje de ser una carga y se convierta en tu mayor ventaja competitiva."
+            align="center"
+            eyebrow="1 · Punto de entrada"
+            title="Entras por la etapa en la que está tu negocio"
+            description="Diagnosticamos la etapa, los objetivos de la marca y las tareas que realmente corresponden. Desde ahí armamos una oferta ajustada al momento del negocio."
           />
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {differentiators.map((item, index) => (
-              <NumberedCard key={item} index={index + 1} description={item} />
+          <div className="mt-10">
+            <StageTabs packages={offerPackages} />
+          </div>
+        </Container>
+      </section>
+
+      <SectionDivider />
+
+      {/* Lógica de la oferta: por qué el alcance cambia de un paquete a otro */}
+      <section className="cv-auto py-16 sm:py-20" id="alcance">
+        <Container>
+          <SectionTitle
+            align="center"
+            eyebrow="2 · Cómo se decide el alcance"
+            title="Tu objetivo define el alcance. Tu etapa define la intensidad."
+            description={offerLogicIntro}
+          />
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {offerLogicTracks.map((track, index) => (
+              <div
+                key={track.title}
+                className="rounded-[20px] border border-white/8 bg-white/[0.02] p-6"
+              >
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
+                  {String(index + 1).padStart(2, "0")} · {track.title}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-[#98A0B3]">{track.description}</p>
+                <ul className="mt-4 space-y-2.5 text-sm text-[#CEC6E0]">
+                  {track.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6939E2]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
+
+          <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-[#98A0B3]">
+            {offerLogicStageNote}
+          </p>
         </Container>
       </section>
 
       <SectionDivider />
 
       {/* Interés: cómo funciona por dentro, en suficiente detalle para generar deseo informado */}
-      <section className="py-16 sm:py-20" id="como-lo-hacemos">
+      <section className="cv-auto py-16 sm:py-20" id="como-lo-hacemos">
         <Container>
           <SectionTitle
-            align="left"
-            eyebrow="Cómo lo hacemos"
-            title="Cuatro fases, siempre en el mismo orden"
-            description="No se ejecuta sin diagnóstico y no se diseña algo que luego no pueda operar. Desliza para recorrer cada fase, en el orden en que la aplicamos siempre."
+            align="center"
+            eyebrow="3 · Cómo se ejecuta"
+            title="Cuatro fases para convertir claridad en avance"
+            description="Diagnosticamos, diseñamos, implementamos y acompañamos con una secuencia clara. Así cada pieza que se construye tiene función, responsable y forma de medirse."
           />
-        </Container>
 
-        <div className="mt-10">
-          <PhaseStack steps={methodologySteps} />
-        </div>
+          <div className="mt-10">
+            <PhaseStepper steps={methodologySteps} />
+          </div>
+        </Container>
       </section>
 
       <SectionDivider />
 
-      {/* Decisión: ahora sí, la oferta concreta */}
-      <section className="cv-auto pb-16 sm:pb-20">
+      {/* Alternativa: cuando el diagnóstico muestra que no hace falta el sistema completo */}
+      <section className="cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
-            eyebrow="¿En qué etapa está tu empresa?"
-            title="Un paquete por etapa, no una cotización distinta cada vez"
-            description="Encuentra el que corresponde al momento de tu empresa. Cada uno tiene alcance fijo y se cobra con retainer mensual — el precio exacto se define en la llamada de introducción."
+            align="center"
+            eyebrow="4 · Cuando no necesitas todo"
+            title="Resolvemos la pieza exacta que frena el avance"
+            description={punctualSolutionsIntro}
           />
 
-          <div className="mt-10">
-            <StageTabs
-              packages={offerPackages}
-              ctaHref={SITE_CONFIG.diagnosisPath}
-              ctaLabel="Agenda tu llamada de introducción"
-            />
+          <InfoGrid className="mt-10 sm:grid-cols-2 lg:grid-cols-4">
+            {punctualSolutionAreas.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-[20px] border border-white/8 bg-white/[0.02] p-6 text-center"
+              >
+                <p className="text-sm font-semibold text-[#E4DFF7]">{item.title}</p>
+                <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty]">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </InfoGrid>
+
+          <div className="mx-auto mt-10 grid max-w-3xl gap-6 border-t border-white/8 pt-10 sm:grid-cols-2">
+            {punctualSolutionModels.map((item) => (
+              <div key={item.title} className="text-center">
+                <p className="text-sm font-semibold text-[#E4DFF7]">{item.title}</p>
+                <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">{item.description}</p>
+              </div>
+            ))}
           </div>
+
+          <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-[#98A0B3]">
+            {punctualSolutionsCaveat}
+          </p>
         </Container>
       </section>
 
       <section className="section-soft cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
-            align="left"
-            eyebrow="Modelo de inversión"
-            title="No cobramos por publicar, cobramos por mover el número que te importa"
-            description="Cada paquete se cobra con un retainer mensual fijo, que cubre la capacidad instalada. A partir de la etapa de Incubación, se suma un fee por cumplimiento de hitos de negocio — definidos contigo antes de empezar, nunca a mitad de camino."
+            align="center"
+            eyebrow="5 · Oferta"
+            title="La propuesta queda clara después del diagnóstico"
+            description="No necesitas adivinar el paquete correcto. Primero entendemos tu etapa, objetivo y alcance; después definimos qué incluye, cómo se trabaja y qué inversión corresponde."
           />
 
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {investmentModel.map((item, index) => (
-              <NumberedCard
-                key={item.title}
-                index={index + 1}
-                title={item.title}
-                description={item.description}
-              />
-            ))}
+          <div className="mt-10">
+            <OfferPaymentModel parts={paymentModelParts} ctaHref={SITE_CONFIG.diagnosisPath} />
           </div>
         </Container>
       </section>
@@ -124,13 +182,14 @@ export default function ServicesPage() {
       <section className="cv-auto py-16 sm:py-20">
         <Container>
           <SectionTitle
-            eyebrow="Antes de agendar"
-            title="Preguntas frecuentes sobre cómo trabajamos"
-            description="Las respuestas más directas a lo que normalmente se pregunta antes de la llamada."
+            align="center"
+            eyebrow="FAQ rápido"
+            title="Preguntas frecuentes antes de avanzar"
+            description="Respuestas directas sobre oferta, alcance, riesgo, tiempos y forma de trabajo antes de tomar una decisión."
           />
 
-          <div className="mt-8 max-w-4xl">
-            <FAQAccordion items={howWeWorkFaqs} />
+          <div className="mx-auto mt-8 max-w-4xl">
+            <FAQAccordion items={homeFaqs} />
           </div>
         </Container>
       </section>
@@ -139,12 +198,12 @@ export default function ServicesPage() {
       <CTASection
         actionsAtBottom
         eyebrow="Siguiente paso"
-        title="Cuéntanos tu momento y agenda tu llamada de introducción"
-        description="Es una conversación corta, sin costo, para confirmar si hay fit real antes de proponer cualquier paquete. Si prefieres explorar primero, reclama uno de nuestros recursos gratuitos."
-        primaryLabel="Agenda tu llamada de introducción"
+        title="Cuéntanos tu momento y ve cuál es el siguiente paso correcto"
+        description="Completa una aplicación breve. La aplicación clasifica tu ruta y abre el siguiente paso correcto: llamada de introducción, preparación con recursos o seguimiento por contenido."
+        primaryLabel="Completa la aplicación"
         primaryHref={SITE_CONFIG.diagnosisPath}
         primaryVariant="shimmer"
-        secondaryLabel="Reclama tu regalo"
+        secondaryLabel="Leer recursos gratis"
         secondaryHref="/regalos"
         rightElement={
           <div className="opacity-80 drop-shadow-[0_0_15px_rgba(105,57,226,0.15)]">

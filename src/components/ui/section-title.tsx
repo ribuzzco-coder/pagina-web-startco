@@ -1,10 +1,10 @@
-import type { HTMLAttributes } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-type SectionTitleProps = HTMLAttributes<HTMLDivElement> & {
-  title: string;
-  description?: string;
+type SectionTitleProps = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
+  title: ReactNode;
+  description?: ReactNode;
   eyebrow?: string;
   align?: "left" | "center";
 };
@@ -23,17 +23,17 @@ export function SectionTitle({
     <div className={cn(isCentered && "text-center", className)} {...props}>
       <div>
         {eyebrow ? (
-          <p className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-[#CEC6E0] uppercase">
+          <p className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-[#CEC6E0] uppercase [text-wrap:balance]">
             {eyebrow}
           </p>
         ) : null}
-        <h2 className="text-3xl font-semibold leading-tight tracking-tight text-[#E4DFF7] sm:text-4xl">
+        <h2 className="text-3xl font-semibold leading-tight tracking-tight text-[#E4DFF7] [text-wrap:balance] sm:text-4xl">
           {title}
         </h2>
         {description ? (
           <p
             className={cn(
-              "mt-4 text-base leading-relaxed text-[#98A0B3] sm:text-lg",
+              "mt-4 text-base leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-lg",
               isCentered ? "mx-auto max-w-2xl" : "max-w-2xl",
             )}
           >

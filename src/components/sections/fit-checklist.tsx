@@ -1,4 +1,9 @@
+"use client";
+
+import { useState } from "react";
+
 import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 type FitChecklistProps = {
   fitItems: readonly string[];
@@ -39,40 +44,87 @@ function CrossIcon() {
   );
 }
 
-export function FitChecklist({ fitItems, nonFitItems }: FitChecklistProps) {
-  return (
-    <div className="grid gap-5 md:grid-cols-2">
-      <Card className="rounded-[28px] p-6 sm:p-7">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
-          Para quién sí es
-        </p>
-        <ul className="mt-5 space-y-3">
-          {fitItems.map((item) => (
-            <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-[#CEC6E0] sm:text-base">
-              <span className="mt-0.5">
-                <CheckIcon />
-              </span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </Card>
+function FitCard({
+  title,
+  items,
+  tone,
+}: {
+  title: string;
+  items: readonly string[];
+  tone: "fit" | "no-fit";
+}) {
+  const Icon = tone === "fit" ? CheckIcon : CrossIcon;
 
-      <Card className="rounded-[28px] p-6 sm:p-7">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#98A0B3]">
-          Para quién no es
-        </p>
-        <ul className="mt-5 space-y-3">
-          {nonFitItems.map((item) => (
-            <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-              <span className="mt-0.5">
-                <CrossIcon />
-              </span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </Card>
+  return (
+    <Card className="rounded-[24px] p-5 sm:p-6">
+      <p
+        className={cn(
+          "text-[11px] font-semibold uppercase tracking-[0.16em]",
+          tone === "fit" ? "text-[#8b6ff0]" : "text-[#98A0B3]",
+        )}
+      >
+        {title}
+      </p>
+      <ul className="mt-4 space-y-3">
+        {items.map((item) => (
+          <li
+            key={item}
+            className={cn(
+              "flex items-start gap-3 text-sm leading-relaxed [text-wrap:pretty]",
+              tone === "fit" ? "text-[#CEC6E0]" : "text-[#98A0B3]",
+            )}
+          >
+            <span className="mt-0.5">
+              <Icon />
+            </span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </Card>
+  );
+}
+
+export function FitChecklist({ fitItems, nonFitItems }: FitChecklistProps) {
+  const [activeTab, setActiveTab] = useState<"fit" | "no-fit">("fit");
+
+  return (
+    <div>
+      <div className="mb-5 flex justify-center md:hidden" role="tablist" aria-label="Filtro RiBuzz">
+        {[
+          { id: "fit", label: "Buen encaje" },
+          { id: "no-fit", label: "No es para ti" },
+        ].map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            role="tab"
+            aria-selected={activeTab === tab.id}
+            onClick={() => setActiveTab(tab.id as "fit" | "no-fit")}
+            className={cn(
+              "border px-4 py-2 text-sm font-semibold transition-colors first:rounded-l-full last:rounded-r-full",
+              activeTab === tab.id
+                ? "border-[#6939E2]/50 bg-[#6939E2]/18 text-[#E4DFF7]"
+                : "border-white/10 bg-white/[0.03] text-[#98A0B3]",
+            )}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="hidden gap-5 md:grid md:grid-cols-2">
+        <FitCard title="Para quién sí es" items={fitItems} tone="fit" />
+        <FitCard title="Para quién no es" items={nonFitItems} tone="no-fit" />
+      </div>
+
+      <div className="md:hidden">
+        {activeTab === "fit" ? (
+          <FitCard title="Para quién sí es" items={fitItems} tone="fit" />
+        ) : (
+          <FitCard title="Para quién no es" items={nonFitItems} tone="no-fit" />
+        )}
+      </div>
     </div>
   );
 }

@@ -4507,6 +4507,181 @@ textarea,
   }
 }
 
+@keyframes services-hero-meteor-full {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(var(--services-meteor-angle, 0deg)) scale(0.72);
+  }
+
+  8% {
+    opacity: 0;
+  }
+
+  14% {
+    opacity: var(--services-meteor-opacity, 0.32);
+  }
+
+  78% {
+    opacity: var(--services-meteor-opacity, 0.32);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--services-meteor-x, 8vw), var(--services-meteor-y, 110vh), 0) rotate(var(--services-meteor-angle, 0deg)) scale(0.94);
+  }
+}
+
+@keyframes services-hero-meteor-mid {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(var(--services-meteor-angle, 0deg)) scale(0.68);
+  }
+
+  12% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: var(--services-meteor-opacity, 0.26);
+  }
+
+  58% {
+    opacity: var(--services-meteor-opacity, 0.26);
+  }
+
+  74% {
+    opacity: 0;
+    transform: translate3d(var(--services-meteor-x, 6vw), var(--services-meteor-y, 72vh), 0) rotate(var(--services-meteor-angle, 0deg)) scale(0.92);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--services-meteor-x, 6vw), var(--services-meteor-y, 72vh), 0) rotate(var(--services-meteor-angle, 0deg)) scale(0.92);
+  }
+}
+
+@keyframes services-hero-meteor-short {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(var(--services-meteor-angle, 0deg)) scale(0.62);
+  }
+
+  16% {
+    opacity: 0;
+  }
+
+  24% {
+    opacity: var(--services-meteor-opacity, 0.18);
+  }
+
+  38% {
+    opacity: var(--services-meteor-opacity, 0.18);
+  }
+
+  54% {
+    opacity: 0;
+    transform: translate3d(var(--services-meteor-x, 4vw), var(--services-meteor-y, 42vh), 0) rotate(var(--services-meteor-angle, 0deg)) scale(0.86);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--services-meteor-x, 4vw), var(--services-meteor-y, 42vh), 0) rotate(var(--services-meteor-angle, 0deg)) scale(0.86);
+  }
+}
+
+@keyframes services-hero-stars-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-2.5rem, 1.8rem, 0);
+  }
+}
+
+.services-hero-meteor {
+  width: var(--services-meteor-size, 3px);
+  height: var(--services-meteor-size, 3px);
+  animation-duration: var(--services-meteor-duration, 9s);
+  animation-delay: var(--services-meteor-delay, 0s);
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.18, 0.58, 0.24, 1);
+  border-radius: 999px;
+  background: rgba(228, 223, 247, 0.96);
+  box-shadow:
+    0 0 10px rgba(228, 223, 247, 0.58),
+    0 0 24px rgba(120, 95, 221, 0.42);
+  transform-origin: center;
+}
+
+.services-hero-meteor::before {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: max(1px, calc(var(--services-meteor-size, 3px) * 0.46));
+  height: var(--services-meteor-tail, 6rem);
+  content: "";
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(120, 95, 221, 0.12) 34%,
+    rgba(118, 222, 255, 0.28) 70%,
+    rgba(228, 223, 247, 0.58) 100%
+  );
+  filter: blur(0.5px);
+}
+
+.services-hero-meteor::after {
+  position: absolute;
+  inset: -0.35rem;
+  content: "";
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(118, 222, 255, 0.38), transparent 62%);
+}
+
+.services-hero-meteor--full {
+  animation-name: services-hero-meteor-full;
+}
+
+.services-hero-meteor--mid {
+  animation-name: services-hero-meteor-mid;
+}
+
+.services-hero-meteor--short {
+  animation-name: services-hero-meteor-short;
+}
+
+.services-hero-stars {
+  background-image:
+    radial-gradient(circle, rgba(228, 223, 247, 0.75) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(118, 222, 255, 0.38) 0 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(120, 95, 221, 0.5) 0 1px, transparent 1.8px);
+  background-position:
+    4% 12%,
+    42% 68%,
+    81% 24%;
+  background-size:
+    8.5rem 8.5rem,
+    13rem 13rem,
+    18rem 18rem;
+  mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 72%);
+}
+
+.services-hero-stars--near {
+  animation: services-hero-stars-drift 34s linear infinite alternate;
+}
+
+.services-hero-stars--far {
+  animation: services-hero-stars-drift 58s linear infinite alternate-reverse;
+  background-size:
+    12rem 12rem,
+    19rem 19rem,
+    27rem 27rem;
+}
+
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

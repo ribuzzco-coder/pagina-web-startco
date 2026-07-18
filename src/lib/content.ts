@@ -2,9 +2,11 @@ export type OfferPackage = {
   stage: string;
   title: string;
   forWhom: string;
+  typicalNeed: string;
+  typicalFailure: string;
+  outcome: string;
   includes: string[];
   billing: string;
-  note?: string;
 };
 
 export type Step = {
@@ -25,29 +27,101 @@ export type ContentBlock = {
 };
 
 export const homeProblemKeywords = [
-  "Clientes esporádicos",
-  "Cada venta, un caso aparte",
-  "Todo depende de una persona",
-  "Ingresos que suben y bajan",
+  {
+    title: "Invertiste y no hubo respuesta",
+    description: "Ya probaste soluciones, campañas, herramientas o asesorías, pero el negocio no respondió como esperabas.",
+    detail:
+      "El problema no siempre es la solución comprada: muchas veces falta ubicar qué pieza del sistema debía moverse primero.",
+  },
+  {
+    title: "Quieres crecer, no sabes dónde",
+    description: "Sabes que el negocio puede vender más, pero no tienes claro si el bloqueo está en la oferta, el canal, el equipo, el seguimiento o la operación.",
+    detail:
+      "El sistema empieza por diagnosticar dónde está el cuello de botella real para dejar de tomar decisiones por intuición o urgencia.",
+  },
+  {
+    title: "Haces mucho, avanzas poco",
+    description: "Publicas, respondes, pruebas herramientas y tomas decisiones, pero no sabes qué está moviendo realmente el resultado.",
+    detail:
+      "El problema no siempre es hacer más: muchas veces es conectar lo que ya haces para que cada acción tenga una función dentro del crecimiento.",
+  },
+  {
+    title: "Automatizar sin saber qué",
+    description: "Ves tareas repetidas y oportunidades que se pierden, pero automatizar sin orden solo vuelve más rápido el mismo desorden.",
+    detail:
+      "Primero se define el flujo correcto; después se automatiza lo que realmente debe repetirse, medirse o delegarse.",
+  },
 ] as const;
 
 export const homeProblemSynthesis =
-  "No son problemas sueltos: pasan porque falta un sistema que conecte cómo consigues clientes, cómo les vendes y cómo les das seguimiento.";
+  "No son problemas sueltos: son señales de que el negocio necesita convertir estrategia, comunicación, tecnología y operación en un sistema claro.";
+
+export const commercialSystemPieces = [
+  {
+    title: "Oferta",
+    description:
+      "Qué prometes, a quién se lo prometes y por qué debería importarle ahora.",
+    details: [
+      "Define el problema prioritario que resuelves.",
+      "Aterriza cliente ideal, promesa, pricing y objeciones.",
+      "Evita vender algo que el mercado no entiende o no valora.",
+    ],
+  },
+  {
+    title: "Mensaje",
+    description:
+      "Qué decir en cada etapa para que el usuario entienda el problema, la solución y el siguiente paso.",
+    details: [
+      "Convierte la oferta en argumentos claros.",
+      "Ordena hooks, pruebas, objeciones y llamados a la acción.",
+      "Hace que cada canal diga lo correcto según el momento del usuario.",
+    ],
+  },
+  {
+    title: "Canales",
+    description:
+      "Dónde captar atención sin dispersar esfuerzos entre publicaciones, pauta, referidos o eventos sin criterio.",
+    details: [
+      "Prioriza dónde buscar clientes según etapa y capacidad.",
+      "Define qué canal se usa para atraer, educar o cerrar.",
+      "Evita gastar energía en tácticas que no mueven el pipeline.",
+    ],
+  },
+  {
+    title: "Activos",
+    description:
+      "Landing, CRM, automatizaciones, piezas visuales o flujos que convierten interés en conversaciones medibles.",
+    details: [
+      "Convierte la estrategia en herramientas que operan.",
+      "Incluye landings, CRM, automatizaciones, contenido o integraciones.",
+      "Reduce fricción entre interés, conversación y seguimiento.",
+    ],
+  },
+  {
+    title: "Seguimiento",
+    description:
+      "Cadencia, responsables, métricas y decisiones para que las oportunidades no dependan de memoria o improvisación.",
+    details: [
+      "Define qué pasa después de cada lead o conversación.",
+      "Ordena responsables, tiempos, métricas y próximos pasos.",
+      "Hace que las oportunidades no se pierdan por falta de sistema.",
+    ],
+  },
+] as const;
+
+export const commercialSystemSynthesis =
+  "Cuando hablamos de sistema no hablamos de hacer más cosas: hablamos de conectar estas piezas en un flujo que se pueda repetir, medir y mejorar.";
 
 export const fitChecklist = [
-  "Empresas en etapa temprana o en transformación, con un problema comercial identificado — ya vendiendo o construyendo su primera oferta.",
-  "Negocios que sienten fricción en su crecimiento y no quieren seguir en ensayo y error.",
-  "Equipos abiertos a cuestionar su forma de operar y a ordenar mejor su sistema comercial.",
-  "Clientes con disposición a ejecutar y a participar en las decisiones importantes.",
-  "Empresas que entienden que el problema no siempre es hacer más, sino estructurar mejor.",
+  "Fundadores o equipos que ya venden, pero sienten que el crecimiento depende demasiado de ellos.",
+  "Marcas con oferta validada que necesitan ordenar captación, conversión y seguimiento.",
+  "Empresas que ya invirtieron en pauta, contenido, web o automatizaciones sin ver avance claro.",
 ] as const;
 
 export const nonFitChecklist = [
-  "Negocios sin ningún problema identificado ni intención real de resolverlo — solo curiosidad.",
-  "Empresas que solo quieren más marketing sin revisar el sistema de fondo.",
-  "Clientes que esperan magia, promesas vacías o resultados sin involucrarse.",
-  "Equipos que no quieren ejecutar ni ajustar su forma de vender.",
-  "Negocios que buscan delegar por completo la venta a un tercero.",
+  "Negocios que solo quieren publicaciones, diseños o pauta sin revisar el sistema de fondo.",
+  "Empresas que quieren delegar todo el crecimiento sin participar en decisiones clave.",
+  "Ideas sin oportunidad clara, urgencia real o intención de convertir el diagnóstico en acción.",
 ] as const;
 
 export const offerPackages: OfferPackage[] = [
@@ -55,169 +129,348 @@ export const offerPackages: OfferPackage[] = [
     stage: "Ideación",
     title: "Fundamentos",
     forWhom:
-      "Tienes un problema identificado pero tu oferta todavía no está validada.",
+      "Tienes un problema identificado y necesitas convertirlo en una oferta clara.",
+    typicalNeed:
+      "Marcas con una idea, oportunidad o problema claro, pero sin una oferta lista para vender, construir activos o invertir en pauta.",
+    typicalFailure:
+      "Falta definición: qué vender, a quién, por qué importa, cuánto vale y cuál es la siguiente decisión.",
+    outcome:
+      "Sales con una hipótesis de oferta priorizada, lectura de mercado y criterios claros para avanzar con foco.",
     includes: [
-      "Estudio del Arte: mercado, competencia y contexto real del problema",
-      "Hipótesis de valor estructurada",
-      "Documentos de apoyo para tomar la siguiente decisión con criterio",
+      "Acompañamiento semanal para ordenar oferta, cliente y siguiente decisión.",
+      "Lectura de mercado, competencia y contexto real del problema.",
+      "Hipótesis de valor, pricing y criterios para decidir qué construir.",
     ],
-    billing: "Retainer mensual bajo, dedicado solo a Estrategia.",
-    note: "Tarifa de lanzamiento desde $500.000 COP/mes — cupos limitados mientras validamos el sistema con los primeros clientes.",
+    billing: "Estrategia y acompañamiento semanal, sin ejecución de activos todavía.",
   },
   {
     stage: "Pre-Incubación",
     title: "Validación",
     forWhom:
-      "Tu MVP está en construcción o recién lanzado y estás probando con los primeros pilotos.",
+      "Tu primera versión está en construcción o recién lanzada, y estás probando con clientes iniciales.",
+    typicalNeed:
+      "Marcas con algo para mostrar o vender, pero que necesitan probar si el mercado entiende y responde.",
+    typicalFailure:
+      "Hay pilotos, publicaciones, pauta o reuniones, pero no queda claro qué ajustar en oferta, mensaje, cliente o canal.",
+    outcome:
+      "Sales con una ruta de validación, mensaje de entrada y estructura para convertir pilotos en aprendizaje comercial.",
     includes: [
-      "Estrategia de entrada a mercado y estructura de oferta",
-      "Apoyo en pitch si estás buscando capital",
-      "Orientación financiera básica para sostener la validación",
+      "Acompañamiento semanal para validar oferta, mensaje, cliente y canal de entrada.",
+      "Piezas comerciales, pitch, landing ligera o pruebas de pauta cuando corresponda.",
+      "Criterios para convertir pilotos y conversaciones en decisiones claras.",
     ],
-    billing: "Retainer mensual de Estrategia, con más horas dedicadas que Fundamentos.",
-    note: "Tarifa de lanzamiento desde $2.500.000 COP/mes — cupos limitados mientras validamos el sistema con los primeros clientes.",
+    billing: "Pago mensual de estrategia con recursos puntuales para activos de validación.",
   },
   {
     stage: "Incubación",
     title: "Tracción",
     forWhom:
-      "Ya tienes oferta validada y primeros clientes reales, y necesitas estructura para sostener el crecimiento.",
+      "Ya tienes oferta validada y clientes reales. Ahora necesitas sostener el crecimiento.",
+    typicalNeed:
+      "Marcas que ya venden, pero dependen demasiado de responder rápido, perseguir oportunidades y dar seguimiento a mano.",
+    typicalFailure:
+      "Hay interés, conversaciones o pauta activa, pero no un flujo claro para captar, convertir, medir y seguir oportunidades.",
+    outcome:
+      "Sales con un activo de conversión operativo y un flujo de captación, respuesta y seguimiento más ordenado.",
     includes: [
-      "Estrategia continua",
-      "Un activo de conversión inicial (landing, automatización o integración)",
-      "Ejecución comercial básica para empezar a sistematizar la captación",
+      "Acompañamiento semanal para priorizar crecimiento, conversión y seguimiento.",
+      "Activos de marketing, pauta o tecnología según la meta: páginas, landings, automatizaciones o flujos.",
+      "Ajuste de oferta, mensaje y operación para convertir interés en oportunidades medibles.",
     ],
-    billing: "Retainer mensual + proyecto de tecnología facturado según alcance.",
-    note: "Tarifa de lanzamiento desde $4.000.000 COP/mes (incluye $1.000.000 de presupuesto de pauta) — cupos limitados mientras validamos el sistema con los primeros clientes.",
+    billing: "Pago mensual con estrategia, acompañamiento y recursos de ejecución según objetivos trazados.",
   },
   {
     stage: "Consolidación",
     title: "Sistema",
     forWhom:
-      "Ya vendes con consistencia y necesitas que estrategia, ejecución comercial, tecnología y adquisición pagada operen como un solo sistema.",
+      "Ya vendes con consistencia y necesitas que estrategia, tecnología, pauta y operación trabajen juntas.",
+    typicalNeed:
+      "Marcas con ventas, equipo, canales, pauta y herramientas, pero sin una misma dirección para escalar.",
+    typicalFailure:
+      "Estrategia, comunicación, pauta, CRM, seguimiento y decisiones existen, pero operan por separado.",
+    outcome:
+      "Sales con estrategia, operación, tecnología y adquisición conectadas bajo una cadencia de mejora.",
     includes: [
-      "Estrategia",
-      "Ejecución comercial continua",
-      "Tecnología aplicada",
-      "Adquisición pagada, con SOPs documentados",
+      "Acompañamiento semanal para sostener estrategia, operación y decisiones de crecimiento.",
+      "Marketing, tecnología, automatización, pauta, SOPs, tableros y activos a medida.",
+      "Cadencia de mejora para ajustar oferta, canales, procesos y metas con datos reales.",
     ],
-    billing: "Retainer mensual + posible fee por cumplimiento de hitos de negocio, esquema que se termina de definir contigo antes de empezar.",
-    note: "Cupos limitados por trimestre — es nuestro paquete de mayor dedicación.",
-  },
-  {
-    stage: "Escalamiento",
-    title: "Expansión",
-    forWhom:
-      "El sistema ya funciona y buscas un nuevo mercado, canal o línea de negocio.",
-    includes: [
-      "Extensión del Sistema ya activo",
-      "Proyecto de expansión con alcance definido (nuevo mercado, canal o línea de negocio)",
-    ],
-    billing: "Retainer de Sistema existente + posible fee por hitos de expansión, a definir según alcance.",
+    billing: "Pago mensual con equipo y recursos dedicados según alcance, metas e intensidad operativa.",
   },
 ];
+
+export type OfferLogicTrack = {
+  title: string;
+  description: string;
+  items: string[];
+};
+
+export const offerLogicIntro =
+  "Primero entendemos qué quieres lograr y qué está frenando el avance. Con eso definimos cuánto peso necesita la estrategia, qué activos o pauta hacen falta, qué tecnología debe sostener el flujo y qué seguimiento debe operar.";
+
+export const offerLogicTracks: OfferLogicTrack[] = [
+  {
+    title: "Estrategia y dirección",
+    description: "Ordena la decisión central antes de ejecutar: qué vender, a quién, con qué promesa y en qué orden avanzar.",
+    items: [
+      "Meta comercial y prioridad de crecimiento",
+      "Oferta, cliente, pricing y modelo de negocio",
+      "Canales, mensajes y siguientes pasos",
+    ],
+  },
+  {
+    title: "Activos, pauta y tecnología",
+    description: "Convierte la estrategia en piezas y herramientas que captan, convierten y permiten medir.",
+    items: [
+      "Páginas, landings y activos de conversión",
+      "Pauta, contenidos o pruebas de canal cuando aplica",
+      "Automatizaciones e integraciones",
+    ],
+  },
+  {
+    title: "Ejecución y seguimiento",
+    description: "Mantiene el sistema activo para que las oportunidades no dependan de memoria o urgencia.",
+    items: [
+      "Revisión de métricas, oportunidades y bloqueos",
+      "Ajustes de oferta, canal, pauta o activo",
+      "Responsables, procesos y próximos movimientos",
+    ],
+  },
+];
+
+export const offerLogicStageNote =
+  "En etapas tempranas pesa más la estrategia. Cuando ya hay validación y ventas, se suman activos, pauta, automatizaciones, procesos y acompañamiento operativo.";
 
 export const methodologySteps: Step[] = [
   {
     title: "Diagnóstico",
     description:
-      "Revisamos tráfico, conversión, mensajes y seguimiento actual, y hablamos con tu equipo para ubicar dónde se pierden clientes: en la llegada, en la oferta, en el cierre o en el seguimiento posterior.",
+      "Ubicamos dónde se está frenando el crecimiento: llegada, oferta, cierre, seguimiento u operación.",
     points: [
-      "Buscamos entender qué está frenando la adquisición de clientes, la conversión, el seguimiento o el flujo de caja.",
-      "No buscamos llenar formularios por llenar, sino identificar oportunidades reales.",
+      "Revisamos tráfico, conversión, mensajes y seguimiento.",
+      "Identificamos oportunidades reales, no supuestos.",
     ],
-    outcome: "Entrega claridad inicial sobre dónde intervenir primero y si realmente existe fit para avanzar.",
+    outcome: "Claridad sobre dónde intervenir primero y si tiene sentido avanzar.",
   },
   {
     title: "Diseño",
     description:
-      "Definimos el embudo comercial completo: qué mensaje va en cada etapa, qué canal lo entrega, qué se mide en el camino y en qué orden se ejecuta cada cambio.",
+      "Definimos el flujo que debe operar: mensaje, canal, medición y orden de ejecución.",
     points: [
-      "Definición del flujo comercial, las prioridades y los mensajes estratégicos.",
-      "Establecimiento de puntos de seguimiento y criterios de acción claros.",
+      "Priorizamos flujo comercial, mensajes y canales.",
+      "Definimos qué se mide y qué decisión sigue.",
     ],
-    outcome: "Entrega dirección, estructura y criterios claros de acción.",
+    outcome: "Dirección clara antes de construir o invertir más.",
   },
   {
     title: "Implementación",
     description:
-      "Construimos landing pages, automatizaciones de WhatsApp o email, integración de CRM y la estructura de contenido orgánico y pago que el embudo diseñado necesita para operar.",
+      "Construimos lo necesario para que el sistema funcione: activos, automatizaciones, integraciones o piezas a medida.",
     points: [
-      "Landing pages, automatizaciones y configuración de CRM según se necesite.",
-      "Despliegue de estructura de conversión y activos digitales operativos.",
+      "Páginas, landings, formularios, flujos o activos operativos.",
+      "Automatización, seguimiento y medición según el alcance.",
     ],
-    outcome: "Entrega capacidad operativa real para ejecutar con menos fricción.",
+    outcome: "Herramientas, activos y procesos listos para operar.",
   },
   {
     title: "Acompañamiento",
     description:
-      "Revisamos resultados en una cadencia fija, ajustamos mensajes, canales y prioridades según los datos reales, y sostenemos el sistema para que no se apague cuando termina la implementación.",
+      "Revisamos resultados, ajustamos decisiones y sostenemos el sistema en una cadencia clara.",
     points: [
-      "Seguimiento de hitos, revisión de avances y ajuste de decisiones en tiempo real.",
-      "Apoyo continuo bajo una lógica de growth partner para sostener la mejora.",
+      "Seguimiento de hitos, avances y bloqueos.",
+      "Ajustes de mensaje, canal, pauta, oferta o proceso.",
     ],
-    outcome: "Entrega seguimiento, ajuste y continuidad para crecer con más consistencia.",
+    outcome: "Continuidad para mejorar sin volver a improvisar.",
   },
 ];
 
-export const investmentModel = [
-  {
-    title: "Retainer mensual fijo",
-    description:
-      "Cubre la capacidad instalada: equipo, horas y ejecución continua de tu paquete. Es la base de todos los paquetes, desde Ideación hasta Expansión, y no depende del resultado del mes.",
-  },
-  {
-    title: "Fee por cumplimiento de hitos",
-    description:
-      "A partir de la etapa de Incubación, sumamos un componente atado a una métrica de negocio acordada contigo (leads calificados, tasa de conversión, ventas cerradas). Se define caso por caso antes de empezar, nunca a mitad de camino.",
-  },
-  {
-    title: "Presupuesto de pauta, cuando aplica",
-    description:
-      "En paquetes que incluyen adquisición pagada, el presupuesto de pauta se factura aparte y de forma transparente: no se mezcla con el fee de servicio ni se le suma un sobrecosto oculto.",
-  },
-] as const;
+export type PaymentModelPart = {
+  label: string;
+  title: string;
+  appliesTo: string;
+  description: string;
+  items: string[];
+};
 
-export const differentiators = [
-  "No somos una agencia de marketing reactiva. Somos un partner que diseña e interviene tu sistema comercial con criterio profesional.",
-  "Priorizamos el diagnóstico real sobre la ejecución impulsiva para que cada peso invertido tenga una intención y un retorno claro.",
-  "Conectamos los puntos ciegos entre captación y cierre, eliminando la fuga de prospectos por falta de estructura o seguimiento.",
-  "Construimos capacidad instalada en tu empresa, reduciendo la dependencia absoluta de los fundadores en el proceso de venta.",
-] as const;
+export const paymentModelParts: PaymentModelPart[] = [
+  {
+    label: "1 · Trabajo base",
+    title: "Trabajo mensual acordado",
+    appliesTo: "Aplica en todas las etapas",
+    description:
+      "Cubre estrategia, acompañamiento y ejecución según la etapa, el objetivo y los entregables definidos.",
+    items: [
+      "Puede ser solo estrategia y mentoría en etapas tempranas.",
+      "Puede incluir ejecución, tecnología, pauta o seguimiento en etapas más avanzadas.",
+      "Se define antes de iniciar, con entregables y dedicación clara.",
+    ],
+  },
+  {
+    label: "2 · Variable",
+    title: "Solo cuando el impacto se puede medir",
+    appliesTo: "Aplica si hay métricas comerciales claras",
+    description:
+      "Puede existir comisión por venta o pago por hitos si hay métricas claras y atribución real.",
+    items: [
+      "Puede ser comisión por venta si hay atribución clara.",
+      "Puede ser pago por hitos si el objetivo es mover leads, conversión, ventas o pipeline.",
+      "La métrica y las condiciones quedan documentadas antes de empezar.",
+    ],
+  },
+  {
+    label: "3 · Costos externos",
+    title: "Pauta, herramientas y terceros",
+    appliesTo: "Aplica según el alcance operativo",
+    description:
+      "Pauta, software, dominios, producción o terceros se presupuestan aparte y se definen antes de ejecutar.",
+    items: [
+      "La pauta se define aparte y se usa completa para adquisición.",
+      "Herramientas, dominios, software o producción se presupuestan según necesidad.",
+      "Todo costo externo queda identificado antes de ejecutar.",
+    ],
+  },
+];
 
-export const trustSignals = [
+export type DifferentiatorPillar = {
+  shortLabel: string;
+  label: string;
+  title: string;
+  description: string;
+  items: string[];
+};
+
+export const differentiatorPillars: DifferentiatorPillar[] = [
   {
-    title: "Biondaymora: web y pipeline rediseñados para convertir",
+    shortLabel: "Estrategia",
+    label: "Qué responde",
+    title: "Qué vender, a quién y por qué ahora",
     description:
-      "Identificamos que su página web y su pipeline de ventas digital no estaban pensados para conversión. Rediseñamos el sitio, el email marketing y la estructura del contenido orgánico y pago.",
+      "Definimos la dirección antes de ejecutar.",
+    items: [
+      "Modelo de negocio y oferta",
+      "Pricing y prioridades comerciales",
+      "Estudio de mercado y criterios de decisión",
+    ],
   },
   {
-    title: "Me Inspiras: dejar de invertir tiempo en quien no iba a pagar",
+    shortLabel: "Comunicación",
+    label: "Qué responde",
+    title: "Cómo convertir atención en conversación",
     description:
-      "El pipeline comercial no medía el WTP real de los prospectos, así que se gastaba tiempo en personas que nunca iban a comprar. Ajustamos el proceso para filtrar por disposición real de pago.",
+      "Convertimos el mensaje en avance comercial.",
+    items: [
+      "Cliente, canales y narrativa",
+      "Contenido, campañas y pitch",
+      "Mensajes para conversión y seguimiento",
+    ],
   },
   {
-    title: "Kynd, Nunaamautta y Fiammata: identidad de marca en todo el proceso",
+    shortLabel: "Tecnología",
+    label: "Qué responde",
+    title: "Cómo sostener el flujo sin depender de memoria",
     description:
-      "Creamos activos digitales (landings) que acompañan la identidad visual de cada marca y la mantienen consistente en todo el recorrido comercial del cliente.",
+      "Construimos la base para operar y medir.",
+    items: [
+      "Automatizaciones e integraciones",
+      "Formularios, tableros y flujos",
+      "Herramientas para seguimiento operativo",
+    ],
   },
-] as const;
+];
+
+export const differentiatorSynthesis =
+  "Estas tres piezas no operan por separado: son un solo sistema. Por eso no vendemos más marketing — vendemos la estructura completa que hace que tu negocio crezca con consistencia.";
+
+export type PunctualSolutionArea = {
+  title: string;
+  description: string;
+};
+
+export const punctualSolutionAreas: PunctualSolutionArea[] = [
+  {
+    title: "Oferta y mensaje",
+    description:
+      "Estudio de mercado, definición de oferta, modelo de negocio, pricing, manual de marca, pitch o mensajes de conversión.",
+  },
+  {
+    title: "Activos de conversión",
+    description:
+      "Landing, página, formulario, presentación, creación de contenido o pieza comercial.",
+  },
+  {
+    title: "Tecnología y seguimiento",
+    description:
+      "Automatizaciones, integraciones, WhatsApp, tableros o flujos operativos.",
+  },
+  {
+    title: "Pauta y adquisición",
+    description:
+      "Estructura de campaña, canal, medición, pruebas o ajustes para captar mejor.",
+  },
+];
+
+export const punctualSolutionsIntro =
+  "Si el diagnóstico muestra que el problema está en una pieza concreta, resolvemos esa pieza con alcance claro, sin convertirlo en un proceso completo.";
+
+export type PunctualSolutionModel = {
+  title: string;
+  description: string;
+};
+
+export const punctualSolutionModels: PunctualSolutionModel[] = [
+  {
+    title: "Proyecto puntual",
+    description:
+      "Un entregable cerrado, con alcance, fecha y criterio de éxito definidos desde el inicio.",
+  },
+  {
+    title: "Acompañamiento mensual",
+    description:
+      "Cuando la pieza necesita seguimiento, medición o ajustes durante más tiempo.",
+  },
+];
+
+export const punctualSolutionsCaveat =
+  "La diferencia no está en el criterio: siempre diagnosticamos primero. La diferencia está en el alcance de lo que se resuelve.";
 
 export const aboutOrigin = [
   {
-    title: "El patrón que se repite",
+    title: "Buen producto, crecimiento irregular",
     description:
-      "Vimos la misma historia una y otra vez: empresas con buen producto que no lograban sostenerse. En Colombia, 66,5 % no sobrevive más de cinco años, y casi siempre la causa de fondo es la misma — no tienen cómo vender con consistencia.",
+      "La oferta existe, pero el crecimiento depende de momentos, referidos o esfuerzos aislados.",
   },
   {
-    title: "Lo que eso provoca",
+    title: "Piezas que no se hablan",
     description:
-      "Sin un sistema claro, cada venta se siente como un caso aparte. El seguimiento se pierde, todo depende de una sola persona, y el negocio crece a ratos: bien un mes, mal al siguiente.",
+      "Hay contenido, pauta, web o tecnología, pero no trabajan bajo una misma dirección.",
   },
   {
-    title: "Por qué existimos",
+    title: "El fundador cargando demasiado",
     description:
-      "Por eso existe RiBuzz: para construir contigo el sistema que te falta. No vendemos piezas sueltas — diagnosticamos, diseñamos, implementamos y te acompañamos hasta que crecer deje de depender de la suerte.",
+      "Cuando todo depende de una persona, crecer se vuelve frágil.",
+  },
+] as const;
+
+export const aboutLearnings = [
+  {
+    title: "Primero hay que encontrar el bloqueo",
+    description:
+      "Una campaña, una web o una automatización solo funcionan cuando responden al punto exacto donde se está frenando el avance.",
+  },
+  {
+    title: "Las piezas sueltas no garantizan avance",
+    description:
+      "Un activo funciona cuando tiene un problema claro que resolver.",
+  },
+  {
+    title: "La dependencia vuelve frágil el crecimiento",
+    description:
+      "Si todo vive en la cabeza de alguien, el negocio no escala con consistencia.",
+  },
+  {
+    title: "Diagnosticar evita construir de más",
+    description:
+      "Primero ubicamos el bloqueo. Después decidimos qué construir.",
   },
 ] as const;
 
@@ -225,53 +478,74 @@ export const aboutMissionVision = [
   {
     title: "Misión",
     description:
-      "Ayudarte a crear y mejorar tu sistema comercial para que crezca de forma sostenible, mejorando los indicadores que más le importan a tu negocio — no solo optimizando piezas sueltas.",
+      "Ayudar a empresas en validación o crecimiento a vender con más claridad, estructura y seguimiento.",
   },
   {
     title: "Visión",
     description:
-      "Para 2030, ser el sistema de crecimiento comercial de referencia en Colombia: la razón por la que más empresas en crecimiento o transformación logran modelos comerciales sostenibles, medibles y escalables.",
+      "Ser el sistema de crecimiento comercial que más empresas reconocen por convertir intentos en avance medible.",
   },
 ] as const;
 
 export const aboutTraits = [
   {
-    title: "Directos",
+    title: "Claridad antes de ejecución",
     description:
-      "Nombramos el problema como es, sin rodeos ni palabras bonitas que no dicen nada.",
+      "Antes de construir, definimos qué problema se debe mover.",
   },
   {
-    title: "Transparentes",
+    title: "Decisiones con contexto",
     description:
-      "Cada decisión que tomamos contigo se justifica con datos y contexto — nunca con promesas vacías.",
+      "Cada recomendación parte del momento real de la empresa.",
   },
   {
-    title: "Exigentes, contigo y con nosotros",
+    title: "Acompañamiento sin dependencia",
     description:
-      "El crecimiento se construye entre los dos: nosotros diagnosticamos, estructuramos y acompañamos; tú participas, decides y ejecutas lo que te corresponde.",
+      "Acompañamos para dejar capacidad instalada.",
   },
   {
-    title: "Obsesionados con el impacto real",
+    title: "Impacto por encima de tareas",
     description:
-      "No medimos el trabajo en tareas hechas, sino en mejores decisiones, más ventas y más capacidad de crecer.",
+      "Medimos valor por claridad, avance y capacidad de operar mejor.",
   },
 ] as const;
 
 export const diagnosisExpectations = [
   {
-    title: "Una lectura hecha para tu caso",
+    title: "Lectura de etapa y bloqueo",
     description:
-      "No recibes una respuesta genérica. Lo que te devolvemos se aterriza a tu momento, tu estructura y tu forma de operar.",
+      "Ubicamos si el problema está en oferta, canal, conversión, seguimiento, tecnología u operación.",
   },
   {
-    title: "Acciones claras y posibles de abarcar",
+    title: "Alcance antes de propuesta",
     description:
-      "La idea es darte foco sobre los siguientes movimientos sin llenarte de frentes innecesarios o imposibles de sostener.",
+      "Antes de hablar de inversión, definimos qué necesita moverse y qué tareas corresponden.",
   },
   {
-    title: "Una experiencia simple, no un laberinto",
+    title: "Siguiente paso concreto",
     description:
-      "Buscamos que todo sea entendible, amigable y accionable, sin perderte entre montones de páginas, pasos o documentos.",
+      "La ruta queda clara: llamada, preparación con recursos o seguimiento hasta que el momento sea más preciso.",
+  },
+] as const;
+
+export const diagnosisNextSteps = [
+  {
+    eyebrow: "Si ya hay contexto",
+    title: "Llamada de introducción",
+    description:
+      "Si tu momento requiere intervención directa, agendas un horario y llegamos con contexto para hablar de alcance.",
+  },
+  {
+    eyebrow: "Si falta ordenar base",
+    title: "Preparación de oferta",
+    description:
+      "Si la base necesita orden primero, recibes recursos para aclarar oferta, cliente y siguiente decisión.",
+  },
+  {
+    eyebrow: "Si aún no es momento",
+    title: "Seguimiento",
+    description:
+      "Si todavía no es momento de intervenir, quedas en una ruta de criterio para retomar con más claridad.",
   },
 ] as const;
 
@@ -279,12 +553,12 @@ export const contactFaqs: FAQ[] = [
   {
     question: "¿RiBuzz es una agencia de marketing?",
     answer:
-      "No. El marketing puede ser parte de la solución, pero RiBuzz interviene el sistema comercial completo del negocio y no solo ejecuta piezas o campañas.",
+      "RiBuzz no opera como una agencia tradicional. El marketing puede ser parte de la solución, pero antes de tocar cualquier pieza pasamos por el mismo diagnóstico que aplicamos al sistema completo. El resultado puede ser un proyecto puntual en una sola área o el sistema completo. Lo que no hacemos es ejecutar sin diagnosticar primero.",
   },
   {
     question: "¿Esto es consultoría o sí hay ejecución?",
     answer:
-      "Hay criterio y hay ejecución. Primero se entiende el problema, después se diseña la estructura y luego se pone en marcha y se acompaña cuando hace sentido.",
+      "Hay criterio y hay ejecución. Primero se entiende el problema, después se diseña la estructura, luego se pone en marcha y se acompaña con una cadencia definida.",
   },
   {
     question: "¿Qué pasa si no sé exactamente cuál es mi problema?",
@@ -292,9 +566,9 @@ export const contactFaqs: FAQ[] = [
       "Es normal. La llamada de introducción existe justamente para detectar si el cuello de botella está en adquisición, conversión, seguimiento o estructura comercial.",
   },
   {
-    question: "¿Qué pasa después de la llamada de introducción?",
+    question: "¿Qué pasa después de completar la aplicación?",
     answer:
-      "Se evalúa si hay fit y qué paquete tiene sentido activar. Puede recomendarse avanzar, ajustar el foco o incluso no continuar si no hay impacto posible.",
+      "La aplicación clasifica tu ruta. Puedes pasar a llamada de introducción, recibir recursos para preparar mejor tu oferta o quedar en seguimiento hasta que el momento sea más concreto.",
   },
   {
     question: "¿Qué hace que RiBuzz sea diferente?",
@@ -324,7 +598,7 @@ export const contactFaqs: FAQ[] = [
   {
     question: "¿Cómo sé si este es el momento correcto para trabajar con RiBuzz?",
     answer:
-      "Si ya estás vendiendo o intentándolo, sientes fricción, dependes demasiado del fundador y no tienes claro qué priorizar, probablemente sí es el momento correcto.",
+      "Es el momento correcto cuando ya estás vendiendo o intentando vender, sientes fricción, dependes demasiado del fundador y necesitas claridad sobre qué priorizar.",
   },
   {
     question: "¿RiBuzz vende por mi empresa o ejecuta las ventas?",
@@ -337,17 +611,17 @@ export const howWeWorkFaqs: FAQ[] = [
   {
     question: "¿Necesito ya estar vendiendo para trabajar con RiBuzz?",
     answer:
-      "No necesariamente. Si tu empresa está en etapa de Ideación o Validación, hay un paquete de Estrategia pensado para ese momento. El sistema completo (Sistema o Expansión) sí asume que ya vendes con cierta consistencia.",
+      "No necesariamente. Si tu empresa está en etapa de Ideación o Validación, hay un paquete de Estrategia pensado para ese momento. El paquete Sistema sí asume que ya vendes con cierta consistencia.",
   },
   {
     question: "¿La llamada de introducción tiene costo?",
     answer:
-      "No. Es una conversación corta para entender tu momento y confirmar si hay fit real antes de proponer cualquier paquete.",
+      "No. Es una conversación corta para entender tu momento, ubicar tu etapa y definir si corresponde una propuesta de trabajo.",
   },
   {
-    question: "¿Cómo funciona el fee por cumplimiento de hitos?",
+    question: "¿Cómo funciona la comisión por venta o el pago por hitos?",
     answer:
-      "Es un componente que todavía estamos terminando de formalizar. A partir de la etapa de Incubación buscamos atar una parte del pago a una métrica de negocio acordada contigo (como leads calificados o tasa de conversión), sin que el retainer mensual dependa de eso — es la base fija, el hito sería adicional. El esquema exacto se define caso por caso en la llamada de introducción.",
+      "El pago mensual cubre la capacidad de trabajo acordada. Cuando la etapa y el alcance permiten medir impacto directo, se suma un pago variable: comisión por venta si hay atribución clara, o pago por hitos si el objetivo es mover métricas como leads calificados, tasa de conversión, ventas cerradas o avance de pipeline. Todo queda documentado antes de iniciar.",
   },
   {
     question: "¿Tengo que contratar el paquete completo desde el inicio?",
@@ -358,48 +632,48 @@ export const howWeWorkFaqs: FAQ[] = [
 
 export const homeFaqs: FAQ[] = [
   {
-    question: "¿Cómo se agenda la llamada de introducción?",
+    question: "¿Qué estoy comprando realmente si RiBuzz trabaja con mi empresa?",
     answer:
-      "Completas una aplicación breve (unos 5-7 minutos) y agendas directamente en el calendario, sin ida y vuelta de correos. Es gratuita, y esas preguntas son justamente las que nos permiten confirmar si hay fit real antes de proponer cualquier paquete.",
+      "No compras publicaciones, una landing o una automatización aislada. Compras un sistema de crecimiento ajustado a tu etapa: diagnóstico, estrategia, comunicación, tecnología, activos, seguimiento y operación según lo que el negocio necesita mover.",
   },
   {
-    question: "¿Cuál es el costo de trabajar con RiBuzz?",
+    question: "Ya invertí en soluciones y no vi respuesta. ¿Qué cambia aquí?",
     answer:
-      "Cada paquete se cobra con un retainer mensual fijo. A partir de la etapa de Incubación buscamos sumar un posible fee por cumplimiento de hitos de negocio — el esquema todavía se está formalizando y se termina de definir contigo antes de empezar. El monto exacto se confirma en la llamada de introducción, según la etapa de tu empresa.",
+      "Empezamos por ubicar el cuello de botella antes de construir. Muchas empresas ya pagaron pauta, contenido, web, CRM o asesorías sin resultado porque la pieza correcta no estaba conectada al problema correcto. RiBuzz define primero qué se debe mover y en qué orden.",
+  },
+  {
+    question: "¿Qué pasa si no veo crecimiento o avance?",
+    answer:
+      "Sabemos que crecer tiene incertidumbre, por eso antes de empezar definimos hitos claros de avance. Si el trabajo no muestra progreso verificable sobre lo acordado, revisamos la intervención y activamos reintegro del servicio según las condiciones pactadas en la propuesta.",
+  },
+  {
+    question: "¿La oferta es igual para todas las empresas?",
+    answer:
+      "No. Cada empresa entra por una etapa distinta y con objetivos distintos. Algunas necesitan solo estrategia y mentoría; otras necesitan activos, automatizaciones, páginas web, CRM, adquisición o acompañamiento. La propuesta se arma después de entender contexto, urgencia y alcance real.",
+  },
+  {
+    question: "¿En cuánto tiempo se empieza a notar avance?",
+    answer:
+      "Depende de la etapa. En diagnóstico y diseño el avance se ve en claridad, prioridades y ruta de acción. En implementación se ve en activos, procesos y capacidad operativa. En acompañamiento se mide con indicadores como avance de pipeline, conversión, seguimiento, ventas o cumplimiento de hitos.",
+  },
+  {
+    question: "¿Necesito tener equipo, CRM o herramientas listas?",
+    answer:
+      "No necesariamente. Si ya tienes equipo o herramientas, las ordenamos e integramos al sistema. Si no las tienes, definimos qué hace falta construir, automatizar o delegar sin llenarte de tecnología innecesaria.",
   },
   {
     question: "¿Qué tipo de empresas pueden trabajar con RiBuzz?",
     answer:
-      "Trabajamos con empresas que ya tienen ventas y buscan orden y estructura para crecer. Nuestros clientes son de sectores diversos (tecnología, servicios B2B, turismo, salud, retail) y están ubicados en Medellín, Bogotá y otras ciudades de Colombia.",
+      "Trabajamos con empresas que ya tienen una oferta o ventas, pero necesitan más claridad, sistema y capacidad para crecer. No importa tanto el sector como el momento: debe existir disposición para revisar el negocio con honestidad y ejecutar cambios.",
   },
   {
-    question: "¿Necesito tener un equipo comercial interno?",
+    question: "¿Cómo se agenda el siguiente paso?",
     answer:
-      "No es indispensable, pero sí necesitas estar dispuesto a participar. Si ya tienes equipo, lo fortalecemos para que gane autonomía. Si no, ayudamos a definir roles y buscar aliados adecuados.",
+      "Completas una aplicación breve de 5-7 minutos. Con tus respuestas clasificamos tu ruta y, si corresponde llamada, agendas directamente en el calendario. Si todavía no es momento de avanzar, te orientamos con recursos o seguimiento.",
   },
   {
-    question: "¿Cómo se protegen mis datos durante el proceso?",
+    question: "¿Trabajan solo en Medellín o Colombia?",
     answer:
-      "Toda la información que compartes se utiliza exclusivamente para entender tu sistema comercial. Firmamos acuerdos de confidencialidad cuando es necesario y nunca divulgamos datos a terceros sin tu aprobación.",
-  },
-  {
-    question: "¿Se integran con nuestros sistemas actuales (CRM, herramientas de marketing, etc.)?",
-    answer:
-      "Sí. Analizamos tus herramientas actuales y, cuando es posible, las conectamos al nuevo flujo comercial. Si faltan piezas, proponemos soluciones no-code o integraciones que no generen dependencias innecesarias.",
-  },
-  {
-    question: "¿Qué resultados puedo esperar y en cuánto tiempo?",
-    answer:
-      "Los resultados dependen de la fase en la que entres y de tu compromiso. Normalmente, la fase de diseño se completa en 2–4 semanas, la implementación en 4–8 semanas y el acompañamiento dura lo que necesites. Los efectos visibles suelen aparecer a partir de la implementación, cuando el sistema empieza a operar.",
-  },
-  {
-    question: "¿RiBuzz solo trabaja con empresas en Medellín?",
-    answer:
-      "Aunque nuestra base está en Medellín y Colombia, trabajamos con empresas de cualquier ciudad o país de habla hispana. La metodología es adaptable y podemos trabajar de forma remota.",
-  },
-  {
-    question: "¿Cómo se mide el retorno de inversión (ROI)?",
-    answer:
-      "Antes de iniciar la intervención definimos métricas clave (tasa de conversión, tiempo de cierre, valor de ventas, etc.). Durante el acompañamiento medimos estas variables para evaluar si el sistema está generando los resultados esperados y ajustamos cuando es necesario.",
+      "Nuestra base está en Colombia, pero podemos trabajar con empresas de cualquier ciudad o país de habla hispana. La metodología se adapta a trabajo remoto, siempre que haya información, comunicación y capacidad de ejecución.",
   },
 ];

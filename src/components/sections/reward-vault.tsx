@@ -179,7 +179,7 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
             Documento desbloqueado
           </p>
-          <h3 className="mt-2 text-lg font-semibold tracking-tight text-[#E4DFF7] sm:text-xl">
+          <h3 className="mt-2 text-lg font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance] sm:text-xl">
             {doc.title}
           </h3>
         </div>
@@ -197,7 +197,7 @@ function RewardCard({ doc, index }: { doc: RewardDoc; index: number }) {
         </div>
       </div>
 
-      <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] sm:text-base">
+      <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
         {doc.description}
       </p>
 
@@ -292,9 +292,13 @@ export function RewardVault() {
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
           Regalos RiBuzz
         </p>
-        <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[#E4DFF7] sm:text-5xl">
-          Te traemos valor que nos habría gustado saber antes.
+        <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance] sm:text-5xl">
+          Dos recursos para mejorar tu oferta antes de pedir más marketing.
         </h1>
+        <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
+          Empieza por entender qué estás prometiendo, a quién se lo prometes y cómo convertirlo
+          en una conversación comercial más clara.
+        </p>
       </div>
 
       <div className="relative mx-auto mt-10 max-w-2xl">
@@ -325,12 +329,12 @@ export function RewardVault() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
                 Siguiente paso
               </p>
-              <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#E4DFF7]">
-                Si quieres ir más allá, agenda tu llamada de introducción.
+              <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
+                Si ya identificaste un cuello de botella, completa la aplicación.
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#98A0B3]">
-                Es gratuita y sirve para confirmar si hay fit real antes de proponer cualquier
-                paquete. ¿Tienes una pregunta puntual antes? Escríbenos por WhatsApp.
+              <p className="mt-2 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty]">
+                Revisamos tu momento, clasificamos tu ruta y abrimos el siguiente paso correcto.
+                ¿Tienes una pregunta puntual antes? Escríbenos por WhatsApp.
               </p>
             </div>
 
@@ -341,7 +345,7 @@ export function RewardVault() {
                 variant="shimmer"
                 className="min-w-[180px] shadow-[0_0_0_1px_rgba(105,57,226,0.16),0_0_24px_rgba(105,57,226,0.18)]"
               >
-                Agenda tu llamada
+                Completa la aplicación
               </Button>
               <a
                 href={SITE_CONFIG.whatsappUrl}

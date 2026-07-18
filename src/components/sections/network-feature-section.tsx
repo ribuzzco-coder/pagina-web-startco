@@ -11,8 +11,8 @@ import { SITE_CONFIG } from "@/lib/site-config";
 export function NetworkFeatureSection({
   eyebrow = "Próximo paso",
   title = "Descubre dónde se está rompiendo tu crecimiento.",
-  description = "Completa un formulario corto y agenda directamente en el calendario. Sin costo, y sirve para confirmar si hay una oportunidad real de mejora.",
-  primaryButtonLabel = "Agenda tu llamada de introducción",
+  description = "Completa una aplicación corta. La aplicación clasifica tu ruta y abre el siguiente paso correcto: llamada, preparación con recursos o seguimiento por contenido.",
+  primaryButtonLabel = "Completa la aplicación",
   secondaryButtonLabel = "Ver cómo trabajamos",
   secondaryButtonHref = "/services",
 }: {
@@ -173,13 +173,13 @@ export function NetworkFeatureSection({
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="z-10 w-full p-8 sm:p-12 lg:w-1/2 lg:p-16"
             >
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0] [text-wrap:balance]">
                 {eyebrow}
               </p>
-              <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-[#E4DFF7] sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-[#E4DFF7] [text-wrap:balance] sm:text-4xl">
                 {title}
               </h2>
-              <p className="mt-6 max-w-lg text-base leading-relaxed text-[#98A0B3] sm:text-lg">
+              <p className="mt-6 max-w-lg text-base leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-lg">
                 {description}
               </p>
               <div className="mt-10 flex flex-wrap gap-4">

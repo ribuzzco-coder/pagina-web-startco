@@ -80,7 +80,7 @@ export const portfolioSystemBlocks = [
 
 export const portfolioOperatingRoute = [
   "Entrada por diagnóstico",
-  "Lectura de fit",
+  "Lectura de encaje",
   "Diseño del sistema comercial",
   "Implementación de activos",
   "Seguimiento y ajustes",

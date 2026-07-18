@@ -12,19 +12,20 @@ export function NfcHero({ primaryHref }: NfcHeroProps) {
     <section className="overflow-hidden pb-12 pt-12 sm:pb-14 sm:pt-14">
       <Container className="grid gap-8 xl:grid-cols-[0.8fr_1.2fr] xl:items-center xl:gap-10">
         <div className="max-w-[41rem]">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0] [text-wrap:balance]">
             Tarjetas NFC
           </p>
-          <h1 className="mt-5 max-w-3xl text-[2rem] leading-[1.05] text-[#E4DFF7] sm:text-[2.55rem] xl:text-[2.95rem] [font-family:var(--font-saira)] font-semibold">
+          <h1 className="mt-5 max-w-3xl text-[2rem] leading-[1.05] text-[#E4DFF7] [text-wrap:balance] sm:text-[2.55rem] xl:text-[2.95rem] [font-family:var(--font-saira)] font-semibold">
             Convierte cada acción en un contacto real con tarjetas NFC
           </h1>
-          <p className="mt-4 max-w-lg text-[0.98rem] leading-relaxed text-[#98A0B3] sm:text-base">
-            Comparte tu información, redes o negocio con un solo toque.
+          <p className="mt-4 max-w-lg text-[0.98rem] leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
+            Una tarjeta NFC es una pieza de captura: convierte reuniones, eventos y visitas en
+            contactos que puedes seguir por WhatsApp, CRM o el flujo que ya tengas.
           </p>
-          <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
+          <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-[#CEC6E0] [text-wrap:balance]">
             Tarjeta desde $79.900 COP
           </p>
-          <p className="mt-2 max-w-lg text-sm leading-relaxed text-[#98A0B3]">
+          <p className="mt-2 max-w-lg text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty]">
             Si también necesitas el diseño de la tarjeta, el paquete tarjeta + diseño
             cuesta $140.000 COP.
           </p>

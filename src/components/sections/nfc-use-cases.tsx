@@ -27,10 +27,10 @@ export function NfcUseCases({ items }: NfcUseCasesProps) {
               <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-sm font-semibold text-white shadow-[0_0_14px_rgba(105,57,226,0.32)]">
                 0{index + 1}
               </div>
-              <h3 className="mt-5 text-lg font-semibold tracking-tight text-[#E4DFF7]">
+              <h3 className="mt-5 text-lg font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
                 {item.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#98A0B3]">
+              <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty]">
                 {item.description}
               </p>
             </Card>

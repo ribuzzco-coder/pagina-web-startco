@@ -41,8 +41,8 @@ export const PhoneMockup = React.forwardRef<HTMLDivElement, PhoneMockupProps>(
               </div>
             </div>
 
-            <h3 className="nfc-ui-name mt-4 text-xl font-bold tracking-tight text-[#E4DFF7]">RiBuzz</h3>
-            <p className="nfc-ui-role mb-8 mt-1 text-center text-xs text-[#98A0B3]">Sistema de Crecimiento Comercial.</p>
+            <h3 className="nfc-ui-name mt-4 text-xl font-bold tracking-tight text-[#E4DFF7] [text-wrap:balance]">RiBuzz</h3>
+            <p className="nfc-ui-role mb-8 mt-1 text-center text-xs text-[#98A0B3] [text-wrap:pretty]">Sistema de Crecimiento Comercial.</p>
 
             <div className="w-full space-y-3">
               <div className="nfc-ui-btn flex h-12 w-full items-center justify-center rounded-xl border border-white/5 bg-white/10 text-sm font-semibold text-white shadow-lg backdrop-blur-md">

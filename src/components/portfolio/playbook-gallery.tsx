@@ -14,7 +14,7 @@ const playbookImages = [
   },
   {
     src: "/images/portfolio/neomech-playbook-flow.png",
-    alt: "Vista del scoring de fit y el flujo comercial del playbook de Neomech.",
+    alt: "Vista del scoring de encaje y el flujo comercial del playbook de Neomech.",
     title: "ICP y flujo",
     accent: "text-[#CEC6E0]",
     width: 1919,
