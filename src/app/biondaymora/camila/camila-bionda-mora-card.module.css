@@ -1,0 +1,304 @@
+.page {
+  min-height: 100dvh;
+  background: #eee9e1;
+  color: #493625;
+  font-family: var(--font-bionda-archivo), Arial, sans-serif;
+}
+
+.card {
+  width: min(100%, 35rem);
+  min-height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #f9f7f3;
+  box-shadow: 0 0 4rem rgb(45 32 20 / 14%);
+}
+
+.profileHero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #272321;
+  color: #fff;
+}
+
+.portrait,
+.heroShade {
+  position: absolute;
+  inset: 0;
+}
+
+.portrait {
+  object-fit: cover;
+  object-position: 52% center;
+}
+
+.heroShade {
+  background:
+    linear-gradient(180deg, rgb(9 8 7 / 44%) 0%, transparent 29%, transparent 51%, rgb(9 8 7 / 82%) 100%),
+    linear-gradient(90deg, rgb(9 8 7 / 20%), transparent 65%);
+}
+
+.heroMeta,
+.heroContent {
+  position: absolute;
+  right: 1.15rem;
+  left: 1.15rem;
+  z-index: 1;
+}
+
+.heroMeta {
+  top: 1.15rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.heroContent {
+  bottom: 1.45rem;
+}
+
+.heroContent > p,
+.kicker {
+  margin: 0;
+  font-family: var(--font-bionda-archivo-narrow), "Arial Narrow", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.heroContent h1 {
+  max-width: 20rem;
+  margin: 0.35rem 0 1.2rem;
+  font-family: var(--font-bionda-archivo-narrow), "Arial Narrow", sans-serif;
+  font-size: clamp(2.45rem, 10.5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.heroCta,
+.secondaryAction,
+.brandLinks a {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.48rem;
+  border: 1px solid currentColor;
+  font-family: var(--font-bionda-archivo), Arial, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.heroCta {
+  width: 100%;
+  border-color: #fff7e9;
+  background: #fff7e9;
+  color: #493625;
+}
+
+.heroCta svg,
+.secondaryAction svg,
+.brandLinks svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.contactSection {
+  padding: 2.35rem 1.25rem 2.55rem;
+  background: #fff7e9;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.contactGrid a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  min-height: 5.45rem;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 0.7rem;
+  border: 1px solid #c8b4a0;
+  color: #493625;
+  text-decoration: none;
+}
+
+.contactGrid a > svg:first-child {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.contactGrid a > svg:last-child {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.contactGrid span {
+  min-width: 0;
+}
+
+.contactGrid strong,
+.contactGrid small {
+  display: block;
+}
+
+.contactGrid strong {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.contactGrid small {
+  overflow: hidden;
+  margin-top: 0.25rem;
+  color: #806751;
+  font-size: 0.67rem;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contactGrid a:hover,
+.contactGrid a:focus-visible {
+  border-color: #493625;
+  background: #493625;
+  color: #fff7e9;
+  outline: 0;
+}
+
+.contactGrid a:hover small,
+.contactGrid a:focus-visible small {
+  color: rgb(255 247 233 / 78%);
+}
+
+.founderSection {
+  padding: 3.25rem 1.25rem 2.25rem;
+  background: #f9f7f3;
+}
+
+.kicker {
+  color: #a36a3d;
+}
+
+.founderSection h2,
+.brandContent h2 {
+  margin: 0.65rem 0 0;
+  font-family: var(--font-bionda-archivo-narrow), "Arial Narrow", sans-serif;
+  font-size: clamp(2rem, 8vw, 2.75rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.founderBody {
+  max-width: 28rem;
+  margin: 1.2rem 0 0;
+  color: #735c48;
+  font-size: 0.91rem;
+  line-height: 1.58;
+}
+
+.founderActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+  margin-top: 1.8rem;
+}
+
+.secondaryAction {
+  cursor: pointer;
+  border-color: #b9a99a;
+  background: transparent;
+  color: #493625;
+}
+
+.secondaryAction:hover,
+.secondaryAction:focus-visible {
+  border-color: #493625;
+  background: #493625;
+  color: #fff;
+  outline: 0;
+}
+
+.brandSection {
+  background: #493625;
+  color: #fff8ed;
+}
+
+.brandVisual {
+  position: relative;
+  height: 21rem;
+  overflow: hidden;
+}
+
+.brandVisual img {
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.84) contrast(1.02);
+}
+
+.brandContent {
+  padding: 2.45rem 1.25rem 2.6rem;
+}
+
+.brandContent .kicker {
+  color: #e2ae72;
+}
+
+.brandContent h2 {
+  max-width: 22rem;
+}
+
+.brandContent > p:not(.kicker) {
+  max-width: 26rem;
+  margin: 1.05rem 0 0;
+  color: rgb(255 248 237 / 78%);
+  font-size: 0.88rem;
+  line-height: 1.58;
+}
+
+.brandLinks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+  margin-top: 1.7rem;
+}
+
+.brandLinks a {
+  border-color: rgb(255 248 237 / 62%);
+  color: #fff8ed;
+}
+
+.brandLinks a:hover,
+.brandLinks a:focus-visible {
+  border-color: #fff8ed;
+  background: #fff8ed;
+  color: #493625;
+  outline: 0;
+}
+
+@media (min-width: 641px) {
+  .page {
+    padding: 2rem;
+  }
+
+  .card {
+    min-height: auto;
+  }
+}
