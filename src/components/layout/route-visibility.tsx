@@ -28,6 +28,7 @@ export function RouteVisibility({
     "/xori",
     "/duvansequeira",
     "/kynd",
+    "/furtivo",
     "/portafolio",
     "/admin",
   ],
