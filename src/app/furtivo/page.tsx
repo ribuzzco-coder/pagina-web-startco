@@ -39,20 +39,16 @@ export default function FurtivoPage() {
               className={styles.logo}
             />
           </div>
-          <p className={styles.kicker}>GRACIAS POR SER PARTE DEL RITUAL</p>
-          <h1>Tu estilo merece ser contado.</h1>
-          <p className={styles.intro}>
-            Si disfrutaste la experiencia Furtivo, ayúdanos a que otros también la descubran.
-          </p>
+          <p className={styles.brandLine}>TU ESTILO. NUESTRA PASIÓN.</p>
         </div>
 
         <section className={styles.reviewCard} aria-labelledby="review-title">
           <div className={styles.cardTopline}>
-            <span>LA RECOMENDACIÓN</span>
+            <span>TU EXPERIENCIA IMPORTA</span>
             <span>GOOGLE</span>
           </div>
-          <h2 id="review-title">Un gesto breve.<br />Un impacto real.</h2>
-          <p>Tu reseña nos ayuda a seguir construyendo una barbería elegida por su técnica, atención y carácter.</p>
+          <h1 id="review-title">¿Cómo fue tu experiencia?</h1>
+          <p>Tu reseña ayuda a que más personas descubran el sello Furtivo.</p>
           <a
             href={links.review}
             target="_blank"
@@ -62,12 +58,11 @@ export default function FurtivoPage() {
             Dejar reseña en Google
             <span aria-hidden="true">→</span>
           </a>
-          <p className={styles.help}>Toma menos de un minuto. Gracias por elegirnos.</p>
+          <p className={styles.help}>Toma menos de un minuto. Gracias por elegir Furtivo.</p>
         </section>
 
-        <section className={styles.connect} aria-labelledby="connect-title">
-          <p className={styles.kicker}>SIGUE CERCA</p>
-          <h2 id="connect-title">El estilo sigue fuera de la silla.</h2>
+        <nav className={styles.connect} aria-label="Canales de Furtivo">
+          <p className={styles.kicker}>SIGUE A FURTIVO</p>
           <div className={styles.links}>
             <a
               href={links.instagram}
@@ -88,7 +83,7 @@ export default function FurtivoPage() {
               <i aria-hidden="true">↗</i>
             </a>
           </div>
-        </section>
+        </nav>
 
         <footer className={styles.footer}>Furtivo Barber Shop · Hecho para volver</footer>
       </main>
