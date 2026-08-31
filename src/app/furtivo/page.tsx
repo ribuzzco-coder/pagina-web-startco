@@ -8,8 +8,8 @@ const links = {
   review:
     "https://www.google.com/search?sca_esv=48cf712148e4e72e&sxsrf=APpeQnszExNoAyXjqwrcxhBzXuz3I-ixDg:1788191754883&q=opiniones+de+furtivo+barberia&uds=AJ5uw1-A1MjoHBdWfnTwTNi6hL3M8S-fbHtha7ENGOcyB-5ldmsU99707D--Cw8wheglTz3sHXseqNL6YWDzpVTfj4KePu_Z8Ll3djRx4UsoO4UpJpU2jcSofRntqGGTJjB1MSHquGwf704wyBq0J-w-Vfdd8UlwasOntBwh0veArvqH6S31bwm9smGGFyP5UhPKtvchQDFQQgnvay6wy2GaSJjzJwadf147QzdBuBkCqItXr2BD-mJfO-9epy2dUYB4-m5ateMQXCx8VHoBcHBiq_01T6pupO3amYBE8pn07uUVvN2-jno8pS6NVqRWlAkeHTo5RNOnIh1FMV0ktpeKAc5Ik8DxR2lt0zLZfLRAPpAupcC82Uth2EPFH5b_3-KfOVsrOUpwN19fMWxvav16FbEsYlksjn2GMiykTRwYDajObXb8jBiSkKQegjSSi6MG6Kp03Hnc9T3BYBw5fALhTHStVoFKB46fcClefju_2DVc9irtJommMK6hOu_QEmNrbDL22uv1Hkq_-64m2LElKI64h5ifom0TvbsekBxwoW_SGVXNJOa2CRVYUEddB6dd64stnYAI&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_3JAHfVmp2Bh9K2HujDy_qcphMrn2QP-EPlP0eVEc9nszQKfZsADAdLxUwch1JFr21Ye3k6qLXKlCe_MUEmIsAf_lwQShe__a7zIBI2eb0JjWzt2GQ%3D%3D&sa=X&ved=2ahUKEwjr7duyncuWAxWhSzABHRvHLLUQk8gLegQIHhAB&ictx=1&biw=440&bih=766&dpr=3#ebo=1&lrd=0x8e44297b251023eb:0x91c72491f6caaa64,3",
   instagram: "https://www.instagram.com/furtivo_barberia/",
-  // Reemplazar por el enlace directo de Furtivo, por ejemplo: https://wa.me/573001234567
-  whatsapp: "https://wa.me/",
+  whatsapp:
+    "https://wa.me/573137511510?text=Hola%2C%20vengo%20desde%20la%20landing%20de%20Furtivo%20y%20quiero%20agendar%20una%20cita.",
 };
 
 export const metadata = createPageMetadata({
@@ -79,7 +79,7 @@ export default function FurtivoPage() {
               rel="noopener noreferrer"
               className={styles.linkItem}
             >
-              <span><b>WhatsApp</b><small>Escríbenos directo</small></span>
+              <span><b>WhatsApp</b><small>+57 313 751 1510</small></span>
               <i aria-hidden="true">↗</i>
             </a>
           </div>
