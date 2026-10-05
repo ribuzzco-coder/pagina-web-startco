@@ -51,6 +51,7 @@ const envSchema = z
     CTA_TRACK_RATE_LIMIT_MAX: z.coerce.number().int().positive().default(60),
     DIAGNOSTIC_DUPLICATE_WINDOW_HOURS: z.coerce.number().int().positive().default(24),
     GOOGLE_SHEETS_WEBHOOK_URL: optionalUrl,
+    BIONDA_SHEETS_WEBHOOK_URL: optionalUrl,
     DIAGNOSTIC_SHEETS_WEBHOOK_URL: optionalUrl,
   })
   .superRefine((values, ctx) => {
@@ -87,6 +88,7 @@ function readRawEnv() {
     CTA_TRACK_RATE_LIMIT_MAX: process.env.CTA_TRACK_RATE_LIMIT_MAX,
     DIAGNOSTIC_DUPLICATE_WINDOW_HOURS: process.env.DIAGNOSTIC_DUPLICATE_WINDOW_HOURS,
     GOOGLE_SHEETS_WEBHOOK_URL: process.env.GOOGLE_SHEETS_WEBHOOK_URL,
+    BIONDA_SHEETS_WEBHOOK_URL: process.env.BIONDA_SHEETS_WEBHOOK_URL,
     DIAGNOSTIC_SHEETS_WEBHOOK_URL: process.env.DIAGNOSTIC_SHEETS_WEBHOOK_URL,
   };
 }

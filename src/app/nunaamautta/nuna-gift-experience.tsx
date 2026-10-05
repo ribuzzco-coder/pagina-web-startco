@@ -155,6 +155,7 @@ export function NunaGiftExperience({
   const [result, setResult] = useState<PrizeResult | null>(null);
   const [assignedPrize, setAssignedPrize] = useState<PrizeResult | null>(null);
   const [copyMessage, setCopyMessage] = useState("");
+  const [redemptionMode, setRedemptionMode] = useState<"in-person" | "online" | null>(null);
   const spinTimer = useRef<number | undefined>(undefined);
 
   useEffect(() => {
@@ -276,9 +277,9 @@ export function NunaGiftExperience({
   }
 
   async function copyCode() {
-    if (!result) return;
+    if (!result || !redemptionMode) return;
     try {
-      await navigator.clipboard.writeText(result.shopifyCode ?? result.validationCode);
+      await navigator.clipboard.writeText(redemptionMode === "in-person" ? result.validationCode : result.shopifyCode ?? result.validationCode);
       setCopyMessage("Código copiado.");
     } catch {
       setCopyMessage("Selecciona el código para copiarlo.");
@@ -550,13 +551,20 @@ export function NunaGiftExperience({
               <div className={styles.resultCard} aria-live="polite">
                 <p>¡Felicidades!</p>
                 <h3>{result.label}</h3>
-                <span>{result.shopifyCode ?? result.validationCode}</span>
-                <button type="button" onClick={copyCode}>Copiar código</button>
-                <p role="status">{copyMessage}</p>
-                <a className={styles.primaryButton} href={result.redemptionUrl ?? instagramUrl} target="_blank" rel="noopener noreferrer">
-                  {result.redemptionUrl ? "Comprar con mi descuento" : "Reclamar premio en Instagram"}
-                </a>
-                <a className={styles.primaryButton} href="https://nunaamautta.com/collections/all" target="_blank" rel="noopener noreferrer">Ver la colección</a>
+                {!redemptionMode ? <>
+                  <p className={styles.redemptionHint}>¿Dónde quieres redimir tu premio?</p>
+                  <div className={styles.redemptionChoices}>
+                    <button type="button" onClick={() => setRedemptionMode("in-person")}>Redimir en persona</button>
+                    <button type="button" onClick={() => setRedemptionMode("online")}>Redimir en la página web</button>
+                  </div>
+                </> : <>
+                  <p className={styles.redemptionHint}>{redemptionMode === "in-person" ? "Presenta este código al equipo de Nuna en la feria o punto de atención para validar tu premio." : "Aplica tu descuento al comprar en la tienda online."}</p>
+                  <span>{redemptionMode === "in-person" ? result.validationCode : result.shopifyCode ?? result.validationCode}</span>
+                  <button type="button" onClick={copyCode}>Copiar código</button>
+                  <p role="status">{copyMessage}</p>
+                  {redemptionMode === "online" && <a className={styles.primaryButton} href={result.redemptionUrl ?? instagramUrl} target="_blank" rel="noopener noreferrer">{result.redemptionUrl ? "Comprar con mi descuento" : "Consultar mi premio"}</a>}
+                  <button className={styles.changeRedemption} type="button" onClick={() => { setRedemptionMode(null); setCopyMessage(""); }}>Cambiar dónde redimir</button>
+                </>}
               </div>
             )}
           </div>

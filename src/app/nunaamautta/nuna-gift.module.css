@@ -547,3 +547,6 @@
     transition-duration: 0.01ms;
   }
 }
+.redemptionChoices { display: grid; gap: 10px; width: 100%; }
+.resultCard .redemptionHint { letter-spacing: 0; text-transform: none; font-size: 14px; line-height: 1.5; font-weight: 500; }
+.resultCard .changeRedemption { background: transparent; border: 0; min-height: 44px; padding: 10px; text-decoration: underline; letter-spacing: 0; }

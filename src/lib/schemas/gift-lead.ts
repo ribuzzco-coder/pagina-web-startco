@@ -10,7 +10,7 @@ const birthdaySchema = z
 
 export const giftLeadSchema = z
   .object({
-    brand: z.literal("nunaamautta"),
+    brand: z.enum(["nunaamautta", "biondaymora"]),
     name: z.string().trim().min(2).max(100),
     email: z.string().trim().email().max(160).toLowerCase(),
     phone: z
@@ -30,9 +30,13 @@ export const giftLeadSchema = z
     sourcePath: z.string().trim().max(200).optional(),
     productInterest: z.string().trim().max(300).optional(),
     purchaseStatus: z.enum(["purchased", "interested"]),
+    consent: z.boolean().optional(),
   })
   .superRefine((value, ctx) => {
-    if (value.brand === "nunaamautta" && (!value.productInterest || value.productInterest.length < 2)) {
+    if (value.brand === "biondaymora" && value.consent !== true) {
+      ctx.addIssue({ code: "custom", path: ["consent"], message: "Acepta el tratamiento de datos para participar." });
+    }
+    if (!value.productInterest || value.productInterest.length < 2) {
       ctx.addIssue({ code: "custom", path: ["productInterest"], message: "Cuéntanos qué producto compraste o te interesó." });
     }
   });

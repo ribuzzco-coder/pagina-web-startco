@@ -4,11 +4,13 @@ import { apiError, apiOk, handleRouteError } from "@/lib/api/response";
 import { getZodFieldErrors, readJsonBody } from "@/lib/api/validation";
 import { env } from "@/lib/env";
 import { NUNA_DISCOUNT_CODES, nunaDiscountUrl } from "@/lib/nuna-discounts";
+import { BIONDA_DISCOUNT_CODES, biondaDiscountUrl } from "@/lib/bionda-discounts";
 import { giftLeadSchema } from "@/lib/schemas/gift-lead";
 import { getClientIp } from "@/lib/security/request";
 
 const BRAND_LABELS = {
   nunaamautta: "Nuna Amautta",
+  biondaymora: "Bionda y Mora",
 } as const;
 
 type RateLimitEntry = {
@@ -73,7 +75,10 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!env.GOOGLE_SHEETS_WEBHOOK_URL) {
+    const webhookUrl = parsed.data.brand === "biondaymora"
+      ? env.BIONDA_SHEETS_WEBHOOK_URL
+      : env.GOOGLE_SHEETS_WEBHOOK_URL;
+    if (!webhookUrl) {
       return apiError(
         503,
         "GOOGLE_SHEETS_NOT_CONFIGURED",
@@ -97,6 +102,21 @@ export async function POST(request: Request) {
       redemptionUrl: shopifyCode ? nunaDiscountUrl(shopifyCode) : undefined,
     } : null;
 
+    const biondaAssignment = parsed.data.brand === "biondaymora"
+      ? createHmac("sha256", env.SENSITIVE_FIELD_ENCRYPTION_KEY)
+          .update(`bionda-gift-v1:${parsed.data.email}`).digest("hex")
+      : null;
+    const chance = biondaAssignment ? parseInt(biondaAssignment.slice(0, 8), 16) % 100 : 0;
+    const biondaId = chance < 10 ? "discount-5" : chance < 70 ? "discount-10" : chance < 95 ? "discount-15" : "scarf";
+    const biondaCode = BIONDA_DISCOUNT_CODES[biondaId];
+    const awardedPrize = biondaAssignment ? {
+      id: biondaId,
+      validationCode: `BYM-${biondaAssignment.slice(8, 20).toUpperCase()}`,
+      label: biondaId === "scarf" ? "Pañoleta gratis" : `${biondaId.slice(9)}% de descuento`,
+      shopifyCode: biondaCode,
+      redemptionUrl: biondaCode ? biondaDiscountUrl(biondaCode) : undefined,
+    } : prize;
+
     const payload = {
       submittedAt: new Date().toISOString(),
       brand: parsed.data.brand,
@@ -107,18 +127,17 @@ export async function POST(request: Request) {
       birthday: parsed.data.birthday ?? "",
       productInterest: parsed.data.productInterest ?? "",
       purchaseStatus: parsed.data.purchaseStatus,
-      prize: prize?.label ?? "",
-      validationCode: prize?.validationCode ?? "",
-      shopifyCode: prize?.shopifyCode ?? "",
+      consent: parsed.data.consent ?? false,
+      prize: awardedPrize?.label ?? "",
+      validationCode: awardedPrize?.validationCode ?? "",
+      shopifyCode: awardedPrize?.shopifyCode ?? "",
       sourcePath: parsed.data.sourcePath ?? "",
       userAgent: request.headers.get("user-agent") ?? "",
       referrer: request.headers.get("referer") ?? "",
     };
 
-    // Google Apps Script devuelve 302 redirect después de procesar el POST.
-    // Seguir el redirect convierte el POST en GET (405). Se usa redirect:"manual"
-    // y se trata 302 como éxito — el script ya ejecutó antes de redirigir.
-    const response = await fetch(env.GOOGLE_SHEETS_WEBHOOK_URL, {
+    // ContentService redirects to a one-time URL containing the script's result.
+    let response = await fetch(webhookUrl, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -126,9 +145,22 @@ export async function POST(request: Request) {
       body: JSON.stringify(payload),
       cache: "no-store",
       redirect: "manual",
+      signal: AbortSignal.timeout(15000),
     });
 
-    const accepted = response.status === 200 || response.status === 302;
+    if (response.status === 302) {
+      const location = response.headers.get("location");
+      const target = location ? new URL(location, webhookUrl) : null;
+      if (!target || target.protocol !== "https:" || target.hostname !== "script.googleusercontent.com") {
+        return apiError(502, "GOOGLE_SHEETS_REQUEST_FAILED", "Google Sheets no confirmó el registro.");
+      }
+      response = await fetch(target, { method: "GET", cache: "no-store", redirect: "error", signal: AbortSignal.timeout(15000) });
+    }
+
+    const confirmation: { ok?: boolean } | null = response.status === 200
+      ? await response.json().catch(() => null)
+      : null;
+    const accepted = confirmation?.ok === true;
 
     if (!accepted) {
       return apiError(
@@ -138,7 +170,7 @@ export async function POST(request: Request) {
       );
     }
 
-    return apiOk({ saved: true, prize }, { status: 202 });
+    return apiOk({ saved: true, prize: awardedPrize }, { status: 202 });
   } catch (error) {
     if (error instanceof SyntaxError) {
       return apiError(400, "INVALID_JSON", "El cuerpo enviado no es JSON valido.");

@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
+import { BIONDA_DISCOUNT_CODES, biondaDiscountUrl } from "@/lib/bionda-discounts";
 
 import styles from "./bionda-y-mora.module.css";
 
@@ -11,6 +12,9 @@ type FormData = {
   email: string;
   phone: string;
   birthday: string;
+  purchaseStatus: "purchased" | "interested";
+  productInterest: string;
+  consent: boolean;
 };
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
@@ -29,6 +33,8 @@ type Prize = {
 
 type PrizeResult = Prize & {
   validationCode: string;
+  shopifyCode?: string;
+  redemptionUrl?: string;
 };
 
 const EMPTY_FORM: FormData = {
@@ -36,6 +42,9 @@ const EMPTY_FORM: FormData = {
   email: "",
   phone: "",
   birthday: "",
+  purchaseStatus: "interested",
+  productInterest: "",
+  consent: false,
 };
 
 const PRIZES: Prize[] = [
@@ -91,7 +100,6 @@ const PRIZES: Prize[] = [
 
 const SEGMENT_ANGLE = 360 / PRIZES.length;
 const WHEEL_LABEL_RADIUS = 31;
-const TOTAL_CHANCE = PRIZES.reduce((total, prize) => total + prize.chance, 0);
 
 function validateForm(form: FormData) {
   const errors: FormErrors = {};
@@ -112,46 +120,19 @@ function validateForm(form: FormData) {
   }
 
   if (!form.birthday || Number.isNaN(birthdayTime)) {
-    errors.birthday = "Selecciona tu cumpleanos.";
+    errors.birthday = "Selecciona tu cumpleaños.";
   } else if (birthdayTime > Date.now()) {
     errors.birthday = "La fecha no puede ser futura.";
   }
 
+  if (form.productInterest.trim().length < 2) errors.productInterest = "Cuéntanos qué producto compraste o te interesa.";
+  if (!form.consent) errors.consent = "Acepta el tratamiento de datos para participar.";
   return errors;
 }
 
 function getTodayInputValue() {
   const now = new Date();
   return now.toISOString().slice(0, 10);
-}
-
-function createValidationCode(prefix: string) {
-  return `${prefix}-${Math.floor(1000 + Math.random() * 9000)}`;
-}
-
-function selectPrizeByChance() {
-  const threshold = Math.random() * TOTAL_CHANCE;
-  let cumulativeChance = 0;
-
-  for (const prize of PRIZES) {
-    cumulativeChance += prize.chance;
-
-    if (threshold < cumulativeChance) {
-      return prize;
-    }
-  }
-
-  return PRIZES[PRIZES.length - 1];
-}
-
-function InstagramIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="4" y="4" width="16" height="16" rx="5" />
-      <circle cx="12" cy="12" r="3.2" />
-      <path d="M16.8 7.2h.01" />
-    </svg>
-  );
 }
 
 function ArrowIcon() {
@@ -177,6 +158,29 @@ export function BiondaYMoraExperience() {
   const [rotation, setRotation] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
   const [result, setResult] = useState<PrizeResult | null>(null);
+  const [assignedPrize, setAssignedPrize] = useState<PrizeResult | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [redemptionMode, setRedemptionMode] = useState<"in-person" | "online" | null>(null);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("bionda-gift-v1") || "null");
+      const prize = PRIZES.find(item => item.id === saved?.prize?.id);
+      if (!prize || !saved.prize.validationCode) return;
+      const shopifyCode = BIONDA_DISCOUNT_CODES[prize.id];
+      const restored = { ...prize, validationCode: saved.prize.validationCode, shopifyCode, redemptionUrl: shopifyCode ? biondaDiscountUrl(shopifyCode) : undefined };
+      setForm(current => ({ ...current, name: saved.name || "" }));
+      setAssignedPrize(restored);
+      setResult(restored);
+      setStep("wheel");
+      const index = PRIZES.findIndex(item => item.id === prize.id);
+      setRotation((360 - (index * SEGMENT_ANGLE + SEGMENT_ANGLE / 2)) % 360);
+    } catch { /* Storage is optional; the server keeps the assignment stable. */ }
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   const wheelGradient = useMemo(
     () =>
@@ -188,12 +192,12 @@ export function BiondaYMoraExperience() {
     [],
   );
 
-  function updateField(field: keyof FormData, value: string) {
+  function updateField<K extends keyof FormData>(field: K, value: FormData[K]) {
     setForm((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextErrors = validateForm(form);
 
@@ -202,13 +206,30 @@ export function BiondaYMoraExperience() {
       return;
     }
 
-    setStep("wheel");
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    setSubmitError("");
+    try {
+      const response = await fetch("/api/gift-leads", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ ...form, brand: "biondaymora", sourcePath: "/biondaymora/regalo" }),
+      });
+      const payload = await response.json();
+      const prize = PRIZES.find(item => item.id === payload.data?.prize?.id);
+      if (!response.ok || !payload.ok || !prize) throw new Error("No pudimos guardar tus datos. Intenta de nuevo en unos minutos.");
+      const assigned = { ...prize, ...payload.data.prize };
+      setAssignedPrize(assigned);
+      try { localStorage.setItem("bionda-gift-v1", JSON.stringify({ name: form.name.trim().split(/\s+/)[0], prize: assigned })); } catch { /* Optional storage. */ }
+      setStep("wheel");
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "No pudimos completar el registro.");
+    } finally { setIsSubmitting(false); }
   }
 
   function spinWheel() {
-    if (isSpinning || result) return;
+    if (isSpinning || result || !assignedPrize) return;
 
-    const selectedPrize = selectPrizeByChance();
+    const selectedPrize = assignedPrize;
     const selectedIndex = PRIZES.findIndex((prize) => prize.id === selectedPrize.id);
     const selectedCenter = selectedIndex * SEGMENT_ANGLE + SEGMENT_ANGLE / 2;
     const currentNormalized = ((rotation % 360) + 360) % 360;
@@ -221,30 +242,13 @@ export function BiondaYMoraExperience() {
     setRotation(nextRotation);
 
     window.setTimeout(() => {
-      setResult({
-        ...selectedPrize,
-        validationCode: createValidationCode(selectedPrize.codePrefix),
-      });
+      setResult(selectedPrize);
       setIsSpinning(false);
     }, 4200);
   }
 
-  function restartExperience() {
-    setStep("form");
-    setForm(EMPTY_FORM);
-    setErrors({});
-    setRotation(0);
-    setResult(null);
-    setIsSpinning(false);
-  }
-
   return (
     <main className={styles.page}>
-      <div className={styles.ambient} aria-hidden="true">
-        <span className={styles.ambientOrbOne} />
-        <span className={styles.ambientOrbTwo} />
-        <span className={styles.ambientLine} />
-      </div>
 
       <header className={styles.header}>
         <div className={styles.brand}>
@@ -263,7 +267,7 @@ export function BiondaYMoraExperience() {
             <p className={styles.brandOrigin}>Hecho en Medellín</p>
           </div>
         </div>
-        <p className={styles.headerNote}>Donde cada paso transforma</p>
+        <a href="/biondaymora" className={styles.headerNote}>Volver a Bionda y Mora</a>
       </header>
 
       {step === "form" ? (
@@ -353,7 +357,7 @@ export function BiondaYMoraExperience() {
                 </label>
 
                 <label className={styles.field}>
-                  <span>Cumpleanos</span>
+                  <span>Cumpleaños</span>
                   <input
                     type="date"
                     name="birthday"
@@ -373,11 +377,31 @@ export function BiondaYMoraExperience() {
                   )}
                 </label>
 
+                <label className={styles.field}>
+                  <span>Tu relación con Bionda y Mora</span>
+                  <select value={form.purchaseStatus} onChange={event => updateField("purchaseStatus", event.target.value as FormData["purchaseStatus"])}>
+                    <option value="interested">Estoy descubriendo la marca</option>
+                    <option value="purchased">Ya compré</option>
+                  </select>
+                </label>
+                <label className={styles.field}>
+                  <span>{form.purchaseStatus === "purchased" ? "¿Qué producto compraste?" : "¿Qué producto te interesa más?"}</span>
+                  <input value={form.productInterest} maxLength={300} list="bionda-products" onChange={event => updateField("productInterest", event.target.value)} aria-invalid={Boolean(errors.productInterest)} />
+                  <datalist id="bionda-products">{["Bota Convertible Vera", "Botín Nova", "Botín Margarita", "Botín Alegría", "Botas Texanas Dakota", "Botines Texanas Montana", "Botas de Cuero Sienna", "Tenis-Suecos Girasol", "Set Viajera", "Pañoleta Amuleto", "Pañoleta Flora", "Charm Amuleto", "Kit de cuidado del cuero"].map(name => <option key={name} value={name} />)}</datalist>
+                  {errors.productInterest && <small>{errors.productInterest}</small>}
+                </label>
+                <label className={styles.consent}>
+                  <input type="checkbox" checked={form.consent} onChange={event => updateField("consent", event.target.checked)} />
+                  <span>Acepto el <a href="https://biondaymora.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">tratamiento de mis datos</a> para participar en esta actividad.</span>
+                </label>
+                {errors.consent && <p role="alert">{errors.consent}</p>}
+                {submitError && <p role="alert">{submitError}</p>}
                 <button
                   className={styles.primaryButton}
                   type="submit"
+                  disabled={isSubmitting}
                 >
-                  <span>Ir a la ruleta</span>
+                  <span>{isSubmitting ? "Guardando..." : "Ir a la ruleta"}</span>
                   <ArrowIcon />
                 </button>
               </form>
@@ -426,7 +450,7 @@ export function BiondaYMoraExperience() {
                 <div
                   className={styles.wheel}
                   style={{
-                    background: `conic-gradient(from -90deg, ${wheelGradient})`,
+                    background: `conic-gradient(from 0deg, ${wheelGradient})`,
                     transform: `rotate(${rotation}deg)`,
                   }}
                 >
@@ -491,23 +515,20 @@ export function BiondaYMoraExperience() {
               <div className={styles.resultCard} aria-live="polite">
                 <p className={styles.resultKicker}>¡Felicidades!</p>
                 <h2>{result.label}</h2>
-                <p>
-                  Guarda este código y preséntalo al equipo de Bionda y Mora
-                  para reclamar tu premio.
-                </p>
-                <strong>{result.validationCode}</strong>
-                <a
-                  href="https://www.instagram.com/biondaymora.col/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.instagramButton}
-                >
-                  <InstagramIcon />
-                  Reclamar en Instagram
-                </a>
-                <button type="button" onClick={restartExperience} className={styles.restartButton}>
-                  Jugar de nuevo
-                </button>
+                {!redemptionMode ? <>
+                  <p>¿Dónde quieres redimir tu premio?</p>
+                  <div className={styles.redemptionChoices}>
+                    <button type="button" onClick={() => setRedemptionMode("in-person")}>Redimir en persona</button>
+                    <button type="button" onClick={() => setRedemptionMode("online")}>Redimir en la página web</button>
+                  </div>
+                </> : <>
+                  <p>{redemptionMode === "in-person" ? "Presenta este código al equipo de Bionda y Mora en la feria o punto de atención para validar tu premio." : result.id === "scarf" ? "Coordina con el equipo cómo redimir tu pañoleta en un pedido online." : "Usa este cupón en la tienda. Su aplicación está sujeta a las condiciones configuradas en Shopify."}</p>
+                  <strong>{redemptionMode === "in-person" ? result.validationCode : result.shopifyCode || result.validationCode}</strong>
+                  {redemptionMode === "online" && (result.redemptionUrl ? <a href={result.redemptionUrl} target="_blank" rel="noopener noreferrer" className={styles.redemptionAction}>Comprar con mi descuento <ArrowIcon /></a> : <a
+                    href={`https://wa.me/573153827248?text=${encodeURIComponent(`Hola, gané ${result.label} en la ruleta y quiero redimirlo en un pedido online. Mi código es ${result.validationCode}.`)}`}
+                    target="_blank" rel="noopener noreferrer" className={styles.redemptionAction}>Coordinar mi regalo <ArrowIcon /></a>)}
+                  <button type="button" onClick={() => setRedemptionMode(null)} className={styles.restartButton}>Cambiar dónde redimir</button>
+                </>}
               </div>
             )}
           </div>
@@ -516,7 +537,7 @@ export function BiondaYMoraExperience() {
 
       <footer className={styles.footer}>
         <p>© Bionda y Mora</p>
-        <p>100% cuero · 100% hecho en Medellín</p>
+        <p>Diseñado y hecho en Colombia</p>
       </footer>
     </main>
   );
