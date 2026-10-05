@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { createPageMetadata } from "@/lib/metadata";
+import { NunaClickTracking } from "./nuna-click-tracking";
 
 const links = {
   whatsapp: "https://wa.me/573022415996",
-  website: "https://www.nunaamautta.com.co/",
-  shop: "https://www.nunaamautta.com.co/shop/",
-  contact: "https://www.nunaamautta.com.co/contactanos/",
+  website: "https://nunaamautta.com/",
+  shop: "https://nunaamautta.com/collections/all",
+  contact: "https://nunaamautta.com/pages/contact",
   instagram: "https://www.instagram.com/nunaamautta/",
 };
 
@@ -15,10 +16,10 @@ const logoSrc = "/images/nunaamautta/logo.png";
 const shootBase = "/images/nunaamautta/nov-2025";
 
 const campaign = {
-  name: "Nómada",
+  name: "Universo Nuna",
   headline: "Un universo de arte slow fashion que nace para hacerte brillar",
   body: "Siluetas orgánicas, tejidos suaves y piezas pensadas para moverse contigo.",
-  ctaLabel: "Comprar colección",
+  ctaLabel: "Comprar ahora",
   ctaHref: links.shop,
   heroImage: `${shootBase}/nuna-nov-2025-3.jpg`,
   storyImage: `${shootBase}/nuna-nov-2025-60.jpg`,
@@ -28,19 +29,19 @@ const moodNotes = ["Espíritu sabio", "Tejidos suaves", "Energía orgánica"] as
 
 const primaryLinks = [
   {
+    label: "Comprar",
+    caption: "Encuentra tu próxima prenda",
+    href: links.shop,
+    image: `${shootBase}/nuna-nov-2025-1.jpg`,
+    position: "object-[50%_0%]",
+    index: "01",
+  },
+  {
     label: "Instagram",
     caption: "Diario visual",
     href: links.instagram,
     image: `${shootBase}/nuna-nov-2025-58.jpg`,
-    position: "object-[50%_34%]",
-    index: "01",
-  },
-  {
-    label: "Tienda online",
-    caption: "Colección Nómada",
-    href: links.shop,
-    image: `${shootBase}/nuna-nov-2025-1.jpg`,
-    position: "object-[50%_34%]",
+    position: "object-[50%_4%]",
     index: "02",
   },
   {
@@ -48,7 +49,7 @@ const primaryLinks = [
     caption: "Tallas y disponibilidad",
     href: links.whatsapp,
     image: `${shootBase}/nuna-nov-2025-46.jpg`,
-    position: "object-[50%_30%]",
+    position: "object-[50%_7%]",
     index: "03",
   },
   {
@@ -56,48 +57,56 @@ const primaryLinks = [
     caption: "Experiencia especial",
     href: "/nunaamautta/regalo",
     image: `${shootBase}/nuna-nov-2025-22.jpg`,
-    position: "object-[50%_24%]",
+    position: "object-[50%_9%]",
     index: "04",
   },
 ] as const;
 
-const featuredProducts = [
+const collections = [
   {
-    name: "Look en tejido crema",
-    category: "Selección editorial",
-    href: links.shop,
-    image: `${shootBase}/nuna-nov-2025-1.jpg`,
-    position: "object-[50%_28%]",
+    name: "Nuna Esencia",
+    caption: "Básicos con alma",
+    href: "https://nunaamautta.com/collections/nuna-yogui-casual",
+    products: [
+      {
+        name: "Kimono Lunar",
+        href: "https://nunaamautta.com/products/kimono-lunar",
+        image: "https://cdn.shopify.com/s/files/1/0823/6806/9870/files/01__kimono-lunar__google-drive__nuna-julio2026-5168.jpg?v=1790917253&width=600",
+      },
+      {
+        name: "Pantalón Zama",
+        href: "https://nunaamautta.com/products/pantalon-zama",
+        image: "https://cdn.shopify.com/s/files/1/0823/6806/9870/files/01__pantalon-zama__google-drive__nuna-julio2026-5090.jpg?v=1790916207&width=600",
+      },
+    ],
   },
   {
-    name: "Top de red arena",
-    category: "Textura Nómada",
-    href: links.shop,
-    image: `${shootBase}/nuna-nov-2025-59.jpg`,
-    position: "object-[50%_30%]",
-  },
-  {
-    name: "Vestido tierra",
-    category: "Silueta editorial",
-    href: links.shop,
-    image: `${shootBase}/nuna-nov-2025-52.jpg`,
-    position: "object-[50%_34%]",
-  },
-  {
-    name: "Set con capucha rosa",
-    category: "Prenda ritual",
-    href: links.shop,
-    image: `${shootBase}/nuna-nov-2025-13.jpg`,
-    position: "object-[50%_28%]",
+    name: "Nuna Artesanal",
+    caption: "Tejidas a mano, con intención",
+    href: "https://nunaamautta.com/collections/nuna-artesanal",
+    products: [
+      {
+        name: "Top Sirena",
+        href: "https://nunaamautta.com/products/top-sirena",
+        image: `${shootBase}/nuna-nov-2025-59.jpg`,
+      },
+      {
+        name: "Top Capucha Alma",
+        href: "https://nunaamautta.com/products/top-capucha-alma",
+        image: "https://cdn.shopify.com/s/files/1/0823/6806/9870/files/01__TOP-CAPUCHA-ALMA.jpg?v=1790918033&width=600",
+      },
+    ],
   },
 ] as const;
 
 export const metadata = createPageMetadata({
   title: "Nuna Amautta",
   description:
-    "Biolink editorial de Nuna Amautta. Espíritu Sabio, moda consciente y colección Nómada con compra directa y asesoría por WhatsApp.",
+    "El universo de Nuna Amautta: arte slow fashion, compra online, inspiración y asesoría por WhatsApp.",
   path: "/nunaamautta",
 });
+metadata.openGraph = { ...metadata.openGraph, images: [{ url: `${shootBase}/nuna-nov-2025-3.jpg`, width: 1280, height: 1920, alt: "Nuna Amautta - Colección Nómada" }] };
+metadata.twitter = { ...metadata.twitter, images: [`${shootBase}/nuna-nov-2025-3.jpg`] };
 
 function ArrowIcon() {
   return (
@@ -131,7 +140,7 @@ function LogoMark({ className = "" }: { className?: string }) {
 }
 
 function VisualLink({ item }: { item: (typeof primaryLinks)[number] }) {
-  const className = "group relative block min-h-[8.2rem] overflow-hidden bg-[#d9c7a6]";
+  const className = "group relative block h-[12rem] overflow-hidden bg-[#d9c7a6]";
   const content = (
     <>
       <Image
@@ -178,7 +187,8 @@ function VisualLink({ item }: { item: (typeof primaryLinks)[number] }) {
 
 export default function NunaAmauttaPage() {
   return (
-    <section className="-mt-[76px] min-h-screen bg-[#eee2cf] text-[#231b12] [font-family:var(--font-assistant)]">
+    <section data-nuna-links className="-mt-[76px] min-h-screen bg-[#eee2cf] text-[#231b12] [font-family:var(--font-assistant)]">
+      <NunaClickTracking />
       <div className="mx-auto min-h-screen w-full max-w-[480px] bg-[#f5ecde] shadow-[0_24px_80px_rgba(45,34,20,0.14)]">
         <div className="relative">
           <div className="relative overflow-hidden bg-[#dfcfb2] px-4 pb-5 pt-4">
@@ -191,7 +201,7 @@ export default function NunaAmauttaPage() {
                   </span>
                   <span className="h-px w-10 bg-[#7a6331]/42" />
                 </div>
-                <LogoMark className="w-20 opacity-75 mix-blend-multiply" />
+                <LogoMark className="w-28 mix-blend-multiply" />
               </div>
 
               <div className="relative col-span-2 min-h-[24.5rem] overflow-hidden bg-[#d9c7a6]">
@@ -205,12 +215,9 @@ export default function NunaAmauttaPage() {
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(35,27,18,0.02)_0%,rgba(35,27,18,0.08)_40%,rgba(35,27,18,0.68)_100%)]" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="inline-flex max-w-[11.6rem]">
-                    <LogoMark className="w-full brightness-[2.6] contrast-[0.9] saturate-[0.35] drop-shadow-[0_2px_12px_rgba(35,27,18,0.42)]" />
-                  </div>
-                  <p className="mt-4 max-w-[18rem] text-2xl font-semibold leading-[1.02] drop-shadow-[0_2px_10px_rgba(35,27,18,0.32)]">
+                  <h1 className="mt-4 max-w-[18rem] text-2xl font-semibold leading-[1.02] drop-shadow-[0_2px_10px_rgba(35,27,18,0.32)]">
                     {campaign.headline}
-                  </p>
+                  </h1>
                   <p className="mt-3 max-w-[17rem] text-sm leading-5 text-white/86 drop-shadow-[0_2px_8px_rgba(35,27,18,0.28)]">
                     {campaign.body}
                   </p>
@@ -247,28 +254,29 @@ export default function NunaAmauttaPage() {
           </div>
         </div>
 
-        <section className="border-t border-[#dccbab] px-5 py-7">
+        {collections.map((collection) => (
+        <section key={collection.name} className="border-t border-[#dccbab] px-5 py-7">
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="[font-family:var(--font-montserrat)] text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#876d35]">
-                La edición
+                {collection.caption}
               </p>
-              <h2 className="mt-2 [font-family:var(--font-montserrat)] text-2xl font-bold leading-none">
-                Shop Nómada
+              <h2 className="mt-2 [font-family:var(--font-montserrat)] text-xl font-bold leading-tight">
+                {collection.name}
               </h2>
             </div>
             <a
-              href={links.shop}
+              href={collection.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="[font-family:var(--font-montserrat)] text-xs font-bold uppercase tracking-[0.16em] text-[#7a6331]"
+              className="shrink-0 [font-family:var(--font-montserrat)] text-xs font-bold uppercase tracking-[0.16em] text-[#7a6331]"
             >
               Ver todo
             </a>
           </div>
 
           <div className="mt-5 grid grid-cols-2 gap-x-3 gap-y-6">
-            {featuredProducts.map((product) => (
+            {collection.products.map((product) => (
               <a
                 key={product.name}
                 href={product.href}
@@ -276,26 +284,28 @@ export default function NunaAmauttaPage() {
                 rel="noopener noreferrer"
                 className="group block"
               >
-                <div className="relative aspect-[3/4] overflow-hidden bg-[#dfcfb2]">
+                <div className="relative aspect-[2/3] overflow-hidden bg-[#dfcfb2]">
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
+                    unoptimized={product.image.startsWith("https://")}
                     sizes="220px"
-                    className={`object-cover transition duration-500 group-hover:scale-[1.03] ${product.position}`}
+                    className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
                 <p className="mt-3 [font-family:var(--font-montserrat)] text-[0.72rem] font-bold uppercase leading-4 tracking-[0.1em] text-[#231b12]">
                   {product.name}
                 </p>
-                <p className="mt-1 text-xs text-[#66553b]">{product.category}</p>
+                <p className="mt-1 inline-flex items-center gap-1 text-xs text-[#66553b]">Ver producto <ArrowIcon /></p>
               </a>
             ))}
           </div>
         </section>
+        ))}
 
         <section className="grid grid-cols-[0.88fr_1.12fr] border-t border-[#dccbab]">
-          <div className="relative min-h-64 bg-[#dfcfb2]">
+          <a href="https://nunaamautta.com/products/top-sirena" target="_blank" rel="noopener noreferrer" aria-label="Ver Top Sirena en la tienda" className="relative block min-h-64 bg-[#dfcfb2]">
             <Image
               src={campaign.storyImage}
               alt="Detalle editorial de Nuna Amautta"
@@ -303,7 +313,7 @@ export default function NunaAmauttaPage() {
               sizes="220px"
               className="object-cover object-[50%_28%]"
             />
-          </div>
+          </a>
           <div className="flex flex-col justify-center px-5 py-6">
             <p className="[font-family:var(--font-montserrat)] text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#876d35]">
               Espíritu Sabio

@@ -176,8 +176,6 @@ export function BiondaYMoraExperience() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [rotation, setRotation] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
-  const [isSubmittingLead, setIsSubmittingLead] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
   const [result, setResult] = useState<PrizeResult | null>(null);
 
   const wheelGradient = useMemo(
@@ -193,31 +191,9 @@ export function BiondaYMoraExperience() {
   function updateField(field: keyof FormData, value: string) {
     setForm((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
-    setSubmitError(null);
   }
 
-  async function saveLead() {
-    const response = await fetch("/api/gift-leads", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        brand: "biondaymora",
-        name: form.name.trim(),
-        email: form.email.trim(),
-        phone: form.phone.trim(),
-        birthday: form.birthday,
-        sourcePath: window.location.pathname,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error("Gift lead could not be saved.");
-    }
-  }
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextErrors = validateForm(form);
 
@@ -226,19 +202,7 @@ export function BiondaYMoraExperience() {
       return;
     }
 
-    setIsSubmittingLead(true);
-    setSubmitError(null);
-
-    try {
-      await saveLead();
-      setStep("wheel");
-    } catch {
-      setSubmitError(
-        "No pudimos guardar tus datos. Revisa tu conexion e intenta de nuevo.",
-      );
-    } finally {
-      setIsSubmittingLead(false);
-    }
+    setStep("wheel");
   }
 
   function spinWheel() {
@@ -272,8 +236,6 @@ export function BiondaYMoraExperience() {
     setRotation(0);
     setResult(null);
     setIsSpinning(false);
-    setIsSubmittingLead(false);
-    setSubmitError(null);
   }
 
   return (
@@ -414,16 +376,10 @@ export function BiondaYMoraExperience() {
                 <button
                   className={styles.primaryButton}
                   type="submit"
-                  disabled={isSubmittingLead}
                 >
-                  <span>{isSubmittingLead ? "Guardando..." : "Ir a la ruleta"}</span>
+                  <span>Ir a la ruleta</span>
                   <ArrowIcon />
                 </button>
-                {submitError && (
-                  <p className={styles.submitError} role="alert">
-                    {submitError}
-                  </p>
-                )}
               </form>
 
               <p className={styles.privacy}>

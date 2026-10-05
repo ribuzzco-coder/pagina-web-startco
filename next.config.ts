@@ -3,11 +3,11 @@ import type { NextConfig } from "next";
 const isDev = process.env.NODE_ENV === "development";
 const contentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://app.cal.com${isDev ? " 'unsafe-eval'" : ""};
+  script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://app.cal.com https://www.googletagmanager.com${isDev ? " 'unsafe-eval'" : ""};
   style-src 'self' 'unsafe-inline' https://app.cal.com https://cal.com;
   img-src 'self' data: blob: https:;
   font-src 'self' data: https://fonts.gstatic.com;
-  connect-src 'self' https://*.supabase.co https://challenges.cloudflare.com https://cal.com https://*.cal.com;
+  connect-src 'self' https://*.supabase.co https://challenges.cloudflare.com https://cal.com https://*.cal.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com;
   frame-src 'self' https://challenges.cloudflare.com https://docs.google.com https://www.google.com https://cal.com https://*.cal.com;
   object-src 'none';
   base-uri 'self';

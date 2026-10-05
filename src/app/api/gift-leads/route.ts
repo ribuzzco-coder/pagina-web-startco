@@ -1,12 +1,14 @@
+import { createHmac } from "node:crypto";
+
 import { apiError, apiOk, handleRouteError } from "@/lib/api/response";
 import { getZodFieldErrors, readJsonBody } from "@/lib/api/validation";
 import { env } from "@/lib/env";
+import { NUNA_DISCOUNT_CODES, nunaDiscountUrl } from "@/lib/nuna-discounts";
 import { giftLeadSchema } from "@/lib/schemas/gift-lead";
 import { getClientIp } from "@/lib/security/request";
 
 const BRAND_LABELS = {
   nunaamautta: "Nuna Amautta",
-  biondaymora: "Bionda y Mora",
 } as const;
 
 type RateLimitEntry = {
@@ -79,6 +81,22 @@ export async function POST(request: Request) {
       );
     }
 
+    // A stable server-side assignment prevents repeat submissions from changing the prize.
+    const assignment = parsed.data.brand === "nunaamautta"
+      ? createHmac("sha256", env.SENSITIVE_FIELD_ENCRYPTION_KEY)
+          .update(`nuna-gift-v1:${parsed.data.email}`)
+          .digest("hex")
+      : null;
+    const discount = assignment ? [10, 15, 20][parseInt(assignment.slice(0, 8), 16) % 3] : null;
+    const shopifyCode = discount ? NUNA_DISCOUNT_CODES[`discount-${discount}`] : undefined;
+    const prize = assignment && discount ? {
+      id: `discount-${discount}`,
+      validationCode: `NUNA${discount}-${assignment.slice(8, 20).toUpperCase()}`,
+      label: `${discount}% en tu pedido`,
+      shopifyCode,
+      redemptionUrl: shopifyCode ? nunaDiscountUrl(shopifyCode) : undefined,
+    } : null;
+
     const payload = {
       submittedAt: new Date().toISOString(),
       brand: parsed.data.brand,
@@ -87,6 +105,11 @@ export async function POST(request: Request) {
       email: parsed.data.email,
       phone: parsed.data.phone,
       birthday: parsed.data.birthday ?? "",
+      productInterest: parsed.data.productInterest ?? "",
+      purchaseStatus: parsed.data.purchaseStatus,
+      prize: prize?.label ?? "",
+      validationCode: prize?.validationCode ?? "",
+      shopifyCode: prize?.shopifyCode ?? "",
       sourcePath: parsed.data.sourcePath ?? "",
       userAgent: request.headers.get("user-agent") ?? "",
       referrer: request.headers.get("referer") ?? "",
@@ -115,7 +138,7 @@ export async function POST(request: Request) {
       );
     }
 
-    return apiOk({ saved: true }, { status: 202 });
+    return apiOk({ saved: true, prize }, { status: 202 });
   } catch (error) {
     if (error instanceof SyntaxError) {
       return apiError(400, "INVALID_JSON", "El cuerpo enviado no es JSON valido.");

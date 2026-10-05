@@ -30,6 +30,7 @@
 }
 
 .kicker span,
+.kicker a,
 .eyebrow {
   color: #7a5428;
   font-family: var(--font-montserrat), sans-serif;
@@ -48,9 +49,9 @@
 }
 
 .topLogo {
-  width: 86px;
+  width: 112px;
   height: auto;
-  opacity: 0.72;
+  opacity: 1;
   object-fit: contain;
   mix-blend-mode: multiply;
 }
@@ -215,7 +216,8 @@
   text-transform: uppercase;
 }
 
-.field input {
+.field input,
+.field select {
   width: 100%;
   border: 0;
   border-bottom: 1px solid rgba(122, 84, 40, 0.46);
@@ -231,11 +233,13 @@
   color: rgba(36, 26, 17, 0.48);
 }
 
-.field input:focus {
+.field input:focus,
+.field select:focus {
   border-color: #241a11;
 }
 
-.field input[aria-invalid="true"] {
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"] {
   border-color: #963a27;
 }
 
@@ -353,6 +357,7 @@
 .wheelFrame {
   position: absolute;
   inset: 16px;
+  overflow: hidden;
   border: 7px solid #fff7e8;
   border-radius: 50%;
   background: #241a11;
@@ -376,7 +381,7 @@
   inset: 0;
   border-radius: 50%;
   background: repeating-conic-gradient(
-    from -90deg,
+    from 0deg,
     rgba(255, 247, 232, 0.72) 0deg,
     rgba(255, 247, 232, 0.72) 1.8deg,
     transparent 1.8deg,
@@ -481,6 +486,16 @@
 
 .resultCard button {
   margin-top: 18px;
+}
+
+.resultCard a {
+  margin-top: 18px;
+}
+
+.resultCard span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  user-select: all;
 }
 
 @keyframes resultIn {

@@ -1,16 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties, FormEvent } from "react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { NUNA_DISCOUNT_CODES, nunaDiscountUrl } from "@/lib/nuna-discounts";
 
 import styles from "./nuna-gift.module.css";
+import { NunaClickTracking } from "./nuna-click-tracking";
 
 type FormData = {
   name: string;
   email: string;
   phone: string;
   birthday: string;
+  productInterest: string;
+  purchaseStatus: "" | "purchased" | "interested";
 };
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
@@ -26,6 +31,8 @@ type Prize = {
 
 type PrizeResult = Prize & {
   validationCode: string;
+  shopifyCode?: string;
+  redemptionUrl?: string;
 };
 
 const EMPTY_FORM: FormData = {
@@ -33,12 +40,14 @@ const EMPTY_FORM: FormData = {
   email: "",
   phone: "",
   birthday: "",
+  productInterest: "",
+  purchaseStatus: "",
 };
 
 const PRIZES: Prize[] = [
   {
     id: "discount-10",
-    label: "10% en referencias seleccionadas",
+    label: "10% en tu pedido",
     wheelLabel: "10%",
     codePrefix: "NUNA10",
     color: "#2b2118",
@@ -46,7 +55,7 @@ const PRIZES: Prize[] = [
   },
   {
     id: "discount-15",
-    label: "15% en referencias seleccionadas",
+    label: "15% en tu pedido",
     wheelLabel: "15%",
     codePrefix: "NUNA15",
     color: "#a06a35",
@@ -54,7 +63,7 @@ const PRIZES: Prize[] = [
   },
   {
     id: "discount-20",
-    label: "20% en referencias seleccionadas",
+    label: "20% en tu pedido",
     wheelLabel: "20%",
     codePrefix: "NUNA20",
     color: "#e8d6b5",
@@ -67,10 +76,19 @@ const WHEEL_LABEL_RADIUS = 34;
 const shootBase = "/images/nunaamautta/nov-2025";
 const heroImage = `${shootBase}/nuna-nov-2025-22.jpg`;
 const panelImage = `${shootBase}/nuna-nov-2025-46.jpg`;
+const productSuggestions = [
+  "Top Sirena", "Top Nómada", "Top Capucha Alma", "Top Concha", "Top Killa",
+  "Top Renacer", "Top Duna", "Top Deusa", "Falda Nómada", "Falda Amar",
+  "Falda Mulata", "Falda Short Brújula", "Pantalón Zama", "Pantalón Kairo",
+  "Pantalón Dharma", "Vestido Sahara", "Vestido Gaia", "Vestido Gurmuk",
+  "Kimono Lunar", "Overol Venus", "Bikini Conchas", "Capa Bruma",
+  "Pashmina Munay", "Mangas Etérea", "Perla Mesh Hat", "Magia Mesh Hat",
+  "Loto Mesh Hat", "Cristal Mesh Hat", "Armonía Mesh Hat",
+];
 
 function getTodayInputValue() {
   const now = new Date();
-  return now.toISOString().slice(0, 10);
+  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
 }
 
 function validateForm(form: FormData) {
@@ -90,6 +108,10 @@ function validateForm(form: FormData) {
   if (phoneDigits.length < 7 || phoneDigits.length > 15) {
     errors.phone = "Ingresa un celular válido.";
   }
+  if (form.productInterest.trim().length < 2) {
+    errors.productInterest = "Cuéntanos qué producto compraste o te interesó.";
+  }
+  if (!form.purchaseStatus) errors.purchaseStatus = "Selecciona una opción.";
 
   if (!form.birthday || Number.isNaN(birthdayTime)) {
     errors.birthday = "Selecciona tu cumpleaños.";
@@ -98,10 +120,6 @@ function validateForm(form: FormData) {
   }
 
   return errors;
-}
-
-function createValidationCode(prefix: string) {
-  return `${prefix}-${Math.floor(1000 + Math.random() * 9000)}`;
 }
 
 function SparkIcon() {
@@ -135,6 +153,31 @@ export function NunaGiftExperience({
   const [isSubmittingLead, setIsSubmittingLead] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [result, setResult] = useState<PrizeResult | null>(null);
+  const [assignedPrize, setAssignedPrize] = useState<PrizeResult | null>(null);
+  const [copyMessage, setCopyMessage] = useState("");
+  const spinTimer = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    const restoreTimer = window.setTimeout(() => {
+      try {
+        const stored = JSON.parse(localStorage.getItem("nuna-gift-v1") ?? "null");
+        const prize = PRIZES.find((item) => item.id === stored?.prize?.id);
+        if (prize && typeof stored.prize.validationCode === "string" && typeof stored.name === "string") {
+          setResult({ ...prize, validationCode: stored.prize.validationCode,
+            shopifyCode: NUNA_DISCOUNT_CODES[prize.id],
+            redemptionUrl: nunaDiscountUrl(NUNA_DISCOUNT_CODES[prize.id]),
+          });
+          setForm({ ...EMPTY_FORM, name: stored.name });
+          setStep("wheel");
+          setRotation((360 - (PRIZES.indexOf(prize) * SEGMENT_ANGLE + SEGMENT_ANGLE / 2)) % 360);
+        }
+      } catch { /* Storage may be unavailable in private browsing. */ }
+    }, 0);
+    return () => {
+      window.clearTimeout(restoreTimer);
+      window.clearTimeout(spinTimer.current);
+    };
+  }, []);
 
   const wheelGradient = useMemo(
     () =>
@@ -146,7 +189,7 @@ export function NunaGiftExperience({
     [],
   );
 
-  function updateField(field: keyof FormData, value: string) {
+  function updateField<K extends keyof FormData>(field: K, value: FormData[K]) {
     setForm((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
     setSubmitError(null);
@@ -164,6 +207,8 @@ export function NunaGiftExperience({
         email: form.email.trim(),
         phone: form.phone.trim(),
         birthday: form.birthday,
+        productInterest: form.productInterest.trim(),
+        purchaseStatus: form.purchaseStatus,
         sourcePath: window.location.pathname,
       }),
     });
@@ -171,6 +216,19 @@ export function NunaGiftExperience({
     if (!response.ok) {
       throw new Error("Gift lead could not be saved.");
     }
+    const body = await response.json();
+    const prize = PRIZES.find((item) => item.id === body.data?.prize?.id);
+    if (!prize || typeof body.data.prize.validationCode !== "string") {
+      throw new Error("Missing prize assignment.");
+    }
+    const assigned = { ...prize, validationCode: body.data.prize.validationCode,
+      shopifyCode: body.data.prize.shopifyCode,
+      redemptionUrl: body.data.prize.redemptionUrl,
+    };
+    setAssignedPrize(assigned);
+    try {
+      localStorage.setItem("nuna-gift-v1", JSON.stringify({ name: form.name.trim().split(/\s+/)[0], prize: assigned }));
+    } catch { /* The prize remains available in the current session. */ }
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -198,10 +256,9 @@ export function NunaGiftExperience({
   }
 
   function spinWheel() {
-    if (isSpinning || result) return;
+    if (isSpinning || result || !assignedPrize) return;
 
-    const selectedIndex = Math.floor(Math.random() * PRIZES.length);
-    const selectedPrize = PRIZES[selectedIndex];
+    const selectedIndex = PRIZES.findIndex((item) => item.id === assignedPrize.id);
     const selectedCenter = selectedIndex * SEGMENT_ANGLE + SEGMENT_ANGLE / 2;
     const currentNormalized = ((rotation % 360) + 360) % 360;
     const targetNormalized = (360 - selectedCenter) % 360;
@@ -212,25 +269,29 @@ export function NunaGiftExperience({
     setIsSpinning(true);
     setRotation(nextRotation);
 
-    window.setTimeout(() => {
-      setResult({
-        ...selectedPrize,
-        validationCode: createValidationCode(selectedPrize.codePrefix),
-      });
+    spinTimer.current = window.setTimeout(() => {
+      setResult(assignedPrize);
       setIsSpinning(false);
     }, 4200);
   }
 
-  function claimPrize() {
-    window.location.assign(instagramUrl);
+  async function copyCode() {
+    if (!result) return;
+    try {
+      await navigator.clipboard.writeText(result.shopifyCode ?? result.validationCode);
+      setCopyMessage("Código copiado.");
+    } catch {
+      setCopyMessage("Selecciona el código para copiarlo.");
+    }
   }
 
   return (
-    <section className={styles.section} id="reclama-tu-regalo">
+    <section data-nuna-links className={styles.section} id="reclama-tu-regalo">
+      <NunaClickTracking />
       <div className={styles.phone}>
         <header className={styles.topbar}>
           <div className={styles.kicker}>
-            <span>02 / Regalo</span>
+            <Link href="/nunaamautta">Volver a Nuna</Link>
             <i aria-hidden="true" />
           </div>
           <Image
@@ -254,20 +315,13 @@ export function NunaGiftExperience({
           />
           <div className={styles.heroShade} />
           <div className={styles.heroCopy}>
-            <Image
-              src={logoSrc}
-              alt="Nuna Amautta"
-              width={240}
-              height={154}
-              className={styles.heroLogo}
-            />
             <h1>
               Reclama tu regalo
               <span>y gira la ruleta.</span>
             </h1>
             <p>
-              Completa tus datos, recibe un código y preséntalo en Instagram
-              para validar tu descuento.
+              Completa tus datos y descubre el descuento que te espera
+              para tu próximo pedido.
             </p>
           </div>
         </div>
@@ -351,6 +405,35 @@ export function NunaGiftExperience({
               </label>
 
               <label className={styles.field}>
+                <span>¿Ya compraste en Nuna?</span>
+                <select name="purchaseStatus" value={form.purchaseStatus} onChange={(event) => updateField("purchaseStatus", event.target.value as FormData["purchaseStatus"])} aria-invalid={Boolean(errors.purchaseStatus)} aria-describedby={errors.purchaseStatus ? "nuna-purchase-error" : undefined}>
+                  <option value="" disabled>Selecciona una opción</option>
+                  <option value="purchased">Sí, ya compré</option>
+                  <option value="interested">Aún no, estoy descubriendo Nuna</option>
+                </select>
+                {errors.purchaseStatus && <small id="nuna-purchase-error">{errors.purchaseStatus}</small>}
+              </label>
+
+              <label className={styles.field}>
+                <span>{form.purchaseStatus === "purchased" ? "¿Qué producto compraste?" : "¿Cuál producto te interesa más?"}</span>
+                <input
+                  type="text"
+                  name="productInterest"
+                  list="nuna-products"
+                  value={form.productInterest}
+                  maxLength={300}
+                  onChange={(event) => updateField("productInterest", event.target.value)}
+                  placeholder="Nombre o descripción de la prenda"
+                  aria-invalid={Boolean(errors.productInterest)}
+                  aria-describedby={errors.productInterest ? "nuna-product-error" : undefined}
+                />
+                <datalist id="nuna-products">
+                  {productSuggestions.map((product) => <option key={product} value={product} />)}
+                </datalist>
+                {errors.productInterest && <small id="nuna-product-error">{errors.productInterest}</small>}
+              </label>
+
+              <label className={styles.field}>
                 <span>Cumpleaños</span>
                 <input
                   type="date"
@@ -388,8 +471,8 @@ export function NunaGiftExperience({
 
             <p className={styles.privacy}>
               Al continuar aceptas el tratamiento de tus datos para esta
-              actividad promocional. Descuento válido en referencias
-              seleccionadas. No acumulable con otras promociones.
+              actividad promocional. Descuento sobre tu pedido completo,
+              sujeto a validación. No acumulable con otras promociones.
             </p>
           </div>
         ) : (
@@ -405,7 +488,7 @@ export function NunaGiftExperience({
                 <div
                   className={styles.wheel}
                   style={{
-                    background: `conic-gradient(from -90deg, ${wheelGradient})`,
+                    background: `conic-gradient(${wheelGradient})`,
                     transform: `rotate(${rotation}deg)`,
                   }}
                 >
@@ -461,16 +544,19 @@ export function NunaGiftExperience({
                   <SparkIcon />
                   {isSpinning ? "Girando..." : "Girar la ruleta"}
                 </button>
-                <p>Un giro por persona. Siempre hay premio.</p>
+                <p>Un premio por correo. Siempre hay premio.</p>
               </div>
             ) : (
               <div className={styles.resultCard} aria-live="polite">
                 <p>¡Felicidades!</p>
                 <h3>{result.label}</h3>
-                <span>{result.validationCode}</span>
-                <button type="button" onClick={claimPrize}>
-                  Reclamar premio en Instagram
-                </button>
+                <span>{result.shopifyCode ?? result.validationCode}</span>
+                <button type="button" onClick={copyCode}>Copiar código</button>
+                <p role="status">{copyMessage}</p>
+                <a className={styles.primaryButton} href={result.redemptionUrl ?? instagramUrl} target="_blank" rel="noopener noreferrer">
+                  {result.redemptionUrl ? "Comprar con mi descuento" : "Reclamar premio en Instagram"}
+                </a>
+                <a className={styles.primaryButton} href="https://nunaamautta.com/collections/all" target="_blank" rel="noopener noreferrer">Ver la colección</a>
               </div>
             )}
           </div>
