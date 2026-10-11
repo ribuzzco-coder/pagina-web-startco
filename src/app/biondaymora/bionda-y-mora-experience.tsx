@@ -1,11 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import { DM_Serif_Display } from "next/font/google";
 import type { CSSProperties } from "react";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { BIONDA_DISCOUNT_CODES, biondaDiscountUrl } from "@/lib/bionda-discounts";
 
 import styles from "./bionda-y-mora.module.css";
+
+const display = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-bionda-display",
+  display: "swap",
+});
 
 type FormData = {
   name: string;
@@ -248,24 +257,18 @@ export function BiondaYMoraExperience() {
   }
 
   return (
-    <main className={styles.page}>
-
+    <main className={`${styles.page} ${display.variable}`}>
+      <div className={styles.announcement}>Diseñado y hecho en Colombia <span>Un detalle para acompañarte</span></div>
       <header className={styles.header}>
         <div className={styles.brand}>
           <Image
-            src="/images/biondaymora-logo.jpg"
+            src="/images/biondaymora/site/wordmark.png"
             alt="Bionda y Mora"
-            width={84}
-            height={84}
+            width={220}
+            height={52}
             priority
             className={styles.logo}
           />
-          <div>
-            <p className={styles.brandName}>
-              Bionda <span>y</span> Mora
-            </p>
-            <p className={styles.brandOrigin}>Hecho en Medellín</p>
-          </div>
         </div>
         <a href="/biondaymora" className={styles.headerNote}>Volver a Bionda y Mora</a>
       </header>
@@ -274,8 +277,8 @@ export function BiondaYMoraExperience() {
         <section className={styles.formStage}>
           <div className={styles.photoPanel}>
             <Image
-              src="/images/biondaymora-look-1.jpg"
-              alt="Look de Bionda y Mora con pañoleta y accesorios"
+              src="/images/biondaymora/site/hero-2026-mobile.jpg"
+              alt="Mujer con botas Bionda y Mora y accesorios junto a una camioneta"
               fill
               priority
               sizes="(max-width: 900px) 100vw, 48vw"
@@ -485,10 +488,10 @@ export function BiondaYMoraExperience() {
 
                 <div className={styles.wheelCenter}>
                   <Image
-                    src="/images/biondaymora-logo.jpg"
+                    src="/images/biondaymora/site/wordmark.png"
                     alt=""
-                    width={112}
-                    height={112}
+                    width={124}
+                    height={32}
                     className={styles.centerLogo}
                   />
                 </div>

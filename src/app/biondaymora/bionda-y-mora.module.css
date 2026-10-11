@@ -892,3 +892,87 @@
 .redemptionAction svg { width: 20px; height: 20px; flex-shrink: 0; }
 .redemptionChoices button:focus-visible,
 .redemptionAction:focus-visible { outline: 2px solid #a95c3f; outline-offset: 4px; }
+
+/* Gift experience — aligned with the Bionda y Mora link hub. */
+.page {
+  --ink: #3a2d1e;
+  --ink-soft: #746e65;
+  --cream: #f7f3ee;
+  --cream-light: #fff;
+  --gold: #b18355;
+  --gold-deep: #9a6d42;
+  --terracotta: #9a6d42;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-jost), sans-serif;
+}
+
+.announcement { padding: 8px 20px; background: var(--ink); color: #fff; font-size: 11px; letter-spacing: .04em; text-align: center; }
+.announcement span { margin-left: 48px; opacity: .78; }
+.header { min-height: 76px; padding: 12px 5%; border-color: #e8e1d9; background: #fff; }
+.brand { min-width: 0; }
+.logo { width: 205px; height: 46px; border: 0; border-radius: 0; box-shadow: none; object-fit: contain; }
+.headerNote { color: var(--ink); font-size: 11px; font-weight: 600; letter-spacing: .05em; text-decoration: underline; text-underline-offset: 5px; text-transform: none; }
+.photoPanel { min-height: 680px; }
+.photo { object-position: center; transform: none; }
+.photoShade { background: linear-gradient(180deg, transparent 22%, rgba(36, 26, 17, .8) 100%); }
+.photoCopy { left: clamp(28px, 6vw, 82px); bottom: clamp(38px, 7vh, 80px); }
+.eyebrowLight, .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.eyebrow { color: var(--gold-deep); }
+.eyebrowLight { color: #efcb98; }
+.photoCopy h1, .wheelIntro h1, .formCard h2, .resultCard h2 { font-family: var(--font-bionda-display), Georgia, serif; font-weight: 400; letter-spacing: -.025em; }
+.photoCopy h1 { font-size: clamp(3.2rem, 5.3vw, 5.8rem); line-height: .98; }
+.photoCopy h1 span, .wheelIntro h1 span { color: #e2b67c; }
+.verticalText { font-family: var(--font-jost), sans-serif; }
+.formPanel { background: #fff; }
+.formCard { width: min(100%, 480px); }
+.formNumber { color: rgba(58, 45, 30, .08); font-family: var(--font-bionda-display), Georgia, serif; }
+.formCard h2 { font-size: clamp(2.8rem, 3.4vw, 3.8rem); line-height: 1.03; }
+.formIntro { color: var(--ink-soft); }
+.field > span { color: var(--ink); font-size: 11px; font-weight: 600; letter-spacing: .09em; }
+.field input, .field select { border-bottom-color: #cfc4b8; color: var(--ink); font-family: var(--font-jost), sans-serif; }
+.field input:focus, .field select:focus { border-color: var(--gold-deep); }
+.consent { color: var(--ink-soft); font-size: 13px; }
+.consent input { accent-color: var(--ink); }
+.primaryButton, .spinButton { min-height: 52px; border-radius: 0; background: var(--ink); box-shadow: none; color: #fff; font-family: var(--font-jost), sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .08em; }
+.primaryButton:hover, .spinButton:hover:not(:disabled) { background: #56432d; box-shadow: none; transform: none; }
+.privacy { color: var(--ink-soft); }
+.wheelStage { background: #fff; }
+.wheelIntro h1 { color: var(--ink); font-size: clamp(3.2rem, 5vw, 5.5rem); line-height: 1.02; }
+.wheelIntro h1 span { color: var(--gold-deep); }
+.wheelIntro > p:not(.eyebrow) { color: var(--ink-soft); }
+.prizeList { border-color: #e8e1d9; }
+.prizeList div { border-color: #e8e1d9; }
+.prizeList span { color: var(--gold-deep); font-family: var(--font-jost), sans-serif; font-style: normal; }
+.prizeList p { font-size: 11px; font-weight: 600; letter-spacing: .07em; }
+.wheelWrap { filter: drop-shadow(0 24px 36px rgba(58, 45, 30, .18)); }
+.pointer { border-top-color: var(--ink); }
+.wheelFrame { border-color: #fff; background: var(--ink); box-shadow: 0 0 0 2px var(--gold), 0 0 0 10px var(--ink), 0 0 0 12px rgba(177, 131, 85, .45), inset 0 0 0 1px rgba(255,255,255,.6); }
+.wheelCenter { width: clamp(116px, 10vw, 136px); height: clamp(116px, 10vw, 136px); border-color: var(--gold); border-radius: 50%; background: #fff; }
+.centerLogo { width: calc(100% - 26px); height: auto; border-radius: 0; object-fit: contain; }
+.spinButton svg { stroke: #eccd9a; }
+.spinControls p { color: var(--ink-soft); font-size: 10px; font-weight: 600; letter-spacing: .06em; }
+.resultCard { border: 1px solid #e1d5c8; border-radius: 0; background: #fff; box-shadow: 0 18px 38px rgba(58, 45, 30, .12); }
+.resultKicker { color: var(--gold-deep); font-size: 11px; font-weight: 600; letter-spacing: .1em; }
+.resultCard h2 { color: var(--ink); }
+.resultCard > p:not(.resultKicker) { color: var(--ink-soft); }
+.resultCard strong { border-color: var(--gold); border-radius: 0; background: var(--cream); color: var(--ink); }
+.redemptionChoices button, .redemptionAction { min-height: 50px; border-color: var(--ink); border-radius: 0; background: var(--ink); font-family: var(--font-jost), sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .03em; }
+.redemptionChoices button:last-child { background: #fff; color: var(--ink); }
+.restartButton { color: var(--gold-deep); font-size: 11px; font-weight: 600; letter-spacing: .07em; }
+.footer { justify-content: center; gap: 28px; border-color: #e8e1d9; color: var(--ink-soft); font-size: 10px; font-weight: 600; letter-spacing: .08em; text-align: center; }
+
+@media (max-width: 600px) {
+  .announcement { font-size: 10px; }
+  .announcement span { display: none; }
+  .header { min-height: 62px; padding: 10px 20px; }
+  .logo { width: 158px; height: 38px; }
+  .headerNote { display: inline; font-size: 10px; }
+  .photoPanel { min-height: 500px; }
+  .photoCopy h1 { font-size: clamp(3rem, 13vw, 4.2rem); }
+  .formPanel { padding: 48px 22px 58px; }
+  .formCard h2 { font-size: 2.8rem; }
+  .wheelStage { padding: 48px 18px 60px; }
+  .wheelIntro h1 { font-size: clamp(3rem, 13vw, 4.2rem); }
+  .footer { gap: 5px; }
+}

@@ -48,8 +48,8 @@ export default function BiondaYMoraPage() {
       </header>
 
       <section className={styles.hero}>
-        <Image className={styles.desktopHero} src={`${assets}campaign-desktop.jpg`} alt="Tenis Girasol de Bionda y Mora en diferentes colores" fill priority sizes="100vw" />
-        <Image className={styles.mobileHero} src={`${assets}campaign-mobile.jpg`} alt="Detalle de los tenis Girasol con accesorios florales" fill priority sizes="100vw" />
+        <Image className={styles.desktopHero} src={`${assets}hero-2026-desktop.jpg`} alt="Mujer con botas Bionda y Mora y accesorios en una camioneta" fill priority sizes="100vw" />
+        <Image className={styles.mobileHero} src={`${assets}hero-2026-mobile.jpg`} alt="Mujer con botas Bionda y Mora y accesorios junto a una camioneta" fill priority sizes="100vw" />
         <div className={styles.heroCopy}><p className={styles.eyebrow}>HECHAS PARA TI</p><h1>Todo Bionda y Mora, <em>en un solo lugar.</em></h1><p>Elige por dónde quieres empezar tu próximo paso.</p><a className={styles.primaryCta} href={shop} {...external}>Visitar la tienda <span aria-hidden="true">→</span></a></div>
       </section>
 
