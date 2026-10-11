@@ -2,6 +2,7 @@ export const BIONDA_DISCOUNT_CODES: Record<string, string> = {
   "discount-5": "RULETABIONDA5",
   "discount-10": "RULETABIONDA10",
   "discount-15": "RULETABIONDA15",
+  scarf: "RULETAREGALO",
 };
 
 export function biondaDiscountUrl(code: string) {

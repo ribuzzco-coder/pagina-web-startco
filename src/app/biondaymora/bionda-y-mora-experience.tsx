@@ -33,7 +33,6 @@ type Prize = {
   label: string;
   wheelLabel: string;
   codePrefix: string;
-  chance: number;
   color: string;
   textColor: string;
   strokeColor: string;
@@ -62,7 +61,6 @@ const PRIZES: Prize[] = [
     label: "5% de descuento",
     wheelLabel: "5%",
     codePrefix: "BYM5",
-    chance: 10,
     color: "#5A3023",
     textColor: "#FFF8EC",
     strokeColor: "#2B1711",
@@ -74,7 +72,6 @@ const PRIZES: Prize[] = [
     label: "10% de descuento",
     wheelLabel: "10%",
     codePrefix: "BYM10",
-    chance: 60,
     color: "#F4E8D6",
     textColor: "#4A281E",
     strokeColor: "#FFF8EC",
@@ -86,7 +83,6 @@ const PRIZES: Prize[] = [
     label: "15% de descuento",
     wheelLabel: "15%",
     codePrefix: "BYM15",
-    chance: 25,
     color: "#AE6042",
     textColor: "#FFF8EC",
     strokeColor: "#5A2D21",
@@ -98,7 +94,6 @@ const PRIZES: Prize[] = [
     label: "Pañoleta gratis",
     wheelLabel: "Pañoleta",
     codePrefix: "BYMP",
-    chance: 5,
     color: "#E5B15E",
     textColor: "#3D211B",
     strokeColor: "#FCEFD9",
@@ -424,19 +419,13 @@ export function BiondaYMoraExperience() {
               Hola, {form.name.trim().split(/\s+/)[0]}.
               <span>Hay un premio esperándote.</span>
             </h1>
-            <p>
-              Cada premio tiene una oportunidad definida. Toca el botón y deja
-              que la suerte elija por ti.
-            </p>
+            <p>Toca el botón y deja que la suerte elija por ti.</p>
 
             <div className={styles.prizeList} aria-label="Premios disponibles">
               {PRIZES.map((prize, index) => (
                 <div key={prize.id}>
                   <span>0{index + 1}</span>
-                  <p>
-                    {prize.id === "scarf" ? "Regalo" : `${prize.wheelLabel} dto.`} ·{" "}
-                    {prize.chance}%
-                  </p>
+                  <p>{prize.id === "scarf" ? "Regalo sorpresa" : `${prize.wheelLabel} de descuento`}</p>
                 </div>
               ))}
             </div>
@@ -509,10 +498,7 @@ export function BiondaYMoraExperience() {
                   <SparkIcon />
                   {isSpinning ? "Girando..." : "Girar la ruleta"}
                 </button>
-                <p>
-                  Un giro por persona · 5%: 10% · 10%: 60% · 15%: 25% ·
-                  Regalo: 5%
-                </p>
+                <p>Un giro por persona · Tu premio se revelará al detenerse la ruleta.</p>
               </div>
             ) : (
               <div className={styles.resultCard} aria-live="polite">
