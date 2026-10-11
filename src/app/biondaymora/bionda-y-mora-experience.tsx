@@ -63,7 +63,7 @@ const PRIZES: Prize[] = [
     wheelLabel: "5%",
     codePrefix: "BYM5",
     chance: 10,
-    color: "#552D21",
+    color: "#5A3023",
     textColor: "#FFF8EC",
     strokeColor: "#2B1711",
     textShadow:
@@ -75,7 +75,7 @@ const PRIZES: Prize[] = [
     wheelLabel: "10%",
     codePrefix: "BYM10",
     chance: 60,
-    color: "#F5E8D4",
+    color: "#F4E8D6",
     textColor: "#4A281E",
     strokeColor: "#FFF8EC",
     textShadow:
@@ -87,7 +87,7 @@ const PRIZES: Prize[] = [
     wheelLabel: "15%",
     codePrefix: "BYM15",
     chance: 25,
-    color: "#A95C3F",
+    color: "#AE6042",
     textColor: "#FFF8EC",
     strokeColor: "#5A2D21",
     textShadow:
@@ -99,7 +99,7 @@ const PRIZES: Prize[] = [
     wheelLabel: "Pañoleta",
     codePrefix: "BYMP",
     chance: 5,
-    color: "#E1A957",
+    color: "#E5B15E",
     textColor: "#3D211B",
     strokeColor: "#FCEFD9",
     textShadow:
