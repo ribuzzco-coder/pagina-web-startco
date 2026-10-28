@@ -29,6 +29,7 @@ export function RouteVisibility({
     "/duvansequeira",
     "/kynd",
     "/furtivo",
+    "/multimallas",
     "/portafolio",
     "/admin",
   ],
