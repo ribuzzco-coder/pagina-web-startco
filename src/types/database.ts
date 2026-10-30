@@ -165,6 +165,57 @@ export type Database = {
         };
         Relationships: [];
       };
+      nfc_requests: {
+        Row: {
+          add_on: string;
+          business: string | null;
+          created_at: string;
+          data_consent_at: string;
+          id: string;
+          name: string;
+          product: string;
+          purpose: string;
+          quantity: string;
+          referrer: string | null;
+          request_ip: string | null;
+          source: string;
+          user_agent: string | null;
+          whatsapp: string;
+        };
+        Insert: {
+          add_on: string;
+          business?: string | null;
+          created_at?: string;
+          data_consent_at?: string;
+          id?: string;
+          name: string;
+          product: string;
+          purpose: string;
+          quantity: string;
+          referrer?: string | null;
+          request_ip?: string | null;
+          source?: string;
+          user_agent?: string | null;
+          whatsapp: string;
+        };
+        Update: {
+          add_on?: string;
+          business?: string | null;
+          created_at?: string;
+          data_consent_at?: string;
+          id?: string;
+          name?: string;
+          product?: string;
+          purpose?: string;
+          quantity?: string;
+          referrer?: string | null;
+          request_ip?: string | null;
+          source?: string;
+          user_agent?: string | null;
+          whatsapp?: string;
+        };
+        Relationships: [];
+      };
       lead_events: {
         Row: {
           actor_id: string | null;

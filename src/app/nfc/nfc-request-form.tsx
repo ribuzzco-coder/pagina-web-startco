@@ -34,7 +34,10 @@ export function NfcRequestForm() {
   const [name, setName] = useState("");
   const [business, setBusiness] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
+  const [dataConsent, setDataConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const selectedProduct = useMemo(() => products.find((item) => item.value === product), [product]);
   const availableQuantities = product === "Llavero NFC" ? keychainQuantities : cardQuantities;
@@ -42,15 +45,18 @@ export function NfcRequestForm() {
     (step === 1 && product) ||
       (step === 2 && purpose) ||
       (step === 3 && quantity) ||
-      (step === 4 && name.trim() && whatsapp.trim()),
+      (step === 4 && name.trim() && whatsapp.trim() && dataConsent),
   );
 
   const next = () => {
     if (canContinue && step < 4) setStep((current) => current + 1);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!canContinue || !product || !purpose || !quantity) return;
+
+    setIsSubmitting(true);
+    setSubmitError("");
 
     const message = [
       "Hola, completé el filtro para cotizar un producto NFC.",
@@ -64,8 +70,31 @@ export function NfcRequestForm() {
       `WhatsApp: ${whatsapp}`,
     ].join("\n");
 
-    setSubmitted(true);
-    window.open(`${SITE_CONFIG.whatsappUrl}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    try {
+      const response = await fetch("/api/nfc-request", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name,
+          business: business || null,
+          whatsapp,
+          product,
+          purpose,
+          quantity,
+          addOn,
+          dataConsent,
+        }),
+      });
+
+      if (!response.ok) throw new Error("No pudimos guardar tu solicitud.");
+
+      setSubmitted(true);
+      window.open(`${SITE_CONFIG.whatsappUrl}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    } catch {
+      setSubmitError("No pudimos guardar tu solicitud. Intenta de nuevo en unos minutos.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -97,10 +126,10 @@ export function NfcRequestForm() {
             {step === 1 ? <Step title="¿Qué formato necesitas?" description="Elige por el uso, no por apariencia. Después afinamos el diseño y la experiencia digital."><div className="grid gap-3">{products.map((item) => <ChoiceCard key={item.value} active={product === item.value} onClick={() => setProduct(item.value)} title={item.value} meta={item.price} description={item.copy} />)}</div></Step> : null}
             {step === 2 ? <Step title="¿Qué resultado debe activar?" description="El uso define a dónde debe llevar el NFC y qué debe ocurrir después del toque."><div className="grid gap-3 sm:grid-cols-2">{purposes.map((item) => <ChoiceCard key={item} active={purpose === item} onClick={() => setPurpose(item)} title={item} />)}</div></Step> : null}
             {step === 3 ? <Step title="Cantidad y nivel de personalización" description={product === "Llavero NFC" ? "Los llaveros se producen desde 5 unidades. A partir de 50 obtienes el mejor valor por unidad." : "Las tarjetas se producen desde 1 unidad. A partir de 50 obtienes el mejor valor por unidad."}><div className="grid gap-3 sm:grid-cols-2">{availableQuantities.map((item) => <ChoiceCard key={item} active={quantity === item} onClick={() => setQuantity(item)} title={item} />)}</div><label className="mt-6 grid gap-2 text-sm font-semibold text-[#E4DFF7]">Complemento que necesitas<select value={addOn} onChange={(event) => setAddOn(event.target.value as AddOn)} className="rounded-xl border border-white/10 bg-[#100b25] px-4 py-3 text-base font-normal text-[#E4DFF7] outline-none transition focus:border-[#785FDD] sm:text-sm">{addOns.map((item) => <option key={item}>{item}</option>)}</select></label></Step> : null}
-            {step === 4 ? <Step title="¿A nombre de quién enviamos la cotización?" description={selectedProduct ? `Seleccionaste ${selectedProduct.value.toLowerCase()} (${selectedProduct.price}). Enviaremos el contexto completo a WhatsApp.` : "Déjanos tus datos para continuar."}><div className="grid gap-4 sm:grid-cols-2"><Field label="Nombre" value={name} onChange={setName} autoComplete="name" required /><Field label="WhatsApp" value={whatsapp} onChange={setWhatsapp} autoComplete="tel" inputMode="tel" required /></div><div className="mt-4"><Field label="Negocio o marca" value={business} onChange={setBusiness} autoComplete="organization" /></div></Step> : null}
+            {step === 4 ? <Step title="¿A nombre de quién enviamos la cotización?" description={selectedProduct ? `Seleccionaste ${selectedProduct.value.toLowerCase()} (${selectedProduct.price}). Guardamos la solicitud y te enviamos el resumen a WhatsApp.` : "Déjanos tus datos para continuar."}><div className="grid gap-4 sm:grid-cols-2"><Field label="Nombre" value={name} onChange={setName} autoComplete="name" required /><Field label="WhatsApp" value={whatsapp} onChange={setWhatsapp} autoComplete="tel" inputMode="tel" required /></div><div className="mt-4"><Field label="Negocio o marca" value={business} onChange={setBusiness} autoComplete="organization" /></div><label className="mt-5 flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.025] p-4 text-sm leading-relaxed text-[#BDB7D5]"><input type="checkbox" checked={dataConsent} onChange={(event) => setDataConsent(event.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#785FDD]" /><span>Acepto el tratamiento de mis datos para atender esta solicitud, según la <a className="text-[#C5B7FF] underline underline-offset-2" href="/politica-de-privacidad" target="_blank" rel="noreferrer">política de privacidad</a>.</span></label></Step> : null}
 
-            <div className="mt-8 flex flex-col-reverse gap-3 border-t border-white/8 pt-6 sm:flex-row sm:justify-between">{step > 1 ? <Button className="max-sm:w-full" type="button" variant="secondary" onClick={() => setStep((current) => current - 1)}>Atrás</Button> : <span />}{step < 4 ? <Button className="max-sm:w-full" type="button" disabled={!canContinue} onClick={next}>Continuar</Button> : <Button className="max-sm:w-full" type="button" disabled={!canContinue} onClick={handleSubmit}>Recibir cotización por WhatsApp</Button>}</div>
-            <p aria-live="polite" className="mt-4 text-center text-xs leading-relaxed text-[#98A0B3]">{submitted ? "Abrimos WhatsApp con tu solicitud ya segmentada." : "No guardamos tu solicitud en un catálogo: la usamos para orientar la cotización."}</p>
+            <div className="mt-8 flex flex-col-reverse gap-3 border-t border-white/8 pt-6 sm:flex-row sm:justify-between">{step > 1 ? <Button className="max-sm:w-full" type="button" variant="secondary" onClick={() => setStep((current) => current - 1)}>Atrás</Button> : <span />}{step < 4 ? <Button className="max-sm:w-full" type="button" disabled={!canContinue} onClick={next}>Continuar</Button> : <Button className="max-sm:w-full" type="button" disabled={!canContinue || isSubmitting} onClick={handleSubmit}>{isSubmitting ? "Guardando solicitud..." : "Guardar y continuar por WhatsApp"}</Button>}</div>
+            <p aria-live="polite" className={cn("mt-4 text-center text-xs leading-relaxed", submitError ? "text-red-300" : "text-[#98A0B3]")}>{submitError || (submitted ? "Solicitud guardada. Abrimos WhatsApp con tu resumen." : "Guardamos esta solicitud para preparar y dar seguimiento a tu cotización.")}</p>
           </Card>
         </Container>
       </section>
