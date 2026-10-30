@@ -14,12 +14,12 @@ type NfcStepsProps = {
 
 export function NfcSteps({ steps }: NfcStepsProps) {
   return (
-    <section className="cv-auto py-18 sm:py-22" id="como-funciona">
+    <section className="nfc-product-how cv-auto py-20 sm:py-24" id="como-funciona">
       <Container>
         <SectionTitle
           eyebrow="Cómo funciona"
-          title="Tres pasos simples para pasar de una conversación a un contacto guardado"
-          description="La experiencia está pensada para que el valor se entienda rápido y el siguiente paso no tenga fricción."
+            title="Del objeto a la acción, en tres pasos"
+            description="El NFC lleva a cada persona al paso que definiste."
         />
 
         <div className="mt-10 grid gap-5 lg:grid-cols-3">

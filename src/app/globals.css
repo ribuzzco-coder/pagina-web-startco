@@ -2998,6 +2998,193 @@ textarea,
   }
 }
 
+/* NFC product landing — visual system aligned to portafolio-comercial. */
+.nfc-product-page {
+  overflow: clip;
+  background: #09052a;
+  color: #f1f0ff;
+}
+
+.nfc-product-page > section,
+.nfc-product-page > div {
+  position: relative;
+}
+
+.nfc-product-page h1,
+.nfc-product-page h2,
+.nfc-product-page h3 {
+  letter-spacing: -0.065em;
+}
+
+.nfc-product-page .nfc-product-kicker,
+.nfc-product-page [class*="tracking-\[0\.16em\]"] {
+  color: #b494ff;
+  font-family: Consolas, "Courier New", monospace;
+  letter-spacing: .14em;
+}
+
+.nfc-product-page .nfc-product-kicker::before,
+.nfc-product-page [class*="tracking-\[0\.16em\]"]::before {
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  margin-right: .55rem;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+}
+
+.nfc-product-page .nfc-product-hero {
+  min-height: min(50rem, calc(100vh - 4rem));
+  display: grid;
+  align-items: center;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(139, 91, 255, .68), rgba(65, 27, 165, .14) 31%, transparent 51%),
+    radial-gradient(circle at 5% 90%, rgba(184, 255, 233, .09), transparent 22%),
+    linear-gradient(135deg, #09052a, #110746 64%, #0c0630);
+}
+
+.nfc-product-page .nfc-product-hero::after {
+  position: absolute;
+  z-index: -1;
+  right: -10vw;
+  top: -7rem;
+  width: min(54vw, 48rem);
+  height: min(54vw, 48rem);
+  border: 1px solid rgba(184, 255, 233, .13);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4rem rgba(164, 149, 255, .035), 0 0 0 8rem rgba(164, 149, 255, .025);
+  content: "";
+}
+
+.nfc-product-page .nfc-product-hero h1 {
+  font-size: clamp(3.2rem, 6vw, 6.25rem);
+  line-height: .89;
+}
+
+.nfc-product-page .nfc-product-hero-card {
+  border-color: rgba(241, 240, 255, .28);
+  background: rgba(17, 7, 70, .66);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, .26);
+  backdrop-filter: blur(13px);
+}
+
+.nfc-product-page .nfc-product-possibilities {
+  background: linear-gradient(180deg, #110746, #0e0737);
+}
+
+.nfc-product-page .nfc-product-possibilities button,
+.nfc-product-page .nfc-product-how [class*="rounded-\[28px\]"] {
+  border-radius: 1.125rem;
+}
+
+.nfc-product-page .nfc-product-flow {
+  border-color: rgba(241, 240, 255, .28);
+  background:
+    radial-gradient(circle at 88% 10%, rgba(184, 255, 233, .13), transparent 25%),
+    rgba(241, 240, 255, .045);
+}
+
+.nfc-product-page .nfc-product-how {
+  background: #f9f9fb;
+  color: #1e1f24;
+}
+
+.nfc-product-page .nfc-product-how h2,
+.nfc-product-page .nfc-product-how h3 {
+  color: #1e1f24;
+}
+
+.nfc-product-page .nfc-product-how p {
+  color: #62636c;
+}
+
+.nfc-product-page .nfc-product-how [class*="rounded-\[28px\]"] {
+  border-color: #dddbe5;
+  background: #fff;
+  box-shadow: 0 .7rem 1.8rem rgba(17, 7, 70, .055);
+}
+
+.nfc-product-page .nfc-product-how [class*="bg-\[linear-gradient(135deg,#6939E2"] {
+  border-radius: 999px;
+  background: #110746;
+  box-shadow: none;
+}
+
+.nfc-product-page .nfc-product-formats {
+  background:
+    radial-gradient(circle at 12% 13%, rgba(139, 91, 255, .32), transparent 27%),
+    linear-gradient(145deg, #09052a, #110746);
+}
+
+.nfc-product-page .nfc-product-format-card {
+  border-color: rgba(241, 240, 255, .17);
+  background: rgba(241, 240, 255, .045);
+}
+
+.nfc-product-page .nfc-product-format-card:hover {
+  border-color: rgba(184, 255, 233, .62);
+  transform: translateY(-3px);
+}
+
+.nfc-product-page .nfc-product-proof {
+  background: #f1f0ff;
+}
+
+.nfc-product-page .nfc-product-proof h2,
+.nfc-product-page .nfc-product-proof h3,
+.nfc-product-page .nfc-product-proof p {
+  color: #1e1f24;
+}
+
+.nfc-product-page .nfc-product-proof [class*="rounded-\["] {
+  border-color: #dddbe5;
+  background: #fff;
+}
+
+.nfc-product-page .nfc-product-request {
+  background:
+    radial-gradient(45rem 32rem at 84% 15%, rgba(120, 71, 255, .42), transparent 67%),
+    #09052a;
+}
+
+.nfc-product-page .nfc-product-request > div > div:last-child {
+  border-color: rgba(241, 240, 255, .24);
+  background: rgba(17, 7, 70, .72);
+  box-shadow: 0 1.8rem 4rem rgba(0, 0, 0, .22);
+}
+
+@media (max-width: 640px) {
+  .nfc-product-page .nfc-product-hero {
+    min-height: auto;
+    padding-top: 6.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .nfc-product-page .nfc-product-hero h1 {
+    font-size: clamp(3rem, 14vw, 4.5rem);
+  }
+
+  .nfc-product-page .nfc-product-possibilities,
+  .nfc-product-page .nfc-product-how,
+  .nfc-product-page .nfc-product-formats,
+  .nfc-product-page .nfc-product-proof,
+  .nfc-product-page .nfc-product-request {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .nfc-product-page .nfc-product-hero-card {
+    border-radius: 1.25rem;
+  }
+
+  .nfc-product-page .nfc-value-ladder > div:last-child > div {
+    padding-top: 1.15rem;
+    padding-bottom: 1.15rem;
+  }
+}
+
 @media (max-width: 640px) {
   .hotel-caribe-space p {
     font-size: 0.9rem;

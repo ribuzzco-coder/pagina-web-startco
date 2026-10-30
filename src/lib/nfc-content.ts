@@ -7,15 +7,15 @@ export const nfcHeroHighlights = [
 export const nfcSteps = [
   {
     title: "Acerca la tarjeta",
-    description: "Solo acercas la tarjeta NFC al celular del cliente o contacto.",
+    description: "Acerca una tarjeta, llavero o punto NFC al celular. Sin app.",
   },
   {
-    title: "Se abre tu perfil",
-    description: "El teléfono muestra tu perfil digital, enlaces y datos clave.",
+    title: "Se abre la experiencia",
+    description: "Se abre el flujo correcto: perfil, oferta, reserva, beneficio o soporte.",
   },
   {
-    title: "El cliente guarda tu contacto",
-    description: "La persona puede guardar tu información y continuar la conversación.",
+    title: "La acción sucede",
+    description: "La persona compra, reserva, participa o continúa la conversación.",
   },
 ] as const;
 
@@ -72,34 +72,35 @@ export const nfcPreviewItems = [
 export const nfcPricingPlans = [
   {
     name: "Tarjeta",
-    price: "$79.900 COP",
+    price: "$89.900 COP",
     description:
-      "Este valor corresponde a la producción de una tarjeta NFC cuando el diseño ya está definido.",
+      "Una tarjeta NFC personalizada para compartir tu información, enlaces y siguiente paso comercial.",
     points: [
       "Producción de 1 unidad",
-      "Ideal si ya tienes el diseño listo",
-      "Cada unidad adicional tiene el mismo valor de $79.900 COP",
+      "Configuración de enlace NFC",
+      "Ideal para marca personal o atención uno a uno",
     ],
   },
   {
-    name: "Tarjeta + diseño",
-    price: "$140.000 COP",
+    name: "Llavero NFC",
+    price: "$49.900 c/u",
     description:
-      "Incluye la producción de una tarjeta NFC y el diseño de la pieza visual contratado aparte.",
+      "Una alternativa compacta para activar una experiencia, compartir un enlace o llevar una acción concreta a tu marca.",
     points: [
-      "Producción de 1 unidad",
-      "Diseño de la tarjeta incluido",
-      "Pensado para marcas que aún no tienen la pieza lista",
+      "Pedido mínimo de 5 unidades",
+      "A 50 unidades: $22.900 c/u",
+      "Enlace NFC configurable",
+      "Ideal para regalos, membresías o campañas",
     ],
   },
   {
-    name: "+10 unidades",
-    price: "Cotización interna",
+    name: "Producción por volumen",
+    price: "Desde $24.900 c/u",
     description:
-      "Desde 10 unidades en adelante se revisa internamente porque ya corresponde a producción al por mayor.",
+      "Para equipos, eventos y activaciones donde la cantidad permite optimizar el valor por unidad.",
     points: [
       "Pedido por volumen",
-      "Cotización según cantidad y requerimientos",
+      "A 50 tarjetas: $24.900 c/u",
       "Recomendado para equipos, eventos o despliegues de marca",
     ],
   },
