@@ -62,12 +62,6 @@ export default function BpcLandingPage() {
         <nav className={styles.socialStrip} aria-label="Activos digitales de BPC">{links.map((link) => <a className={styles.socialLink} href={link.href} target="_blank" rel="noreferrer" key={link.label}><SocialIcon name={link.icon} /><span>{link.label}</span><b aria-hidden="true">↗</b></a>)}</nav>
       </section>
 
-      <section className={styles.accesses} aria-labelledby="instagram-title" style={{ background: "#e5f0f2" }}>
-        <div className={styles.sectionTop}><p className={styles.kicker}>Desde el laboratorio</p><h2 id="instagram-title">Proceso real. Productos reales.</h2><p>Una muestra directa del trabajo, las categorías y los proyectos que BPC comparte.</p></div>
-        <div className={styles.instagramGrid}>{instagramPosts.map((post) => <a key={post.id} href={`https://www.instagram.com/p/${post.id}/`} target="_blank" rel="noreferrer" style={{ position: "relative", minHeight: 360, overflow: "hidden", color: "#fff", textDecoration: "none", display: "flex", flexDirection: "column", justifyContent: "end", padding: 20, background: "#062f5b" }}><Image src={post.image} alt={post.label} fill sizes="(max-width: 800px) 100vw, 25vw" style={{ objectFit: "cover", zIndex: 0 }} /><span style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,transparent 30%,rgba(6,47,91,.82))", zIndex: 1 }} /><strong style={{ position: "relative", zIndex: 2, fontSize: 20, lineHeight: 1.05 }}>{post.label}</strong><small style={{ position: "relative", zIndex: 2, marginTop: 7 }}>{post.category} · Ver post ↗</small></a>)}</div>
-        <a className={styles.primary} style={{ marginTop: 28 }} href="https://www.instagram.com/laboratoriobpc/" target="_blank" rel="noreferrer">Ver más publicaciones en Instagram ↗</a>
-      </section>
-
       <section id="servicios" className={styles.services}>
         <div className={styles.sectionTop}><p className={styles.kicker}>Capacidad BPC</p><h2>Tu proyecto no empieza en una línea de producción. Empieza con una buena decisión.</h2></div>
         <div className={styles.servicesList}>{services.map(([number, title, copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p><a href="#perfil">Explorar esta ruta <b>→</b></a></article>)}</div>
@@ -81,6 +75,12 @@ export default function BpcLandingPage() {
       <section className={styles.process}>
         <p className={styles.kicker}>Una conversación con rumbo</p>
         <div className={styles.processGrid}><h2>Antes de cotizar, entendemos dónde está tu proyecto.</h2><ol><li><span>01</span><div><strong>Nos cuentas el reto</strong><p>Marca, categoría, objetivo y momento del proyecto.</p></div></li><li><span>02</span><div><strong>Identificamos la ruta</strong><p>Desarrollo, maquila, regulación o una conversación de alianza.</p></div></li><li><span>03</span><div><strong>Avanzamos con claridad</strong><p>El equipo responde desde la alternativa que mejor se ajusta.</p></div></li></ol></div>
+      </section>
+
+      <section className={styles.instagramSection} aria-labelledby="instagram-title">
+        <div className={styles.sectionTop}><p className={styles.kicker}>Desde el laboratorio</p><h2 id="instagram-title">Proceso real. Productos reales.</h2><p>Una muestra directa del trabajo, las categorías y los proyectos que BPC comparte.</p></div>
+        <div className={styles.instagramGrid}>{instagramPosts.map((post) => <a className={styles.instagramCard} key={post.id} href={`https://www.instagram.com/p/${post.id}/`} target="_blank" rel="noreferrer"><Image src={post.image} alt={post.label} fill sizes="(max-width: 800px) 100vw, 25vw" /><span /><strong>{post.label}</strong><small>{post.category} · Ver post ↗</small></a>)}</div>
+        <a className={styles.primary} style={{ marginTop: 28 }} href="https://www.instagram.com/laboratoriobpc/" target="_blank" rel="noreferrer">Ver más publicaciones en Instagram ↗</a>
       </section>
 
       <section id="perfil" className={styles.profile}>

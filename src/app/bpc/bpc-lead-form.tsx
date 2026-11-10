@@ -2,6 +2,8 @@
 
 import { FormEvent, useState } from "react";
 
+import styles from "./bpc-landing.module.css";
+
 type Status = "idle" | "sending" | "success" | "error";
 
 export function BpcLeadForm() {
@@ -36,20 +38,24 @@ export function BpcLeadForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="bpc-form">
-      <div className="bpc-form__grid">
-        <label>Nombre completo<input name="name" required autoComplete="name" placeholder="Tu nombre" /></label>
-        <label>Empresa o marca<input name="company" required placeholder="Nombre de tu empresa" /></label>
-        <label>Correo de trabajo<input name="email" type="email" required autoComplete="email" placeholder="nombre@empresa.com" /></label>
-        <label>WhatsApp<input name="phone" required type="tel" autoComplete="tel" placeholder="+57 300 000 0000" /></label>
-        <label>¿Qué buscas?<select name="interest" required defaultValue=""><option value="" disabled>Selecciona una opción</option><option value="marca">Crear una marca</option><option value="maquila">Maquilar un producto existente</option><option value="formulacion">Desarrollar una formulación</option><option value="invima">Orientación regulatoria / INVIMA</option><option value="distribucion">Distribución o alianza comercial</option><option value="otro">Otro</option></select></label>
-        <label>Momento del proyecto<select name="stage" required defaultValue=""><option value="" disabled>Selecciona una etapa</option><option value="idea">Tengo una idea</option><option value="desarrollo">Estoy desarrollando</option><option value="marca-activa">Ya tengo una marca activa</option><option value="escalamiento">Busco escalar</option></select></label>
-        <label className="bpc-form__full">Volumen estimado<select name="volume" required defaultValue=""><option value="" disabled>Selecciona un rango</option><option value="piloto">Prueba o piloto</option><option value="pequena">Producción pequeña</option><option value="media">Producción media</option><option value="gran-escala">Gran escala</option><option value="por-definir">Aún por definir</option></select></label>
-        <label className="bpc-form__full">Cuéntanos brevemente<textarea name="message" rows={4} placeholder="Producto, categoría o necesidad principal (opcional)" /></label>
+    <form onSubmit={onSubmit} className={styles.bpcForm}>
+      <div className={styles.formHeading}>
+        <span>Perfil comercial</span>
+        <p>Tomará menos de 2 minutos.</p>
       </div>
-      <label className="bpc-consent"><input name="consent" type="checkbox" required /> Autorizo el tratamiento de mis datos para que BPC Lab me contacte sobre esta solicitud.</label>
-      <button type="submit" disabled={status === "sending"}>{status === "sending" ? "Enviando…" : "Enviar perfil comercial →"}</button>
-      {message && <p className={`bpc-form__message bpc-form__message--${status}`} role="status">{message}</p>}
+      <div className={styles.formGrid}>
+        <label className={styles.formField}>Nombre completo<input name="name" required autoComplete="name" placeholder="Tu nombre" /></label>
+        <label className={styles.formField}>Empresa o marca<input name="company" required placeholder="Nombre de tu empresa" /></label>
+        <label className={styles.formField}>Correo de trabajo<input name="email" type="email" required autoComplete="email" placeholder="nombre@empresa.com" /></label>
+        <label className={styles.formField}>WhatsApp<input name="phone" required type="tel" autoComplete="tel" placeholder="+57 300 000 0000" /></label>
+        <label className={`${styles.formField} ${styles.formFieldWide}`}>¿Qué necesitas?<select name="interest" required defaultValue=""><option value="" disabled>Selecciona una opción</option><option value="marca">Crear una marca</option><option value="maquila">Maquilar un producto existente</option><option value="formulacion">Desarrollar una formulación</option><option value="invima">Orientación regulatoria / INVIMA</option><option value="distribucion">Distribución o alianza comercial</option><option value="otro">Otro</option></select></label>
+        <label className={styles.formField}>Momento del proyecto<select name="stage" required defaultValue=""><option value="" disabled>Selecciona una etapa</option><option value="idea">Tengo una idea</option><option value="desarrollo">Estoy desarrollando</option><option value="marca-activa">Ya tengo una marca activa</option><option value="escalamiento">Busco escalar</option></select></label>
+        <label className={styles.formField}>Volumen estimado<select name="volume" required defaultValue=""><option value="" disabled>Selecciona un rango</option><option value="piloto">Prueba o piloto</option><option value="pequena">Producción pequeña</option><option value="media">Producción media</option><option value="gran-escala">Gran escala</option><option value="por-definir">Aún por definir</option></select></label>
+        <label className={`${styles.formField} ${styles.formFieldWide}`}>Cuéntanos brevemente<textarea name="message" rows={4} placeholder="Producto, categoría o necesidad principal (opcional)" /></label>
+      </div>
+      <label className={styles.formConsent}><input name="consent" type="checkbox" required /> <span>Autorizo el tratamiento de mis datos para que BPC Lab me contacte sobre esta solicitud.</span></label>
+      <button className={styles.formSubmit} type="submit" disabled={status === "sending"}>{status === "sending" ? "Enviando…" : "Enviar perfil comercial →"}</button>
+      {message && <p className={`${styles.formMessage} ${status === "success" ? styles.formMessageSuccess : styles.formMessageError}`} role="status">{message}</p>}
     </form>
   );
 }
