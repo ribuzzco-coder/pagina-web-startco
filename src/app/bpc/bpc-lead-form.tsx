@@ -12,9 +12,10 @@ export function BpcLeadForm() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const formElement = event.currentTarget;
     setStatus("sending");
     setMessage("");
-    const form = new FormData(event.currentTarget);
+    const form = new FormData(formElement);
     const payload = {
       ...Object.fromEntries(form.entries()),
       consent: form.get("consent") === "on",
@@ -30,7 +31,7 @@ export function BpcLeadForm() {
       if (!response.ok || !body?.ok) throw new Error(body?.error?.message ?? "No pudimos enviar tus datos.");
       setStatus("success");
       setMessage("Gracias. El equipo BPC recibió tu información y te contactará.");
-      event.currentTarget.reset();
+      formElement.reset();
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "No pudimos enviar tus datos.");
