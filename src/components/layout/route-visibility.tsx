@@ -30,6 +30,7 @@ export function RouteVisibility({
     "/kynd",
     "/furtivo",
     "/multimallas",
+    "/bpc",
     "/portafolio",
     "/admin",
   ],
