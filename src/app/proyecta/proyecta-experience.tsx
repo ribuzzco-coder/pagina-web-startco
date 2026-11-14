@@ -221,15 +221,6 @@ export function ProyectaExperience() {
       </header>
 
       <section className={styles.hero} aria-labelledby="proyecta-title">
-        <div className={styles.heroImage}>
-          <Image
-            src="/images/biondaymora/site/boots-campaign.jpg"
-            alt="Botas Bionda y Mora acompañando un nuevo camino"
-            fill
-            priority
-            sizes="(max-width: 760px) 100vw, 45vw"
-          />
-        </div>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>UN RITUAL PARA TU PRÓXIMO PASO</p>
           <h1 id="proyecta-title">Una luz,<br /><em>una intención,</em><br />un nuevo camino.</h1>
