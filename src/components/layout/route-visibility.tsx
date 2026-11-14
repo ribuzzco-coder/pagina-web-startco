@@ -16,6 +16,7 @@ export function RouteVisibility({
     "/hotelcaribecovenas",
     "/hotelmarierealcartagena",
     "/hotelcaribbeancartagena",
+    "/proyecta",
     "/biondaymora",
     "/fiammata",
     "/nunaamautta",
