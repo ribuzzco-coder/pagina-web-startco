@@ -20,7 +20,7 @@ export const metadata = createPageMetadata({
 
 export default function NfcPage() {
   return (
-    <main className="nfc-product-page">
+    <div className="nfc-product-page">
       <NfcHero
         primaryHref="#que-puede-hacer"
         primaryLabel="Explorar posibilidades"
@@ -32,6 +32,6 @@ export default function NfcPage() {
       <NfcPricing plans={nfcPricingPlans} inquiryHref="#filtro-nfc" />
       <NfcKeychainProjects />
       <NfcRequestForm />
-    </main>
+    </div>
   );
 }

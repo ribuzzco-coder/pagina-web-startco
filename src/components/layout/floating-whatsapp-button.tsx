@@ -5,6 +5,7 @@ export function FloatingWhatsAppButton() {
     <div className="fixed bottom-4 right-4 z-40 flex items-center gap-3 sm:bottom-6 sm:right-6">
       <a
         href={SITE_CONFIG.whatsappUrl}
+        data-funnel-event="whatsapp_click"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Escribir por WhatsApp"

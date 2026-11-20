@@ -17,11 +17,9 @@ type ListDiagnosticRequestsInput = {
 export class DiagnosticRequestRepository {
   constructor(private readonly db: SupabaseClient<Database>) {}
 
-  async create(payload: DiagnosticRequestInsert) {
+  async receive(payload: DiagnosticRequestInsert, revision: string, lookbackHours: number, sync: boolean, legacyMatch: string | null) {
     const { data, error } = await this.db
-      .from("diagnostic_requests")
-      .insert(payload)
-      .select("*")
+      .rpc("receive_diagnostic", { p_request: payload, p_revision: revision, p_lookback_hours: lookbackHours, p_sync: sync, p_legacy_match: legacyMatch })
       .single();
 
     if (error || !data) {
@@ -51,13 +49,14 @@ export class DiagnosticRequestRepository {
     return data;
   }
 
-  async findRecentDuplicate(submissionHash: string, lookbackHours: number) {
+  async findRecentLegacySubmission(submissionHash: string, lookbackHours: number) {
     const cutoffDate = new Date(Date.now() - lookbackHours * 60 * 60 * 1000).toISOString();
 
     const { data, error } = await this.db
       .from("diagnostic_requests")
       .select("*")
       .eq("submission_hash", submissionHash)
+      .is("submission_revision", null)
       .gte("created_at", cutoffDate)
       .order("created_at", { ascending: false })
       .limit(1)
@@ -71,6 +70,17 @@ export class DiagnosticRequestRepository {
     }
 
     return data;
+  }
+
+  async claimPendingSheetRows() {
+    const { data, error } = await this.db.rpc("claim_diagnostic_sheet_batch");
+    if (error) throw error;
+    return data;
+  }
+
+  async markSheetDelivered(id: string) {
+    const { error } = await this.db.from("diagnostic_requests").update({ sheets_next_attempt_at: null }).eq("id", id);
+    if (error) throw error;
   }
 
   async list({ status, limit, cursor }: ListDiagnosticRequestsInput) {

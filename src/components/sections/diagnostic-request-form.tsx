@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/card";
 import { publicEnv } from "@/lib/public-env";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
-import { trackFunnelEvent } from "@/lib/funnel-analytics";
+import { createBookingConfirmationTracker, trackFunnelEvent } from "@/lib/funnel-analytics";
 import { submitDiagnostic } from "@/lib/diagnostic-submit";
 
 type CalApi = {
@@ -21,6 +21,8 @@ type CalApi = {
 declare global {
   interface Window {
     turnstile?: {
+      reset: (id: string) => void;
+      remove: (id: string) => void;
       render: (
         container: HTMLElement,
         options: { sitekey: string; callback: (token: string) => void; "expired-callback"?: () => void },
@@ -168,19 +170,25 @@ const initialState: FormState = {
 const STEPS = [
   {
     id: "contacto",
-    title: "Primero ubicamos el negocio",
-    description: "Datos mínimos para entender quién consulta y desde qué contexto llega.",
+    title: "¿Con quién hablamos?",
+    description: "Cuéntanos cómo te llamas, qué marca representas y cómo contactarte.",
   },
   {
     id: "negocio",
-    title: "Luego entendemos el sistema actual",
-    description: "Qué vendes, a quién, cómo está funcionando y dónde se está frenando el avance.",
+    title: "¿Cómo vende tu marca hoy?",
+    description: "Piensa en un cliente reciente. ¿Qué buscaba y qué le ayudó o le costó decidir?",
   },
   {
     id: "decision",
-    title: "Finalmente definimos la ruta",
-    description: "Confirmamos urgencia, capacidad de decisión y siguiente paso correcto.",
+    title: "¿Cuándo quieren empezar?",
+    description: "Estas respuestas sobre tiempo, inversión y equipo nos ayudan a recomendarte un siguiente paso.",
   },
+] as const;
+
+const fieldsByStep = [
+  ["nombre", "empresa", "email", "whatsapp", "sector", "tamanoEquipo"],
+  ["queVende", "aQuienVende", "procesoActual", "queFrena", "metaConcreta"],
+  ["presupuesto", "urgencia", "autoridad", "contexto", "dataConsent"],
 ] as const;
 
 const LAST_STEP = STEPS.length - 1;
@@ -211,16 +219,18 @@ function ChoiceCards<T extends string>({
   value,
   options,
   onChange,
+  error,
   columns = "sm:grid-cols-3",
 }: {
   name: string;
   value: T | "";
   options: readonly ChoiceOption<T>[];
   onChange: (value: T) => void;
+  error?: string;
   columns?: string;
 }) {
   return (
-    <div className={cn("grid gap-3", columns)}>
+    <div role="radiogroup" aria-invalid={Boolean(error)} aria-labelledby={`${name}-label`} className={cn("grid gap-3", columns)}>
       {options.map((option) => {
         const selected = value === option.value;
 
@@ -238,6 +248,7 @@ function ChoiceCards<T extends string>({
             <input
               type="radio"
               name={name}
+              aria-describedby={error ? `${name}-error` : undefined}
               value={option.value}
               checked={selected}
               required
@@ -266,6 +277,7 @@ function ChoiceCards<T extends string>({
           </label>
         );
       })}
+      {error && <p id={`${name}-error`} className="col-span-full text-xs text-[#ff8fa3]">{error}</p>}
     </div>
   );
 }
@@ -280,7 +292,18 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement | null>(null);
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
+  const turnstileWidgetRef = useRef<string | null>(null);
   const bookingContainerRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const pendingFocus = useRef<string | null>(null);
+  useEffect(() => {
+    const target = pendingFocus.current;
+    if (!target) return;
+    const control = formRef.current?.querySelector<HTMLElement>(`[id="${target}"], [name="${target}"]`);
+    (control ?? titleRef.current)?.focus();
+    pendingFocus.current = null;
+  }, [step, status, fieldErrors]);
+
   const hasStartedRef = useRef(false);
 
   const calLink = bookingUrl.replace(/^https?:\/\/(app\.)?cal\.com\//, "");
@@ -295,8 +318,8 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
     const scriptId = "cf-turnstile-script";
 
     function render() {
-      if (window.turnstile && turnstileContainerRef.current) {
-        window.turnstile.render(turnstileContainerRef.current, {
+      if (window.turnstile && turnstileContainerRef.current && turnstileWidgetRef.current === null) {
+        turnstileWidgetRef.current = window.turnstile.render(turnstileContainerRef.current, {
           sitekey: publicEnv.NEXT_PUBLIC_TURNSTILE_SITE_KEY!,
           callback: (token: string) => setTurnstileToken(token),
           "expired-callback": () => setTurnstileToken(null),
@@ -304,22 +327,23 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
       }
     }
 
-    if (window.turnstile) {
-      render();
-      return;
+    let script = document.querySelector<HTMLScriptElement>(`#${scriptId}`);
+    if (!script && !window.turnstile) {
+      script = document.createElement("script");
+      script.id = scriptId;
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      script.async = true;
+      document.body.appendChild(script);
     }
-
-    if (document.getElementById(scriptId)) {
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.id = scriptId;
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
-    script.async = true;
-    script.defer = true;
-    script.onload = render;
-    document.body.appendChild(script);
+    script?.addEventListener("load", render);
+    render();
+    return () => {
+      script?.removeEventListener("load", render);
+      if (turnstileWidgetRef.current !== null) {
+        window.turnstile?.remove(turnstileWidgetRef.current);
+        turnstileWidgetRef.current = null;
+      }
+    };
   }, [turnstileEnabled, step]);
 
   useEffect(() => {
@@ -406,7 +430,22 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
     });
   }, [status, routingTier, calLink, form.nombre, form.email]);
 
+  useEffect(() => {
+    const cal = window.Cal;
+    if (!cal || status !== "submitted" || routingTier !== "llamada") return;
+    const listener = { action: "bookingSuccessfulV2", callback: createBookingConfirmationTracker() };
+    cal("on", listener);
+    return () => cal("off", listener);
+  }, [status, routingTier]);
+
   function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
+    if (fieldErrors[key]) {
+      setFieldErrors((previous) => {
+        const remaining = { ...previous };
+        delete remaining[key];
+        return remaining;
+      });
+    }
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
@@ -416,10 +455,13 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
       return;
     }
     trackFunnelEvent("diagnostic_step", STEPS[step].id);
+    pendingFocus.current = "step-title";
     setStep((current) => Math.min(current + 1, LAST_STEP));
   }
 
   function handleBack() {
+    setTurnstileToken(null);
+    pendingFocus.current = "step-title";
     setStep((current) => Math.max(current - 1, 0));
   }
 
@@ -460,14 +502,27 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
     });
 
     if (!result.ok) {
+      if (turnstileWidgetRef.current !== null) {
+        window.turnstile?.reset(turnstileWidgetRef.current);
+        setTurnstileToken(null);
+      }
       trackFunnelEvent("diagnostic_error", "request");
       setErrorMessage(result.message);
+      for (const [index, fields] of fieldsByStep.entries()) {
+        const firstError = fields.find((field) => result.fieldErrors[field]?.length);
+        if (firstError) {
+          pendingFocus.current = firstError;
+          setStep(index);
+          break;
+        }
+      }
       setFieldErrors(result.fieldErrors);
       setStatus("error");
       return;
     }
 
     trackFunnelEvent("diagnostic_complete", result.tier);
+    pendingFocus.current = "confirmation";
     setRoutingTier(result.tier);
     setStatus("submitted");
   }
@@ -478,14 +533,14 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
           Solicitud recibida
         </p>
-        <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
+        <h3 ref={titleRef} tabIndex={-1} className="scroll-mt-24 mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
           Agenda la llamada de introducción
         </h3>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
           Ya recibimos tu información. Agenda directamente en el calendario y llegamos con contexto
           para hablar de etapa, bloqueo y alcance.
         </p>
-        <a href={bookingUrl} className="mt-4 inline-block font-semibold text-[#d5baff] underline underline-offset-4">
+        <a href={bookingUrl} data-funnel-event="booking_click" className="mt-4 inline-block font-semibold text-[#d5baff] underline underline-offset-4">
           Abrir el calendario de RiBuzz
         </a>
         <div
@@ -497,19 +552,23 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
   }
 
   if (status === "submitted" && routingTier === "regalos") {
+    const nextDecision = form.presupuesto !== "definido"
+      ? "Antes de valorar un proyecto, define con tu equipo qué inversión pueden destinar."
+      : form.autoridad === "no_decido"
+        ? "Comparte el reto con quien participa en la decisión de contratar."
+        : "Cuando tengas una fecha de inicio más cercana, podremos revisar el alcance contigo.";
     return (
       <Card className="rounded-[28px] p-6 sm:p-8">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
           Gracias por contarnos tu momento
         </p>
-        <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
-          Tu siguiente paso es ordenar la base
+        <h3 ref={titleRef} tabIndex={-1} className="scroll-mt-24 mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
+          Elige un recurso para tu reto
         </h3>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
-          Con lo que nos compartiste, primero conviene aclarar oferta, cliente y siguiente decisión.
-          Te dejamos recursos para avanzar antes de invertir en un proceso más amplio.
+          {nextDecision} Mientras tanto, elige un recurso para el reto que quieres trabajar.
         </p>
-        <Button href={SITE_CONFIG.giftsPath} size="lg" className="mt-6 w-full sm:w-auto">
+        <Button href={`${SITE_CONFIG.giftsPath}?desde=diagnostico`} data-funnel-event="resource_open" size="lg" className="mt-6 w-full sm:w-auto">
           Ver recursos gratuitos
         </Button>
       </Card>
@@ -517,19 +576,24 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
   }
 
   if (status === "submitted") {
+    const pendingDecisions = [
+      form.presupuesto !== "definido" && "definir una inversión",
+      (form.urgencia === "tres_meses" || form.urgencia === "explorando") && "concretar cuándo empezar",
+      form.autoridad === "no_decido" && "involucrar a quien aprueba el proyecto",
+    ].filter((decision): decision is string => Boolean(decision));
     return (
       <Card className="rounded-[28px] p-6 sm:p-8">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
           Gracias por contarnos tu momento
         </p>
-        <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
-          Tu ruta actual es madurar la decisión
+        <h3 ref={titleRef} tabIndex={-1} className="scroll-mt-24 mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
+          Sigue en contacto con RiBuzz
         </h3>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
-          En este momento conviene seguir recibiendo criterio, ejemplos y recursos. Retoma la
-          conversación cuando la prioridad, la urgencia o la capacidad de ejecución estén más claras.
+          Recibimos tu solicitud. {pendingDecisions.length > 0 && `Para preparar una conversación comercial, el próximo paso es ${new Intl.ListFormat("es-CO").format(pendingDecisions)}. `}
+          Si quieres recibir contenido de RiBuzz, puedes suscribirte ahora.
         </p>
-        <Button href={NEWSLETTER_URL} size="lg" className="mt-6 w-full sm:w-auto">
+        <Button href={NEWSLETTER_URL} data-funnel-event="newsletter_click" size="lg" className="mt-6 w-full sm:w-auto">
           Sumarme a la lista
         </Button>
       </Card>
@@ -542,8 +606,8 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
   return (
     <Card className="rounded-[28px] p-6 sm:p-8">
       <StepProgress step={step} />
-      <h3 className="text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
-        {currentStep.title}
+      <h3 ref={titleRef} tabIndex={-1} className="scroll-mt-24 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
+        <span className="sr-only">Paso {step + 1} de {STEPS.length}. </span>{currentStep.title}
       </h3>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
         {currentStep.description}
@@ -572,6 +636,8 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
               <label className={labelClassName} htmlFor="nombre">Nombre completo *</label>
               <input
                 id="nombre"
+                aria-invalid={Boolean(fieldErrors.nombre)}
+                aria-describedby={fieldErrors.nombre ? "nombre-error" : undefined}
                 required
                 minLength={2}
                 maxLength={120}
@@ -580,13 +646,15 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                 value={form.nombre}
                 onChange={(event) => updateField("nombre", event.target.value)}
               />
-              {fieldErrors.nombre ? <p className="text-xs text-[#ff8fa3]">{fieldErrors.nombre[0]}</p> : null}
+              {fieldErrors.nombre ? <p id="nombre-error" className="text-xs text-[#ff8fa3]">{fieldErrors.nombre[0]}</p> : null}
             </div>
 
             <div className="grid gap-2">
               <label className={labelClassName} htmlFor="empresa">Empresa *</label>
               <input
                 id="empresa"
+                aria-invalid={Boolean(fieldErrors.empresa)}
+                aria-describedby={fieldErrors.empresa ? "empresa-error" : undefined}
                 required
                 minLength={2}
                 maxLength={160}
@@ -595,13 +663,15 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                 value={form.empresa}
                 onChange={(event) => updateField("empresa", event.target.value)}
               />
-              {fieldErrors.empresa ? <p className="text-xs text-[#ff8fa3]">{fieldErrors.empresa[0]}</p> : null}
+              {fieldErrors.empresa ? <p id="empresa-error" className="text-xs text-[#ff8fa3]">{fieldErrors.empresa[0]}</p> : null}
             </div>
 
             <div className="grid gap-2">
               <label className={labelClassName} htmlFor="email">Correo *</label>
               <input
                 id="email"
+                aria-invalid={Boolean(fieldErrors.email)}
+                aria-describedby={fieldErrors.email ? "email-error" : undefined}
                 type="email"
                 required
                 maxLength={160}
@@ -610,24 +680,31 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                 value={form.email}
                 onChange={(event) => updateField("email", event.target.value)}
               />
-              {fieldErrors.email ? <p className="text-xs text-[#ff8fa3]">{fieldErrors.email[0]}</p> : null}
+              {fieldErrors.email ? <p id="email-error" className="text-xs text-[#ff8fa3]">{fieldErrors.email[0]}</p> : null}
             </div>
 
             <div className="grid gap-2">
               <label className={labelClassName} htmlFor="whatsapp">WhatsApp (opcional)</label>
               <input
                 id="whatsapp"
+                aria-invalid={Boolean(fieldErrors.whatsapp)}
+                aria-describedby={fieldErrors.whatsapp ? "whatsapp-error" : undefined}
+                minLength={7}
+                maxLength={40}
                 placeholder="+57 300 000 0000"
                 className={inputClassName}
                 value={form.whatsapp}
                 onChange={(event) => updateField("whatsapp", event.target.value)}
               />
+              {fieldErrors.whatsapp && <p id="whatsapp-error" className="text-xs text-[#ff8fa3]">{fieldErrors.whatsapp[0]}</p>}
             </div>
 
             <div className="grid gap-2">
               <label className={labelClassName} htmlFor="sector">Sector / industria *</label>
               <input
                 id="sector"
+                aria-invalid={Boolean(fieldErrors.sector)}
+                aria-describedby={fieldErrors.sector ? "sector-error" : undefined}
                 required
                 minLength={2}
                 maxLength={120}
@@ -636,18 +713,22 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                 value={form.sector}
                 onChange={(event) => updateField("sector", event.target.value)}
               />
-              {fieldErrors.sector ? <p className="text-xs text-[#ff8fa3]">{fieldErrors.sector[0]}</p> : null}
+              {fieldErrors.sector ? <p id="sector-error" className="text-xs text-[#ff8fa3]">{fieldErrors.sector[0]}</p> : null}
             </div>
 
             <div className="grid gap-2">
               <label className={labelClassName} htmlFor="tamanoEquipo">Tamaño de equipo (opcional)</label>
               <input
                 id="tamanoEquipo"
+                aria-invalid={Boolean(fieldErrors.tamanoEquipo)}
+                aria-describedby={fieldErrors.tamanoEquipo ? "tamanoEquipo-error" : undefined}
+                maxLength={80}
                 placeholder="Ej: 3 personas, 10 personas..."
                 className={inputClassName}
                 value={form.tamanoEquipo}
                 onChange={(event) => updateField("tamanoEquipo", event.target.value)}
               />
+              {fieldErrors.tamanoEquipo && <p id="tamanoEquipo-error" className="text-xs text-[#ff8fa3]">{fieldErrors.tamanoEquipo[0]}</p>}
             </div>
           </div>
         ) : null}
@@ -659,6 +740,8 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                 <label className={labelClassName} htmlFor="queVende">¿Qué vendes principalmente? *</label>
                 <input
                   id="queVende"
+                aria-invalid={Boolean(fieldErrors.queVende)}
+                aria-describedby={fieldErrors.queVende ? "queVende-error" : undefined}
                   required
                   minLength={2}
                   maxLength={200}
@@ -667,13 +750,15 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                   value={form.queVende}
                   onChange={(event) => updateField("queVende", event.target.value)}
                 />
-                {fieldErrors.queVende ? <p className="text-xs text-[#ff8fa3]">{fieldErrors.queVende[0]}</p> : null}
+                {fieldErrors.queVende ? <p id="queVende-error" className="text-xs text-[#ff8fa3]">{fieldErrors.queVende[0]}</p> : null}
               </div>
 
               <div className="grid gap-2">
                 <label className={labelClassName} htmlFor="aQuienVende">¿A quién se lo vendes? *</label>
                 <input
                   id="aQuienVende"
+                aria-invalid={Boolean(fieldErrors.aQuienVende)}
+                aria-describedby={fieldErrors.aQuienVende ? "aQuienVende-error" : undefined}
                   required
                   minLength={2}
                   maxLength={200}
@@ -682,14 +767,15 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                   value={form.aQuienVende}
                   onChange={(event) => updateField("aQuienVende", event.target.value)}
                 />
-                {fieldErrors.aQuienVende ? <p className="text-xs text-[#ff8fa3]">{fieldErrors.aQuienVende[0]}</p> : null}
+                {fieldErrors.aQuienVende ? <p id="aQuienVende-error" className="text-xs text-[#ff8fa3]">{fieldErrors.aQuienVende[0]}</p> : null}
               </div>
             </div>
 
             <div className="grid gap-2">
-              <p className={labelClassName}>¿Cuál frase describe mejor tu proceso comercial hoy? *</p>
+              <p id="procesoActual-label" className={labelClassName}>¿Cuál frase describe mejor tu proceso comercial hoy? *</p>
               <ChoiceCards
                 name="procesoActual"
+                  error={fieldErrors.procesoActual?.[0]}
                 value={form.procesoActual}
                 options={processOptions}
                 onChange={(selected) => updateField("procesoActual", selected)}
@@ -700,6 +786,8 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
               <label className={labelClassName} htmlFor="queFrena">¿Qué está frenando más el avance ahora? *</label>
               <textarea
                 id="queFrena"
+                aria-invalid={Boolean(fieldErrors.queFrena)}
+                aria-describedby={fieldErrors.queFrena ? "queFrena-error" : undefined}
                 required
                 minLength={2}
                 maxLength={600}
@@ -709,19 +797,22 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
                 value={form.queFrena}
                 onChange={(event) => updateField("queFrena", event.target.value)}
               />
-              {fieldErrors.queFrena ? <p className="text-xs text-[#ff8fa3]">{fieldErrors.queFrena[0]}</p> : null}
+              {fieldErrors.queFrena ? <p id="queFrena-error" className="text-xs text-[#ff8fa3]">{fieldErrors.queFrena[0]}</p> : null}
             </div>
 
             <div className="grid gap-2">
               <label className={labelClassName} htmlFor="metaConcreta">¿Qué meta quieren mover en los próximos 3 meses? (opcional)</label>
               <input
                 id="metaConcreta"
+                aria-invalid={Boolean(fieldErrors.metaConcreta)}
+                aria-describedby={fieldErrors.metaConcreta ? "metaConcreta-error" : undefined}
                 maxLength={600}
                 placeholder="Ej: vender más sin depender de referidos, aumentar conversión, ordenar seguimiento..."
                 className={inputClassName}
                 value={form.metaConcreta}
                 onChange={(event) => updateField("metaConcreta", event.target.value)}
               />
+              {fieldErrors.metaConcreta && <p id="metaConcreta-error" className="text-xs text-[#ff8fa3]">{fieldErrors.metaConcreta[0]}</p>}
             </div>
           </>
         ) : null}
@@ -730,9 +821,10 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
           <>
             <div className="grid gap-5">
               <div className="grid gap-2">
-                <p className={labelClassName}>¿Tienen una inversión definida para trabajar esto? *</p>
+                <p id="presupuesto-label" className={labelClassName}>¿Tienen una inversión definida para trabajar esto? *</p>
                 <ChoiceCards
                   name="presupuesto"
+                  error={fieldErrors.presupuesto?.[0]}
                   value={form.presupuesto}
                   options={investmentOptions}
                   onChange={(selected) => updateField("presupuesto", selected)}
@@ -740,9 +832,10 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
               </div>
 
               <div className="grid gap-2">
-                <p className={labelClassName}>¿Cuándo les gustaría empezar? *</p>
+                <p id="urgencia-label" className={labelClassName}>¿Cuándo les gustaría empezar? *</p>
                 <ChoiceCards
                   name="urgencia"
+                  error={fieldErrors.urgencia?.[0]}
                   value={form.urgencia}
                   options={urgencyOptions}
                   onChange={(selected) => updateField("urgencia", selected)}
@@ -751,9 +844,10 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
               </div>
 
               <div className="grid gap-2">
-                <p className={labelClassName}>¿Participas en la decisión de contratar? *</p>
+                <p id="autoridad-label" className={labelClassName}>¿Participas en la decisión de contratar? *</p>
                 <ChoiceCards
                   name="autoridad"
+                  error={fieldErrors.autoridad?.[0]}
                   value={form.autoridad}
                   options={authorityOptions}
                   onChange={(selected) => updateField("autoridad", selected)}
@@ -765,16 +859,22 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
               <label className={labelClassName} htmlFor="contexto">Contexto adicional (opcional)</label>
               <input
                 id="contexto"
-                placeholder="Algo importante que debamos saber antes de clasificar tu ruta"
+                aria-invalid={Boolean(fieldErrors.contexto)}
+                aria-describedby={fieldErrors.contexto ? "contexto-error" : undefined}
+                maxLength={3000}
+                placeholder="Por ejemplo, algo que ya probaron o una duda que quieras conversar."
                 className={inputClassName}
                 value={form.contexto}
                 onChange={(event) => updateField("contexto", event.target.value)}
               />
+              {fieldErrors.contexto && <p id="contexto-error" className="text-xs text-[#ff8fa3]">{fieldErrors.contexto[0]}</p>}
             </div>
 
             <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3.5">
               <input
                 id="dataConsent"
+                aria-invalid={Boolean(fieldErrors.dataConsent)}
+                aria-describedby={fieldErrors.dataConsent ? "dataConsent-error" : undefined}
                 type="checkbox"
                 required
                 checked={form.dataConsent}
@@ -795,7 +895,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
               </label>
             </div>
             {fieldErrors.dataConsent ? (
-              <p className="text-xs text-[#ff8fa3]">{fieldErrors.dataConsent[0]}</p>
+              <p id="dataConsent-error" className="text-xs text-[#ff8fa3]">{fieldErrors.dataConsent[0]}</p>
             ) : null}
 
             {turnstileEnabled ? <div ref={turnstileContainerRef} className="mt-1" /> : null}
@@ -810,17 +910,17 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
 
         <div className={cn("flex items-center gap-3", step === 0 ? "justify-end" : "justify-between")}>
           {step > 0 ? (
-            <Button type="button" variant="secondary" size="lg" onClick={handleBack}>
+            <Button type="button" variant="secondary" size="lg" onClick={handleBack} disabled={status === "submitting"}>
               Anterior
             </Button>
           ) : null}
 
           {isLastStep ? (
-            <Button type="submit" size="lg" disabled={status === "submitting"} className="sm:w-auto">
+            <Button key="submit" type="submit" size="lg" disabled={status === "submitting"} className="sm:w-auto">
               {status === "submitting" ? "Enviando..." : "Enviar y ver siguiente paso"}
             </Button>
           ) : (
-            <Button type="button" size="lg" onClick={handleNext} className="sm:w-auto">
+            <Button key="next" type="button" size="lg" onClick={(event) => { event.preventDefault(); handleNext(); }} className="sm:w-auto">
               Siguiente
             </Button>
           )}

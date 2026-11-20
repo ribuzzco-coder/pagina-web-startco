@@ -2,16 +2,17 @@
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
-  title: "Regalos",
+  title: "Recursos para tu marca",
   description:
-    "Una caja desbloqueable con recursos de valor de RiBuzz para leer directamente.",
+    "Elige un ejercicio de estrategia, comunicación, contenido o conversión y explora dos guías de oferta de RiBuzz.",
   path: "/regalos",
 });
 
-export default function RegalosPage() {
+export default async function RegalosPage({ searchParams }: PageProps<"/regalos">) {
+  const { desde, reto } = await searchParams;
   return (
-    <section className="cv-auto py-18 sm:py-24">
-      <RewardVault />
+    <section className="px-5 py-14 sm:py-20">
+      <RewardVault fromDiagnosis={desde === "diagnostico"} challenge={typeof reto === "string" ? reto : undefined} />
     </section>
   );
 }

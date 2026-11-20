@@ -13,12 +13,12 @@ import { cn } from "@/lib/utils";
 
 const contactRoutes = [
   {
-    eyebrow: "Ruta principal",
-    title: "Completa la aplicación",
+    eyebrow: "Diagnóstico",
+    title: "Cuéntanos cómo vende tu marca",
     description:
-      "Ideal si quieres revisar etapa, objetivos y el siguiente paso correcto para trabajar con RiBuzz.",
+      "Si quieres trabajar con RiBuzz, empieza por contarnos qué vendes y qué se está complicando.",
     href: SITE_CONFIG.diagnosisPath,
-    cta: "Empezar aplicación",
+    cta: "Empezar el formulario",
     tone: "purple",
     featured: true,
     external: false,
@@ -27,7 +27,7 @@ const contactRoutes = [
     eyebrow: "Duda puntual",
     title: "Escríbenos por WhatsApp",
     description:
-      "Úsalo si necesitas resolver una pregunta antes de aplicar o contarnos contexto específico.",
+      "¿Tienes una pregunta sobre un servicio o proyecto? Habla con el equipo.",
     href: SITE_CONFIG.whatsappUrl,
     cta: "Abrir WhatsApp",
     tone: "green",
@@ -38,7 +38,7 @@ const contactRoutes = [
     eyebrow: "Antes de decidir",
     title: "Ver cómo trabajamos",
     description:
-      "Revisa el sistema, las etapas y la forma en que definimos alcance según cada negocio.",
+      "Mira cómo elegimos prioridades contigo y qué recibe tu equipo en cada etapa.",
     href: "/services",
     cta: "Ver metodología",
     tone: "cyan",
@@ -48,9 +48,9 @@ const contactRoutes = [
 ] as const;
 
 const followUpSteps = [
-  "Clasificamos tu etapa",
-  "Revisamos encaje y prioridad",
-  "Definimos la ruta de trabajo",
+  "Nos cuentas qué vendes",
+  "Indicas qué quieres resolver",
+  "Ves el siguiente paso disponible",
 ] as const;
 
 const utilityLinks = [
@@ -66,7 +66,7 @@ const utilityLinks = [
   },
   {
     title: "Recursos gratuitos",
-    description: "Para ordenar oferta y criterio antes de avanzar.",
+    description: "Ejercicios de estrategia, comunicación, contenido y conversión.",
     href: SITE_CONFIG.giftsPath,
   },
 ] as const;
@@ -222,7 +222,7 @@ export default function ContactoClient() {
                 isDayMode ? "text-[#111827]" : "text-[#E4DFF7]",
               )}
             >
-              Elige la ruta correcta para avanzar con claridad
+              ¿De qué te gustaría hablar?
             </h1>
             <p
               className={cn(
@@ -230,8 +230,8 @@ export default function ContactoClient() {
                 isDayMode ? "text-[#4B5563]" : "text-[#CEC6E0]",
               )}
             >
-              Si ya sabes que quieres crecer, ordenar tu sistema o resolver una duda antes de aplicar,
-              este es el punto de entrada correcto.
+              Para revisar cómo vende tu marca, empieza por el diagnóstico.
+              Si tienes una duda puntual, escríbenos por WhatsApp.
             </p>
           </div>
 

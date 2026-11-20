@@ -10,15 +10,15 @@ import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 const diagnosisHighlights = [
-  "Ubicamos tu etapa",
-  "Aclaramos el bloqueo",
-  "Definimos la ruta",
+  "Qué vendes y a quién",
+  "Dónde se traba la venta",
+  "Qué quieres cambiar primero",
 ] as const;
 
 export const metadata = createPageMetadata({
   title: "Diagnóstico",
   description:
-    "Completa una aplicación breve para ubicar etapa, objetivo, bloqueo y siguiente paso con RiBuzz.",
+    "Cuéntanos cómo vende tu marca y qué quieres mejorar. Al terminar verás si puedes agendar una llamada, consultar un ejercicio o recibir contenidos.",
   path: "/diagnostico",
 });
 
@@ -28,8 +28,8 @@ export default function DiagnosticoPage() {
       <section className="relative -mt-[76px] overflow-hidden bg-[#08051b] pb-14 pt-[76px] sm:pb-20">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_10%,rgba(108,67,239,.3),transparent_48%),linear-gradient(140deg,#08051b,#120a2d)]" />
         <Container className="relative grid gap-10 py-16 lg:grid-cols-[1fr_.7fr] lg:items-end lg:py-20">
-          <div><p className="font-heading text-xs font-semibold uppercase tracking-[.18em] text-[#bcaaff]">Aplicación de diagnóstico</p><h1 className="mt-5 max-w-3xl font-heading text-5xl font-semibold leading-[.98] tracking-[-.055em] text-white sm:text-6xl">Empecemos por entender tu negocio.</h1><p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#c9c1d9]">Cuéntanos tu contexto, objetivo y bloqueo principal. Con tus respuestas, la aplicación te orienta hacia una llamada de introducción, recursos de preparación o seguimiento por contenido.</p><a href="#diagnostico-form" className="mt-8 inline-flex min-h-12 items-center justify-center rounded-lg bg-[#6d42e8] px-6 font-semibold text-white transition hover:bg-[#7b55ef] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#bbaaff]">Ir a la aplicación</a><p className="mt-4 text-sm text-[#b3a8c9]">La llamada se habilita cuando corresponde a la ruta de tu aplicación.</p></div>
-          <div className="rounded-[26px] border border-[#a38afa]/25 bg-[#15102f]/85 p-7"><p className="font-heading text-xs font-semibold uppercase tracking-[.16em] text-[#bba8ff]">Lo que buscamos entender</p><ol className="mt-5 space-y-1">{diagnosisHighlights.map((item, index) => <li key={item} className="flex items-center gap-4 border-b border-white/10 py-4 last:border-0"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#aa91ff]/35 bg-[#291d51] text-sm text-[#d2c4ff]">{index + 1}</span><span className="font-heading font-semibold text-white">{item}</span></li>)}</ol><p className="mt-4 text-sm leading-relaxed text-[#bdb3d2]">No necesitas tener todas las respuestas. Comparte lo que sabes hoy para orientar la conversación.</p></div>
+          <div><p className="font-heading text-xs font-semibold uppercase tracking-[.18em] text-[#bcaaff]">Diagnóstico RiBuzz</p><h1 className="mt-5 max-w-3xl font-heading text-5xl font-semibold leading-[.98] tracking-[-.055em] text-white sm:text-6xl">¿En qué parte de la venta necesitas ayuda?</h1><p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#c9c1d9]">Piensa en la última vez que alguien se interesó por tu marca y la compra quedó a medias. Ese ejemplo nos ayuda a entender qué quieres resolver.</p><a href="#diagnostico-form" className="mt-8 inline-flex min-h-12 items-center justify-center rounded-lg bg-[#6d42e8] px-6 font-semibold text-white transition hover:bg-[#7b55ef] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#bbaaff]">Empezar el formulario</a><p className="mt-4 text-sm text-[#b3a8c9]">Al terminar verás el siguiente paso disponible para tu marca.</p></div>
+          <div className="rounded-[26px] border border-[#a38afa]/25 bg-[#15102f]/85 p-7"><p className="font-heading text-xs font-semibold uppercase tracking-[.16em] text-[#bba8ff]">Lo que buscamos entender</p><ol className="mt-5 space-y-1">{diagnosisHighlights.map((item, index) => <li key={item} className="flex items-center gap-4 border-b border-white/10 py-4 last:border-0"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#aa91ff]/35 bg-[#291d51] text-sm text-[#d2c4ff]">{index + 1}</span><span className="font-heading font-semibold text-white">{item}</span></li>)}</ol><p className="mt-4 text-sm leading-relaxed text-[#bdb3d2]">Puedes contar lo que escuchas en ventas, por ejemplo, una pregunta que se repite en WhatsApp.</p></div>
         </Container>
       </section>
 
@@ -55,8 +55,8 @@ export default function DiagnosticoPage() {
           <SectionTitle
             align="center"
             eyebrow="Qué pasa después"
-            title="La aplicación abre una ruta concreta"
-            description="Cada empresa llega con un contexto distinto. La aplicación ordena el siguiente paso según etapa, urgencia, capacidad y objetivo."
+            title="¿Qué verás al terminar?"
+            description="El siguiente paso depende del presupuesto disponible, de cuándo quieren empezar y de quién participa en la decisión."
           />
 
           <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
@@ -85,8 +85,8 @@ export default function DiagnosticoPage() {
           <SectionTitle
             align="center"
             eyebrow="Qué revisamos"
-            title="Antes de proponerte algo, entendemos el sistema"
-            description="Primero ubicamos dónde se frena el avance. Después definimos alcance, entregables y forma de trabajo para tu momento."
+            title="¿Qué revisamos si trabajamos juntos?"
+            description="Seguimos el recorrido de un cliente, desde que descubre tu marca hasta que compra o deja de responder."
           />
 
           <div className="mx-auto mt-10 max-w-4xl rounded-[28px] border-y border-white/10">
@@ -114,8 +114,8 @@ export default function DiagnosticoPage() {
           <SectionTitle
             align="center"
             eyebrow="FAQ"
-            title="Preguntas frecuentes antes de completar la aplicación"
-            description="Respuestas directas sobre oferta, alcance, riesgo, tiempos y forma de trabajo antes de tomar una decisión."
+            title="Antes de enviar tu solicitud"
+            description="Qué puedes esperar de la primera conversación y de una propuesta de trabajo."
           />
 
           <div className="mx-auto mt-8 max-w-4xl">
@@ -127,9 +127,9 @@ export default function DiagnosticoPage() {
       <CTASection
         centered
         eyebrow="Siguiente paso"
-        title="Deja claro qué debe moverse primero"
-        description="Completa la aplicación y ubicamos tu etapa, objetivo, bloqueo principal y ruta de trabajo."
-        primaryLabel="Completa la aplicación"
+        title="Cuéntanos qué pasa cuando alguien quiere comprarte."
+        description="Si todavía tienes una pregunta sobre cómo trabajamos, también puedes escribirnos directamente."
+        primaryLabel="Empezar el formulario"
         primaryHref="#diagnostico-form"
         primaryVariant="shimmer"
         secondaryLabel="Escribir por WhatsApp"

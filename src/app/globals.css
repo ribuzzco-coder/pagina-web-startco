@@ -1,6 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Barlow:wght@400;500;600;700&family=Jost:wght@400;500;600;700&family=Lato:wght@400;700;900&family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&family=Saira:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Zen+Dots&display=swap");
 @import "tailwindcss";
 
+/* Shared editorial treatment for RiBuzz's public company pages. */
+[data-company-page] {
+  font-family: var(--font-saira), sans-serif;
+  user-select: text;
+}
+[data-company-page] h1,
+[data-company-page] h2 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  text-wrap: balance;
+  letter-spacing: -.045em;
+}
+[data-company-page] h1 {
+  font-size: clamp(2.35rem, 4.65vw, 4.65rem);
+  line-height: 1.04;
+}
+[data-company-page] h2 { line-height: 1.12; }
+[data-company-page] summary { min-height: 44px; }
+[data-company-page] :is(a, button, summary):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+[data-company-page] ::selection { background: #d7c2ee; color: #25172f; }
+
 @theme inline {
   --font-heading: var(--font-saira);
   --font-sans: var(--font-saira);

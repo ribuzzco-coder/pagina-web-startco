@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { type CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   motion,
@@ -284,28 +285,67 @@ function GalacticBurst() {
   );
 }
 
-export function RewardVault() {
+const exercises = [
+  {
+    id: "estrategia", label: "Estrategia", title: "Elige una prioridad para esta semana",
+    steps: ["Anota qué compraron tus últimos tres clientes y por qué canal llegaron.", "Busca algo que tengan en común. Elige una oferta y un canal para concentrar el siguiente esfuerzo."],
+    href: "/hagamos-una-oferta-que-nos-lleve.pdf", linkLabel: "Leer la guía de oferta (PDF)",
+  },
+  {
+    id: "comunicacion", label: "Comunicación", title: "Comprueba qué se entiende de tu oferta",
+    steps: ["Pídele a alguien que lea la portada de tu marca y te diga, con sus palabras, para quién es y qué le aporta.", "Contrasta su respuesta con lo que querías transmitir. Reescribe la primera frase con una diferencia que puedas demostrar."],
+    href: "/proyectos/arkos-wear", linkLabel: "Ver cómo planteamos el mensaje de Arkos Wear",
+  },
+  {
+    id: "contenido", label: "Contenido", title: "Convierte una duda repetida en una pieza útil",
+    steps: ["Revisa cinco consultas recientes y apunta qué pregunta se repite antes de comprar.", "Prepara una pieza que la responda con un ejemplo de producto. Termina indicando dónde comprobar el detalle o hacer el pedido."],
+    href: "/nunaamautta", linkLabel: "Explorar el contenido de Universo Nuna",
+  },
+  {
+    id: "conversion", label: "Conversión", title: "Encuentra el paso en que se pierde una venta",
+    steps: ["Recorre en tu móvil el camino desde una publicación hasta una compra o consulta. Anota dónde falta información para seguir.", "Elige una fricción y registra cuántas personas llegan a ese paso y cuántas lo completan antes y después del ajuste."],
+    href: "/biondaymora", linkLabel: "Recorrer las opciones de compra de Bionda y Mora",
+  },
+] as const;
+
+export function RewardVault({ fromDiagnosis, challenge }: { fromDiagnosis: boolean; challenge?: string }) {
   const [isUnlocked, setIsUnlocked] = useState(false);
+  const selected = exercises.find(({ id }) => id === challenge);
 
   return (
     <div className="relative mx-auto max-w-4xl">
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
-          Regalos RiBuzz
+          Recursos RiBuzz
         </p>
         <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance] sm:text-5xl">
-          Dos recursos para mejorar tu oferta antes de pedir más marketing.
+          {fromDiagnosis ? "Tu siguiente paso después del diagnóstico." : "¿Qué quieres resolver en tu marca?"}
         </h1>
         <p className="mt-4 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
-          Empieza por entender qué estás prometiendo, a quién se lo prometes y cómo convertirlo
-          en una conversación comercial más clara.
+          Elige el reto que quieres trabajar y llévate un ejercicio para hacerlo con tu equipo.
         </p>
-        <ul className="mx-auto mt-6 grid max-w-2xl gap-3 text-left sm:grid-cols-2">
-          {docs.map((doc) => <li key={doc.title} className="rounded-2xl border border-white/10 bg-white/[0.035] p-4"><p className="font-semibold text-[#e4dff7]">{doc.title}</p><p className="mt-2 text-sm leading-relaxed text-[#bdb5d1]">{doc.description}</p></li>)}
-        </ul>
       </div>
 
+      <section id="ejercicio" aria-label="Ejercicios por reto" className="mx-auto mt-8 max-w-2xl scroll-mt-24 rounded-3xl bg-[#e6daf2] p-5 text-[#26192f] sm:p-7">
+        <nav aria-label="Elige un reto" className="flex flex-wrap gap-2">
+          {exercises.map((exercise) => (
+            <Link key={exercise.id} href={`/regalos?${fromDiagnosis ? "desde=diagnostico&" : ""}reto=${exercise.id}#ejercicio`} aria-current={selected?.id === exercise.id ? "true" : undefined}
+              className="inline-flex min-h-11 items-center rounded-full border border-[#aa90ba] px-4 text-sm font-semibold hover:bg-[#f3edf8] aria-[current=true]:bg-[#33213f] aria-[current=true]:text-white">
+              {exercise.label}
+            </Link>
+          ))}
+        </nav>
+        {selected && (
+          <div className="mt-5 border-t border-[#bfabcd] pt-5" aria-live="polite">
+            <h2 className="font-heading text-2xl font-semibold">{selected.title}</h2>
+            <ol className="mt-3 list-decimal space-y-2 pl-5 leading-relaxed">{selected.steps.map(step => <li key={step}>{step}</li>)}</ol>
+            <a href={selected.href} className="mt-5 inline-block font-semibold underline underline-offset-4">{selected.linkLabel} ↗</a>
+          </div>
+        )}
+      </section>
+
       <div className="relative mx-auto mt-10 max-w-2xl">
+        <h2 className="mb-4 text-center font-heading text-2xl font-semibold text-white">Dos guías para trabajar tu oferta</h2>
         <Card className="relative overflow-hidden rounded-[32px] border-[#6939E2]/20 bg-[linear-gradient(180deg,rgba(19,2,89,0.5),rgba(8,4,30,0.98))] p-8 shadow-[0_0_0_1px_rgba(105,57,226,0.12),0_0_36px_rgba(105,57,226,0.16),0_28px_70px_rgba(0,0,0,0.32)] sm:p-10">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_18%,rgba(120,95,221,0.12),transparent_22%),radial-gradient(circle_at_78%_22%,rgba(120,95,221,0.12),transparent_24%),radial-gradient(circle_at_50%_100%,rgba(105,57,226,0.12),transparent_32%)]" />
           {isUnlocked ? <GalacticBurst /> : null}
@@ -334,31 +374,30 @@ export function RewardVault() {
                 Siguiente paso
               </p>
               <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
-                Si ya identificaste un cuello de botella, completa la aplicación.
+                {fromDiagnosis ? "¿Qué encontraste al hacer el ejercicio?" : "¿Quieres trabajar este reto con RiBuzz?"}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty]">
-                Revisamos tu momento, clasificamos tu ruta y abrimos el siguiente paso correcto.
-                ¿Tienes una pregunta puntual antes? Escríbenos por WhatsApp.
+                {fromDiagnosis ? "Tu solicitud ya fue enviada. Si quieres conversar sobre lo que observaste, escríbenos y cuéntanos qué paso te costó más." : "Cuéntanos qué vendes, en qué punto se detiene la venta y qué quieres mejorar."}
               </p>
             </div>
 
             <div className="flex flex-col items-center gap-3 sm:items-end">
               <Button
-                href={SITE_CONFIG.diagnosisPath}
+                href={fromDiagnosis ? SITE_CONFIG.whatsappUrl : SITE_CONFIG.diagnosisPath}
                 size="md"
                 variant="shimmer"
                 className="min-w-[180px] shadow-[0_0_0_1px_rgba(105,57,226,0.16),0_0_24px_rgba(105,57,226,0.18)]"
               >
-                Completa la aplicación
+                {fromDiagnosis ? "Conversar por WhatsApp" : "Empezar diagnóstico"}
               </Button>
-              <a
+              {!fromDiagnosis && <a
                 href={SITE_CONFIG.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs text-[#98A0B3] underline decoration-white/20 underline-offset-2 hover:text-[#E4DFF7]"
               >
                 O escríbenos por WhatsApp
-              </a>
+              </a>}
             </div>
           </div>
         </Card>

@@ -14,6 +14,7 @@ type AdminRequestsClientProps = {
     role: string;
   };
   initialItems: AdminDiagnosticRequestDto[];
+  qualifiedCount: number;
 };
 
 const STATUS_OPTIONS: Array<AdminDiagnosticRequestDto["status"]> = [
@@ -67,6 +68,7 @@ const AUTORIDAD_LABEL: Record<string, string> = {
 export function AdminRequestsClient({
   actor,
   initialItems,
+  qualifiedCount,
 }: AdminRequestsClientProps) {
   const router = useRouter();
   const [items, setItems] = useState(initialItems);
@@ -116,6 +118,7 @@ export function AdminRequestsClient({
       setItems((currentItems) =>
         currentItems.map((item) => (item.id === requestId ? payload.data : item)),
       );
+      router.refresh();
     } catch {
       setErrorMessage("No pudimos guardar los cambios. Intenta de nuevo.");
     } finally {
@@ -135,8 +138,7 @@ export function AdminRequestsClient({
               Solicitudes de diagnóstico
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-              Vista protegida para revisar información sensible ya descifrada dentro del servidor,
-              sin exponer hashes internos ni depender de una llave compartida para entrar.
+              {qualifiedCount} solicitudes calificadas por el equipo comercial.
             </p>
           </div>
 

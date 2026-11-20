@@ -19,6 +19,7 @@ import { GoogleAnalytics } from "@/components/layout/google-analytics";
 import { IntroLoader } from "@/components/layout/intro-loader";
 import { Navbar } from "@/components/layout/navbar";
 import { RouteVisibility } from "@/components/layout/route-visibility";
+import { SiteMain } from "@/components/layout/site-main";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 import "./globals.css";
@@ -161,7 +162,7 @@ export default function RootLayout({
             <IntroLoader />
             <Navbar />
           </RouteVisibility>
-          <main id="contenido-principal" tabIndex={-1} className="flex-1 pt-[76px]">{children}</main>
+          <SiteMain>{children}</SiteMain>
           <RouteVisibility>
             <Footer />
             <FloatingWhatsAppButton />

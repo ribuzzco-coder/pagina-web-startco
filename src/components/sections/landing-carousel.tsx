@@ -243,6 +243,7 @@ function getSlot(index: number, activeIndex: number) {
 export function LandingCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const goNext = useCallback(() => {
@@ -256,10 +257,20 @@ export function LandingCarousel() {
   }, []);
 
   useEffect(() => {
-    if (isPaused) return;
-    const interval = window.setInterval(goNext, 5400);
-    return () => window.clearInterval(interval);
-  }, [goNext, isPaused]);
+    if (isPaused || isHovered) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let interval: number | undefined;
+    function updateRotation() {
+      window.clearInterval(interval);
+      if (!motion.matches) interval = window.setInterval(goNext, 5400);
+    }
+    updateRotation();
+    motion.addEventListener("change", updateRotation);
+    return () => {
+      window.clearInterval(interval);
+      motion.removeEventListener("change", updateRotation);
+    };
+  }, [goNext, isPaused, isHovered]);
 
   const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
     setTouchStartX(event.touches[0]?.clientX ?? null);
@@ -267,10 +278,7 @@ export function LandingCarousel() {
   };
 
   const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
-    if (touchStartX === null) {
-      setIsPaused(false);
-      return;
-    }
+    if (touchStartX === null) return;
 
     const endX = event.changedTouches[0]?.clientX ?? touchStartX;
     const deltaX = endX - touchStartX;
@@ -284,54 +292,61 @@ export function LandingCarousel() {
     }
 
     setTouchStartX(null);
-    setIsPaused(false);
   };
 
   return (
-    <div
-      className="landing-carousel mt-14"
-      aria-label="Ejemplos de landings"
-      onPointerEnter={() => setIsPaused(true)}
-      onPointerLeave={() => setIsPaused(false)}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
-      <button
-        type="button"
-        className="landing-carousel__arrow landing-carousel__arrow--left"
-        aria-label="Ver landing anterior"
-        onClick={goPrevious}
+    <section className="mt-14" aria-label="Ejemplos de landings">
+      <div className="mb-4 flex justify-center motion-reduce:hidden">
+        <button type="button" className="min-h-11 rounded-full border border-white/30 px-5 text-sm text-white hover:bg-white/10" onClick={() => setIsPaused(!isPaused)}>
+          {isPaused ? "Reanudar recorrido" : "Pausar recorrido"}
+        </button>
+      </div>
+      <div
+        className="landing-carousel"
+        onFocusCapture={() => setIsPaused(true)}
+        onPointerEnter={() => setIsHovered(true)}
+        onPointerLeave={() => setIsHovered(false)}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
-        <span />
-      </button>
-      <button
-        type="button"
-        className="landing-carousel__arrow landing-carousel__arrow--right"
-        aria-label="Ver siguiente landing"
-        onClick={goNext}
-      >
-        <span />
-      </button>
+        <button
+          type="button"
+          className="landing-carousel__arrow landing-carousel__arrow--left"
+          aria-label="Ver landing anterior"
+          onClick={goPrevious}
+        >
+          <span />
+        </button>
+        <button
+          type="button"
+          className="landing-carousel__arrow landing-carousel__arrow--right"
+          aria-label="Ver siguiente landing"
+          onClick={goNext}
+        >
+          <span />
+        </button>
 
-      <div className="landing-carousel__floor" />
-      {landingPreviews.map((item, index) => {
-        const slot = getSlot(index, activeIndex);
-        const cardClassName = `landing-carousel__card landing-carousel__card--${item.kind} landing-carousel__card--slot-${slot}`;
+        <div className="landing-carousel__floor" />
+        {landingPreviews.map((item, index) => {
+          const slot = getSlot(index, activeIndex);
+          const cardClassName = `landing-carousel__card landing-carousel__card--${item.kind} landing-carousel__card--slot-${slot}`;
 
-        if (item.href) {
+          if (item.href) {
+            return (
+              <a key={item.title} href={item.href} tabIndex={slot === "center" ? 0 : -1} aria-label={`Abrir ${item.title}`} className={cardClassName}>
+                <PreviewContent item={item} />
+              </a>
+            );
+          }
+
           return (
-            <a key={item.title} href={item.href} className={cardClassName}>
+            <article key={item.title} className={cardClassName}>
               <PreviewContent item={item} />
-            </a>
+            </article>
           );
-        }
-
-        return (
-          <article key={item.title} className={cardClassName}>
-            <PreviewContent item={item} />
-          </article>
-        );
-      })}
-    </div>
+        })}
+      </div>
+      <p className="sr-only" aria-live={isPaused ? "polite" : "off"}>{landingPreviews[activeIndex].title}</p>
+    </section>
   );
 }

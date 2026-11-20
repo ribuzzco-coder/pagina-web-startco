@@ -93,6 +93,8 @@ export type Database = {
           source: string;
           status: Database["public"]["Enums"]["diagnostic_request_status"];
           submission_hash: string;
+          submission_revision: string | null;
+          sheets_next_attempt_at: string | null;
           tamano_equipo: string | null;
           updated_at: string;
           urgencia: string | null;
@@ -157,6 +159,7 @@ export type Database = {
           source?: string;
           status?: Database["public"]["Enums"]["diagnostic_request_status"];
           submission_hash?: string;
+          sheets_next_attempt_at?: string | null;
           tamano_equipo?: string | null;
           updated_at?: string;
           urgencia?: string | null;
@@ -273,6 +276,14 @@ export type Database = {
     };
     Views: Record<string, never>;
     Functions: {
+      receive_diagnostic: {
+        Args: { p_request: Json; p_revision: string; p_lookback_hours: number; p_sync: boolean; p_legacy_match: string | null };
+        Returns: { id: string; fit_score: number; routing_tier: Database["public"]["Enums"]["diagnostic_routing_tier"]; duplicate: boolean }[];
+      };
+      claim_diagnostic_sheet_batch: {
+        Args: Record<string, never>;
+        Returns: DiagnosticRequestRow[];
+      };
       check_rate_limit: {
         Args: {
           p_identifier_hash: string;

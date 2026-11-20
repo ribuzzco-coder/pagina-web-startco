@@ -139,3 +139,13 @@ Si quieres rehacer la imagen desde cero porque cambiaste dependencias o variable
 docker compose --env-file .env.local build --no-cache
 docker compose --env-file .env.local up
 ```
+
+### Medición del diagnóstico
+
+Configura `NEXT_PUBLIC_GA_MEASUREMENT_ID` al compilar para habilitar los eventos del sitio. `diagnostic_complete` indica una solicitud clasificada. `booking_click`, `resource_open`, `whatsapp_click` y `newsletter_click` registran acciones del visitante. `booking_confirmed` se emite cuando el calendario integrado comunica una nueva reserva aceptada. El identificador se utiliza en memoria para deduplicar y queda fuera del evento.
+
+Para el total de reservas, incluidas las que terminan en una pestaña externa o se aceptan posteriormente, consulta el evento de diagnóstico en Cal.com. Para solicitudes calificadas por ventas, consulta el contador de `/admin/solicitudes`, basado en registros que el equipo ha marcado como `qualified`.
+
+### Artefacto de publicación
+
+Construye la imagen de publicación desde un checkout limpio del commit elegido. Las cotizaciones y propuestas de trabajo locales se conservan en `private-commercial/`, fuera de los recursos públicos y del contexto de Docker. Antes de publicar, comprueba el listado de archivos en `/app/public` de la imagen y que coincide con los recursos previstos para la revisión.

@@ -27,3 +27,12 @@ test("absence or failure of collector never interrupts the application", () => {
   assert.doesNotThrow(() => load({}).trackFunnelEvent("diagnostic_start", "contacto"));
   assert.doesNotThrow(() => load({ gtag: () => { throw new Error("offline"); } }).trackFunnelEvent("diagnostic_error", "request"));
 });
+
+test("counts accepted calendar bookings once without exposing booking data", () => {
+  const calls = [];
+  const track = load({ gtag: (...args) => calls.push(args) }).createBookingConfirmationTracker();
+  for (const status of ["PENDING", "CANCELLED", "ACCEPTED", "ACCEPTED"]) {
+    track({ detail: { data: { uid: "test-booking", status, email: "private@example.test" } } });
+  }
+  assert.deepEqual(JSON.parse(JSON.stringify(calls)), [["event", "booking_confirmed", { funnel_stage: "llamada" }]]);
+});

@@ -9,11 +9,13 @@ import { SectionTitle } from "@/components/ui/section-title";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { GrowthMap } from "@/components/sections/growth-map";
+import { featuredProjects } from "@/lib/featured-projects";
+import Link from "next/link";
 
 const aboutOrigin = [
-  { title: "Las piezas no siempre trabajan juntas", description: "Una marca puede tener contenido, una web y contactos sin que exista una ruta clara entre la primera visita y el seguimiento comercial." },
-  { title: "Cada negocio parte de un contexto distinto", description: "La prioridad puede estar en la oferta, la conversión o la forma de atender oportunidades. Por eso empezamos por entender el negocio." },
-  { title: "La estrategia necesita llevarse a la práctica", description: "Según el alcance acordado, acompañamos la construcción de mensajes, activos digitales y procesos que respondan a esa prioridad." },
+  { title: "De la publicación a la tienda", description: "Si una publicación despierta interés, ¿es fácil encontrar ese mismo producto al llegar a tu tienda?" },
+  { title: "De la duda a la respuesta", description: "Si antes de comprar siempre preguntan por la talla, revisamos qué muestra la ficha y qué necesita explicar quien atiende." },
+  { title: "De la consulta al pedido", description: "Cuando una conversación queda a medias, miramos quién la retoma y qué necesita el cliente para seguir." },
 ];
 
 const aboutLearnings = [
@@ -24,8 +26,8 @@ const aboutLearnings = [
 ];
 
 const aboutMissionVision = [
-  { title: "Nuestro trabajo hoy", description: "Acompañar a marcas a reconocer sus prioridades y conectar estrategia, ejecución digital y seguimiento según su contexto." },
-  { title: "Lo que buscamos construir", description: "Una forma de trabajo que ayude a más equipos a tomar decisiones con claridad y convertirlas en acciones concretas." },
+  { title: "Nuestro trabajo hoy", description: "Ayudar a cada marca a decidir qué parte de su sistema comercial conviene definir o mejorar primero." },
+  { title: "Lo que buscamos construir", description: "Que tu equipo sepa qué observar, cómo decidir un cambio y cómo evaluar si le sirvió al cliente." },
 ];
 
 const aboutTraits = [
@@ -48,28 +50,10 @@ const learningIconPaths = [
   "M10.5 17a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13M15 15l5 5M8 10h5M10.5 7.5v5",
 ];
 
-const brandStory = [
-  {
-    title: "Vimos negocios con potencial",
-    description:
-      "Marcas con buen producto, ventas reales y esfuerzo constante, pero sin crecimiento sostenido.",
-  },
-  {
-    title: "Encontramos el mismo bloqueo",
-    description:
-      "La oferta, la comunicación, la tecnología y el seguimiento no estaban conectados.",
-  },
-  {
-    title: "Construimos RiBuzz",
-    description:
-      "Un sistema para diagnosticar, ordenar y ejecutar lo que realmente mueve el crecimiento comercial.",
-  },
-];
-
 export const metadata = createPageMetadata({
   title: "Sobre RiBuzz",
   description:
-    "Conoce el enfoque de RiBuzz como growth partner digital: entender el negocio, definir prioridades y llevarlas a la práctica junto a las marcas.",
+    "Conoce a RiBuzz, el growth partner digital que trabaja con tu equipo para mejorar cómo presentas tu marca, respondes dudas y acompañas la compra.",
   path: "/about",
 });
 
@@ -89,17 +73,16 @@ export default function AboutPage() {
                 <PillBadge>Sobre RiBuzz</PillBadge>
               </div>
               <h1 className="mx-auto mt-4 max-w-3xl font-heading text-[1.9rem] font-bold leading-[1.08] text-[#E4DFF7] [text-wrap:balance] sm:text-[2.45rem] xl:text-[3rem]">
-                Un partner para conectar las decisiones con{" "}
-                <span className="text-[#8b6ff0]">la acción</span>
+                Un equipo que se sienta a mirar{" "}
+                <span className="text-[#8b6ff0]">cómo vende tu marca.</span>
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] [text-wrap:pretty] sm:text-[1rem]">
-                RiBuzz acompaña a marcas como growth partner digital: entendemos su contexto,
-                enfocamos prioridades y trabajamos en las piezas que necesitan para avanzar.
+                Somos el growth partner digital de marcas. Tu equipo conoce las preguntas que escucha al vender. Nosotros revisamos contigo cómo responderlas en tu tienda, tu contenido y tus conversaciones comerciales.
               </p>
 
               <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Button href={SITE_CONFIG.diagnosisPath} size="lg" variant="shimmer">
-                  Completa la aplicación
+                  Empezar diagnóstico
                 </Button>
                 <Button href="/services" variant="secondary" size="lg">
                   Ver cómo trabajamos
@@ -115,7 +98,7 @@ export default function AboutPage() {
           <div>
             <p className="text-xs font-bold uppercase tracking-[.16em] text-[#6b4785]">El equipo de proyecto</p>
             <h2 className="mt-4 font-heading text-4xl font-semibold leading-tight tracking-[-.045em]">Quién responde por cada decisión.</h2>
-            <p className="mt-5 leading-relaxed text-[#4f4257]">Si quieres conocer cómo podríamos trabajar con tu marca, puedes escribir directamente a RiBuzz antes de completar la aplicación.</p>
+            <p className="mt-5 leading-relaxed text-[#4f4257]">¿Quieres hablar primero con alguien de RiBuzz? Escríbenos y cuéntanos qué pasa en tu marca.</p>
             <div className="mt-6 flex flex-wrap gap-3"><a href={SITE_CONFIG.whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex rounded-full bg-[#573475] px-5 py-3 font-semibold text-white transition hover:bg-[#704997] focus-visible:outline-2 focus-visible:outline-[#573475]">Conversar por WhatsApp</a><a href={`mailto:${SITE_CONFIG.contactEmail}`} className="inline-flex rounded-full border border-[#755c82] px-5 py-3 font-semibold text-[#573475] transition hover:bg-white/60 focus-visible:outline-2 focus-visible:outline-[#573475]">Escribir por correo</a></div>
           </div>
           <dl className="divide-y divide-[#c4b8c8] border-y border-[#c4b8c8]">
@@ -133,16 +116,16 @@ export default function AboutPage() {
         <Container>
           <SectionTitle
             align="center"
-            eyebrow="Origen"
-            title="Las marcas necesitan claridad para decidir qué sigue"
-            description="Oferta, comunicación, experiencia digital y seguimiento forman parte de una misma conversación sobre el crecimiento."
+            eyebrow="Nuestra mirada"
+            title="Por qué seguimos la compra de principio a fin"
+            description="Una venta puede empezar en redes, continuar en tu tienda y decidirse en WhatsApp. Revisamos qué encuentra el cliente en cada paso."
           />
 
           <div className="mx-auto mt-10 grid max-w-5xl gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
             <Card className="flex min-h-[19rem] flex-col items-center justify-center rounded-[24px] p-8 text-center">
               <AboutCardIcon path={originIconPaths[0]} />
               <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
-                El patrón que vimos
+                Primer contacto
               </p>
               <h3 className="mt-3 max-w-sm text-2xl font-semibold leading-tight text-[#E4DFF7] [text-wrap:balance]">
                 {aboutOrigin[0].title}
@@ -182,42 +165,8 @@ export default function AboutPage() {
         <Container>
           <SectionTitle
             align="center"
-            eyebrow="Historia de la marca"
-            title="Una forma de trabajar que conecta los puntos"
-            description="Nuestro enfoque parte de entender la marca antes de definir qué construir."
-          />
-
-          <div className="mx-auto mt-10 max-w-5xl rounded-2xl border border-[#8d88a9]/20 bg-[#15102b]/72 p-6 shadow-[0_22px_54px_rgba(3,1,12,0.28)] sm:p-8">
-            <div className="grid gap-8 md:grid-cols-3">
-            {brandStory.map((item, index) => (
-              <div
-                key={item.title}
-                className="relative text-center md:text-left md:[&:not(:last-child)]:after:absolute md:[&:not(:last-child)]:after:left-[4.25rem] md:[&:not(:last-child)]:after:top-6 md:[&:not(:last-child)]:after:h-px md:[&:not(:last-child)]:after:w-[calc(100%-4.5rem)] md:[&:not(:last-child)]:after:bg-white/10"
-              >
-                <div className="flex justify-center md:justify-start">
-                  <AboutInlineIcon path={originIconPaths[index % originIconPaths.length]} />
-                </div>
-                <h3 className="mt-5 text-lg font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      <SectionDivider />
-
-      <section className="cv-auto py-16 sm:py-20">
-        <Container>
-          <SectionTitle
-            align="center"
             eyebrow="Lo que hemos aprendido"
-            title="Miramos el recorrido completo"
+            title="Qué revisamos antes de recomendarte un cambio"
             description="Antes de elegir una herramienta o un canal, buscamos entender cómo se relacionan con la oferta y la experiencia del cliente."
           />
 
@@ -225,7 +174,7 @@ export default function AboutPage() {
             <Card className="flex min-h-[22rem] flex-col items-center justify-center rounded-[24px] p-8 text-center">
               <AboutCardIcon path={learningIconPaths[0]} />
               <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
-                Lectura principal
+                La primera pregunta
               </p>
               <h3 className="mt-3 max-w-sm text-2xl font-semibold leading-tight text-[#E4DFF7] [text-wrap:balance]">
                 {aboutLearnings[0].title}
@@ -265,7 +214,7 @@ export default function AboutPage() {
             align="center"
             eyebrow="Misión y visión"
             title="Lo que hacemos hoy y lo que queremos construir"
-            description="Nuestra dirección es simple: que más empresas vendan, operen y crezcan con un sistema claro."
+            description="Queremos que los equipos entiendan cómo venden y tengan herramientas para mejorarlo."
           />
 
           <div className="mx-auto mt-10 grid max-w-5xl overflow-hidden rounded-2xl border border-[#8d88a9]/20 bg-[#15102b]/72 shadow-[0_22px_54px_rgba(3,1,12,0.28)] md:grid-cols-2 md:divide-x md:divide-[#8d88a9]/20">
@@ -320,24 +269,18 @@ export default function AboutPage() {
           <SectionTitle
             align="center"
             eyebrow="Trabajo con marcas"
-            title="Cada contexto pide una respuesta diferente"
-            description="Nuestro portafolio reúne intervenciones en estrategia, experiencias digitales y puntos de contacto comerciales."
+            title="Nuestro trabajo con cuatro marcas"
+            description="Explora qué trabajamos en cada caso y abre la pieza para verla en contexto."
           />
-          <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-3">
-            {[
-              { name: "Bionda y Mora", detail: "Trabajo en la experiencia digital de una marca de calzado y marroquinería." },
-              { name: "Deliche", detail: "Trabajo en la experiencia digital de una marca de alimentos." },
-              { name: "Nuna Amautta", detail: "Trabajo en la experiencia digital de una marca de moda artesanal." },
-            ].map((project) => (
+          <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-2">
+            {featuredProjects.map((project) => (
               <article key={project.name} className="rounded-2xl border border-[#8d88a9]/20 bg-[#15102b]/72 p-7">
-                <p className="text-sm font-semibold text-[#b8a4ff]">Trabajo documentado</p>
+                <p className="text-sm font-semibold text-[#b8a4ff]">{project.category}</p>
                 <h3 className="mt-4 font-heading text-2xl font-semibold text-[#f7f5ff]">{project.name}</h3>
-                <p className="mt-3 leading-relaxed text-[#c5bdd8]">{project.detail}</p>
+                <p className="mt-3 leading-relaxed text-[#c5bdd8]">{project.work}</p>
+                <Link href={project.href} data-funnel-event="case_open" className="mt-4 inline-block font-semibold text-[#ddc9f3] underline underline-offset-4">{project.action} ↗</Link>
               </article>
             ))}
-          </div>
-          <div className="mt-8 flex justify-center">
-            <Button href="/proyectos/arkos-wear" variant="secondary">Conocer el proyecto Arkos Wear</Button>
           </div>
         </Container>
       </section>
@@ -345,9 +288,9 @@ export default function AboutPage() {
       <CTASection
         centered
         eyebrow="Siguiente paso"
-        title="Diagnostiquemos tu siguiente paso"
-        description="Cuéntanos sobre tu marca y revisaremos cuál puede ser el siguiente paso. Según tus respuestas, encontrarás una ruta de conversación o recursos para prepararte."
-        primaryLabel="Completa la aplicación"
+        title="¿Dónde se frena la venta en tu marca?"
+        description="Cuéntanos qué vendes y qué te preocupa. Al enviar el formulario verás el siguiente paso para tu marca."
+        primaryLabel="Empezar diagnóstico"
         primaryHref={SITE_CONFIG.diagnosisPath}
         primaryVariant="shimmer"
         secondaryLabel="Ver cómo trabajamos"

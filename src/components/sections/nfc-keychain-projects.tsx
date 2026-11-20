@@ -26,7 +26,7 @@ export function NfcKeychainProjects() {
 
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
             <Card interactiveGlow={false} className="overflow-hidden rounded-[30px] p-0">
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#100b25]">
+              <a href={media.product} className="relative block aspect-[4/5] overflow-hidden bg-[#100b25]">
                 <Image
                   src={media.product}
                   alt="Llaveros NFC personalizados de Armario de Sueños sobre empaque RiBuzz"
@@ -34,7 +34,8 @@ export function NfcKeychainProjects() {
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
                 />
-              </div>
+                <span className="absolute bottom-3 right-3 rounded-full bg-[#21162f] px-3 py-1 text-sm text-white">Ver pieza ↗</span>
+              </a>
               <div className="p-6 sm:p-7">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">Producto terminado</p>
                 <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7]">Marca visible, pieza tangible y acceso digital.</h3>
@@ -44,7 +45,7 @@ export function NfcKeychainProjects() {
 
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
               <Card interactiveGlow={false} className="overflow-hidden rounded-[30px] p-0 sm:grid sm:grid-cols-[0.82fr_1.18fr]">
-                <div className="relative aspect-square overflow-hidden bg-[#100b25] sm:aspect-auto">
+                <a href={media.design} className="relative block aspect-square overflow-hidden bg-[#100b25] sm:aspect-auto">
                   <Image
                     src={media.design}
                     alt="Diseño 3D de llavero NFC personalizado"
@@ -52,7 +53,8 @@ export function NfcKeychainProjects() {
                     sizes="(min-width: 640px) 28vw, 100vw"
                     className="object-cover"
                   />
-                </div>
+                  <span className="absolute bottom-3 right-3 rounded-full bg-[#21162f] px-3 py-1 text-sm text-white">Ver diseño ↗</span>
+                </a>
                 <div className="p-6 sm:p-7">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">Diseño 3D</p>
                   <h3 className="mt-3 text-xl font-semibold tracking-tight text-[#E4DFF7]">Tu identidad no se adapta a una plantilla.</h3>
@@ -76,7 +78,7 @@ function VideoCard({ src, poster, title, label }: { src: string; poster: string;
   return (
     <Card interactiveGlow={false} className="overflow-hidden rounded-[26px] p-0">
       <div className="relative bg-[#100b25]">
-        <video className="aspect-[4/5] w-full object-contain" controls autoPlay muted loop playsInline preload="auto" poster={poster} aria-label={title}>
+        <video className="aspect-[4/5] w-full object-contain" controls muted playsInline preload="none" poster={poster} aria-label={title}>
         <source src={src} type="video/mp4" />
         Tu navegador no admite video HTML5.
         </video>

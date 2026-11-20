@@ -1,3 +1,5 @@
+import { after } from "next/server";
+import { es } from "zod/locales";
 import { apiError, apiOk, handleRouteError } from "@/lib/api/response";
 import { getZodFieldErrors, readJsonBody } from "@/lib/api/validation";
 import { env } from "@/lib/env";
@@ -19,13 +21,13 @@ export async function POST(request: Request) {
     });
 
     const body = await readJsonBody<unknown>(request);
-    const parsed = diagnosticRequestSchema.safeParse(body);
+    const parsed = diagnosticRequestSchema.safeParse(body, { error: es().localeError });
 
     if (!parsed.success) {
       return apiError(
         400,
         "INVALID_PAYLOAD",
-        "La solicitud tiene campos invalidos.",
+        "Revisa el campo indicado para continuar.",
         getZodFieldErrors(parsed.error),
       );
     }
@@ -59,6 +61,9 @@ export async function POST(request: Request) {
       honeypot: parsed.data.website,
     });
 
+    after(async () => {
+      await diagnosticRequestService.deliverPendingSheets();
+    });
     return apiOk(
       {
         received: true,

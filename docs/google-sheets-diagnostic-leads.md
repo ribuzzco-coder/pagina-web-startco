@@ -29,7 +29,8 @@ function doPost(e) {
 
   const data = JSON.parse(e.postData.contents || "{}");
 
-  sheet.appendRow([
+  if (!data.id) throw new Error("La solicitud necesita un ID.");
+  const values = [
     data.submittedAt || "",
     data.id || "",
     data.nombre || "",
@@ -52,7 +53,19 @@ function doPost(e) {
     data.routingTier || "",
     data.source || "",
     data.adminUrl || "",
-  ]);
+  ].map(value => typeof value === "string" && /^[=+@-]/.test(value) ? "'" + value : value);
+
+  const lock = LockService.getScriptLock();
+  lock.waitLock(15000);
+  try {
+    const count = sheet.getLastRow() - 1;
+    const existing = count > 0 && sheet.getRange(2, 2, count, 1)
+      .createTextFinder(data.id).matchEntireCell(true).findNext();
+    if (!existing) sheet.appendRow(values);
+    SpreadsheetApp.flush();
+  } finally {
+    lock.releaseLock();
+  }
 
   return ContentService
     .createTextOutput(JSON.stringify({ ok: true }))
@@ -80,15 +93,25 @@ Agrega esa URL publicada al proyecto (en tu hosting, no en este `.env` local):
 DIAGNOSTIC_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/.../exec
 ```
 
-Después redeploya el proyecto. No hace falta ningún otro cambio de código — el
-endpoint `/api/diagnostic-request` ya envía el payload con esos mismos nombres de
-campo cada vez que entra una solicitud nueva y no es duplicada.
+Publica primero esta versión del Apps Script y aplica la migración
+`20261119120000_diagnostic_revisions_and_delivery.sql` antes de desplegar el
+backend. La confirmación del formulario se emite cuando queda guardada la solicitud.
+Después, el servidor intenta entregar hasta cuatro filas pendientes por solicitud.
+Cada intento HTTP tiene un límite de seis segundos. Si la hoja no confirma la
+recepción, la fila queda disponible para reintento cinco minutos después.
+
+Con una sesión administrativa activa puedes hacer un `POST` a
+`/api/admin/diagnostic-requests/retry-sheets` para procesar las pendientes sin
+esperar otra solicitud. Devuelve `claimed` y `delivered`. Si el tráfico se
+interrumpe, es necesario usar este reenvío para vaciar la cola.
+La hoja reconoce el ID aunque se pierda la respuesta del primer envío. Una
+corrección material del formulario recibe un ID nuevo. Las filas históricas
+previas a la migración no se encolan retroactivamente.
 
 ## Probar que quedó conectado
 
-Envía una solicitud de prueba desde `/diagnostico` (usa un correo que no hayas usado
-antes, porque hay una ventana anti-duplicados de 24h) y confirma que aparece una fila
-nueva en el Sheet. Si no aparece nada, revisa los logs del deploy buscando el evento
-`diagnostic_sheets_sync.skipped` (variable de entorno no configurada) o
-`diagnostic_sheets_sync.failed` (la URL está mal o el script no está publicado como
-"Cualquier usuario").
+En un entorno de prueba con la integración configurada, envía una solicitud desde
+`/diagnostico`. Repite los mismos datos y confirma que aparece una única fila.
+Cambia urgencia o inversión y comprueba que la nueva versión tiene otro ID.
+Si falta una fila, comprueba la variable de entorno, busca
+`diagnostic_sheets_sync.failed` en los logs y utiliza el reenvío administrativo.

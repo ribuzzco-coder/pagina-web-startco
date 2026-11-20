@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -9,7 +9,6 @@ export interface NFCCardProps {
   frontImage: string;
   backImage: string;
   className?: string;
-  previewOnMount?: boolean;
   showFooter?: boolean;
 }
 
@@ -17,61 +16,14 @@ export function NFCCard({
   frontImage,
   backImage,
   className,
-  previewOnMount = false,
   showFooter = true,
 }: NFCCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const [isPreviewFlipped, setIsPreviewFlipped] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(hover: none), (pointer: coarse)");
-
-    const updateInputMode = () => {
-      setIsTouchDevice(mediaQuery.matches);
-    };
-
-    updateInputMode();
-    mediaQuery.addEventListener("change", updateInputMode);
-
-    return () => {
-      mediaQuery.removeEventListener("change", updateInputMode);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!previewOnMount || isTouchDevice) {
-      return;
-    }
-
-    const flipTimer = window.setTimeout(() => {
-      setIsPreviewFlipped(true);
-    }, 900);
-
-    const resetTimer = window.setTimeout(() => {
-      setIsPreviewFlipped(false);
-    }, 2600);
-
-    return () => {
-      window.clearTimeout(flipTimer);
-      window.clearTimeout(resetTimer);
-    };
-  }, [isTouchDevice, previewOnMount]);
-
-  const handleFlip = () => {
-    if (!isTouchDevice) {
-      return;
-    }
-
-    setIsFlipped((current) => !current);
-  };
-
   return (
     <button
       type="button"
-      onClick={handleFlip}
-      aria-label={isTouchDevice ? "Voltear tarjeta NFC" : "Vista previa de tarjeta NFC"}
-      aria-pressed={isTouchDevice ? isFlipped : undefined}
+      onClick={() => setIsFlipped(!isFlipped)}
+      aria-label={isFlipped ? "Ver frente de la tarjeta NFC" : "Ver reverso de la tarjeta NFC"}
       className={cn(
         "group relative block w-full max-w-[420px] cursor-pointer rounded-[28px] bg-transparent text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6939E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08041E]",
         className,
@@ -83,8 +35,8 @@ export function NFCCard({
       <div
         className={cn(
           "relative aspect-[1.586] w-full rounded-[28px] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d]",
-          "group-hover:scale-[1.02] group-hover:[transform:rotateY(180deg)_rotateX(5deg)]",
-          (isFlipped || isPreviewFlipped) &&
+          "motion-reduce:transition-none",
+          isFlipped &&
             "[transform:rotateY(180deg)_rotateX(5deg)_scale(1.02)]",
         )}
       >
@@ -116,9 +68,9 @@ export function NFCCard({
 
       {showFooter ? (
         <div className="mt-4 flex items-center justify-between gap-4 px-1 text-xs uppercase tracking-[0.16em] text-[#98A0B3]">
-          <span>{isTouchDevice ? "Toca para voltear" : "Pasa el cursor para voltear"}</span>
+          <span>{isFlipped ? "Ver frente" : "Ver reverso"}</span>
           <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[#CEC6E0]">
-            NFC showcase
+            {isFlipped ? "Reverso" : "Frente"}
           </span>
         </div>
       ) : null}

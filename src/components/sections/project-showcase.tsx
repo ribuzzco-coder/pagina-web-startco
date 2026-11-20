@@ -43,7 +43,10 @@ export function ProjectShowcase() {
           </div>
         </Link>
       </figure>
-      <p className="mt-3 text-sm leading-relaxed text-[#dacde3]">{project.detail}</p>
+      <dl className="mt-4 grid gap-4 border-t border-white/15 pt-4 text-sm leading-relaxed text-[#dacde3] sm:grid-cols-2">
+        <div><dt className="font-semibold text-white">El reto</dt><dd className="mt-1">{project.challenge}</dd></div>
+        <div><dt className="font-semibold text-white">Nuestro trabajo</dt><dd className="mt-1">{project.work}</dd></div>
+      </dl>
     </div>
   );
 }

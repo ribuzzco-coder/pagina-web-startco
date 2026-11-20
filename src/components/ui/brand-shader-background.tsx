@@ -329,6 +329,8 @@ export function BrandShaderBackground({ className }: BrandShaderBackgroundProps)
     let renderer: WebGLShaderRenderer | null = null;
     let pointerTracker: PointerTracker | null = null;
     let frameId = 0;
+    let inView = false;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     try {
       renderer = new WebGLShaderRenderer(canvas);
@@ -347,10 +349,11 @@ export function BrandShaderBackground({ className }: BrandShaderBackgroundProps)
       const scale = Math.max(1, Math.min(1.5, window.devicePixelRatio * 0.65));
       renderer.resize(rect.width, rect.height, scale);
       pointerTracker.updateScale(scale);
+      if (inView && motion.matches) renderer.render(0);
     };
 
     const loop = (now: number) => {
-      if (!renderer || !pointerTracker) {
+      if (!renderer || !pointerTracker || !inView || document.hidden || motion.matches) {
         return;
       }
 
@@ -359,8 +362,20 @@ export function BrandShaderBackground({ className }: BrandShaderBackgroundProps)
       frameId = requestAnimationFrame(loop);
     };
 
+    function syncAnimation() {
+      cancelAnimationFrame(frameId);
+      if (!inView || document.hidden) return;
+      if (motion.matches) renderer?.render(0);
+      else frameId = requestAnimationFrame(loop);
+    }
+    const visibility = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      syncAnimation();
+    });
+    visibility.observe(canvas);
+    motion.addEventListener("change", syncAnimation);
+    document.addEventListener("visibilitychange", syncAnimation);
     resize();
-    frameId = requestAnimationFrame(loop);
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(canvas);
@@ -369,6 +384,9 @@ export function BrandShaderBackground({ className }: BrandShaderBackgroundProps)
     return () => {
       cancelAnimationFrame(frameId);
       resizeObserver.disconnect();
+      visibility.disconnect();
+      motion.removeEventListener("change", syncAnimation);
+      document.removeEventListener("visibilitychange", syncAnimation);
       window.removeEventListener("resize", resize);
       pointerTracker?.dispose();
       renderer?.dispose();

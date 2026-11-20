@@ -1,6 +1,6 @@
 import { env } from "@/lib/env";
 import { ApiError } from "@/lib/api/errors";
-import { syncDiagnosticRequestToSheets } from "@/lib/integrations/diagnostic-sheets-sync";
+import { submissionFields, syncDiagnosticRequestToSheets } from "@/lib/integrations/diagnostic-sheets-sync";
 import { logger } from "@/lib/logger";
 import {
   buildDiagnosticSubmissionHash,
@@ -80,27 +80,11 @@ export class DiagnosticRequestService {
       autoridad: normalized.autoridad as Autoridad,
     });
 
-    const duplicate = await this.repository.findRecentDuplicate(
-      submissionHash,
-      env.DIAGNOSTIC_DUPLICATE_WINDOW_HOURS,
-    );
-
-    if (duplicate) {
-      await this.leadEventsService.recordDuplicateDetected(duplicate.id, {
-        source: normalized.source,
-        request_ip_hash: sha256(input.requestIp),
-      });
-
-      logger.warn("diagnostic_request.duplicate", "Duplicate diagnostic request detected", {
-        diagnosticRequestId: duplicate.id,
-        source: normalized.source,
-      });
-
-      return {
-        duplicate: true,
-        request: duplicate,
-      };
-    }
+    const lookbackHours = env.DIAGNOSTIC_DUPLICATE_WINDOW_HOURS;
+    const revision = sha256(JSON.stringify(normalized));
+    const legacy = await this.repository.findRecentLegacySubmission(submissionHash, lookbackHours);
+    const matchesLegacy = legacy && legacy.routing_tier === routingTier && legacy.fit_score === fitScore &&
+      sha256(JSON.stringify(submissionFields(legacy))) === revision;
 
     const encryptedFields = encryptDiagnosticFields({
       email: normalized.email,
@@ -108,7 +92,7 @@ export class DiagnosticRequestService {
       contexto: normalized.contexto,
     });
 
-    const created = await this.repository.create({
+    const receipt = await this.repository.receive({
       nombre: normalized.nombre,
       empresa: normalized.empresa,
       cargo: normalized.cargo,
@@ -130,51 +114,33 @@ export class DiagnosticRequestService {
       source: normalized.source,
       submission_hash: submissionHash,
       data_consent_at: input.dataConsent ? new Date().toISOString() : null,
-    });
+    }, revision, lookbackHours, Boolean(env.DIAGNOSTIC_SHEETS_WEBHOOK_URL), matchesLegacy ? legacy.id : null);
 
-    await this.leadEventsService.recordDiagnosticCreated(created.id, {
-      source: created.source,
-      request_ip_hash: sha256(input.requestIp),
-      user_agent: input.userAgent ?? null,
-      referrer: input.referrer ?? null,
-    });
+    const eventMetadata = { source: normalized.source, request_ip_hash: sha256(input.requestIp) };
+    if (receipt.duplicate) {
+      await this.leadEventsService.recordDuplicateDetected(receipt.id, eventMetadata);
+    } else {
+      await this.leadEventsService.recordDiagnosticCreated(receipt.id, {
+        ...eventMetadata, user_agent: input.userAgent ?? null, referrer: input.referrer ?? null,
+      });
+    }
+    return { duplicate: receipt.duplicate, request: receipt };
+  }
 
-    logger.info("diagnostic_request.created", "Diagnostic request created", {
-      diagnosticRequestId: created.id,
-      source: created.source,
-    });
-
-    // Se espera (no fire-and-forget) porque en entornos serverless la funcion
-    // puede terminar el proceso antes de que una promesa "colgada" se resuelva.
-    // syncDiagnosticRequestToSheets nunca lanza — un fallo de Sheets no afecta
-    // la respuesta de la API.
-    await syncDiagnosticRequestToSheets({
-      id: created.id,
-      nombre: normalized.nombre,
-      empresa: normalized.empresa,
-      cargo: normalized.cargo,
-      email: normalized.email,
-      whatsapp: normalized.whatsapp,
-      sector: normalized.sector,
-      queVende: normalized.queVende,
-      aQuienVende: normalized.aQuienVende,
-      procesoActual: normalized.procesoActual,
-      queFrena: normalized.queFrena,
-      metaConcreta: normalized.metaConcreta,
-      presupuesto: normalized.presupuesto,
-      urgencia: normalized.urgencia,
-      autoridad: normalized.autoridad,
-      tamanoEquipo: normalized.tamanoEquipo,
-      contexto: normalized.contexto,
-      fitScore,
-      routingTier,
-      source: created.source,
-    });
-
-    return {
-      duplicate: false,
-      request: created,
-    };
+  async deliverPendingSheets() {
+    if (!env.DIAGNOSTIC_SHEETS_WEBHOOK_URL) return { claimed: 0, delivered: 0 };
+    const rows = await this.repository.claimPendingSheetRows();
+    let delivered = 0;
+    await Promise.all(rows.map(async (row) => {
+      try {
+        if (!await syncDiagnosticRequestToSheets(row)) throw new Error("Unconfirmed webhook delivery");
+        await this.repository.markSheetDelivered(row.id);
+        delivered++;
+      } catch {
+        logger.warn("diagnostic_sheets_sync.failed", "El envío queda pendiente para reintento.", { diagnosticRequestId: row.id });
+      }
+    }));
+    return { claimed: rows.length, delivered };
   }
 
   async list(params: { status?: DiagnosticRequestRow["status"]; limit: number; cursor?: string }) {

@@ -1,4 +1,4 @@
-import { NFCCard } from "@/components/ui/nfc-card";
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -36,14 +36,12 @@ export function NfcClientGallery({ items }: NfcClientGalleryProps) {
                 <div
                   className={`pointer-events-none absolute inset-x-4 top-4 h-24 rounded-full bg-gradient-to-r ${item.accent} opacity-30 blur-2xl`}
                 />
-                <div className="relative">
-                  <NFCCard
-                    frontImage={item.frontImage}
-                    backImage={item.backImage}
-                    previewOnMount={index === 0}
-                    className="max-w-none"
-                    showFooter={false}
-                  />
+                <div className="relative grid gap-2">
+                  <a href={item.brand === "Hotel Caribe Plaza" ? "/hotelcaribeplaza" : item.frontImage} className="group relative block aspect-[1.586] overflow-hidden rounded-2xl" aria-label={`Abrir el proyecto de ${item.brand}`}>
+                    <Image src={item.frontImage} alt={`Tarjeta NFC de ${item.brand}`} fill sizes="(min-width: 1024px) 360px, 88vw" className="object-cover" />
+                    <span className="absolute bottom-2 right-2 rounded-full bg-[#21162f] px-3 py-1 text-xs text-white group-hover:underline">{item.brand === "Hotel Caribe Plaza" ? "Ver landing" : "Abrir diseño"} ↗</span>
+                  </a>
+                  <a href={item.backImage} className="w-fit text-sm text-[#dac7ed] underline underline-offset-4" aria-label={`Ver reverso de la tarjeta de ${item.brand}`}>Ver reverso</a>
                 </div>
                 <div className="mt-4 border-t border-white/8 pt-4">
                   <p className="text-[10px] uppercase tracking-[0.18em] text-[#98A0B3]">

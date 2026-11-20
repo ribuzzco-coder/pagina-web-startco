@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   url: "https://ribuzz.com",
   diagnosisPath: "/diagnostico",
   description:
-    "RiBuzz es el growth partner digital de marcas: estrategia, ejecución y tecnología conectadas para crecer con claridad.",
+    "RiBuzz es el growth partner digital que trabaja con tu equipo para definir o mejorar cómo vendes, desde lo que comunicas hasta la experiencia de compra.",
   wordmark: "/brand/ribuzz-wordmark.png",
   logoMark: "/ribuzz-mark.png",
   ogImagePlaceholder: "/opengraph-image",
@@ -13,10 +13,10 @@ export const SITE_CONFIG = {
   instagramUrl: "https://www.instagram.com/ribuzzco/",
   giftsPath: "/regalos",
   bookingUrl: "https://cal.com/ribuzz-xsmxx7/diagnostico",
-  diagnosisCtaLabel: "Conocer mi punto de partida",
+  diagnosisCtaLabel: "Solicitar diagnóstico",
   diagnosisCtaShortLabel: "Empezar",
   diagnosisSupportCopy:
-    "Completa una aplicación breve de 5-7 minutos. La aplicación clasifica tu ruta: llamada de introducción, recursos de preparación o seguimiento por contenido.",
+    "En 5 a 7 minutos nos cuentas qué vendes y qué quieres mejorar. Al terminar puedes encontrar una llamada, un recurso o la opción de suscribirte a contenidos.",
   navLinks: [
     { label: "Inicio", href: "/" },
     { label: "Cómo funciona", href: "/services" },

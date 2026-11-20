@@ -147,7 +147,7 @@ function CtaLink({
 
 export default function PortfolioPage() {
   return (
-    <main className="-mt-[76px] min-h-screen overflow-hidden bg-[#010534] text-[#E4DFF7]">
+    <div className="-mt-[76px] min-h-screen overflow-hidden bg-[#010534] text-[#E4DFF7]">
       <section className="relative overflow-hidden pb-12 pt-16 sm:pb-16 sm:pt-20">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-[-12rem] h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-[#6939E2]/14 blur-3xl" />
@@ -637,6 +637,6 @@ export default function PortfolioPage() {
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   );
 }

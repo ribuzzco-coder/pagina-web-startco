@@ -512,40 +512,40 @@ export const aboutTraits = [
 
 export const diagnosisExpectations = [
   {
-    title: "Lectura de etapa y bloqueo",
+    title: "Dónde se pierde una oportunidad",
     description:
-      "Ubicamos si el problema está en oferta, canal, conversión, seguimiento, tecnología u operación.",
+      "Revisamos contigo qué ve el cliente, qué pregunta y en qué paso deja de avanzar.",
   },
   {
-    title: "Alcance antes de propuesta",
+    title: "Qué conviene cambiar primero",
     description:
-      "Antes de hablar de inversión, definimos qué necesita moverse y qué tareas corresponden.",
+      "Elegimos una prioridad y acordamos qué hará RiBuzz y qué necesitará aportar tu equipo.",
   },
   {
-    title: "Siguiente paso concreto",
+    title: "Cómo sabremos si mejora",
     description:
-      "La ruta queda clara: llamada, preparación con recursos o seguimiento hasta que el momento sea más preciso.",
+      "Elegimos una señal que puedas observar, como cuántas consultas pasan a un pedido.",
   },
 ] as const;
 
 export const diagnosisNextSteps = [
   {
-    eyebrow: "Si ya hay contexto",
+    eyebrow: "Para conversar",
     title: "Llamada de introducción",
     description:
-      "Si tu momento requiere intervención directa, agendas un horario y llegamos con contexto para hablar de alcance.",
+      "Si se habilita la agenda, eliges un horario para revisar el reto con el equipo y conversar sobre el alcance.",
   },
   {
-    eyebrow: "Si falta ordenar base",
-    title: "Preparación de oferta",
+    eyebrow: "Para trabajar una pregunta",
+    title: "Ejercicios para tu marca",
     description:
-      "Si la base necesita orden primero, recibes recursos para aclarar oferta, cliente y siguiente decisión.",
+      "Elige qué quieres revisar: a quién priorizar, cómo explicar tu oferta, qué contenido crear o dónde se frena la compra.",
   },
   {
-    eyebrow: "Si aún no es momento",
+    eyebrow: "Para seguir explorando",
     title: "Seguimiento",
     description:
-      "Si todavía no es momento de intervenir, quedas en una ruta de criterio para retomar con más claridad.",
+      "Puedes suscribirte a la lista de RiBuzz y retomar la conversación cuando quieras trabajar en el tema.",
   },
 ] as const;
 
@@ -634,27 +634,27 @@ export const homeFaqs: FAQ[] = [
   {
     question: "¿Qué estoy comprando realmente si RiBuzz trabaja con mi empresa?",
     answer:
-      "No compras publicaciones, una landing o una automatización aislada. Compras un sistema de crecimiento ajustado a tu etapa: diagnóstico, estrategia, comunicación, tecnología, activos, seguimiento y operación según lo que el negocio necesita mover.",
+      "Acordamos una mejora concreta en tu forma de vender y qué hace falta para ponerla en marcha. Puede ser explicar mejor un producto en la tienda o dar seguimiento a las consultas que llegan por WhatsApp. La propuesta detalla lo que recibirás.",
   },
   {
     question: "Ya invertí en soluciones y no vi respuesta. ¿Qué cambia aquí?",
     answer:
-      "Empezamos por ubicar el cuello de botella antes de construir. Muchas empresas ya pagaron pauta, contenido, web, CRM o asesorías sin resultado porque la pieza correcta no estaba conectada al problema correcto. RiBuzz define primero qué se debe mover y en qué orden.",
+      "Revisamos juntos qué pasó con esa inversión. Si la pauta trajo visitas y pocas personas compraron, miramos qué encontraron en la tienda antes de recomendar otra campaña.",
   },
   {
     question: "¿Qué pasa si no veo crecimiento o avance?",
     answer:
-      "Sabemos que crecer tiene incertidumbre, por eso antes de empezar definimos hitos claros de avance. Si el trabajo no muestra progreso verificable sobre lo acordado, revisamos la intervención y activamos reintegro del servicio según las condiciones pactadas en la propuesta.",
+      "Antes de empezar acordamos qué señal vamos a observar y cuándo la revisaremos contigo. Si el avance se detiene, examinamos qué ocurrió y qué ajuste conviene probar. El alcance, los entregables y las condiciones del servicio quedan por escrito en tu propuesta.",
   },
   {
     question: "¿La oferta es igual para todas las empresas?",
     answer:
-      "No. Cada empresa entra por una etapa distinta y con objetivos distintos. Algunas necesitan solo estrategia y mentoría; otras necesitan activos, automatizaciones, páginas web, CRM, adquisición o acompañamiento. La propuesta se arma después de entender contexto, urgencia y alcance real.",
+      "Podemos trabajar en un punto concreto, como una ficha de producto, o acompañar varias partes de la venta. Acordamos contigo el alcance, el precio y los entregables antes de empezar.",
   },
   {
     question: "¿En cuánto tiempo se empieza a notar avance?",
     answer:
-      "Depende de la etapa. En diagnóstico y diseño el avance se ve en claridad, prioridades y ruta de acción. En implementación se ve en activos, procesos y capacidad operativa. En acompañamiento se mide con indicadores como avance de pipeline, conversión, seguimiento, ventas o cumplimiento de hitos.",
+      "Los plazos dependen del trabajo acordado. Una página se puede revisar en cuanto está lista. Para saber si facilita la compra, hace falta observar qué hacen los clientes después de publicarla.",
   },
   {
     question: "¿Necesito tener equipo, CRM o herramientas listas?",
@@ -669,7 +669,7 @@ export const homeFaqs: FAQ[] = [
   {
     question: "¿Cómo se agenda el siguiente paso?",
     answer:
-      "Completas una aplicación breve de 5-7 minutos. Con tus respuestas clasificamos tu ruta y, si corresponde llamada, agendas directamente en el calendario. Si todavía no es momento de avanzar, te orientamos con recursos o seguimiento.",
+      "Completa el formulario. Si tus respuestas habilitan una llamada, verás el calendario para elegir horario. Las otras opciones son consultar ejercicios para tu marca o suscribirte a contenidos.",
   },
   {
     question: "¿Trabajan solo en Medellín o Colombia?",

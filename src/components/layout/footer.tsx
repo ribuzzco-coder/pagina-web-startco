@@ -19,7 +19,7 @@ export function Footer() {
             className="h-auto w-32"
           />
           <p className="mt-4 max-w-md text-sm leading-relaxed text-[#98A0B3] sm:text-base">
-            Growth partner digital para marcas: conectamos estrategia comercial, ejecución y tecnología para avanzar con claridad.
+            Trabajamos con tu marca en estrategia, comunicación, contenido y conversión para definir o mejorar cómo vendes.
           </p>
           <p className="mt-4 text-sm text-[#CEC6E0]">
             Contacto: {SITE_CONFIG.contactEmail}
@@ -31,7 +31,7 @@ export function Footer() {
           >
             {SITE_CONFIG.diagnosisCtaLabel}
           </Button>
-          <p className="mt-5 text-xs leading-relaxed text-[#5A6072]">
+          <p className="mt-5 text-xs leading-relaxed text-[#a59ab9]">
             Recursos y soluciones puntuales:{" "}
             <Link href="/landings" className="underline decoration-white/20 underline-offset-2 hover:text-[#98A0B3]">
               landings
@@ -42,7 +42,7 @@ export function Footer() {
             </Link>
             .
           </p>
-          <p className="mt-3 text-xs text-[#5A6072]">
+          <p className="mt-3 text-xs text-[#a59ab9]">
             <Link
               href="/politica-de-privacidad"
               className="underline decoration-white/20 underline-offset-2 hover:text-[#98A0B3]"
@@ -67,6 +67,8 @@ export function Footer() {
                   {link.label}
                 </Link>
               ))}
+              <Link href="/#para-quien" className="block text-sm text-[#cdb8e0] hover:underline">¿RiBuzz es para mi marca?</Link>
+              <Link href="/#antes-de-decidir" className="block text-sm text-[#cdb8e0] hover:underline">Preguntas antes de empezar</Link>
             </div>
           </div>
 

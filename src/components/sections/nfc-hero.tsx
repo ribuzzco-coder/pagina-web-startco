@@ -58,7 +58,6 @@ export function NfcHero({
               <NFCCard
                 frontImage="/images/nfc-front.png"
                 backImage="/images/nfc-back.png"
-                previewOnMount
                 className="max-w-[500px]"
               />
             </div>

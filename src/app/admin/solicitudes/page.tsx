@@ -20,13 +20,16 @@ export const metadata = createPageMetadata({
 export default async function AdminSolicitudesPage() {
   let actor: Awaited<ReturnType<typeof requireAdminAccess>>;
   let initialData: ReturnType<typeof toAdminDiagnosticRequestListDto>;
+  let qualifiedCount: number;
 
   try {
     actor = await requireAdminAccess();
     const { diagnosticRequestService } = await createAdminBackendServices();
-    const result = await diagnosticRequestService.list({
-      limit: 25,
-    });
+    const [result, qualified] = await Promise.all([
+      diagnosticRequestService.list({ limit: 25 }),
+      diagnosticRequestService.list({ status: "qualified", limit: 1 }),
+    ]);
+    qualifiedCount = qualified.count;
     initialData = toAdminDiagnosticRequestListDto(result);
   } catch (error) {
     if (error instanceof ApiError && (error.status === 401 || error.status === 403)) {
@@ -45,6 +48,7 @@ export default async function AdminSolicitudesPage() {
             role: actor.role,
           }}
           initialItems={initialData.items}
+          qualifiedCount={qualifiedCount}
         />
       </Container>
     </section>

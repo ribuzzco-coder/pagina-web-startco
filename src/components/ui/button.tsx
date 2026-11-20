@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -13,7 +13,7 @@ type ButtonBaseProps = {
   size?: ButtonSize;
 };
 
-type LinkButtonProps = ButtonBaseProps & {
+type LinkButtonProps = ButtonBaseProps & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "style" | "rel" | "target"> & {
   href: string;
   external?: boolean;
 };
@@ -78,7 +78,7 @@ function getButtonClasses(
 }
 
 export function Button(props: ButtonProps) {
-  if ("href" in props && props.href) {
+  if (typeof props.href === "string") {
     const {
       href,
       external,
@@ -86,6 +86,7 @@ export function Button(props: ButtonProps) {
       className,
       variant = "primary",
       size = "md",
+      ...anchorProps
     } = props;
 
     const classes = getButtonClasses(variant, size, className);
@@ -94,7 +95,7 @@ export function Button(props: ButtonProps) {
 
     if (isExternal) {
       return (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={classes} style={style}>
+        <a {...anchorProps} href={href} target="_blank" rel="noopener noreferrer" className={classes} style={style}>
           {variant === "shimmer" ? <ShimmerLayers /> : null}
           {variant === "shimmer" ? <span className="relative">{children}</span> : children}
         </a>
@@ -102,7 +103,7 @@ export function Button(props: ButtonProps) {
     }
 
     return (
-      <Link href={href} className={classes} style={style}>
+      <Link {...anchorProps} href={href} className={classes} style={style}>
         {variant === "shimmer" ? <ShimmerLayers /> : null}
         {variant === "shimmer" ? <span className="relative">{children}</span> : children}
       </Link>

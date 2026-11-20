@@ -5,7 +5,7 @@ import ContactoClient from "./contacto-client";
 export const metadata = createPageMetadata({
   title: "Contacto",
   description:
-    "Hub rápido de enlaces de RiBuzz para conectar redes, diagnóstico, sitio principal y próximos recursos de valor.",
+    "Cuéntale al equipo de RiBuzz qué quieres mejorar en la venta de tu marca. Empieza el diagnóstico o haz una pregunta por WhatsApp.",
   path: "/contacto",
 });
 

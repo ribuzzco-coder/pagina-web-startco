@@ -12,3 +12,6 @@ yarn-error.log*
 pnpm-debug.log*
 .env*
 !.env.example
+private-commercial/
+public/propuesta-*.html
+public/cotizacion-*.html
