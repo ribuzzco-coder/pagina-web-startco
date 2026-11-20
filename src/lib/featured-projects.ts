@@ -1,0 +1,38 @@
+export const featuredProjects = [
+  {
+    name: "Bionda y Mora",
+    category: "Calzado y accesorios",
+    image: "bionda-home-capture.png",
+    alt: "Vista de la tienda digital de Bionda y Mora",
+    detail: "La landing organiza la colección en botas, tenis y accesorios. Cada familia lleva al catálogo de la tienda para que la clienta elija modelo y variante.",
+    href: "/biondaymora",
+    action: "Recorrer la landing",
+  },
+  {
+    name: "Deliche",
+    category: "Catálogo digital",
+    image: "deliche-home-capture.png",
+    alt: "Portada del catálogo digital de Deliche",
+    detail: "El recorrido parte de explorar el catálogo y termina en la elección de producto. En la tienda puedes seguir los pasos que separan descubrir una referencia de hacer el pedido.",
+    href: "https://deliche.co",
+    action: "Explorar el catálogo",
+  },
+  {
+    name: "Nuna Amautta",
+    category: "Moda artesanal",
+    image: "nuna-home-capture.png",
+    alt: "Colección de moda de Nuna Amautta en su tienda",
+    detail: "La landing Universo Nuna presenta las prendas con fotografía de campaña y permite pasar directamente a comprar o descubrir la historia de la marca.",
+    href: "/nunaamautta",
+    action: "Ver Universo Nuna",
+  },
+  {
+    name: "Arkos Wear",
+    category: "Estrategia de marca y tienda",
+    image: "arkos-home-capture.webp",
+    alt: "Campaña Capítulo 01 de Arkos Wear en su tienda",
+    detail: "Del análisis de referentes surgió una pregunta de portada: ¿qué contar primero de una camiseta que cambia con la luz? El caso recoge la dirección propuesta y sus razones.",
+    href: "/proyectos/arkos-wear",
+    action: "Leer el caso de estrategia",
+  },
+] as const;

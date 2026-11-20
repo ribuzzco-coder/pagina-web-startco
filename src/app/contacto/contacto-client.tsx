@@ -162,11 +162,12 @@ export default function ContactoClient() {
         <div className="mb-6 flex items-center justify-between gap-4">
           <Link href="/" aria-label="Volver al inicio" className="inline-flex items-center gap-3">
             <Image
-              src={SITE_CONFIG.logoPlaceholder}
+              src={isDayMode ? "/brand/ribuzz-horizontal.png" : SITE_CONFIG.wordmark}
               alt="RiBuzz"
-              width={152}
-              height={44}
-              className={cn("h-9 w-auto object-contain", isDayMode ? "brightness-0" : "")}
+              width={isDayMode ? 647 : 1337}
+              height={isDayMode ? 141 : 242}
+              sizes="152px"
+              className="h-auto w-[152px] object-contain"
               priority
             />
           </Link>

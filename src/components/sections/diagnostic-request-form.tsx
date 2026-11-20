@@ -8,7 +8,8 @@ import { Card } from "@/components/ui/card";
 import { publicEnv } from "@/lib/public-env";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
-import type { ApiErrorPayload, ApiSuccess } from "@/types/api";
+import { trackFunnelEvent } from "@/lib/funnel-analytics";
+import { submitDiagnostic } from "@/lib/diagnostic-submit";
 
 type CalApi = {
   (...args: unknown[]): void;
@@ -241,9 +242,9 @@ function ChoiceCards<T extends string>({
               checked={selected}
               required
               onChange={() => onChange(option.value)}
-              className="sr-only"
+              className="peer sr-only"
             />
-            <span className="flex items-start gap-3">
+            <span className="flex items-start gap-3 rounded peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-[#bda6ff]">
               <span
                 className={cn(
                   "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[10px] font-bold transition",
@@ -280,6 +281,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
   const formRef = useRef<HTMLFormElement | null>(null);
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
   const bookingContainerRef = useRef<HTMLDivElement | null>(null);
+  const hasStartedRef = useRef(false);
 
   const calLink = bookingUrl.replace(/^https?:\/\/(app\.)?cal\.com\//, "");
 
@@ -410,8 +412,10 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
 
   function handleNext() {
     if (!formRef.current?.reportValidity()) {
+      trackFunnelEvent("diagnostic_error", "validation");
       return;
     }
+    trackFunnelEvent("diagnostic_step", STEPS[step].id);
     setStep((current) => Math.min(current + 1, LAST_STEP));
   }
 
@@ -427,15 +431,12 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
       return;
     }
 
+    trackFunnelEvent("diagnostic_submit", "decision");
     setStatus("submitting");
     setErrorMessage(null);
     setFieldErrors({});
 
-    try {
-      const response = await fetch("/api/diagnostic-request", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
+    const result = await submitDiagnostic({
           nombre: form.nombre,
           empresa: form.empresa,
           cargo: form.cargo || undefined,
@@ -456,34 +457,26 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
           dataConsent: form.dataConsent,
           turnstileToken: turnstileToken ?? undefined,
           website: form.website,
-        }),
-      });
+    });
 
-      const payload = (await response.json()) as
-        | ApiSuccess<{ received: boolean; duplicate: boolean; fitScore: number; routingTier: RoutingTier }>
-        | ApiErrorPayload;
-
-      if (!response.ok || !payload.ok) {
-        const errorPayload = payload as ApiErrorPayload;
-        setErrorMessage(errorPayload.error?.message ?? "No pudimos enviar el formulario. Intenta de nuevo.");
-        setFieldErrors(errorPayload.error?.fieldErrors ?? {});
-        setStatus("error");
-        return;
-      }
-
-      setRoutingTier(payload.data.routingTier);
-      setStatus("submitted");
-    } catch {
-      setErrorMessage("No pudimos conectar con el servidor. Revisa tu conexión e intenta de nuevo.");
+    if (!result.ok) {
+      trackFunnelEvent("diagnostic_error", "request");
+      setErrorMessage(result.message);
+      setFieldErrors(result.fieldErrors);
       setStatus("error");
+      return;
     }
+
+    trackFunnelEvent("diagnostic_complete", result.tier);
+    setRoutingTier(result.tier);
+    setStatus("submitted");
   }
 
   if (status === "submitted" && routingTier === "llamada") {
     return (
       <Card className="rounded-[28px] p-6 sm:p-8">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8b6ff0]">
-          Paso 2 de 2
+          Solicitud recibida
         </p>
         <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance]">
           Agenda la llamada de introducción
@@ -492,9 +485,12 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
           Ya recibimos tu información. Agenda directamente en el calendario y llegamos con contexto
           para hablar de etapa, bloqueo y alcance.
         </p>
+        <a href={bookingUrl} className="mt-4 inline-block font-semibold text-[#d5baff] underline underline-offset-4">
+          Abrir el calendario de RiBuzz
+        </a>
         <div
           ref={bookingContainerRef}
-          className="mt-6 h-[780px] w-full min-w-[320px] rounded-[20px] border border-white/8 bg-white transition-[height] duration-200"
+          className="mt-6 h-[780px] w-full min-w-0 rounded-[20px] border border-white/8 bg-white transition-[height] duration-200"
         />
       </Card>
     );
@@ -553,7 +549,12 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
         {currentStep.description}
       </p>
 
-      <form ref={formRef} onSubmit={handleSubmit} className="mt-7 grid gap-5">
+      <form ref={formRef} onSubmit={handleSubmit} onChange={() => {
+        if (!hasStartedRef.current) {
+          hasStartedRef.current = true;
+          trackFunnelEvent("diagnostic_start", "contacto");
+        }
+      }} className="mt-7 grid gap-5">
         <input
           type="text"
           name="website"
@@ -802,7 +803,7 @@ export function DiagnosticRequestForm({ bookingUrl }: { bookingUrl: string }) {
         ) : null}
 
         {errorMessage ? (
-          <p className="rounded-2xl border border-[#ff4d6d]/24 bg-[#ff4d6d]/8 px-4 py-3 text-sm text-[#FF9EB0]">
+          <p role="alert" className="rounded-2xl border border-[#ff4d6d]/24 bg-[#ff4d6d]/8 px-4 py-3 text-sm text-[#FF9EB0]">
             {errorMessage}
           </p>
         ) : null}

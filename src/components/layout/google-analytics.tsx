@@ -1,6 +1,7 @@
 import Script from "next/script";
 
 import { publicEnv } from "@/lib/public-env";
+import { FunnelAnalytics } from "@/components/layout/funnel-analytics";
 
 /**
  * Inerte hasta que NEXT_PUBLIC_GA_MEASUREMENT_ID esté configurado en el entorno
@@ -11,12 +12,11 @@ import { publicEnv } from "@/lib/public-env";
 export function GoogleAnalytics() {
   const measurementId = publicEnv.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
-  if (!measurementId) {
-    return null;
-  }
+  if (!measurementId) return <FunnelAnalytics />;
 
   return (
     <>
+      <FunnelAnalytics />
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
         strategy="afterInteractive"

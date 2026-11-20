@@ -1,253 +1,129 @@
-import Image from "next/image";
+import Link from "next/link";
 
-import { DifferentiatorSystem } from "@/components/sections/differentiator-system";
-import { FAQAccordion } from "@/components/sections/faq-accordion";
-import { FitChecklist } from "@/components/sections/fit-checklist";
-import { PhaseStepper } from "@/components/sections/phase-stepper";
-import { TestimonialShuffle } from "@/components/sections/testimonial-shuffle";
-import { BrandShaderBackground } from "@/components/ui/brand-shader-background";
+import { FeaturedProjects } from "@/components/sections/featured-projects";
+import { HomeGrowthVisual } from "@/components/sections/home-growth-visual";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { HeroMarkButton } from "@/components/ui/hero-mark-button";
-import { PillBadge } from "@/components/ui/pill-badge";
-import { SectionDivider } from "@/components/ui/section-divider";
-import { SectionTitle } from "@/components/ui/section-title";
-import {
-  differentiatorPillars,
-  fitChecklist,
-  homeFaqs,
-  homeProblemKeywords,
-  homeProblemSynthesis,
-  methodologySteps,
-  nonFitChecklist,
-} from "@/lib/content";
 import { createPageMetadata } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Inicio",
-  description: "RiBuzz ayuda a que menos empresas fracasen por falta de clientes, estructura comercial y flujo de caja.",
+  title: "Sistemas comerciales para marcas",
+  description: "Conoce cómo RiBuzz conecta estrategia comercial, diseño web y seguimiento. Descubre cómo acordamos prioridades con tu equipo, construimos las piezas y revisamos los resultados.",
   path: "/",
 });
+
+const stages = [
+  { title: "Diagnóstico", output: "Un mapa de lo que frena la compra.", team: "Compartes objetivos y dudas frecuentes de tus clientes.", ribuzz: "Revisamos tu oferta, tus canales y el recorrido de compra." },
+  { title: "Prioridades", output: "Una propuesta con alcance, inversión y plazos.", team: "Eliges qué resolver primero.", ribuzz: "Definimos entregables y responsables contigo." },
+  { title: "Ejecución", output: "Una pieza o un proceso listo para usar.", team: "Aportas materiales y validas las decisiones de marca.", ribuzz: "Diseñamos e implementamos la solución acordada." },
+  { title: "Seguimiento", output: "Resultados y próximos ajustes.", team: "Compartes lo que observas en ventas.", ribuzz: "Revisamos las señales contigo y proponemos el siguiente ajuste." },
+] as const;
+
+const needs = [
+  { question: "¿Dónde enfocar el esfuerzo?", answer: "Elegimos contigo qué cliente, oferta y canal priorizar." },
+  { question: "¿Cuesta explicar por qué elegirte?", answer: "Damos forma a un mensaje que tu cliente entienda y recuerde." },
+  { question: "¿Publicas sin saber para qué?", answer: "Planificamos contenido a partir de las dudas de tus clientes." },
+  { question: "¿Hay interés pero pocas ventas?", answer: "Localizamos el paso donde se pierde la compra y lo mejoramos." },
+] as const;
+
+const buyingQuestions = [
+  ["¿Puedo contratar un proyecto puntual?", "Sí. Podemos mejorar una parte de tu sistema, como el seguimiento de consultas."],
+  ["¿Cuánto cuesta y cuánto tarda?", "Tras revisar tu objetivo y los materiales disponibles, te entregamos una propuesta con alcance, inversión y fechas."],
+  ["¿Cómo medimos el resultado?", "Acordamos una señal según tu objetivo, como cuántas visitas pasan al carrito o cuántas consultas reciben respuesta."],
+] as const;
 
 export default function HomePage() {
   return (
     <>
-      {/* Atención */}
-      <section
-        id="home-hero"
-        className="relative -mt-[76px] flex min-h-[100dvh] items-center justify-center overflow-hidden bg-[#05050A]"
-      >
-        <BrandShaderBackground className="z-0 opacity-75" />
-        <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.035),transparent_16%),radial-gradient(circle_at_18%_28%,rgba(120,95,221,0.08),transparent_24%),radial-gradient(circle_at_80%_52%,rgba(105,57,226,0.1),transparent_30%),linear-gradient(180deg,rgba(5,5,10,0.18)_0%,rgba(5,5,10,0.04)_34%,rgba(5,5,10,0.16)_72%,rgba(5,5,10,0.56)_100%)]" />
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <Container className="hero-no-select text-center">
-            <div className="mx-auto max-w-[58rem]">
-              <div className="mt-7 flex items-center justify-center gap-4 sm:mt-8 sm:gap-5">
-                <Image
-                  src="/images/branding/ribuzz-texto.png"
-                  alt="RiBuzz"
-                  width={606}
-                  height={128}
-                  priority
-                  className="hero-wordmark h-12 w-auto sm:h-16 xl:h-24"
-                />
-                <HeroMarkButton src={SITE_CONFIG.logoMark} alt="Símbolo RiBuzz" />
-              </div>
-
-              <div className="mt-6 flex justify-center">
-                <PillBadge>Sistema de crecimiento RiBuzz</PillBadge>
-              </div>
-              <h1 className="mx-auto mt-4 max-w-3xl font-heading text-[1.9rem] font-bold leading-[1.08] text-[#E4DFF7] [text-wrap:balance] sm:text-[2.45rem] xl:text-[3rem]">
-                ¿Ya pagaste para vender más y <span className="text-[#8b6ff0]">nada cambió?</span>
-                <br />
-                No eres el único.
-              </h1>
-              <p className="mx-auto mt-4 max-w-2xl text-[0.92rem] leading-[1.5] text-[#D9DDE7] [text-wrap:pretty] sm:text-[1rem]">
-                Revisamos oferta, mensaje, canales, seguimiento y tecnología para encontrar dónde
-                se rompe tu crecimiento y construir el flujo que lo sostiene.
-              </p>
-
-              <div className="mt-7 flex flex-col items-center justify-center gap-2.5 sm:flex-row">
-                <Button
-                  href={SITE_CONFIG.diagnosisPath}
-                  size="md"
-                  variant="primary"
-                  className="shadow-[0_0_14px_rgba(105,57,226,0.22)]"
-                >
-                  Completa la aplicación
-                </Button>
-                <Button
-                  href="#sistema-comercial"
-                  variant="secondary"
-                  size="md"
-                  className="bg-white/[0.025] shadow-none"
-                >
-                  Ver cómo funciona
-                </Button>
-              </div>
+      <section id="home-hero" className="relative -mt-[76px] overflow-hidden bg-[#100a20] pt-[76px] text-white">
+        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_45%,#45325e,transparent_55%)]" />
+        <Container className="relative grid gap-9 py-9 sm:py-14 lg:grid-cols-[.92fr_1.08fr] lg:items-center lg:gap-12 lg:py-20">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[.18em] text-[#d2baff]">Growth partner digital para marcas</p>
+            <h1 className="mt-5 max-w-[15ch] font-heading text-[clamp(2.7rem,5.4vw,5.25rem)] font-semibold leading-[.98] tracking-[-.055em]">¿Qué frena tus <span className="text-[#c8a8ff]">ventas digitales?</span></h1>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-[#e3dbe9] sm:text-lg">Trabajamos contigo para definir o mejorar tu sistema comercial, desde cómo presentas tu marca hasta cómo compra tu cliente.</p>
+            <div className="mt-7 flex flex-wrap items-center gap-4">
+              <span data-funnel-event="hero_cta"><Button href="#como-funciona" size="lg">Explorar el método</Button></span>
+              <Link href="/diagnostico" data-funnel-event="diagnostic_cta" className="rounded py-3 font-semibold text-[#e1ccff] underline decoration-[#9278ad] underline-offset-4">Solicitar diagnóstico</Link>
             </div>
-          </Container>
-        </div>
+          </div>
+          <HomeGrowthVisual />
+        </Container>
       </section>
 
-      {/* Problema */}
-      <section className="section-soft cv-auto py-16 sm:py-20" id="problemas">
-        <Container>
-          <SectionTitle
-            align="center"
-            eyebrow="Por qué tu empresa se estanca"
-            title={
-              <>
-                El problema:
-                <br />
-                no tienes un sistema, tienes piezas sueltas
-              </>
-            }
-            description="Cuando estrategia, comunicación, tecnología y operación funcionan por separado, crecer se vuelve una suma de intentos. El negocio se mueve, pero no siempre avanza con claridad."
-          />
+      <section id="como-funciona" className="scroll-mt-20 bg-[#f4f0ed] py-14 text-[#261d2c] sm:py-20">
+        <Container className="grid items-start gap-9 lg:grid-cols-[.78fr_1.22fr] lg:gap-14">
+          <div>
+            <h2 className="mt-4 font-heading text-4xl font-semibold leading-tight tracking-[-.045em] sm:text-5xl">Así trabajamos con tu equipo.</h2>
+            <Link href="/about#equipo" className="mt-5 inline-block font-semibold text-[#58317c] underline underline-offset-4">Conocer al equipo</Link>
+          </div>
+          <ol className="border-t border-[#c9c0c6]">
+            {stages.map((stage, index) => (
+              <li key={stage.title} className="border-b border-[#c9c0c6]">
+                <details name="metodo" className="group">
+                  <summary className="flex cursor-pointer list-none items-baseline gap-4 rounded py-4">
+                    <span aria-hidden="true" className="font-mono text-sm text-[#70567b]">0{index + 1}</span>
+                    <span className="flex-1"><strong className="block font-heading text-2xl">{stage.title}</strong><span className="mt-1 block text-sm text-[#564a58]">{stage.output}</span></span>
+                    <span aria-hidden="true" className="text-xl text-[#76489b] group-open:rotate-45 motion-safe:transition-transform">+</span>
+                  </summary>
+                  <dl className="grid gap-4 pb-5 pl-8 sm:grid-cols-2">
+                    <div><dt className="font-semibold">Tu equipo</dt><dd className="mt-1 text-sm leading-relaxed">{stage.team}</dd></div>
+                    <div><dt className="font-semibold">RiBuzz</dt><dd className="mt-1 text-sm leading-relaxed">{stage.ribuzz}</dd></div>
+                  </dl>
+                </details>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </section>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            {homeProblemKeywords.map((keyword) => (
-              <span
-                key={keyword.title}
-                className="inline-flex items-center whitespace-nowrap rounded-full border border-[#6939E2]/24 bg-[#6939E2]/8 px-4 py-2 text-sm font-medium text-[#CEC6E0] sm:text-base"
-              >
-                {keyword.title}
-              </span>
+      <section className="border-y border-[#cbb9dc] bg-[#e6daf2] py-12 text-[#25192e] sm:py-16">
+        <Container>
+          <h2 className="max-w-3xl font-heading text-3xl font-semibold tracking-[-.04em] sm:text-5xl">¿Qué le pasa a tu marca?</h2>
+          <div className="mt-7 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
+            {needs.map(({ question, answer }) => (
+              <article key={question} className="flex flex-col items-start border-t border-[#aa92bb] pt-4">
+                <h3 className="font-heading text-xl font-semibold leading-snug">{question}</h3>
+                <p className="my-3 leading-relaxed text-[#504357]">{answer}</p>
+              </article>
             ))}
           </div>
-
-          <p className="mx-auto mt-6 max-w-xl text-center text-sm leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-base">
-            {homeProblemSynthesis}
-          </p>
+          <Link href="/services#necesidad" className="mt-5 inline-block font-semibold text-[#51306b] underline underline-offset-4">Ver servicios</Link>
         </Container>
       </section>
 
-      <SectionDivider />
+      <FeaturedProjects />
 
-      <section className="cv-auto py-16 sm:py-20" id="sistema-comercial">
-        <Container>
-          <SectionTitle
-            align="center"
-            eyebrow="Qué entendemos por sistema"
-            title="Integramos estrategia, comunicación y tecnología en una sola operación"
-            description="Conectamos lo que vendes, cómo lo comunicas y cómo lo operas para que el crecimiento no dependa de improvisación."
-          />
 
-          <div className="mt-10">
-            <DifferentiatorSystem pillars={differentiatorPillars} />
+      <section className="bg-[#f4f0ed] py-14 text-[#261d2c] sm:py-20">
+        <Container className="grid items-start gap-6 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
+          <div>
+            <h2 className="max-w-lg font-heading text-4xl font-semibold tracking-[-.045em] sm:text-5xl">Antes de decidir</h2>
+          </div>
+          <div className="divide-y divide-[#c9c0c6] border-y border-[#c9c0c6]">
+            {buyingQuestions.map(([question, answer]) => (
+              <details key={question} name="contratar" className="group">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded py-4 font-heading text-lg font-semibold">
+                  {question}<span aria-hidden="true" className="text-[#76489b] group-open:rotate-45 motion-safe:transition-transform">+</span>
+                </summary>
+                <p className="max-w-xl pb-5 leading-relaxed text-[#564a58]">{answer}</p>
+              </details>
+            ))}
           </div>
         </Container>
       </section>
 
-      <SectionDivider />
-
-      {/* Interés: teaser de metodología, enlaza a la página completa */}
-      <section className="cv-auto py-16 sm:py-20">
-        <Container>
-          <SectionTitle
-            align="center"
-            eyebrow="Cómo lo hacemos"
-            title="Sin diagnóstico no hay resultado"
-            description="Nuestro método de cuatro fases evita decisiones a ciegas: cada paso parte de lo que encontramos en el diagnóstico, no de suposiciones."
-          />
-
-          <div className="mt-10">
-            <PhaseStepper steps={methodologySteps} />
+      <section className="bg-[#e3d4f7] py-16 text-[#21152e] sm:py-24">
+        <Container className="grid items-end gap-8 lg:grid-cols-[1fr_.82fr]">
+          <div>
+            <h2 className="mt-4 max-w-xl font-heading text-4xl font-semibold leading-[1.03] tracking-[-.045em] sm:text-6xl">Cuéntanos qué te frena.</h2>
           </div>
-
-        </Container>
-      </section>
-
-      <SectionDivider />
-
-      {/* Filtro: para quién es / no es, antes de pedir el CTA */}
-      <section className="cv-auto py-16 sm:py-20" id="para-quien">
-        <Container>
-          <SectionTitle
-            align="center"
-            eyebrow="Antes de seguir"
-            title="Para quién es esto, y para quién no"
-            description="RiBuzz trabaja mejor cuando ya existe una oferta, una operación o una intención real de crecer. Este filtro aclara si necesitas sistema, no solo otra pieza suelta."
-          />
-
-          <div className="mt-10">
-            <FitChecklist fitItems={fitChecklist} nonFitItems={nonFitChecklist} />
-          </div>
-        </Container>
-      </section>
-
-      <SectionDivider />
-
-      {/* Modelo de oferta: teaser corto, el detalle vive en /services */}
-      <section className="section-soft cv-auto py-16 sm:py-20">
-        <Container>
-          <SectionTitle
-            align="center"
-            eyebrow="Modelo de oferta"
-            title="Cada empresa necesita una propuesta ajustada a su momento"
-            description="La oferta se define según contexto, objetivos y tareas reales. El sistema puede combinar estrategia, activos, tecnología, adquisición y seguimiento, con una forma de pago alineada al alcance."
-          />
-
-          <div className="mt-8 flex justify-center">
-            <Button href="/services" variant="secondary" size="lg">
-              Ver cómo se estructura
-            </Button>
-          </div>
-        </Container>
-      </section>
-
-      <SectionDivider />
-
-      <TestimonialShuffle />
-
-      <SectionDivider />
-
-      <section className="cv-auto py-16 sm:py-20">
-        <Container>
-          <SectionTitle
-            align="center"
-            eyebrow="FAQ rápido"
-            title="Preguntas frecuentes antes de avanzar"
-            description="Respuestas directas sobre oferta, alcance, riesgo, tiempos y forma de trabajo antes de tomar una decisión."
-          />
-
-          <div className="mt-8 w-full">
-            <FAQAccordion items={homeFaqs} />
-          </div>
-
-        </Container>
-      </section>
-
-      <section className="py-16 sm:py-20">
-        <Container>
-          <div className="cv-auto relative overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(21,24,36,0.96),rgba(14,16,24,0.92))] p-8 text-center shadow-[0_16px_48px_rgba(0,0,0,0.24)] sm:p-12 lg:p-16">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(120,95,221,0.4),transparent)]" />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(120,95,221,0.06),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(105,57,226,0.04),transparent_40%)]" />
-
-            <div className="relative mx-auto max-w-2xl">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0]">
-                Antes de irte
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#E4DFF7] [text-wrap:balance] sm:text-4xl">
-                ¿Listo para avanzar? Completa la aplicación.
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-lg">
-                Son 5-7 minutos. La aplicación clasifica tu ruta y abre el siguiente paso correcto:
-                llamada, preparación con recursos o seguimiento por contenido.
-              </p>
-
-              <div className="mx-auto mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Button
-                  href={SITE_CONFIG.diagnosisPath}
-                  size="lg"
-                  variant="shimmer"
-                  className="shadow-[0_0_24px_rgba(105,57,226,0.2)]"
-                >
-                  Completa la aplicación
-                </Button>
-              </div>
+          <div>
+            <p className="leading-relaxed">El formulario toma de 5 a 7 minutos. Según tus respuestas, podrás agendar una llamada, consultar recursos o suscribirte a contenidos.</p>
+            <div className="mt-6 flex flex-wrap items-center gap-5">
+              <span data-funnel-event="diagnostic_cta"><Button href={SITE_CONFIG.diagnosisPath}>Empezar diagnóstico</Button></span>
+              <a className="font-semibold underline underline-offset-4" href={SITE_CONFIG.whatsappUrl}>Preguntar por WhatsApp</a>
             </div>
           </div>
         </Container>

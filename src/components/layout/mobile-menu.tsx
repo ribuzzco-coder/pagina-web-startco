@@ -1,59 +1,39 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import { Container } from "@/components/ui/container";
 import { SITE_CONFIG } from "@/lib/site-config";
-import { cn } from "@/lib/utils";
 
 type MobileMenuProps = {
   isOpen: boolean;
-  pathname: string;
+  activeHref: string;
   onClose: () => void;
 };
 
-export function MobileMenu({ isOpen, pathname, onClose }: MobileMenuProps) {
-  if (!isOpen) {
-    return null;
-  }
-
+export function MobileMenu({ isOpen, activeHref, onClose }: MobileMenuProps) {
   return (
-    <div className="border-t border-white/8 bg-[#08041E]/96 px-5 py-4 md:hidden">
-      <Container className="px-0">
-        <nav className="flex flex-col gap-2" aria-label="Menu movil">
-          {SITE_CONFIG.navLinks.map((link) => {
-            const isActive =
-              link.href === "/" ? pathname === link.href : pathname.startsWith(link.href);
-            const isDiagnosisLink = link.href === "/diagnostico";
-
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={onClose}
-                className={cn(
-                  "rounded-xl border px-3 py-2.5 text-sm font-medium transition-colors",
-                  isActive
-                    ? isDiagnosisLink
-                      ? "border-[#6939E2]/65 bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-white shadow-[0_0_0_1px_rgba(105,57,226,0.18),0_0_24px_rgba(105,57,226,0.28)]"
-                      : "border-white/10 bg-[#130259] text-[#E4DFF7]"
-                    : isDiagnosisLink
-                      ? "border-[#6939E2]/65 bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-white shadow-[0_0_0_1px_rgba(105,57,226,0.18),0_0_24px_rgba(105,57,226,0.28)]"
-                      : "border-white/8 text-[#98A0B3] hover:border-white/14 hover:text-[#E4DFF7]",
-                )}
-              >
+    <div id="ribuzz-mobile-menu" hidden={!isOpen} className="absolute inset-x-3 top-[68px] lg:hidden">
+      <nav aria-label="Menú móvil" className="relative ml-auto max-h-[calc(100dvh-84px)] max-w-md overflow-y-auto overscroll-contain rounded-3xl border border-[#685279] bg-[#201529] px-6 py-5 text-[#f5eff9] shadow-[0_18px_54px_#12081c70]">
+        <Image src="/brand/ribuzz-face.png" alt="" width={96} height={96} className="pointer-events-none absolute right-6 top-8 w-24 opacity-15" />
+        <ul className="relative">
+          {SITE_CONFIG.navLinks.filter(link => link.href !== SITE_CONFIG.diagnosisPath).map((link) => (
+            <li key={link.href} className="border-b border-[#634f71]/55">
+              <Link href={link.href} onClick={onClose} aria-current={link.href === activeHref ? "location" : undefined}
+                className="flex items-center gap-3 rounded py-3 font-heading text-[1.55rem] font-semibold leading-tight tracking-[-.035em] hover:text-[#dbc1f2] focus-visible:outline-2 focus-visible:outline-[#ddc5ff] aria-[current]:text-[#d8b6fa]">
                 {link.label}
+                {link.href === activeHref && <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#cb9ef4]" />}
               </Link>
-            );
-          })}
-
-          <Link
-            href={SITE_CONFIG.giftsPath}
-            onClick={onClose}
-            className="rounded-xl border border-[#ff4d6d]/60 bg-[linear-gradient(135deg,#381119,#5a101d)] px-3 py-2.5 text-sm font-medium text-[#FFD6DE] shadow-[0_0_0_1px_rgba(255,77,109,0.18),0_0_20px_rgba(255,77,109,0.2)] transition-colors hover:border-[#ff8ea8] hover:text-white"
-          >
-            Regalos y documentos de valor
-          </Link>
-        </nav>
-      </Container>
+            </li>
+          ))}
+        </ul>
+        <Link href={SITE_CONFIG.diagnosisPath} onClick={onClose} aria-current={activeHref === SITE_CONFIG.diagnosisPath ? "page" : undefined}
+          className="mt-5 flex min-h-12 items-center justify-between rounded-xl bg-[#dfc6f5] px-4 font-semibold text-[#302037] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+          Solicitar diagnóstico <span aria-hidden="true">→</span>
+        </Link>
+        <Link href={SITE_CONFIG.giftsPath} onClick={onClose} aria-current={activeHref === SITE_CONFIG.giftsPath ? "page" : undefined}
+          className="mt-2 inline-flex min-h-11 items-center rounded text-sm font-medium text-[#dccce7] underline decoration-[#91779e] underline-offset-4">
+          Regalos y documentos de valor
+        </Link>
+      </nav>
     </div>
   );
 }

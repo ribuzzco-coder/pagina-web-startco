@@ -43,7 +43,7 @@ export function IntroLoader() {
   });
 
   useEffect(() => {
-    if (typeof window === "undefined") {
+    if (typeof window === "undefined" || window.location.pathname === "/") {
       return;
     }
 

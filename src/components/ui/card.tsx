@@ -70,7 +70,7 @@ export function Card({
     <div
       ref={cardRef}
       className={cn(
-        "surface-panel glow-card relative isolate rounded-[24px] border border-white/8 p-6 shadow-[0_10px_24px_rgba(0,0,0,0.22)]",
+        "surface-panel glow-card relative isolate rounded-xl border border-[#8d88a9]/20 p-6 shadow-[0_14px_32px_rgba(3,1,12,0.3)]",
         !interactiveGlow && "glow-card--static",
         className,
       )}

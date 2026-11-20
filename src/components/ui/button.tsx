@@ -27,9 +27,9 @@ type ButtonProps = LinkButtonProps | NativeButtonProps;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "border border-[#6939E2]/55 bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-white shadow-[0_0_20px_rgba(105,57,226,0.35)] hover:border-[#785fdd]/80 hover:bg-[linear-gradient(135deg,#6939e2,#4e06ba)] hover:shadow-[0_0_0_1px_rgba(105,57,226,0.24),0_0_28px_rgba(105,57,226,0.42)]",
+    "border border-[#8f6cff]/70 bg-[#6d42e8] text-white shadow-[0_8px_22px_rgba(109,66,232,0.28)] hover:-translate-y-px hover:border-[#b5a1ff] hover:bg-[#7b55ef] hover:shadow-[0_12px_30px_rgba(109,66,232,0.36)]",
   secondary:
-    "border border-white/10 bg-white/[0.03] text-[#E4DFF7] hover:border-[#6939E2]/40 hover:bg-white/[0.08] hover:shadow-[0_0_0_1px_rgba(105,57,226,0.12),0_0_12px_rgba(105,57,226,0.12)]",
+    "border border-[#8d88a9]/35 bg-[#171329]/72 text-[#f5f3ff] hover:border-[#9d7cff]/65 hover:bg-[#211a39] hover:shadow-[0_8px_20px_rgba(20,13,49,0.36)]",
   ghost:
     "border border-transparent bg-transparent text-[#CEC6E0] hover:bg-white/6 hover:text-[#E4DFF7] hover:shadow-[0_0_10px_rgba(105,57,226,0.1)]",
   shimmer:
@@ -42,7 +42,7 @@ const sizeStyles: Record<ButtonSize, string> = {
 };
 
 const baseStyle =
-  "inline-flex items-center justify-center rounded-full font-semibold tracking-[0.01em] transition-[color,border-color,background-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] disabled:pointer-events-none disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6939E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08041E] active:translate-y-px";
+  "inline-flex items-center justify-center rounded-lg font-semibold tracking-[0.01em] transition-[color,border-color,background-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] disabled:pointer-events-none disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6cff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08041E] active:translate-y-px";
 
 const shimmerVars = {
   "--shimmer-spread": "100deg",

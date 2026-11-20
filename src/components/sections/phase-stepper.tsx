@@ -35,7 +35,7 @@ export function PhaseStepper({ steps }: PhaseStepperProps) {
             >
               <span
                 className={cn(
-                  "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-[background-color,box-shadow,color] duration-300",
+                  "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold transition-[background-color,box-shadow,color] duration-300",
                   isDone
                     ? "bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-white"
                     : isActive
@@ -85,7 +85,7 @@ export function PhaseStepper({ steps }: PhaseStepperProps) {
       </div>
 
       {/* Card de la fase activa */}
-      <div className="relative mt-10 overflow-hidden rounded-[28px] bg-[linear-gradient(180deg,rgba(22,24,38,0.5),rgba(11,11,16,0.2))] p-2 sm:p-3">
+      <div className="relative mt-10 overflow-hidden rounded-2xl border border-[#8d88a9]/16 bg-[#100b24]/58 p-2 sm:p-3">
         <AnimatePresence mode="wait">
           <motion.div
             key={active.title}

@@ -148,6 +148,7 @@ function SlideToUnlock({ onUnlock }: SlideToUnlockProps) {
           )}
           style={{ left: handleOffset }}
           onPointerDown={(event) => startDrag(event.clientX)}
+          onClick={onUnlock}
         >
           <GiftIcon className="h-6 w-6" />
         </button>
@@ -299,6 +300,9 @@ export function RewardVault() {
           Empieza por entender qué estás prometiendo, a quién se lo prometes y cómo convertirlo
           en una conversación comercial más clara.
         </p>
+        <ul className="mx-auto mt-6 grid max-w-2xl gap-3 text-left sm:grid-cols-2">
+          {docs.map((doc) => <li key={doc.title} className="rounded-2xl border border-white/10 bg-white/[0.035] p-4"><p className="font-semibold text-[#e4dff7]">{doc.title}</p><p className="mt-2 text-sm leading-relaxed text-[#bdb5d1]">{doc.description}</p></li>)}
+        </ul>
       </div>
 
       <div className="relative mx-auto mt-10 max-w-2xl">

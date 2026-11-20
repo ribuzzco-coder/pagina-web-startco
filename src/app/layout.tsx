@@ -157,10 +157,11 @@ export default function RootLayout({
 
         <div className="relative flex min-h-screen flex-col">
           <RouteVisibility>
+            <a href="#contenido-principal" className="fixed left-4 top-2 z-[100] -translate-y-[180%] rounded-lg bg-white px-5 py-3 font-semibold text-[#261337] focus:translate-y-0">Saltar al contenido</a>
             <IntroLoader />
             <Navbar />
           </RouteVisibility>
-          <main className="flex-1 pt-[76px]">{children}</main>
+          <main id="contenido-principal" tabIndex={-1} className="flex-1 pt-[76px]">{children}</main>
           <RouteVisibility>
             <Footer />
             <FloatingWhatsAppButton />

@@ -161,10 +161,11 @@ export default function PortfolioPage() {
             <div className="min-w-0">
               <div className="mb-9 inline-flex rounded-[18px] border border-white/10 bg-white/[0.04] px-4 py-3">
                 <Image
-                  src="/ribuzz-wordmark.png"
+                  src="/brand/ribuzz-wordmark.png"
                   alt="RiBuzz"
-                  width={180}
-                  height={48}
+                  width={1337}
+                  height={242}
+                  sizes="199px"
                   priority
                   className="h-9 w-auto object-contain"
                 />
@@ -588,10 +589,11 @@ export default function PortfolioPage() {
               <div>
                 <div className="mb-8 inline-flex rounded-[18px] border border-white/10 bg-white/[0.04] px-4 py-3">
                   <Image
-                    src="/ribuzz-wordmark.png"
+                    src="/brand/ribuzz-wordmark.png"
                     alt="RiBuzz"
-                    width={160}
-                    height={44}
+                    width={1337}
+                    height={242}
+                    sizes="177px"
                     className="h-8 w-auto object-contain"
                   />
                 </div>

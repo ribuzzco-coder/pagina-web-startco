@@ -16,6 +16,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isHeroTop, setIsHeroTop] = useState(false);
+  const [inGallery, setInGallery] = useState(false);
+  const activeHref = (pathname === "/" && inGallery) || pathname.startsWith("/proyectos/") ? "/#trabajos" : pathname;
   const [activeBubbleStyle, setActiveBubbleStyle] = useState<{
     width: number;
     x: number;
@@ -28,7 +30,36 @@ export function Navbar() {
   const [isBubbleMorphing, setIsBubbleMorphing] = useState(false);
   const lastScrollYRef = useRef(0);
   const navRef = useRef<HTMLElement | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
   const morphTimeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const desktop = window.matchMedia("(min-width: 64rem)");
+    function closeOutside(event: Event) {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) setIsOpen(false);
+    }
+    function escape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        toggleRef.current?.focus();
+      }
+    }
+    function closeOnDesktop() {
+      if (desktop.matches) setIsOpen(false);
+    }
+    document.addEventListener("keydown", escape);
+    document.addEventListener("pointerdown", closeOutside);
+    document.addEventListener("focusin", closeOutside);
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      document.removeEventListener("keydown", escape);
+      document.removeEventListener("pointerdown", closeOutside);
+      document.removeEventListener("focusin", closeOutside);
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
+  }, [isOpen]);
 
   const handleScroll = useEffectEvent(() => {
     if (isOpen) {
@@ -37,6 +68,8 @@ export function Navbar() {
     }
 
     const currentScrollY = window.scrollY;
+    const gallery = pathname === "/" ? document.getElementById("trabajos")?.getBoundingClientRect() : undefined;
+    setInGallery(Boolean(gallery && gallery.top < window.innerHeight / 2 && gallery.bottom > 80));
     const isScrollingDown = currentScrollY > lastScrollYRef.current;
     const hasScrolledEnough = currentScrollY > 88;
     const hero = document.getElementById("home-hero");
@@ -55,10 +88,11 @@ export function Navbar() {
 
   useEffect(() => {
     lastScrollYRef.current = window.scrollY;
-    handleScroll();
+    const frame = window.requestAnimationFrame(handleScroll);
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
+      window.cancelAnimationFrame(frame);
       window.removeEventListener("scroll", handleScroll);
     };
   }, [pathname, isOpen]);
@@ -85,33 +119,31 @@ export function Navbar() {
   });
 
   useEffect(() => {
-    syncActiveBubble();
-
-    setIsBubbleMorphing(true);
-    if (morphTimeoutRef.current !== null) {
-      window.clearTimeout(morphTimeoutRef.current);
-    }
-    morphTimeoutRef.current = window.setTimeout(() => {
-      setIsBubbleMorphing(false);
-    }, 760);
+    const frame = window.requestAnimationFrame(() => {
+      syncActiveBubble();
+      setIsBubbleMorphing(true);
+      morphTimeoutRef.current = window.setTimeout(() => setIsBubbleMorphing(false), 760);
+    });
 
     window.addEventListener("resize", syncActiveBubble);
 
     return () => {
+      window.cancelAnimationFrame(frame);
       window.removeEventListener("resize", syncActiveBubble);
       if (morphTimeoutRef.current !== null) {
         window.clearTimeout(morphTimeoutRef.current);
       }
     };
-  }, [pathname]);
+  }, [activeHref]);
 
   return (
     <header
+      ref={headerRef}
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color,backdrop-filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
         isHeroTop
           ? "border-b border-transparent bg-transparent backdrop-blur-0"
-          : "border-b border-white/8 bg-[#08041E]/92 backdrop-blur-sm",
+          : "border-b border-[#8d88a9]/20 bg-[#0d0920]/92 backdrop-blur-xl",
         isHidden ? "-translate-y-full" : "translate-y-0",
       )}
     >
@@ -122,25 +154,25 @@ export function Navbar() {
           onClick={() => setIsOpen(false)}
         >
           <Image
-            src={SITE_CONFIG.logoPlaceholder}
+            src={SITE_CONFIG.wordmark}
             alt="Logo RiBuzz"
-            width={759}
-            height={180}
-            sizes="(max-width: 1024px) 140px, 168px"
+            width={1337}
+            height={242}
+            sizes="(min-width: 640px) 150px, 132px"
             priority
-            className="h-9 w-auto object-contain opacity-96 transition duration-300 group-hover:scale-[1.02] group-hover:opacity-100 sm:h-10"
+            className="h-auto w-[132px] object-contain transition-transform duration-300 motion-safe:group-hover:scale-[1.02] sm:w-[150px]"
           />
         </Link>
 
         <nav
           ref={navRef}
-          className="relative ml-auto hidden items-center gap-1 rounded-full p-1 lg:mr-8 lg:flex xl:mr-12"
+          className="relative ml-auto hidden items-center gap-1 rounded-xl border border-[#8d88a9]/20 bg-[#15102b]/72 p-1 lg:mr-8 lg:flex xl:mr-12"
           aria-label="Principal"
         >
           <span
             aria-hidden="true"
             className={cn(
-              "pointer-events-none absolute inset-y-1 left-0 border border-white/58 bg-[radial-gradient(circle_at_28%_26%,rgba(255,255,255,0.98),rgba(255,255,255,0.93)_42%,rgba(249,238,252,0.88)_72%,rgba(255,255,255,0.82)_100%)] shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_0_14px_rgba(105,57,226,0.14),0_0_24px_rgba(105,57,226,0.1)] blur-[0.08px] transition-[transform,width,opacity,border-radius,box-shadow,filter] duration-[920ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "pointer-events-none absolute inset-y-1 left-0 border border-[#9e82ff]/55 bg-[#2b2050] shadow-[0_4px_14px_rgba(5,2,18,0.35)] transition-[transform,width,opacity,border-radius,box-shadow,filter] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
               isBubbleMorphing && "nav-blob-morphing",
             )}
             style={{
@@ -154,8 +186,7 @@ export function Navbar() {
             } as CSSProperties}
           />
           {SITE_CONFIG.navLinks.map((link) => {
-            const isActive =
-              link.href === "/" ? pathname === link.href : pathname.startsWith(link.href);
+            const isActive = link.href === activeHref;
             const isDiagnosisLink = link.href === "/diagnostico";
 
             return (
@@ -163,15 +194,16 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 data-nav-active={isActive ? "true" : "false"}
+                aria-current={isActive ? "location" : undefined}
                 className={cn(
                   "relative z-10 rounded-full border px-4 py-2 text-sm font-medium tracking-[0.01em] transition-[color,border-color,box-shadow,background-color,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
                   isActive
                     ? isDiagnosisLink
                       ? "border-[#6939E2]/65 bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-white shadow-[0_0_0_1px_rgba(105,57,226,0.18),0_0_24px_rgba(105,57,226,0.32)]"
-                      : "border-transparent bg-transparent text-[#4E06BA]"
+                      : "border-transparent bg-transparent text-[#f7f5ff]"
                     : isDiagnosisLink
                       ? "border-[#6939E2]/65 bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-white shadow-[0_0_0_1px_rgba(105,57,226,0.18),0_0_24px_rgba(105,57,226,0.32)] hover:border-[#785fdd]/80 hover:bg-[linear-gradient(135deg,#6939e2,#4e06ba)] hover:text-white hover:shadow-[0_0_0_1px_rgba(105,57,226,0.24),0_0_28px_rgba(105,57,226,0.4)]"
-                      : "border-transparent text-[#98A0B3] hover:border-[#6939E2]/55 hover:bg-[#1A1320] hover:text-[#E4DFF7] hover:shadow-[0_0_0_1px_rgba(105,57,226,0.24),0_0_24px_rgba(105,57,226,0.28)]",
+                : "border-transparent text-[#b7b0cb] hover:border-[#9e82ff]/35 hover:bg-[#211a3c] hover:text-[#f7f5ff]",
                 )}
               >
                 {link.label}
@@ -204,16 +236,23 @@ export function Navbar() {
         </nav>
 
         <button
+          ref={toggleRef}
           type="button"
-          aria-label="Abrir menu"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-[#E4DFF7] transition hover:border-white/18 lg:hidden"
+          aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={isOpen}
+          aria-controls="ribuzz-mobile-menu"
+          className="group ml-auto inline-grid h-12 w-12 place-items-center rounded-full border border-[#9277a7] bg-[#2a1d36] text-[#ead7ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dec5ff] aria-expanded:bg-[#dec5f5] aria-expanded:text-[#291933] lg:hidden"
           onClick={() => setIsOpen((prev) => !prev)}
         >
-          <span className="text-lg leading-none">{isOpen ? "x" : "="}</span>
+          <span aria-hidden="true" className="relative block h-5 w-[22px]">
+            <span className="absolute left-0 top-[3px] h-0.5 w-full rounded-full bg-current motion-safe:transition-transform group-aria-expanded:translate-y-[6px] group-aria-expanded:rotate-45" />
+            <span className="absolute left-0 top-[9px] h-0.5 w-4 rounded-full bg-current group-aria-expanded:opacity-0" />
+            <span className="absolute left-0 top-[15px] h-0.5 w-full rounded-full bg-current motion-safe:transition-transform group-aria-expanded:-translate-y-[6px] group-aria-expanded:-rotate-45" />
+          </span>
         </button>
       </Container>
 
-      <MobileMenu isOpen={isOpen} pathname={pathname} onClose={() => setIsOpen(false)} />
+      <MobileMenu isOpen={isOpen} activeHref={activeHref} onClose={() => setIsOpen(false)} />
     </header>
   );
 }

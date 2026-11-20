@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { PillBadge } from "@/components/ui/pill-badge";
 import { cn } from "@/lib/utils";
 
 type PageHeroProps = {
@@ -33,19 +32,20 @@ export function PageHero({
   titleClassName,
 }: PageHeroProps) {
   return (
-    <section className="pb-18 pt-16 sm:pb-24 sm:pt-24">
-      <Container className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-        <div>
-          <PillBadge>{eyebrow}</PillBadge>
+    <section className="relative overflow-hidden pb-18 pt-16 sm:pb-24 sm:pt-24">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(169,145,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(169,145,255,0.04)_1px,transparent_1px)] [background-size:36px_36px]" />
+      <Container className="relative grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+        <div className="rounded-2xl border border-[#8d88a9]/20 bg-[#15102b]/58 p-6 shadow-[0_18px_44px_rgba(3,1,12,0.24)] sm:p-8">
+          <p className="mb-5 font-heading text-[11px] font-bold uppercase tracking-[0.16em] text-[#a991ff]">{eyebrow}</p>
           <h1
             className={cn(
               titleClassName ??
-                "mt-6 max-w-4xl font-heading text-4xl leading-tight text-[#E4DFF7] sm:text-5xl",
+                "max-w-4xl font-heading text-4xl leading-tight text-[#f7f5ff] sm:text-5xl",
             )}
           >
             {title}
           </h1>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#98A0B3] sm:text-lg">
+          <p className="mt-5 max-w-3xl text-base leading-relaxed text-[#c2bbd8] sm:text-lg">
             {description}
           </p>
 
@@ -69,10 +69,10 @@ export function PageHero({
         </div>
 
         {asideTitle && asideText ? (
-          <div className="relative overflow-hidden rounded-[28px] border border-white/8 bg-white/[0.035] p-7 shadow-[0_10px_24px_rgba(0,0,0,0.16)] sm:p-8">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(105,57,226,0.34),transparent)]" />
-            <p className="text-[11px] font-semibold tracking-[0.16em] text-[#98A0B3] uppercase">
-              Referencia ejecutiva
+          <div className="relative overflow-hidden rounded-2xl border border-[#9e82ff]/28 bg-[linear-gradient(145deg,#21183f,#110c25)] p-7 shadow-[0_18px_44px_rgba(3,1,12,0.3)] sm:p-8">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(169,145,255,0.72),transparent)]" />
+            <p className="font-heading text-[11px] font-bold tracking-[0.16em] text-[#a991ff] uppercase">
+              Lectura RiBuzz
             </p>
             <h2 className="mt-4 text-2xl font-semibold tracking-tight text-[#E4DFF7] sm:text-3xl">
               {asideTitle}

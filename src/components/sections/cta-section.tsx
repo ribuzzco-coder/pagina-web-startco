@@ -45,8 +45,8 @@ export function CTASection({
   return (
     <section className={cn("py-20 sm:py-24", className)}>
       <Container>
-        <div className="cv-auto relative overflow-hidden rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(29,33,48,0.9),rgba(24,26,36,0.84))] p-8 shadow-[0_10px_28px_rgba(0,0,0,0.18)] sm:p-10">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(105,57,226,0.32),transparent)]" />
+        <div className="cv-auto relative overflow-hidden rounded-2xl border border-[#9e82ff]/28 bg-[linear-gradient(145deg,#21183f,#100b24)] p-8 shadow-[0_18px_44px_rgba(3,1,12,0.32)] sm:p-10">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(169,145,255,0.72),transparent)]" />
 
           <div className={cn(
             "relative flex flex-col gap-6",
@@ -55,10 +55,10 @@ export function CTASection({
             contentClassName
           )}>
             <div className={cn("flex-1 max-w-2xl", centered && "mx-auto")}>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#CEC6E0] [text-wrap:balance]">
+              <p className="font-heading text-[11px] font-bold uppercase tracking-[0.16em] text-[#a991ff] [text-wrap:balance]">
                 {eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#E4DFF7] [text-wrap:balance] sm:text-4xl">
+              <h2 className="mt-3 font-heading text-3xl font-semibold leading-tight tracking-tight text-[#f7f5ff] [text-wrap:balance] sm:text-4xl">
                 {title}
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#98A0B3] [text-wrap:pretty] sm:text-lg">

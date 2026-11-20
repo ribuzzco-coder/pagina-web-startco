@@ -4,8 +4,8 @@ export const SITE_CONFIG = {
   url: "https://ribuzz.com",
   diagnosisPath: "/diagnostico",
   description:
-    "Sistema comercial para convertir venta informal en oferta, mensaje, activos, seguimiento y tecnología conectados.",
-  logoPlaceholder: "/ribuzz-wordmark.png",
+    "RiBuzz es el growth partner digital de marcas: estrategia, ejecución y tecnología conectadas para crecer con claridad.",
+  wordmark: "/brand/ribuzz-wordmark.png",
   logoMark: "/ribuzz-mark.png",
   ogImagePlaceholder: "/opengraph-image",
   contactEmail: "ribuzzco@gmail.com",
@@ -13,13 +13,14 @@ export const SITE_CONFIG = {
   instagramUrl: "https://www.instagram.com/ribuzzco/",
   giftsPath: "/regalos",
   bookingUrl: "https://cal.com/ribuzz-xsmxx7/diagnostico",
-  diagnosisCtaLabel: "Completa la aplicación",
-  diagnosisCtaShortLabel: "Aplicación",
+  diagnosisCtaLabel: "Conocer mi punto de partida",
+  diagnosisCtaShortLabel: "Empezar",
   diagnosisSupportCopy:
     "Completa una aplicación breve de 5-7 minutos. La aplicación clasifica tu ruta: llamada de introducción, recursos de preparación o seguimiento por contenido.",
   navLinks: [
     { label: "Inicio", href: "/" },
-    { label: "Cómo trabajamos", href: "/services" },
+    { label: "Cómo funciona", href: "/services" },
+    { label: "Proyectos", href: "/#trabajos" },
     { label: "Sobre RiBuzz", href: "/about" },
     { label: "Diagnóstico", href: "/diagnostico" },
   ],
