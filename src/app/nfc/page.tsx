@@ -18,7 +18,9 @@ export const metadata = createPageMetadata({
   path: "/nfc",
 });
 
-export default function NfcPage() {
+export default async function NfcPage({ searchParams }: PageProps<"/nfc">) {
+  const { formato } = await searchParams;
+  const product = formato === "tarjeta" ? "Tarjeta NFC" : formato === "llavero" ? "Llavero NFC" : formato === "volumen" ? "Pedido por volumen" : null;
   return (
     <div className="nfc-product-page">
       <NfcHero
@@ -29,9 +31,9 @@ export default function NfcPage() {
       />
       <NfcExecutionMap />
       <NfcSteps steps={nfcSteps} />
-      <NfcPricing plans={nfcPricingPlans} inquiryHref="#filtro-nfc" />
+      <NfcPricing plans={nfcPricingPlans} />
       <NfcKeychainProjects />
-      <NfcRequestForm />
+      <NfcRequestForm key={product ?? "nuevo"} initialProduct={product} />
     </div>
   );
 }

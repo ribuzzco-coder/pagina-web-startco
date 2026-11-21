@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { NavigationFeedback } from "./navigation-feedback";
 
 import { SITE_CONFIG } from "@/lib/site-config";
 
@@ -19,7 +20,7 @@ export function MobileMenu({ isOpen, activeHref, onClose }: MobileMenuProps) {
             <li key={link.href} className="border-b border-[#634f71]/55">
               <Link href={link.href} onClick={onClose} aria-current={link.href === activeHref ? "location" : undefined}
                 className="flex items-center gap-3 rounded py-3 font-heading text-[1.55rem] font-semibold leading-tight tracking-[-.035em] hover:text-[#dbc1f2] focus-visible:outline-2 focus-visible:outline-[#ddc5ff] aria-[current]:text-[#d8b6fa]">
-                {link.label}
+                {link.label}<NavigationFeedback />
                 {link.href === activeHref && <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#cb9ef4]" />}
               </Link>
             </li>

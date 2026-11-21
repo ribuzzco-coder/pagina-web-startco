@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { NavigationFeedback } from "./navigation-feedback";
 import { usePathname } from "next/navigation";
 import type { CSSProperties } from "react";
 import { useEffect, useEffectEvent, useRef, useState } from "react";
@@ -196,7 +197,7 @@ export function Navbar() {
                 data-nav-active={isActive ? "true" : "false"}
                 aria-current={isActive ? "location" : undefined}
                 className={cn(
-                  "relative z-10 rounded-full border px-4 py-2 text-sm font-medium tracking-[0.01em] transition-[color,border-color,box-shadow,background-color,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                  "relative z-10 whitespace-nowrap rounded-full border px-2.5 py-2 xl:px-4 text-sm font-medium tracking-[0.01em] transition-[color,border-color,box-shadow,background-color,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
                   isActive
                     ? isDiagnosisLink
                       ? "border-[#6939E2]/65 bg-[linear-gradient(135deg,#6939E2,#4E06BA)] text-white shadow-[0_0_0_1px_rgba(105,57,226,0.18),0_0_24px_rgba(105,57,226,0.32)]"
@@ -206,7 +207,7 @@ export function Navbar() {
                 : "border-transparent text-[#b7b0cb] hover:border-[#9e82ff]/35 hover:bg-[#211a3c] hover:text-[#f7f5ff]",
                 )}
               >
-                {link.label}
+                {link.label}<NavigationFeedback />
               </Link>
             );
           })}

@@ -22,6 +22,7 @@ export const SITE_CONFIG = {
     { label: "Cómo funciona", href: "/services" },
     { label: "Proyectos", href: "/#trabajos" },
     { label: "Sobre RiBuzz", href: "/about" },
+    { label: "Soluciones NFC", href: "/soluciones-nfc" },
     { label: "Diagnóstico", href: "/diagnostico" },
   ],
 } as const;

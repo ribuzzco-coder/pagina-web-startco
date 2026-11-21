@@ -2,20 +2,18 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { IntroLoader } from "./intro-loader";
 import type { ReactNode } from "react";
 
-const companyPages = new Set([
-  "/", "/about", "/services", "/contacto", "/diagnostico", "/regalos",
-  "/portafolio", "/landings", "/nfc", "/tarjetas-nfc", "/nfc-demo",
-  "/politica-de-privacidad",
-]);
+import { isCompanyPage } from "@/lib/company-pages";
 
 export function SiteMain({ children }: { children: ReactNode }) {
   const path = usePathname();
-  const companyPage = companyPages.has(path) || path.startsWith("/proyectos/");
+  const companyPage = isCompanyPage(path);
 
   return (
     <main id="contenido-principal" tabIndex={-1} data-company-page={companyPage || undefined} className="flex-1 pt-[76px]">
+      {companyPage && <IntroLoader key={path} />}
       {children}
       {companyPage && path !== "/" && (
         <nav aria-label="Orientación para tu marca" className="border-y border-[#cbb9dc] bg-[#e6daf2] text-[#26192f]">

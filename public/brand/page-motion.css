@@ -1,0 +1,52 @@
+.rb-screen {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 4px;
+  z-index: 105;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(90deg,#7c49d2,#eed8ff,#ac82ec);
+  transform-origin: left;
+  animation: rb-curtain 540ms cubic-bezier(.45,.02,.25,1) both;
+}
+.rb-screen-mark {
+  position: absolute;
+  right: 14px;
+  top: 4px;
+  width: 22px;
+  aspect-ratio: 1;
+  background: #27173b url('/brand/ribuzz-face.png') center / 78% no-repeat;
+  border-radius: 0 0 6px 6px;
+  animation: rb-stamp 460ms ease-out both;
+}
+.rb-screen-pending { animation: none; }
+.rb-screen-pending .rb-screen-mark { animation: rb-stamp 900ms ease-in-out infinite alternate; }
+@keyframes rb-curtain {
+  0% { transform: scaleX(.12); }
+  65% { transform: scaleX(1); opacity: 1; }
+  99% { visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@keyframes rb-stamp {
+  from { transform: translateY(5px) rotate(-8deg) scale(.88); opacity: .55; }
+  to { transform: none; opacity: 1; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :where([data-company-page] section h2, [data-company-page] [data-scroll-reveal], .company-guide a) {
+      animation: rb-arrive linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 95%;
+    }
+    @keyframes rb-arrive {
+      from { opacity: .65; translate: 0 14px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-screen:not(.rb-screen-pending) { display: none; }
+  .rb-screen-pending .rb-screen-mark { animation: none; }
+}
+@media print { .rb-screen { display: none; } }

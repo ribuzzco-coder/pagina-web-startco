@@ -32,7 +32,7 @@ const nfcWhatsappUrl = `${SITE_CONFIG.whatsappUrl}?text=${encodeURIComponent(
 export default function TarjetasNfcPage() {
   return (
     <>
-      <NfcHero primaryHref={nfcWhatsappUrl} />
+      <NfcHero primaryHref="/nfc?formato=tarjeta#filtro-nfc" />
       <NfcSteps steps={nfcSteps} />
       <NfcBenefits
         functional={nfcFunctionalBenefits}
@@ -40,14 +40,16 @@ export default function TarjetasNfcPage() {
       />
       <NfcUseCases items={nfcUseCases} />
       <NfcClientGallery items={nfcClientCardSamples} />
-      <NfcPricing plans={nfcPricingPlans} inquiryHref={nfcWhatsappUrl} />
+      <NfcPricing plans={nfcPricingPlans} />
       <NfcFaq items={nfcFaqItems} />
       <CTASection
         title="Haz que cada reunión, visita o evento tenga un siguiente paso."
         description="Solicita tu tarjeta NFC o escríbenos por WhatsApp para definir la versión que mejor encaja con tu marca, tus enlaces y tu flujo de seguimiento."
         primaryLabel="Solicitar tarjeta"
-        primaryHref={nfcWhatsappUrl}
-        primaryExternal
+        primaryHref="/nfc?formato=tarjeta#filtro-nfc"
+        secondaryLabel="Hablar por WhatsApp"
+        secondaryHref={nfcWhatsappUrl}
+        secondaryExternal
       />
     </>
   );

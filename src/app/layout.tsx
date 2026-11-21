@@ -16,7 +16,6 @@ import {
 import { FloatingWhatsAppButton } from "@/components/layout/floating-whatsapp-button";
 import { Footer } from "@/components/layout/footer";
 import { GoogleAnalytics } from "@/components/layout/google-analytics";
-import { IntroLoader } from "@/components/layout/intro-loader";
 import { Navbar } from "@/components/layout/navbar";
 import { RouteVisibility } from "@/components/layout/route-visibility";
 import { SiteMain } from "@/components/layout/site-main";
@@ -159,7 +158,6 @@ export default function RootLayout({
         <div className="relative flex min-h-screen flex-col">
           <RouteVisibility>
             <a href="#contenido-principal" className="fixed left-4 top-2 z-[100] -translate-y-[180%] rounded-lg bg-white px-5 py-3 font-semibold text-[#261337] focus:translate-y-0">Saltar al contenido</a>
-            <IntroLoader />
             <Navbar />
           </RouteVisibility>
           <SiteMain>{children}</SiteMain>

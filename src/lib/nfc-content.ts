@@ -72,6 +72,7 @@ export const nfcPreviewItems = [
 export const nfcPricingPlans = [
   {
     name: "Tarjeta",
+    inquiryHref: "/nfc?formato=tarjeta#filtro-nfc",
     price: "$89.900 COP",
     description:
       "Una tarjeta NFC personalizada para compartir tu información, enlaces y siguiente paso comercial.",
@@ -83,6 +84,7 @@ export const nfcPricingPlans = [
   },
   {
     name: "Llavero NFC",
+    inquiryHref: "/nfc?formato=llavero#filtro-nfc",
     price: "$49.900 c/u",
     description:
       "Una alternativa compacta para activar una experiencia, compartir un enlace o llevar una acción concreta a tu marca.",
@@ -95,6 +97,7 @@ export const nfcPricingPlans = [
   },
   {
     name: "Producción por volumen",
+    inquiryHref: "/nfc?formato=volumen#filtro-nfc",
     price: "Desde $24.900 c/u",
     description:
       "Para equipos, eventos y activaciones donde la cantidad permite optimizar el valor por unidad.",

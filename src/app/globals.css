@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Barlow:wght@400;500;600;700&family=Jost:wght@400;500;600;700&family=Lato:wght@400;700;900&family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&family=Saira:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Zen+Dots&display=swap");
 @import "tailwindcss";
+@import "../../public/brand/page-motion.css";
 
 /* Shared editorial treatment for RiBuzz's public company pages. */
 [data-company-page] {

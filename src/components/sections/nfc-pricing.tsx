@@ -8,6 +8,7 @@ import { SectionTitle } from "@/components/ui/section-title";
 
 type PricingPlan = {
   name: string;
+  inquiryHref: string;
   price: string;
   description: string;
   points: readonly string[];
@@ -15,10 +16,9 @@ type PricingPlan = {
 
 type NfcPricingProps = {
   plans: readonly PricingPlan[];
-  inquiryHref: string;
 };
 
-export function NfcPricing({ plans, inquiryHref }: NfcPricingProps) {
+export function NfcPricing({ plans }: NfcPricingProps) {
   return (
     <>
       <SectionDivider />
@@ -54,7 +54,7 @@ export function NfcPricing({ plans, inquiryHref }: NfcPricingProps) {
                     </li>
                   ))}
                 </ul>
-                <Button href={inquiryHref} className="mt-7 w-full" size="lg">
+                <Button href={plan.inquiryHref} className="mt-7 w-full" size="lg">
                   Configurar esta opción
                 </Button>
               </Card>
